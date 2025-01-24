@@ -1,0 +1,146 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+signature  = "$Windows NT$"
+Provider = %MSFT%
+Class = MultiFunction
+ClassGUID  = {4d36e971-e325-11ce-bfc1-08002be10318}
+DriverVer=10/01/2002,5.0.2128.1
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%Mfabc%=Mfabc
+
+[Mfabc]
+%MfabcA% = PCMLM56.mf, PCMCIA\Linksys-EtherFast_10&100_+_56K_PC_Card_(PCMLM56)-61E5
+%MfabcA% = PCMLM56.mf, PCMCIA\Linksys-EtherFast_10&100_+_56K_PC_Card_(PCMLM56)-D46D
+
+[PCMLM56.mf]
+
+[PCMLM56.mf.HW]
+AddReg=PCMLM56.mf.RegHW
+
+[PCMLM56.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\PCMLM56_DEV0
+HKR,Child0000,ResourceMap,1,00,02,03
+HKR,Child0001,HardwareID,,MF\PCMLM56_DEV1
+HKR,Child0001,ResourceMap, 1, 01,02,03
+
+[PCMLM56.mf.LogConfigOverride]
+LogConfig    =    PCMLM56.mf.Override0
+LogConfig    =    PCMLM56.mf.Override1
+LogConfig    =    PCMLM56.mf.Override2
+LogConfig    =    PCMLM56.mf.Override3
+LogConfig    =    PCMLM56.mf.Override4
+LogConfig    =    PCMLM56.mf.Override5
+LogConfig    =    PCMLM56.mf.Override6
+LogConfig    =    PCMLM56.mf.Override7
+LogConfig    =    PCMLM56.mf.Override8
+LogConfig    =    PCMLM56.mf.Override9
+LogConfig    =    PCMLM56.mf.Override10
+LogConfig    =    PCMLM56.mf.Override11
+LogConfig    =    PCMLM56.mf.Override12
+
+[PCMLM56.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[PCMLM56.mf.Override0]
+IOConfig     =    2F8-2FF   ; Com1
+IOConfig     =    300-31F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  03(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override1]
+IOConfig     =    3E8-3EF   ; Com1
+IOConfig     =    300-31F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  05(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override2]
+IOConfig     =    2E8-2EF   ; Com1
+IOConfig     =    300-31F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12    ; IRQ
+PCCardConfig =  07(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override3]
+IOConfig     =    2F8-2FF   ; Com1
+IOConfig     =    320-33F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12    ; IRQ
+PCCardConfig =  09(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override4]
+IOConfig     =    3E8-3EF   ; Com2
+IOConfig     =    320-33F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12    ; IRQ
+PCCardConfig =  0B(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override5]
+IOConfig     =    2E8-2EF   ; Com2
+IOConfig     =    320-33F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  0D(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override6]
+IOConfig     =    2F8-2FF   ; Com2
+IOConfig     =    340-35F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  0F(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override7]
+IOConfig     =    3E8-3EF   ; Com2
+IOConfig     =    340-35F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  11(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override8]
+IOConfig     =    2E8-2EF   ; Com3
+IOConfig     =    340-35F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  13(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override9]
+IOConfig     =    2F8-2FF   ; Com3
+IOConfig     =    220-23F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  15(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override10]
+IOConfig     =    3E8-3EF   ; Com3
+IOConfig     =    220-23F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  17(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override11]
+IOConfig     =    2E8-2EF   ; Com3
+IOConfig     =    220-23F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  19(W)  ; ConfigIndex:MemoryCardIndex
+
+[PCMLM56.mf.Override12]
+IOConfig     =    2F8-2FF   ; Com3
+IOConfig     =    240-25F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  1B(W)  ; ConfigIndex:MemoryCardIndex
+
+;*****************************************************************
+; Multifunction Service
+;
+
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+[Strings]
+MSFT  = "Microsoft"
+Mfabc = "Linksys"
+MfabcA= "Linksys EtherFast 10&100 + 56K PC Card (PCMLM56)"
+MFClassName  =    "Multifunction PCMCIA Device Driver"

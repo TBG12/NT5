@@ -1,0 +1,77 @@
+*%*****************************************************************************
+*%
+*%		Value Macros Specific for HP Color LaserJet 4500
+*%
+*%*****************************************************************************
+
+*CodePage: 1252      *% Windows 3.1 US (ANSI) code page
+
+*%*********************************************************************
+*% Start Macro definitions
+*%*********************************************************************
+
+*Macros: InstallableNames
+{
+	INSTALLED_OPTION:		131
+	NOTINSTALLED_OPTION:	132
+	OPTIONAL_TRAY3:			133
+	OPTIONAL_DUPLEX_UNIT:	134
+}
+
+*Macros: SpecialMediaTypes
+{
+	BOND_PAPER_DISPLAY:			113	
+	CARDSTOCK_PAPER_DISPLAY:	117
+	COLOR_PAPER_DISPLAY:		115
+	HEAVY_PAPER_DISPLAY:		116
+	LABELS_PAPER_DISPLAY:		112
+	LETTERHEAD_PAPER_DISPLAY:	108
+	PREPRINTED_PAPER_DISPLAY:	107
+	PREPUNCHED_PAPER_DISPLAY:	111
+	RECYCLED_PAPER_DISPLAY:		114
+	UNSPECIFIED_PAPER_DISPLAY:  105
+}
+
+*Macros: PaperSourceNames
+{
+	AUTO_DISPLAY:				140
+	TRAY1_DISPLAY:				128
+	TRAY2_DISPLAY:				129
+	TRAY3_DISPLAY:				130
+	FRONT_FEED_DISPLAY:			162
+	REAR_FEED_DISPLAY:			163
+}
+
+*Macros: SpecialStrings
+{
+	DPI_600_DISPLAY:			135
+	DPI_300_DISPLAY:			151
+	RET_DISPLAY:				136
+	RET_ON_DISPLAY:				137
+	RET_OFF_DISPLAY:			138
+	RET_PRINTER_DEFAULT:		139
+	ENABLE_DISPLAY:				160
+	DISABLE_DISPLAY:			161
+	HPGLMODE_DISPLAY:			122
+	RASTERMODE_DISPLAY:			123
+	RIPMODE_DISPLAY:			158
+	COLORSMART_DISPLAY:			144
+	MANUAL_DISPLAY:				146
+}
+
+
+*%*********************************************************************
+*%		HP Color Laserjet 4500 UI Constraint definitions
+*%*********************************************************************
+*BlockMacro: PaperInputBinConstraints
+{
+	*Constraints: InputBin.TRAY2
+	*Constraints: InputBin.TRAY3
+}
+
+*BlockMacro: PaperDuplexConstraints
+{
+	*Constraints: Duplex.HORIZONTAL
+	*Constraints: Duplex.VERTICAL
+}
+

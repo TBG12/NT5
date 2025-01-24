@@ -1,0 +1,217 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature	= "$windows nt$"
+Class		= Net
+ClassGUID	= {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider	= %MSFT%
+LayoutFile	= layout.inf 
+DriverVer=10/01/2002,3.15.0.0
+
+[Manufacturer]
+%SysKonnect%	= SysKonnect
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SysKonnect]
+%Generic.DeviceDesc% = GeMonoLink.ndi, PCI\VEN_1148&DEV_4300
+%SK-9841.DeviceDesc% = GeMonoLink.ndi, PCI\VEN_1148&DEV_4300&SUBSYS_98411148
+%SK-9842.DeviceDesc% = GeDualLink.ndi, PCI\VEN_1148&DEV_4300&SUBSYS_98421148
+%SK-9843.DeviceDesc% = GeMonoLink.ndi, PCI\VEN_1148&DEV_4300&SUBSYS_98431148
+%SK-9844.DeviceDesc% = GeDualLink.ndi, PCI\VEN_1148&DEV_4300&SUBSYS_98441148
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <single link>
+;
+[GeMonoLink.ndi]
+AddReg		= sk98xwin.reg, sk98xwin.params
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98xwin.CopyFiles
+
+[GeMonoLink.ndi.Services]
+AddService	= sk98xwin, 2, sk98xwin.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <dual link>
+;
+[GeDualLink.ndi]
+AddReg		= sk98xwin.reg, sk98xwin.params, sk98xwin.DualLink.params
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98xwin.CopyFiles
+
+[GeDualLink.ndi.Services]
+AddService	= sk98xwin, 2, sk98xwin.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; General Driver Parameters
+;
+[sk98xwin.params]
+HKR, Ndi\Params\NetworkAddress,	ParamDesc,,	%NetAddress%
+HKR, Ndi\Params\NetworkAddress,	Type,,		"edit"
+HKR, Ndi\Params\NetworkAddress,	LimitText,,	"18"
+HKR, Ndi\Params\NetworkAddress,	UpperCase,,	"1"
+HKR, Ndi\Params\NetworkAddress,	Default,,	""
+HKR, Ndi\Params\NetworkAddress,	Optional,,	"1"
+
+HKR, Ndi\Params\MaxFrameSize,	ParamDesc,,	%MaxFrSize%
+HKR, Ndi\Params\MaxFrameSize,	Type,,		"int"
+HKR, Ndi\Params\MaxFrameSize,	Base,,		"10"
+HKR, Ndi\Params\MaxFrameSize,	Min,,		"12"
+HKR, Ndi\Params\MaxFrameSize,	Max,,		"9014"
+HKR, Ndi\Params\MaxFrameSize,	Step,,		"1"
+HKR, Ndi\Params\MaxFrameSize,	Default,,	"1514"
+
+HKR, Ndi\Params\HwChecksum,	ParamDesc,,	%HwCsum%
+HKR, Ndi\Params\HwChecksum,	Type,,		"enum"
+HKR, Ndi\Params\HwChecksum\enum,1,,		%On%
+HKR, Ndi\Params\HwChecksum\enum,0,,		%Off%
+HKR, Ndi\Params\HwChecksum,	Default,,	"1"
+
+HKR, Ndi\Params\Moderate,	ParamDesc,,	%IntMod%
+HKR, Ndi\Params\Moderate,	Type,,		"enum"
+HKR, Ndi\Params\Moderate\enum,1,,		%On%
+HKR, Ndi\Params\Moderate\enum,0,,		%Off%
+HKR, Ndi\Params\Moderate,	Default,,	"1"
+
+HKR, Ndi\Params\FixedIntMod,	ParamDesc,,	%MaxIrq%
+HKR, Ndi\Params\FixedIntMod,	Type,,		"int"
+HKR, Ndi\Params\FixedIntMod,	Base,,		"10"
+HKR, Ndi\Params\FixedIntMod,	Min,,		"2500"
+HKR, Ndi\Params\FixedIntMod,	Max,,		"30000"
+HKR, Ndi\Params\FixedIntMod,	Step,,		"1"
+HKR, Ndi\Params\FixedIntMod,	Default,,	"5000"
+
+HKR, Ndi\Params\MessageLog,	ParamDesc,,	%LogMsg%
+HKR, Ndi\Params\MessageLog,	Type,,		"enum"
+HKR, Ndi\Params\MessageLog\enum,4,,		%Non%
+HKR, Ndi\Params\MessageLog\enum,3,,		%Err%
+HKR, Ndi\Params\MessageLog\enum,2,,		%Wrn%
+HKR, Ndi\Params\MessageLog\enum,1,,		%Sta%
+HKR, Ndi\Params\MessageLog\enum,0,,		%All%
+HKR, Ndi\Params\MessageLog,	Default,,	"1"
+
+HKR, Ndi\Params\MaxReceives,	ParamDesc,,	%NumRcv%
+HKR, Ndi\Params\MaxReceives,	Type,,		"int"
+HKR, Ndi\Params\MaxReceives,	Base,,		"10"
+HKR, Ndi\Params\MaxReceives,	Min,,		"3"
+HKR, Ndi\Params\MaxReceives,	Max,,		"500"
+HKR, Ndi\Params\MaxReceives,	Step,,		"1"
+HKR, Ndi\Params\MaxReceives,	Default,,	"50"
+
+HKR, Ndi\Params\MaxTransmits,	ParamDesc,,	%NumTx%
+HKR, Ndi\Params\MaxTransmits,	Type,,		"int"
+HKR, Ndi\Params\MaxTransmits,	Base,,		"10"
+HKR, Ndi\Params\MaxTransmits,	Min,,		"4"
+HKR, Ndi\Params\MaxTransmits,	Max,,		"200"
+HKR, Ndi\Params\MaxTransmits,	Step,,		"1"
+HKR, Ndi\Params\MaxTransmits,	Default,,	"50"
+
+HKR,, MaxMulticast,,         "128"
+HKR,, WaitForRxResources,,   "1"
+
+HKR,, AutoNegotiation_A,,	 "2"
+HKR,, DuplexCapabilities_A,, "3"
+HKR,, FlowControl_A,,		 "3"
+HKR,, Role_A,,               "0"
+
+;-------------------------------------------------------------------------------
+; Additional Driver Parameters for Dual Link Adapters
+;
+[sk98xwin.DualLink.params]
+HKR, Ndi\Params\RlmtMode,		ParamDesc,,	%RLMT%
+HKR, Ndi\Params\RlmtMode,		Type,,		"enum"
+HKR, Ndi\Params\RlmtMode\enum,		1,,		%Link%
+HKR, Ndi\Params\RlmtMode\enum,		3,,		%OtherPort%
+HKR, Ndi\Params\RlmtMode\enum,		7,,		%Segment%
+HKR, Ndi\Params\RlmtMode,		Default,,	"1"
+
+HKR, Ndi\Params\PreferredPort,		ParamDesc,,	%Preferred%
+HKR, Ndi\Params\PreferredPort,		Type,,		"enum"
+HKR, Ndi\Params\PreferredPort\enum,	1,,			%A%
+HKR, Ndi\Params\PreferredPort\enum,	2,,			%B%
+HKR, Ndi\Params\PreferredPort,		Default,,	"1"
+
+HKR,, AutoNegotiation_B,,       "2"
+HKR,, DuplexCapabilities_B,,    "3"
+HKR,, FlowControl_B,,           "3"
+HKR,, Role_B,,                  "0"
+
+;-------------------------------------------------------------------------------
+; General Registry Entries
+;
+[sk98xwin.reg]
+HKR, Ndi\Interfaces,	UpperRange,,	"ndis5"
+HKR, Ndi\Interfaces,	LowerRange,,	"ethernet"
+HKR, Ndi,				Service,,		"sk98xwin"
+HKR, Ndi,				HelpText,,		%HelpText%
+
+
+[sk98xwin.Service]
+DisplayName		= %sk98xwin.DriverDesc%
+ServiceType		= 1
+StartType		= 3
+ErrorControl	= 1
+ServiceBinary	= %12%\sk98xwin.SYS
+LoadOrderGroup	= NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,, EventMessageFile,	0x00020000, "%%SystemRoot%%\System32\Drivers\sk98xwin.SYS"
+HKR,, TypesSupported,	0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; Source Files
+;
+[sk98xwin.CopyFiles]
+sk98xwin.SYS,,,2
+
+;-------------------------------------------------------------------------------
+; Destination Directories
+;
+[DestinationDirs]
+sk98xwin.CopyFiles	= 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MSFT                    = "Microsoft"
+SysKonnect				= "SysKonnect"
+
+NetAddress              = "Network Address"
+MaxFrSize               = "Maximum Frame Size" 
+HwCsum                  = "Hardware Checksumming"
+IntMod                  = "Interrupt Moderation"
+MaxIrq                  = "Max IRQ per Sec"
+LogMsg                  = "Log Status Messages"
+NumRcv                  = "Number of Receive Buffers"
+NumTx                   = "Number of Transmit Buffers"
+RLMT                    = "RLMT Mode"
+Link                    = "Check link state only"             
+OtherPort               = "Check other port"                  
+Segment                 = "Check other port and segmentation"  
+Preferred               = "Preferred Port"
+On                      = "On"
+Off                     = "Off"
+Non                     = "None"
+Err                     = "Errors"
+Wrn                     = "Warnings"
+Sta                     = "Status Messages"
+All                     = "All Messages"
+A                       = "A"
+B                       = "B"
+
+Generic.DeviceDesc      = "SysKonnect SK-984x-Based Gigabit Ethernet Adapter (Generic)"
+SK-9841.DeviceDesc	= "SysKonnect SK-9841 Gigabit Ethernet Server Adapter (SK-NET GE-LX)"
+SK-9842.DeviceDesc	= "SysKonnect SK-9842 Gigabit Ethernet Server Adapter (SK-NET GE-LX dual link)"
+SK-9843.DeviceDesc	= "SysKonnect SK-9843 Gigabit Ethernet Server Adapter (SK-NET GE-SX)"
+SK-9844.DeviceDesc	= "SysKonnect SK-9844 Gigabit Ethernet Server Adapter (SK-NET GE-SX dual link)"
+
+sk98xwin.DriverDesc	= "NDIS5 Miniport Driver for SysKonnect SK-98xx Gigabit Ethernet Server Adapter (SK-NET GE)"
+
+HelpText		= "This SysKonnect network adapter connects you to the network."

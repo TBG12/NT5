@@ -1,0 +1,905 @@
+
+[Version]
+Signature   = "$CHICAGO$"
+AdvancedINF = 2.5
+
+[DefaultInstall]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+AddReg            = Install.AddReg,Install.AddReg.W9X
+UpdateInis        = AddMSNLinks
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[DefaultInstall.MSN]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+AddReg            = Install.AddReg,Install.AddReg.W9X
+UpdateInis        = AddMSNLinks.MSN
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[DefaultInstall.MSNCPQ]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install.MSNCPQ
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+DelReg            = DelReg.MSNCPQ
+AddReg            = Install.AddReg.MSNCPQ,Install.AddReg.W9X.MSNCPQ
+UpdateInis        = DelCompaqNETLinks.MSNCPQ,AddMSNLinks.MSNCPQ
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[DefaultInstall.MSNDELL]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install.MSNDELL
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+AddReg            = Install.AddReg.MSNDELL,Install.AddReg.W9X.MSNDELL
+UpdateInis        = AddMSNLinks.MSNDELL
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[QuickLaunchLink]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+UpdateInis        = AddMSNLink.QuickLaunch
+
+[QuickLaunchLink.MSN]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+UpdateInis        = AddMSNLink.QuickLaunch.MSN
+
+[QuickLaunchLink.MSNCPQ]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install.MSNCPQ
+UpdateInis        = AddMSNLink.QuickLaunch.MSNCPQ
+
+[QuickLaunchLink.MSNDELL]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install.MSNDELL
+UpdateInis        = AddMSNLink.QuickLaunch.MSNDELL
+
+[DefaultInstall.W2K]
+CustomDestination = CustomDestination.Install
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+AddReg            = Install.AddReg
+UpdateInis        = AddMSNLinks.W2K
+ProfileItems      = AddMSNLink_Desktop.W2K,AddMSNLink_Programs.W2K,AddMSNLink.QuickLaunch.W2K
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[DefaultInstall.W2K.MSN]
+CustomDestination = CustomDestination.Install
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+AddReg            = Install.AddReg
+UpdateInis        = AddMSNLinks.W2K.MSN
+ProfileItems      = AddMSNLink_Desktop.W2K.MSN,AddMSNLink_Programs.W2K.MSN,AddMSNLink.QuickLaunch.W2K.MSN
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[DefaultInstall.W2K.MSNCPQ]
+CustomDestination = CustomDestination.Install.MSNCPQ
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+DelReg            = DelReg.MSNCPQ
+AddReg            = Install.AddReg.MSNCPQ
+UpdateInis        = DelCompaqNETLinks.W2K.MSNCPQ,AddMSNLinks.W2K.MSNCPQ
+ProfileItems      = DelCompaqNETLink_Programs.W2K.MSNCPQ,AddMSNLink_Desktop.W2K.MSNCPQ,AddMSNLink_Programs.W2K.MSNCPQ,AddMSNLink.QuickLaunch.W2K.MSNCPQ
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[DefaultInstall.W2K.MSNDELL]
+CustomDestination = CustomDestination.Install.MSNDELL
+CopyFiles         =CopyFiles.Inf,CopyFiles.Base,CopyFiles.DW
+AddReg            = Install.AddReg.MSNDELL
+UpdateInis        = AddMSNLinks.W2K.MSNDELL
+ProfileItems      = AddMSNLink_Desktop.W2K.MSNDELL,AddMSNLink_Programs.W2K.MSNDELL,AddMSNLink.QuickLaunch.W2K.MSNDELL
+RegisterOCXs      = ListOfOCXs
+SetupVersion      = 7,02,5,2202
+DelFiles=DelFiles.Base
+
+[Install.ARPEntry]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+AddReg            = Install.AddReg.ARPEntry
+
+[Install.WinxpStartMenu]
+CustomDestination = CustomDestination.Install
+AddReg            = Install.AddReg.WinxpStartMenu
+
+[Install.WinxpStartMenu.MSNDELL]
+CustomDestination = CustomDestination.Install.MSNDELL
+AddReg            = Install.AddReg.WinxpStartMenu
+
+[Install.WinxpStartMenu.MSNCPQ]
+CustomDestination = CustomDestination.Install.MSNCPQ
+AddReg            = Install.AddReg.WinxpStartMenu
+
+[Register.Custdial.W2K]
+CustomDestination    = CustomDestination.Install
+RunPostSetupCommands = Register.PostSetupCommands.W2K
+
+[Register.Custdial.W2K.MSNCPQ]
+CustomDestination    = CustomDestination.Install.MSNCPQ
+RunPostSetupCommands = Register.PostSetupCommands.W2K
+
+[Register.Custdial.W2K.MSNDELL]
+CustomDestination    = CustomDestination.Install.MSNDELL
+RunPostSetupCommands = Register.PostSetupCommands.W2K
+
+[DefaultUninstall]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Uninstall
+DelFiles          =UninstFiles.Inf,UninstFiles.Base,UninstFiles.DW
+DelReg            = Uninstall.DelReg,Uninstall.DelReg.Common
+UpdateInis        = DelMSNLinks,DelMSNLinks_Old
+DelDirs           = DelDirSection
+
+[DefaultUninstall.MSNCPQ]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Uninstall.MSNCPQ
+DelFiles          =UninstFiles.Inf,UninstFiles.Base,UninstFiles.DW
+DelReg            = DelReg.MSNCPQ,Uninstall.DelReg.MSNCPQ,Uninstall.DelReg.Common
+UpdateInis        = DelCompaqNETLinks.MSNCPQ,DelMSNLinks.MSNCPQ
+DelDirs           = DelDirSection
+
+[DefaultUninstall.MSNDELL]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Uninstall.MSNDELL
+DelFiles          =UninstFiles.Inf,UninstFiles.Base,UninstFiles.DW
+DelReg            = Uninstall.DelReg.MSNDELL,Uninstall.DelReg.Common
+UpdateInis        = DelMSNLinks.MSNDELL
+DelDirs           = DelDirSection
+
+[Unregister.Custdial.W2K]
+CustomDestination    = CustomDestination.Uninstall
+RunPostSetupCommands = Unregister.PostSetupCommands.W2K
+
+[Unregister.Custdial.W2K.MSNCPQ]
+CustomDestination    = CustomDestination.Uninstall.MSNCPQ
+RunPostSetupCommands = Unregister.PostSetupCommands.W2K
+
+[Unregister.Custdial.W2K.MSNDELL]
+CustomDestination    = CustomDestination.Uninstall.MSNDELL
+RunPostSetupCommands = Unregister.PostSetupCommands.W2K
+
+[Unregister.OCXs]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Uninstall
+UnRegisterOCXs    = ListOfOCXs
+
+[Unregister.OCXs.MSNCPQ]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Uninstall.MSNCPQ
+UnRegisterOCXs    = ListOfOCXs
+
+[Unregister.OCXs.MSNDELL]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Uninstall.MSNDELL
+UnRegisterOCXs    = ListOfOCXs
+
+[DefaultUninstall.W2K]
+CustomDestination = CustomDestination.Uninstall
+DelFiles          =UninstFiles.Inf,UninstFiles.Base,UninstFiles.DW
+DelReg            = Uninstall.DelReg,Uninstall.DelReg.Common
+UpdateInis        = DelMSNLinks.W2K,DelMSNLinks_Old.W2K
+ProfileItems      = DelMSNLink_Programs.W2K,DelMSNLink_Programs_Old.W2K
+DelDirs           = DelDirSection
+
+[DefaultUninstall.W2K.MSNCPQ]
+CustomDestination = CustomDestination.Uninstall.MSNCPQ
+DelFiles          =UninstFiles.Inf,UninstFiles.Base,UninstFiles.DW
+DelReg            = DelReg.MSNCPQ,Uninstall.DelReg.MSNCPQ,Uninstall.DelReg.Common
+UpdateInis        = DelCompaqNETLinks.W2K.MSNCPQ,DelMSNLinks.W2K.MSNCPQ
+ProfileItems      = DelCompaqNETLink_Programs.W2K.MSNCPQ,DelMSNLink_Programs.W2K.MSNCPQ
+DelDirs           = DelDirSection
+
+[DefaultUninstall.W2K.MSNDELL]
+CustomDestination = CustomDestination.Uninstall.MSNDELL
+DelFiles          =UninstFiles.Inf,UninstFiles.Base,UninstFiles.DW
+DelReg            = Uninstall.DelReg.MSNDELL,Uninstall.DelReg.Common
+UpdateInis        = DelMSNLinks.W2K.MSNDELL
+ProfileItems      = DelMSNLink_Programs.W2K.MSNDELL
+DelDirs           = DelDirSection
+
+[Cleanup.P1]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Cleanup.P1
+DelFiles          = Cleanup.Base.P1,Cleanup.Inf.P1,Cleanup.DW.P1
+DelDirs           = DelDirSection.P1
+
+[Cleanup.P1.Links]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Cleanup.P1.Links
+DelReg            = Cleanup.DelReg.P1
+UpdateInis        = CleanupMSNLinks.P1,CleanupLaunchMSNLinks
+
+[Cleanup.P1.Links.W2K_Extra]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Cleanup.P1.Links
+UpdateInis        = CleanupLaunchMSNLink_CommonDesktop.W2K
+ProfileItems      = CleanupLaunchMSNLink_Programs.W2K
+
+[PID]
+PIDVersion = 2
+
+[SourceDisksNames]
+55 = "%DISPLAYDESC%",,0
+
+[CustomDestination.Install]
+49300,49301,49302,49303 = ProgFilesDir,5
+49400,49401,49402,49403 = MSNRootLDIDSection,5
+49500,49501,49502,49503 = MSNLDIDSection,5
+49600,49601,49602,49603 = Desktop,5
+49700,49701,49702,49703 = AppData,5
+49800,49801,49802,49803 = Common_Desktop,5
+
+[CustomDestination.Install.MSNCPQ]
+49300,49301,49302,49303 = ProgFilesDir,5
+49400,49401,49402,49403 = MSNRootLDIDSection.MSNCPQ,5
+49500,49501,49502,49503 = MSNLDIDSection.MSNCPQ,5
+49600,49601,49602,49603 = Desktop,5
+49700,49701,49702,49703 = AppData,5
+49800,49801,49802,49803 = Common_Desktop,5
+
+[CustomDestination.Install.MSNDELL]
+49300,49301,49302,49303 = ProgFilesDir,5
+49400,49401,49402,49403 = MSNRootLDIDSection.MSNDELL,5
+49500,49501,49502,49503 = MSNLDIDSection.MSNDELL,5
+49600,49601,49602,49603 = Desktop,5
+49700,49701,49702,49703 = AppData,5
+49800,49801,49802,49803 = Common_Desktop,5
+
+[Install.AddReg.WinxpStartMenu]
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer","LocalizedString",,"@%49500%\MSNMTLLC.DLL,-3501"
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer\DefaultIcon",,,"%49500%\%ICON_NAME%"
+HKLM,"Software\Clients\StartMenuInternet\MSN EXplorer\shell\open\command",,,"""%49500%\MSN6.EXE"""
+HKLM,"Software\Clients\Mail\MSN Explorer",,,"%DISPLAYDESC%"
+HKLM,"Software\Clients\Mail\MSN Explorer","LocalizedString",,"@%49500%\MSNMTLLC.DLL,-3501"
+HKLM,"Software\Clients\Mail\MSN Explorer\DefaultIcon",,,"%49500%\%MAIL_ICON_NAME%"
+HKLM,"Software\Clients\Mail\MSN Explorer\shell\open\command",,,"""%49500%\MSN6.EXE"" -email"
+
+[Install.AddReg]
+HKLM,"Software\Microsoft\MSN6\Setup\MSN","VersionModule",,"msn6.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","Path",,"%49500%"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","",,"%49500%\MSN6.exe"
+
+[Install.AddReg.ARPEntry]
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\%UNINST_KEY%","DisplayName",,%DISPLAYDESC%
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%UNINST_KEY%","UninstallString",,"%49500%\Setup\msnunin.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\%UNINST_KEY%","DisplayIcon",,"%49500%\%ICON_NAME%"
+
+[Install.AddReg.MSNCPQ]
+HKLM,"Software\Microsoft\MSN6\Setup\MSNCPQ","VersionModule",,"msn6.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","Path",,"%49500%"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","",,"%49500%\MSN6.exe"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\MSNCPQ","DisplayName",,"MSN for Compaq"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\MSNCPQ","UninstallString",,"%49500%\Setup\msnunin.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\MSNCPQ","DisplayIcon",,"%49500%\msncpq.ico"
+
+[Install.AddReg.MSNDELL]
+HKLM,"Software\Microsoft\MSN6\Setup\MSNDELL","VersionModule",,"msn6.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","Path",,"%49500%"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","",,"%49500%\MSN6.exe"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\MSNDELL","DisplayName",,"DellNet by MSN"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\MSNDELL","UninstallString",,"%49500%\Setup\msnunin.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\MSNDELL","DisplayIcon",,"%49500%\msndell.ico"
+
+[Install.AddReg.W9X]
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","%DISPLAYDESC%",,"5.0"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration\800","MSN Explorer Migration",,"%49500%\Setup\msn9xmig.dll,MSNMigration,MSN6"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft MSN Explorer",,"%49500%\Setup"
+
+[Install.AddReg.W9X.MSNCPQ]
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","MSN for Compaq",,"5.0"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration\800","MSN Explorer Migration",,"%49500%\Setup\msn9xmig.dll,MSNMigration,MSN6"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft MSN Explorer",,"%49500%\Setup"
+
+[Install.AddReg.W9X.MSNDELL]
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","DellNet by MSN",,"5.0"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration\800","MSN Explorer Migration",,"%49500%\Setup\msn9xmig.dll,MSNMigration,MSN6"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft MSN Explorer",,"%49500%\Setup"
+
+[AddMSNLinks]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""%SHORTCUT_NAME%"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""%SHORTCUT_NAME%"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""%SHORTCUT_NAME%"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.MSN]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""Launch MSN Explorer"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""Launch MSN Explorer"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch MSN Explorer"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.MSNCPQ]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""MSN for Compaq"",""""""%49500%\MSN6.exe"""""",%49500%\msncpq.ico,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""MSN for Compaq"",""""""%49500%\MSN6.exe"""""",%49500%\msncpq.ico,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""MSN for Compaq"",""""""%49500%\MSN6.exe"""""",%49500%\msncpq.ico,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.MSNDELL]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""Launch DellNet by MSN"",""""""%49500%\MSN6.exe"""""",%49500%\msndell.ico,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""Launch DellNet by MSN"",""""""%49500%\MSN6.exe"""""",%49500%\msndell.ico,,,%49500%,,""%INFOTIP%"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch DellNet by MSN"",""""""%49500%\MSN6.exe"""""",%49500%\msndell.ico,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLink.QuickLaunch]
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""%SHORTCUT_NAME%"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLink.QuickLaunch.MSN]
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch MSN Explorer"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLink.QuickLaunch.MSNCPQ]
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""MSN for Compaq"",""""""%49500%\MSN6.exe"""""",%49500%\msncpq.ico,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLink.QuickLaunch.MSNDELL]
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch DellNet by MSN"",""""""%49500%\MSN6.exe"""""",%49500%\msndell.ico,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.W2K]
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""%SHORTCUT_NAME%"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.W2K.MSN]
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch MSN Explorer"",""""""%49500%\MSN6.exe"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.W2K.MSNCPQ]
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""MSN for Compaq"",""""""%49500%\MSN6.exe"""""",%49500%\msncpq.ico,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLinks.W2K.MSNDELL]
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch DellNet by MSN"",""""""%49500%\MSN6.exe"""""",%49500%\msndell.ico,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLink_Desktop.W2K]
+Name       = %SHORTCUT_NAME%,0x00000008,25
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Desktop.W2K.MSN]
+Name       = "Launch MSN Explorer",0x00000008,25
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Desktop.W2K.MSNCPQ]
+Name       = "MSN for Compaq",0x00000008,25
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,msncpq.ico
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Desktop.W2K.MSNDELL]
+Name       = "Launch DellNet by MSN",0x00000008,25
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,msndell.ico
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Programs.W2K]
+Name       = %SHORTCUT_NAME%
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Programs.W2K.MSN]
+Name       = "Launch MSN Explorer"
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Programs.W2K.MSNCPQ]
+Name       = "MSN for Compaq"
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,msncpq.ico
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Programs.W2K.MSNDELL]
+Name       = "Launch DellNet by MSN"
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,msndell.ico
+InfoTip    = %INFOTIP%
+
+[AddMSNLink.QuickLaunch.W2K]
+Name       = %SHORTCUT_NAME%,0x00000008,26
+SubDir     = "Microsoft\Internet Explorer\%QUICK_LAUNCH%"
+CmdLine    = 49500,,MSN6.exe
+IconPath   = 49500,,%ICON_NAME%
+WorkingDir = 49500
+
+[AddMSNLink.QuickLaunch.W2K.MSN]
+Name       = "Launch MSN Explorer",0x00000008,26
+SubDir     = "Microsoft\Internet Explorer\%QUICK_LAUNCH%"
+CmdLine    = 49500,,MSN6.exe
+IconPath   = 49500,,%ICON_NAME%
+WorkingDir = 49500
+
+[AddMSNLink.QuickLaunch.W2K.MSNCPQ]
+Name       = "MSN for Compaq",0x00000008,26
+SubDir     = "Microsoft\Internet Explorer\%QUICK_LAUNCH%"
+CmdLine    = 49500,,MSN6.exe
+IconPath   = 49500,,msncpq.ico
+WorkingDir = 49500
+
+[AddMSNLink.QuickLaunch.W2K.MSNDELL]
+Name       = "Launch DellNet by MSN",0x00000008,26
+SubDir     = "Microsoft\Internet Explorer\%QUICK_LAUNCH%"
+CmdLine    = 49500,,MSN6.exe
+IconPath   = 49500,,msndell.ico
+WorkingDir = 49500
+
+[ListOfOCXs]
+%49500%\msnmetal.dll
+
+[Register.PostSetupCommands.W2K]
+rundll32.exe """%49500%\custdial.dll""",RegisterCustomDLL
+
+[CustomDestination.Uninstall]
+49300 = ProgFilesDir,5
+49400 = MSNRootLDIDSection,5
+49500 = MSNLDIDSection,5
+49600 = Desktop,5
+49700 = AppData,5
+49800 = Common_Desktop,5
+
+[CustomDestination.Uninstall.MSNCPQ]
+49300 = ProgFilesDir,5
+49400 = MSNRootLDIDSection.MSNCPQ,5
+49500 = MSNLDIDSection.MSNCPQ,5
+49600 = Desktop,5
+49700 = AppData,5
+49800 = Common_Desktop,5
+
+[CustomDestination.Uninstall.MSNDELL]
+49300 = ProgFilesDir,5
+49400 = MSNRootLDIDSection.MSNDELL,5
+49500 = MSNLDIDSection.MSNDELL,5
+49600 = Desktop,5
+49700 = AppData,5
+49800 = Common_Desktop,5
+
+[Unregister.PostSetupCommands.W2K]
+rundll32.exe """%49500%\custdial.dll""",UnregisterCustomDLL
+
+[Uninstall.DelReg.Common]
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer"
+HKLM,"Software\Clients\Mail\MSN Explorer"
+
+[Uninstall.DelReg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\%UNINST_KEY%"
+HKLM,"Software\Microsoft\MSN6\Setup","CountryID"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%"
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","%DISPLAYDESC%"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration\800","MSN Explorer Migration"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft MSN Explorer"
+
+[DelReg.MSNCPQ]
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","Compaq.NET powered by MSN"
+
+[Uninstall.DelReg.MSNCPQ]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\MSNCPQ"
+HKLM,"Software\Microsoft\MSN6\Setup","CountryID"
+HKLM,"Software\Microsoft\MSN6\Setup\MSNCPQ"
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","MSN for Compaq"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration\800","MSN Explorer Migration"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft MSN Explorer"
+
+[Uninstall.DelReg.MSNDELL]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\MSNDELL"
+HKLM,"Software\Microsoft\MSN6\Setup","CountryID"
+HKLM,"Software\Microsoft\MSN6\Setup\MSNDELL"
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","DellNet by MSN"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration\800","MSN Explorer Migration"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Setup\Migration DLLs","Microsoft MSN Explorer"
+
+[DelMSNLinks]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""%SHORTCUT_NAME%"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""%SHORTCUT_NAME%"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""%SHORTCUT_NAME%"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""%SHORTCUT_NAME%"""
+
+[DelMSNLinks_Old]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""Launch MSN Explorer"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""Launch MSN Explorer"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch MSN Explorer"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch MSN Explorer"""
+
+[DelCompaqNETLinks.MSNCPQ]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""Launch Compaq.NET powered by MSN"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""Launch Compaq.NET powered by MSN"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch Compaq.NET powered by MSN"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch Compaq.NET powered by MSN"""
+
+[DelMSNLinks.MSNCPQ]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""MSN for Compaq"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""MSN for Compaq"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""MSN for Compaq"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""MSN for Compaq"""
+
+[DelMSNLinks.MSNDELL]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""Launch DellNet by MSN"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""Launch DellNet by MSN"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch DellNet by MSN"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch DellNet by MSN"""
+
+[DelMSNLinks.W2K]
+setup.ini,progman.groups,,"MSN_COMMON_DESKTOP=%49800%"
+setup.ini,MSN_COMMON_DESKTOP,,"""%SHORTCUT_NAME%"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""%SHORTCUT_NAME%"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""%SHORTCUT_NAME%"""
+
+[DelMSNLinks_Old.W2K]
+setup.ini,progman.groups,,"MSN_COMMON_DESKTOP=%49800%"
+setup.ini,MSN_COMMON_DESKTOP,,"""Launch MSN Explorer"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch MSN Explorer"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch MSN Explorer"""
+
+[DelCompaqNETLinks.W2K.MSNCPQ]
+setup.ini,progman.groups,,"MSN_COMMON_DESKTOP=%49800%"
+setup.ini,MSN_COMMON_DESKTOP,,"""Launch Compaq.NET powered by MSN"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch Compaq.NET powered by MSN"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch Compaq.NET powered by MSN"""
+
+[DelMSNLinks.W2K.MSNCPQ]
+setup.ini,progman.groups,,"MSN_COMMON_DESKTOP=%49800%"
+setup.ini,MSN_COMMON_DESKTOP,,"""MSN for Compaq"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""MSN for Compaq"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""MSN for Compaq"""
+
+[DelMSNLinks.W2K.MSNDELL]
+setup.ini,progman.groups,,"MSN_COMMON_DESKTOP=%49800%"
+setup.ini,MSN_COMMON_DESKTOP,,"""Launch DellNet by MSN"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch DellNet by MSN"""
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch DellNet by MSN"""
+
+[DelMSNLink_Programs.W2K]
+Name = %SHORTCUT_NAME%,0x00000002
+
+[DelMSNLink_Programs_Old.W2K]
+Name = "Launch MSN Explorer",0x00000002
+
+[DelCompaqNETLink_Programs.W2K.MSNCPQ]
+Name = "Launch Compaq.NET powered by MSN",0x00000002
+
+[DelMSNLink_Programs.W2K.MSNCPQ]
+Name = "MSN for Compaq",0x00000002
+
+[DelMSNLink_Programs.W2K.MSNDELL]
+Name = "Launch DellNet by MSN",0x00000002
+
+[CustomDestination.Cleanup.P1]
+49300 = ProgFilesDir,5
+49400 = MSNLDIDSection.P1,5
+
+[Cleanup.Base.P1]
+update.exe,,,1
+msn6.exe,,,1
+msnmetal.dll,,,1
+msnmtllc.dll,,,1
+msdbx.dll,,,1
+ui.dbx,,,1
+themedef.dbx,,,1
+branddef.dbx,,,1
+dw.exe,,,1
+license.txt,,,1
+signup.dbx,,,1
+manifest.xml,,,1
+
+[Cleanup.Inf.P1]
+msn.inf,,,1
+msnunin.exe,,,1
+
+[Cleanup.DW.P1]
+dwintl.dll,,,1
+
+[DelDirSection.P1]
+%49400%\Setup
+%49400%\1033
+%49400%
+
+[CustomDestination.Cleanup.P1.Links]
+49300 = ProgFilesDir,5
+49400 = MSNRootLDIDSection,5
+49600 = Desktop,5
+49700 = AppData,5
+49800 = Common_Desktop,5
+
+[Cleanup.DelReg.P1]
+HKLM,"Software\Microsoft\Internet Explorer\DependentComponents","MSN Preview"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\MSN6"
+HKCU,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE"
+HKCU,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\MSN6"
+
+[CleanupMSNLinks.P1]
+setup.ini,progman.groups,,"MSN_DESKTOP=%49600%"
+setup.ini,MSN_DESKTOP,,"""Launch MSN"""
+setup.ini,progman.groups,,"MSN_PROGRAMS="
+setup.ini,MSN_PROGRAMS,,"""Launch MSN"""
+setup.ini,progman.groups,,"MSN_QUICK_LAUNCH=""%49700%\Microsoft\Internet Explorer\%QUICK_LAUNCH%"""
+setup.ini,MSN_QUICK_LAUNCH,,"""Launch MSN"""
+
+[CleanupLaunchMSNLinks]
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""Launch MSN"""
+
+[CleanupLaunchMSNLink_CommonDesktop.W2K]
+setup.ini,progman.groups,,"MSN_COMMON_DESKTOP=%49800%"
+setup.ini,MSN_COMMON_DESKTOP,,"""Launch MSN"""
+
+[CleanupLaunchMSNLink_Programs.W2K]
+Name   = Launch MSN,0x00000002
+
+[ProgFilesDir]
+HKLM,"Software\Microsoft\Windows\CurrentVersion","ProgramFilesDir",,"%24%\%PROGRAMF%"
+
+[MSNRootLDIDSection]
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallRootDir",,"%49300%\%DEFAULT_FOLDER%"
+
+[MSNRootLDIDSection.MSNCPQ]
+HKLM,"Software\Microsoft\MSN6\Setup\MSNCPQ","InstallRootDir",,"%49300%\MSNCPQ"
+
+[MSNRootLDIDSection.MSNDELL]
+HKLM,"Software\Microsoft\MSN6\Setup\MSNDELL","InstallRootDir",,"%49300%\MSNDELL"
+
+[MSNLDIDSection]
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallDir",,"%49400%\MSNCoreFiles"
+
+[MSNLDIDSection.MSNCPQ]
+HKLM,"Software\Microsoft\MSN6\Setup\MSNCPQ","InstallDir",,"%49400%\MSNCoreFiles"
+
+[MSNLDIDSection.MSNDELL]
+HKLM,"Software\Microsoft\MSN6\Setup\MSNDELL","InstallDir",,"%49400%\MSNCoreFiles"
+
+[MSNLDIDSection.P1]
+HKLM,"Software\Microsoft\MSN6\Setup","SetupPath",,"%49300%\MSN6"
+
+[Desktop]
+HKCU,"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders","Desktop",,"%25%\Desktop"
+
+[AppData]
+HKCU,"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders","AppData",,"%25%\Application Data"
+
+[Common_Desktop]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders","Common Desktop",,"%25%\Desktop"
+
+[Strings]
+BADSETUPVER    = "Your system is missing the required Setup engine."
+DISPLAYDESC    = "MSN Explorer"
+DEFAULT_FOLDER = "MSN"
+UNINST_KEY     = "MSNMS"
+SHORTCUT_NAME  = "MSN Explorer"
+ICON_NAME      = "msnms.ico"
+MAIL_ICON_NAME = "msnemail.ico"
+INFOTIP        = "Explore the web, read your e-mail, talk to your online contacts, enjoy online music and video, and more."
+PROGRAMF       = "Program Files"
+QUICK_LAUNCH   = "Quick Launch"
+
+[SourceDisksFiles]
+msn9xmig.dll=55
+msnntmig.dll=55
+msnunin.exe=55
+msnupgrd.inf=55
+msn.inf=55
+update.exe=55
+msn6.exe=55
+msnmetal.dll=55
+msnmetal.we=55
+msnmetal.jcf=55
+msnmtllc.dll=55
+msdbx.dll=55
+msmom.dll=55
+mail.mar=55
+msnspell.dll=55
+ui.mar=55
+themedef.mar=55
+highcont.mar=55
+logonmgr.dll=55
+custdial.dll=55
+popc.dll=55
+csapi3t1.dll=55
+sqdll.dll=55
+migrate.dll=55
+migrate.ini=55
+msnread.htm=55
+copymar.exe=55
+msnms.ico=55
+msncpq.ico=55
+msndell.ico=55
+msnemail.ico=55
+dw.exe=55
+privacy.hta=55
+license.txt=55
+signup.mar=55
+market.mar=55
+market.ini=55
+manifest.xml=55
+dwintl.dll=55
+[CopyFiles.Inf]
+msn9xmig.dll,,,4
+migrate.dll,msnntmig.dll,,4
+msnunin.exe,,,4
+msnupgrd.inf,,,4
+msn.inf,,,4
+
+[UninstFiles.Inf]
+msn9xmig.dll,,,1
+migrate.dll,,,1
+msnunin.exe,,,1
+msnupgrd.inf,,,1
+msn.inf,,,1
+
+[CopyFiles.Base]
+update.exe,,,4
+msn6.exe,,,4
+msnmetal.dll,,,4
+msnmetal.we,,,4
+msnmetal.jcf,,,4
+msnmtllc.dll,,,4
+msdbx.dll,,,4
+msmom.dll,,,4
+mail.mar,,,4
+msnspell.dll,,,4
+ui.mar,,,4
+themedef.mar,,,4
+highcont.mar,,,4
+logonmgr.dll,,,4
+custdial.dll,,,4
+popc.dll,,,4
+csapi3t1.dll,,,4
+sqdll.dll,,,4
+migrate.dll,,,4
+migrate.ini,,,4
+msnread.htm,,,4
+copymar.exe,,,4
+msnms.ico,,,4
+msncpq.ico,,,4
+msndell.ico,,,4
+msnemail.ico,,,4
+dw.exe,,,4
+dwprivacy.hta,privacy.hta,,4
+license.txt,,,4
+signup.mar,,,4
+market.mar,,,4
+market.ini,,,4
+manifest.xml,,,4
+
+[UninstFiles.Base]
+update.exe,,,1
+msn6.exe,,,1
+msnmetal.dll,,,1
+msnmetal.we,,,1
+msnmetal.jcf,,,1
+msnmtllc.dll,,,1
+msdbx.dll,,,1
+msmom.dll,,,1
+mail.mar,,,1
+msnspell.dll,,,1
+ui.mar,,,1
+themedef.mar,,,1
+highcont.mar,,,1
+logonmgr.dll,,,1
+custdial.dll,,,1
+popc.dll,,,1
+csapi3t1.dll,,,1
+sqdll.dll,,,1
+migrate.dll,,,1
+migrate.ini,,,1
+msnread.htm,,,1
+copymar.exe,,,1
+msnms.ico,,,1
+msncpq.ico,,,1
+msndell.ico,,,1
+msnemail.ico,,,1
+dw.exe,,,1
+dwprivacy.hta,,,1
+license.txt,,,1
+signup.mar,,,1
+market.mar,,,1
+market.ini,,,1
+manifest.xml,,,1
+
+[DelFiles.Base]
+brand.mar,,,1
+brand.ini,,,1
+branddef.mar,,,1
+highcontrast.mar,,,1
+privacy.hta,,,1
+signup.dbx,,,1
+msnsu.ini,,,1
+market8.mar,,,1
+market15.mar,,,1
+market16.mar,,,1
+market24.mar,,,1
+market32.mar,,,1
+themedef8.mar,,,1
+themedef15.mar,,,1
+themedef16.mar,,,1
+themedef24.mar,,,1
+themedef32.mar,,,1
+online.wav,,,1
+newalert.wav,,,1
+newemail.wav,,,1
+msn6.ini,,,1
+
+[CopyFiles.DW]
+dwintl.dll,,,4
+
+[UninstFiles.DW]
+dwintl.dll,,,1
+
+[DestinationDirs]
+CopyFiles.Inf = 49500,Setup
+UninstFiles.Inf = 49500,Setup
+CopyFiles.Base = 49500
+UninstFiles.Base = 49500
+DelFiles.Base = 49500
+CopyFiles.DW = 49500,1033
+UninstFiles.DW = 49500,1033
+Cleanup.Base.P1=49400
+Cleanup.Inf.P1=49400,Setup
+Cleanup.DW.P1=49400,1033
+
+[DelDirSection]
+%49500%\Setup
+%49500%\1033
+

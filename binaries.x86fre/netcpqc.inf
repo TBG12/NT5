@@ -1,0 +1,166 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,1.15.7.0
+
+[Manufacturer]
+%V_CONEXANT%=Conexant
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Conexant]
+%RS7112.DeviceDesc% = 11623.ndi,PCI\VEN_14F1&DEV_1803
+%11623.DeviceDesc%  = 11623.ndi,PCI\VEN_14F1&DEV_1803&SUBSYS_00230E11
+
+[11623.ndi.NT]
+AddReg          = RSS.nt.reg, RSSparams.reg, cnxt1803.nt.reg
+BusType         = 5
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles       = NetCopyFiles.NT
+
+[11623.ndi.NT.Services]
+AddService = cnxt1803, 2, cnxt1803.Service, common.EventLog
+
+[RSS.nt.reg]
+HKR, ,                          BusType,    0, "5"
+HKR, ,                          MsPciScan,  0, "1"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+[RSSparams.reg]
+HKR,,AdapterType,,"5"
+HKR,,BusType,,"5"
+HKR,,CacheAlignment,,"8"
+HKR,,SoftwareFilter,,"0"
+HKR,,SoftCRC,,"1"
+HKR,,HpnaHeartBeat,,"1"
+HKR,,X3Device,,"1"
+HKR,,Gpio0SpiDout,,"1"
+HKR,,RawMII,,"0"
+
+; NetworkAddress
+HKR,NDI\params\NetworkAddress,ParamDesc,,%NetworkAddress%
+HKR,NDI\params\NetworkAddress,type,,"edit"
+HKR,NDI\params\NetworkAddress,LimitText,,"18"
+HKR,NDI\params\NetworkAddress,UpperCase,,"1"
+HKR,Ndi\params\NetworkAddress,default,,""
+HKR,Ndi\params\NetworkAddress,optional,,"1"
+;BurstLength
+HKR,Ndi\params\BurstLength,ParamDesc,,%BurstLength%
+HKR,Ndi\params\BurstLength,default,,"8"
+HKR,Ndi\params\BurstLength,type,,"enum"
+HKR,Ndi\params\BurstLength\enum,1,," 1 DWORD "
+HKR,Ndi\params\BurstLength\enum,2,," 2 DWORDS"
+HKR,Ndi\params\BurstLength\enum,4,," 4 DWORDS"
+HKR,Ndi\params\BurstLength\enum,8,," 8 DWORDS"
+HKR,Ndi\params\BurstLength\enum,16,,"16 DWORDS"
+HKR,Ndi\params\BurstLength\enum,32,,"32 DWORDS"
+;Receive buffers
+HKR,Ndi\params\NumberRcvBuffs,ParamDesc,,%ReceiveBuffers%
+HKR,Ndi\params\NumberRcvBuffs,default,,"64"
+HKR,Ndi\params\NumberRcvBuffs,type,,"enum"
+HKR,Ndi\params\NumberRcvBuffs\enum,8,," 8"
+HKR,Ndi\params\NumberRcvBuffs\enum,16,,"16"
+HKR,Ndi\params\NumberRcvBuffs\enum,32,,"32"
+HKR,Ndi\params\NumberRcvBuffs\enum,48,,"48"
+HKR,Ndi\params\NumberRcvBuffs\enum,64,,"64"
+;Transmit Buffers
+HKR,Ndi\params\NumberTxBuffs,ParamDesc,,%TransmitBuffers%
+HKR,Ndi\params\NumberTxBuffs,default,,"64"
+HKR,Ndi\params\NumberTxBuffs,type,,"enum"
+HKR,Ndi\params\NumberTxBuffs\enum,8,," 8"
+HKR,Ndi\params\NumberTxBuffs\enum,16,,"16"
+HKR,Ndi\params\NumberTxBuffs\enum,32,,"32"
+HKR,Ndi\params\NumberTxBuffs\enum,48,,"48"
+HKR,Ndi\params\NumberTxBuffs\enum,64,,"64"
+;MapRegisters
+HKR,Ndi\params\MapRegisters,ParamDesc,,%MapRegisters%
+HKR,Ndi\params\MapRegisters,default,,"0"
+HKR,Ndi\params\MapRegisters,type,,"enum"
+HKR,Ndi\params\MapRegisters\enum,0,," 0"
+HKR,Ndi\params\MapRegisters\enum,4,," 4"
+HKR,Ndi\params\MapRegisters\enum,8,," 8"
+;ConnectionType
+HKR,Ndi\params\ConnType,ParamDesc,,%ConnectionType%
+HKR,Ndi\params\ConnType,default,,"0"
+HKR,Ndi\params\ConnType,type,,"enum"
+HKR,Ndi\params\ConnType\enum,0,,%AutoSense%
+HKR,Ndi\params\ConnType\enum,4,,%100Base-Tx%
+HKR,Ndi\params\ConnType\enum,6,,%100Base-TxFull-Duplex%
+HKR,Ndi\params\ConnType\enum,1,,%10Base-T%
+HKR,Ndi\params\ConnType\enum,5,,%10Base-TFull-Duplex%
+;RxLookAhead
+HKR,Ndi\params\RxLookAhead,ParamDesc,,%ReceiveLookahead%
+HKR,Ndi\params\RxLookAhead,default,,"0"
+HKR,Ndi\params\RxLookAhead,type,,"enum"
+HKR,Ndi\params\RxLookAhead\enum,0,,%Disabled%
+HKR,Ndi\params\RxLookAhead\enum,1,,%Enabled%
+;Transmit Threshold
+HKR,Ndi\params\TxThreshold,ParamDesc,,%TransmitThreshold%
+HKR,Ndi\params\TxThreshold,default,,"0"
+HKR,Ndi\params\TxThreshold,type,,"enum"
+HKR,Ndi\params\TxThreshold\enum,72,,"  72 bytes"
+HKR,Ndi\params\TxThreshold\enum,96,,"  96 bytes"
+HKR,Ndi\params\TxThreshold\enum,128,," 128 bytes"
+HKR,Ndi\params\TxThreshold\enum,160,," 160 bytes"
+HKR,Ndi\params\TxThreshold\enum,256,," 256 bytes"
+HKR,Ndi\params\TxThreshold\enum,512,," 512 bytes"
+HKR,Ndi\params\TxThreshold\enum,1024,,"1024 bytes"
+HKR,Ndi\params\TxThreshold\enum,0,,%Store&Forward%
+
+[cnxt1803.nt.reg]
+HKR, Ndi,                       Service,    0, "cnxt1803"
+
+[cnxt1803.Service]
+DisplayName     = %cnxt1803.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAD_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\cnxt1803.sys
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[NetCopyFiles.NT]
+cnxt1803.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir  = 12
+NetCopyFiles.NT = 12
+
+[Strings]
+MSFT            = "Microsoft"
+V_CONEXANT      = "Compaq"
+
+NetworkAddress         = "Network Address"                       
+BurstLength            = "Burst Length"                             
+ReceiveBuffers         = "Receive Buffers"                       
+TransmitBuffers        = "Transmit Buffers"                       
+MapRegisters           = "Map Registers"                           
+ConnectionType         = "Connection Type"                             
+AutoSense              = "AutoSense"                                      
+100Base-Tx             = "100Base-Tx"                                     
+100Base-TxFull-Duplex  = "100Base-Tx Full-Duplex"                         
+10Base-T               = "10Base-T"                                       
+10Base-TFull-Duplex    = "10Base-T Full-Duplex"                           
+ReceiveLookahead       = "Receive Lookahead"                        
+Disabled               = "Disabled"                                    
+Enabled                = "Enabled"                                     
+TransmitThreshold      = "Transmit Threshold"                       
+Store&Forward          = "Store&Forward"                               
+
+RS7112.DeviceDesc         = "Conexant RS7112 Network Adapter"
+11623.DeviceDesc          = "Compaq 10_100 MiniPCI Ethernet NIC"
+cnxt1803.Service.DispName = "Compaq 10_100 MiniPCI Ethernet NIC Driver"
+

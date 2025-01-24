@@ -1,0 +1,184 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+; Tiger Jet Network PCI 128K ISDN INF for WAN Miniport Drivers
+; Revised 9-27-98
+; Revised 6-6-00 
+
+[version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider   = %MS%
+LayoutFile = layout.inf
+DriverVer=05/05/2001,5.0.1987.1
+
+[Manufacturer]
+%V_TJISDN% = TJISDN
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_00010059
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_00030059
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_00050059
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_00070059
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_00080059
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_000b0059
+ExcludeFromSelect = PCI\VEN_E159&DEV_0001&SUBSYS_000f0059
+
+[TJISDN]
+%TJISDNST.DeviceDesc%   = TJISDNST.ndi,    PCI\VEN_E159&DEV_0001&SUBSYS_00010059
+%TJISDNU.DeviceDesc%    = TJISDNU.ndi,     PCI\VEN_E159&DEV_0001&SUBSYS_00030059
+%TJISDNSTS.DeviceDesc%  = TJISDNSTS.ndi,   PCI\VEN_E159&DEV_0001&SUBSYS_00050059
+%TJISDNUK.DeviceDesc%   = TJISDNUK.ndi,    PCI\VEN_E159&DEV_0001&SUBSYS_00070059
+%TJISDNSTAP.DeviceDesc% = TJISDNSTAP.ndi,  PCI\VEN_E159&DEV_0001&SUBSYS_00080059
+%TJISDNUP.DeviceDesc%   = TJISDNUP.ndi,    PCI\VEN_E159&DEV_0001&SUBSYS_000b0059
+%TJISDNUKP.DeviceDesc%  = TJISDNUKP.ndi,   PCI\VEN_E159&DEV_0001&SUBSYS_000f0059
+
+;****************************************************************************
+; NT main sections
+;****************************************************************************
+[TJISDNST.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+
+[TJISDNSTS.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+[TJISDNU.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+[TJISDNUP.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+[TJISDNUK.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+[TJISDNUKP.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+[TJISDNSTAP.ndi.NT]
+BusType     = 5
+AddReg      = TJISDN.Gen.Params, TJISDN.ndis.reg
+Characteristics = 0x84  ;NCF_PHYSICAL | NCF_HAS_UI
+CopyFiles=TJISDN.CopyFiles
+
+[TJISDNST.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+[TJISDNSTS.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+[TJISDNU.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+[TJISDNUP.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+[TJISDNUK.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+[TJISDNUKP.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+[TJISDNSTAP.ndi.NT.Services]
+AddService = TJISDN, 2, TJISDN.Service, common.EventLog
+
+;****************************************************************************
+; NT Base Section
+;****************************************************************************
+[TJISDN.ndis.reg]
+HKR, Ndi,       Service,    0, "TJISDN"
+; NT reg
+HKR, Ndi\Interfaces,            DefUpper,   0, "ndiswan"
+HKR, Ndi\Interfaces,            DefLower,   0, "isdn"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndiswan"
+HKR, Ndi\Interfaces,            LowerRange, 0, "isdn"
+
+; ISDN information
+HKR, ,   WanEndPoints,           0x00010001, 2
+HKR, ,   IsdnNumDChannels,       0x00010001, 1
+HKR, ,   IsdnAutoSwitchDetect,   0x00010001, 1
+HKR, ,   IsdnSwitchTypes,        0x00010001, 0x0000009f 
+
+HKR, 0,  IsdnNumBChannels,       	0x00010001, 2
+HKR, 0,  IsdnMultiSubscriberNumbers, 	0x00010000, ""
+
+;****************************************************************************
+; General Params
+;****************************************************************************
+[TJISDN.Gen.Params]
+HKR, , BoardType, , "TJISDN"
+HKR, , BoardName, , "TJISDN"
+HKR, , MediaType, , "ISDN"
+HKR, , AudioType, , "0"	; U-Law
+;HKR, , AudioType, , "1" ; A-Law
+
+;****************************************************************************
+; NT Install/Remove Section
+;****************************************************************************
+[TJISDN.CopyFiles]
+tjisdn.sys,,,2        ; The name of the driver
+
+;****************************************************************************
+; NT Service Section
+;****************************************************************************
+
+[TJISDN.Service]
+DisplayName     = %TJISDN.DeviceDesc%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\tjisdn.sys
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+;****************************************************************************
+; Destination Directories
+;****************************************************************************
+[DestinationDirs]
+TJISDN.CopyFiles = 12   ; drivers directory
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+; Provider
+V_TJ="Tiger Jet Network Inc."
+MS= "Microsoft"
+; Manufacturers
+V_TJISDN="Tiger Jet Network Inc."
+
+; Device Descriptions
+TJISDN.DeviceDesc	= "Tiger Jet PCI 128K ISDN Adapter"
+TJISDNST.DeviceDesc	= "Tiger Jet PCI 128K ISDN-S/T Adapter"
+TJISDNSTS.DeviceDesc	= "Tiger Jet PCI 128K ISDN-S/T Adapter"
+TJISDNU.DeviceDesc	= "Tiger Jet PCI 128K ISDN-U Adapter"
+TJISDNUK.DeviceDesc	= "Tiger Jet PCI 128K ISDN-U (K) Adapter"
+TJISDNUKP.DeviceDesc	= "Tiger Jet PCI 128K ISDN-U (K) with POT Adapter"
+TJISDNUP.DeviceDesc	= "Tiger Jet PCI 128K ISDN-U with POT Adapter"
+TJISDNSTAP.DeviceDesc	= "Tiger Jet PCI 128K ISDN-S/T (A) with POT Adapter"
+

@@ -1,0 +1,119 @@
+
+; Trident.inf
+;
+; Installation inf for the Trident series of graphics adapters.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%MS%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir   = 11
+sgiul50.Miniport  = 12  ; drivers
+sgiul50.Display   = 11  ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%trident% = trident.Mfg
+
+[trident.Mfg]
+Trident Video Accelerator 3D Image985     = sgiul50, PCI\VEN_1023&DEV_9850
+Trident Video Accelerator 3D Image975     = sgiul50, PCI\VEN_1023&DEV_9750
+Trident Video Accelerator 3D Cyber9397    = sgiul50, PCI\VEN_1023&DEV_9397
+Trident Video Accelerator 3D Cyber9397DVD = sgiul50, PCI\VEN_1023&DEV_939A
+Trident Video Accelerator 3D Cyber9520    = sgiul50, PCI\VEN_1023&DEV_9520
+;Trident Video Accelerator 3D Cyber9540    = sgiul50, PCI\VEN_1023&DEV_9540
+;Trident Video Accelerator 3D Image9880    = sgiul50, PCI\VEN_1023&DEV_9880
+
+
+[ControlFlags]
+EXCLUDEFROMSELECT = *
+
+;
+; General installation section
+;
+
+[sgiul50]
+CopyFiles=sgiul50.Miniport, sgiul50.Display
+
+;
+; File sections
+;
+
+[sgiul50.Miniport]
+sgiulnt5.sys
+
+[sgiul50.Display]
+sgiul50.dll
+
+;
+; Service Installation
+;
+
+[sgiul50.Services]
+AddService = sgiul50, 0x00000002, sgiul50_Service_Inst, sgiul50_EventLog_Inst
+
+[sgiul50_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\sgiulnt5.sys
+
+[sgiul50_EventLog_Inst]
+AddReg = sgiul50_EventLog_AddReg
+
+[sgiul50_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\sgiulnt5.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; General config information
+;
+[sgiul50.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=16
+
+;
+; Software Installation
+;
+
+[sgiul50.SoftwareSettings]
+AddReg = sgiul50_SoftwareDeviceSettings
+
+[sgiul50_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, vga, sgiul50
+HKR,, VgaCompatible,               %REG_DWORD%,     1
+HKR,, EnableDualVideos,             %REG_DWORD%,    0
+HKR,, D3DEnable,                    %REG_DWORD%,    0
+HKR,, HardwareInformation.LastMode, %REG_DWORD%,    0
+HKR,, CapabilityOverride,           %REG_DWORD%,    0
+HKR,, GammaPageEnable,              %REG_SZ%,       1
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId="Trident Installation DISK (VIDEO)"
+trident="Trident MicroSystems"
+MS="Microsoft"

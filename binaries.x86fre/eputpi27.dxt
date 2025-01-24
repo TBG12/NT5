@@ -1,0 +1,13 @@
+[Model Name]
+Name="EPSON Stylus COLOR 640"
+
+[Calibration]
+ItemNum=1
+Item1=15,1,248
+
+[Cleanning]
+HeadClean=All
+
+[NozzleTest]
+TestPattern=All
+BitmapFile=EPUTBM05.WBF

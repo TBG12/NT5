@@ -1,0 +1,173 @@
+;
+; A310.INF  -- This file contains installation information for the Ch7017 AIM3 Driver
+;               
+; Revised 04/22 - Venky Ramani
+;	- Modified Hardware ID in [Intel] section from Guid to deviceid
+;	- Added commented out section [ControLFlags].
+;	- Eventlog section references drivers in 12 dir instead of 11. Actually, we do
+;	  need to copy drivers to 12. Will fix it later.
+;	- Ran ChkINF against this inf file. Not all erros/warns addressed yet.
+
+[Version]
+signature="$CHICAGO$"
+Class=DisplayCodec
+ClassGUID={E6ABB47D-8339-4c60-BE92-E9045FF5A33D}
+Provider=%Intel%
+LayoutFile=layout.inf
+DriverVer=11/11/2002
+
+[Manufacturer]
+%IntelMfg%=Intel
+
+[DestinationDirs]
+;DefaultDestDir = 11
+AIM.Device.CopyDrivers = 11
+AIM.Device.CopyDriversNT = 10,system32\drivers
+
+;WHQL requirement: Uncomment this section later on once we have PnP
+;method of installing/loading/unloading WDM AIM drivers across all 
+;OS platforms enabled.
+;[ControlFlags]
+;ExcludeFromSelect=DISPLAY\%AimDevID%
+
+[Intel]
+%AimChildDriver.DeviceDesc%=AIM.Device,DISPLAY\%AimDevID%
+
+[ClassInstall]
+Addreg=AIMClass.AddReg
+
+[ClassInstall32]
+Addreg=AIMClass.AddRegNT
+
+[AIM.Device]
+AddReg=     AIM.Device.AddReg
+CopyFiles=  AIM.Device.CopyDrivers
+
+[AIM.Device.NT]
+AddReg=     AIM.Device.AddRegNT
+CopyFiles=  AIM.Device.CopyDriversNT
+
+[AIM.Device.AddReg]
+;HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,%AimDriverName%
+HKR,,DeviceFuncGUID,,%AimDevFuncGUID%
+HKR,,DevicePNPID,,%AimDevID%
+HKR,,DriverDesc,,%AimChildDriver.DeviceDesc%
+
+[AIM.Device.AddRegNT]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,%AimDriverName%
+HKR,,DeviceFuncGUID,,%AimDevFuncGUID%
+HKR,,DevicePNPID,,%AimDevID%
+HKR,,DriverDesc,,%AimChildDriver.DeviceDesc%
+
+[AIM_Parameters_AddReg]
+HKR,,DeviceFuncGUID,,%AimDevFuncGUID%
+
+[AIMClass.AddReg]
+HKR,,,,%AimClass.Desc%
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+;HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+ 
+[AIMClass.AddRegNT]
+HKR,,,,%AimClass.Desc%
+HKR,,Class,,DisplayCodec
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+;HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+
+
+[AIM.Device.CopyDrivers]
+A310.sys
+
+[AIM.Device.CopyDriversNT]
+A310.sys
+
+[AIM.Device.Interfaces]
+AddInterface=%AimChildIntfGUID%,"GLOBAL",AimChildInterface,
+
+[AimChildInterface]
+AddReg=AimChildInterface.AddReg
+
+[AimChildInterface.AddReg]
+HKR,,Class,,%AimClassGUID%
+HKR,,FriendlyName,,%AimChildDriver.FriendlyName%
+
+[AIM.Device.NT.Services]
+AddService = %AimDevFuncGUID%, 0x00000002, Aim.ServiceInstall, Aim_EventLog_Inst,System,"Aim3"
+
+[AIM.Device.Services]
+
+[Aim_EventLog_Inst]
+AddReg=Aim_EventLog_AddReg
+
+[Aim_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\%AimDriverName%"
+HKR,,TypesSupported,0x00010001,7
+
+[Aim.ServiceInstall]
+DisplayName   	= %AimChildDriver.DeviceDesc%
+ServiceType   	= %SERVICE_KERNEL_DRIVER%
+StartType     	= %SERVICE_DEMAND_START%
+ErrorControl  	= %SERVICE_ERROR_NORMAL%
+ServiceBinary 	= %10%\system32\drivers\%AimDriverName%
+AddReg		= AIM_Parameters_AddReg
+
+;---------------------------------------------------------------
+;                S t r i n g s
+;---------------------------------------------------------------
+
+[Strings]
+
+;----------------
+; Non-Localizable
+;----------------
+
+SERVICE_KERNEL_DRIVER=1
+SERVICE_SYSTEM_START=1 
+SERVICE_AUTO_START=2
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+
+;
+;
+; These are customizable
+;
+AimDevID="CH-7017-B"
+AimDriverSig=0x12354678
+;AimDriverID="CH7017"
+AimDriverName="A310.sys"
+AimDevFuncGUID="{5C8B2B65-A385-11d5-A78B-00104B672758}"
+
+;
+;
+; These do not change - ever !
+;
+AimClassGUID="{E6ABB47D-8339-4c60-BE92-E9045FF5A33D}"
+AimChildIntfGUID="{E87E75CE-0792-4534-AB89-5CFC95747B77}"
+
+;----------------
+; Localizable
+;----------------
+
+Intel="Intel"
+IntelMfg="Intel Corporation"
+DiskId1="Intel Corporation Installation Disk #1"
+;
+;
+; Do not change this line !
+;
+AimClass.Desc="Intel AIM 3.0 Codec"
+;
+;
+; Put device specifics here ->
+;
+AimChildDriver.DeviceDesc="AIM 3.0 Part 01 Codec Driver CH-7017-B"
+AimChildDriver.FriendlyName="Chrontel (LVDS) Combo Codec"
+
+

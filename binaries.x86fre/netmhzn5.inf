@@ -1,0 +1,151 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile= layout.inf
+Signature= "$Windows NT$"
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider = %MS%
+Class = Net
+DriverVer=10/01/2002,1.25.5.0
+
+[Manufacturer]
+%MHZ% = MHZ
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[MHZ]
+%MHZ8% = MhzNet8.ndi,MF\MHZXJ336_DEV1
+%MHZ9% = MhzNet9.ndi,MF\MHZXJ228_DEV1
+%MHZA% = MhzNetA.ndi,MF\MHZXJ144_DEV1
+%MHZB% = MhzNetB.ndi,PCMCIA\Megahertz-CC10BT/2-BF05
+%MHZC% = MhzNetB.ndi,PCMCIA\Megahertz-CC10BT/2-1B84
+
+[MhzNet8.ndi] 
+CopyFiles = MHZ.ndis5.CopyFiles
+AddReg = ADDREG_MHZ8.ndi.reg, ADDREG.ndi.reg
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[MhzNet9.ndi] 
+CopyFiles = MHZ.ndis5.CopyFiles
+AddReg = ADDREG_MHZ9.ndi.reg, ADDREG.ndi.reg
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[MhzNetA.ndi] 
+CopyFiles = MHZ.ndis5.CopyFiles
+AddReg = ADDREG_MHZA.ndi.reg, ADDREG.ndi.reg
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[MhzNetB.ndi] 
+CopyFiles = MHZ.ndis5.CopyFiles
+AddReg = ADDREG_MHZB.ndi.reg, ADDREG.ndi.reg
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[MhzNetB.ndi.LogConfigOverride]
+LogConfig = MhzNetB.ndi.Override0
+
+[MhzNetB.ndi.Override0]
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+PcCardConfig = 1:0(W)
+;MfCardConfig =   300:1:0
+
+[MhzNet8.ndi.Services]
+AddService       = MhzNet, 2, MhzNet.Service, MhzNet.EventLog
+
+[MhzNet9.ndi.Services]
+AddService       = MhzNet, 2, MhzNet.Service, MhzNet.EventLog
+
+[MhzNetA.ndi.Services]
+AddService       = MhzNet, 2, MhzNet.Service, MhzNet.EventLog
+
+[MhzNetB.ndi.Services]
+AddService       = MhzNet, 2, MhzNet.Service, MhzNet.EventLog
+
+[MhzNet.Service]
+DisplayName     = %mhz8.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\xem336n5.sys
+LoadOrderGroup  = NDIS
+
+[MhzNet.EventLog]
+AddReg = MhzNet.AddEventLog.reg
+
+[MhzNet.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[ADDREG_MHZ8.ndi.reg]
+HKR,,AdapterType,,      "1400"
+
+[ADDREG_MHZ9.ndi.reg]
+HKR,,AdapterType,,      "1300"
+
+[ADDREG_MHZA.ndi.reg]
+HKR,,AdapterType,,      "1200"
+
+[ADDREG_MHZB.ndi.reg]
+HKR,,AdapterType,,      "0100"
+
+[ADDREG.ndi.reg]
+
+HKR,,OSType,,           "1"
+HKR,,Verstr,,           "1"
+
+HKR,Ndi,   Service,                     0, "MhzNet"
+HKR, Ndi\Interfaces,    UpperRange, 	0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 	0, "ethernet"
+
+; NetworkAddress
+;HKR,Ndi\params\NetworkAddress,ParamDesc,,      %NetworkAddress%
+;HKR,Ndi\params\NetworkAddress,type,,           "edit"
+;HKR,Ndi\params\NetworkAddress,LimitText,,      "18"
+;HKR,Ndi\params\NetworkAddress,UpperCase,,      "1"
+;HKR,Ndi\params\NetworkAddress,default,,        ""
+;HKR,Ndi\params\NetworkAddress,optional,,       "1"
+
+; Squelch Bit
+HKR,Ndi\params\SquelchBit,ParamDesc,,           %SquelchBit%
+HKR,Ndi\params\SquelchBit,default,,             "0"
+HKR,Ndi\params\SquelchBit,type,,                "enum"
+HKR,Ndi\params\SquelchBit\enum,0,,              %SquelchBitOFF%
+HKR,Ndi\params\SquelchBit\enum,1,,              %SquelchBitON%
+
+; AdapterType
+HKR,Ndi\params\Transceiver,ParamDesc,,          %ConnectorType%
+HKR,Ndi\params\Transceiver,default,,            "0"
+HKR,Ndi\params\Transceiver,type,,               "enum"
+HKR,Ndi\params\Transceiver\enum,0,,             %TP%
+HKR,Ndi\params\Transceiver\enum,1,,             %BNC%
+
+[MHZ.ndis5.CopyFiles]
+xem336n5.sys,,,2
+
+[DestinationDirs]
+MHZ.ndis5.CopyFiles = 12
+
+[Strings]
+MS="Microsoft"
+MHZ="Megahertz"
+
+NetworkAddress  = "Network Address"
+SquelchBit      = "Squelch Bit"
+SquelchBitOn    = "Squelch Bit On"
+SquelchBitOff   = "Squelch Bit Off"
+ConnectorType   = "Connector Type"
+TP              = "Twisted Pair (10BASE-T)"    
+BNC             = "Thin Coax (10BASE2)"        
+MHZ8 = "Megahertz CCXJEM3336 Multi-function (Network Interface)"
+MHZ9 = "Megahertz CCXJEM2288 Multi-function (Network Interface)"
+MHZA = "Megahertz CCXJEM1144 Multi-function (Network Interface)"
+MHZB = "Megahertz CCXJ10BT Ethernet Adapter"
+MHZC = "Megahertz CC10BT Ethernet Adapter"
+
+mhz8.device.DispName = "Megaherz Lan/Modem PCMCIA Device Driver"

@@ -1,0 +1,140 @@
+A:link.clsLINK
+{
+	text-align: left;
+   	font-family: Tahoma; 
+	font-weight: bold; 
+   	color: #336699; 
+	text-decoration: none;
+}
+
+A:visited.clsLINK
+{
+	color: #4169e1;
+	font-weight: bold; 
+	text-decoration: none;
+}
+
+A:active.clsLINK
+{
+	font-family: tahoma;
+	font-weight: bold;
+	color: #708090;
+	text-decoration: none;
+}
+
+A:hover.clsLINK
+{
+	color: red;
+	text-decoration: none;
+}
+
+A:link.clsLinkPlayMovie
+{
+	text-align: left;
+   	font-family: Tahoma; 
+	font-weight: bold; 
+   	color: black; 
+	text-decoration: none;
+}
+
+A:visited.clsLinkPlayMovie
+{
+	color: black;
+	font-weight: bold; 
+	text-decoration: none;
+}
+
+A:active.clsLinkPlayMovie
+{
+	font-family: tahoma;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+}
+
+A:hover.clsLinkPlayMovie
+{
+	color: #000099;
+	text-decoration: none;
+}
+
+
+
+A:link
+{
+	text-align: left;
+   	font-family: Tahoma; 
+	font-weight: bold; 
+   	color: #FFFFFF; 
+	text-decoration: none;
+}
+
+A:visited
+{
+	color: #FFFFFF;
+	font-weight: bold; 
+	text-decoration: none;
+}
+
+A:active
+{
+	font-family: tahoma;
+	font-weight: bold;
+	color: #000066;
+	text-decoration: none;
+}
+
+A:hover
+{
+	color: #000066;
+	text-decoration: none;
+}
+
+BODY
+{
+	font-family: tahoma;
+	border-width:0;
+	border-style: solid;
+	border-color: gray;
+	font-size: 12;
+	color: black;
+	background-color:black; 
+	margin: 0;
+}
+
+
+.copyright
+{
+	left:0;
+	width:100%;
+	padding: 0;
+	text-align: center;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 7pt;
+	color: #949494;
+}
+
+UL
+{
+	margin-left: 16;
+	margin-right: 16;
+	margin-top: 4;
+	margin-bottom: 10;
+}
+
+LI
+{
+	padding:2;
+}
+
+P
+{
+	margin-top:8;
+	margin-bottom:8;
+	margin-left:0;
+	margin-right:0;
+}
+
+
+	

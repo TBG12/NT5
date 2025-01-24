@@ -1,0 +1,76 @@
+; Copyright 2000, Microsoft
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=07/01/2001,5.0.2195.8
+
+[Manufacturer]
+%MANUFACTURER_ID%=Sierra_Wireless
+
+[ControlFlags]
+ExcludeFromSelect  = *
+
+[Sierra_Wireless]
+%AIR300.DeviceDesc%=AIR300.ndi,PCMCIA\Sierra_Wireless-Aircard_2-8283
+%AIR300.DeviceDesc%=AIR300.ndi,PCMCIA\Sierra_Wireless-AirCard_300-E1E3
+
+[AIR300.ndi]
+Characteristics = 0x84
+BusType         = 8
+AddReg          = AIR300.reg
+CopyFiles       = air300.CopyDrvFile, air300.CopyPPFile
+
+[AIR300.ndi.LogConfigOverride]
+LogConfig = AIR3.LogConfigOverride
+
+[AIR3.LogConfigOverride]
+ConfigPriority=NORMAL
+IRQConfig = 3,4,5,7,9,10,11,12,13,15
+IOConfig = 80@300-FFF%F80(FFF)
+
+[AIR300.ndi.Services]
+AddService      = AIR300, 2, air300.Service, common.EventLog
+
+[AIR300.reg]
+HKR, Ndi,                           Service,       0, "AIR300"
+HKR, Ndi\Interfaces,                UpperRange,    0, "ndis5"
+HKR, Ndi\Interfaces,                LowerRange,    0, "ethernet"
+HKR, , EnumPropPages32, , "air300pp.dll, AirCardDevicePropPage"
+
+[air300.Service]
+DisplayName     = %air300.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\ac300nd5.sys
+LoadOrderGroup  = NDIS
+
+[air300.CopyDrvFile]
+ac300nd5.sys,,,2
+
+[air300.CopyPPFile]
+air300pp.dll,,,2
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000,"%%SystemRoot%%\System32\netevent.dll"
+HKR,, TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+DefaultDestDir     = 12
+air300.CopyDrvFile = 12         ;%windir%\system32\drivers
+air300.CopyPPFile  = 11         ;%windir%\system32
+
+[Strings]
+MSFT                    = "Microsoft"
+swi                     = "Sierra Wireless Inc."
+MANUFACTURER_ID         = "Sierra Wireless"
+AIR300.DeviceDesc       = "Sierra Wireless AirCard 300 CDPD Adapter"
+air300.Service.DispName = "Sierra Wireless AirCard 300 CDPD Driver"
+

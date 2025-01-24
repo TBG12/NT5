@@ -1,0 +1,124 @@
+;  CopyRight (C) 2001, Microsoft Corp.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,1.22.1.208
+
+[Manufacturer]
+%V_CNET% = CNET
+%V_DSI%  = DAVICOM
+
+[ControlFlags]
+ExcludeFromSelect = *
+                    
+[CNET]
+%PRO200WL.DeviceDesc%  = DM9102.ndi, PCI\VEN_1282&DEV_9102&SUBSYS_434E4554
+%PRO200.DeviceDesc%    = DM9102.ndi, PCI\VEN_1282&DEV_9102&SUBSYS_50323030
+
+[DAVICOM]
+%DM9102.DeviceDesc%    = DM9102.ndi, PCI\VEN_1282&DEV_9102
+
+[DM9102.ndi]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = DM9PCI.reg, 9102.pci.reg, DM9102.con.reg
+CopyFIles       = DM9PCI.CopyFiles
+
+[DM9102.ndi.Services]
+AddService = DM9102, 2, DM9102.Service, dsi.EventLog
+
+[9102.pci.reg]
+;StoreAndForward
+HKR, Ndi\params\StoreAndForward,     ParamDesc, 0,%StoreAndForward%
+HKR, Ndi\params\StoreAndForward,       default, 0,"0"
+HKR, Ndi\params\StoreAndForward,          type, 0,"enum"
+HKR, Ndi\params\StoreAndForward\enum,        0, 0,%Disabled%
+HKR, Ndi\params\StoreAndForward\enum,        1, 0,%Enabled%
+
+;Transmit Threshold
+HKR, Ndi\params\TransmitThreshold,   ParamDesc, 0,%TransmitThreshold%
+HKR, Ndi\params\TransmitThreshold,     default, 0,"200"
+HKR, Ndi\params\TransmitThreshold,        type, 0,"enum"
+HKR, Ndi\params\TransmitThreshold\enum,     48, 0,%72bytes%
+HKR, Ndi\params\TransmitThreshold\enum,     60, 0,%96bytes%
+HKR, Ndi\params\TransmitThreshold\enum,     80, 0,%128bytes%
+HKR, Ndi\params\TransmitThreshold\enum,     A0, 0,%160bytes%
+HKR, Ndi\params\TransmitThreshold\enum,    100, 0,%256bytes%
+HKR, Ndi\params\TransmitThreshold\enum,    200, 0,%512bytes%
+HKR, Ndi\params\TransmitThreshold\enum,    400, 0,%1024bytes%
+
+[DM9102.con.reg]
+;ConnectionType
+HKR, Ndi\params\ConnectionType,      ParamDesc, 0,%ConnectionType%
+HKR, Ndi\params\ConnectionType,      default,   0,"0"
+HKR, Ndi\params\ConnectionType,      type,      0,"enum"
+HKR, Ndi\params\ConnectionType\enum, 0,         0,%AutoSense%
+HKR, Ndi\params\ConnectionType\enum, 2,         0,%100Mbps%
+HKR, Ndi\params\ConnectionType\enum, 4,         0,%100MbpsFullDuplex%
+HKR, Ndi\params\ConnectionType\enum, 1,         0,%10Mbps%
+HKR, Ndi\params\ConnectionType\enum, 3,         0,%10MbpsFullDuplex%
+
+
+[DM9PCI.reg]
+HKR, Ndi,                          Service,     0,"DM9102"
+HKR, Ndi\Interfaces,               UpperRange,  0,"ndis5"
+HKR, Ndi\Interfaces,               LowerRange,  0,"ethernet"
+HKR, ,                             ACPIEnable,  0,"4"
+HKR, ,                             AdapterType, 0,"5"
+HKR, ,                             AdapterPCIID,0,"91021282"
+
+[DM9102.Service]
+DisplayName     = %DM9PCI.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\DM9PCI5.SYS
+LoadOrderGroup  = NDIS
+
+[dsi.EventLog]
+AddReg = dsi.AddEventLog.reg
+
+[dsi.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DM9PCI.CopyFiles]
+DM9PCI5.SYS,,,2
+
+[DestinationDirs]
+DefaultDestDir    = 12
+DM9PCI.CopyFiles  = 12
+
+[Strings]
+MSFT                    = "Microsoft"
+V_CNET                  = "CNet Technology, Inc."
+V_DSI                   = "DAVICOM Semiconductor, Inc."
+
+StoreAndForward         = "Store And Forward"
+Disabled                = "Disabled"
+Enabled                 = "Enabled"
+AutoSense               = "Auto Sense"
+100Mbps                 = "100Mbps"
+10Mbps                  = "10Mbps"
+TransmitThreshold       = "Transmit Threshold"
+72bytes                 = "  72 bytes"
+96bytes                 = "  96 bytes"
+128bytes                = " 128 bytes"
+160bytes                = " 160 bytes"
+256bytes                = " 256 bytes"
+512bytes                = " 512 bytes"
+1024bytes               = " 1024 bytes"
+ConnectionType          = "Connection Type"
+100MbpsFullDuplex       = "100Mbps Full_Duplex"
+10MbpsFullDuplex        = "10Mbps Full_Duplex"
+
+
+PRO200WL.DeviceDesc     = "CNet PRO200WL PCI Fast Ethernet Adapter"
+PRO200.DeviceDesc       = "CNet PRO200 PCI Fast Ethernet Adapter"
+DM9102.DeviceDesc       = "DAVICOM 9102-Based PCI Fast Ethernet Adapter"
+
+DM9PCI.Service.DispName = "DAVICOM 9102(A) PCI Fast Ethernet Based NT Driver"

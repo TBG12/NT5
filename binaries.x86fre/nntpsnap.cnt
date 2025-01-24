@@ -1,0 +1,10 @@
+:Base nntpsnap.hlp
+:Title Microsoft NNTP Service
+1 Microsoft NNTP Service
+2 Access=DB_NNTP_Properties_Access
+2 Expiration Policy=DB_NNTP_ExpirationPolicy
+2 General=DB_NNTP_Properties_VirtualServer
+2 Newsgroup Properties=DB_NNTP_Newsgroup
+2 Security=DB_NNTP_Properties_Security
+2 Settings=DB_NNTP_Properties_Settings
+2 Virtual Directory Properties=DB_NNTP_VirtualDirectory

@@ -1,0 +1,1900 @@
+
+; MSPRINT4.INF
+;
+; List of supported printers, PS printers
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=Printer
+ClassGUID={4d36e979-e325-11ce-bfc1-08002be10318}
+Provider=%MS%
+LayoutFile=layout.inf, layout1.inf, layout2.inf
+CatalogFile=win4prt.cat
+
+[ClassInstall]
+AddReg=ClassAddReg
+DelReg=ClassDelReg
+
+[ClassDelReg]
+HKLM,"System\CurrentControlSet\Services\Class\Printer","NoUseClass"
+
+[ClassAddReg]
+HKR,,,,%CLASSNAME%
+HKR,,Installer,,MSPRINT.DLL
+HKR,,Icon,,-4
+HKR,,NoDisplayClass,,1
+
+[Environment]
+UpdateInis=Environment_Ini
+AddReg=Environment_Reg
+
+[Environment_Ini]
+win.ini,Ports,"LPT1.DOS=",
+win.ini,Ports,"LPT2.DOS=",
+win.ini,Ports,"LPT3.DOS=",
+win.ini,Ports,"LPT1.OS2=",
+win.ini,Ports,"LPT2.OS2=",
+win.ini,Ports,"LPT3.OS2=",
+win.ini,windows,"Spooler=",
+win.ini,windows,"DosPrint=",
+win.ini,windows,"DeviceNotSelectedTimeout=",
+win.ini,windows,"TransmissionRetryTimeout=",
+
+[Environment_Reg]
+HKLM,"System\CurrentControlSet\Control\Print\Environments\Windows 4.0","Directory",,"CHICAGO"
+HKLM,"System\CurrentControlSet\Control\Print\Environments\Windows 4.0\Drivers",,,
+HKLM,"System\CurrentControlSet\Control\Print\Environments\Windows 4.0\Print Processors",,,
+HKLM,"System\CurrentControlSet\Control\Print\Monitors",,,
+HKLM,"System\CurrentControlSet\Control\Print\Printers",,,
+HKLM,"System\CurrentControlSet\Control\Print\Printers","StartOnBoot",1,01,00,00,00
+HKLM,"System\CurrentControlSet\Control\Print\Providers",,,
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+;
+[Manufacturer]
+"Agfa"
+"Apple"
+"ColorAge"
+"Dataproducts"
+"Digital"
+"GCC"
+"Gestetner"
+"Kodak"
+"Kyocera"
+"LaserMaster"
+"Linotronic"
+"Monotype"
+"NEC"
+"Olivetti"
+"QMS"
+"Qume"
+"Ricoh"
+"Schlumberger"
+"Scitex"
+"Sharp"
+"Shinko"
+"Tektronix"
+"Texas Instruments"
+"Unisys"
+"Varityper"
+"Wang"
+"Xante"
+"Xerox"
+
+;
+; Model sections. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file.
+;
+; Each model lists a variation of its own name as a compatible ID. This
+; is done primarily as an optimization during upgrade.
+;
+[Agfa]
+"AGFA-AccuSet 1000"               = AGAC1000.SPD,AGFA-AccuSet_1000
+"AGFA-AccuSet 1000SF v2013.108"   = AGAC1SF2.SPD,AGFA-AccuSet_1000SF_v2013.108
+"AGFA-AccuSet 1000SF v52.3"       = AGAC1SF1.SPD,AGFA-AccuSet_1000SF_v52.3
+"AGFA-AccuSet 1500"               = AGAC1500.SPD,AGFA-AccuSet_1500
+"AGFA-AccuSet 1500SF v2013.108"   = AGAC5SF2.SPD,AGFA-AccuSet_1500SF_v2013.108
+"AGFA-AccuSet 800"                = AGAC0800.SPD,AGFA-AccuSet_800
+"AGFA-AccuSet 800SF v2013.108"    = AGAC8SF2.SPD,AGFA-AccuSet_800SF_v2013.108
+"AGFA-AccuSet 800SF v52.3"        = AGAC8SF1.SPD,AGFA-AccuSet_800SF_v52.3
+"AGFA-AccuSet v52.3"              = AGACCST1.SPD,AGFA-AccuSet_v52.3
+"AGFA-AccuSetSF v52.3"            = AGACCSF1.SPD,AGFA-AccuSetSF_v52.3
+"AGFA-Avantra 20 v2013.108"       = AGAVA202.SPD,AGFA-Avantra_20_v2013.108
+"AGFA-Avantra 20SF v2013.108"     = AGA20SF2.SPD,AGFA-Avantra_20SF_v2013.108
+"AGFA-Avantra 25 v2013.108"       = AGAVA252.SPD,AGFA-Avantra_25_v2013.108
+"AGFA-Avantra 25SF v2013.108"     = AGA25SF2.SPD,AGFA-Avantra_25SF_v2013.108
+"AGFA-Avantra 36SF v2013.108"     = AGA36SF2.SPD,AGFA-Avantra_36SF_v2013.108
+"AGFA-Avantra 44 v2013.108"       = AGAVA442.SPD,AGFA-Avantra_44_v2013.108
+"AGFA-Avantra 44SF v2013.108"     = AGA44SF2.SPD,AGFA-Avantra_44SF_v2013.108
+"AGFA-Elan 500"                   = AGELAN50.SPD,AGFA-Elan_500
+"AGFA-Elan 500SF v2013.108"       = AGEL5SF2.SPD,AGFA-Elan_500SF_v2013.108
+"AGFA-ProSet 9400 v52.3"          = AGPRO941.SPD,AGFA-ProSet_9400_v52.3
+"AGFA-ProSet 9400"                = AGPR9400.SPD,AGFA-ProSet_9400
+"AGFA-ProSet 9400SF v2013.108"    = AGP94SF2.SPD,AGFA-ProSet_9400SF_v2013.108
+"AGFA-ProSet 9400SF v52.3"        = AGP94SF1.SPD,AGFA-ProSet_9400SF_v52.3
+"AGFA-ProSet 9550 v52.3"          = AGPR9551.SPD,AGFA-ProSet_9550_v52.3
+"AGFA-ProSet 9550"                = AGPR9550.SPD,AGFA-ProSet_9550
+"AGFA-ProSet 9550SF v2013.108"    = AGP95SF2.SPD,AGFA-ProSet_9550SF_v2013.108
+"AGFA-ProSet 9550SF v52.3"        = AGP95SF1.SPD,AGFA-ProSet_9550SF_v52.3
+"AGFA-ProSet 9600 v52.3"          = AGPRS961.SPD,AGFA-ProSet_9600_v52.3
+"AGFA-ProSet 9600SF v52.3"        = AGP96SF1.SPD,AGFA-ProSet_9600SF_v52.3
+"AGFA-ProSet 9700 v52.3"          = AGPRO971.SPD,AGFA-ProSet_9700_v52.3
+"AGFA-ProSet 9700SF v52.3"        = AGP97SF1.SPD,AGFA-ProSet_9700SF_v52.3
+"AGFA-ProSet 9800 v52.3"          = AGPRO981.SPD,AGFA-ProSet_9800_v52.3
+"AGFA-ProSet 9800"                = AGPR9800.SPD,AGFA-ProSet_9800
+"AGFA-ProSet 9800SF v2013.108"    = AGP98SF2.SPD,AGFA-ProSet_9800SF_v2013.108
+"AGFA-ProSet 9800SF v52.3"        = AGP98SF1.SPD,AGFA-ProSet_9800SF_v52.3
+"AGFA-ProSet 9836"                = AGPR9836.SPD,AGFA-ProSet_9836
+"AGFA-ProSet 9836SF v2013.108"    = AGP36SF2.SPD,AGFA-ProSet_9836SF_v2013.108
+"AGFA-ProSet 9836SF v52.3"        = AGP36SF1.SPD,AGFA-ProSet_9836SF_v52.3
+"AGFA-SelectSet 5000 v52.3"       = AGSELS51.SPD,AGFA-SelectSet_5000_v52.3
+"AGFA-SelectSet 5000"             = AGSS5000.SPD,AGFA-SelectSet_5000
+"AGFA-SelectSet 5000SF v2013.108" = AGSL5SF2.SPD,AGFA-SelectSet_5000SF_v2013.108
+"AGFA-SelectSet 5000SF v52.3"     = AGSL5SF1.SPD,AGFA-SelectSet_5000SF_v52.3
+"AGFA-SelectSet 7000 v52.3"       = AGSELS71.SPD,AGFA-SelectSet_7000_v52.3
+"AGFA-SelectSet 7000"             = AGSS7000.SPD,AGFA-SelectSet_7000
+"AGFA-SelectSet 7000SF v2013.108" = AGSL7SF2.SPD,AGFA-SelectSet_7000SF_v2013.108
+"AGFA-SelectSet 7000SF v52.3"     = AGSL7SF1.SPD,AGFA-SelectSet_7000SF_v52.3
+"AGFA-SelectSet Avantra 20"       = AGSSAV20.SPD,AGFA-SelectSet_Avantra_20
+"AGFA-SelectSet Avantra 25"       = AGSSAV25.SPD,AGFA-SelectSet_Avantra_25
+"AGFA-SelectSet Avantra 36"       = AGSSAV36.SPD,AGFA-SelectSet_Avantra_36
+"AGFA-SelectSet Avantra 44"       = AGSSAV44.SPD,AGFA-SelectSet_Avantra_44
+"AGFA-StudioSet 2000 v49.3 v52.3" = AGSTDS21.SPD,AGFA-StudioSet_2000_v49.3_v52.3
+"AGFA-StudioSet 2000SF v52.3"     = AGST2SF1.SPD,AGFA-StudioSet_2000SF_v52.3
+
+[Apple]
+"Apple LaserWriter 12/640 PS"     = APLWMGS1.SPD,Apple_LaserWriter_12/640_PS
+"Apple LaserWriter 16/600 PS"     = APLWGRI2.SPD,Apple_LaserWriter_16/600_PS
+"Apple LaserWriterII NTX-J v50.5" = AP_NTXJ1.SPD,Apple_LaserWriterII_NTX-J_v50.5
+
+[ColorAge]
+"ColorAge ColorQ"                 = COLORQ.SPD,ColorAge_ColorQ
+
+[Dataproducts]
+"Dataproducts JOLT PS"            = DPJOLT04.SPD,Dataproducts_JOLT_PS
+"Dataproducts LZR 1260 v47.0"     = DPL12602.SPD,Dataproducts_LZR_1260_v47.0
+"Dataproducts LZR 1560 v2010.127" = DPL15606.SPD,Dataproducts_LZR_1560_v2010.127
+"Dataproducts LZR 1580 v2011.113" = DPL15804.SPD,Dataproducts_LZR_1580_v2011.113
+"Dataproducts LZR 2080 v2011.113" = DPL20804.SPD,Dataproducts_LZR_2080_v2011.113
+"Dataproducts LZR 855 v1.0"       = DPL85501.SPD,Dataproducts_LZR_855_v1.0
+"Dataproducts LZR 960 v2010.106"  = DPL9605.SPD,Dataproducts_LZR_960_v2010.106
+"Dataproducts LZR 965 v2011.113"  = DPL9654.SPD,Dataproducts_LZR_965_v2011.113
+"Dataproducts Typhoon 16 PS"      = DP4TY161.SPD,Dataproducts_Typhoon_16_PS
+"Dataproducts Typhoon 20 PS"      = DP4TY201.SPD,Dataproducts_Typhoon_20_PS
+"Dataproducts Typhoon 30 PS"      = T30V4.SPD,Dataproducts_Typhoon_30_PS
+"Dataproducts Typhoon 40 PS"      = T40V4.SPD,Dataproducts_Typhoon_40_PS
+"Dataproducts Typhoon 60 PS"      = T60V4.SPD,Dataproducts_Typhoon_60_PS
+"Dataproducts Typhoon 8 PS"       = DP4TYP81.SPD,Dataproducts_Typhoon_8_PS
+"Dataproducts Typhoon 8PM PS"     = DPTY8PM1.SPD,Dataproducts_Typhoon_8PM_PS
+
+[Digital]
+"Digital DEClaser 3500"           = DC3500_1.SPD,LPTENUM\Digital_Equipment_Co3DB1,Digital_Equipment_Co3DB1,Digital_DEClaser_3500
+"Digital PrintServer 20 v48.3"    = DCLPS201.SPD,Digital_PrintServer_20_v48.3
+
+[GCC]
+"GCC BLP Elite v52.3"             = GCBLPEL1.SPD,GCC_BLP_Elite_v52.3
+"GCC BLP II v52.3"                = GCBLP2_1.SPD,GCC_BLP_II_v52.3
+"GCC BLP IIS v52.3"               = GCBLP2S1.SPD,GCC_BLP_IIS_v52.3
+"GCC Business LaserPrinter v49.2" = GCBL4921.SPD,GCC_Business_LaserPrinter_v49.2
+"GCC Business LaserPrinter v51.4" = GCBL5141.SPD,GCC_Business_LaserPrinter_v51.4
+"GCC ColorTone v2.1"              = GCCTONE2.SPD,GCC_ColorTone_v2.1
+"GCC Elite 600 v1.1"              = GCELT6_2.SPD,GCC_Elite_600_v1.1
+"GCC SelectPress 1200 v2.3"       = GCSP12_3.SPD,GCC_SelectPress_1200_v2.3
+"GCC SelectPress 600 v2.3"        = GCSP6_3.SPD,GCC_SelectPress_600_v2.3
+
+[Gestetner]
+"Gestetner GLP800-Scout v52.3"    = GDGL8001.SPD,Gestetner_GLP800-Scout_v52.3
+
+[Kodak]
+"KODAK 1392 Model 44 PPD"         = KD139201.SPD,KODAK_1392_Model_44_PPD
+"KODAK 70cp Series II PPD"        = KDH00001.SPD,KODAK_70cp_Series_II_PPD
+"KODAK 92p PPD"                   = KD92P001.SPD,KODAK_92p_PPD
+"KODAK DS 8650 PS"                = KD8650P1.SPD,KODAK_DS_8650_PS
+"KODAK XLS 8600 PS v2014.105"     = KD8600P1.SPD,KODAK_XLS_8600_PS_v2014.105
+
+[Kyocera]
+"Kyocera FS-1500 (KPDL)"          = FS-1500.SPD,Kyocera_FS-1500_(KPDL)
+"Kyocera FS-1500A (KPDL)"         = FS-1500A.SPD,Kyocera_FS-1500A_(KPDL)
+"Kyocera FS-1550 (KPDL)"          = FS-1550.SPD,Kyocera_FS-1550_(KPDL)
+"Kyocera FS-1550+ (KPDL)"         = FS-1550P.SPD,Kyocera_FS-1550+_(KPDL)
+"Kyocera FS-1550A (KPDL)"         = FS-1550A.SPD,Kyocera_FS-1550A_(KPDL)
+"Kyocera FS-1600 (KPDL)"          = FS-1600.SPD,Kyocera_FS-1600_(KPDL)
+"Kyocera FS-1600 (KPDL-2)"        = FS-16002.SPD,Kyocera_FS-1600_(KPDL-2)
+"Kyocera FS-1600+ (KPDL-2)"       = FS-1600P.SPD,Kyocera_FS-1600+_(KPDL-2)
+"Kyocera FS-1600A (KPDL)"         = FS-1600A.SPD,Kyocera_FS-1600A_(KPDL)
+"Kyocera FS-1600A (KPDL-2)"       = FS1600A2.SPD,Kyocera_FS-1600A_(KPDL-2)
+"Kyocera FS-1700 (KPDL)"          = FS-1700.SPD,Kyocera_FS-1700_(KPDL)
+"Kyocera FS-1700 (KPDL-2)"        = FS-17002.SPD,Kyocera_FS-1700_(KPDL-2)
+"Kyocera FS-3400 (KPDL)"          = FS-3400.SPD,Kyocera_FS-3400_(KPDL)
+"Kyocera FS-3400+ (KPDL)"         = FS-3400P.SPD,Kyocera_FS-3400+_(KPDL)
+"Kyocera FS-3400A (KPDL)"         = FS-3400A.SPD,Kyocera_FS-3400A_(KPDL)
+"Kyocera FS-3500 (KPDL)"          = FS-3500.SPD,Kyocera_FS-3500_(KPDL)
+"Kyocera FS-3500A (KPDL)"         = FS-3500A.SPD,Kyocera_FS-3500A_(KPDL)
+"Kyocera FS-3600 (KPDL)"          = FS-3600.SPD,Kyocera_FS-3600_(KPDL)
+"Kyocera FS-3600 (KPDL-2)"        = FS-36002.SPD,Kyocera_FS-3600_(KPDL-2)
+"Kyocera FS-3600+ (KPDL-2)"       = FS-3600P.SPD,Kyocera_FS-3600+_(KPDL-2)
+"Kyocera FS-3600A (KPDL)"         = FS-3600A.SPD,Kyocera_FS-3600A_(KPDL)
+"Kyocera FS-3600A (KPDL-2)"       = FS3600A2.SPD,Kyocera_FS-3600A_(KPDL-2)
+"Kyocera FS-3700 (KPDL)"          = FS-3700.SPD,Kyocera_FS-3700_(KPDL)
+"Kyocera FS-3700 (KPDL-2)"        = FS-37002.SPD,Kyocera_FS-3700_(KPDL-2)
+"Kyocera FS-400 (KPDL)"           = FS-400.SPD,Kyocera_FS-400_(KPDL)
+"Kyocera FS-400A (KPDL)"          = FS-400A.SPD,Kyocera_FS-400A_(KPDL)
+"Kyocera FS-5500 (KPDL)"          = FS-5500.SPD,Kyocera_FS-5500_(KPDL)
+"Kyocera FS-5500A (KPDL)"         = FS-5500A.SPD,Kyocera_FS-5500A_(KPDL)
+"Kyocera FS-600 (KPDL-2)"         = FS-600.SPD,Kyocera_FS-600_(KPDL-2)
+"Kyocera FS-6500 (KPDL)"          = FS-6500.SPD,Kyocera_FS-6500_(KPDL)
+"Kyocera FS-6500+ (KPDL)"         = FS-6500P.SPD,Kyocera_FS-6500+_(KPDL)
+"Kyocera FS-6500+ (KPDL-2)"       = FS-650P2.SPD,Kyocera_FS-6500+_(KPDL-2)
+"Kyocera FS-7000 (KPDL-2)"        = FS-7000.SPD,Kyocera_FS-7000_(KPDL-2)
+"Kyocera FS-850 (KPDL)"           = FS-850.SPD,Kyocera_FS-850_(KPDL)
+"Kyocera P-2000 (KPDL)"           = P-2000.SPD,Kyocera_P-2000_(KPDL)
+"Kyocera Q-8010 (KPDL)"           = Q-8010.SPD,Kyocera_Q-8010_(KPDL)
+
+[LaserMaster]
+"LaserMaster Unity 1200XL v47.0"  = U1200XL4.SPD,LaserMaster_Unity_1200XL_v47.0
+
+[Linotronic]
+"Linotronic 230 v49.3"            = L200_493.SPD,Linotronic_230_v49.3
+"Linotronic 230 v52.3"            = LH230__1.SPD,Linotronic_230_v52.3
+"Linotronic 260 v52.3"            = LH260__1.SPD,Linotronic_260_v52.3
+"Linotronic 830 v52.3"            = LH830__1.SPD,Linotronic_830_v52.3
+"Linotronic 930 v52.3"            = LH930__1.SPD,Linotronic_930_v52.3
+"Linotronic Pr60 v52.3"           = LHPR60_1.SPD,Linotronic_Pr60_v52.3
+"HerkulesPMv2013"                 = LHHERK_1.SPD,HerkulesPMv2013
+"Quasar v2013"                    = LHQUAS_1.SPD,Quasar_v2013
+
+[Monotype]
+"Monotype ImageMaster 1200 v52.3" = MOIM1201.SPD,Monotype_ImageMaster_1200_v52.3
+"Monotype Imagesetter v52.2"      = MONO_522.SPD,Monotype_Imagesetter_v52.2
+
+[Olivetti]
+"Hermes H 606 PS (13 Fonts)"      = HERMES_1.SPD,Hermes_H_606_PS_(13_Fonts)
+"Hermes H 606 PS (35 fonts)"      = HERMES_2.SPD,Hermes_H_606_PS_(35_fonts)
+
+[NEC]
+"NEC Silentwriter 1097 PS"        = NC_10971.SPD,NEC_Silentwriter_1097_PS
+"NEC Silentwriter 97 v2011.111"   = NC97FAX1.SPD,NEC_Silentwriter_97_v2011.111
+
+[QMS]
+"QMS 1060 Print System"           = QMS10602.SPD,LPTENUM\_QMS_QMS_1060_System7626,_QMS_QMS_1060_System7626,QMS_1060_Print_System
+"QMS 1660 Print System"           = QMS16602.SPD,QMS_1660_Print_System
+"QMS 1660E Print System"          = QMS1660E.SPD,LPTENUM\_QMS_QMS_1660E_Syste1565,_QMS_QMS_1660E_Syste1565,QMS_1660E_Print_System
+"QMS 2025 Print System"           = QMS2025.SPD,QMS_2025_Print_System
+"QMS 2060 Print System"           = QMS2060.SPD,LPTENUM\_QMS_QMS_2060_Print_5F70,_QMS_QMS_2060_Print_5F70,QMS_2060_Print_System
+"QMS 2425 Print System"           = QMS2425.SPD,LPTENUM\_QMS_QMS_2425_Print_41F2,_QMS_QMS_2425_Print_41F2,QMS_2425_Print_System
+"QMS 3825 Print System"           = QMS3825.SPD,QMS_3825_Print_System
+"QMS 4060 Print System"           = QMS4060.SPD,LPTENUM\_QMS_QMS_4060_Print_2712,_QMS_QMS_4060_Print_2712,QMS_4060_Print_System
+"QMS ColorScript 100 v49.4"       = QMSCS494.SPD,QMS_ColorScript_100_v49.4
+"QMS ColorScript 100 Mod 30si"    = Q30SI503.SPD,QMS_ColorScript_100_Mod_30si
+"QMS ColorScript 1000 Level 1"    = QCS10001.SPD,QMS_ColorScript_1000_Level_1
+"QMS ColorScript 1000 Level 2"    = QCS10002.SPD,QMS_ColorScript_1000_Level_2
+"QMS magicolor CX"                = QMSMCCX.SPD,QMS_magicolor_CX
+"QMS magicolor LX"                = QMSMCLX.SPD,QMS_magicolor_LX
+"QMS magicolor plus Level 2"      = QMSMCPLS.SPD,QMS_magicolor_plus_Level_2
+"QMS PS Jet Plus v46.1"           = QMSJP461.SPD,QMS_PS_Jet_Plus_v46.1
+"QMS PS Jet v46.1"                = QMSJ_461.SPD,QMS_PS_Jet_v46.1
+"QMS-PS 815 MR v52.4"             = QM815MR1.SPD,QMS-PS_815_MR_v52.4
+"QMS-PS 815 v52.4"                = QMPS8151.SPD,QMS-PS_815_v52.4
+"QMS-PS 825 v52.4"                = QMPS8251.SPD,QMS-PS_825_v52.4
+
+[Qume]
+"Qume ScripTEN v47.0"             = QUME_470.SPD,Qume_ScripTEN_v47.0
+
+[Ricoh]
+"Ricoh PC Laser 6000-PS v50.5"    = R6000505.SPD,Ricoh_PC_Laser_6000-PS_v50.5
+
+[Schlumberger]
+"Schlumberger 5232 ColorPS v50.3" = S5232503.SPD,Schlumberger_5232_ColorPS_v50.3
+
+[Scitex]
+"Dolev PSM v2013.104"             = SX2PSM21.SPD,Dolev_PSM_v2013.104
+"IRIS Ink Jet"                    = SX2IRIS1.SPD,IRIS_Ink_Jet
+"Scitex Brisque"                  = BRISQUE.SPD,Scitex_Brisque
+"Scitex Dolev PS L2"              = DOLEV.SPD,Scitex_Dolev_PS_L2
+"Scitex Dolev PSM L2"             = SX2PSM22.SPD,Scitex_Dolev_PSM_L2
+"Scitex Dolev2PressPlus PSM"      = SX2PPPSM.SPD,Scitex_Dolev2PressPlus_PSM
+"Scitex Dolev400 PSM L2"          = SX4PSM21.SPD,Scitex_Dolev400_PSM_L2
+"Scitex Dolev4Press PSM L2"       = SX4PPSM1.SPD,Scitex_Dolev4Press_PSM_L2
+"Scitex Dolev400 PS L2"           = DL400.SPD,Scitex_Dolev400_PS_L2
+"Scitex Dolev800 PS L2"           = DL800.SPD,Scitex_Dolev800_PS_L2
+"Scitex Dolev800 PSM L2"          = SX8PSM21.SPD,Scitex_Dolev800_PSM_L2
+"Scitex PS Bridge L2"             = BRIDG.SPD,Scitex_PS_Bridge_L2
+"Scitex Spontane"                 = SPONTANE.SPD,Scitex_Spontane
+"Scitex SX1000Pro"                = SX1000.SPD,Scitex_SX1000Pro
+"Scitex VIP2 L2"                  = SXVIP21.SPD,Scitex_VIP2_L2
+
+[Sharp]
+"Sharp AO-4100P PS"               = SH4100P1.SPD,Sharp_AO-4100P_PS
+"Sharp JX-9460 PS"                = JX9460PS.SPD,Sharp_JX-9460_PS
+"Sharp JX-9500 PS"                = JX9500PS.SPD,Sharp_JX-9500_PS
+"Sharp JX-9600 PS"                = JX9600PS.SPD,Sharp_JX-9600_PS
+"Sharp JX-9660 PS"                = JX9660PS.SPD,Sharp_JX-9660_PS
+"Sharp JX-9700E PS"               = JX9700PS.SPD,Sharp_JX-9700E_PS
+
+[Shinko]
+"Shinko Color CHC-746PSJ PS"      = S746J522.SPD,Shinko_Color_CHC-746PSJ_PS
+
+[Tektronix]
+"Tektronix Phaser 140"            = TKPH1401.SPD,Tektronix_Phaser_140
+"Tektronix Phaser 200e 39(4)"     = TK200392.SPD,Tektronix_Phaser_200e_39(4)
+"Tektronix Phaser 200J"           = TKP200J1.SPD,Tektronix_Phaser_200J
+"Tektronix Phaser 220e 39"        = TK220391.SPD,Tektronix_Phaser_220e_39
+"Tektronix Phaser 220J"           = TKP220J1.SPD,Tektronix_Phaser_220J
+"Tektronix Phaser 240 17"         = TK240172.SPD,Tektronix_Phaser_240_17
+"Tektronix Phaser 240 39"         = TK240392.SPD,Tektronix_Phaser_240_39
+"Tektronix Phaser 240J"           = TKP240J1.SPD,Tektronix_Phaser_240J
+"Tektronix Phaser 300J"           = TKP300J1.SPD,Tektronix_Phaser_300J
+"Tektronix Phaser 300X"           = TKP300X1.SPD,Tektronix_Phaser_300X
+"Tektronix Phaser 340"            = TK340171.SPD,LPTENUM\TektronixPhaser_34058F7,TektronixPhaser_34058F7,Tektronix_Phaser_340
+"Tektronix Phaser 340 600 dpi"    = TK340691.SPD,Tektronix_Phaser_340_600_dpi
+"Tektronix Phaser 350"            = TK350171.SPD,LPTENUM\TektronixPhaser_350C8F6,TektronixPhaser_350C8F6,Tektronix_Phaser_350
+"Tektronix Phaser 350 600x300"    = TK350691.SPD,LPTENUM\Tektronix_Phaser_350_600x3007A48,Tektronix_Phaser_350_600x3007A48,Tektronix_Phaser_350_600x300
+"Tektronix Phaser 440"            = TKPH4401.SPD,Tektronix_Phaser_440
+"Tektronix Phaser 450 Extended"   = TKP450P1.SPD,Tektronix_Phaser_450_Extended
+"Tektronix Phaser 480J"           = TKP480J1.SPD,Tektronix_Phaser_480J
+"Tektronix Phaser 540"            = TKPH5401.SPD,LPTENUM\TektronixPhaser_5405917,TektronixPhaser_5405917,Tektronix_Phaser_540
+"Tektronix Phaser 550"            = TK550172.SPD,LPTENUM\Tektronix_Phaser_550C916,Tektronix_Phaser_550C916,Tektronix_Phaser_550
+"Tektronix Phaser 550 1200 dpi"   = TK550392.SPD,LPTENUM/Tektronix_Phaser_550_1200_dpiB758,Tektronix_Phaser_550_1200_dpiB758,Tektronix_Phaser_550_1200_dpi
+"Tektronix Phaser 550J"           = TKP550J1.SPD,Tektronix_Phaser_550J
+"Tektronix Phaser 550J 1200 dpi"  = TK550PJ1.SPD,Tektronix_Phaser_550J_1200_dpi
+"Tektronix Phaser 560"            = TKPH5601.SPD,Tektronix_Phaser_560
+"Tektronix Phaser 560 Extended"   = TKP560P1.SPD,Tektronix_Phaser_560_Extended
+"Tektronix Phaser 600"            = TKPh6001.SPD,LPTENUM\Tektronix_Phaser_60099E5,Tektronix_Phaser_60099E5,Tektronix_Phaser_600
+"Tektronix Phaser 600 Extended"   = TKP600P1.SPD,LPTENUM/Tektronix_Phaser_600_ExtendedF248,Tektronix_Phaser_600_ExtendedF248,Tektronix_Phaser_600_Extended
+"Tektronix Phaser II PXe 17"      = TKPXE171.SPD,Tektronix_Phaser_II_PXe_17
+"Tektronix Phaser II PXe 39"      = TKPXE391.SPD,Tektronix_Phaser_II_PXe_39
+"Tektronix Phaser II PXiJ"        = TKPHZ2J1.SPD,Tektronix_Phaser_II_PXiJ
+"Tektronix Phaser III PXiJ(2)"    = TKPHZ3J1.SPD,Tektronix_Phaser_III_PXiJ(2)
+"Tektronix Phaser IISD v2011.108" = TKPH2SD1.SPD,Tektronix_Phaser_IISD_v2011.108
+"Tektronix Phaser IISDJ"          = TKP2SDJ1.SPD,Tektronix_Phaser_IISDJ
+"Tektronix Phaser PX"             = PX.SPD,Tektronix_Phaser_PX
+"Tektronix Phaser PXi"            = TKPHPXI1.SPD,Tektronix_Phaser_PXi
+
+[Texas Instruments]
+"TI 2115 13 fonts v47.0"          = T1513470.SPD,TI_2115_13_fonts_v47.0
+"TI 2115 35 fonts v47.0"          = T1535470.SPD,TI_2115_35_fonts_v47.0
+"TI microLaser 600 2014.107 PS23" = TIML6231.SPD,TI_microLaser_600_2014.107_PS23
+"TI microLaser PowerPro 2014 67"  = TIMLP671.SPD,TI_microLaser_PowerPro_2014_67
+"TI microLaser PowerPro 2014.107" = TIMLP672.SPD,TI_microLaser_PowerPro_2014.107
+"TI microLaser PowerPro/12 2015"  = TIM12641.SPD,TI_microLaser_PowerPro/12_2015
+"TI microLaser Pro 2014.107 23"   = TIMLP233.SPD,TI_microLaser_Pro_2014.107_23
+"TI microLaser Pro 300 2014 PS23" = TIMP3231.SPD,TI_microLaser_Pro_300_2014_PS23
+"TI microLaser Pro 600 2013 PS65" = TIMLP651.SPD,TI_microLaser_Pro_600_2013_PS65
+"TI microLaser Pro 600 2014 PS65" = TIMLP652.SPD,TI_microLaser_Pro_600_2014_PS65
+"TI microLaser Pro E 2014.107 23" = TIMPE231.SPD,TI_microLaser_Pro_E_2014.107_23
+"TI microLaser Pro/8 2015"        = TIML8641.SPD,TI_microLaser_Pro/8_2015
+"TI microLaser XL PS17 v.52.1"    = TIX17521.SPD,TI_microLaser_XL_PS17_v.52.1
+"TI microLaser XL PS35 v.52.1"    = TIX35521.SPD,TI_microLaser_XL_PS35_v.52.1
+"TI microLaser16 Turbo v2010.119" = TITRB161.SPD,TI_microLaser16_Turbo_v2010.119
+"TI microLaser6 Turbo v2010.119"  = TITRBO61.SPD,TI_microLaser6_Turbo_v2010.119
+"TI microLaser9 Turbo v2010.119"  = TITRBO91.SPD,TI_microLaser9_Turbo_v2010.119
+"TI OmniLaser 2108 v45.0"         = TI08_450.SPD,TI_OmniLaser_2108_v45.0
+"TI Omnilaser 2115 v47.0"         = TI15_470.SPD,TI_Omnilaser_2115_v47.0
+
+[Unisys]
+"Unity 1800PM-R"                  = U1800PMR.SPD,Unity_1800PM-R
+"Unity 1800XL"                    = U1800XL.SPD,Unity_1800XL
+"Unity 1800XL-O"                  = U1800XLO.SPD,Unity_1800XL-O
+"UNISYS AP9210 17 Fonts v52.1"    = UNI17521.SPD,UNISYS_AP9210_17_Fonts_v52.1
+"UNISYS AP9210 39 Fonts v52.1"    = UNI39521.SPD,UNISYS_AP9210_39_Fonts_v52.1
+
+[Varityper]
+"Varityper 4000-5100A v52.3"      = VT4510A1.SPD,Varityper_4000-5100A_v52.3
+"Varityper 4000-5300A v52.3"      = VT4530A1.SPD,Varityper_4000-5300A_v52.3
+"Varityper 4000-5300B v52.3"      = VT4530B1.SPD,Varityper_4000-5300B_v52.3
+"Varityper 4000-5300C v52.3"      = VT4530C1.SPD,Varityper_4000-5300C_v52.3
+"Varityper 4000-5300EA v52.3"     = VT453EA1.SPD,Varityper_4000-5300EA_v52.3
+"Varityper 4000-5300EB v52.3"     = VT453EB1.SPD,Varityper_4000-5300EB_v52.3
+"Varityper 4000-5300EC v52.3"     = VT453EC1.SPD,Varityper_4000-5300EC_v52.3
+"Varityper 4000-5330A v52.3"      = VT4533A1.SPD,Varityper_4000-5330A_v52.3
+"Varityper 4000-5330B v52.3"      = VT4533B1.SPD,Varityper_4000-5330B_v52.3
+"Varityper 4000-5330C v52.3"      = VT4533C1.SPD,Varityper_4000-5330C_v52.3
+"Varityper 4000-5500A v52.3"      = VT4550A1.SPD,Varityper_4000-5500A_v52.3
+"Varityper 4000-5500B v52.3"      = VT4550B1.SPD,Varityper_4000-5500B_v52.3
+"Varityper 4000-5500C v52.3"      = VT4550C1.SPD,Varityper_4000-5500C_v52.3
+"Varityper 4000-5510A"            = VT4551A1.SPD,Varityper_4000-5510A
+"Varityper 4000-5630A v52.3"      = VT4563A1.SPD,Varityper_4000-5630A_v52.3
+"Varityper 4000-5630B v52.3"      = VT4563B1.SPD,Varityper_4000-5630B_v52.3
+"Varityper 4000-L300 v52.3"       = VT4L3001.SPD,Varityper_4000-L300_v52.3
+"Varityper 4000-L330 v52.3"       = VT4L3301.SPD,Varityper_4000-L330_v52.3
+"Varityper 4000-L500 v52.3"       = VT4L5X01.SPD,Varityper_4000-L500_v52.3
+"Varityper 4200B-P v49.3 or 52.2" = VT42P522.SPD,Varityper_4200B-P_v49.3_or_52.2
+"Varityper 4300P v49.3 or 52.2"   = VT43P522.SPD,Varityper_4300P_v49.3_or_52.2
+"Varityper 4990T v52.3"           = VT4990T1.SPD,Varityper_4990T_v52.3
+"Varityper 5100E v52.3"           = VT5100E1.SPD,Varityper_5100E_v52.3
+"Varityper 5510 v52.3"            = VT5510_1.SPD,Varityper_5510_v52.3
+"Varityper 5660 v52.3"            = VT5660_1.SPD,Varityper_5660_v52.3
+"Varityper 5860 v52.3"            = VT5860_1.SPD,Varityper_5860_v52.3
+"Varityper 5960E v52.3"           = VT5960E1.SPD,Varityper_5960E_v52.3
+"Varityper 6000 v52.3"            = VT6000_1.SPD,Varityper_6000_v52.3
+"Varityper 6990 v52.3"            = VT6990_1.SPD,Varityper_6990_v52.3
+"Varityper Series 4000-5300"      = VT530522.SPD,Varityper_Series_4000-5300
+"Varityper Series 4000-5330"      = V5334522.SPD,Varityper_Series_4000-5330
+"Varityper Series 4000-5500"      = VT550522.SPD,Varityper_Series_4000-5500
+"Varityper VT4990 v52.3"          = VT4990_1.SPD,Varityper_VT4990_v52.3
+"Varityper VT-600P v48.0"         = VT600P_1.SPD,Varityper_VT-600P_v48.0
+"Varityper VT-600W v48.0"         = VT600W_1.SPD,Varityper_VT-600W_v48.0
+
+[Wang]
+"Wang LCS15 FontPlus"             = WANG15FP.SPD,Wang_LCS15_FontPlus
+"Wang LCS15"                      = WANG15.SPD,Wang_LCS15
+
+[Xante]
+"Accel-a-Writer 8200 v2014.103"   = XT_82001.SPD,Accel-a-Writer_8200_v2014.103
+
+[Xerox]
+"Xerox 4215/MRP2 v2013.109"       = XR_42152.SPD,Xerox_4215/MRP2_v2013.109
+"Xerox 4219/MRP2 v2013.109"       = XR_42192.SPD,Xerox_4219/MRP2_v2013.109
+"Xerox 4220/MRP v2015.108"        = XR_42204.SPD,Xerox_4220/MRP_v2015.108
+"Xerox 4230/MRP v2015.108"        = XR_42302.SPD,Xerox_4230/MRP_v2015.108
+"Xerox 4505 PS"                   = XR_45051.SPD,LPTENUM\Xerox4505AFC6,Xerox4505AFC6,Xerox_4505_PS
+"Xerox 4510 PS"                   = XR_45101.SPD,LPTENUM\Xerox45103CAD,Xerox45103CAD,Xerox_4510_PS
+"Xerox 4520 PS"                   = XR_45201.SPD,LPTENUM\Xerox4520CCAD,Xerox4520CCAD,Xerox_4520_PS
+"Xerox 4700 II PS"                = XR470003.SPD,Xerox_4700_II_PS
+"Xerox 4700 II XScript"           = X4700II.SPD,Xerox_4700_II_XScript
+"Xerox 4900 PostScript"           = XRX49001.SPD,Xerox_4900_PostScript
+"Xerox DCS20 v3.0ER2.26"          = XDCS20.SPD,Xerox_DCS20_v3.0ER2.26
+"Xerox DCS35 v3.0ER2.26"          = XDCS35.SPD,Xerox_DCS35_v3.0ER2.26
+"Xerox DocuColor40 w/ Splash RIP" = SPDOCU20.SPD,Xerox_DocuColor40_w/_Splash_RIP
+"Xerox DocuColor40 w/ SX1000 RIP" = SX1DC40.SPD,Xerox_DocuColor40_w/_SX1000_RIP
+"Xerox DocuColor40 w/ SX3000 RIP" = SX3DC40.SPD,Xerox_DocuColor40_w/_SX3000_RIP
+"Xerox DocuColor40 w/Cyclone RIP" = CBAPX.SPD,Xerox_DocuColor40_w/Cyclone_RIP
+"Xerox DocuColor40 w/FieryXJ RIP" = EFXJX403.SPD,Xerox_DocuColor40_w/FieryXJ_RIP
+"Xerox DocuColor40 with XJ+4.2"   = EFXJX404.SPD,Xerox_DocuColor40_with_XJ+4.2
+"Xerox DocuColor5750 Splash RIP"  = SPAC6250.SPD,Xerox_DocuColor5750_Splash_RIP
+"Xerox Docucolor5750 w/ Fiery SI" = EFSIX503.SPD,Xerox_Docucolor5750_w/_Fiery_SI
+"Xerox DocuColor5750 w/ Fiery XJ" = EFXJX503.SPD,Xerox_DocuColor5750_w/_Fiery_XJ
+"Xerox DocuColor5750 w/ Splash50" = SP575050.SPD,Xerox_DocuColor5750_w/_Splash50
+"Xerox DocuPrint 180 NPS PS2"     = XDP180.SPD,Xerox_DocuPrint_180_NPS_PS2
+"Xerox DocuPrint 350HC v1.3.9"    = XDP350H.SPD,Xerox_DocuPrint_350HC_v1.3.9
+"Xerox DocuPrint 390 v1.3.9"      = XDP390.SPD,Xerox_DocuPrint_390_v1.3.9
+"Xerox DocuPrint 390HC v1.3.9"    = XDP390H.SPD,Xerox_DocuPrint_390HC_v1.3.9
+"Xerox DocuPrint 4050 NPS PS2"    = XDP40502.SPD,Xerox_DocuPrint_4050_NPS_PS2
+"Xerox DocuPrint 4090 NPS PS2"    = XDP40902.SPD,Xerox_DocuPrint_4090_NPS_PS2
+"Xerox DocuPrint 4512 PS"         = X4512PS.SPD,LPTENUM\XeroxDocuPrint_4512D38D,XeroxDocuPrint_4512D38D,Xerox_DocuPrint_4512_PS
+"Xerox 4517 PostScript Level 2"   = XR_45171.SPD,Xerox_4517_PostScript_Level_2
+"Xerox DocuPrint 4635 NPS PS2"    = XDP46352.SPD,Xerox_DocuPrint_4635_NPS_PS2
+"Xerox DocuPrint 4635 v1.3.9"     = XDP4635.SPD,Xerox_DocuPrint_4635_v1.3.9
+"Xerox DocuPrint 4850 NPS PS2"    = XDP48502.SPD,Xerox_DocuPrint_4850_NPS_PS2
+"Xerox DocuPrint 4890 NPS PS2"    = XDP48902.SPD,Xerox_DocuPrint_4890_NPS_PS2
+"Xerox DocuPrint C55 PS"          = XRC55DP0.SPD,LPTENUM\XeroxDocuPrint_C55D439,XeroxDocuPrint_C55D439,Xerox_DocuPrint_C55_PS
+"Xerox DocuTech 135 PS2"          = XRDT1354.SPD,Xerox_DocuTech_135_PS2
+"Xerox DocuTech 6135 (01.02.00)"  = XRD61351.SPD,Xerox_DocuTech_6135_(01.02.00)
+"Xerox DocuTech 6135"             = XRD61354.SPD,Xerox_DocuTech_6135
+"Xerox DocuTech 6180"             = XRD61801.SPD,Xerox_DocuTech_6180
+"Xerox DocuTech 90 PS2"           = XRDT0904.SPD,Xerox_DocuTech_90_PS2
+"Xerox MajestiK w/ DocuPress RIP" = DP__20_0.SPD,Xerox_MajestiK_w/_DocuPress_RIP
+"Xerox MajestiK w/ Fiery SI RIP"  = EFSIX203.SPD,Xerox_MajestiK_w/_Fiery_SI_RIP
+"Xerox MajestiK w/ Fiery XJ RIP"  = EFXJX203.SPD,Xerox_MajestiK_w/_Fiery_XJ_RIP
+"Xerox MajestiK with Cyclone RIP" = CBMAJ__1.SPD,Xerox_MajestiK_with_Cyclone_RIP
+"Xerox MajestiK with Splash RIP"  = SPMAJE50.SPD,Xerox_MajestiK_with_Splash_RIP
+"Xerox Regal with Cyclone RIP"    = CBMAJ__2.SPD,Xerox_Regal_with_Cyclone_RIP
+"Xerox Regal with DocuPress"      = DP__20_1.SPD,Xerox_Regal_with_DocuPress
+"Xerox Regal with Fiery SI RIP"   = EFSIX303.SPD,Xerox_Regal_with_Fiery_SI_RIP
+"Xerox Regal with Fiery XJ RIP"   = EFXJX304.SPD,Xerox_Regal_with_Fiery_XJ_RIP
+"Xerox Regal with Splash RIP"     = SPREGA50.SPD,Xerox_Regal_with_Splash_RIP
+"XPrint 4915 PostScript"          = XRX49151.SPD,XPrint_4915_PostScript
+"XPrint 4920/4925 PostScript"     = XRX49201.SPD,XPrint_4920/4925_PostScript
+
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. The section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[XT_82001.SPD]
+CopyFiles=@XT_82001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC1000.SPD]
+CopyFiles=@AGAC1000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC1SF2.SPD]
+CopyFiles=@AGAC1SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC1SF1.SPD]
+CopyFiles=@AGAC1SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC1500.SPD]
+CopyFiles=@AGAC1500.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC5SF2.SPD]
+CopyFiles=@AGAC5SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC0800.SPD]
+CopyFiles=@AGAC0800.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC8SF2.SPD]
+CopyFiles=@AGAC8SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAC8SF1.SPD]
+CopyFiles=@AGAC8SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGACCST1.SPD]
+CopyFiles=@AGACCST1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGACCSF1.SPD]
+CopyFiles=@AGACCSF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAVA202.SPD]
+CopyFiles=@AGAVA202.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGA20SF2.SPD]
+CopyFiles=@AGA20SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAVA252.SPD]
+CopyFiles=@AGAVA252.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGA25SF2.SPD]
+CopyFiles=@AGA25SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGA36SF2.SPD]
+CopyFiles=@AGA36SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGAVA442.SPD]
+CopyFiles=@AGAVA442.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGA44SF2.SPD]
+CopyFiles=@AGA44SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGELAN50.SPD]
+CopyFiles=@AGELAN50.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGEL5SF2.SPD]
+CopyFiles=@AGEL5SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPRO941.SPD]
+CopyFiles=@AGPRO941.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPR9400.SPD]
+CopyFiles=@AGPR9400.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP94SF2.SPD]
+CopyFiles=@AGP94SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP94SF1.SPD]
+CopyFiles=@AGP94SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPR9551.SPD]
+CopyFiles=@AGPR9551.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPR9550.SPD]
+CopyFiles=@AGPR9550.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP95SF2.SPD]
+CopyFiles=@AGP95SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP95SF1.SPD]
+CopyFiles=@AGP95SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPRS961.SPD]
+CopyFiles=@AGPRS961.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP96SF1.SPD]
+CopyFiles=@AGP96SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPRO971.SPD]
+CopyFiles=@AGPRO971.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP97SF1.SPD]
+CopyFiles=@AGP97SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPRO981.SPD]
+CopyFiles=@AGPRO981.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPR9800.SPD]
+CopyFiles=@AGPR9800.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP98SF2.SPD]
+CopyFiles=@AGP98SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP98SF1.SPD]
+CopyFiles=@AGP98SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGPR9836.SPD]
+CopyFiles=@AGPR9836.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP36SF2.SPD]
+CopyFiles=@AGP36SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGP36SF1.SPD]
+CopyFiles=@AGP36SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSELS51.SPD]
+CopyFiles=@AGSELS51.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSS5000.SPD]
+CopyFiles=@AGSS5000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSL5SF2.SPD]
+CopyFiles=@AGSL5SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSL5SF1.SPD]
+CopyFiles=@AGSL5SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSELS71.SPD]
+CopyFiles=@AGSELS71.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSS7000.SPD]
+CopyFiles=@AGSS7000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSL7SF2.SPD]
+CopyFiles=@AGSL7SF2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSL7SF1.SPD]
+CopyFiles=@AGSL7SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSSAV20.SPD]
+CopyFiles=@AGSSAV20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSSAV25.SPD]
+CopyFiles=@AGSSAV25.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSSAV36.SPD]
+CopyFiles=@AGSSAV36.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSSAV44.SPD]
+CopyFiles=@AGSSAV44.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGSTDS21.SPD]
+CopyFiles=@AGSTDS21.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AGST2SF1.SPD]
+CopyFiles=@AGST2SF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWMGS1.SPD]
+CopyFiles=@APLWMGS1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWGRI2.SPD]
+CopyFiles=@APLWGRI2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AP_NTXJ1.SPD]
+CopyFiles=@AP_NTXJ1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CBAPX.SPD]
+CopyFiles=@CBAPX.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[COLORQ.SPD]
+CopyFiles=@COLORQ.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPJOLT04.SPD]
+CopyFiles=@DPJOLT04.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL12602.SPD]
+CopyFiles=@DPL12602.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL15606.SPD]
+CopyFiles=@DPL15606.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL15804.SPD]
+CopyFiles=@DPL15804.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL20804.SPD]
+CopyFiles=@DPL20804.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL85501.SPD]
+CopyFiles=@DPL85501.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL9605.SPD]
+CopyFiles=@DPL9605.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPL9654.SPD]
+CopyFiles=@DPL9654.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DP4TY161.SPD]
+CopyFiles=@DP4TY161.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DP4TY201.SPD]
+CopyFiles=@DP4TY201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFXJX403.SPD]
+CopyFiles=@EFXJX403.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[T30V4.SPD]
+CopyFiles=@T30V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[T40V4.SPD]
+CopyFiles=@T40V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[T60V4.SPD]
+CopyFiles=@T60V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DP4TYP81.SPD]
+CopyFiles=@DP4TYP81.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPTY8PM1.SPD]
+CopyFiles=@DPTY8PM1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DC3500_1.SPD]
+CopyFiles=@DC3500_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLPS201.SPD]
+CopyFiles=@DCLPS201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX2PSM21.SPD]
+CopyFiles=@SX2PSM21.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCBLPEL1.SPD]
+CopyFiles=@GCBLPEL1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCBLP2_1.SPD]
+CopyFiles=@GCBLP2_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCBLP2S1.SPD]
+CopyFiles=@GCBLP2S1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCBL4921.SPD]
+CopyFiles=@GCBL4921.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCBL5141.SPD]
+CopyFiles=@GCBL5141.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCCTONE2.SPD]
+CopyFiles=@GCCTONE2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCELT6_2.SPD]
+CopyFiles=@GCELT6_2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCSP12_3.SPD]
+CopyFiles=@GCSP12_3.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GCSP6_3.SPD]
+CopyFiles=@GCSP6_3.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[GDGL8001.SPD]
+CopyFiles=@GDGL8001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LHHERK_1.SPD]
+CopyFiles=@LHHERK_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HERMES_1.SPD]
+CopyFiles=@HERMES_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HERMES_2.SPD]
+CopyFiles=@HERMES_2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX2IRIS1.SPD]
+CopyFiles=@SX2IRIS1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KD8600P1.SPD]
+CopyFiles=@KD8600P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KD8650P1.SPD]
+CopyFiles=@KD8650P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KD139201.SPD]
+CopyFiles=@KD139201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KDH00001.SPD]
+CopyFiles=@KDH00001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KD92P001.SPD]
+CopyFiles=@KD92P001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1500.SPD]
+CopyFiles=@FS-1500.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1500A.SPD]
+CopyFiles=@FS-1500A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1550.SPD]
+CopyFiles=@FS-1550.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1550P.SPD]
+CopyFiles=@FS-1550P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1550A.SPD]
+CopyFiles=@FS-1550A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1600.SPD]
+CopyFiles=@FS-1600.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-16002.SPD]
+CopyFiles=@FS-16002.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1600P.SPD]
+CopyFiles=@FS-1600P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1600A.SPD]
+CopyFiles=@FS-1600A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS1600A2.SPD]
+CopyFiles=@FS1600A2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-1700.SPD]
+CopyFiles=@FS-1700.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-17002.SPD]
+CopyFiles=@FS-17002.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3400.SPD]
+CopyFiles=@FS-3400.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3400P.SPD]
+CopyFiles=@FS-3400P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3400A.SPD]
+CopyFiles=@FS-3400A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3500.SPD]
+CopyFiles=@FS-3500.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3500A.SPD]
+CopyFiles=@FS-3500A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3600.SPD]
+CopyFiles=@FS-3600.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-36002.SPD]
+CopyFiles=@FS-36002.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3600P.SPD]
+CopyFiles=@FS-3600P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3600A.SPD]
+CopyFiles=@FS-3600A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS3600A2.SPD]
+CopyFiles=@FS3600A2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-3700.SPD]
+CopyFiles=@FS-3700.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-37002.SPD]
+CopyFiles=@FS-37002.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-400.SPD]
+CopyFiles=@FS-400.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-400A.SPD]
+CopyFiles=@FS-400A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-5500.SPD]
+CopyFiles=@FS-5500.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-5500A.SPD]
+CopyFiles=@FS-5500A.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-600.SPD]
+CopyFiles=@FS-600.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-6500.SPD]
+CopyFiles=@FS-6500.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-6500P.SPD]
+CopyFiles=@FS-6500P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-650P2.SPD]
+CopyFiles=@FS-650P2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-7000.SPD]
+CopyFiles=@FS-7000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FS-850.SPD]
+CopyFiles=@FS-850.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[P-2000.SPD]
+CopyFiles=@P-2000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q-8010.SPD]
+CopyFiles=@Q-8010.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[U1200XL4.SPD]
+CopyFiles=@U1200XL4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[L200_493.SPD]
+CopyFiles=@L200_493.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH230__1.SPD]
+CopyFiles=@LH230__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH260__1.SPD]
+CopyFiles=@LH260__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH830__1.SPD]
+CopyFiles=@LH830__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH930__1.SPD]
+CopyFiles=@LH930__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LHPR60_1.SPD]
+CopyFiles=@LHPR60_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[MOIM1201.SPD]
+CopyFiles=@MOIM1201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[MONO_522.SPD]
+CopyFiles=@MONO_522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NC_10971.SPD]
+CopyFiles=@NC_10971.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NC97FAX1.SPD]
+CopyFiles=@NC97FAX1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS10602.SPD]
+CopyFiles=@QMS10602.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS16602.SPD]
+CopyFiles=@QMS16602.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS1660E.SPD]
+CopyFiles=@QMS1660E.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS2025.SPD]
+CopyFiles=@QMS2025.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS2060.SPD]
+CopyFiles=@QMS2060.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS2425.SPD]
+CopyFiles=@QMS2425.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS3825.SPD]
+CopyFiles=@QMS3825.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS4060.SPD]
+CopyFiles=@QMS4060.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSCS494.SPD]
+CopyFiles=@QMSCS494.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q30SI503.SPD]
+CopyFiles=@Q30SI503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QCS10001.SPD]
+CopyFiles=@QCS10001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QCS10002.SPD]
+CopyFiles=@QCS10002.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSMCCX.SPD]
+CopyFiles=@QMSMCCX.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSMCLX.SPD]
+CopyFiles=@QMSMCLX.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSMCPLS.SPD]
+CopyFiles=@QMSMCPLS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSJP461.SPD]
+CopyFiles=@QMSJP461.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSJ_461.SPD]
+CopyFiles=@QMSJ_461.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QM815MR1.SPD]
+CopyFiles=@QM815MR1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMPS8151.SPD]
+CopyFiles=@QMPS8151.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMPS8251.SPD]
+CopyFiles=@QMPS8251.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LHQUAS_1.SPD]
+CopyFiles=@LHQUAS_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QUME_470.SPD]
+CopyFiles=@QUME_470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[R6000505.SPD]
+CopyFiles=@R6000505.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[S5232503.SPD]
+CopyFiles=@S5232503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SH4100P1.SPD]
+CopyFiles=@SH4100P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX1000.SPD]
+CopyFiles=@SX1000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX2PSM22.SPD]
+CopyFiles=@SX2PSM22.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX4PSM21.SPD]
+CopyFiles=@SX4PSM21.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[JX9460PS.SPD]
+CopyFiles=@JX9460PS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[JX9500PS.SPD]
+CopyFiles=@JX9500PS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[JX9600PS.SPD]
+CopyFiles=@JX9600PS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[JX9660PS.SPD]
+CopyFiles=@JX9660PS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[JX9700PS.SPD]
+CopyFiles=@JX9700PS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[S746J522.SPD]
+CopyFiles=@S746J522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SPDOCU20.SPD]
+CopyFiles=@SPDOCU20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX1DC40.SPD]
+CopyFiles=@SX1DC40.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX3DC40.SPD]
+CopyFiles=@SX3DC40.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX4PPSM1.SPD]
+CopyFiles=@SX4PPSM1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[BRISQUE.SPD]
+CopyFiles=@BRISQUE.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DL400.SPD]
+CopyFiles=@DL400.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DL800.SPD]
+CopyFiles=@DL800.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DOLEV.SPD]
+CopyFiles=@DOLEV.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SPONTANE.SPD]
+CopyFiles=@SPONTANE.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX2PPPSM.SPD]
+CopyFiles=@SX2PPPSM.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[BRIDG.SPD]
+CopyFiles=@BRIDG.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SX8PSM21.SPD]
+CopyFiles=@SX8PSM21.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SXVIP21.SPD]
+CopyFiles=@SXVIP21.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SPAC6250.SPD]
+CopyFiles=@SPAC6250.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPH1401.SPD]
+CopyFiles=@TKPH1401.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPH5601.SPD]
+CopyFiles=@TKPH5601.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK200392.SPD]
+CopyFiles=@TK200392.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP200J1.SPD]
+CopyFiles=@TKP200J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK220391.SPD]
+CopyFiles=@TK220391.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP220J1.SPD]
+CopyFiles=@TKP220J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK240172.SPD]
+CopyFiles=@TK240172.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK240392.SPD]
+CopyFiles=@TK240392.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP240J1.SPD]
+CopyFiles=@TKP240J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP300J1.SPD]
+CopyFiles=@TKP300J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK340691.SPD]
+CopyFiles=@TK340691.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK340171.SPD]
+CopyFiles=@TK340171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPH4401.SPD]
+CopyFiles=@TKPH4401.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP480J1.SPD]
+CopyFiles=@TKP480J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPH5401.SPD]
+CopyFiles=@TKPH5401.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK550392.SPD]
+CopyFiles=@TK550392.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK550172.SPD]
+CopyFiles=@TK550172.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK550PJ1.SPD]
+CopyFiles=@TK550PJ1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP550J1.SPD]
+CopyFiles=@TKP550J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPXE171.SPD]
+CopyFiles=@TKPXE171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPXE391.SPD]
+CopyFiles=@TKPXE391.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPHZ2J1.SPD]
+CopyFiles=@TKPHZ2J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPHZ3J1.SPD]
+CopyFiles=@TKPHZ3J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPH2SD1.SPD]
+CopyFiles=@TKPH2SD1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP2SDJ1.SPD]
+CopyFiles=@TKP2SDJ1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[PX.SPD]
+CopyFiles=@PX.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPHPXI1.SPD]
+CopyFiles=@TKPHPXI1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK350171.SPD]
+CopyFiles=@TK350171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK350691.SPD]
+CopyFiles=@TK350691.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP300X1.SPD]
+CopyFiles=@TKP300X1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP450P1.SPD]
+CopyFiles=@TKP450P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP600P1.SPD]
+CopyFiles=@TKP600P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPh6001.SPD]
+CopyFiles=@TKPh6001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP560P1.SPD]
+CopyFiles=@TKP560P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[T1513470.SPD]
+CopyFiles=@T1513470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[T1535470.SPD]
+CopyFiles=@T1535470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIML6231.SPD]
+CopyFiles=@TIML6231.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP671.SPD]
+CopyFiles=@TIMLP671.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP672.SPD]
+CopyFiles=@TIMLP672.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIM12641.SPD]
+CopyFiles=@TIM12641.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP233.SPD]
+CopyFiles=@TIMLP233.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMP3231.SPD]
+CopyFiles=@TIMP3231.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP651.SPD]
+CopyFiles=@TIMLP651.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP652.SPD]
+CopyFiles=@TIMLP652.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMPE231.SPD]
+CopyFiles=@TIMPE231.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIML8641.SPD]
+CopyFiles=@TIML8641.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIX17521.SPD]
+CopyFiles=@TIX17521.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIX35521.SPD]
+CopyFiles=@TIX35521.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TITRB161.SPD]
+CopyFiles=@TITRB161.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TITRBO61.SPD]
+CopyFiles=@TITRBO61.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TITRBO91.SPD]
+CopyFiles=@TITRBO91.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TI08_450.SPD]
+CopyFiles=@TI08_450.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TI15_470.SPD]
+CopyFiles=@TI15_470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[U1800PMR.SPD]
+CopyFiles=@U1800PMR.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[U1800XL.SPD]
+CopyFiles=@U1800XL.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[U1800XLO.SPD]
+CopyFiles=@U1800XLO.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[UNI17521.SPD]
+CopyFiles=@UNI17521.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[UNI39521.SPD]
+CopyFiles=@UNI39521.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4510A1.SPD]
+CopyFiles=@VT4510A1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4530A1.SPD]
+CopyFiles=@VT4530A1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4530B1.SPD]
+CopyFiles=@VT4530B1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4530C1.SPD]
+CopyFiles=@VT4530C1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT453EA1.SPD]
+CopyFiles=@VT453EA1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT453EB1.SPD]
+CopyFiles=@VT453EB1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT453EC1.SPD]
+CopyFiles=@VT453EC1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4533A1.SPD]
+CopyFiles=@VT4533A1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4533B1.SPD]
+CopyFiles=@VT4533B1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4533C1.SPD]
+CopyFiles=@VT4533C1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4550A1.SPD]
+CopyFiles=@VT4550A1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4550B1.SPD]
+CopyFiles=@VT4550B1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4550C1.SPD]
+CopyFiles=@VT4550C1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4551A1.SPD]
+CopyFiles=@VT4551A1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4563A1.SPD]
+CopyFiles=@VT4563A1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4563B1.SPD]
+CopyFiles=@VT4563B1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4L3001.SPD]
+CopyFiles=@VT4L3001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4L3301.SPD]
+CopyFiles=@VT4L3301.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4L5X01.SPD]
+CopyFiles=@VT4L5X01.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT42P522.SPD]
+CopyFiles=@VT42P522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT43P522.SPD]
+CopyFiles=@VT43P522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4990T1.SPD]
+CopyFiles=@VT4990T1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT5100E1.SPD]
+CopyFiles=@VT5100E1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT5510_1.SPD]
+CopyFiles=@VT5510_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT5660_1.SPD]
+CopyFiles=@VT5660_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT5860_1.SPD]
+CopyFiles=@VT5860_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT5960E1.SPD]
+CopyFiles=@VT5960E1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT6000_1.SPD]
+CopyFiles=@VT6000_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT6990_1.SPD]
+CopyFiles=@VT6990_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT530522.SPD]
+CopyFiles=@VT530522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[V5334522.SPD]
+CopyFiles=@V5334522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT550522.SPD]
+CopyFiles=@VT550522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT4990_1.SPD]
+CopyFiles=@VT4990_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT600P_1.SPD]
+CopyFiles=@VT600P_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT600W_1.SPD]
+CopyFiles=@VT600W_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[WANG15FP.SPD]
+CopyFiles=@WANG15FP.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[WANG15.SPD]
+CopyFiles=@WANG15.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[X4512PS.SPD]
+CopyFiles=@X4512PS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[X4700II.SPD]
+CopyFiles=@X4700II.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_42152.SPD]
+CopyFiles=@XR_42152.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_42192.SPD]
+CopyFiles=@XR_42192.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_42204.SPD]
+CopyFiles=@XR_42204.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_42302.SPD]
+CopyFiles=@XR_42302.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_45051.SPD]
+CopyFiles=@XR_45051.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_45101.SPD]
+CopyFiles=@XR_45101.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_45171.SPD]
+CopyFiles=@XR_45171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR_45201.SPD]
+CopyFiles=@XR_45201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XR470003.SPD]
+CopyFiles=@XR470003.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRX49001.SPD]
+CopyFiles=@XRX49001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDCS20.SPD]
+CopyFiles=@XDCS20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDCS35.SPD]
+CopyFiles=@XDCS35.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP350H.SPD]
+CopyFiles=@XDP350H.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP390.SPD]
+CopyFiles=@XDP390.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP390H.SPD]
+CopyFiles=@XDP390H.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP4635.SPD]
+CopyFiles=@XDP4635.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRDT1354.SPD]
+CopyFiles=@XRDT1354.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRD61351.SPD]
+CopyFiles=@XRD61351.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRDT0904.SPD]
+CopyFiles=@XRDT0904.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP40502.SPD]
+CopyFiles=@XDP40502.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP180.SPD]
+CopyFiles=@XDP180.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP40902.SPD]
+CopyFiles=@XDP40902.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP46352.SPD]
+CopyFiles=@XDP46352.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP48502.SPD]
+CopyFiles=@XDP48502.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XDP48902.SPD]
+CopyFiles=@XDP48902.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRC55DP0.SPD]
+CopyFiles=@XRC55DP0.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRD61354.SPD]
+CopyFiles=@XRD61354.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRD61801.SPD]
+CopyFiles=@XRD61801.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DP__20_0.SPD]
+CopyFiles=@DP__20_0.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DP__20_1.SPD]
+CopyFiles=@DP__20_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFXJX203.SPD]
+CopyFiles=@EFXJX203.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CBMAJ__1.SPD]
+CopyFiles=@CBMAJ__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CBMAJ__2.SPD]
+CopyFiles=@CBMAJ__2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SPMAJE50.SPD]
+CopyFiles=@SPMAJE50.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFSIX203.SPD]
+CopyFiles=@EFSIX203.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFSIX303.SPD]
+CopyFiles=@EFSIX303.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFSIX503.SPD]
+CopyFiles=@EFSIX503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFXJX304.SPD]
+CopyFiles=@EFXJX304.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFXJX404.SPD]
+CopyFiles=@EFXJX404.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EFXJX503.SPD]
+CopyFiles=@EFXJX503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SP575050.SPD]
+CopyFiles=@SP575050.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SPREGA50.SPD]
+CopyFiles=@SPREGA50.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRX49151.SPD]
+CopyFiles=@XRX49151.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[XRX49201.SPD]
+CopyFiles=@XRX49201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation) or if it's a color
+; profile (since the DestinationDirs can only handle sections, and not
+; individual files).
+;
+
+[PSCRIPT]
+PSCRIPT.DRV
+PSCRIPT.HLP
+PSCRIPT.INI
+TESTPS.TXT
+APPLE380.SPD
+FONTS.MFM
+ICONLIB.DLL
+PSMON.DLL
+
+[UNI]
+UNIDRV.DLL
+UNIDRV.HLP
+ICONLIB.DLL
+
+[UNICLR]
+UNIDRV.DLL
+UNIDRV.HLP
+DMCOLOR.DLL
+ICONLIB.DLL
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+
+[PSCRIPT_DATA]
+DriverFile=PSCRIPT.DRV
+HelpFile=PSCRIPT.HLP
+LanguageMonitor=%PS_MONITOR%
+
+[UNI_DATA]
+HelpFile=UNIDRV.HLP
+DefaultDataType=EMF
+
+;
+; Color profiles go to the colors directory. All other files go to the
+; system directory
+;
+
+[DestinationDirs]
+DefaultDestDir=11
+
+;
+; Hints for installing language monitors from a print server. These
+; strings are not localized (since the localizable portion comes
+; directly from the server).
+;
+[LanguageMonitorHints]
+"PJL Language Monitor"="PJL Language Monitor,PJLMON.DLL"
+"PostScript Language Monitor"="PostScript Language Monitor,PSMON.DLL"
+
+;
+; List of application cache files that need removal during upgrade. Key
+; off the file extension listed in the [Extensions] section of win.ini.
+;
+[Caches to Remove]
+qdi=WPR.DAT
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+CLASSNAME="Printer"
+TTYNAME="Generic / Text Only"
+GENERIC="Generic"
+PJL_MONITOR="PJL Language Monitor,PJLMON.DLL"
+PS_MONITOR="PostScript Language Monitor,PSMON.DLL"
+PrinterSetup_Desc = "Printer set up"

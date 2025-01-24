@@ -1,0 +1,907 @@
+*% Copyright 2000 Oce-Nederland B.V., Venlo, The Netherlands
+*% All rights reserved.
+*%
+*% Oce identification: %name: 3155PCL.GPD % %version: 1 % date:00-05-30
+*%
+
+*GPDSpecVersion: "1.0"
+*GPDFileName: "3155PCL.GPD"
+*GPDFileVersion: "1.3"
+*CodePage: 1252
+*ModelName: "Oce 3155 PCL5e"
+*MasterUnits: PAIR(1200, 1200)
+*ResourceDLL: "pcl5eres.dll"
+*Include: "ttfsub.gpd"
+*Include: "StdNames.gpd"
+
+*% Configuration items for the general NC31X5
+
+*Define: OCE_NC3155
+
+*Macros:OCE_NC31X5_Settings
+{
+	OCE_SET_PPM:55
+}
+
+*Include: "locale.gpd"
+
+*Feature: RESDLL
+{
+    *Name: "resource dll files"
+    *ConcealFromUI?: TRUE
+
+    *Option: UniresDLL
+    {
+        *Name: "unires.dll"
+    }
+    *Option: Pcl5eresDLL
+    {
+        *Name: "pcl5eres.dll"
+    }
+    *Option: DpsresDLL
+    {
+    	*Name: "31x5LC04.DLL"
+	}
+}
+
+
+*Macros: OceInputBin
+{
+	TRAY1_DISPLAY:                 		RESDLL.DpsresDLL.226
+	TRAY2_DISPLAY:                  	RESDLL.DpsresDLL.227
+	TRAY3_DISPLAY:                  	RESDLL.DpsresDLL.228
+	TRAY4_DISPLAY:			        	RESDLL.DpsresDLL.229
+
+*%	UPPER_DISPLAY:                  	RESDLL.DpsresDLL.2
+*%	MIDDLE_DISPLAY:        				RESDLL.DpsresDLL.3
+*%	LOWER_DISPLAY:                  	RESDLL.DpsresDLL.4
+	MANUAL_FEEDER_DISPLAY:				RESDLL.DpsresDLL.197
+}
+
+*Macros: OceManualFeeder
+{
+*%	MANUAL_A3_DISPLAY:				RESDLL.DpsresDLL.10
+*%	MANUAL_A4_DISPLAY:				RESDLL.DpsresDLL.11
+*%	MANUAL_COMMERCIAL_DISPLAY:		RESDLL.DpsresDLL.12
+*%	MANUAL_FOLIO_DISPLAY:			RESDLL.DpsresDLL.13
+*%	MANUAL_FOOLSCAP_DISPLAY:		RESDLL.DpsresDLL.14
+*%	MANUAL_LEDGER_DISPLAY:			RESDLL.DpsresDLL.15
+*%	MANUAL_LEGAL_SMALL_DISPLAY:		RESDLL.DpsresDLL.16
+*%	MANUAL_LEGAL_LARGE_DISPLAY:		RESDLL.DpsresDLL.17
+*%	MANUAL_LETTER_DISPLAY:			RESDLL.DpsresDLL.18
+}
+
+*Macros: OceCovers
+{
+*%	COVERS_DISPLAY:			        	RESDLL.DpsresDLL.20
+*%	FRONT_DISPLAY:			        	RESDLL.DpsresDLL.21
+*%	BACK_DISPLAY:			       	RESDLL.DpsresDLL.22
+*%	FRONTBACK_DISPLAY:		       	RESDLL.DpsresDLL.23
+}
+
+*Macros: OceMailbox
+{
+*%    	MAILBOX_DISPLAY:                		RESDLL.Pcl5eresDLL.422
+*%	ENABLED_DISPLAY:		        		RESDLL.DpsresDLL.30
+*%	DISABLED_DISPLAY:		        		RESDLL.DpsresDLL.31
+}
+
+*Macros: OceOptionalMailboxService
+{
+*%	OPTIONAL_MAILBOX_DISPLAY:	    		RESDLL.DpsresDLL.40
+}
+
+*Macros: OceOutputBin
+{
+*%	BASED_ON_SIZE_DISPLAY:		    		RESDLL.DpsresDLL.50
+*%	PRINTER_DEFAULT_DISPLAY:			RESDLL.DpsresDLL.51
+*%	LOWER_STACK_DISPLAY:				RESDLL.DpsresDLL.52
+*%	UPPER_STACK_DISPLAY:				RESDLL.DpsresDLL.53
+*%	OCE_UPPER_TRAY_DISPLAY:				RESDLL.DpsresDLL.54
+*%	EXTERNAL_FINISHER_DISPLAY:			RESDLL.DpsresDLL.55
+*%	BYPASS_DISPLAY:					RESDLL.DpsresDLL.56
+*%	BIN1_DISPLAY:					RESDLL.DpsresDLL.57
+*%	BIN2_DISPLAY:					RESDLL.DpsresDLL.58
+*%	BIN3_DISPLAY:					RESDLL.DpsresDLL.59
+*%	BIN4_DISPLAY:					RESDLL.DpsresDLL.60
+*%	BIN5_DISPLAY:					RESDLL.DpsresDLL.61
+*%	BIN6_DISPLAY:					RESDLL.DpsresDLL.62
+*%	BIN7_DISPLAY:					RESDLL.DpsresDLL.63
+*%	BIN8_DISPLAY:					RESDLL.DpsresDLL.64
+*%	BIN9_DISPLAY:					RESDLL.DpsresDLL.65
+*%	BIN10_DISPLAY:					RESDLL.DpsresDLL.66
+*%	BIN11_DISPLAY:					RESDLL.DpsresDLL.67
+*%	BIN12_DISPLAY:					RESDLL.DpsresDLL.68
+*%	BIN13_DISPLAY:					RESDLL.DpsresDLL.69
+*%	BIN14_DISPLAY:					RESDLL.DpsresDLL.70
+*%	BIN15_DISPLAY:					RESDLL.DpsresDLL.71
+*%	BIN16_DISPLAY:					RESDLL.DpsresDLL.72
+*%	BIN17_DISPLAY:					RESDLL.DpsresDLL.73
+*%	BIN18_DISPLAY:					RESDLL.DpsresDLL.74
+*%	BIN19_DISPLAY:					RESDLL.DpsresDLL.75
+*%	BIN20_DISPLAY:					RESDLL.DpsresDLL.76
+*%	BIN21_DISPLAY:					RESDLL.DpsresDLL.77
+*%	BIN22_DISPLAY:					RESDLL.DpsresDLL.78
+*%	BIN23_DISPLAY:					RESDLL.DpsresDLL.79
+*%	BIN24_DISPLAY:					RESDLL.DpsresDLL.80
+*%	BIN25_DISPLAY:					RESDLL.DpsresDLL.81
+*%	BIN26_DISPLAY:					RESDLL.DpsresDLL.82
+*%	BIN27_DISPLAY:					RESDLL.DpsresDLL.83
+*%	BIN28_DISPLAY:					RESDLL.DpsresDLL.84
+*%	BIN29_DISPLAY:					RESDLL.DpsresDLL.85
+*%	BIN30_DISPLAY:					RESDLL.DpsresDLL.86
+*%	BIN31_DISPLAY:					RESDLL.DpsresDLL.87
+*%	BIN32_DISPLAY:					RESDLL.DpsresDLL.88
+*%	BIN33_DISPLAY:					RESDLL.DpsresDLL.89
+*%	BIN34_DISPLAY:					RESDLL.DpsresDLL.90
+*%	BIN35_DISPLAY:					RESDLL.DpsresDLL.91
+*%	BIN36_DISPLAY:					RESDLL.DpsresDLL.92
+*%	BIN37_DISPLAY:					RESDLL.DpsresDLL.93
+*%	BIN38_DISPLAY:					RESDLL.DpsresDLL.94
+*%	BIN39_DISPLAY:					RESDLL.DpsresDLL.95
+*%	BIN40_DISPLAY:					RESDLL.DpsresDLL.96
+*%	OUTPUT_TRAY_DISPLAY:			RESDLL.DpsresDLL.97
+*%	FINISHER_BIN_DISPLAY:			RESDLL.DpsresDLL.98
+}
+
+*Macros: OceStapling
+{
+*%	STAPLER_DISPLAY:			   	 	RESDLL.Pcl5eresDLL.433
+*%	AS_IN_DOCUMENT_DISPLAY:				RESDLL.DpsresDLL.100
+*%	NO_STAPLE_DISPLAY:              	RESDLL.DpsresDLL.101
+*%	STAPLE_DISPLAY:                 		RESDLL.Pcl5eresDLL.533
+}
+
+*Macros: OceJogging
+{
+*%	JOGGING_DISPLAY:			    		RESDLL.DpsresDLL.110
+*%	PRINTERS_DEFAULT_DISPLAY:			RESDLL.DpsresDLL.111
+*%	NO_JOGGING_DISPLAY:              	RESDLL.DpsresDLL.112
+*%	JOG_DISPLAY:                 		RESDLL.DpsresDLL.113
+}
+
+*Macros: OceBannerPage
+{
+*%	BANNERPAGE_DISPLAY:		        	RESDLL.DpsresDLL.120
+*%    	AUTOMATIC_BANNER_DISPLAY:      		RESDLL.Pcl5eresDLL.577
+*%	YES_DISPLAY:			        	RESDLL.Pcl5eresDLL.539
+*%	NO_DISPLAY:			           		RESDLL.Pcl5eresDLL.540
+}
+
+*Macros: OceResolution
+{
+*%	RESOLUTION_DISPLAY:		        	RESDLL.DpsresDLL.130
+	RES600DPI_DISPLAY:		       	 	RESDLL.DpsresDLL.234
+*%	RES300DPI_DISPLAY:		       	 RESDLL.DpsresDLL.132
+}
+
+*Macros: OceDeviceFonts
+{
+*%	USEDEVICEFONTS_DISPLAY:				RESDLL.DpsresDLL.140
+}
+
+*Macros: OceFinishing
+{
+*%	FINISHER_DISPLAY:				RESDLL.DpsresDLL.150
+*%	20_SORTER_DISPLAY:			RESDLL.DpsresDLL.151
+*%	40_SORTER_DISPLAY:			RESDLL.DpsresDLL.152
+*%	STACKER_STAPLER_DISPLAY:		RESDLL.DpsresDLL.153
+*%	STACKER_STAPLER_ILF_DISPLAY:		RESDLL.DpsresDLL.154
+}
+
+*Macros: InstalledNotInstalled
+{
+*%	INSTALLED_DISPLAY:		        	RESDLL.Pcl5eresDLL.443
+*%	NOT_INSTALLED_DISPLAY:		    		RESDLL.Pcl5eresDLL.444
+}
+
+*Macros: OcePapers
+{
+	OCE_A4_DISPLAY:					RESDLL.DpsresDLL.28
+	OCE_A3_DISPLAY:					RESDLL.DpsresDLL.30
+	OCE_A5_DISPLAY:					RESDLL.DpsresDLL.31
+	OCE_COMMERCIAL_DISPLAY:			RESDLL.DpsresDLL.33
+	OCE_FOOLSCAP_DISPLAY:			RESDLL.DpsresDLL.34
+	OCE_FOLIO_DISPLAY:				RESDLL.DpsresDLL.32
+	OCE_LETTER_DISPLAY:				RESDLL.DpsresDLL.29
+	OCE_LEGAL_DISPLAY:				RESDLL.DpsresDLL.35
+	OCE_TABLOID_DISPLAY:			RESDLL.DpsresDLL.39
+	OCE_LEGAL_SMALL_DISPLAY:		RESDLL.DpsresDLL.37
+	OCE_STATEMENT_DISPLAY:			RESDLL.DpsresDLL.38
+
+	OCE_ORIENTATION_DISPLAY:		RESDLL.DpsresDLL.240
+	OCE_PAPER_SOURCE_DISPLAY:		RESDLL.DpsresDLL.241
+	OCE_DUPLEX_DISPLAY:				RESDLL.DpsresDLL.191
+
+}
+
+*Macros: OceDither
+{
+	OCE_HALFTONING_DISPLAY:				RESDLL.DpsresDLL.56
+	DITHER1_DISPLAY:    			RESDLL.DpsresDLL.235
+	DITHER2_DISPLAY:    			RESDLL.DpsresDLL.236
+	DITHER3_DISPLAY:    			RESDLL.DpsresDLL.237
+	DITHER4_DISPLAY:    			RESDLL.DpsresDLL.238
+	DITHER5_DISPLAY:    			RESDLL.DpsresDLL.239
+}
+
+
+
+
+*% Paper Format Macros
+*BlockMacro: OCE_PAPER_A4
+{
+    *Option: A4
+    {
+    	*rcNameID: =OCE_A4_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9500, 13536)
+        		*PrintableOrigin: PAIR(216,240)
+        		*CursorOrigin: PAIR(216,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l26a8c1E<1B>*p0x0Y<1B>*c0t5820x8276Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9500, 13536)
+        		*PrintableOrigin: PAIR(216,240)
+        		*CursorOrigin: PAIR(216, 13776)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l26a8c1E<1B>*p0x0Y<1B>*c0t8276x5820Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_A3
+{
+    *Option: A3
+    {
+    	*rcNameID: =OCE_A3_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(13596,19348)
+        		*PrintableOrigin: PAIR(228, 240)
+        		*CursorOrigin: PAIR(228, 240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l27a8c1E<1B>*p0x0Y<1B>*c0t8283x11766Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(13596,19348)
+        		*PrintableOrigin: PAIR(228, 240)
+        		*CursorOrigin: PAIR(228, 19588)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l27a8c1E<1B>*p0x0Y<1B>*c0t11766x8283Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_A5
+{
+    *Option: A5
+    {
+    	*rcNameID: =OCE_A5_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(6580,9428)
+        		*PrintableOrigin: PAIR(228, 240)
+        		*CursorOrigin: PAIR(228, 240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l25a8c1E<1B>*p0x0Y<1B>*c0t4063x5806Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(6580,9428)
+        		*PrintableOrigin: PAIR(228, 240)
+        		*CursorOrigin: PAIR(228, 9668)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l25a8c1E<1B>*p0x0Y<1B>*c0t5806x4063Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_COMMERCIAL
+{
+    *Option: COMMERCIAL
+    {
+    	*rcNameID: =OCE_COMMERCIAL_DISPLAY
+	*PageDimensions: PAIR(9900,12750)
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9488,12260)
+        		*PrintableOrigin: PAIR(228,240)
+        		*CursorOrigin: PAIR(228,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l503a8c1E<1B>*p0x0Y<1B>*c0t5813x7506Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9488,12260)
+        		*PrintableOrigin: PAIR(228,240)
+        		*CursorOrigin: PAIR(228,12500)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l503a8c1E<1B>*p0x0Y<1B>*c0t7506x5813Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_FOOLSCAP
+{
+    *Option: FOOLSCAP_FOLIO
+    {
+    	*rcNameID: =OCE_FOOLSCAP_DISPLAY
+	*PageDimensions: PAIR(9600,15600)
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9156,15096)
+        		*PrintableOrigin: PAIR(228,240)
+        		*CursorOrigin: PAIR(228,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l504a8c1E<1B>*p0x0Y<1B>*c0t5623x9216Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9156,15096)
+        		*PrintableOrigin: PAIR(228,240)
+        		*CursorOrigin: PAIR(228, 15336)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l504a8c1E<1B>*p0x0Y<1B>*c0t9216x5623Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_FOLIO
+{
+    *Option: FOLIO
+    {
+    	*rcNameID: =OCE_FOLIO_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9488,15096)
+        		*PrintableOrigin: PAIR(228,240)
+        		*CursorOrigin: PAIR(228,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l504a8c1E<1B>*p0x0Y<1B>*c0t5813x9186Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9488,15096)
+        		*PrintableOrigin: PAIR(228,240)
+        		*CursorOrigin: PAIR(228, 15336)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l504a8c1E<1B>*p0x0Y<1B>*c0t9186x5813Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+
+*BlockMacro: OCE_PAPER_LETTER
+{
+    *Option: LETTER
+    {
+    	*rcNameID: =OCE_LETTER_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9792, 12708)
+        		*PrintableOrigin: PAIR(204, 240)
+        		*CursorOrigin: PAIR(204, 240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l2a8c1E<1B>*p0x0Y<1B>*c0t5998x7776Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9792, 12708)
+        		*PrintableOrigin: PAIR(204, 240)
+        		*CursorOrigin: PAIR(204, 13050)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l2a8c1E<1B>*p0x0Y<1B>*c0t7776x5998Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_LEGAL
+{
+    *Option: LEGAL
+    {
+    	*rcNameID: =OCE_LEGAL_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9792,16320)
+        		*PrintableOrigin: PAIR(204,240)
+        		*CursorOrigin: PAIR(204,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l3a8c1E<1B>*p0x0Y<1B>*c0t5998x9936Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9792,16320)
+        		*PrintableOrigin: PAIR(204,240)
+        		*CursorOrigin: PAIR(204, 16560)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l3a8c1E<1B>*p0x0Y<1B>*c0t9936x5998Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_11X7
+{
+    *Option: TABLOID
+    {
+   	*rcNameID: =OCE_TABLOID_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(12792,19920)
+        		*PrintableOrigin: PAIR(204,240)
+        		*CursorOrigin: PAIR(204,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l6a8c1E<1B>*p0x0Y<1B>*c0t7798x12096Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(12792,19920)
+        		*PrintableOrigin: PAIR(204,240)
+        		*CursorOrigin: PAIR(204,20160)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l6a8c1E<1B>*p0x0Y<1B>*c0t12096x7798Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_LEGAL_SMALL
+{
+    *Option: LEGAL_SMALL
+    {
+    	*rcNameID: =OCE_LEGAL_SMALL_DISPLAY
+	*PageDimensions: PAIR(10200,15600)
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(9792,15120)
+        		*PrintableOrigin: PAIR(204,240)
+        		*CursorOrigin: PAIR(204,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l601a8c1E<1B>*p0x0Y<1B>*c0t5998x9216Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(9792,15120)
+        		*PrintableOrigin: PAIR(204,240)
+        		*CursorOrigin: PAIR(204,15360)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l601a8c1E<1B>*p0x0Y<1B>*c0t9216x5998Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_STATEMENT
+{
+    *Option: STATEMENT
+    {
+    	*rcNameID: =OCE_STATEMENT_DISPLAY
+    	*switch: Orientation
+    	{
+    	    *case: PORTRAIT
+    	    {
+        		*PrintableArea: PAIR(5916,9636)
+        		*PrintableOrigin: PAIR(480,240)
+        		*CursorOrigin: PAIR(480,240)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l602a8c1E<1B>*p0x0Y<1B>*c0t3672x5976Y"
+        		}
+    	    }
+    	    *case: LANDSCAPE_CC90
+    	    {
+        		*PrintableArea: PAIR(5916,9636)
+        		*PrintableOrigin: PAIR(480,240)
+        		*CursorOrigin: PAIR(480, 9876)
+        		*Command: CmdSelect
+        		{
+        		    *Order: DOC_SETUP.12
+        		    *Cmd: "<1B>&l602a8c1E<1B>*p0x0Y<1B>*c0t5976x3672Y"
+        		}
+    	    }
+    	}
+    }
+}
+
+*BlockMacro: OCE_PAPER_DEFAULT_SETTING
+{
+    *switch: Locale
+    {
+        *case: English_United_States
+        {
+            *DefaultOption: LETTER
+        }
+
+        *default:
+        {
+            *DefaultOption: A4
+        }
+    }
+}
+
+
+
+*% *************************** TICKET SECTION **************************************************
+
+
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: 600DPI
+    *Option: 600DPI
+    {
+	*rcNameID: =RES600DPI_DISPLAY
+	*DPI: PAIR(600, 600)
+	*TextDPI: PAIR(600, 600)
+	*MinStripBlankPixels: 32
+	EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+	EXTERN_GLOBAL: *FontFormat: HPPCL_OUTLINE
+	*SpotDiameter: 100
+	*Command: CmdSelect
+	{
+	    *Order: JOB_SETUP.65
+	    *Cmd: "<1B>E<1B>*t600R<1B>&u600D<1B>*r0F"
+	}
+    }
+}
+
+
+*Feature: Duplex
+{
+    *rcNameID: =OCE_DUPLEX_DISPLAY
+    *DefaultOption: NONE
+    *Option: NONE
+    {
+	*rcNameID: =NONE_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: JOB_SETUP.52
+	}
+    }
+    *Option: VERTICAL
+    {
+	*rcNameID: =FLIP_ON_LONG_EDGE_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: JOB_SETUP.52
+	}
+    }
+    *Option: HORIZONTAL
+    {
+	*rcNameID: =FLIP_ON_SHORT_EDGE_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: JOB_SETUP.52
+	}
+    }
+}
+
+*Command: CmdStartJob
+{
+   *Order: JOB_SETUP.1
+    *CallbackID: 10
+}
+
+*Command: CmdStartDoc
+{
+   *Order: DOC_SETUP.20
+    *CallbackID: 20
+}
+
+*% *************************** END TICKET SECTION **********************************************
+
+
+*Feature: Halftone
+{
+	*rcNameID: =OCE_HALFTONING_DISPLAY
+	*DefaultOption: HT_PATSIZE_AUTO
+	*Option: HT_PATSIZE_AUTO
+	{
+		*rcNameID: =HT_AUTO_SELECT_DISPLAY
+	}
+	*Option: HT_PATSIZE_8x8_M
+	{
+		*rcNameID:=DITHER1_DISPLAY
+	}
+	*Option: HT_PATSIZE_10x10_M
+	{
+		*rcNameID:=DITHER2_DISPLAY
+	}
+	*Option: HT_PATSIZE_12x12_M
+	{
+		*rcNameID:=DITHER3_DISPLAY
+	}
+	*Option: HT_PATSIZE_14x14_M
+	{
+		*rcNameID:=DITHER4_DISPLAY
+	}
+	*Option: HT_PATSIZE_16x16_M
+	{
+		*rcNameID:=DITHER5_DISPLAY
+	}
+}
+
+*Feature: InputBin
+{
+    *rcNameID: =OCE_PAPER_SOURCE_DISPLAY
+    *Option: TRAY1
+    {
+	*rcNameID: =TRAY1_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.11
+	    *Cmd: "<1B>&l21H"
+	}
+    }
+    *Option: TRAY2
+    {
+	*rcNameID: =TRAY2_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.11
+	    *Cmd: "<1B>&l22H"
+	}
+    }
+    *Option: TRAY3
+    {
+	*rcNameID: =TRAY3_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.11
+	    *Cmd: "<1B>&l23H"
+	}
+    }
+    *Option: TRAY4
+    {
+	*rcNameID: =TRAY4_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.11
+	    *Cmd: "<1B>&l24H"
+	}
+    }
+    *Option: MANUAL
+    {
+	*rcNameID: =MANUAL_FEEDER_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.11
+	    *Cmd: "<1B>&l2H"
+	}
+    }
+}
+
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *InsertBlock: = OCE_PAPER_A4
+    *InsertBlock: = OCE_PAPER_A3
+    *InsertBlock: = OCE_PAPER_A5
+    *InsertBlock: = OCE_PAPER_COMMERCIAL
+    *InsertBlock: = OCE_PAPER_FOOLSCAP
+    *InsertBlock: = OCE_PAPER_FOLIO
+    *InsertBlock: = OCE_PAPER_LETTER
+    *InsertBlock: = OCE_PAPER_LEGAL
+    *InsertBlock: = OCE_PAPER_11X7
+    *InsertBlock: = OCE_PAPER_LEGAL_SMALL
+    *InsertBlock: = OCE_PAPER_STATEMENT
+    *InsertBlock: = OCE_PAPER_DEFAULT_SETTING
+}
+
+*Command: CmdStartPage
+{
+    *Order: PAGE_SETUP.1
+    *Cmd: "<1B>*b0M<0D>"
+}
+
+*Command: CmdEndJob
+{
+    *Order: JOB_FINISH.1
+    *Cmd: "<1B>%%-12345X"
+}
+
+*% Orientation Feature
+*Feature: Orientation
+{
+    *rcNameID: =OCE_ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+	*rcNameID: =PORTRAIT_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.8
+	    *NoPageEject?: TRUE
+	    *Cmd: "<1B>&l0O"
+	}
+    }
+    *Option: LANDSCAPE_CC90
+    {
+	*rcNameID: =LANDSCAPE_DISPLAY
+	*Command: CmdSelect
+	{
+	    *Order: DOC_SETUP.8
+	    *NoPageEject?: TRUE
+	    *Cmd: "<1B>&l1O"
+	}
+    }
+}
+
+*Command: CmdCopies
+{
+    *Order: DOC_SETUP.13
+    *% Uncollated copies!  Set copy count to NumOfCopies...
+    *Cmd: "<1B>&l" %d[1,9999]{NumOfCopies}"X"
+}
+
+
+*% PPM Settings
+*PrintRateUnit: PPM
+*PrinterType: PAGE
+*PrintRate: =OCE_SET_PPM
+*PrintRatePPM: =OCE_SET_PPM
+
+*% Generic Settings
+*MaxCopies: 9999
+*RotateCoordinate?: TRUE
+*RotateFont?: TRUE
+*RotateRaster?: TRUE
+*TextCaps: LIST(TC_CR_90,TC_UA_ABLE)
+*MemoryUsage: LIST(FONT)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 600
+*YMoveUnit: 600
+*Command: CmdXMoveAbsolute { *Cmd : "<1B>*p" %d{(DestX / 2) }"X" }
+*Command: CmdXMoveRelRight { *Cmd : "<1B>*p+" %d[0,9600]{max_repeat((DestXRel / 2) )}"X" }
+*Command: CmdXMoveRelLeft { *Cmd : "<1B>*p-" %d[0,9600]{max_repeat((DestXRel / 2) )}"X" }
+*Command: CmdYMoveAbsolute { *Cmd : "<1B>*p" %d{(DestY / 2) }"Y" }
+*Command: CmdYMoveRelDown { *Cmd : "<1B>*p+" %d{(DestYRel / 2) }"Y" }
+*Command: CmdYMoveRelUp { *Cmd : "<1B>*p-" %d{(DestYRel / 2) }"Y" }
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+*Command: CmdFF { *Cmd : "<0C>" }
+*Command: CmdBackSpace { *Cmd : "<08>" }
+*Command: CmdUniDirectionOn { *Cmd : "<00>" }
+*Command: CmdUniDirectionOff { *Cmd : "<00>" }
+*Command: CmdPushCursor { *Cmd : "<1B>&f0S" }
+*Command: CmdPopCursor { *Cmd : "<1B>&f1S" }
+*Command: CmdSetSimpleRotation { *Cmd : "<1B>&a" %d{PrintDirInCCDegrees}"P" }
+*EjectPageWithFF?: TRUE
+*Command: CmdEnableTIFF4 { *Cmd : "<1B>*b2M" }
+*Command: CmdDisableCompression { *Cmd : "<1B>*b0M" }
+*Command: CmdEnableDRC { *Cmd : "<1B>*b3M" }
+*OutputDataFormat: H_BYTE
+*OptimizeLeftBound?: TRUE
+
+*Command: CmdBeginRaster { *Cmd : "<1B>*r1A" }
+*Command: CmdEndRaster { *Cmd : "<1B>*rB" }
+*Command: CmdSendBlockData { *Cmd : "<1B>*b" %d{NumOfDataBytes}"W" }
+
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*DefaultFont: 229
+*DefaultCTT: 0
+*CharPosition: BASELINE
+*TTFSEnabled?: TRUE
+
+*MinFontID: 16534
+*MaxFontID: 32768
+
+*Command: CmdSetFontID { *Cmd : "<1B>*c" %d{NextFontID}"D" }
+*Command: CmdSelectFontID { *Cmd : "<1B>(" %d{CurrentFontID}"X" }
+*Command: CmdSetCharCode { *Cmd : "<1B>*c" %d{NextGlyph}"E" }
+*Command: CmdUnderlineOn { *Cmd : "<1B>&dD" }
+*Command: CmdUnderlineOff { *Cmd : "<1B>&d@" }
+*Command: CmdDownloadPattern {*Cmd: "<1B>*c" %d{PatternBrushID}"G" "<1B>*c" %d{PatternBrushSize}"W" }
+*Command: CmdSelectPattern {*Cmd: "<1B>*c" %d{PatternBrushID}"G" "<1B>*v" %d{PatternBrushType}"T" }
+*Command: CmdSelectWhiteBrush { *Cmd : "<1B>*v1o1T" }
+*Command: CmdSelectBlackBrush { *Cmd : "<1B>*v0o0T" }
+*MinGrayFill: 1
+*MaxGrayFill: 100
+*Command: CmdSetRectWidth { *Cmd : "<1B>*c" %d{(RectXSize / 2) }"A" }
+*Command: CmdSetRectHeight { *Cmd : "<1B>*c" %d{(RectYSize / 2) }"B" }
+*Command: CmdRectGrayFill { *Cmd : "<1B>*c" %d{GrayPercentage }"g2P" }
+*Command: CmdRectWhiteFill { *Cmd : "<1B>*c1P" }
+*Command: CmdRectBlackFill { *Cmd : "<1B>*c0P" }
+
+*DeviceFonts: LIST(146,147,148,149,150,151,152,153,154,155,
++		156,157,164,165,166,200,201,202,203,209,
++       210,211,212,213,214,215,216,217,218,219,
++       220,221,222,223,224,225,226,227,228,229,
++       230)

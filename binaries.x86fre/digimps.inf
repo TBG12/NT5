@@ -1,0 +1,225 @@
+; DIGIMPS.INF
+; Digi AccelePort
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature="$Windows NT$"
+Class=MultiPortSerial
+ClassGuid={50906CB8-BA12-11D1-BF5D-0000F805F530}
+Provider=%MS%
+Layoutfile=Layout.inf
+DriverVer=03/27/2002,3.10.225.0
+
+[ControlFlags]
+ExcludeFromSelect= *
+
+[Manufacturer]
+%DIGI%=DIGIWANLINKS
+
+[DIGIWANLINKS]
+;; Acceleport
+%Acceleport2p.DeviceDesc%  = Acceleport2p,  PCI\VEN_114F&DEV_0040&SUBSYS_0042114F
+%Acceleport4p.DeviceDesc%  = Acceleport4p,  PCI\VEN_114F&DEV_0040&SUBSYS_0043114F
+%Acceleport8p.DeviceDesc%  = Acceleport8p,  PCI\VEN_114F&DEV_0040&SUBSYS_0044114F
+%Acceleport16p.DeviceDesc% = Acceleport16p, PCI\VEN_114F&DEV_0040&SUBSYS_0045114F
+
+[Sys.CopyFiles]
+digidxb.sys					; DStreams Driver (Houston, London, Chaska)
+bioprime.bin				; Prime BIOS
+fepprime.bin				; Prime Firmware
+fepdense.bin				; Houston, London, Chaska Firmware
+fepherc.bin					; AcceleportXp Firmware
+digiisdn.sys				; Isdn (Houston, London)
+digiasyn.sys				; Async (Houston, London, Chaska)
+
+[Dll.CopyFiles]
+DigiFwrk.dll				; GUI Framework
+DigiView.exe				; Diagnostic programs
+DigiHLC.dll					; Houston, London, Chaska
+DigiDBP.dll					; Houston, London, Chaska
+DigiIsdn.dll				; ISDN GUI (Houston, London)
+DigiAsyn.dll				; Async GUI (Houston, London, Chaska)
+DigiRas.chm					; to be included later
+DigiView.chm				; Diagnostics Help
+
+[Help.CopyFiles]
+DigiRas.chm					; to be included later
+DigiView.chm				; Diagnostics Help
+
+[DestinationDirs]
+DefaultDestDir=11
+Sys.CopyFiles       = 12 ; Windows Drivers Directory
+Dll.CopyFiles       = 11 ; Windows System Directory
+Help.CopyFiles	    = 18 ; Windows Help Directory
+
+[Acceleport2p.NT]
+AddReg          = Dxb.staticparams.reg, Common.staticparams.reg, Acceleport2p.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+
+[Acceleport4p.NT]
+AddReg          = Dxb.staticparams.reg, Common.staticparams.reg, Acceleport4p.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+
+[Acceleport8p.NT]
+AddReg          = Dxb.staticparams.reg, Common.staticparams.reg, Acceleport8p.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+
+[Acceleport16p.NT]
+AddReg          = Dxb.staticparams.reg, Common.staticparams.reg, Acceleport16p.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+
+[Acceleport2p.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Acceleport4p.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Acceleport8p.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Acceleport16p.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Acceleport2p.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Acceleport4p.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Acceleport8p.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Acceleport16p.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Dxb.AddService]
+DisplayName     = %DIGIDXB.DispName%
+ServiceType     = 1 ; SERVICE_KERNEL_DRIVER
+StartType       = 1 ; SERVICE_SYSTEM_START
+ErrorControl    = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\DIGIDXB.SYS
+LoadOrderGroup  = Extended base
+
+[Common.CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"DigiInf.dll,DigiDxbCoInstaller"
+
+[Dxb.AddEventLog]
+AddReg=Dxb.AddEventLog.reg
+
+[Dxb.AddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\digidxb.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[Common.staticparams.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Major", 0x00010001, 3
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Minor", 0x00010001, 10
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Build", 0x00010001, 225
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Date", 0x00000000, 03/27/2002
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\AdapterMap, "AccelePort2000", 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\LineMap, LineAccelePort2000, 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "SERIAL", 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ServiceMap, "ASYN", 0x00000000, DigiAsyn.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\PortMap, "StdCom", 0x00000000, DigiAsyn.dll
+HKR, "Parameters","Spoof",0x00010001,1
+
+[Dxb.staticparams.reg]
+HKR, , "ProductName", ,"DigiDxb"
+
+[WanLinks.StaleParams.reg]
+HKR, , EnumPropPages32
+;
+; AcceleportXp
+;
+[Acceleport2p.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000", "MaxPorts", 0x00010001, 2
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000", "ProtocolsAllowed", 0x00010000, "SERIAL"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000"\"SERIAL", "MaxPorts", 0x00010001, 2
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000"\"SERIAL", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort2r2000"\"SERIAL"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option",0x00000000,"AccelePort2000"
+HKR, "Parameters", "Identity",0x00000000,"DigiAccelePort2r2000"
+HKR, "Parameters", "NumberOfLines",0x00010001,2
+HKR, "Parameters", "FepImagePath",0x00000000,"FepHerc.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Acceleport4p.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000", "ProtocolsAllowed", 0x00010000, "SERIAL"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000"\"SERIAL", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000"\"SERIAL", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort4r2000"\"SERIAL"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option",0x00000000,"AccelePort2000"
+HKR, "Parameters", "Identity",0x00000000,"DigiAccelePort4r2000"
+HKR, "Parameters", "NumberOfLines",0x00010001,4
+HKR, "Parameters", "FepImagePath",0x00000000,"FepHerc.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Acceleport8p.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000", "ProtocolsAllowed", 0x00010000, "SERIAL"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000"\"SERIAL", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000"\"SERIAL", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort8r2000"\"SERIAL"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option",0x00000000,"AccelePort2000"
+HKR, "Parameters", "Identity",0x00000000,"DigiAccelePort8r2000"
+HKR, "Parameters", "NumberOfLines",0x00010001,8
+HKR, "Parameters", "FepImagePath",0x00000000,"FepHerc.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Acceleport16p.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000", "MaxPorts", 0x00010001, 16
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000", "ProtocolsAllowed", 0x00010000, "SERIAL"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000"\"SERIAL", "MaxPorts", 0x00010001, 16
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000"\"SERIAL", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiAccelePort16r2000"\"SERIAL"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option",0x00000000,"AccelePort2000"
+HKR, "Parameters", "Identity",0x00000000,"DigiAccelePort16r2000"
+HKR, "Parameters", "NumberOfLines",0x00010001,16
+HKR, "Parameters", "FepImagePath",0x00000000,"FepHerc.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Strings]
+;**************************************************************************************
+; Non-localizable Strings
+;**************************************************************************************
+;BEGIN ENG - US English Strings
+MS= "Microsoft"
+DIGI="Digi International"
+DIGIDXB.DispName = "Digi DXB Adapter Driver"
+Acceleport2p.DeviceDesc   = "Digi AccelePort 2p PCI Adapter"
+Acceleport4p.DeviceDesc   = "Digi AccelePort 4p PCI Adapter"
+Acceleport8p.DeviceDesc   = "Digi AccelePort 8p PCI Adapter"
+Acceleport16p.DeviceDesc  = "Digi AccelePort 16p PCI Adapter"
+;END ENG - US English Strings
+
+;**************************************************************************************
+; Localizable Strings
+;**************************************************************************************
+;BEGIN ENG - US English Strings
+;Acceleport2p.HelpText     = "This adapter provides 2 COM ports"
+;Acceleport4p.HelpText     = "This adapter provides 4 COM ports"
+;Acceleport8p.HelpText     = "This adapter provides 8 COM ports"
+;Acceleport16p.HelpText    = "This adapter provides 16 COM ports"
+;END ENG - US English Strings
+
+

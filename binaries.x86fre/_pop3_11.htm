@@ -1,0 +1,119 @@
+
+
+<HTML>
+<HEAD>
+<TITLE>Authentication Method</TITLE>
+<SCRIPT SRC="linkcss.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0">
+<H1>Authentication Method</H1>
+
+<P>The POP3 service provides three different authentication methods to verify users who connect to the mail server.</P> 
+
+<P>This topic describes how to select an appropriate authentication method.</P>
+
+<P CLASS="important">Important</P>
+<UL>
+<LI>You can only change the authentication method if there are no existing domains defined. If there are existing domains, the option to change the authentication method is disabled.</LI>
+<LI>If you change this parameter, you must stop and then restart the POP3 service and the IIS Admin service. You can manage these services from <B>Services</b> on the <B>Administrative Tools</b> menu, which you can access by logging on locally to the server or by connecting to the server using Terminal Services.	</LI>
+</UL>
+
+
+
+<B>Local Windows Accounts Authentication</b>
+
+<P>Use local Windows accounts authentication if:</P>
+<ul>
+<LI>You are not using Active Directory.</LI>
+<p>-and-</p>
+<LI>You want to create user accounts on the same computer on which the POP3 service is installed.</LI>
+</ul> 
+
+<P>You can use the local Windows accounts authentication to integrate the POP3 service with the Security Accounts Manager (SAM), which manages the local system user accounts. With Security Accounts Manager, users who have user accounts on the local computer can use the same user name and password for authentication by both the POP3 service and the local computer.</P>
+
+<P>You can use local Windows accounts authentication if you have multiple POP3 e-mail domains on the mail server, but you must assign unique user names across domains.  For example, you cannot have one user named someone@example.com and another user named someone@northwindtraders.com.</P>
+
+<B>Active Directory Integrated Authentication</B>
+
+<P>Use Active Directory integrated authentication if:</P>
+<ul>
+<LI>The server on which you want to install POP3 service is a member of an Active Directory domain or is a domain controller.</LI>
+</ul>
+
+<P>You can use Active Directory integrated authentication to integrate the POP3 service with your existing Active Directory domain. If you create mailboxes that correspond to existing Active Directory user accounts, users can use their existing Active Directory domain user name and password to send and receive e-mail.</P>
+
+
+<P>You can use Active Directory integrated authentication for multiple POP3 e-mail domains, and you can use the same user name across different POP3 e-mail domains. For example, you can have a user named someone@example.com and a user named someone@northwindtraders.com.</P>
+
+
+
+<P>If you are using Active Directory integrated authentication and have multiple POP3 e-mail domains, when you create mailboxes you must consider whether the mailbox you 
+are creating has the same name as an existing mailbox in another POP3 e-mail domain. Each mailbox is associated with an Active Directory user account, which has both a user logon 
+name and pre-Windows&nbsp;2000 user logon name. The user logon name is the name of the Active Directory user account and the POP3 mailbox.  Usually, the pre-Windows&nbsp;2000 user 
+logon name is the same as the user logon name.  
+
+If you try to create a mailbox and user account when there is an existing user account with 
+the same pre-Windows&nbsp;2000 user logon name, a naming conflict occurs. Active Directory does not support multiple accounts with the same pre-Windows&nbsp;2000 user logon name. 
+If a naming conflict occurs, the mailbox name and e-mail address are not affected, but the account's pre-Windows&nbsp;2000 logon name is modified to prevent any naming conflict with the 
+existing account.</P>
+
+<P>If you are using Secure Password Authentication and a naming conflict occurs, the pre-Windows&nbsp;2000 logon name must be used for e-mail client authentication. </P> 
+
+<p>You can determine the modified logon name by logging on locally to the server, by connecting to the server using Terminal Services, or by logging on to another computer in the Active Directory domain and going to the <b>Active Directory Users and Computers</b> snap-in located in the <b>Administrative Tools</b> menu. </p>
+
+Go to the <b>Users</b> folder, right-click the user account and then click <b>Properties</b>. Click the <b>Account</b> tab. The modified account name appears in 
+<b>User logon name (pre-Windows&nbsp;2000)</b>.</P> 
+
+<P>You must note the pre-Windows&nbsp;2000 logon name and provide it to the user. For more information about Secure Password Authentication, see <A HREF="_POP3_15.htm">Secure Password Authentication</A>.</P>
+
+<P CLASS="note">Note</P>
+<UL>
+
+<LI>If you are using Active Directory integrated authentication, then you must log on to the Active Directory domain, not the local computer, to administer the POP3 service. </LI>
+
+</UL>
+
+<B>Encrypted Password File Authentication</B>
+
+
+
+
+<P>Use encrypted password file authentication if:</P> 
+
+<ul>
+<LI>You are not using Active Directory.</LI>
+<P>-or-</P>
+<LI>You do not want to create users on the local computer on which the POP3 service is installed.</LI>
+</ul>
+
+<P>Consider using encrypted password file authentication if you have large scale deployments in which there is not an existing Active Directory deployment, and where there might potentially be too many accounts to manage easily from a single local computer.</P>
+
+
+
+<P>With encrypted password file authentication, you can use an identical user name across different POP3 e-mail domains, but not within the same domain. For example, you cannot have two mailboxes named someone@example.com, but you can have someone@example.com and someone@northwindtraders.com.</p>
+
+
+<P>Encrypted Password file authentication works by creating an encrypted file with the user's password. This file is stored in the user's mailbox directory on the server. During authentication, the password that the user enters is encrypted and compared to the encrypted file stored on the server. If this encrypted password matches the encrypted password stored on the server, the user is authenticated.</P>
+
+
+
+<P class="labelproc"><B>To set the authentication method</B></P>
+
+<OL type="1">
+	<LI>On the primary navigation bar, click <b>E-mail</b>.</LI>
+	<LI>Click <b>Server Properties</b>.</LI>
+	<LI>From the drop-down menu for <b>Authentication Method</b>, select an authentication method and click <b>OK</b>.</LI>
+</OL>
+<P CLASS="note">Notes</P>
+<UL>
+    <LI>To perform this procedure, you must be a member of the Administrators group on the local computer, or you must have been delegated the appropriate authority. If the computer is joined to a domain, members of the Domain Administrators group might be able to perform this procedure.</LI>
+<LI>If the computer on which the POP3 service is running is either a member of an Active Directory domain or a domain controller, the default authentication method is Active Directory integrated authentication. If the computer is not in a domain, the default is local Windows accounts authentication.</LI>
+<LI>If the computer on which the POP3 service is running is an Active Directory domain controller, the available authentication methods are Active Directory integrated authentication and encrypted password
+file authentication. If the computer on which the POP3 service is running is a member server in an Active Directory domain, all three authentication methods are available.  Otherwise, the available authentication methods are local Windows accounts authentication and encrypted password file authentication.</li>
+
+
+
+</UL>
+</BODY>
+</HTML>
+ 

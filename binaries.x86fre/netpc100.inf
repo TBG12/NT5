@@ -1,0 +1,90 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %MSFT%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,5.0.2195.1
+
+[Manufacturer]
+%LINKSYS%  = LINKSYS
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[LINKSYS]
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\Linksys-EtherFast_10/100_PC_Card_(PCMPC100)-EEBC
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\Linksys-EtherFast_10/100_PC_Card_(PCMPC100)-8044
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\LINKSYS-ETHERFAST_10/100_PC_CARD_(PCMPC100_V2)-9AE2
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\Linksys-EtherFast_10/100_PC_Card_(PCMPC100_V3)-C936
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\Linksys-EtherFast_10/100_PC_Card_(PCMPC100_V2)-5088
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\Linksys-EtherFast_10/100_PC_Card_(PCM100)-7776
+%PC_CARD.DeviceDesc%  = pc100cc.ndi, PCMCIA\Linksys-EtherFast_10/100_Integrated_PC_Card_(PCM100)-0DBD
+
+[pc100cc.ndi.NT]
+Characteristics = 0x84
+BusType         = 8
+AddReg          = pc100.ndi.reg, common.reg
+CopyFiles       = pc100.ndis5.CopyFiles
+
+[pc100cc.ndi.NT.Services]
+AddService = pc100, 2, pc100.Service, pc100.AddEventLog
+
+[Common.reg]
+HKR, Ndi\params\ConnectionType,      ParamDesc, 0, %ConnType%
+HKR, Ndi\params\ConnectionType,      default,   0, "7"
+HKR, Ndi\params\ConnectionType,      type,      0, "enum"
+HKR, Ndi\params\ConnectionType\enum, 7,         0, %AutoSense%
+HKR, Ndi\params\ConnectionType\enum, 6,         0, %100FD%
+HKR, Ndi\params\ConnectionType\enum, 4,         0, %100HD%
+HKR, Ndi\params\ConnectionType\enum, 2,         0, %10FD%
+HKR, Ndi\params\ConnectionType\enum, 0,         0, %10HD%
+
+;----------------------------------------------------------------------------
+; PC100 Common
+;
+[pc100.ndi.reg]
+HKR, Ndi,               Service,    0, "pc100"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR,               ,    Pcmcia    , 0, "2"
+HKR, ,          PcmciaExclusiveIrq, 0x00010001, 1
+
+[pc100.ndis5.CopyFiles]
+pc100nds.sys,,,2
+
+[pc100.Service]
+DisplayName     =   %Service.DispName%
+ServiceType     =   1 ;%SERVICE_KERNEL_DRIVER%
+StartType       =   3 ;%SERVICE_AUTO_START%
+ErrorControl    =   1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   =   %12%\pc100nds.sys
+LoadOrderGroup  =   NDIS
+
+[pc100.AddEventLog]
+AddReg = pc100.AddEventLog.reg
+
+[pc100.AddEventLog.reg]
+HKR,    ,   EventMessageFile,   0x00020000,"%%SystemRoot%%\System32\netevent.dll"
+HKR,    ,   TypesSupported,     0x00010001, 7
+
+[DestinationDirs]
+pc100.ndis5.CopyFiles  =   12
+
+;----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+ConnType           = "Connection Type"
+AutoSense          = "Auto Sense"
+100FD              = "100Mbps Full Duplex"
+100HD              = "100Mbps"
+10FD               = "10Mbps Full Duplex"
+10HD               = "10Mbps"
+
+LINKSYS            = "Linksys"
+MSFT               = "Microsoft"
+PC_CARD.DeviceDesc = "Linksys EtherFast 10/100 PC Card (PCMPC100)"
+Service.DispName   = "Linksys EtherFast 10/100 PC Card NT Driver"

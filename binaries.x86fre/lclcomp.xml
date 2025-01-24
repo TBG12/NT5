@@ -1,0 +1,26 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[Which computer are you looking for?]]></Text>
+	</Title>
+	<Label TopMargin="8" BottomMargin="2">
+		<Text><![CDATA[Computer &name:]]></Text>
+	</Label>
+	<Edit Id="5647" Height="20" AutoComplete="3">
+        <SearchProp Name="SearchFor" />
+    </Edit>
+	<Label TopMargin="8">
+		<Text><![CDATA[You may also want to...]]></Text>
+	</Label>
+	<Link Id="5300" IconId="24003" TopMargin="8">
+		<Text>
+			<Balloon><![CDATA[&Search this computer for files]]></Balloon>
+			<Bar><![CDATA[&Search this computer for files]]></Bar>
+		</Text>
+	</Link>
+	<Link Id="5504" IconId="24004" TopMargin="3">
+		<Text>
+			<Balloon><![CDATA[Search the &Internet]]></Balloon>
+			<Bar><![CDATA[Search the &Internet]]></Bar>
+		</Text>
+	</Link>
+</SimpleDialog>

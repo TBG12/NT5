@@ -1,0 +1,1064 @@
+
+; MSPRINT.INF
+;
+; List of supported printers, manufacturers A through K
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=Printer
+ClassGUID={4d36e979-e325-11ce-bfc1-08002be10318}
+Provider=%MS%
+LayoutFile=layout.inf, layout1.inf, layout2.inf
+CatalogFile=win4prt.cat
+
+[ClassInstall]
+AddReg=ClassAddReg
+DelReg=ClassDelReg
+
+[ClassDelReg]
+HKLM,"System\CurrentControlSet\Services\Class\Printer","NoUseClass"
+
+[ClassAddReg]
+HKR,,,,%CLASSNAME%
+HKR,,Installer,,MSPRINT.DLL
+HKR,,Icon,,-4
+HKR,,NoDisplayClass,,1
+
+[Environment]
+UpdateInis=Environment_Ini
+AddReg=Environment_Reg
+
+[Environment_Ini]
+win.ini,Ports,"LPT1.DOS=",
+win.ini,Ports,"LPT2.DOS=",
+win.ini,Ports,"LPT3.DOS=",
+win.ini,Ports,"LPT1.OS2=",
+win.ini,Ports,"LPT2.OS2=",
+win.ini,Ports,"LPT3.OS2=",
+win.ini,windows,"Spooler=",
+win.ini,windows,"DosPrint=",
+win.ini,windows,"DeviceNotSelectedTimeout=",
+win.ini,windows,"TransmissionRetryTimeout=",
+
+[Environment_Reg]
+HKLM,"System\CurrentControlSet\Control\Print\Environments\Windows 4.0","Directory",,"CHICAGO"
+HKLM,"System\CurrentControlSet\Control\Print\Environments\Windows 4.0\Drivers",,,
+HKLM,"System\CurrentControlSet\Control\Print\Environments\Windows 4.0\Print Processors",,,
+HKLM,"System\CurrentControlSet\Control\Print\Monitors",,,
+HKLM,"System\CurrentControlSet\Control\Print\Printers",,,
+HKLM,"System\CurrentControlSet\Control\Print\Printers","StartOnBoot",1,01,00,00,00
+HKLM,"System\CurrentControlSet\Control\Print\Providers",,,
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","^Printer Upgrade",,"RUNDLL.EXE MSPRINT.DLL,RUNDLL_FinishUpgrade"
+
+[Ignore Drivers]
+ADOBEPS4.DRV
+HPPS41A.DRV
+HPPSDV42.DRV
+KD8670_1.DRV
+KDDHV1_1.DRV
+DCS1A410.DRV
+DCS1A422.DRV
+DCS2A422.DRV
+DCS3A422.DRV
+DCS1A43.DRV
+DCS2A43.DRV
+DCS3A43.DRV
+DCS1A44.DRV
+DCS2A44.DRV
+DCS3A44.DRV
+DCS1A45.DRV
+DCS2A45.DRV
+DCS3A45.DRV
+DCS1A46.DRV
+DCS2A46.DRV
+DCS3A46.DRV
+DCS1A47.DRV
+DCS2A47.DRV
+DCS3A47.DRV
+XRC55PS.DRV
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+;
+[Manufacturer]
+%GENERIC% = Gen
+"Apple"
+"AST"
+"AT&T"
+"Brother"
+"Bull"
+"C-Itoh"
+"Citizen"
+"Compaq"
+"Dataproducts"
+"Diconix"
+"Digital"
+"Fujitsu"
+"Hermes"
+"IBM"
+"Kodak"
+"Kyocera"
+"Lexmark"
+
+;
+; Model sections. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file.
+;
+; Each model lists a variation of its own name as a compatible ID. This
+; is done primarily as an optimization during upgrade.
+;
+[Gen]
+%TTYNAME%                         = TTY.DRV,Generic_/_Text_Only
+
+[Apple]
+"Apple Color LaserWriter 12/600"  = APLWCOB1.SPD,Apple_Color_LaserWriter_12/600
+"Apple Color LW 12/660 PS"        = APLWCSB1.SPD,LPTENUM\Apple_ComputerApple_7B68,Apple_ComputerApple_7B68,Apple_Color_LW_12/660_PS
+"Apple LaserWriter"               = APPLE230.SPD,Apple_LaserWriter
+"Apple LaserWriter II NT"         = LWNT_470.SPD,Apple_LaserWriter_II_NT
+"Apple LaserWriter Personal NT"   = A_PNT518.SPD,Apple_LaserWriter_Personal_NT
+"Apple LaserWriter II NTX"        = LWNTX470.SPD,Apple_LaserWriter_II_NTX
+"Apple LaserWriter II NTX v51.8"  = LWNTX518.SPD,Apple_LaserWriter_II_NTX_v51.8
+"Apple LaserWriter IIf"           = APLWIIF1.SPD,Apple_LaserWriter_IIf
+"Apple LaserWriter IIg"           = APLWIIG1.SPD,Apple_LaserWriter_IIg
+"Apple LaserWriter Plus"          = APPLE380.SPD,Apple_LaserWriter_Plus
+"Apple LaserWriter Plus v42.2"    = APPLE422.SPD,Apple_LaserWriter_Plus_v42.2
+"Apple LaserWriter Pro 600"       = APTOLLD1.SPD,Apple_LaserWriter_Pro_600
+"Apple LaserWriter Pro 630"       = APTOLLW1.SPD,Apple_LaserWriter_Pro_630
+"Apple LaserWriter Pro 810"       = APLW8101.SPD,Apple_LaserWriter_Pro_810
+"Apple LaserWriter Select 360"    = APLWSEL.SPD,Apple_LaserWriter_Select_360
+"Apple Personal LaserWriter NTR"  = APLWNTR1.SPD,Apple_Personal_LaserWriter_NTR
+
+[AST]
+"AST TurboLaser-PS"               = AST__470.SPD,AST_TurboLaser-PS
+
+[AT&T]
+"AT&T 435"                        = HPPLOT.DRV,AT&T_435
+"AT&T 470/475"                    = CITOH.DRV,AT&T_470/475
+"AT&T 473/478"                    = OKI9IBM.DRV,AT&T_473/478
+
+[Brother]
+"Brother HJ-100"                  = CANON330.DRV,Brother_HJ-100
+"Brother HJ-100i"                 = CANON330.DRV,Brother_HJ-100i
+"Brother HJ-400"                  = BRHJ770.DRV,Brother_HJ-400
+"Brother HJ-770"                  = BRHJ770.DRV,Brother_HJ-770
+"Brother HL-4"                    = HPPCL.DRV,Brother_HL-4
+"Brother HL-4V"                   = HPPCL5MS.DRV,Brother_HL-4V
+"Brother HL-4Ve"                  = HPPCL5MS.DRV,Brother_HL-4Ve
+"Brother HL-6"                    = HPPCL.DRV,Brother_HL-6
+"Brother HL-6V"                   = HPPCL5MS.DRV,Brother_HL-6V
+"Brother HL-8"                    = HPPCL.DRV,Brother_HL-8
+"Brother HL-8D"                   = HPPCL.DRV,Brother_HL-8D
+"Brother HL-8e"                   = HPPCL.DRV,Brother_HL-8e
+"Brother HL-8V"                   = HPPCL5MS.DRV,Brother_HL-8V
+"Brother HL-10h"                  = HPPCL5MS.DRV,Brother_HL-10h
+"Brother HL-10V"                  = HPPCL5MS.DRV,Brother_HL-10V
+"Brother HL-10DV"                 = HPPCL5MS.DRV,Brother_HL-10DV
+"Brother M-1309"                  = BROTHER9.DRV,Brother_M-1309
+"Brother M-1324"                  = BROTHR24.DRV,Brother_M-1324
+"Brother M-1809"                  = BROTHER9.DRV,Brother_M-1809
+"Brother M-1818"                  = BROTHER9.DRV,Brother_M-1818
+"Brother M-1824L"                 = BROTHR24.DRV,Brother_M-1824L
+"Brother M-1909"                  = BROTHER9.DRV,Brother_M-1909
+"Brother M-1918"                  = BROTHER9.DRV,Brother_M-1918
+"Brother M-1924L"                 = BROTHR24.DRV,Brother_M-1924L
+
+[Bull]
+"Bull Compuprint PageMaster 413"  = HPPCL5MS.DRV,Bull_Compuprint_PageMaster_413
+"Bull Compuprint PageMaster 815"  = HPPCL5MS.DRV,Bull_Compuprint_PageMaster_815
+"Bull Compuprint PageMaster 825"  = HPPCL5MS.DRV,Bull_Compuprint_PageMaster_825
+"Bull Compuprint PageMaster 1025" = HPPCL5MS.DRV,Bull_Compuprint_PageMaster_1025
+
+[C-Itoh]
+"C-Itoh 8510"                     = CITOH.DRV,C-Itoh_8510
+
+[Citizen]
+"Citizen 120D"                    = CIT9US.DRV,Citizen_120D
+"Citizen 120D+"                   = CIT9US.DRV,Citizen_120D+
+"Citizen 124D"                    = CIT24US.DRV,Citizen_124D
+"Citizen 180D"                    = CIT9US.DRV,Citizen_180D
+"Citizen 200GX"                   = CIT9US.DRV,Citizen_200GX
+"Citizen 200GX/15"                = CIT9US.DRV,Citizen_200GX/15
+"Citizen 224"                     = CIT24US.DRV,Citizen_224
+"Citizen ABC ESC/P 2"             = ESCP2MS.DRV,Citizen_ABC_ESC/P_2
+"Citizen GSX-130"                 = CIT24US.DRV,Citizen_GSX-130
+"Citizen GSX-140"                 = CIT24US.DRV,Citizen_GSX-140
+"Citizen GSX-140+"                = CIT24US.DRV,Citizen_GSX-140+
+"Citizen GSX-145"                 = CIT24US.DRV,Citizen_GSX-145
+"Citizen GSX-190"                 = CIT9US.DRV,Citizen_GSX-190
+"Citizen GSX-220 ESC/P 2"         = ESCP2MS.DRV,Citizen_GSX-220_ESC/P_2
+"Citizen GSX-230"                 = CIT24US.DRV,Citizen_GSX-230
+"Citizen GSX-240 ESC/P 2"         = ESCP2MS.DRV,Citizen_GSX-240_ESC/P_2
+"Citizen GSX-245 ESC/P 2"         = ESCP2MS.DRV,Citizen_GSX-245_ESC/P_2
+"Citizen HSP-500"                 = CIT9US.DRV,Citizen_HSP-500
+"Citizen HSP-550"                 = CIT9US.DRV,Citizen_HSP-550
+"Citizen Notebook Printer II"     = CIT24US.DRV,Citizen_Notebook_Printer_II
+"Citizen PN48"                    = CIT24US.DRV,Citizen_PN48
+"Citizen Prodot 24"               = CIT24US.DRV,Citizen_Prodot_24
+"Citizen Prodot 9"                = CIT9US.DRV,Citizen_Prodot_9
+"Citizen Prodot 9x"               = CIT9US.DRV,Citizen_Prodot_9x
+"Citizen PROjet"                  = JP350.DRV,Citizen_PROjet
+"Citizen ProJet II"               = JP350.DRV,Citizen_ProJet_II
+"Citizen ProLaser 6000"           = HPPCL5MS.DRV,Citizen_ProLaser_6000
+"Citizen Swift 200"               = CIT24US.DRV,Citizen_Swift_200
+"Citizen Swift 24"                = CIT24US.DRV,Citizen_Swift_24
+"Citizen Swift 24e"               = CIT24US.DRV,Citizen_Swift_24e
+"Citizen Swift 24x"               = CIT24US.DRV,Citizen_Swift_24x
+"Citizen Swift 240 ESC/P 2"       = ESCP2MS.DRV,Citizen_Swift_240_ESC/P_2
+"Citizen Swift 240x ESC/P 2"      = ESCP2MS.DRV,Citizen_Swift_240x_ESC/P_2
+"Citizen Swift 9"                 = CIT9US.DRV,Citizen_Swift_9
+"Citizen Swift 9x"                = CIT9US.DRV,Citizen_Swift_9x
+"Citizen Swift 90"                = CIT9US.DRV,Citizen_Swift_90
+
+[Compaq]
+"Compaq PageMarq 15"              = HPPCL5MS.DRV,Compaq_PageMarq_15
+"Compaq PageMarq 15 PostScript"   = CPPMQ151.SPD,Compaq_PageMarq_15_PostScript
+"Compaq PageMarq 20"              = HPPCL5MS.DRV,Compaq_PageMarq_20
+"Compaq PageMarq 20 PostScript"   = CPPMQ201.SPD,Compaq_PageMarq_20_PostScript
+
+[Dataproducts]
+"Dataproducts LZR-2665"           = DATAP462.SPD,Dataproducts_LZR-2665
+"Dataproducts Typhoon 30 L20 PS"  = DPT30L20.SPD,Dataproducts_Typhoon_30_L20_PS
+"Dataproducts Typhoon 30 S20 PS"  = DPT30S20.SPD,Dataproducts_Typhoon_30_S20_PS
+"Dataproducts Typhoon 40 L20 PS"  = DPT40L20.SPD,Dataproducts_Typhoon_40_L20_PS
+"Dataproducts Typhoon 40 S20 PS"  = DPT40S20.SPD,Dataproducts_Typhoon_40_S20_PS
+"Dataproducts Typhoon 60 L20 PS"  = DPT60L20.SPD,Dataproducts_Typhoon_60_L20_PS
+"Dataproducts Typhoon 60 S20 PS"  = DPT60S20.SPD,Dataproducts_Typhoon_60_S20_PS
+
+[Diconix]
+"Diconix 150 Plus"                = DICONIX.DRV,Diconix_150_Plus
+
+[Digital]
+"Digital Colormate PS"            = DCCOLOR1.SPD,Digital_Colormate_PS
+"Digital DECcolorwriter 1000  17" = DCLF02_1.SPD,Digital_DECcolorwriter_1000__17
+"Digital DECcolorwriter 1000  39" = DCLF02F1.SPD,Digital_DECcolorwriter_1000__39
+"Digital DEClaser 1100"           = DEC3200.DRV,Digital_DEClaser_1100
+"Digital DEClaser 1150"           = DCD11501.SPD,Digital_DEClaser_1150
+"Digital DEClaser 1152"           = DC1152_1.SPD,Digital_DEClaser_1152
+"Digital DEClaser 1152  43 fonts" = DC1152F1.SPD,Digital_DEClaser_1152__43_fonts
+"Digital DEClaser 2100"           = DEC3200.DRV,Digital_DEClaser_2100
+"Digital DEClaser 2100/plus"      = DEC3200.DRV,Digital_DEClaser_2100/plus
+"Digital DEClaser 2150"           = D2150_MS.SPD,Digital_DEClaser_2150
+"Digital DEClaser 2150 plus"      = DC2150P1.SPD,Digital_DEClaser_2150_plus
+"Digital DEClaser 2200"           = DEC3200.DRV,Digital_DEClaser_2200
+"Digital DEClaser 2200/plus"      = DEC3200.DRV,Digital_DEClaser_2200/plus
+"Digital DEClaser 2250"           = D2250_MS.SPD,Digital_DEClaser_2250
+"Digital DEClaser 2250 plus"      = DC2250P1.SPD,Digital_DEClaser_2250_plus
+"Digital DEClaser 3200"           = DEC3200.DRV,Digital_DEClaser_3200
+"Digital DEClaser 3250"           = DEC3250.SPD,Digital_DEClaser_3250
+"Digital DEClaser 5100"           = DC5100_1.SPD,Digital_DEClaser_5100
+"Digital DECmultiJET 1000"        = JP350.DRV,Digital_DECmultiJET_1000
+"Digital DECmultiJET 1500"        = JP350.DRV,Digital_DECmultiJET_1500
+"Digital DECmultiJET 2000"        = JP350.DRV,Digital_DECmultiJET_2000
+"Digital DECwriter 95"            = DEC24PIN.DRV,Digital_DECwriter_95
+"Digital LA310"                   = PROPRINT.DRV,Digital_LA310
+"Digital LA324"                   = DEC24PIN.DRV,Digital_LA324
+"Digital LA424"                   = DEC24PIN.DRV,Digital_LA424
+"Digital LA70"                    = PROPRINT.DRV,Digital_LA70
+"Digital LA75"                    = PROPRINT.DRV,Digital_LA75
+"Digital LA75 Plus"               = DEC24PIN.DRV,Digital_LA75_Plus
+"Digital LN03R ScriptPrinter"     = DCLN03R1.SPD,Digital_LN03R_ScriptPrinter
+"Digital turbo PrintServer 20"    = DCTPS201.SPD,Digital_turbo_PrintServer_20
+"Digital PrintServer 17"          = DCLPS171.SPD,Digital_PrintServer_17
+"Digital PrintServer 17  12mb/L2" = DCPS1721.SPD,Digital_PrintServer_17__12mb/L2
+"Digital PrintServer 17/600"      = DCPS1761.SPD,Digital_PrintServer_17/600
+"Digital PrintServer 32"          = DCLPS321.SPD,Digital_PrintServer_32
+"Digital PrintServer 40 Plus"     = DCLPS401.SPD,Digital_PrintServer_40_Plus
+
+
+[Fujitsu]
+"Fujitsu Breeze 100"              = JP350.DRV,Fujitsu_Breeze_100
+"Fujitsu Breeze 200"              = JP350.DRV,Fujitsu_Breeze_200
+"Fujitsu DL 900"                  = FUJI24.DRV,Fujitsu_DL_900
+"Fujitsu DL 1100"                 = FUJI24.DRV,Fujitsu_DL_1100
+"Fujitsu DL 1100 Color"           = FUJI24.DRV,Fujitsu_DL_1100_Color
+"Fujitsu DL 1150"                 = FUJI24.DRV,Fujitsu_DL_1150
+"Fujitsu DL 1200"                 = FUJI24.DRV,Fujitsu_DL_1200
+"Fujitsu DL 1250"                 = FUJI24.DRV,Fujitsu_DL_1250
+"Fujitsu DL 2400"                 = FUJI24.DRV,Fujitsu_DL_2400
+"Fujitsu DL 2600"                 = FUJI24.DRV,Fujitsu_DL_2600
+"Fujitsu DL 3300"                 = FUJI24.DRV,Fujitsu_DL_3300
+"Fujitsu DL 3350"                 = FUJI24.DRV,Fujitsu_DL_3350
+"Fujitsu DL 3400"                 = FUJI24.DRV,Fujitsu_DL_3400
+"Fujitsu DL 3450"                 = FUJI24.DRV,Fujitsu_DL_3450
+"Fujitsu DL 3600"                 = FUJI24.DRV,Fujitsu_DL_3600
+"Fujitsu DL 4400"                 = FUJI24.DRV,Fujitsu_DL_4400
+"Fujitsu DL 4600"                 = FUJI24.DRV,Fujitsu_DL_4600
+"Fujitsu DL 5600"                 = FUJI24.DRV,Fujitsu_DL_5600
+"Fujitsu DX 2100"                 = FUJI9.DRV,Fujitsu_DX_2100
+"Fujitsu DX 2200"                 = FUJI9.DRV,Fujitsu_DX_2200
+"Fujitsu DX 2300"                 = FUJI9.DRV,Fujitsu_DX_2300
+"Fujitsu DX 2400"                 = FUJI9.DRV,Fujitsu_DX_2400
+"Fujitsu RX7100PS"                = F71RX503.SPD,Fujitsu_RX7100PS
+
+[Hermes]
+"Hermes H 606"                    = HPPCL.DRV,Hermes_H_606
+
+[IBM]
+"IBM 2390 PS/1"                   = IBM239X.DRV,IBM_2390_PS/1
+"IBM 4019 LaserPrinter"           = IBMPPDSL.DRV,IBM_4019_LaserPrinter
+"IBM 4019 LaserPrinter PS17"      = IB401917.SPD,IBM_4019_LaserPrinter_PS17
+"IBM 4019 LaserPrinter PS39"      = IB401939.SPD,IBM_4019_LaserPrinter_PS39
+"IBM 4029 LaserPrinter"           = IBMPPDSL.DRV,IBM_4029_LaserPrinter
+"IBM 4029 LaserPrinter PS17"      = IB402917.SPD,IBM_4029_LaserPrinter_PS17
+"IBM 4029 LaserPrinter PS39"      = IB402939.SPD,IBM_4029_LaserPrinter_PS39
+"IBM 4037 5E"                     = IBMPPDSL.DRV,LPTENUM\Lexmark_Internationa1090,Lexmark_Internationa1090,IBM_4037_5E
+"IBM 4039 LaserPrinter"           = HPPCL5MS.DRV,LPTENUM\Lexmark_Internationa6BF0,Lexmark_Internationa6BF0,IBM_4039_LaserPrinter
+"IBM 4039 LaserPrinter Plus"      = HPPCL5MS.DRV.BIDI,LPTENUM\Lexmark_Internationa5E60,Lexmark_Internationa5E60,IBM_4039_LaserPrinter_Plus
+"IBM 4039 LaserPrinter PS"        = IBM4039.SPD,IBM_4039_LaserPrinter_PS
+"IBM 4039 plus PS"                = IBM4039P.SPD,IBM_4039_plus_PS
+"IBM 4070 IJ"                     = CANON330.DRV,IBM_4070_IJ
+"IBM 4079 Color Jetprinter PS"    = IBM4079.SPD,IBM_4079_Color_Jetprinter_PS
+"IBM 4226 Model 302"              = IBM238X.DRV,IBM_4226_Model_302
+"IBM ExecJet 4072"                = CANON330.DRV,IBM_ExecJet_4072
+"IBM ExecJet 4076 II"             = HPDSKJET.DRV,LPTENUM\LexmarkExecJet_IICB8B7,LexmarkExecJet_IICB8B7,IBM_ExecJet_4076_II
+"IBM Graphics"                    = OKI9IBM.DRV,IBM_Graphics
+"Generic IBM Graphics 9pin"       = OKI9IBM.DRV,Generic_IBM_Graphics_9pin
+"Generic IBM Graphics 9pin wide"  = OKI9IBM.DRV,Generic_IBM_Graphics_9pin_wide
+"IBM Network Color Printer"       = IBM43032.SPD,IBM_Network_Color_Printer
+"IBM Network Printer 12 (PCL)"    = PCLIBM.DRV,LPTENUM\IBM43125230,IBM43125230,IBM_Network_Printer_12_(PCL)
+"IBM Network Printer 12 PS"       = IBM43121.SPD,IBM_Network_Printer_12_PS
+"IBM Network Printer 17 (PCL)"    = PCLIBM.DRV,LPTENUM\IBM431751F0,IBM431751F0,IBM_Network_Printer_17_(PCL)
+"IBM Network Printer 17 PS"       = IBM43171.SPD,IBM_Network_Printer_17_PS
+"IBM Network Printer 24 (PCL)"    = PCLIBM.DRV,LPTENUM\IBM4324A0B0,IBM4324A0B0,IBM_Network_Printer_24_(PCL)
+"IBM Network Printer 24 PS"       = IBM43241.SPD,IBM_Network_Printer_24_PS
+"IBM Personal Pageprinter"        = IBM20470.SPD,IBM_Personal_Pageprinter
+"IBM Personal Page Printer II-30" = IBM30505.SPD,IBM_Personal_Page_Printer_II-30
+"IBM Personal Page Printer II-31" = IBM31514.SPD,IBM_Personal_Page_Printer_II-31
+"IBM Personal Printer II 2380"    = IBM238X.DRV,IBM_Personal_Printer_II_2380
+"IBM 2380 Plus"                   = IBM238X.DRV,IBM_2380_Plus
+"IBM Personal Printer II 2381"    = IBM238X.DRV,IBM_Personal_Printer_II_2381
+"IBM 2381 Plus"                   = IBM238X.DRV,IBM_2381_Plus
+"IBM Personal Printer II 2390"    = IBM239X.DRV,IBM_Personal_Printer_II_2390
+"IBM 2390 Plus"                   = IBM239X.DRV,IBM_2390_Plus
+"IBM Personal Printer II 2391"    = IBM239X.DRV,IBM_Personal_Printer_II_2391
+"IBM 2391 Plus"                   = IBM239X.DRV,IBM_2391_Plus
+"IBM Portable Printer 5183"       = CIT24US.DRV,IBM_Portable_Printer_5183
+"IBM Proprinter"                  = PROPRINT.DRV,IBM_Proprinter
+"IBM Proprinter II"               = PROPRINT.DRV,IBM_Proprinter_II
+"IBM Proprinter III"              = PROPRINT.DRV,IBM_Proprinter_III
+"IBM Proprinter X24"              = PROPRN24.DRV,IBM_Proprinter_X24
+"IBM Proprinter X24e"             = PROPRN24.DRV,IBM_Proprinter_X24e
+"IBM Proprinter XL"               = PROPRINT.DRV,IBM_Proprinter_XL
+"IBM Proprinter XL II"            = PROPRINT.DRV,IBM_Proprinter_XL_II
+"IBM Proprinter XL III"           = PROPRINT.DRV,IBM_Proprinter_XL_III
+"IBM Proprinter XL24"             = PROPRN24.DRV,IBM_Proprinter_XL24
+"IBM Proprinter XL24e"            = PROPRN24.DRV,IBM_Proprinter_XL24e
+"IBM PS/1 2205"                   = PS1.DRV,IBM_PS/1_2205
+"IBM QuickWriter 5204"            = IBM5204.DRV,IBM_QuickWriter_5204
+"IBM QuietWriter III"             = QWIII.DRV,IBM_QuietWriter_III
+
+[Lexmark]
+"Lexmark 1020 Color Jetprinter"         = LMINKJET.DRV,Lexmark_1020_Color_Jetprinter
+"Lexmark 1020 (Mono)"                   = LMINKJET.DRV,Lexmark_1020_(Mono)
+"Lexmark 2380 Plus"                     = IBM238XB.DRV,Lexmark_2380_Plus
+"Lexmark 2381 Plus"                     = IBM238XB.DRV,Lexmark_2381_Plus
+"Lexmark 2390 Plus"                     = IBM239XB.DRV,Lexmark_2390_Plus
+"Lexmark 2391 Plus"                     = IBM239XB.DRV,Lexmark_2391_Plus
+"Lexmark 4039 LaserPrinter Plus"        = PCL5EMS.DRV,Lexmark_4039_LaserPrinter_Plus
+"Lexmark 4039 Plus PS"            = LEX4039P.SPD,Lexmark_4039_Plus_PS
+"Lexmark 4226 Model 302"                = IBM238XB.DRV,Lexmark_4226_Model_302
+"Lexmark Color 4079 plus PS"      = LEX4079P.SPD,Lexmark_Color_4079_plus_PS
+"Lexmark ExecJet IIc"                   = HPDSKJTB.DRV,Lexmark_ExecJet_IIc
+"Lexmark Forms Printer 4227"            = LM238X.DRV,Lexmark_Forms_Printer_4227
+"Lexmark Optra"                         = OPTRA.DRV,LPTENUM\Lexmark_Internationa958C,Lexmark_Internationa958C,Lexmark_Optra
+"Lexmark Optra C"                       = OPTRA.DRV,LPTENUM\Lexmark_InternationaFE23,Lexmark_InternationaFE23,Lexmark_Optra_C
+"Lexmark Optra E"                       = OPTRA.DRV,LPTENUM\Lexmark_InternationaBA9C,Lexmark_InternationaBA9C,Lexmark_Optra_E
+"Lexmark Optra E+"                      = LMPCLMD4.DRV,LPTENUM\Lexmark_InternationaF256,Lexmark_InternationaF256,Lexmark_Optra_E+
+"Lexmark Optra Ep"                      = OPTRA.DRV,LPTENUM\Lexmark_Internationa3295,Lexmark_Internationa3295,Lexmark_Optra_Ep
+"Lexmark Optra L Plus Series"           = OPTRA.DRV,Lexmark_Optra_L_Plus_Series
+"Lexmark Optra L Series"                = OPTRA.DRV,Lexmark_Optra_L_Series
+"Lexmark Optra N"                       = OPTRA.DRV,LPTENUM\Lexmark_Internationa1919,Lexmark_Internationa1919,Lexmark_Optra_N
+"Lexmark Optra Plus"                    = OPTRA.DRV,Lexmark_Optra_Plus
+"Lexmark Optra R Plus Series"           = OPTRA.DRV,Lexmark_Optra_R_Plus_Series
+"Lexmark Optra R Series"                = OPTRA.DRV,Lexmark_Optra_R_Series
+"Lexmark Optra C PS"              = LOPTRAC.SPD,Lexmark_Optra_C_PS
+"Lexmark Optra Ep PS"             = LOPTRAEP.SPD,Lexmark_Optra_Ep_PS
+"Lexmark Optra N PS"              = LOPTRAN.SPD,Lexmark_Optra_N_PS
+"Lexmark Optra Plus PS"           = LOPTRAP.SPD,Lexmark_Optra_Plus_PS
+"Lexmark Optra L Series PS"       = LOPTRAL.SPD,Lexmark_Optra_L_Series_PS
+"Lexmark Optra L Plus Series PS"  = LOPTRALP.SPD,Lexmark_Optra_L_Plus_Series_PS
+"Lexmark Optra R Series PS"       = LOPTRAR.SPD,Lexmark_Optra_R_Series_PS
+"Lexmark Optra R Plus Series PS"  = LOPTRARP.SPD,Lexmark_Optra_R_Plus_Series_PS
+"Lexmark Optra PS"                = LEXOPTRA.SPD,Lexmark_Optra_PS
+"Lexmark Optra SC 1275"           = LMPCLMD4.DRV,LPTENUM\Lexmark_Internationa99A9,Lexmark_Internationa99A9,Lexmark_Optra_SC_1275
+"Lexmark Optra SC 1275 PS"        = LOPTRASC.SPD,Lexmark_Optra_SC_1275_PS
+"Lexmark Optra S PS"              = LOPTRAS.SPD,Lexmark_Optra_S_PS
+"Lexmark Optra S 1250"              = LMPCLMD3.DRV,LPTENUM\Lexmark_Internationa6E9B,Lexmark_Internationa6E9B,Lexmark_Optra_S_1250
+"Lexmark Optra S 1650"              = LMPCLMD3.DRV,LPTENUM\Lexmark_InternationaAFDA,Lexmark_InternationaAFDA,Lexmark_Optra_S_1650
+"Lexmark Optra S 2450"              = LMPCLMD3.DRV,LPTENUM\Lexmark_Internationa2B7B,Lexmark_Internationa2B7B,Lexmark_Optra_S_2450
+"Lexmark ValueWriter 300"         = IBMPPDSL.DRV,LPTENUM\Lexmark_Internationa8344,Lexmark_Internationa8344,LPTENUM\--VALUEWRITER_3000036,--VALUEWRITER_3000036,Lexmark_ValueWriter_300
+"Lexmark ValueWriter 600"         = HPPCL5MS.DRV,LPTENUM\Lexmark_Internationa8256,Lexmark_Internationa8256,Lexmark_ValueWriter_600
+
+
+
+[Kodak]
+"KODAK ColorEase PS Printer"      = KDCOLOR1.SPD,KODAK_ColorEase_PS_Printer
+
+[Kyocera]
+"Kyocera F-800"                   = KYOCERA.DRV,Kyocera_F-800
+"Kyocera F-800A"                  = KYOCERA.DRV,Kyocera_F-800A
+"Kyocera F-820"                   = KYOCERA.DRV,Kyocera_F-820
+"Kyocera F-1000"                  = KYOCERA.DRV,Kyocera_F-1000
+"Kyocera F-1000A"                 = KYOCERA.DRV,Kyocera_F-1000A
+"Kyocera F-1010"                  = KYOCERA.DRV,Kyocera_F-1010
+"Kyocera F-1200S"                 = KYOCERA.DRV,Kyocera_F-1200S
+"Kyocera F-1800"                  = KYOCERA.DRV,Kyocera_F-1800
+"Kyocera F-1800A"                 = KYOCERA.DRV,Kyocera_F-1800A
+"Kyocera F-2000A"                 = KYOCERA.DRV,Kyocera_F-2000A
+"Kyocera F-2010"                  = KYOCERA.DRV,Kyocera_F-2010
+"Kyocera F-2200"                  = KYOCERA.DRV,Kyocera_F-2200
+"Kyocera F-2200S"                 = KYOCERA.DRV,Kyocera_F-2200S
+"Kyocera F-3000"                  = KYOCERA.DRV,Kyocera_F-3000
+"Kyocera F-3000A"                 = KYOCERA.DRV,Kyocera_F-3000A
+"Kyocera F-3010"                  = KYOCERA.DRV,Kyocera_F-3010
+"Kyocera F-3300"                  = KYOCERA.DRV,Kyocera_F-3300
+"Kyocera F-5000"                  = KYOCERA.DRV,Kyocera_F-5000
+"Kyocera FS-400 / FS-400A"        = HPPCL5MS.DRV,Kyocera_FS-400_/_FS-400A
+"Kyocera FS-850 / FS-850A"        = HPPCL5MS.DRV,Kyocera_FS-850_/_FS-850A
+"Kyocera FS-1500 / FS-1500A"      = HPPCL5MS.DRV,Kyocera_FS-1500_/_FS-1500A
+"Kyocera FS-1550 / FS-1550A"      = HPPCL5MS.DRV,Kyocera_FS-1550_/_FS-1550A
+"Kyocera FS-3400 / FS-3400A"      = HPPCL5MS.DRV,Kyocera_FS-3400_/_FS-3400A
+"Kyocera FS-3500 / FS-3500A"      = HPPCL5MS.DRV,Kyocera_FS-3500_/_FS-3500A
+"Kyocera FS-5500 / FS-5500A"      = HPPCL5MS.DRV,Kyocera_FS-5500_/_FS-5500A
+"Kyocera FS-6500 (KPDL-2)"        = FS-65002.SPD,Kyocera_FS-6500_(KPDL-2)
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. The section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[A_PNT518.SPD]
+CopyFiles=@A_PNT518.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLW8101.SPD]
+CopyFiles=@APLW8101.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWCOB1.SPD]
+CopyFiles=@APLWCOB1.SPD,COLOR_APPLE_LW600,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWCSB1.SPD]
+CopyFiles=@APLWCSB1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWIIF1.SPD]
+CopyFiles=@APLWIIF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWIIG1.SPD]
+CopyFiles=@APLWIIG1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWNTR1.SPD]
+CopyFiles=@APLWNTR1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APLWSEL.SPD]
+CopyFiles=@APLWSEL.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APPLE230.SPD]
+CopyFiles=@APPLE230.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APPLE380.SPD]
+CopyFiles=@APPLE380.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APPLE422.SPD]
+CopyFiles=@APPLE422.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APTOLLD1.SPD]
+CopyFiles=@APTOLLD1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[APTOLLW1.SPD]
+CopyFiles=@APTOLLW1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[AST__470.SPD]
+CopyFiles=@AST__470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[BRHJ770.DRV]
+CopyFiles=@BRHJ770.DRV,UNICLR
+DataSection=UNI_DATA
+
+[BROTHER9.DRV]
+CopyFiles=@BROTHER9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[BROTHR24.DRV]
+CopyFiles=@BROTHR24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CANON330.DRV]
+CopyFiles=@CANON330.DRV,UNI
+DataSection=UNI_DATA
+
+[CANON800.DRV]
+CopyFiles=@CANON800.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CANONLBP.DRV]
+CopyFiles=@CANONLBP.DRV,UNI
+DataSection=UNI_DATA
+
+[CIT24US.DRV]
+CopyFiles=@CIT24US.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CIT9US.DRV]
+CopyFiles=@CIT9US.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CITOH.DRV]
+CopyFiles=@CITOH.DRV,UNI
+DataSection=UNI_DATA
+
+[CPPER241.SPD]
+CopyFiles=@CPPER241.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPMQ151.SPD]
+CopyFiles=@CPPMQ151.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPMQ201.SPD]
+CopyFiles=@CPPMQ201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPRO518.SPD]
+CopyFiles=@CPPRO518.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPSNB10.SPD]
+CopyFiles=@CPPSNB10.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPSX241.SPD]
+CopyFiles=@CPPSX241.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DATAP462.SPD]
+CopyFiles=@DATAP462.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPT30L20.SPD]
+CopyFiles=@DPT30L20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPT30S20.SPD]
+CopyFiles=@DPT30S20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPT40L20.SPD]
+CopyFiles=@DPT40L20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPT40S20.SPD]
+CopyFiles=@DPT40S20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPT60L20.SPD]
+CopyFiles=@DPT60L20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DPT60S20.SPD]
+CopyFiles=@DPT60S20.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DC1152_1.SPD]
+CopyFiles=@DC1152_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DC1152F1.SPD]
+CopyFiles=@DC1152F1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[D2150_MS.SPD]
+CopyFiles=@D2150_MS.SPD,@DC2150P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DC2150P1.SPD]
+CopyFiles=@DC2150P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[D2250_MS.SPD]
+CopyFiles=@D2250_MS.SPD,@DC2250P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DC2250P1.SPD]
+CopyFiles=@DC2250P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DC5100_1.SPD]
+CopyFiles=@DC5100_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCCOLOR1.SPD]
+CopyFiles=@DCCOLOR1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLF02_1.SPD]
+CopyFiles=@DCLF02_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLF02F1.SPD]
+CopyFiles=@DCLF02F1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLN03R1.SPD]
+CopyFiles=@DCLN03R1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLPS171.SPD]
+CopyFiles=@DCLPS171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLPS321.SPD]
+CopyFiles=@DCLPS321.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCLPS401.SPD]
+CopyFiles=@DCLPS401.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCPS1721.SPD]
+CopyFiles=@DCPS1721.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCPS1761.SPD]
+CopyFiles=@DCPS1761.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCTPS201.SPD]
+CopyFiles=@DCTPS201.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DCD11501.SPD]
+CopyFiles=@DCD11501.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DEC24PIN.DRV]
+CopyFiles=@DEC24PIN.DRV,UNICLR
+DataSection=UNI_DATA
+
+[DEC3200.DRV]
+CopyFiles=@DEC3200.DRV,UNI
+DataSection=UNI_DATA
+
+[DEC3250.SPD]
+CopyFiles=@DEC3250.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DESKJETC.DRV]
+CopyFiles=DESKJETC,COLOR_DESKJETC
+HelpFile=HPVDJC.HLP
+DefaultDataType=EMF
+
+[DICONIX.DRV]
+CopyFiles=@DICONIX.DRV,UNI
+DataSection=UNI_DATA
+
+[ESCP2MS.DRV]
+CopyFiles=@ESCP2MS.DRV,UNICLR
+DataSection=UNI_DATA
+
+[EPSON24.DRV]
+CopyFiles=@EPSON24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[EPSON9.DRV]
+CopyFiles=@EPSON9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[EXPRSS24.DRV]
+CopyFiles=@EXPRSS24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[F71RX503.SPD]
+CopyFiles=@F71RX503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[FUJI24.DRV]
+CopyFiles=@FUJI24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[FUJI9.DRV]
+CopyFiles=@FUJI9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[FS-65002.SPD]
+CopyFiles=@FS-65002.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPDSKJET.DRV]
+CopyFiles=@HPDSKJET.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[HPDSKJTB.DRV]
+CopyFiles=@HPDSKJTB.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[HPPCL.DRV]
+CopyFiles=@HPPCL.DRV,FINSTALL,UNI
+DataSection=UNI_DATA
+
+[HPPCL5MS.DRV.BIDI]
+CopyFiles=@HPPCL5MS.DRV,@PJLMON.DLL,UNI,FINSTALL
+DataSection=UNI_DATA
+DriverFile=HPPCL5MS.DRV
+DataFile=HPPCL5MS.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[HPPCL5MS.DRV]
+CopyFiles=@HPPCL5MS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[HPPLOT.DRV]
+CopyFiles=@HPPLOT.DRV,@HPPLOT.HLP
+HelpFile=HPPLOT.HLP
+
+[PCLIBM.DRV]
+CopyFiles=@PCLIBM.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[IB401917.SPD]
+CopyFiles=@IB401917.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IB401939.SPD]
+CopyFiles=@IB401939.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IB402917.SPD]
+CopyFiles=@IB402917.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IB402939.SPD]
+CopyFiles=@IB402939.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM20470.SPD]
+CopyFiles=@IBM20470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM238XB.DRV]
+CopyFiles=@IBM238XB.DRV,UNI
+DataSection=UNI_DATA
+
+[IBM239XB.DRV]
+CopyFiles=@IBM239XB.DRV,UNI
+DataSection=UNI_DATA
+
+[IBM238X.DRV]
+CopyFiles=@IBM238X.DRV,UNI
+DataSection=UNI_DATA
+
+[IBM239X.DRV]
+CopyFiles=@IBM239X.DRV,UNI
+DataSection=UNI_DATA
+
+[IBM30505.SPD]
+CopyFiles=@IBM30505.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM31514.SPD]
+CopyFiles=@IBM31514.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM4039.SPD]
+CopyFiles=@IBM4039.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM4039P.SPD]
+CopyFiles=@IBM4039P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM4079.SPD]
+CopyFiles=@IBM4079.SPD,COLOR_IBM_4079,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM43032.SPD]
+CopyFiles=@IBM43032.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM43121.SPD]
+CopyFiles=@IBM43121.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM43171.SPD]
+CopyFiles=@IBM43171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM43241.SPD]
+CopyFiles=@IBM43241.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[IBM5204.DRV]
+CopyFiles=@IBM5204.DRV,UNI
+DataSection=UNI_DATA
+
+[IBMPPDSL.DRV]
+CopyFiles=@IBMPPDSL.DRV,@SF4029.EXE,UNI
+DataSection=UNI_DATA
+
+[JP350.DRV]
+CopyFiles=@JP350.DRV,UNICLR
+DataSection=UNI_DATA
+
+[KDCOLOR1.SPD]
+CopyFiles=@KDCOLOR1.SPD,COLOR_KODAK_COLOREASE,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KYOCERA.DRV]
+CopyFiles=@KYOCERA.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[LEX4039P.SPD]
+CopyFiles=@LEX4039P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LEX4079P.SPD]
+CopyFiles=@LEX4079P.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LM238X.DRV]
+CopyFiles=@LM238X.DRV,UNI
+DataSection=UNI_DATA
+
+[LMPCLMD3.DRV]
+CopyFiles=@LMPCLMD3.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[LMPCLMD4.DRV]
+CopyFiles=@LMPCLMD4.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[LOPTRASC.SPD]
+CopyFiles=@LOPTRASC.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAC.SPD]
+CopyFiles=@LOPTRAC.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAEP.SPD]
+CopyFiles=@LOPTRAEP.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAN.SPD]
+CopyFiles=@LOPTRAN.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAP.SPD]
+CopyFiles=@LOPTRAP.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAL.SPD]
+CopyFiles=@LOPTRAL.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRALP.SPD]
+CopyFiles=@LOPTRALP.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAR.SPD]
+CopyFiles=@LOPTRAR.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRARP.SPD]
+CopyFiles=@LOPTRARP.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LOPTRAS.SPD]
+CopyFiles=@LOPTRAS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LEXOPTRA.SPD]
+CopyFiles=@LEXOPTRA.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LMINKJET.DRV]
+CopyFiles=@LMINKJET.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[LWNT_470.SPD]
+CopyFiles=@LWNT_470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LWNTX470.SPD]
+CopyFiles=@LWNTX470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LWNTX518.SPD]
+CopyFiles=@LWNTX518.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OKI9IBM.DRV]
+CopyFiles=@OKI9IBM.DRV,UNICLR
+DataSection=UNI_DATA
+
+[OPTRA.DRV]
+CopyFiles=@OPTRA.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[PCL5EMS.DRV]
+CopyFiles=@PCL5EMS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PROPRINT.DRV]
+CopyFiles=@PROPRINT.DRV,UNI
+DataSection=UNI_DATA
+
+[PROPRN24.DRV]
+CopyFiles=@PROPRN24.DRV,UNI
+DataSection=UNI_DATA
+
+[PS1.DRV]
+CopyFiles=@PS1.DRV,UNICLR
+DataSection=UNI_DATA
+
+[QWIII.DRV]
+CopyFiles=@QWIII.DRV,UNICLR
+DataSection=UNI_DATA
+
+[TTY.DRV]
+CopyFiles=TTY,UNI
+DataSection=UNI_DATA
+HelpFile=TTY.HLP
+
+; Special section to copy just UNIDRV and its dependent files
+[UNIDRV_ONLY]
+CopyFiles=UNICLR
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation) or if it's a color
+; profile (since the DestinationDirs can only handle sections, and not
+; individual files).
+;
+[COLOR_APPLE_LW600]
+ALW600P.ICM
+ALW600B.ICM
+
+[COLOR_DESKJETC]
+HPDESK.ICM
+
+[COLOR_HP_300XL]
+HPXL300.ICM
+
+[COLOR_HP_300XL_PS]
+HPXL30PS.ICM
+
+[COLOR_HP_LASER]
+HPCLRLSR.ICM
+
+[COLOR_IBM_4079]
+PS4079.ICM
+
+[COLOR_KODAK_COLOREASE]
+KODAKCE.ICM
+
+[FINSTALL]
+FINSTALL.DLL
+FINSTALL.HLP
+
+[PSCRIPT]
+PSCRIPT.DRV
+PSCRIPT.HLP
+PSCRIPT.INI
+TESTPS.TXT
+APPLE380.SPD
+FONTS.MFM
+ICONLIB.DLL
+PSMON.DLL
+
+[TTY]
+TTY.DRV
+TTY.HLP
+
+[UNI]
+UNIDRV.DLL
+UNIDRV.HLP
+ICONLIB.DLL
+
+[UNICLR]
+UNIDRV.DLL
+UNIDRV.HLP
+DMCOLOR.DLL
+ICONLIB.DLL
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+
+[PSCRIPT_DATA]
+DriverFile=PSCRIPT.DRV
+HelpFile=PSCRIPT.HLP
+LanguageMonitor=%PS_MONITOR%
+
+[UNI_DATA]
+HelpFile=UNIDRV.HLP
+DefaultDataType=EMF
+
+;
+; Color profiles go to the colors directory. All other files go to the
+; system directory
+;
+
+[DestinationDirs]
+DefaultDestDir=11
+COLOR_APPLE_LW600=23
+COLOR_DESKJETC=23
+COLOR_HP_500C=23
+COLOR_HP_550C=23
+COLOR_HP_560C=23
+COLOR_HP_300XL=23
+COLOR_HP_300XL_PS=23
+COLOR_HP_LASER=23
+COLOR_IBM_4079=23
+COLOR_KODAK_COLOREASE=23
+
+;
+; Hints for installing language monitors from a print server. These
+; strings are not localized (since the localizable portion comes
+; directly from the server).
+;
+[LanguageMonitorHints]
+"PJL Language Monitor"="PJL Language Monitor,PJLMON.DLL"
+"PostScript Language Monitor"="PostScript Language Monitor,PSMON.DLL"
+
+;
+; List of application cache files that need removal during upgrade. Key
+; off the file extension listed in the [Extensions] section of win.ini.
+;
+[Caches to Remove]
+qdi=WPR.DAT
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+CLASSNAME="Printer"
+TTYNAME="Generic / Text Only"
+GENERIC="Generic"
+PJL_MONITOR="PJL Language Monitor,PJLMON.DLL"
+PS_MONITOR="PostScript Language Monitor,PSMON.DLL"
+PrinterSetup_Desc = "Printer set up"

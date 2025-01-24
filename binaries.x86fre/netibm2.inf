@@ -1,0 +1,200 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider   = %MSFT%
+LayoutFile =layout.inf
+DriverVer=10/01/2002,5.33.5.51
+
+[Manufacturer]
+%V_IBM%=IBM
+
+[ControlFlags]
+ExcludeFromSelect     = *
+                      
+[IBM]
+%IBMTRP_Default.DeviceDesc%  = IBMTRP, PCI\VEN_1014&DEV_003E                 ; IBM PCI Token-Ring Adapter (w/o Sub-Vendor ID)
+%IBMTRP_WoL.DeviceDesc%      = IBMTRP, PCI\VEN_1014&DEV_003E&REV_25          ; IBM PCI Wake On LAN Token-Ring Adapter (w/o Sub-Vendor ID)
+%IBMTRP_CS2AWoL.DeviceDesc%  = IBMTRP, PCI\VEN_1014&DEV_003E&SUBSYS_00E51014 ; IBM 16/4 Token-Ring PCI Adapter 2 with Wake on LAN
+%IBMTRP_HSWoL.DeviceDesc%    = IBMTRP, PCI\VEN_1014&DEV_003E&SUBSYS_00E41014 ; IBM High-Speed 100/16/4 Token-Ring PCI Adapter
+%IBMTRP_CS2NFWoL.DeviceDesc% = IBMTRP, PCI\VEN_1014&DEV_003E&SUBSYS_00CF1014 ; IBM 16/4 Token-Ring PCI Special
+%IBMTRP_CS2NF.DeviceDesc%    = IBMTRP, PCI\VEN_1014&DEV_003E&SUBSYS_00CE1014 ; IBM 16/4 Token-Ring PCI Adapter 2
+%IBMTRP_WoL.DeviceDesc%      = IBMTRP, PCI\VEN_1014&DEV_003E&SUBSYS_00CD1014 ; IBM PCI Wake On LAN Token-Ring Adapter (w/ Sub-Vendor ID)
+%IBMTRP_Default.DeviceDesc%  = IBMTRP, PCI\VEN_1014&DEV_003E&SUBSYS_003E1014 ; IBM PCI Token-Ring Adapter (w/ Sub-Vendor ID)
+
+[IBMTRP]
+AddReg          = IBMTRP_Common.ndi,IBMTRP_NT.ndi,IBMTRP_parms.reg,IBMTRP_smpmode.reg
+Characteristics = 0x84
+BusType         = 5 ; PCI
+CopyFiles       = ndis5.CopyFiles,EventMsg.CopyFiles
+
+[IBMTRP.Services]
+AddService      = IBMTRP,2,IBMTRP.ServiceDesc,IBMTRP.EventLog
+
+[IBMTRP_parms.reg]
+; EnableTxEofInt
+HKR,NDI\params\EnableTxEofInt,ParamDesc,,       %EnableTxEofInt%
+HKR,NDI\params\EnableTxEofInt,default,,         "YES"
+HKR,NDI\params\EnableTxEofInt,type,,            "enum"
+HKR,NDI\params\EnableTxEofInt\enum,"YES",,      %Yes%
+HKR,NDI\params\EnableTxEofInt\enum,"NO",,       %No%
+
+; MaxTransmits
+HKR,NDI\params\MaxTransmits,ParamDesc,,         %MaxTransmits%
+HKR,NDI\params\MaxTransmits,type,,              "int"
+HKR,NDI\params\MaxTransmits,min,,               "1"
+HKR,NDI\params\MaxTransmits,max,,               "128"
+HKR,NDI\params\MaxTransmits,step,,              "1"
+HKR,NDI\params\MaxTransmits,default,,           "31"
+
+; MaxTxFrameSize
+HKR,NDI\params\MaxTxFrameSize,ParamDesc,,       %MaxTxFrameSize%
+HKR,NDI\params\MaxTxFrameSize,type,,            "int"
+HKR,NDI\params\MaxTxFrameSize,min,,             "256"
+HKR,NDI\params\MaxTxFrameSize,max,,             "18000"
+HKR,NDI\params\MaxTxFrameSize,step,,            "1"
+HKR,NDI\params\MaxTxFrameSize,default,,         "4096"
+
+; MinRcvBuffs (NDIS 3 Only)
+HKR,NDI\params\MinRcvBuffs,ParamDesc,,          %MinRcvBuffs%
+HKR,NDI\params\MinRcvBuffs,type,,               "int"
+HKR,NDI\params\MinRcvBuffs,min,,                "1"
+HKR,NDI\params\MinRcvBuffs,max,,                "200"
+HKR,NDI\params\MinRcvBuffs,step,,               "1"
+HKR,NDI\params\MinRcvBuffs,default,,            "40"
+
+; RcvBuffSize (NDIS 3 Only)
+HKR,NDI\params\RcvBuffSize,ParamDesc,,          %RcvBuffSize%
+HKR,NDI\params\RcvBuffSize,type,,               "int"
+HKR,NDI\params\RcvBuffSize,min,,                "256"
+HKR,NDI\params\RcvBuffSize,max,,                "18000"
+HKR,NDI\params\RcvBuffSize,step,,               "1"
+HKR,NDI\params\RcvBuffSize,default,,            "4096"
+
+; LoopBack
+HKR,NDI\params\LoopBack,ParamDesc,,             %LoopBack%
+HKR,NDI\params\LoopBack,default,,               ""
+HKR,NDI\params\LoopBack,type,,                  "enum"
+HKR,NDI\params\LoopBack\enum,"YES",,            %Yes%
+HKR,NDI\params\LoopBack\enum,"NO",,             %No%
+HKR,NDI\params\LoopBack,default,,               "NO"
+
+; FullDuplex
+HKR,NDI\params\FullDuplex,ParamDesc,,           %FullDuplex%
+HKR,NDI\params\FullDuplex,type,,		"enum"
+HKR,NDI\params\FullDuplex\enum,"YES",,          %Yes%
+HKR,NDI\params\FullDuplex\enum,"NO",,           %No%
+HKR,NDI\params\FullDuplex,default,,             "YES"
+
+; TxPriMax
+HKR,NDI\params\TxPriMax,ParamDesc,,             %TxPriMax%
+HKR,NDI\params\TxPriMax,type,,                  "int"
+HKR,NDI\params\TxPriMax,min,,                   "0"
+HKR,NDI\params\TxPriMax,max,,                   "6"
+HKR,NDI\params\TxPriMax,step,,                  "1"
+HKR,NDI\params\TxPriMax,default,,               "6"
+
+; TxPriThresh
+HKR,NDI\params\TxPriThresh,ParamDesc,,          %TxPriThresh%
+HKR,NDI\params\TxPriThresh,type,,               "int"
+HKR,NDI\params\TxPriThresh,min,,                "1"
+HKR,NDI\params\TxPriThresh,max,,                "6"
+HKR,NDI\params\TxPriThresh,step,,               "1"
+HKR,NDI\params\TxPriThresh,default,,            "1"
+
+; DataRate
+HKR,NDI\params\DataRate,ParamDesc,,             %DataRate%
+HKR,NDI\params\DataRate,type,,                  "enum"
+HKR,NDI\params\DataRate\enum,"AUTO",,           %Autosense%
+HKR,NDI\params\DataRate\enum,"M16",,            %SixteenMB%
+HKR,NDI\params\DataRate\enum,"M4",,             %FourMB%
+HKR,NDI\params\DataRate,default,,               "AUTO"
+
+; LLCOnly
+HKR,NDI\params\LLCOnly,ParamDesc,,              %LLCOnly%
+HKR,NDI\params\LLCOnly,type,,                   "enum"
+HKR,NDI\params\LLCOnly\enum,"YES",,             %LLCYes%
+HKR,NDI\params\LLCOnly\enum,"NO",,              %LLCNo%
+HKR,NDI\params\LLCOnly,default,,                "YES"
+
+; Only used for NT 5.0
+[IBMTRP_smpmode.reg]
+HKR,NDI\params\SMP_Mode,ParamDesc,,             %SMP_Mode%
+HKR,NDI\params\SMP_Mode,type,,                  "enum"
+HKR,NDI\params\SMP_Mode\enum,"YES",,            %SMPYes%
+HKR,NDI\params\SMP_Mode\enum,"NO",,             %SMPNo%
+HKR,NDI\params\SMP_Mode,default,,               "NO"
+
+[IBMTRP_Common.ndi]
+HKR,,                   MediaType,        ,  "2"
+HKR,,                   AdapterBusType,   ,  "5"
+HKR,,                   CardId,           ,  "269746238"
+
+[IBMTRP_NT.ndi]
+HKR,Ndi,                Service,         0,  "IBMTRP"
+HKR,Ndi\Interfaces,     UpperRange,       ,  "ndis5"
+HKR,Ndi\Interfaces,     LowerRange,       ,  "tokenring"
+
+[IBMTRP.ServiceDesc]
+DisplayName      = %IBMTRP.DriverDesc%
+ServiceType      = 1
+StartType        = 3
+ErrorControl     = 1
+ServiceBinary    = %12%\IBMTRP.SYS
+LoadOrderGroup   = NDIS
+
+[IBMTRP.EventLog]
+AddReg=IBMTRP.AddEventLog
+
+[IBMTRP.AddEventLog]
+HKR, ,EventMessageFile,  0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\IBMSGNET.DLL"
+HKR, ,TypeSupported,     0x00010001, 7
+
+[EventMsg.CopyFiles]
+IBMSGNET.DLL,,,2
+
+[ndis5.CopyFiles]
+IBMTRP.SYS,,,2  
+
+[DestinationDirs]
+DefaultDestDir     = 12
+EventMsg.CopyFiles = 11 ; LDID_SYSTEM
+ndis5.CopyFiles    = 12 ; LDID_SYSTEM32_DRIVERS
+
+[strings]
+MSFT                       = "Microsoft"
+V_IBM                      = "IBM"
+
+EnableTxEofInt             = "TX End of Frame Int"
+MaxTransmits               = "Max Transmits"
+MaxTxFrameSize             = "Max TX Frame Size"
+MinRcvBuffs                = "Min Receive Buffers"
+RcvBuffSize                = "Receive Buffer Size"
+LoopBack                   = "Hardware Loopback"
+FullDuplex                 = "Allow Full Duplex"
+TxPriMax                   = "TX Max Priority"
+TxPriThresh                = "Priority TX Threshold"
+DataRate                   = "Network Data Rate"
+LLCOnly                    = "Promiscuous Mode Filter"
+SMP_Mode                   = "SMP Enhancements"
+
+Yes                        = "Yes"
+No                         = "No"
+LLCYes                     = "Copy only non-MAC frames"
+LLCNo                      = "Copy all frames"
+Autosense                  = "Automatically Detect"
+SixteenMB                  = "16 Mbps"
+FourMB                     = "4 Mbps"
+SMPNo                      = "Disabled (Uniprocessor)"
+SMPYes                     = "Enabled (Multiprocessor)"
+
+IBMTRP_Default.DeviceDesc  = "IBM PCI Token-Ring Adapter"
+IBMTRP_WoL.DeviceDesc      = "IBM PCI Wake On LAN Token-Ring Adapter"
+IBMTRP_CS2NF.DeviceDesc    = "IBM 16/4 Token-Ring PCI Adapter 2"
+IBMTRP_CS2NFWoL.DeviceDesc = "IBM 16/4 Token-Ring PCI Special"
+IBMTRP_HSWoL.DeviceDesc    = "IBM High-Speed 100/16/4 Token-Ring PCI Adapter"
+IBMTRP_CS2AWoL.DeviceDesc  = "IBM 16/4 Token-Ring PCI Adapter 2 with Wake on LAN"
+
+IBMTRP.DriverDesc          = "IBM Token-Ring PCI Adapter (Generic)"

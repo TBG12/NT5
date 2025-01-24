@@ -1,0 +1,138 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+Signature  = "$Windows NT$"
+Provider   = %MSFT%
+Class      = MultiFunction
+ClassGUID  = {4d36e971-e325-11ce-bfc1-08002be10318}
+DriverVer=10/01/2002,1.10.2.0
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%3COM%=3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%3CXEM556%   = MFJack.mf,   PCMCIA\3COM-MEGAHERTZ_3CXEM556-FF08
+%3CXEM556B%  = MFJackB.mf,  PCMCIA\3COM-MEGAHERTZ_3CXEM556_B-23A8
+%3CXEM556BI% = MFJackBI.mf, PCMCIA\3COM-MEGAHERTZ_3CXEM556_BI-2AD4
+
+[MFJack.mf]
+
+[MFJackB.mf]
+
+[MFJackBI.mf]
+
+[MFJack.mf.HW]
+AddReg=MFJack.mf.RegHW
+
+[MFJackB.mf.HW]
+AddReg=MFJackB.mf.RegHW
+
+[MFJackBI.mf.HW]
+AddReg=MFJackBI.mf.RegHW
+
+[MFJack.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\3CXEM556_DEV0 ; Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\3CXEM556_DEV1 ; LAN
+HKR,Child0001,ResourceMap,1,01,02,03,04,05
+
+[MFJackB.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\3CXEM556B_DEV0 ; Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\3CXEM556B_DEV1 ; LAN
+HKR,Child0001,ResourceMap,1,01,02,03,04,05
+
+[MFJackBI.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\3CXEM556BI_DEV0 ; Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\3CXEM556BI_DEV1 ; LAN
+HKR,Child0001,ResourceMap,1,01,02,03,04,05
+
+[MFJack.mf.LogConfigOverride]
+LogConfig    =    3Com.mf.Override0
+LogConfig    =    3Com.mf.Override1
+LogConfig    =    3Com.mf.Override2
+LogConfig    =    3Com.mf.Override3
+
+[MFJackB.mf.LogConfigOverride]
+LogConfig    =    3Com.mf.Override0
+LogConfig    =    3Com.mf.Override1
+LogConfig    =    3Com.mf.Override2
+LogConfig    =    3Com.mf.Override3
+
+[MFJackBI.mf.LogConfigOverride]
+LogConfig    =    3Com.mf.Override0
+LogConfig    =    3Com.mf.Override1
+LogConfig    =    3Com.mf.Override2
+LogConfig    =    3Com.mf.Override3
+
+
+[3Com.mf.Override0]
+IOConfig     =    3F8-3FF   ; Com1
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PcCardConfig=0(W)
+MfCardConfig =    0900:47:0(A)
+MfCardConfig =    0800:47:1
+
+[3Com.mf.Override1]
+IOConfig     =    2F8-2FF   ; Com2
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PcCardConfig=0(W)
+MfCardConfig =    0900:47:0(A)
+MfCardConfig =    0800:47:1
+
+[3Com.mf.Override2]
+IOConfig     =    3E8-3EF   ; Com3
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PcCardConfig=0(W)
+MfCardConfig =    0900:47:0(A)
+MfCardConfig =    0800:47:1
+
+[3Com.mf.Override3]
+IOConfig     =    2E8-2EF   ; Com4
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PcCardConfig=0(W)
+MfCardConfig =    0900:47:0(A)
+MfCardConfig =    0800:47:1
+
+[MFJack.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[MFJackB.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[MFJackBI.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+[mf.CopyFiles]
+
+[DestinationDirs]
+
+[Strings]
+3COM         = "3Com"
+MSFT         = "Microsoft"
+3CXEM556     = "3Com Megahertz LAN + 56K Modem PC Card"
+3CXEM556B    = "3Com Megahertz LAN + 56K Modem PC Card (B)"
+3CXEM556BI   = "3Com Megahertz LAN + 56K Modem PC Card (BI)"
+MFClassName  = "Multifunction PCMCIA Device Driver"

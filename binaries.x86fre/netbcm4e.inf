@@ -1,0 +1,97 @@
+; netbcm4e.inf
+;
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+;
+
+[version]
+Signature= "$Windows NT$"
+Class=Net
+ClassGUID= {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider= %MSFT%
+LayoutFile=layout.inf
+DriverVer=10/01/2002,2.31.0.2
+
+[Manufacturer]
+%V_BCM% = BROADCOM
+
+[ControlFlags]
+ExcludeFromSelect     = *
+
+[BROADCOM]
+%BCM4412.DeviceDesc% = BCM44X2, PCI\VEN_14E4&DEV_4412
+
+[BCM44X2.NT]
+Characteristics	= 0x84			; NCF_PHYSICAL | NCF_HAS_UI
+BusType		= 5			; PCI bus
+AddReg		= BCM44X2.reg, AdvancedTab.reg, 8021pPriority.reg
+CopyFiles	= BCM44X2.files.NT
+
+[BCM44X2.NT.Services]
+AddService = BCM44X2, 2, BCM44X2.Service, common.EventLog
+
+[BCM44X2.reg]
+HKR,	Ndi,	Service,		0,	"BCM44X2"
+; Ndis Info
+; Interfaces
+HKR,	Ndi\Interfaces,	UpperRange,	,	%ndis5%
+HKR,	Ndi\Interfaces,	LowerRange,	,	%ethernet%
+HKR,	Ndi,	HelpText,		,	%BCM44X2_HELP%
+
+[BCM44X2.Service]
+DisplayName	= %BCM44X2.Service.DispName%
+ServiceType	= 1			; %SERVICE_KERNEL_DRIVER%
+StartType	= 3			; %SERVICE_DEMAND_START%
+ErrorControl	= 1		        ; %SERVICE_ERROR_NORMAL%
+ServiceBinary	= %12%\BCM4E5.SYS
+LoadOrderGroup	= NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,	,	EventMessageFile,	0x00020000,	"%%SystemRoot%%\System32\netevent.dll"
+HKR,	,	TypesSupported,		0x00010001,	7
+
+[BCM44X2.files.NT]
+BCM4E5.SYS,,,2
+
+[8021pPriority.reg]
+HKR, Ndi\Params\8021pPriority,         ParamDesc,  0, %8021pPriority%
+HKR, Ndi\Params\8021pPriority,         default,    0, "0"
+HKR, Ndi\Params\8021pPriority\Enum,    "1",        0, %Enabled%
+HKR, Ndi\Params\8021pPriority\Enum,    "0",        0, %Disabled%
+HKR, Ndi\Params\8021pPriority,         type,       0, "enum"
+
+[AdvancedTab.reg]
+HKR, Ndi\params\SpeedAndDuplex,       ParamDesc,  0, %SpeedAndDuplex%
+HKR, Ndi\params\SpeedAndDuplex,       default,    0, "0"
+HKR, Ndi\params\SpeedAndDuplex,       type,       0, "enum"
+HKR, Ndi\params\SpeedAndDuplex\enum,  "0",        0, %AutoDetect%
+HKR, Ndi\params\SpeedAndDuplex\enum,  "1",        0, %10MbHalfDuplex%
+HKR, Ndi\params\SpeedAndDuplex\enum,  "2",        0, %10MbFullDuplex%
+HKR, Ndi\params\SpeedAndDuplex\enum,  "3",        0, %100MbHalfDuplex%
+HKR, Ndi\params\SpeedAndDuplex\enum,  "4",        0, %100MbFullDuplex%
+
+[DestinationDirs]
+DefaultDestDir=12
+BCM44X2.files.NT = 12
+
+[strings]
+ndis5     = "ndis5"
+ethernet  = "ethernet"
+MSFT      = "Microsoft"
+V_BCM     = "Broadcom"
+
+SpeedAndDuplex   = "Speed & Duplex"
+AutoDetect       = "Auto Detect"
+10MbHalfDuplex   = "10Mbps, Half Duplex"
+10MbFullDuplex   = "10Mbps, Full Duplex"
+100MbHalfDuplex  = "100Mbps, Half Duplex"
+100MbFullDuplex  = "100Mbps, Full Duplex"
+8021pPriority    = "802.1p Priority Support"
+Enabled          = "Enabled"
+Disabled         = "Disabled"
+
+BCM4412.DeviceDesc       = "BCM 4412 10/100 Ethernet Network Adapter"
+BCM44X2_HELP             = "The BCM 10/100 Ethernet Network Adapter provides local area networking"
+BCM44X2.Service.DispName = "BCM 10/100 Ethernet Network Adapter Driver"

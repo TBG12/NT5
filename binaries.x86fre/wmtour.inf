@@ -1,0 +1,115 @@
+
+
+[Version] 
+Signature   = "$Chicago$" 
+LayoutFile=layout.inf
+
+
+
+
+
+
+
+
+
+AdvancedINF=2.5, "You need a newer version of Advpack.dll."
+[DefaultInstall] 
+RequiredEngine=Setupapi 
+
+CopyFiles  = CTour, CAudio, CAWav, CCnt, CCss, CImg, CIBtnC, CIWMark, CScr, CVid, CINF
+
+[DestinationDirs] 
+CINF=17
+CTour  =18,Tours\WindowsMediaPlayer
+CAudio =18,Tours\WindowsMediaPlayer\Audio
+CAWav =18,Tours\WindowsMediaPlayer\Audio\Wav
+CCnt =18,Tours\WindowsMediaPlayer\Cnt
+CCss =18,Tours\WindowsMediaPlayer\Css
+CImg =18,Tours\WindowsMediaPlayer\Img
+CIBtnC =18,Tours\WindowsMediaPlayer\Img\Btn
+CIWMark =18,Tours\WindowsMediaPlayer\Img\WMarks
+CScr =18,Tours\WindowsMediaPlayer\Scr
+CVid =18,Tours\WindowsMediaPlayer\Video
+
+[CINF]
+;wmtour.inf
+
+[CTour]
+wmptour.hta
+
+[CAudio]
+snd.htm
+
+[CAWav]
+wmpaud1.wav
+wmpaud2.wav
+wmpaud3.wav
+wmpaud4.wav
+wmpaud5.wav
+wmpaud6.wav
+wmpaud7.wav
+wmpaud8.wav
+wmpaud9.wav
+
+[CCnt]
+contents.htm
+wmploc.js
+
+[CCss]
+controls.css
+wmptour.css
+
+[CImg]
+mplogo.gif
+mplogoh.gif
+tourbg.gif
+videobg.gif
+vidsamp.gif
+
+[CIBtnC]
+bktr.gif
+bktrh.gif
+cloapp.gif
+cloapph.gif
+cnt.gif
+cntd.gif
+cnth.gif
+taoff.gif
+taoffh.gif
+taon.gif
+taonh.gif
+tpause.gif
+tpauseh.gif
+tplay.gif
+tplayh.gif
+
+
+
+[CIWMark]
+wm1.gif
+wm2.gif
+wm3.gif
+wm4.gif
+wm5.gif
+wm6.gif
+wm7.gif
+wm8.gif
+wm9.gif
+
+[CScr]
+controls.js
+events.js
+tour.js
+
+[CVid]
+copycd.wmv
+mdlib.wmv
+nuskin.wmv
+rtuner.wmv
+viz.wmv
+
+[Strings] 
+;
+;
+;
+

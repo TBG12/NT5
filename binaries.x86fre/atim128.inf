@@ -1,0 +1,655 @@
+; ATI Display Information file : atiikai.inf 
+; INF file for ATIDVAI display driver.
+; Manufacturer:  ATI Technologies Inc.
+; Installation file for the ATI Mobility M3 graphics adapter.
+;----------------------------------------------------------------------------
+
+[Version]
+Signature = "$CHICAGO$"
+Provider  = %MS%
+LayoutFile= layout.inf
+ClassGUID = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Class     = Display
+DriverVer = 06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir   = 11  ; system32
+atimtai.Miniport = 12  ; drivers
+atimtai.Display  = 11  ; system32
+atimtai.Desktop  = 11  ; system32
+atimtai.OpenGL   = 11  ; system32
+atimtai.WDMInf    = 17   ; inf
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATI.Mfg
+
+[ATI.Mfg]
+%Mobility128% 2X (ACER)     = atimtai_ACER, PCI\VEN_1002&DEV_4C46&SUBSYS_4C461054
+%Mobility128% 4X (ACER)     = atimtai_ACER, PCI\VEN_1002&DEV_4D46&SUBSYS_4D461054
+
+%Mobility128% 2X (COMPAL)   = atimtai_COMPAL, PCI\VEN_1002&DEV_4C46&SUBSYS_001114C0
+%Mobility128% 4X (COMPAL)   = atimtai_COMPAL, PCI\VEN_1002&DEV_4D46&SUBSYS_001214C0
+
+%Mobility128% 2X (COMPAQ)   = atimtai_COMPAQ, PCI\VEN_1002&DEV_4C46&SUBSYS_B11B0E11
+
+%Mobility128% 2X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4C46&SUBSYS_00B01028
+%Mobility128% 2X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4C46&SUBSYS_00B11028
+%Mobility128% 2X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4C46&SUBSYS_00B21028
+%Mobility128% 2X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4C46&SUBSYS_00A31028
+%Mobility128% 2X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4C46&SUBSYS_00A41028
+%Mobility128% 4X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4D46&SUBSYS_00A31028
+%Mobility128% 4X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4D46&SUBSYS_00A41028
+%Mobility128% 2X (DELL)     = atimtai_DELL, PCI\VEN_1002&DEV_4C46&SUBSYS_00CC1028
+
+%Mobility128% 2X (IBM)      = atimtai_IBM, PCI\VEN_1002&DEV_4C46&SUBSYS_01551014
+
+%Mobility128% 2X (KAPOK)    = atimtai_KAPOK, PCI\VEN_1002&DEV_4C46&SUBSYS_85861558
+
+%Mobility128% 2X (NEC)      = atimtai_NEC, PCI\VEN_1002&DEV_4C46&SUBSYS_80F41033
+
+%Mobility128% 2X = atimtai_DEFAULT, PCI\VEN_1002&DEV_4C46&SUBSYS_2013161F
+
+%Mobility128% 4X = atimtai_DEFAULT, PCI\VEN_1002&DEV_4D46&SUBSYS_0F0614FF
+
+%Mobility128% 2X = atimtai_DEFAULT, PCI\VEN_1002&DEV_4C46&SUBSYS_4C461002
+
+%Mobility128% 2X = atimtai_DEFAULT, PCI\VEN_1002&DEV_4C46
+%Mobility128% 4X = atimtai_DEFAULT, PCI\VEN_1002&DEV_4D46
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; atimtai general installation section
+; ------------------------------------
+
+[atimtai_ACER]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_ACER.AddReg
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_ACER.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_ACER.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_COMPAL]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_COMPAL.AddReg
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_COMPAL.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_COMPAL.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_COMPAQ]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_COMPAQ.AddReg
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_COMPAQ.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_COMPAQ.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_DELL]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_DELL.AddReg
+; CopyINF = phildec.inf,ativmvxx.inf
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_DELL.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_DELL.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_IBM]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_IBM.AddReg
+CopyINF = phildec.inf,ativmvxx.inf
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg,atimtai_IBM.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles= atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_IBM.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_KAPOK]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_KAPOK.AddReg
+CopyINF = phildec.inf,ativmvxx.inf
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_KAPOK.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_KAPOK.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_NEC]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg,atimtai_NEC.AddReg
+CopyINF = phildec.inf,ativmvxx.inf
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_NEC.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_NEC.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+[atimtai_DEFAULT]
+DelFiles=atimtai.DelFiles
+CopyFiles=atimtai.Miniport,atimtai.CopyFiles, atimtai.Display, atimtai.Desktop, atimtai.Copy, atimtai.WDMInf
+AddReg=atimtai_DEFAULT.AddReg
+CopyINF = phildec.inf,ativmvxx.inf
+
+; UninstallFiles=atimtai.Copy, atimtai.Desktop
+DelReg=atimtai.DelReg,atimtai_DEFAULT.AddReg, atimtai_SoftwareDesktopSettings
+DelFiles=atimtai.Miniport, atimtai.Display, atimtai.OpenGL, atimtai.WDMInf
+; CleanService=atimtai.RemoveService
+
+; [atimtai_DEFAULT.CoInstallers]
+; AddReg=CoInstallers.AddReg
+; CopyFiles=atimtai.CoInstallersCopy
+
+;
+; File sections
+;
+[atimtai.CopyFiles]
+;atiiiexx.dll
+;atii2kai.inf
+
+[atimtai.Miniport]
+atimtai.sys
+
+[atimtai.Display]
+atidvai.dll
+Atievxx.exe
+; atitvo32.dll
+; ativmvxx.ax
+
+[atimtai.WDMInf]
+; atidvai.dll
+;ativmvxx.inf
+
+[atimtai.Desktop]
+;atipdaxx.dll
+; atipdsxx.dll
+;atippaxx.dll
+;atiprbxx.exe
+;atiptaxx.exe
+;atipuixx.dll
+;Atrpdsxx.enu
+;atrptaxx.enu
+;atrpuixx.enu
+;atisserv.dll
+;Atfenuxx.hlx
+;Atmenuxx.hlx
+;Attenuxx.hlx
+;Atmenuxx.cnt
+;atiphexx.exe
+;atiicdxx.dll
+;atiicdxx.vxd
+;atiicdxx.sys
+;atricdxx.dft
+;atiiprxx.exe
+;atriprxx.dft
+;Atridtxx.dft
+;atiidtxx.dll
+;atiicpxx.dll,,,0x10
+; OEM Settings
+
+[atimtai.OpenGL]
+; ATIO2KAI.DLL
+
+; [atimtai.CoInstallersCopy]
+; atiidtxx.dll
+; atiicpxx.dll,,,0x10
+
+
+[atimtai.Copy]
+
+[atimtai.DelFiles]
+;%11%\atrpuixx.enu
+;%11%\atrptaxx.enu
+
+[atimtai.DelReg]
+HKR,, DALObjectData0
+HKR,, DALObjectData1
+HKR,, DALSelectObjectData0
+HKR,, DALSelectObjectData1
+HKR,, DALCurrentObjectData
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\TempPages"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",Atitask
+HKLM,"SOFTWARE\ATI Technologies\Desktop\Icon"
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\ATI ICD Settings"
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\ATIPagesEx",,,"{700B1221-CAFF-11d1-B9DE-000000001B1B}"
+; OEM Settings
+
+;
+; Service installation
+;
+
+[atimtai_ACER.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_COMPAL.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_COMPAQ.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_DELL.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_IBM.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_KAPOK.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_NEC.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_DEFAULT.Services]
+AddService = atimtai, 0x00000002, atimtai_Generic_Service_Inst, atimtai_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtai_EventLog_Inst]
+AddReg=atimtai_EventLog_AddReg
+
+[atimtai_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\atimtai.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[atimtai_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\atimtai.sys
+
+[Atievxx_Generic_Service_Inst]
+ServiceType    = 0x110
+StartType      = 2
+ErrorControl   = 1
+ServiceBinary  = %11%\Atievxx.exe
+
+[Atievxx_EventLog_Inst]
+AddReg=Atievxx_EventLog_AddReg
+
+[Atievxx_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%11%\Atievxx.exe"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software installation
+;
+
+[atimtai_ACER.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_ACER.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_COMPAL.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_COMPAL.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_COMPAQ.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_COMPAQ.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_DELL.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_DELL.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_IBM.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_IBM.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_KAPOK.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_KAPOK.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_NEC.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_NEC.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_DEFAULT.SoftwareSettings]
+DelReg = atimtai.DelReg
+AddReg = atimtai_SoftwareDeviceSettings
+AddReg = atimtai_DEFAULT.AddReg
+AddReg = atimtai_OpenGLSoftwareSettings
+AddReg = atimtai_SoftwareDesktopSettings
+AddReg = atimtai_SoftwareDesktopSettings_ENU
+DelReg = atimtai_RemoveDeviceSettings
+
+[atimtai_ACER.AddReg]
+HKR,, DALRULE_USECMOSDISPLAYSETTINGS,           %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,            %REG_DWORD%,    1 
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER,       %REG_DWORD%,    1 
+HKR,, DALRULE_USEENABLEDATBOOTSCHEME,           %REG_DWORD%,    1 
+HKR,"Desktop",Projector,1,01,00,00,00 
+HKR,"Desktop",ActiveTvOutFilters,1,02,00,00,00 
+
+[atimtai_COMPAL.AddReg]
+
+[atimtai_COMPAQ.AddReg]
+
+[atimtai_DELL.AddReg]
+HKR,, DisableMemInit,                           %REG_DWORD%,    1 
+HKR,, DDLRProRegOptionPatchLcdSyncProblem,      %REG_DWORD%,    1 
+HKR,, DDLRProRegOptionPLLProblemNBlankDelay,    %REG_DWORD%,    1 
+HKR,, RPRORegOptionLcdGdoDelayInMiliSec,        %REG_BINARY%,   E8, 03, 00, 00 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,            %REG_DWORD%,    1 
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,      %REG_DWORD%,    1 
+HKR,, DALRULE_SELECTION_SCHEME,                 %REG_DWORD%,    1 
+; HKR,"Desktop",DetectLoad,1,08,00,00,00 
+HKR,, DALRestrictedModesBCD,    %REG_BINARY%,   07, 20, 04, 80, 00, 00, 00, 00, 08, 48, 04, 80, 00, 00, 00, 00, 08, 64, 04, 80, 00, 00, 00, 00, 10, 24, 06, 00, 00, 00, 00, 00, 11, 52, 08, 64, 00, 00, 00, 00, 00, 00, 00, 00, 00, 24, 00, 00, 00, 00, 00, 00, 00, 00, 00, 56, 00, 00, 00, 00, 00, 00, 00, 66, 00, 00, 00, 00, 00, 00, 00, 72, 00, 00, 00, 00, 00, 00, 00, 90, 00, 00, 00, 00, 00, 00, 01, 00, 00, 00, 00, 00, 00, 00, 01, 20, 00, 00, 00, 00, 00, 00, 01, 60, 00, 00, 00, 00, 00, 00, 02, 00
+
+
+[atimtai_IBM.AddReg]
+HKR,, DALRULE_USECMOSDISPLAYSETTINGS,           %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,            %REG_DWORD%,    1 
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER,       %REG_DWORD%,    1 
+HKR,, DALRestrictedModesBCD,                    %REG_BINARY%,   07, 20, 04, 80, 00, 00, 00, 00, 08, 48, 04, 80, 00, 00, 00, 00, 08, 64, 04, 80, 00, 00, 00, 00, 10, 24, 06, 00, 00, 00, 00, 00, 11, 52, 08, 64, 00, 00, 00, 00, 00, 00, 00, 00, 00, 24, 00, 00
+
+HKR,"Desktop",                                  DetectLoad,    1,08,00,00,00 
+HKR,, M3_CRTGDO_REGISTRYOPTIONS,                %REG_DWORD%,   1 
+HKR,, DisableACPIMonitorDetect,              	%REG_DWORD%,    1 
+
+[atimtai_KAPOK.AddReg]
+HKR,, DALRULE_USELASTSELECTEDSCHEME, %REG_DWORD%,   1  
+
+[atimtai_NEC.AddReg]
+
+[atimtai_DEFAULT.AddReg]
+HKR,, DisableBlockWrite,                        %REG_DWORD%,    1
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER,       %REG_DWORD%,    1 
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,      %REG_DWORD%,    1
+HKR,, DALRULE_DISPLAYSRESTRICTMODES,            %REG_DWORD%,    0
+HKR,, DALRULE_RESTRICTUNKNOWNMONITOR,           %REG_DWORD%,    0
+HKR,, DALRULE_CRTSUPPORTSALLMODES,              %REG_DWORD%,    1
+
+; [CoInstallers.AddReg]
+; HKR,,EnumPropPages32,,"atiidtxx.dll,DetailsPageProvider"
+; HKR,,CoInstallers32,0x10000,"atiicpxx.dll,CoCopyINF"
+
+[atimtai.Desktop]
+; atiicpxx.dll,,,0x10
+
+[atimtai_SoftwareDeviceSettings]
+HKR,, DisableDrvStretchBlt,                 %REG_DWORD%,    1
+HKR,, DisableCRT,                           %REG_DWORD%,    0
+HKR,, DisableAGPCaps,                       %REG_DWORD%,    0
+HKR,, DisableLCD,                           %REG_DWORD%,    0
+HKR,, DisableTV,                            %REG_DWORD%,    0
+HKR,, DisableDFP,                           %REG_DWORD%,    0
+HKR,, DisableOpenGL,                        %REG_DWORD%,    1
+HKR,, DisableD3D,                           %REG_DWORD%,    0
+HKR,, DisableTiling,                        %REG_DWORD%,    1
+HKR,, DisableDDrawPanning,                  %REG_DWORD%,    1
+HKR,, DisableVPE,                           %REG_DWORD%,    0
+HKR,, DisableUSWC,                          %REG_DWORD%,    1
+HKR,, DisablePllTableInit,                  %REG_DWORD%,    1
+HKR,, InstalledDisplayDrivers,              %REG_MULTI_SZ%, atidvai
+HKR,, VgaCompatible,                        %REG_DWORD%,    0
+HKR,, DALNonStandardModesBCD,               %REG_BINARY%,   14, 00, 10, 50, 00, 00, 00, 00
+HKR,, DALRestrictedModesBCD,                %REG_BINARY%,   00, 00, 00, 00, 00, 24, 00, 00 	   
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,  %REG_DWORD%,    1 
+HKR,, DALRULE_NOTVANDLCDONCRTC,             %REG_DWORD%,    1
+HKR,, DALRULE_DISPLAYSRESTRICTMODES,        %REG_DWORD%,    0
+HKR,, DALRULE_RESTRICTUNKNOWNMONITOR,       %REG_DWORD%,    0
+HKR,, DALRULE_CRTSUPPORTSALLMODES,          %REG_DWORD%,    1
+HKR,, ATIPoll,                              %REG_DWORD%,    1
+
+HKR,,drv,,"atidvai.dll"
+HKR,,ReleaseVersion,,"M6.33-INBUILD"
+HKR,"Desktop",,,
+; OEM Settings
+
+[atimtai_SoftwareDesktopSettings]
+;HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\ATIPagesEx",,,"{700B1221-CAFF-11d1-B9DE-000000001B1B}"
+; HKCR,"CLSID\{700B1221-CAFF-11d1-B9DE-000000001B1B}\InProcServer32",,,"atippaxx.dll"
+; HKCR,"CLSID\{700B1221-CAFF-11d1-B9DE-000000001B1B}\InProcServer32",ThreadingModel,,"Apartment"
+
+; HKR,"shellex\PropertySheetHandlers\ATIPagesEx",,,"{700B1221-CAFF-11d1-B9DE-000000001B1B}"
+
+;HKCR,"CLSID\{01204A61-8C2F-11d1-B8EF-006097B589E9}\InProcServer32",,,"AtiSServ.dll"
+;HKCR,"CLSID\{05729E61-8CFC-11d1-B8EF-006097B589E9}\InProcServer32",,,"AtiSServ.dll"
+;HKCR,"CLSID\{1017B701-8C35-11d1-B8EF-006097B589E9}\InProcServer32",,,"AtiSServ.dll"
+
+; HKCR,"Display.DisplayServer",,,"DisplayServer Class"
+; HKCR,"Display.DisplayServer\CLSID",,,"{E62DCD80-C262-11d1-A419-006097923041}"
+; HKCR,"Display.DisplayServer.1",,,"DisplayServer Class"
+; HKCR,"Display.DisplayServer.1\CLSID",,,"{E62DCD80-C262-11d1-A419-006097923041}"
+
+; HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}",,,"DisplayServer Class"
+; HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}\InProcServer32",,,"atipdsxx.dll"
+; HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}\ProgID",,,"Display.DisplayServer.1"
+; HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}\VersionIndependentProgID",,,"Display.DisplayServer"
+
+; HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}",,,"User Interface Object, AtiPropertySheet"
+; HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}\InProcServer32",,,"atipuixx.dll"
+; HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}\ProgID",,,"UserInterfaceObject.AtiPropertySheet.1"
+; HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}\VersionIndependentProgID",,,"UserInterfaceObject.AtiPropertySheet"
+
+; HKLM,%SW_DSK%,HelpID,,"3"
+; HKLM,%SW_DSK%,EnableIcon,,"1"
+; HKLM,%SW_DSK%,D3D,%REG_DWORD%,1
+; HKLM,%SW_DSK%,OpenGL,%REG_DWORD%,1
+
+; HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",AtiPTA,,"Atiptaxx.exe"
+
+; HKLM,%SW_HLP_Fpanel%,Executable,,"f"
+; HKLM,%SW_HLP_Fpanel%,Icon,,"winhelp.exe"
+; HKLM,%SW_HLP_Fpanel%,IconIndex,,"0"
+; HKLM,%SW_HLP_Fpanel%,ExecutableExtend,,">subcon"
+; HKLM,%SW_HLP_Fpanel%,Context,,"117"
+
+
+;[DriverInfoAddReg]
+; This section is added to all INFs to add registry entries for Driver Info.
+; HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Description,,%DriverDescription%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,CurrentVer,,%DriverOEMVersion%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Ver_%DriverOEMVersion%,,%DriverVersionID%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,BaseDriverFileName,,%BaseDriverFileName%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,BaseDriverFileVersion,,%BaseDriverFileVersion%
+
+; HKLM, "Software\CLASSES\CLSID\{EBB5845F-CA80-11CF-BD3C-008029E89281}\InProcServer32",,,"atitvo32.dll"
+; HKLM, "Software\CLASSES\CLSID\{EBB5845F-CA80-11CF-BD3C-008029E89281}\InProcServer32",ThreadingModel,,"Both"
+
+[atimtai_SoftwareDesktopSettings_ENU]
+; HKLM,%SW_MS_UINS_M64DRV%,DisplayName,,"ATI Display Driver Utilities"
+
+[atimtai_OpenGLSoftwareSettings]
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvai", Version, %REG_DWORD%, 2
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvai", DriverVersion, %REG_DWORD%, 1
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvai", Flags, %REG_DWORD%, 0
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvai", Dll, %REG_SZ%, atio2kai.dll
+
+[atimtai_RemoveDeviceSettings]
+HKR,, DALRestrictedModes
+HKR,, DisableAGP
+HKR,, DisableAllocateFromRight
+HKR,, DisableBitbltTranslation
+HKR,, DisableD3D
+HKR,, DisableEngine
+HKR,, DisableCursor
+HKR,, DisableDMA
+HKR,, DisableAlphaBlend
+HKR,, DisableGradientFill
+HKR,, DisableDirectDraw
+HKR,, DisableDrvStretchBlt
+HKR,, DisableDrvTransparentBlt
+HKR,, DisableMemInit
+HKR,, DisableMultiAdapter
+HKR,, DisablePllInit
+HKR,, DisableVPE
+HKR,, DALObjectData
+HKR,, DALLastConnected
+HKR,, DALLastSelected
+HKR,, DisableRptrWriteBack
+
+;
+; Windows NT 5.0 special settings
+;
+
+[atimtai_ACER.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_COMPAL.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_COMPAQ.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_DELL.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_IBM.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_KAPOK.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_NEC.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[atimtai_DEFAULT.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=32
+
+[Strings]
+
+;
+; Non-localizable strings
+;
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+;REG_EXPAND_SZ = 0x00020000
+REG_BINARY    = 0x00000001
+REG_DWORD     = 0x00010001
+;SERVICEROOT   = System\CurrentControlSet\Services
+
+SW_DSK="Software\ATI Technologies\Desktop"
+;SW_DT="Software\ATI Technologies\Desktop"
+SW_ATI_SET="Software\ATI Technologies\Desktop\IconTA\Settings\ATI Icon Settings"
+SW_DSP_SET="Software\ATI Technologies\Desktop\IconTA\Settings\Display Settings"
+SW_DEV_SET="Software\ATI Technologies\Desktop\IconTA\Settings\Device Settings"
+SW_HLP_M64DRV="Software\ATI Technologies\Desktop\IconTA\Help\ATI Display Driver"
+SW_HLP_TVOUT="Software\ATI Technologies\Desktop\IconTA\Help\ATI TV Out"
+SW_PRO_M64DRV="Software\ATI Technologies\Desktop\IconTA\Problem\ATI Display Driver"
+SW_PRO_TVOUT="Software\ATI Technologies\Desktop\IconTA\Problem\ATI TV Out"
+SW_HLP_Fpanel="Software\ATI Technologies\Desktop\IconTA\Help\ATI Flat Panel"
+SW_DW="Software\ATI Technologies\Desktop\0000\Display Weights"
+
+SW_DU="SOFTWARE\ATI Technologies\Desktop\UIO"
+SW_DUC="SOFTWARE\ATI Technologies\Desktop\UIO\Colour"
+SW_DTI="Software\ATI Technologies\Desktop\IconTA"
+
+RUNONCE="SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
+; SW_MS_UINS_M64DRV="Software\Microsoft\Windows\CurrentVersion\Uninstall\ATI Display Driver"
+
+;
+; Localizable strings
+;
+
+DiskId="Mobility 128 Installation CD"
+ati="ATI"
+MS = "Microsoft"
+;CompatAdap = "Compatible Graphics Adapter"
+
+; Driver Information Entries
+; These items will be set by IHV...
+DriverMfgr="ATI Technologies Inc."			; IHV name
+DriverVersionID="M6.33" 				; The IHV driver version
+BaseDriverFileName="atimtai.sys" 			; Key file for version 
+BaseDriverFileVersion="5.10.0132" 			; version of key file 
+; These items will be set by IHV and updated by OEM 
+DriverOEM="ATI Technologies Inc."			; name of the OEM 
+DriverFamily="Video" 					; device family (NIC,Storage,Video...)
+DriverProduct="ATI Mobility 128" 			; Specific Name of device (chipset, for example)
+DriverDescription="Graphic Driver" 			; Description of device (product name, OS or system supported)
+DriverOEMVersion="M6.31-$$OEMVer$$" 			; OEM-specified version 
+Mobility128="ATI Mobility 128 AGP"

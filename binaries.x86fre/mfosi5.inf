@@ -1,0 +1,201 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  =   "$Windows NT$"
+Class      =   MultiFunction
+ClassGUID  =   {4d36e971-e325-11ce-bfc1-08002be10318}
+Provider   =   %MSFT%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,1.2.14.3
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%Ositech% = Ositech
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[OSITECH]
+%OtcethJOD% = OtcethJOD114.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-6F27
+%OtcethJOD% = OtcethJOD114.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-6C0B
+%OtcethJOD% = OtcethJOD114.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-6E5D
+%OtcethJOD% = OtcethJOD114.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-0140-0001
+%OtcethJOD% = OtcethJOD288.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-27EF
+%OtcethJOD% = OtcethJOD288.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-0140-0003
+%OtcethJOD% = OtcethJOD336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-065B
+%OtcethJOD% = OtcethJOD336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-5155
+%OtcethJOD% = OtcethJOD336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_DIAMONDS_MODEM+ETHERNET-0140-0007
+
+%OtcethJOH% = OtcethJOH336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_HEARTS_MODEM+ETHERNET-D9C1
+%OtcethJOH% = OtcethJOH336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_HEARTS_MODEM+ETHERNET-0140-000A
+%OtcethJOH% = OtcethJOH336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_HEARTS_MODEM+ETHERNET-1602
+%OtcethJOH% = OtcethJOH336.mf, PCMCIA\OSITECH-TRUMPCARD:JACK_OF_HEARTS_MODEM+ETHERNET-0140-0014
+%OtcethJOH% = OtcethJOH56.mf,  PCMCIA\OSITECH-TRUMPCARD:JOH_56K+ETHERNET-8A67
+%OtcethJOH% = OtcethJOH56.mf,  PCMCIA\OSITECH-TRUMPCARD:JOH_56K+ETHERNET-0140-000A
+
+;-------------------------------------------------------------------------------
+; Jack of Diamonds 14.4 modem
+;
+[OtcethJOD114.mf]
+
+[OtcethJOD114.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[OtcethJOD114.mf.HW]
+Addreg = OtcethJOD114.mf.RegHW
+
+[OtcethJOD114.mf.RegHW]
+HKR,Child0000,HardwareID,0,"MF\OSITECHJOD_DEV0"  ;Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,0,"MF\OSITECHJOD_DEV1"  ;Network
+HKR,Child0001,ResourceMap,1,01,02
+
+[OtcethJOD114.mf.LogConfigOverride]
+LogConfig = Otceth.mf.Override0
+LogConfig = Otceth.mf.Override1
+LogConfig = Otceth.mf.Override2
+LogConfig = Otceth.mf.Override3
+
+;-------------------------------------------------------------------------------
+; Jack of Diamonds 28.8 modem
+;
+[OtcethJOD288.mf]
+
+[OtcethJOD288.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[OtcethJOD288.mf.HW]
+Addreg = OtcethJOD288.mf.RegHW
+
+[OtcethJOD288.mf.RegHW]
+HKR,Child0000,HardwareID,0,"MF\OSITECHJOD_DEV2"  ;Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,0,"MF\OSITECHJOD_DEV1"  ;Network
+HKR,Child0001,ResourceMap,1,01,02
+
+[OtcethJOD288.mf.LogConfigOverride]
+LogConfig = Otceth.mf.Override0
+LogConfig = Otceth.mf.Override1
+LogConfig = Otceth.mf.Override2
+LogConfig = Otceth.mf.Override3
+
+;-------------------------------------------------------------------------------
+; Jack of Diamonds 33.6 modem
+;
+[OtcethJOD336.mf]
+
+[OtcethJOD336.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[OtcethJOD336.mf.HW]
+Addreg = OtcethJOD336.mf.RegHW
+
+[OtcethJOD336.mf.RegHW]
+HKR,Child0000,HardwareID,0,"MF\OSITECHJOD_DEV3"   ;Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,0,"MF\OSITECHJOD_DEV1"   ;Network
+HKR,Child0001,ResourceMap,1,01,02
+
+[OtcethJOD336.mf.LogConfigOverride]
+LogConfig = Otceth.mf.Override0
+LogConfig = Otceth.mf.Override1
+LogConfig = Otceth.mf.Override2
+LogConfig = Otceth.mf.Override3
+
+;-------------------------------------------------------------------------------
+; Jack of Hearts 33.6 modem
+;
+[OtcethJOH336.mf]
+
+[OtcethJOH336.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[OtcethJOH336.mf.HW]
+Addreg = OtcethJOH336.mf.RegHW
+
+[OtcethJOH336.mf.RegHW]
+HKR,Child0000,HardwareID,0,"MF\OSITECHJOH_DEV0"   ;Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,0,"MF\OSITECHJOH_DEV1"   ;Network
+HKR,Child0001,ResourceMap,1,01,02
+
+[OtcethJOH336.mf.LogConfigOverride]
+LogConfig = Otceth.mf.Override0
+LogConfig = Otceth.mf.Override1
+LogConfig = Otceth.mf.Override2
+LogConfig = Otceth.mf.Override3
+
+;-------------------------------------------------------------------------------
+; Jack of Hearts 56K modem
+;
+[OtcethJOH56.mf]
+
+[OtcethJOH56.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[OtcethJOH56.mf.HW]
+Addreg = OtcethJOH56.mf.RegHW
+
+[OtcethJOH56.mf.RegHW]
+HKR,Child0000,HardwareID,0,"MF\OSITECHJOH_DEV2"   ;Modem
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,0,"MF\OSITECHJOH_DEV1"   ;Network
+HKR,Child0001,ResourceMap,1,01,02
+
+[OtcethJOH56.mf.LogConfigOverride]
+LogConfig = Otceth.mf.Override0
+LogConfig = Otceth.mf.Override1
+LogConfig = Otceth.mf.Override2
+LogConfig = Otceth.mf.Override3
+
+;-------------------------------------------------------------------------------
+; Multifunction Service 
+;
+[mf_Service_Inst]
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\mf.sys
+LoadOrderGroup  = System Bus Extender
+
+;-------------------------------------------------------------------------------
+; Override Config 
+;
+[Otceth.mf.Override0]   ; COM2
+IOConfig=2f8-2ff
+IOConfig=20@100-FFFF%FFC0
+IRQConfig=3,4,5,7,9,10,11
+PCCardConfig=63(W)      ; ConfigIndex
+
+[Otceth.mf.Override1]   ; COM3
+IOConfig=3e8-3ef
+IOConfig=20@100-FFFF%FFC0
+IRQConfig=3,4,5,7,9,10,11
+PCCardConfig=63(W)
+
+[Otceth.mf.Override2]   ; COM4
+IOConfig=2e8-2ef
+IOConfig=20@100-FFFF%FFC0
+IRQConfig=3,4,5,7,9,10,11
+PCCardConfig=63(W)
+
+[Otceth.mf.Override3]   ; COM1
+IOConfig=3f8-3ff
+IOConfig=20@100-FFFF%FFC0
+IRQConfig=3,4,5,7,9,10,11
+PCCardConfig=63(W)
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Ositech   = "Ositech"
+MSFT        = "Microsoft"
+OtcethJOD   = "Ositech JoD Modem+Ethernet Parent Device"
+OtcethJOH   = "Ositech JoH Modem+Ethernet Parent Device"
+MFClassName = "Multifunction PCMCIA Device Driver"

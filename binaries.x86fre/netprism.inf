@@ -1,0 +1,214 @@
+; NETPRISM.INF
+;
+; Intersil 802.11 Wireless LAN Adapters.
+; Copyright (c) 2002 Microsoft Corporation
+
+[Version]
+Signature           = "$Windows NT$"
+Class               = Net
+ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider            = %MSFT%
+LayoutFile          = layout.inf
+DriverVer=10/01/2002,2.0.10.117
+
+
+[ControlFlags]
+ExcludeFromSelect   = *
+
+[Manufacturer]
+%Linksys%      = Linksys
+%Netgear%      = Netgear
+%D-Link%       = D-Link
+%SMC%          = SMC
+%Contec%       = Contec
+
+[Linksys]
+%LINKSYSWPC11.DeviceDesc%    = PRISM_PCMCIA, PCMCIA\Instant_Wireless_-_Network_PC_CARD-317F
+%LINKSYSWPC0B.DeviceDesc%    = PRISM_PCMCIA, PCMCIA\THE_LINKSYS_GROUP__INC.-INSTANT_WIRELESS_NETWORK_PC_CARD-0C0B
+%LINKSYSWPPCI.DeviceDesc%    = PRISM_PCI,    PCI\VEN_1260&DEV_3873&SUBSYS_38741737
+
+[Netgear]
+%NETGEARMA401.DeviceDesc%    = PRISM_PCMCIA, PCMCIA\NETGEAR_MA401_Wireless_PC-Card-FBDB
+%NETGEAR401RA.DeviceDesc%    = PRISM_PCMCIA, PCMCIA\NETGEAR_MA401RA_WIRELESS_PC-CARD-5CA0
+
+[D-Link]
+%DLINK650.DeviceDesc%        = PRISM_PCMCIA, PCMCIA\D-Link_DWL-650_11Mbps_WLAN_Card-F360
+
+[SMC]
+%SMC2632W.DeviceDesc%        = PRISM_PCMCIA, PCMCIA\SMC-SMC2632W-AF67
+
+[Contec]
+%ContecDS110.DeviceDesc%     = PRISM_PCMCIA, PCMCIA\CONTEC-FLEXLAN/FX-DS110-PCC-E7D9
+
+
+;----------------------------------------------------------------------------------------
+[PRISM_PCMCIA]
+AddReg          = COMMON_PCMCIA.reg, COMMON_NDIS.reg.NT, COMMON.reg
+CopyFiles       = PRISM_DRIVER.copy
+BusType         = 8
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_HAS_UI
+
+[PRISM_PCMCIA.Services]
+AddService      = ISLP2, 2, PRISM_DRIVER.Service, PRISM_DRIVER.EventLog
+
+
+;---------------------------------------------------------------------------------
+[PRISM_PCI]
+AddReg          = COMMON_PCI.reg, COMMON_NDIS.reg.NT, COMMON.reg
+CopyFiles       = PRISM_DRIVER.copy
+BusType         = 5     ; PCI
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_HAS_UI
+
+[PRISM_PCI.Services]
+AddService      = "ISLP2", 2, PRISM_DRIVER.Service, PRISM_DRIVER.EventLog
+
+
+;--------------------------------------------------------------------------------
+[PRISM_DRIVER.Service]
+DisplayName    = %PRISM_SERVICE_DISPLAY%
+ServiceType    = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType      = 3 ;%SERVICE_DEMAND_START%
+ErrorControl   = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\islp2nds.sys
+LoadOrderGroup = NDIS
+
+[PRISM_DRIVER.EventLog]
+AddReg         = PRISM_DRIVER.EventLog.reg
+
+
+;-------------------------------------------------------------------------------
+; Registry Entries
+
+[PRISM_DRIVER.EventLog.reg]
+HKR,,       EventMessageFile,       0x00020000,     "%%SystemRoot%%\System32\netevent.dll"
+HKR,,       TypesSupported,         0x00010001,     7
+
+[COMMON_PCMCIA.reg]
+HKR,NDI,                            Service,                0,      "ISLP2"
+HKR,NDI,                            CardType,               0,      "PCMCIA"
+HKR,,                               BusType,                0,      "8"
+HKR,,                               DeviceVxDs,             0,      "islp2nds.sys"
+HKR,,                               EnableIRQSharing,       1,      01,00,00,00
+HKR,,                               IOBaseAddress,          1,      02,00,00,00
+HKR,,                               InterruptNumber,        1,      04,00,00,00
+
+[COMMON_PCI.reg]
+HKR,NDI,                            Service,                0,      "ISLP2"
+HKR,NDI,                            CardType,               0,      "PCI"
+HKR,,                               BusType,                0,      "5"
+HKR,,                               DeviceVxDs,             0,      "islp2nds.sys"
+HKR,,                               EnableIRQSharing,       1,      01,00,00,00
+HKR,,                               IOBaseAddress,          1,      02,00,00,00
+HKR,,                               InterruptNumber,        1,      04,00,00,00
+
+[COMMON_NDIS.reg.NT]
+HKR,NDI\Interfaces,                 UpperRange,             0,      "ndis5"
+HKR,NDI\Interfaces,                 LowerRange,             0,      "ethernet"
+
+HKR,defaults,                       PSMode,                 0,      1
+HKR,Ndi\params\PSMode,              default,                0,      1
+HKR,NDI\params\PSMode,              ParamDesc,              0,      %POWER_SAVE_STR%
+HKR,NDI\params\PSMode,              type,                   0,      enum
+HKR,NDI\params\PSMode\enum,         1,                      0,      %Disable%
+HKR,NDI\params\PSMode\enum,         2,                      0,      %AlwaysEnable%
+HKR,NDI\params\PSMode\enum,         3,                      0,      %AutoEnable%
+
+[COMMON.reg]
+HKR,,                               ISLP2IOC,               0,      "1"
+HKR,,                               SilentInstall,          0,      "1"
+HKR,,                               LoadFirmware,           0,      "1"
+HKR,,                               ListenInterval,         0,      "3"
+HKR,,                               AuthentAlg,             0,      "65535" 
+HKR,,                               AdhocDemoMode,          0,      "0"
+
+HKR,defaults,                       RTSThresh,              0,      2432
+HKR,Ndi\params\RTSThresh,           default,                0,      2432
+HKR,NDI\params\RTSThresh,           ParamDesc,              0,      %RTSTHRESH_STR%
+HKR,NDI\params\RTSThresh,           type,                   0,      int
+HKR,NDI\params\RTSThresh,           min,                    0,      0
+HKR,NDI\params\RTSThresh,           max,                    0,      2432
+HKR,NDI\params\RTSThresh,           step,                   0,      64
+HKR,NDI\params\RTSThresh,           optional,               0,      1
+
+HKR,defaults,                       FragThresh,             0,      2432
+HKR,Ndi\params\FragThresh,          default,                0,      2432
+HKR,NDI\params\FragThresh,          ParamDesc,              0,      %FRAGTHRESH_STR%
+HKR,NDI\params\FragThresh,          type,                   0,      int
+HKR,NDI\params\FragThresh,          min,                    0,      256
+HKR,NDI\params\FragThresh,          max,                    0,      2432
+HKR,NDI\params\FragThresh,          step,                   0,      128
+HKR,NDI\params\FragThresh,          optional,               0,      1
+
+HKR,defaults,                       PreambleMode,           0,      1
+HKR,Ndi\params\PreambleMode,        default,                0,      1
+HKR,NDI\params\PreambleMode,        ParamDesc,              0,      %SHORT_PREAM_STR%
+HKR,NDI\params\PreambleMode,        type,                   0,      enum
+HKR,NDI\params\PreambleMode\enum,   1,                      0,      %LongTxPreamble%
+HKR,NDI\params\PreambleMode\enum,   2,                      0,      %ShortTxPreamble%
+HKR,NDI\params\PreambleMode\enum,   3,                      0,      %AutoTxPreamble%
+HKR,NDI\params\PreambleMode,        optional,               0,      1
+
+HKR,defaults,                       PDwellTime,             0,      120
+HKR,Ndi\params\PDwellTime,          default,                0,      120
+HKR,NDI\params\PDwellTime,          ParamDesc,              0,      %PDWELL_STR%
+HKR,NDI\params\PDwellTime,          type,                   0,      int
+HKR,NDI\params\PDwellTime,          min,                    0,      0
+HKR,NDI\params\PDwellTime,          max,                    0,      1000
+HKR,NDI\params\PDwellTime,          step,                   0,      10
+HKR,NDI\params\PDwellTime,          optional,               0,      1
+
+;---------------------------------------------------------------------
+;   Destination Dirs
+
+[DestinationDirs]
+DefaultDestDir          = 12
+PRISM_DRIVER.copy       = 12
+
+[PRISM_DRIVER.copy]
+islp2nds.sys,,,2
+
+
+;----------------------------------------------------------------------------
+;   Localizable Strings
+
+[Strings]
+
+MSFT                       = "Microsoft"
+Linksys                    = "Linksys"
+Netgear                    = "Netgear"
+D-Link                     = "D-Link"
+SMC                        = "SMC"
+Contec                     = "Contec"
+
+LINKSYSWPC11.DeviceDesc    = "Linksys WPC11 Instant Wireless Network PC Card"
+LINKSYSWPC0B.DeviceDesc    = "Linksys Instant Wireless Network PC Card V3.0"
+LINKSYSWPPCI.DeviceDesc    = "Linksys Instant Wireless PCI Card"
+
+NETGEARMA401.DeviceDesc    = "Netgear MA401 802.11b Wireless PC Card"
+NETGEAR401RA.DeviceDesc    = "Netgear MA401 Wireless PC Card"
+
+DLINK650.DeviceDesc        = "D-Link DWL-650 11Mbps WLAN Card"
+
+SMC2632W.DeviceDesc        = "SMC SMC2632W EZ Connect Wireless PC Card (5-Volt)"
+
+ContecDS110.DeviceDesc     = "Contec Flexlan-DS110 WLAN PC Card"
+
+PRISM_SERVICE_DISPLAY      = "Intersil 802.11 Wireless LAN Driver"
+PRISM_USB_SERVICE_DISPLAY  = "Intersil 802.11 Wireless LAN USB Driver"
+
+POWER_SAVE_STR             = "Power Save Mode"
+Disable                    = "Disable"
+AlwaysEnable               = "Always Enable"
+AutoEnable                 = "Auto Enable"
+
+RTSTHRESH_STR              = "RTS Threshold"
+
+FRAGTHRESH_STR             = "Fragmentation Threshold"
+
+SHORT_PREAM_STR            = "Preamble Mode"
+LongTxPreamble             = "Long Tx Preamble"
+ShortTxPreamble            = "Short Tx Preamble"
+AutoTxPreamble             = "Auto Tx Preamble"
+
+PDWELL_STR                 = "Passive Scan Dwell Time"
+

@@ -1,0 +1,13 @@
+[Model Name]
+Name="EPSON Stylus COLOR 400"
+
+[Calibration]
+ItemNum=1
+Item1=7,1,248
+
+[Cleanning]
+HeadClean=All
+
+[NozzleTest]
+TestPattern=All
+BitmapFile=EPUTBM02.WBF

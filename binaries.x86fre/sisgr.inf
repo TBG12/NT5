@@ -1,0 +1,324 @@
+;Copyright 2000, Silicon Integrated Systems Corporation
+; SiSGR.inf
+;
+; Installation inf for the Silicon Integrated Systems SiS graphics adapter.
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%Provider%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=11/01/2002,6.13.10.3080
+
+
+[DestinationDirs]
+DefaultDestDir  = 11
+SiSGR.Miniport  = 12  ; drivers
+SiSGR.Display   = 11  ; system32
+
+;
+; Driver information
+;
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%Mfg% = SiS.Mfg
+
+[SiS.Mfg]
+%SiS.Product.DeviceDesc1%     = SiS315  , PCI\VEN_1039&DEV_0325
+%SiS.Product.DeviceDesc2%     = Xabre   , PCI\VEN_1039&DEV_0330
+%SiS.Product.DeviceDesc3%     = SiS315  , PCI\VEN_1039&DEV_6325
+
+;
+; General installation section
+;
+[SiS315]
+CopyFiles=SiSGR.Miniport, SiSGR.Display
+AddReg=SiSGR.Util.Addreg
+
+[Xabre]
+CopyFiles=SiSGR.Miniport, SiSGR.Display
+AddReg=SiSGR.Util.Addreg
+
+;
+; File sections
+;
+[SiSGR.Miniport]
+sisgrp.sys
+
+[SiSGR.Display]
+sisgrv.dll
+
+
+; for driver uninstall
+[Driver.Uninst]
+DelFiles=SiSGR.Miniport, SiSGR.Display
+DelReg=Uninstall.DelReg
+
+[Uninstall.DelReg]
+HKLM,System\CurrentControlSet\Services\SiS315
+HKLM,System\CurrentControlSet\Services\Xabre
+
+
+;
+; Service Installation
+;
+[SiS315.Services]
+AddService = SiS315, 0x00000002, SiSGR_Service_Inst, SiSGR_EventLog_Inst
+
+[SiSGR_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\sisgrp.sys
+
+[SiSGR_EventLog_Inst]
+AddReg = SiSGR_EventLog_AddReg
+
+[SiSGR_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\sisgrp.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+[SiS315.SoftwareSettings]
+AddReg = SiSGR_SoftwareDeviceSettings
+
+[SiSGR_SoftwareDeviceSettings]
+HKR,, 2D_OEMSetup,     %REG_MULTI_SZ%, 0
+HKR,, 2D_BI01,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI03,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI05,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI11,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI13,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI15,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI21,     %REG_MULTI_SZ%, .60.70.75.85.100.120
+HKR,, 2D_BI23,     %REG_MULTI_SZ%, .60.70.75.85.100.120
+HKR,, 2D_BI25,     %REG_MULTI_SZ%, .60.70.75.85.100.120
+HKR,, 2D_BI31,     %REG_MULTI_SZ%, .60.75.85
+HKR,, 2D_BI33,     %REG_MULTI_SZ%, .60.75.85
+HKR,, 2D_BI35,     %REG_MULTI_SZ%, .60.75.85
+HKR,, 2D_BI41,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI43,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI45,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI51,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI53,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI55,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI61,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI63,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI65,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI71,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI73,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI75,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI81,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI83,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI85,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI91,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI93,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI95,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA1,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA3,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA5,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIB1,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIB3,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIB5,     %REG_MULTI_SZ%, 60
+HKR,, InstalledDisplayDrivers,           %REG_MULTI_SZ%, SiSGRV
+HKR,, VgaCompatible,                     %REG_DWORD%,    0
+HKR,, CapabilityOverride,		 %REG_DWORD%,    8
+
+; 2d option
+HKR,, SiS.2D.HWCmdQueueSize,             %REG_DWORD%, 0x00400000
+HKR,, SiS.2D.HWCmdQueueType,             %REG_DWORD%, 0x00000001
+HKR,, SiS.2D.HW2DPostWrite,              %REG_DWORD%, 0x00000001
+HKR,, SiS.2D.YUANTV,                     %REG_DWORD%, 0x00000000
+HKR,, SiS.2D.DRAMTiling,                 %REG_DWORD%, 0x00000001
+HKR,, SiS.2D.DisableFlags,               %REG_DWORD%, 0x00000000
+HKR,, SiS.2D.Alloc3DBufferEx,            %REG_DWORD%, 0x00400000
+
+
+HKR,, SiS.Utility.StretchBlt,            %REG_DWORD%, 0x00000006
+HKR,, SiS.Utility.YUVBlt,                %REG_DWORD%, 0x00000001
+HKR,, SiS.Utility.2Overlay,              %REG_DWORD%, 0x00000001
+
+;3D option
+HKR,,SiS.3D.3DCOMMAND,%REG_DWORD%,0x00000003
+HKR,,SiS.3D.AAEnable,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.ArbFavEng,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.ClearCZTwice,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ColorCache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.FavorEng,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.FrontBuffer,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GL_FSAA,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GL_FSAAMode,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GL_Multi_Texture,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.GL_Use_16_ZBuf,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GlassesWire,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.GB_LEFT,%REG_DWORD%, 0x00002048
+HKR,,SiS.3D.GB_RIGHT,%REG_DWORD%, 0x00002048
+HKR,,SiS.3D.HKDaemon,%REG_DWORD%,0x00000180
+HKR,,SiS.3D.L2Cache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.MaxFrameQueued,%REG_DWORD%,0x00000003
+HKR,,SiS.3D.SOffset,%REG_DWORD%,0x00000004
+HKR,,SiS.3D.SScale,%REG_DWORD%,0x00000004
+HKR,,SiS.3D.Stereo,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.TexCache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.TnLCmdQueueSize,%REG_DWORD%, 0x00524288
+HKR,,SiS.3D.TnLEnable,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZBias,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.ZCache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZPreTest,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZTest,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZWrite,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.AlphaTestPatch,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ColorEquNoWrite,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.3dDynArb,%REG_DWORD%,0x00000000
+
+;
+; Service Installation
+;
+[Xabre.Services]
+AddService = SiS315, 0x00000002, Xabre_Service_Inst, Xabre_EventLog_Inst
+
+[Xabre_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\sisgrp.sys
+
+[Xabre_EventLog_Inst]
+AddReg = Xabre_EventLog_AddReg
+
+[Xabre_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\sisgrp.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+[Xabre.SoftwareSettings]
+AddReg = Xabre_SoftwareDeviceSettings
+
+[Xabre_SoftwareDeviceSettings]
+HKR,, 2D_OEMSetup,     %REG_MULTI_SZ%, 0
+HKR,, 2D_BI01,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI03,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI05,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI11,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI13,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI15,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI21,     %REG_MULTI_SZ%, .60.70.75.85.100.120
+HKR,, 2D_BI23,     %REG_MULTI_SZ%, .60.70.75.85.100.120
+HKR,, 2D_BI25,     %REG_MULTI_SZ%, .60.70.75.85.100.120
+HKR,, 2D_BI31,     %REG_MULTI_SZ%, .60.75.85
+HKR,, 2D_BI33,     %REG_MULTI_SZ%, .60.75.85
+HKR,, 2D_BI35,     %REG_MULTI_SZ%, .60.75.85
+HKR,, 2D_BI41,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI43,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI45,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI51,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI53,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI55,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI61,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI63,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI65,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI71,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI73,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI75,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI81,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI83,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI85,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI91,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI93,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI95,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA1,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA3,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA5,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIB1,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIB3,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIB5,     %REG_MULTI_SZ%, 60
+HKR,, InstalledDisplayDrivers,           %REG_MULTI_SZ%, SiSGRV
+HKR,, VgaCompatible,                     %REG_DWORD%,    0
+HKR,, CapabilityOverride,		 %REG_DWORD%,    8
+
+; 2d option
+HKR,, SiS.2D.HWCmdQueueSize,             %REG_DWORD%, 0x00400000
+HKR,, SiS.2D.HWCmdQueueType,             %REG_DWORD%, 0x00000001
+HKR,, SiS.2D.HW2DPostWrite,              %REG_DWORD%, 0x00000001
+HKR,, SiS.2D.YUANTV,                     %REG_DWORD%, 0x00000000
+HKR,, SiS.2D.DRAMTiling,                 %REG_DWORD%, 0x00000001
+HKR,, SiS.2D.DisableFlags,               %REG_DWORD%, 0x00000000
+HKR,, SiS.2D.Alloc3DBufferEx,            %REG_DWORD%, 0x00400000
+
+
+HKR,, SiS.Utility.StretchBlt,            %REG_DWORD%, 0x00000006
+HKR,, SiS.Utility.YUVBlt,                %REG_DWORD%, 0x00000001
+HKR,, SiS.Utility.2Overlay,              %REG_DWORD%, 0x00000001
+
+;3D option
+HKR,,SiS.3D.3DCOMMAND,%REG_DWORD%,0x00000003
+HKR,,SiS.3D.AAEnable,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.ArbFavEng,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.ClearCZTwice,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ColorCache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.FavorEng,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.FrontBuffer,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GL_FSAA,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GL_FSAAMode,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GL_Multi_Texture,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.GL_Use_16_ZBuf,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.GlassesWire,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.GB_LEFT,%REG_DWORD%, 0x00002048
+HKR,,SiS.3D.GB_RIGHT,%REG_DWORD%, 0x00002048
+HKR,,SiS.3D.HKDaemon,%REG_DWORD%,0x00000180
+HKR,,SiS.3D.L2Cache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.MaxFrameQueued,%REG_DWORD%,0x00000003
+HKR,,SiS.3D.SOffset,%REG_DWORD%,0x00000004
+HKR,,SiS.3D.SScale,%REG_DWORD%,0x00000004
+HKR,,SiS.3D.Stereo,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.TexCache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.TnLCmdQueueSize,%REG_DWORD%, 0x00524288
+HKR,,SiS.3D.TnLEnable,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZBias,%REG_DWORD%,0x00000000
+HKR,,SiS.3D.ZCache,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZPreTest,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZTest,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ZWrite,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.AlphaTestPatch,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.ColorEquNoWrite,%REG_DWORD%,0x00000001
+HKR,,SiS.3D.3dDynArb,%REG_DWORD%,0x00000000
+
+
+[SiSGR.Util.Addreg]
+
+[SiS315.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+; REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+; REG_EXPAND_SZ  = 0x00020000
+; REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+; SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+DiskId     = "Silicon Integrated Systems Installation DISK (VIDEO)"
+Provider   = "SiS"
+Mfg        = "SiS"
+SiS.Product.DeviceDesc1       ="SiS 315_315E (Microsoft Corporation)"
+SiS.Product.DeviceDesc2       ="Xabre (Microsoft Corporation)"
+SiS.Product.DeviceDesc3       ="SiS 650_651_M650_740 (Microsoft Corporation)"

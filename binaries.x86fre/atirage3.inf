@@ -1,0 +1,113 @@
+;
+; ATIRAGE3.INF
+;
+; Installation file for the ATI RAGE PRO and derivatives graphics adapter.
+;
+
+[Version]
+Signature = "$CHICAGO$"
+Provider  = %MS%
+LayoutFile=layout.inf
+ClassGUID = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Class     = Display
+DriverVer = 06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir   = 11  ; system32
+atirage3.Miniport = 12  ; drivers
+atirage3.Display  = 11  ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ati% = ati.Mfg
+
+[ati.Mfg]
+%ati% RAGE XC PCI		  = atirage3, PCI\VEN_1002&DEV_4753
+%ati% RAGE XC AGP 2X		  = atirage3, PCI\VEN_1002&DEV_474E
+%ati% RAGE XC PCI-66		  = atirage3, PCI\VEN_1002&DEV_474C
+%ati% 3D RAGE PRO AGP 2X	  = atirage3, PCI\VEN_1002&DEV_4742
+%ati% 3D RAGE PRO AGP		  = atirage3, PCI\VEN_1002&DEV_4744
+%ati% 3D RAGE PRO PCI		  = atirage3, PCI\VEN_1002&DEV_4749
+%ati% 3D RAGE PRO PCI		  = atirage3, PCI\VEN_1002&DEV_4750
+%ati% 3D RAGE PRO PCI		  = atirage3, PCI\VEN_1002&DEV_4751
+
+;
+; atirage3 general installation section
+; ------------------------------------
+
+[atirage3]
+CopyFiles = atirage3.Miniport, atirage3.Display
+
+;
+; File sections
+;
+
+[atirage3.Display]
+atidrae.dll
+
+[atirage3.Miniport]
+atimpae.sys
+
+;
+; Software installation
+;
+
+[atirage3.SoftwareSettings]
+AddReg = atirage3_SoftwareDeviceSettings
+
+[atirage3_SoftwareDeviceSettings]
+HKR,, AllowedPixelDepth,       %REG_BINARY%,   00
+HKR,, AllowedRefreshRate,      %REG_BINARY%,   00
+HKR,, AllowedResolution,       %REG_BINARY%,   00
+HKR,, BlockWriteDisabled,      %REG_DWORD%,    0
+HKR,, FastFillDisabled,        %REG_DWORD%,    0
+HKR,, USWCDisabled,            %REG_DWORD%,    1
+HKR,, HDTVEnabled,             %REG_DWORD%,    0
+HKR,, TimingSelection,         %REG_DWORD%,    0
+HKR,, InstalledDisplayDrivers, %REG_MULTI_SZ%, atidrae
+HKR,, VgaCompatible,           %REG_DWORD%,    0
+
+;
+; Service installation
+;
+
+[atirage3.Services]
+AddService = atirage3, 0x00000002, atirage3_Generic_Service_Inst, atirage3_EventLog_Inst
+
+[atirage3_EventLog_Inst]
+AddReg = atirage3_EventLog_AddReg
+
+[atirage3_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\atimpae.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[atirage3_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\atimpae.sys
+
+[Strings]
+
+;
+; Non-localizable strings
+;
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_BINARY    = 0x00000001
+REG_DWORD     = 0x00010001
+SERVICEROOT   = System\CurrentControlSet\Services
+
+;
+; Localizable strings
+;
+
+DiskId     = "ATI Technologies Driver Installation Disk"
+ati        = "ATI Technologies, Inc."
+MS         = "Microsoft"

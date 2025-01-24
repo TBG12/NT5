@@ -1,0 +1,131 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+signature   = "$Windows NT$"
+Class	    = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,2.60.5000.23
+
+[Manufacturer]
+%3COM% = 3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%Generic.DeviceDesc% = 3C575B.ndi, PCI\VEN_10B7&DEV_5057
+%Generic.DeviceDesc% = 3C575B.ndi, PCI\VEN_10B7&DEV_5157
+%Generic.DeviceDesc% = 3C575C.ndi, PCI\VEN_10B7&DEV_5257
+%3C575A.DeviceDesc%  = 3C575B.ndi, PCI\VEN_10B7&DEV_5057&SUBSYS_5A5710B7
+%3C575B.DeviceDesc%  = 3C575B.ndi, PCI\VEN_10B7&DEV_5157&SUBSYS_5B5710B7
+%3C575C.DeviceDesc%  = 3C575C.ndi, PCI\VEN_10B7&DEV_5257&SUBSYS_5C5710B7
+
+;-------------------------------------------------------------------------------
+; NDI for the A and B rev adapters
+;
+[3C575B.ndi]
+AddReg		= 3C575B.reg, elnk3C575.reg
+BusType 	= 5
+Characteristics = 0x84
+CopyFiles	= elnk3C575.CopyFiles
+
+[3C575B.ndi.Services]
+AddService      = el575nd5, 2, el575nd5.Service, el575nd5.EventLog
+
+[3C575B.reg]
+HKR, NDI\params\AutoPolarity,           ParamDesc,  0, %AutoPolarity%
+HKR, NDI\params\AutoPolarity,           type,       0, "enum"
+HKR, Ndi\params\AutoPolarity,           default,    0, "0000"
+HKR, Ndi\params\AutoPolarity\enum,      0000,       0, %Enable%
+HKR, Ndi\params\AutoPolarity\enum,      0020,       0, %Disable%
+
+HKR, Ndi\params\FullDuplex,             ParamDesc,  0, %DuplexMode%
+HKR, Ndi\params\FullDuplex,             default,    0, "0"
+HKR, Ndi\params\FullDuplex,             type,       0, "enum"
+HKR, Ndi\params\FullDuplex\enum,        0,          0, %AutoDetect%
+HKR, Ndi\params\FullDuplex\enum,        1,          0, %FullDuplex%
+
+;-------------------------------------------------------------------------------
+; NDI for the C rev adapters
+;
+[3C575C.ndi]
+AddReg		= 3C575C.reg, elnk3C575.reg
+BusType 	= 5
+Characteristics = 0x84
+CopyFiles	= elnk3C575.CopyFiles
+
+[3C575C.ndi.Services]
+AddService      = el575nd5, 2, el575nd5.Service, el575nd5.EventLog
+
+[3C575C.reg]
+HKR, NDI\params\LinkSelection,          ParamDesc, 0, %LinkSelection%
+HKR, NDI\params\LinkSelection,          type,      0, "enum"
+HKR, Ndi\params\LinkSelection,          default,   0, "0200"
+HKR, Ndi\params\LinkSelection\enum,     0200,      0, %Auto%
+HKR, Ndi\params\LinkSelection\enum,     0100,      0, %100FD%
+HKR, Ndi\params\LinkSelection\enum,     0080,      0, %100HD%
+HKR, Ndi\params\LinkSelection\enum,     0040,      0, %10FD%
+HKR, Ndi\params\LinkSelection\enum,     0020,      0, %10HD%
+
+
+;-------------------------------------------------------------------------------
+; 3Com 3C575-TX Service and Driver
+;
+[elnk3C575.reg]
+HKR, Ndi,	     Service,	 0, "EL575nd5"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR, ,               OSType,     0, "0"
+HKR, ,               DriverMode, 0, "0"
+
+[elnk3C575.CopyFiles]
+el575ND5.sys,,,2
+
+[el575nd5.Service]
+DisplayName	= %el575nd5.Service.DispName%
+ServiceType	= 1 ;%SERVICE_KERNEL_DRIVER%
+StartType	= 3 ;%SERVICE_DEMAND_START%
+ErrorControl	= 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary	= %12%\el575nd5.sys
+LoadOrderGroup	= NDIS
+
+[el575nd5.EventLog]
+AddReg = el575nd5.AddEventLog.reg
+
+[el575nd5.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,	 0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; Destination Dirs
+[DestinationDirs]
+elnk3C575.CopyFiles =12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+MSFT                      = "Microsoft"
+3COM                      = "3Com"
+
+AutoPolarity              = "Automatic Polarity Selection"         
+Enable                    = "Enable"                               
+Disable                   = "Disable"                              
+DuplexMode                = "Duplex Mode"
+AutoDetect                = "Auto Detect"
+FullDuplex                = "Full Duplex"
+LinkSelection             = "Network Link Selection"
+Auto                      = "Auto Negotiation"                      
+100FD                     = "100BaseTx Full Duplex"                    
+100HD                     = "100BaseTx Half Duplex"                    
+10FD                      = "10BaseT Full Duplex"                     
+10HD                      = "10BaseT Half Duplex"                     
+
+Generic.DeviceDesc        = "3Com 3C575TX-Based CardBus Fast Ethernet Adapter (Generic)"
+3C575A.DeviceDesc         = "3Com Fast EtherLink XL PC Card (3C575-TX)"   
+3C575B.DeviceDesc         = "3Com Megahertz 10/100 LAN CardBus PC Card"   
+3C575C.DeviceDesc         = "FE575C-3COM 10/100 LAN CardBus-Fast Ethernet"
+
+el575nd5.Service.DispName = "3Com Megahertz 10/100 LAN CardBus PC Card Driver"

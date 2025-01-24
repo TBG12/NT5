@@ -1,0 +1,378 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %MSFT%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,5.15.0.0
+
+[Manufacturer]
+%SK%       = SysKonnect
+%Compaq%   = Compaq
+
+[ControlFlags]
+ExcludeFromSelect      = *
+
+[SysKonnect]
+%FDDIPCI.DeviceDesc%   = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000
+%FDDIUPS.DeviceDesc%   = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_55211148
+%FDDIUPD.DeviceDesc%   = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_55221148
+%FDDIFPS.DeviceDesc%   = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_55411148
+%FDDILPS.DeviceDesc%   = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_55431148
+%FDDILPD.DeviceDesc%   = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_55441148
+%FDDIUP64S.DeviceDesc% = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_58211148
+%FDDIUP64D.DeviceDesc% = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_58221148
+%FDDIFP64S.DeviceDesc% = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_58411148
+%FDDILP64S.DeviceDesc% = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_58431148
+%FDDILP64D.DeviceDesc% = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_58441148
+
+[Compaq]
+%FDDICUPS.DeviceDesc%  = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_B03E0E11
+%FDDICUPD.DeviceDesc%  = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_B03D0E11
+%FDDICFPS.DeviceDesc%  = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_B03F0E11
+%FDDICLPS.DeviceDesc%  = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_B03C0E11
+%FDDICLPD.DeviceDesc%  = FDDIPCI.ndi,PCI\VEN_1148&DEV_4000&SUBSYS_B03B0E11
+
+;-------------------------------------------------------------------------------
+; General Device Install Section
+;
+[FDDIPCI.ndi]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = FDDI.reg, SkFpWin.reg
+CopyFiles       = SkFpWin.CopyFiles
+
+[FDDIPCI.ndi.Services]
+AddService      = SkFpWin, 2, SkFpWin.Service, common.EventLog
+
+;----------------------------------------------------------------------------
+; General PARAMS sections
+;
+[FDDI.reg]
+;PCIFix
+HKR, NDI\params\PCIFix,           ParamDesc, 0, %KEY_BIOS%
+HKR, NDI\params\PCIFix,           type,      0, "dword"
+HKR, NDI\params\PCIFix,           base,      0, "16"
+HKR, NDI\params\PCIFix,           step,      0, "1"
+HKR, NDI\params\PCIFix,           default,   0, "0"
+
+;MaxFrameSize
+HKR, NDI\params\MaxFrameSize,     ParamDesc, 0, %MaxFrameSize%
+HKR, NDI\params\MaxFrameSize,     type,      0, "int"
+HKR, NDI\params\MaxFrameSize,     base,      0, "10"
+HKR, NDI\params\MaxFrameSize,     min,       0, "13"
+HKR, NDI\params\MaxFrameSize,     max,       0, "4491"
+HKR, NDI\params\MaxFrameSize,     step,      0, "1"
+HKR, NDI\params\MaxFrameSize,     default,   0, "4491"
+
+; NetworkAddress
+HKR, NDI\params\NetworkAddress,   ParamDesc, 0, %NetworkAddress%
+HKR, NDI\params\NetworkAddress,   type,      0, "edit"
+HKR, NDI\params\NetworkAddress,   LimitText, 0, "18"
+HKR, NDI\params\NetworkAddress,   UpperCase, 0, "1"
+HKR, Ndi\params\NetworkAddress,   default,   0, ""
+HKR, Ndi\params\NetworkAddress,   optional,  0, "1"
+
+;----------------------------------------------------------------------------
+; FDDI SMT params - optional: Refer to driver DOC file and/or FDDI standard MIB.
+;
+; PMF Set Request Password: 8 ASCII characters, upper case
+HKR, NDI\params\PmfPasswd,        ParamDesc, 0, %SMT_PWD%
+HKR, NDI\params\PmfPasswd,        optional,  0, "1"
+HKR, NDI\params\PmfPasswd,        type,      0, "edit"
+HKR, NDI\params\PmfPasswd,        default,   0, ""
+HKR, NDI\params\PmfPasswd,        LimitText, 0, "8"
+HKR, NDI\params\PmfPasswd,        UpperCase, 0, "1"
+
+; fddiSMTUserData(17): ASCII Text
+HKR, NDI\params\UserData,         ParamDesc, 0, %SMT_UDATA%
+HKR, NDI\params\UserData,         optional,  0, "1"
+HKR, NDI\params\UserData,         type,      0, "edit"
+HKR, NDI\params\UserData,         default,   0, ""
+HKR, NDI\params\UserData,         LimitText, 0, "32"
+
+; fddiportLer-Cutoff(58) Port A: 10**(-4) to 10**(-15), default 10**(-7)
+HKR, NDI\params\LerCutoffA,       ParamDesc, 0, %SMT_LEROFFA%
+HKR, NDI\params\LerCutoffA,       optional,  0, "1"
+HKR, NDI\params\LerCutoffA,       type,      0, "enum"
+HKR, NDI\params\LerCutoffA\enum,  4,         0, "1E-4"
+HKR, NDI\params\LerCutoffA\enum,  5,         0, "1E-5"
+HKR, NDI\params\LerCutoffA\enum,  6,         0, "1E-6"
+HKR, NDI\params\LerCutoffA\enum,  7,         0, "1E-7"
+HKR, NDI\params\LerCutoffA\enum,  8,         0, "1E-8"
+HKR, NDI\params\LerCutoffA\enum,  9,         0, "1E-9"
+HKR, NDI\params\LerCutoffA\enum,  10,        0, "1E-10"
+HKR, NDI\params\LerCutoffA\enum,  11,        0, "1E-11"
+HKR, NDI\params\LerCutoffA\enum,  12,        0, "1E-12"
+HKR, NDI\params\LerCutoffA\enum,  13,        0, "1E-13"
+HKR, NDI\params\LerCutoffA\enum,  14,        0, "1E-14"
+HKR, NDI\params\LerCutoffA\enum,  15,        0, "1E-15"
+HKR, NDI\params\LerCutoffA,       default,   0, "7"
+
+; fddiportLer-Cutoff(58) Port B: 10**(-4) to 10**(-15), default 10**(-7)
+HKR, NDI\params\LerCutoffB,       ParamDesc, 0, %SMT_LEROFFB%
+HKR, NDI\params\LerCutoffB,       optional,  0, "1"
+HKR, NDI\params\LerCutoffB,       type,      0, "enum"
+HKR, NDI\params\LerCutoffB\enum,  4,         0, "1E-4"
+HKR, NDI\params\LerCutoffB\enum,  5,         0, "1E-5"
+HKR, NDI\params\LerCutoffB\enum,  6,         0, "1E-6"
+HKR, NDI\params\LerCutoffB\enum,  7,         0, "1E-7"
+HKR, NDI\params\LerCutoffB\enum,  8,         0, "1E-8"
+HKR, NDI\params\LerCutoffB\enum,  9,         0, "1E-9"
+HKR, NDI\params\LerCutoffB\enum,  10,        0, "1E-10"
+HKR, NDI\params\LerCutoffB\enum,  11,        0, "1E-11"
+HKR, NDI\params\LerCutoffB\enum,  12,        0, "1E-12"
+HKR, NDI\params\LerCutoffB\enum,  13,        0, "1E-13"
+HKR, NDI\params\LerCutoffB\enum,  14,        0, "1E-14"
+HKR, NDI\params\LerCutoffB\enum,  15,        0, "1E-15"
+HKR, NDI\params\LerCutoffB,       default,   0, "7"
+
+; fddiportLer-Alarm(59) Port A: 10**(-4) to 10**(-15), default 10**(-8)
+HKR, NDI\params\LerAlarmA,        ParamDesc, 0, %SMT_LERALA%
+HKR, NDI\params\LerAlarmA,        optional,  0, "1"
+HKR, NDI\params\LerAlarmA,        type,      0, "enum"
+HKR, NDI\params\LerAlarmA\enum,   4,         0, "1E-4"
+HKR, NDI\params\LerAlarmA\enum,   5,         0, "1E-5"
+HKR, NDI\params\LerAlarmA\enum,   6,         0, "1E-6"
+HKR, NDI\params\LerAlarmA\enum,   7,         0, "1E-7"
+HKR, NDI\params\LerAlarmA\enum,   8,         0, "1E-8"
+HKR, NDI\params\LerAlarmA\enum,   9,         0, "1E-9"
+HKR, NDI\params\LerAlarmA\enum,   10,        0, "1E-10"
+HKR, NDI\params\LerAlarmA\enum,   11,        0, "1E-11"
+HKR, NDI\params\LerAlarmA\enum,   12,        0, "1E-12"
+HKR, NDI\params\LerAlarmA\enum,   13,        0, "1E-13"
+HKR, NDI\params\LerAlarmA\enum,   14,        0, "1E-14"
+HKR, NDI\params\LerAlarmA\enum,   15,        0, "1E-15"
+HKR, NDI\params\LerAlarmA,        default,   0, "8"
+
+; fddiportLer-Alarm(59) Port B: 10**(-4) to 10**(-15), default 10**(-8)
+HKR, NDI\params\LerAlarmB,        ParamDesc, 0, %SMT_LERALB%
+HKR, NDI\params\LerAlarmB,        optional,  0, "1"
+HKR, NDI\params\LerAlarmB,        type,      0, "enum"
+HKR, NDI\params\LerAlarmB\enum,   4,         0, "1E-4"
+HKR, NDI\params\LerAlarmB\enum,   5,         0, "1E-5"
+HKR, NDI\params\LerAlarmB\enum,   6,         0, "1E-6"
+HKR, NDI\params\LerAlarmB\enum,   7,         0, "1E-7"
+HKR, NDI\params\LerAlarmB\enum,   8,         0, "1E-8"
+HKR, NDI\params\LerAlarmB\enum,   9,         0, "1E-9"
+HKR, NDI\params\LerAlarmB\enum,   10,        0, "1E-10"
+HKR, NDI\params\LerAlarmB\enum,   11,        0, "1E-11"
+HKR, NDI\params\LerAlarmB\enum,   12,        0, "1E-12"
+HKR, NDI\params\LerAlarmB\enum,   13,        0, "1E-13"
+HKR, NDI\params\LerAlarmB\enum,   14,        0, "1E-14"
+HKR, NDI\params\LerAlarmB\enum,   15,        0, "1E-15"
+HKR, NDI\params\LerAlarmB,        default,   0, "8"
+
+; fddiMACT-Min(55): 5 to 165 milliseconds, default 5 ms
+HKR, NDI\params\TMin,             ParamDesc, 0, %SMT_TMIN%
+HKR, NDI\params\TMin,             optional,  0, "1"
+HKR, NDI\params\TMin,             type,      0, "int"
+HKR, NDI\params\TMin,             base,      0, "10"
+HKR, NDI\params\TMin,             min,       0, "5"
+HKR, NDI\params\TMin,             max,       0, "165"
+HKR, NDI\params\TMin,             step,      0, "1"
+HKR, NDI\params\TMin,             default,   0, "5"
+
+; fddiMACT-Max(53): 5 to 165 milliseconds, default 5 ms
+HKR, NDI\params\TMax,             ParamDesc, 0, %SMT_TMAX%
+HKR, NDI\params\TMax,             optional,  0, "1"
+HKR, NDI\params\TMax,             type,      0, "int"
+HKR, NDI\params\TMax,             base,      0, "10"
+HKR, NDI\params\TMax,             min,       0, "5"
+HKR, NDI\params\TMax,             max,       0, "165"
+HKR, NDI\params\TMax,             step,      0, "1"
+HKR, NDI\params\TMax,             default,   0, "165"
+
+; fddiMACT-Req(51): 5 to 165 milliseconds, default 5 ms
+HKR, NDI\params\TReq,             ParamDesc, 0, %SMT_TREQ%
+HKR, NDI\params\TReq,             optional,  0, "1"
+HKR, NDI\params\TReq,             type,      0, "int"
+HKR, NDI\params\TReq,             base,      0, "10"
+HKR, NDI\params\TReq,             min,       0, "5"
+HKR, NDI\params\TReq,             max,       0, "165"
+HKR, NDI\params\TReq,             step,      0, "1"
+HKR, NDI\params\TReq,             default,   0, "165"
+
+; fddiMACTvxValue(54): 2500 to 10000 microseconds, default 2700 us
+HKR, NDI\params\Tvx,              ParamDesc,  0, %SMT_TVX%
+HKR, NDI\params\Tvx,              optional,   0, "1"
+HKR, NDI\params\Tvx,              type,       0, "int"
+HKR, NDI\params\Tvx,              base,       0, "10"
+HKR, NDI\params\Tvx,              min,        0, "2500"
+HKR, NDI\params\Tvx,              max,        0, "10000"
+HKR, NDI\params\Tvx,              step,       0, "1"
+HKR, NDI\params\Tvx,              default,    0, "2700"
+
+;-------------------------------------------------------------------------------
+; FDDI SBA params - optional: Refer to driver DOC file and/or FDDI standard MIB.
+;
+; SbaCommand: "START", "STOP"
+HKR, NDI\params\SbaCommand,       ParamDesc,  0, %SBA_CMD%
+HKR, NDI\params\SbaCommand,       optional,   0, "1"
+HKR, NDI\params\SbaCommand,       type,       0, "enum"
+HKR, NDI\params\SbaCommand,       default,    0, "STOP"
+HKR, NDI\params\SbaCommand\enum,  START,      0, %START%
+HKR, NDI\params\SbaCommand\enum,  STOP,       0, %STOP%
+
+; fddiPATHSbaAvailable(20): 0-100%, default 50%
+HKR, NDI\params\SbaAvailable,     ParamDesc,  0, %SBA_AVAIL%
+HKR, NDI\params\SbaAvailable,     optional,   0, "1"
+HKR, NDI\params\SbaAvailable,     type,       0, "int"
+HKR, NDI\params\SbaAvailable,     base,       0, "10"
+HKR, NDI\params\SbaAvailable,     min,        0, "0"
+HKR, NDI\params\SbaAvailable,     max,        0, "100"
+HKR, NDI\params\SbaAvailable,     step,       0, "1"
+HKR, NDI\params\SbaAvailable,     default,    0, "50"
+
+;-------------------------------------------------------------------------------
+; FDDI ESS params - optional: Refer to driver DOC file and/or FDDI standard MIB.
+
+; SMT-P0017 SBA PayLoad: 0-1562 bytes per 125 microseconds default 0
+HKR, NDI\params\SbaPayLoad,       ParamDesc,  0, %ESS_PAYLOAD%
+HKR, NDI\params\SbaPayLoad,       optional,   0, "1"
+HKR, NDI\params\SbaPayLoad,       type,       0, "int"
+HKR, NDI\params\SbaPayLoad,       base,       0, "10"
+HKR, NDI\params\SbaPayLoad,       min,        0, "0"
+HKR, NDI\params\SbaPayLoad,       max,        0, "1562"
+HKR, NDI\params\SbaPayLoad,       step,       0, "1"
+HKR, NDI\params\SbaPayLoad,       default,    0, "0"
+
+; SMT-P0018 SBA Overhead: 50-5000 bytes, default 50
+HKR, NDI\params\SbaOverHead,      ParamDesc,  0, %ESS_OVER%
+HKR, NDI\params\SbaOverHead,      optional,   0, "1"
+HKR, NDI\params\SbaOverHead,      type,       0, "int"
+HKR, NDI\params\SbaOverHead,      base,       0, "10"
+HKR, NDI\params\SbaOverHead,      min,        0, "50"
+HKR, NDI\params\SbaOverHead,      max,        0, "5000"
+HKR, NDI\params\SbaOverHead,      step,       0, "1"
+HKR, NDI\params\SbaOverHead,      default,    0, "50"
+
+; SMT-P001A SBA Category: 0-65535: no default value on this parameter.
+HKR, NDI\params\SbaCategory,      ParamDesc,  0, %ESS_CATEG%
+HKR, NDI\params\SbaCategory,      optional,   0, "1"
+HKR, NDI\params\SbaCategory,      type,       0, "dword"
+HKR, NDI\params\SbaCategory,      base,       0, "10"
+HKR, NDI\params\SbaCategory,      min,        0, "0"
+HKR, NDI\params\SbaCategory,      max,        0, "65535"
+HKR, NDI\params\SbaCategory,      step,       0, "1"
+HKR, NDI\params\SbaCategory,      default,    0, "1"
+
+; SMT-P001B Max. T_Neg: 5-165 milliseconds; default 25 ms
+HKR, NDI\params\MaxTNeg,          ParamDesc,  0, %ESS_TNEG%
+HKR, NDI\params\MaxTNeg,          optional,   0, "1"
+HKR, NDI\params\MaxTNeg,          type,       0, "int"
+HKR, NDI\params\MaxTNeg,          base,       0, "10"
+HKR, NDI\params\MaxTNeg,          min,        0, "5"
+HKR, NDI\params\MaxTNeg,          max,        0, "165"
+HKR, NDI\params\MaxTNeg,          step,       0, "1"
+HKR, NDI\params\MaxTNeg,          default,    0, "25"
+
+; SMT-P001C MinSegmentSize: 1-4478 bytes
+HKR, NDI\params\MinSegmentSize,   ParamDesc,  0, %ESS_SEGSIZE%
+HKR, NDI\params\MinSegmentSize,   optional,   0, "1"
+HKR, NDI\params\MinSegmentSize,   type,       0, "int"
+HKR, NDI\params\MinSegmentSize,   base,       0, "10"
+HKR, NDI\params\MinSegmentSize,   min,        0, "1"
+HKR, NDI\params\MinSegmentSize,   max,        0, "4478"
+HKR, NDI\params\MinSegmentSize,   step,       0, "1"
+
+; SBA SynchTxMode: "ALL", "SPLIT", default "SPLIT"
+HKR, NDI\params\SynchTxMode,      ParamDesc,  0, %ESS_TXMODE%
+HKR, NDI\params\SynchTxMode,      optional,   0, "1"
+HKR, NDI\params\SynchTxMode,      type,       0, "enum"
+HKR, NDI\params\SynchTxMode\enum, SPLIT,      0, %Split%
+HKR, NDI\params\SynchTxMode\enum, ALL,        0, %All%
+HKR, NDI\params\SynchTxMode,      default,    0, %Split%
+
+;-------------------------------------------------------------------------------
+; Base Driver Section
+;
+[SkFpWin.reg]
+HKR, NDI\Interfaces, UpperRange, 0, "ndis5"
+HKR, NDI\Interfaces, LowerRange, 0, "fddi,ethernet"
+HKR, NDI,            Service,    0, "SkFpWin"
+HKR, NDI,            HelpText,   0, %HELPTEXT%
+HKR, ,               MediaType,  0, "3"
+HKR, , SlotNumber,               0, "-1"
+HKR, , EthernetSnapTypeCodes,    0, "8137"
+
+[SkFpWin.CopyFiles]
+SkFpWin.SYS,,,2
+
+[SkFpWin.Service]
+DisplayName      = %SkFpWin.DriverDesc%
+ServiceType      = 1 ;SERVICE_KERNEL_DRIVER
+StartType        = 3 ;SERVICE_DEMAND_START
+ErrorControl     = 1 ;SERVICE_ERROR_NORMAL
+ServiceBinary    = %12%\SkFpWin.SYS
+LoadOrderGroup   = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; Destination Directories
+;
+[DestinationDirs]
+SkFpWin.CopyFiles=12
+
+;----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MSFT                 = "Microsoft"
+SK                   = "SysKonnect"
+Compaq               = "Compaq"
+
+All                  = "All"
+KEY_BIOS             = "PCI Fix"
+MaxFrameSize         = "Maximum Frame Size"
+NetworkAddress       = "Network Address"
+START                = "Start"
+STOP                 = "Stop"
+Split                = "Split"
+SMT_PWD              = "PMF Password (8 chars)"
+SMT_UDATA            = "UserData fddiSMT 17"
+SMT_LEROFFA          = "LerCutoff A fddiPORT 58"
+SMT_LEROFFB          = "LerCutoff B fddiPORT 58"
+SMT_LERALA           = "LerAlarm A fddiPORT 59"
+SMT_LERALB           = "LerAlarm B fddiPORT 59"
+SMT_TMIN             = "T-Min fddiMAC 55"
+SMT_TMAX             = "T-Max fddiMAC 53"
+SMT_TREQ             = "T-Req fddiMAC 51"
+SMT_TVX              = "TvxValue fddiMAC 54"
+SBA_CMD              = "SbaCommand (Start SBA)"
+SBA_AVAIL            = "SbaAvailable fddiPATH 20"
+ESS_PAYLOAD          = "SBA Payload SMT-P0017"
+ESS_OVER             = "SBA Overhead SMT-P0018"
+ESS_CATEG            = "SBA Category SMT-P001A"
+ESS_TNEG             = "Max. T_Neg SMT-P001B"
+ESS_SEGSIZE          = "MinSegmentSize SMT-P001C"
+ESS_TXMODE           = "SBA SynchTxMode"
+
+HELPTEXT             = "This SysKonnect network adapter connects you to the network."
+
+FDDIPCI.DeviceDesc   = "SysKonnect FDDI PCI Adapter (Generic)"
+FDDIUPS.DeviceDesc   = "SysKonnect FDDI PCI Adapter SK-5521 (SK-NET FDDI-UP)"
+FDDIUPD.DeviceDesc   = "SysKonnect FDDI PCI Adapter SK-5522 (SK-NET FDDI-UP DAS)"
+FDDIFPS.DeviceDesc   = "SysKonnect FDDI PCI Adapter SK-5541 (SK-NET FDDI-FP)"
+FDDILPS.DeviceDesc   = "SysKonnect FDDI PCI Adapter SK-5543 (SK-NET FDDI-LP)"
+FDDILPD.DeviceDesc   = "SysKonnect FDDI PCI Adapter SK-5544 (SK-NET FDDI-LP DAS)"
+FDDIUP64S.DeviceDesc = "SysKonnect FDDI PCI Adapter SK-5821 (SK-NET FDDI-UP64)"
+FDDIUP64D.DeviceDesc = "SysKonnect FDDI PCI Adapter SK-5822 (SK-NET FDDI-UP64 DAS)"
+FDDIFP64S.DeviceDesc = "SysKonnect FDDI PCI Adapter SK-5841 (SK-NET FDDI-FP64)"
+FDDILP64S.DeviceDesc = "SysKonnect FDDI PCI Adapter SK-5843 (SK-NET FDDI-LP64)"
+FDDILP64D.DeviceDesc = "SysKonnect FDDI PCI Adapter SK-5844 (SK-NET FDDI-LP64 DAS)"
+FDDICUPS.DeviceDesc  = "Compaq Netelligent 100 FDDI PCI SAS UTP"
+FDDICUPD.DeviceDesc  = "Compaq Netelligent 100 FDDI PCI DAS UTP"
+FDDICFPS.DeviceDesc  = "Compaq Netelligent 100 FDDI PCI SAS Fiber MIC"
+FDDICLPS.DeviceDesc  = "Compaq Netelligent 100 FDDI PCI SAS Fiber SC"
+FDDICLPD.DeviceDesc  = "Compaq Netelligent 100 FDDI PCI DAS Fiber SC"
+
+SkFpWin.DriverDesc   = "SysKonnect FDDI PCI Adapter Driver"

@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=windows-1251">
+<TITLE></TITLE>
+	<HTA:APPLICATION ID="oHTA"
+		APPLICATIONNAME="WMPTour"
+		BORDER="thin"
+		BORDERSTYLE="normal"
+		CAPTION="no"
+		maximizeButton="no"
+		minimizeButton="no"
+		ICON="img/wmptour.ico"
+		SHOWINTASKBAR="no"
+		SINGLEINSTANCE="yes"
+		SYSMENU="yes"
+		VERSION="1.0"
+		WINDOWSTATE="maximize"
+	>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="css/wmptour.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="css/controls.css">
+<SCRIPT LANGUAGE="JScript" SRC="scr/controls.js"></SCRIPT>
+<SCRIPT LANGUAGE="JScript" SRC="scr/tour.js"></SCRIPT>
+<SCRIPT LANGUAGE="JScript" SRC="scr/events.js"></SCRIPT>
+<SCRIPT LANGUAGE="JScript">
+	var MyTour = newTour();
+	
+	function Initialize()
+	{
+		PositionContainers();
+		
+		MyTour.newScene("", 1, "ClickTopicButton(1);", 31000, "", "wmpaud1.wav");
+		MyTour.newScene("", 2, "ClickTopicButton(2);", 20000, "Viz.wmv", "wmpaud2.wav");
+		MyTour.newScene("", 3, "ClickTopicButton(3);", 16000, "", "wmpaud3.wav");
+		MyTour.newScene("", 4, "ClickTopicButton(4);", 31000, "CopyCD.wmv", "wmpaud4.wav");
+		MyTour.newScene("", 5, "ClickTopicButton(5);", 26000, "MdLib.wmv", "wmpaud5.wav");
+		MyTour.newScene("", 6, "ClickTopicButton(6);", 24000, "", "wmpaud6.wav");
+		MyTour.newScene("", 7, "ClickTopicButton(7);", 16000, "RTuner.wmv", "wmpaud7.wav");
+		MyTour.newScene("", 8, "ClickTopicButton(8);", 26000, "NuSkin.wmv", "wmpaud8.wav");
+		MyTour.newScene("", 9, "ClickTopicButton(9);", 26000, "", "wmpaud9.wav");
+		
+		document.title = getText("txtApplicationTitle");
+		setTitles();
+		
+		WriteTopicButtonsCaption();
+		TopicButtonEVENTonclick(1);
+		idLNKWindowsMedia = getText("titleTimeElapsed");
+		idTourContainer.style.display = "";
+		idTimeElapsed.title = getText("titleTimeElapsed");
+		idLNKWindowsMedia.href = idContents.L_URLHREF2; //"http://www.microsoft.com/"
+		MyTour.start();
+		
+		idBody.focus();
+	
+	}
+</SCRIPT>
+</HEAD>
+<BODY ID="idBody" SCROLL="no" onload="Initialize()" oncontextmenu="return false;" onselectstart="return false;">
+<SCRIPT FOR="idTopicButton" EVENT="onmouseover">TopicButtonEVENTonmouseover(this.IDX)</SCRIPT>
+<SCRIPT FOR="idTopicButton" EVENT="onmouseout">TopicButtonEVENTonmouseout(this.IDX)</SCRIPT>
+<SCRIPT FOR="idTopicButton" EVENT="onclick">TopicButtonEVENTonclick(this.IDX, 1)</SCRIPT>
+<SCRIPT FOR="idTopicButton" EVENT="onkeypress">if (event.keyCode == 13) {TopicButtonEVENTonclick(this.IDX, 0)}</SCRIPT>
+<SCRIPT FOR="idTopicButton" EVENT="onfocus">TopicButtonEVENTonmouseover(this.IDX)</SCRIPT>
+<SCRIPT FOR="idTopicButton" EVENT="onblur">TopicButtonEVENTonmouseout(this.IDX)</SCRIPT>
+<SCRIPT FOR="idPlayVideoImg" EVENT="onmouseover">PlayVideoEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idPlayVideo" EVENT="onmouseover">PlayVideoEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idPlayVideo" EVENT="onclick">PlayVideoEVENTonclick(this)</SCRIPT>
+<SCRIPT FOR="idPlayVideo" EVENT="onkeypress">if (event.keyCode == 13) {PlayVideoEVENTonclick(this)} </SCRIPT>
+<SCRIPT FOR="idPlayVideo" EVENT="onfocus">PlayVideoEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idTourAudioImg" EVENT="onmouseover">AudioPlayEVENTonmouseover(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourAudioImg" EVENT="onmouseout">AudioPlayEVENTonmouseout(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourAudioImg" EVENT="onclick">AudioPlayEVENTonclick(this.STAT, 1)</SCRIPT>
+<SCRIPT FOR="idTourAudioImg" EVENT="onkeypress">if (event.keyCode == 13) {AudioPlayEVENTonclick(this.STAT, 0)}</SCRIPT>
+<SCRIPT FOR="idTourAudioImg" EVENT="onfocus">AudioPlayEVENTonmouseover(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourAudioImg" EVENT="onblur">AudioPlayEVENTonmouseout(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourPlayImg" EVENT="onmouseover">TourPlayEVENTonmouseover(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourPlayImg" EVENT="onmouseout">TourPlayEVENTonmouseout(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourPlayImg" EVENT="onclick">TourPlayEVENTonclick(this.STAT, 1)</SCRIPT>
+<SCRIPT FOR="idTourPlayImg" EVENT="onkeypress">if (event.keyCode == 13) {TourPlayEVENTonclick(this.STAT, 0)}</SCRIPT>
+<SCRIPT FOR="idTourPlayImg" EVENT="onfocus">TourPlayEVENTonmouseover(this.STAT)</SCRIPT>
+<SCRIPT FOR="idTourPlayImg" EVENT="onblur">TourPlayEVENTonmouseout(this.STAT)</SCRIPT>
+<SCRIPT FOR="idCloseTourAppImg" EVENT="onmouseover">CloseAppEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idCloseTourAppImg" EVENT="onmouseout">CloseAppEVENTonmouseout(this)</SCRIPT>
+<SCRIPT FOR="idCloseTourAppImg" EVENT="onclick">CloseAppEVENTonclick()</SCRIPT>
+<SCRIPT FOR="idCloseTourAppImg" EVENT="onkeypress">if (event.keyCode == 13) {CloseAppEVENTonclick()}</SCRIPT>
+<SCRIPT FOR="idCloseTourAppImg" EVENT="onfocus">CloseAppEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idCloseTourAppImg" EVENT="onblur">CloseAppEVENTonmouseout(this)</SCRIPT>
+<SCRIPT FOR="idCloseVideoAppImg" EVENT="onmouseover">CloseAppEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idCloseVideoAppImg" EVENT="onmouseout">CloseAppEVENTonmouseout(this)</SCRIPT>
+<SCRIPT FOR="idCloseVideoAppImg" EVENT="onclick">CloseAppEVENTonclick()</SCRIPT>
+<SCRIPT FOR="idCloseVideoAppImg" EVENT="onkeypress">if (event.keyCode == 13) {CloseAppEVENTonclick()}</SCRIPT>
+<SCRIPT FOR="idCloseVideoAppImg" EVENT="onfocus">CloseAppEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idCloseVideoAppImg" EVENT="onblur">CloseAppEVENTonmouseout(this)</SCRIPT>
+<SCRIPT FOR="idBackToTourImg" EVENT="onmouseover">BackToTourEVENTonmouseover()</SCRIPT>
+<SCRIPT FOR="idBackToTourImg" EVENT="onmouseout">BackToTourEVENTonmouseout()</SCRIPT>
+<SCRIPT FOR="idBackToTourImg" EVENT="onclick">BackToTourEVENTonclick()</SCRIPT>
+<SCRIPT FOR="idBackToTourImg" EVENT="onkeypress"> if (event.keyCode == 13) {BackToTourEVENTonclick()}</SCRIPT>
+<SCRIPT FOR="idBackToTourImg" EVENT="onfocus">BackToTourEVENTonmouseover()</SCRIPT>
+<SCRIPT FOR="idBackToTourImg" EVENT="onblur">BackToTourEVENTonmouseout()</SCRIPT>
+<SCRIPT FOR="idMPLogoImg" EVENT="onmouseover">MPLogoEVENTonmouseover(this)</SCRIPT>
+<SCRIPT FOR="idMPLogoImg" EVENT="onmouseout">MPLogoEVENTonmouseout(this)</SCRIPT>
+<SCRIPT FOR="idMPLogoImg" EVENT="onclick">MPLogoEVENTonclick(this)</SCRIPT>
+<SCRIPT FOR="idVideo" EVENT="playStateChange">if (this.playState == 1) BackToTourEVENTonclick() </SCRIPT>
+<SCRIPT FOR="idBody" EVENT="onkeyup">CheckKeyCodes()</SCRIPT>
+<DIV ID="idTourContainer" CLASS="clsTourContainer">
+	<IMG ID="idTourBGImg" CLASS="clsTourBG" SRC="img/tourbg.gif" BORDER="0">
+	<DIV ID="idTourTop" CLASS="clsTourTop">
+		<SPAN ID="idTimeElapsed" CLASS="clsTimeElapsed" STAT="1"></SPAN>
+		<SPAN ID="idTourTitle" CLASS="clsTourTitle"></SPAN>
+		<IMG ID="idCloseTourAppImg" CLASS="clsCloseTourAppImg" SRC="img/btn/cloapp.gif" BORDER="0" TABINDEX="16">
+	</DIV>
+	<DIV ID="idTourTopics" CLASS="clsTourTopics" CURCLICK="0">
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="1" STYLE="top:000" TABINDEX="1"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="2" STYLE="top:043" TABINDEX="2"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="3" STYLE="top:086" TABINDEX="3"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="4" STYLE="top:129" TABINDEX="4"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="5" STYLE="top:172" TABINDEX="5"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="6" STYLE="top:215" TABINDEX="6"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="7" STYLE="top:258" TABINDEX="7"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="8" STYLE="top:301" TABINDEX="8"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		<DIV ID="idTopicButton" CLASS="clsTopicButton" IDX="9" STYLE="top:344" TABINDEX="9"><SPAN CLASS="clsTopicButtonCaption"></SPAN><IMG SRC="img/btn/cnt.gif" CLASS="clsTopicButtonImg"></DIV>
+		
+		
+	</DIV>
+	<DIV ID="idTourContents" CLASS="clsTourContents">
+		<DIV ID="idContentsTitle" CLASS="clsContentsTitle"></DIV>
+		<DIV ID="idContentsBody" CLASS="clsContentsBody"></DIV>
+	</DIV>
+	<DIV ID="idTourBottom" CLASS="clsTourBottom" TABINDEX="-1">
+		<A HREF="" ID="idLNKWindowsMedia" target="web3"><IMG ID="idMPLogoImg" CLASS="clsMPLogoImg" SRC="img/mplogo.gif" BORDER="0"></A>
+		<IMG ID="idTourPlayImg" CLASS="clsTourPlayImg" SRC="img/btn/tplay.gif" BORDER="0" TABINDEX="11" STAT="0">
+		<IMG ID="idTourAudioImg" CLASS="clsTourAudioImg" SRC="img/btn/taon.gif" BORDER="0" TABINDEX="13" STAT="0">
+	</DIV>
+</DIV>
+<DIV ID="idVideoContainer" CLASS="clsVideoContainer">
+	<IMG ID="idVideoBGImg" CLASS="clsVideoBG" SRC="img/videobg.gif" BORDER="0">
+	<DIV ID="idVideoTop" CLASS="clsVideoTop">
+		<SPAN ID="idVideoTitle" CLASS="clsVideoTitle"></SPAN>
+		<IMG ID="idCloseVideoAppImg" CLASS="clsCloseVideoAppImg" SRC="img/btn/cloapp.gif" BORDER="0" TABINDEX="12">
+	</DIV>
+	<DIV ID="idVideoInfo" CLASS="clsVideoInfo">
+		<DIV ID="idVideoInfoTitle" CLASS="clsVideoInfoTitle"></DIV>		
+		<DIV ID="idVideoInfoBody" CLASS="clsVideoInfoBody"></DIV>
+	</DIV>
+	<OBJECT NAME="Video" ID="idVideo" WIDTH="640" HEIGHT="480" STYLE="position:absolute;" CLASSID="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" TYPE="application/x-oleobject" TABINDEX="-1">
+		<PARAM NAME="URL"			VALUE="">
+		<PARAM NAME="autoStart" 	VALUE="false">
+		<PARAM NAME="uiMode"		VALUE="none">
+	</OBJECT>
+	<DIV ID="idVideoBottom" CLASS="clsVideoBottom">
+		<IMG ID="idBackToTourImg" CLASS="clsBackToTourImg" SRC="img/btn/bktr.gif" BORDER="0" TABINDEX="13">
+	</DIV>
+</DIV>
+<IFRAME ID="idAudioTrack" SRC="audio/snd.htm" STYLE="visibility:hidden; position:absolute; width:1; height:1;"></IFRAME>
+<IFRAME ID="idContents" SRC="cnt/contents.htm" STYLE="visibility:hidden; position:absolute; width:1; height:1;"></IFRAME>
+</BODY>
+</HTML>

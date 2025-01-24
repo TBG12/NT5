@@ -1,0 +1,88 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  =   "$Windows NT$"
+Class      =   MultiFunction
+ClassGUID  =   {4d36e971-e325-11ce-bfc1-08002be10318}
+Provider   =   %MSFT%
+LayoutFile =   layout.inf
+DriverVer=10/01/2002,1.22.2.0
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%Xircom%   = Xircom
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Xircom]
+; USA domestic CEM33
+%CEM33.DevDesc%=Mfg33.mf,PCMCIA\XIRCOM-CREDITCARD_ETHERNET+MODEM_33.6-05DD
+; International CEM33
+%CEM33.DevDesc%=Mfg33.mf,PCMCIA\XIRCOM-CREDITCARD_ETHERNET+MODEM_33.6-5AA1
+
+[Mfg33.mf]
+
+[Mfg33.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+[Mfg33.mf.HW]
+AddReg=Mfg33.mf.RegHW
+
+[Mfg33.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\XIRCOMCEM33_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\XIRCOMCEM33_DEV1
+HKR,Child0001,ResourceMap,1,00,01,02,03,04
+
+[Mfg33.mf.LogConfigOverride]
+LogConfig=Mfg33.mf.Override0
+LogConfig=Mfg33.mf.Override1
+LogConfig=Mfg33.mf.Override2
+LogConfig=Mfg33.mf.Override3
+
+[Mfg33.mf.Override0]    ;com3
+IOConfig=3e8-3ef
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=61:10000(W)
+
+[Mfg33.mf.Override1]    ;com2
+IOConfig=2f8-2ff
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=41:10000(W)
+
+[Mfg33.mf.Override2]    ;com4
+IOConfig=2e8-2ef
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=61:10000(W)
+
+[Mfg33.mf.Override3]    ;com1
+IOConfig=3f8-3ff
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=41:10000(W)
+
+[Strings]
+Xircom          = "Xircom"
+MSFT            = "Microsoft"
+CEM33.DevDesc   = "Xircom CreditCard Ethernet+Modem 33.6 Parent"
+MFClassName     = "Multifunction PCMCIA Device Driver"

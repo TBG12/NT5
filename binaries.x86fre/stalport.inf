@@ -1,0 +1,109 @@
+;;=============================================================================
+;;
+;; STALPORT.INF
+;;
+;; Install File for Stallion Technologies ATA Multi-Port adaptor cards.
+;;
+;; Stallion Technologies Copyright (C) 1990-2002
+;;
+;;=============================================================================
+
+
+[Version]
+signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%StallionTechnologies%
+DriverVer=%DriverDateInfo%, %DriverVersionInfo%
+LayoutFile=layout.inf
+;; This is not being used as we are a 'system supplied' driver.
+;;CatalogFile=mpsstln.cat           ; digital signature file
+
+
+
+[Manufacturer]
+%StallionTechnologies%=StallionMfg
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+
+[StallionMfg]
+%port%                = StallionPort,         STALLION_ATA\STALPORT
+
+
+[StallionPort]
+AddReg=StallionMF.AddReg,StlnATA.AddReg,PropertyPages.AddReg
+[StallionPort.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+
+
+
+[StallionMF.AddReg]
+HKR,,Manufacturer,,%StallionTechnologies%
+
+[StlnATA.AddReg]
+HKR,,Product,,%StlnAtaProductName%
+HKR,,ServiceName,,%StlnATA%
+HKR,,BoardType,%REG_DWORD%,0
+HKR,,PanelNumber,%REG_DWORD%,0
+HKR,,PanelSize,%REG_DWORD%,0
+HKR,,PortNumber,%REG_DWORD%,0
+HKR,,DrainDelay,%REG_DWORD%,3000
+HKR,,Flags,%REG_DWORD%,0
+HKR,,ExtraFlags,%REG_DWORD%,0x04
+HKR,,RxTHold,%REG_DWORD%,0
+
+[PropertyPages.AddReg]
+HKR,,EnumPropPages32,, "StlnProp.dll, StlnPortEnumPropPages"
+
+
+[StallionPort.HW]
+AddReg=StallionPort.HW.AddReg
+[StallionPort.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+
+
+[StlnATA_Driver.AddService]
+DisplayName=%StlnATA.ServiceDesc%
+ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+StartType      = 3                ; SERVICE_DEMAND_START
+ErrorControl   = 0                ; SERVICE_ERROR_IGNORE
+ServiceBinary=%12%\StlnATA.sys    ; 12=drivers directory
+LoadOrderGroup=Extended Base
+
+
+[StlnATA_EventLog.AddEventLog]
+AddReg=StlnAta_EventLog_AddEventLog.AddReg
+ 
+[StlnAta_EventLog_AddEventLog.AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\StlnATA.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+
+
+
+
+[Strings]
+StallionTechnologies="Stallion Technologies"
+port="Stallion Port"
+StlnAtaProductName="Stallion ATA Driver"
+StlnATA="StlnATA"
+StlnATA.ServiceDesc="Stallion Technologies ATA Driver"
+DriverDateInfo = 06/12/2002
+DriverVersionInfo = 5.6.7.0
+
+SERVICE_KERNEL_DRIVER       = 0x1
+
+SERVICE_DEMAND_START   = 3
+
+SERVICE_ERROR_IGNORE   = 0
+
+SPSVCINST_ASSOCSERVICE   = 2
+
+
+REG_DWORD              = 0x00010001
+
+

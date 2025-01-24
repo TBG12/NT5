@@ -1,0 +1,164 @@
+; netel980.INF
+;
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+signature   = "$Windows NT$"
+Class       = Net
+provider    = %MSFT%
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Layoutfile  = layout.inf
+DriverVer=10/01/2002,4.0.0.18
+
+[Manufacturer]
+%3COM%      = 3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%PCI\VEN_10b7&DEV_9805.DeviceDesc% = EL98x.ndi,PCI\VEN_10b7&DEV_9805 ; Python 980C NIC
+%PCI\VEN_10b7&DEV_9800.DeviceDesc% = EL98x.ndi,PCI\VEN_10b7&DEV_9800 ; Python 980B NIC
+%PCI\VEN_10b7&DEV_9805&SUBSYS_120110B7.DeviceDesc%= EL98x.ndi,PCI\VEN_10b7&DEV_9805&SUBSYS_120110B7 		    ; Hydra NIC Port A
+%PCI\VEN_10b7&DEV_9805&SUBSYS_120210B7.DeviceDesc%= EL98x.ndi,PCI\VEN_10b7&DEV_9805&SUBSYS_120210B7 		    ; Hydra NIC Port B
+;-------------------------------------------------------------------------------
+; 3c98x Network Device Section
+;
+[EL98x.ndi]
+DelReg		= EL98x.fixMediaType
+AddReg          = EL98x.reg, EL98x.params
+CopyFiles       = EL98x.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL98x.ndi.Services]
+AddService      = EL98x, 2, EL98x.Service, EL98x.EventLog
+
+[EL98x.fixMediaType]
+HKR, Ndi\params\MediaSelect,          ParamDesc,       0, %old_media_type%
+HKR, Ndi\params\MediaSelect,          type,            0, "enum"
+HKR, Ndi\params\MediaSelect,          default,         0, "HardwareDefault"
+HKR, Ndi\params\MediaSelect\enum,     HardwareDefault, 0, %old_media_default%
+HKR, Ndi\params\MediaSelect\enum,     AUTOSELECT,      0, %old_media_auto%
+HKR, Ndi\params\MediaSelect\enum,     100BASETX,       0, %old_media_100BaseTx%
+HKR, Ndi\params\MediaSelect\enum,     10BASET,         0, %old_media_10BaseTx%
+
+[EL98x.params]
+HKR, Ndi\params\8021psupport,         ParamDesc,       0, %8021p%
+HKR, Ndi\params\8021psupport,         type,            0, "enum"
+HKR, Ndi\params\8021psupport,         default,         0, "DISABLE"
+HKR, Ndi\params\8021psupport\enum,    ENABLE,          0, %ENABLE%
+HKR, Ndi\params\8021psupport\enum,    DISABLE,         0, %DISABLE%
+
+HKR, Ndi\params\flowcontrol,          ParamDesc,       0, %flowcontrol% 
+HKR, Ndi\params\flowcontrol,          type,            0, "enum"
+HKR, Ndi\params\flowcontrol,          default,         0, "ENABLE"
+HKR, Ndi\params\flowcontrol\enum,     ENABLE,          0, %ENABLE%
+HKR, Ndi\params\flowcontrol\enum,     DISABLE,         0, %DISABLE%
+
+HKR, Ndi\params\RxChecksum,           ParamDesc,       0, %rx_checksum%
+HKR, Ndi\params\RxChecksum,           type,            0, "enum"
+HKR, Ndi\params\RxChecksum,           default,         0, "ENABLE"
+HKR, Ndi\params\RxChecksum\enum,      ENABLE,          0, %ENABLE%
+HKR, Ndi\params\RxChecksum\enum,      DISABLE,         0, %DISABLE%
+
+HKR, Ndi\params\TxChecksum,           ParamDesc,       0, %tx_checksum%
+HKR, Ndi\params\TxChecksum,           type,            0, "enum"
+HKR, Ndi\params\TxChecksum,           default,         0, "ENABLE"
+HKR, Ndi\params\TxChecksum\enum,      ENABLE,          0, %ENABLE%
+HKR, Ndi\params\TxChecksum\enum,      DISABLE,         0, %DISABLE%
+
+HKR,,media,,%media_default%
+HKR,Ndi\params\media,		      default,	       0,	%media_default%
+HKR,Ndi\params\media,		      ParamDesc,       0, 	%media_type%
+HKR,Ndi\params\media,		      type,	       0, 	"enum"
+HKR,Ndi\params\media,		      optional,	       0, 	"0"
+HKR,Ndi\params\media\enum,	      HardwareDefault, 0, 	%HardwareDefault%
+HKR,Ndi\params\media\enum,	      AutoSelect,      0, 	%media_auto%
+HKR,Ndi\params\media\enum,	      100FULL,	       0, 	%media_100_full%
+HKR,Ndi\params\media\enum,	      100HALF,	       0, 	%media_100_half%
+HKR,Ndi\params\media\enum,	      10FULL,	       0, 	%media_10_full%
+HKR,Ndi\params\media\enum,	      10HALF,	       0, 	%media_10_half%
+
+HKR, Ndi\params\Duplexmode,           ParamDesc,       0, %DuplexMode%
+HKR, Ndi\params\Duplexmode,           type,            0, "enum"
+HKR, Ndi\params\Duplexmode,           default,         0, "HardwareDefault"
+HKR, Ndi\params\Duplexmode\enum,      HardwareDefault, 0, %media_default%
+HKR, Ndi\params\Duplexmode\enum,      HalfDuplex,      0, %HalfDuplex%
+HKR, Ndi\params\Duplexmode\enum,      FullDuplex,      0, %FullDuplex%
+
+HKR, NDI\params\networkaddress,           ParamDesc,      0, %networkaddress%
+HKR, NDI\params\networkaddress,           type,           0, "edit"
+HKR, NDI\params\networkaddress,           LimitText,      0, "12"
+HKR, NDI\params\networkaddress,           UpperCase,      0, "1"
+HKR, NDI\params\networkaddress,           default,        0, " "
+HKR, NDI\params\networkaddress,           optional,       0, "1"
+
+;-------------------------------------------------------------------------------
+; 3Com EtherLink 980 Service and Driver
+;
+[EL98x.reg]
+HKR, Ndi,               Service,    0, "EL98x"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+[EL98x.Service]
+DisplayName     = %EL98x.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\el98xn5.sys
+LoadOrderGroup  = NDIS
+
+[EL98x.EventLog]
+AddReg = EL98x.AddEventLog.reg
+
+[EL98x.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR,, TypesSupported,   0x00010001, 7
+
+[EL98x.CopyFiles]
+el98xn5.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir   = 12
+el98x.CopyFiles  = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+MSFT                   = "Microsoft"
+3COM                   = "3Com"
+
+flowcontrol            = "Flow Control"
+DISABLE                = "Disable"
+ENABLE                 = "Enable"
+HalfDuplex             = "Half Duplex"
+FullDuplex             = "Full Duplex"
+8021p                  = "802.1p Support"
+DuplexMode             = "Duplex Mode"
+media_100_full	       = "100 Mb, Full Duplex"
+media_100_half         = "100 Mb, Half Duplex"
+media_10_full          = "10 Mb, Full Duplex"
+media_10_half          = "10 Mb, Half Duplex"
+media_type             = "Media Type"
+media_default          = "HardwareDefault"
+media_auto             = "AutoSelect"
+
+old_media_type         = "Media Type"
+old_media_default      = "Hardware Default"
+old_media_auto         = "Auto Select"
+old_media_100BaseTx    = "100BaseTx"
+old_media_10BaseTx     = "10BaseTx"
+
+HardwareDefault        = "Hardware Default"
+NetworkAddress         = "Network Address"
+rx_checksum            = "Rx Checksum Offload"
+tx_checksum            = "Tx Checksum Offload"
+
+EL98x.Service.DispName           = "3Com EtherLink 10/100 PCI"
+PCI\VEN_10b7&DEV_9800.DeviceDesc = "3Com EtherLink Server 10/100 PCI (3C980B-TX)"
+PCI\VEN_10b7&DEV_9805.DeviceDesc = "3Com EtherLink Server 10/100 PCI (3C980C-TXM)"
+PCI\VEN_10b7&DEV_9805&SUBSYS_120110B7.DeviceDesc="3Com EtherLink Server 10/100 Dual Port A"   ; Hydra Port A
+PCI\VEN_10b7&DEV_9805&SUBSYS_120210B7.DeviceDesc="3Com EtherLink Server 10/100 Dual Port B"   ; Hydra Port B

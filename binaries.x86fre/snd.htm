@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JScript">
+	
+	var	g_VolMin				= -2750;
+	var	g_VolMax				= -250;
+	var TimeOutID				= 0;
+	var nInterval				= 250;
+	var nTimedActionInterval	= 0;
+
+	function SndFadeOut(nVal)
+	{
+		if(TimeOutID) if(TimeOutID) clearTimeout(TimeOutID);
+		
+		if(sound.volume > g_VolMin)
+		{
+			sound.volume = sound.volume - nVal;
+			TimeOutID = setTimeout("SndFadeOut(" + nVal + ")", nInterval);
+		}
+	}
+	
+	function SndFadeIn(nVal)
+	{
+		if(TimeOutID) clearTimeout(TimeOutID);
+		
+		if(sound.volume < g_VolMax)
+		{
+			sound.volume = sound.volume + nVal;
+			TimeOutID = setTimeout("SndFadeIn(" + nVal + ")", nInterval);
+		}
+	}
+	
+
+	function SndPlay(sSound)
+	{
+		sound.src = sSound;
+		sound.volume = g_VolMin;
+	}
+
+	function TimedAction(sAction, nTimeOutInterval)
+	{
+		if(nTimedActionInterval) clearTimeout(nTimedActionInterval);
+		nTimedActionInterval = setTimeout("eval(" + sAction + ")", nTimeOutInterval);
+	}
+
+	function ClearTimedAction()
+	{
+		if(nTimedActionInterval) clearTimeout(nTimedActionInterval);
+	}
+	
+</SCRIPT>
+</HEAD>
+<BODY>
+<BGSOUND ID="sound" SRC="" LOOP="-1">
+</BODY>
+</HTML>

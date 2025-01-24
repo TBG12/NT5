@@ -1,0 +1,1395 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems PostScript(R) Printer Description File
+*% For "MINOLTA-QMS magicolor 2200" version 2015.30
+*% Copyright (c) MINOLTA-QMS  All rights reserved.
+*% Created:   10/6/99
+*% Modified:  09/08/00
+
+
+*FormatVersion: "4.3"
+*FileVersion: "2.0"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Product: "(magicolor 2200)"
+*PSVersion: "(2014.30) 9"
+*Manufacturer: "MINOLTA-QMS"
+*ModelName: "MINOLTA-QMS magicolor 2200 (PS)"
+*ShortNickName: "magicolor 2200"
+*NickName: "magicolor 2200"
+*PCFileName: "MQ2200.PPD"
+
+
+*OpenGroup: InstallableOptions/Installable Options
+
+*OpenUI *OptionalBin/Optional Input Bin: Boolean
+*DefaultOptionalBin: False
+*OptionalBin True/Installed: ""
+*OptionalBin False/Not Installed: ""
+*CloseUI: *OptionalBin
+
+*OpenUI *OptionalMailbox/Optional Mailbox: Boolean
+*DefaultOptionalMailbox: False
+*OptionalMailbox True/Installed: ""
+*OptionalMailbox False/Not Installed: ""
+*CloseUI: *OptionalMailbox
+
+*OpenUI *OptionalMemory/Installed Memory: PickOne
+*DefaultOptionalMemory: 128MB
+*OptionalMemory 64MB/Standard 64 MB: ""
+*OptionalMemory 96MB/Upgraded 96 MB: ""
+*OptionalMemory 128MB/Upgraded to 128 MB or more: ""
+*CloseUI: *OptionalMemory
+
+*OpenUI *OptionalDisk/Optional Hard Disk: Boolean
+*DefaultOptionalDisk: False
+*OptionalDisk True/Installed: ""
+*OptionalDisk False/Not Installed: ""
+*CloseUI: *OptionalDisk
+
+*OpenUI *Optionalduplexer/Optional Duplexer: Boolean
+*DefaultOptionalduplexer: False
+*Optionalduplexer True/Installed: ""
+*Optionalduplexer False/Not Installed: ""
+*CloseUI: *Optionalduplexer
+
+*CloseGroup: InstallableOptions
+
+
+*% === Constraints ===================
+
+*% ===MEMORY Constraints ===================================
+*UIConstraints: *OptionalMemory 64MB	*Resolution 1200dpi
+
+*% ===OPTIONAL Duplexer Constraints==============================
+*UIConstraints: *Optionalduplexer False *Duplex DuplexNoTumble
+*UIConstraints: *Optionalduplexer False *Duplex DuplexTumble
+*UIConstraints: *MediaType Envelope		*Duplex DuplexNoTumble
+*UIConstraints: *MediaType Envelope		*Duplex DuplexTumble
+*UIConstraints: *MediaType Postcard		*Duplex DuplexNoTumble
+*UIConstraints: *MediaType Postcard		*Duplex DuplexTumble
+*UIConstraints: *MediaType Labels		*Duplex DuplexNoTumble
+*UIConstraints: *MediaType Labels		*Duplex DuplexTumble
+*UIConstraints: *MediaType ThickStock	*Duplex DuplexNoTumble
+*UIConstraints: *MediaType ThickStock	*Duplex DuplexTumble
+*UIConstraints: *MediaType Transparency *Duplex DuplexNoTumble
+*UIConstraints: *MediaType Transparency *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*MediaType Transparency
+*UIConstraints: *Duplex DuplexTumble	*MediaType Transparency
+*UIConstraints: *Duplex DuplexNoTumble	*MediaType Envelope		
+*UIConstraints: *Duplex DuplexTumble	*MediaType Envelope		
+*UIConstraints: *Duplex DuplexNoTumble	*MediaType Postcard		
+*UIConstraints: *Duplex DuplexTumble	*MediaType Postcard		
+*UIConstraints: *Duplex DuplexNoTumble	*MediaType Labels		
+*UIConstraints: *Duplex DuplexTumble	*MediaType Labels		
+*UIConstraints: *Duplex DuplexNoTumble	*MediaType ThickStock	
+*UIConstraints: *Duplex DuplexTumble	*MediaType ThickStock	
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize JapanesePostCard	
+*UIConstraints: *PageSize JapanesePostCard		*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize JapanesePostCard	
+*UIConstraints: *PageSize JapanesePostCard		*Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvChou3	
+*UIConstraints: *PageSize EnvChou3	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvChou3	
+*UIConstraints: *PageSize EnvChou3	*Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvChou4	
+*UIConstraints: *PageSize EnvChou4	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvChou4	
+*UIConstraints: *PageSize EnvChou4	*Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize GTPostCard	
+*UIConstraints: *PageSize GTPostCard	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize GTPostCard	
+*UIConstraints: *PageSize GTPostCard	*Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Env10
+*UIConstraints: *PageSize Env10			*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize Env10
+*UIConstraints: *PageSize Env10			*Duplex DuplexTumble
+
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvDL		
+*UIConstraints: *PageSize EnvDL			*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvDL	
+*UIConstraints: *PageSize EnvDL			*Duplex DuplexTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvMonarch	
+*UIConstraints: *PageSize EnvMonarch	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvMonarch	
+*UIConstraints: *PageSize EnvMonarch	*Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvC5	
+*UIConstraints: *PageSize EnvC5			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvC5	
+*UIConstraints: *PageSize EnvC5			*Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvC6	
+*UIConstraints: *PageSize EnvC6			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvC6	
+*UIConstraints: *PageSize EnvC6			*Duplex DuplexNoTumble	
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize A5	
+*UIConstraints: *PageSize A5			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize A5	
+*UIConstraints: *PageSize A5			*Duplex DuplexNoTumble	
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize Statement	
+*UIConstraints: *PageSize Statement			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Statement	
+*UIConstraints: *PageSize Statement			*Duplex DuplexNoTumble	
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize B5	
+*UIConstraints: *PageSize B5			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize B5	
+*UIConstraints: *PageSize B5			*Duplex DuplexNoTumble	
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize EnvISOB5	
+*UIConstraints: *PageSize EnvISOB5			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize EnvISOB5	
+*UIConstraints: *PageSize EnvISOB5			*Duplex DuplexNoTumble	
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize Executive	
+*UIConstraints: *PageSize Executive			*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Executive	
+*UIConstraints: *PageSize Executive			*Duplex DuplexNoTumble	
+
+*% ===END OF DUPLEXER CONSTRAINTS============================
+
+*% ===OPTIONAL Mailbox Constraints===========================
+*UIConstraints: *OptionalMailbox False *OutputBin Mailbin1
+*UIConstraints: *OptionalMailbox False *OutputBin Mailbin2
+*UIConstraints: *OptionalMailbox False *OutputBin Mailbin3
+*UIConstraints: *OptionalMailbox False *OutputBin Mailbin4
+*UIConstraints: *OptionalMailbox False *OutputBin Mailbin5
+
+*% ===OPTIONAL Tray Constraints==============================
+*UIConstraints: *OptionalBin False	*InputSlot OptionalTray
+
+*UIConstraints: *InputSlot Upper	*PageSize A5
+*UIConstraints: *PageSize A5 		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize Statement
+*UIConstraints: *PageSize Statement	*InputSlot Upper
+*UIConstraints: *InputSlot Upper 	*PageSize Executive
+*UIConstraints: *PageSize Executive	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize B5
+*UIConstraints: *PageSize B5		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize Quarto
+*UIConstraints: *PageSize Quarto		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize Env10
+*UIConstraints: *PageSize Env10		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize Env12
+*UIConstraints: *PageSize Env12		*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus	*InputSlot Upper
+
+
+*UIConstraints: *InputSlot OptionalTray	*PageSize A5
+*UIConstraints: *PageSize A5 		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize Statement
+*UIConstraints: *PageSize Statement	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray *PageSize Executive
+*UIConstraints: *PageSize Executive	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize B5
+*UIConstraints: *PageSize B5		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize Quarto
+*UIConstraints: *PageSize Quarto		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize Env10
+*UIConstraints: *PageSize Env10		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4		*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus		*InputSlot OptionalTray
+
+*UIConstraints: *OutputBin Mailbin1	*PageSize A5
+*UIConstraints: *PageSize A5 		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize Statement
+*UIConstraints: *PageSize Statement	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1 	*PageSize Executive
+*UIConstraints: *PageSize Executive	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize B5
+*UIConstraints: *PageSize B5		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize Quarto
+*UIConstraints: *PageSize Quarto	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize Env10
+*UIConstraints: *PageSize Env10		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize Legal
+*UIConstraints: *PageSize Legal		*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin1	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus	*OutputBin Mailbin1
+
+*UIConstraints: *OutputBin Mailbin2	*PageSize A5
+*UIConstraints: *PageSize A5 		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize Statement
+*UIConstraints: *PageSize Statement	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2 	*PageSize Executive
+*UIConstraints: *PageSize Executive	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize B5
+*UIConstraints: *PageSize B5		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize Quarto
+*UIConstraints: *PageSize Quarto	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize Env10
+*UIConstraints: *PageSize Env10		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize Legal
+*UIConstraints: *PageSize Legal		*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin2	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus	*OutputBin Mailbin2
+
+*UIConstraints: *OutputBin Mailbin3	*PageSize A5
+*UIConstraints: *PageSize A5 		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize Statement
+*UIConstraints: *PageSize Statement	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3 	*PageSize Executive
+*UIConstraints: *PageSize Executive	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize B5
+*UIConstraints: *PageSize B5		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize Quarto
+*UIConstraints: *PageSize Quarto		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize Env10
+*UIConstraints: *PageSize Env10		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize Legal
+*UIConstraints: *PageSize Legal		*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin3	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus	*OutputBin Mailbin3
+
+*UIConstraints: *OutputBin Mailbin4	*PageSize A5
+*UIConstraints: *PageSize A5 		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize Statement
+*UIConstraints: *PageSize Statement	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4 	*PageSize Executive
+*UIConstraints: *PageSize Executive	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize B5
+*UIConstraints: *PageSize B5		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize Quarto
+*UIConstraints: *PageSize Quarto	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize Env10
+*UIConstraints: *PageSize Env10		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize Legal
+*UIConstraints: *PageSize Legal		*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin4	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus	*OutputBin Mailbin4
+
+*UIConstraints: *OutputBin Mailbin5	*PageSize A5
+*UIConstraints: *PageSize A5 		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize Statement
+*UIConstraints: *PageSize Statement	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5 	*PageSize Executive
+*UIConstraints: *PageSize Executive	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize B5
+*UIConstraints: *PageSize B5		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvISOB5
+*UIConstraints: *PageSize EnvISOB5	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize Quarto
+*UIConstraints: *PageSize Quarto	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize Foolscap
+*UIConstraints: *PageSize Foolscap	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize FanFoldGermanLegal
+*UIConstraints: *PageSize FanFoldGermanLegal		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize FanFoldGerman
+*UIConstraints: *PageSize FanFoldGerman	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize JapanesePostCard
+*UIConstraints: *PageSize JapanesePostCard	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize GTPostCard
+*UIConstraints: *PageSize GTPostCard	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize Env10
+*UIConstraints: *PageSize Env10		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvDL
+*UIConstraints: *PageSize EnvDL		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvC5
+*UIConstraints: *PageSize EnvC5		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvC6
+*UIConstraints: *PageSize EnvC6		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvChou3
+*UIConstraints: *PageSize EnvChou3	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize EnvChou4
+*UIConstraints: *PageSize EnvChou4	*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize Legal
+*UIConstraints: *PageSize Legal		*OutputBin Mailbin5
+*UIConstraints: *OutputBin Mailbin5	*PageSize LetterPlus
+*UIConstraints: *PageSize LetterPlus	*OutputBin Mailbin5
+
+*UIConstraints: *OutputBin Mailbin1	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock 	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin2	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock 	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin3	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock 	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin4	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock 	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin5	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock 	*OutputBin Mailbin5
+
+*UIConstraints: *OutputBin Mailbin1	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin2	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin3	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin4	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin5	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin5
+
+*UIConstraints: *OutputBin Mailbin1	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin2	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin3	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin4	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin5	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin5
+
+*UIConstraints: *InputSlot Upper	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*MediaType Envelopes
+*UIConstraints: *MediaType Envelopes	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*MediaType Postcard
+*UIConstraints: *MediaType Postscard	*InputSlot Upper
+*UIConstraints: *InputSlot Upper	*MediaType Label
+*UIConstraints: *MediaType Label	*InputSlot Upper
+
+*UIConstraints: *InputSlot OptionalTray	*MediaType ThickStock
+*UIConstraints: *MediaType ThickStock	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*MediaType Envelopes
+*UIConstraints: *MediaType Envelopes	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*MediaType Postcard
+*UIConstraints: *MediaType Postscard	*InputSlot OptionalTray
+*UIConstraints: *InputSlot OptionalTray	*MediaType Label
+*UIConstraints: *MediaType Label		*InputSlot OptionalTray
+
+*UIConstraints: *OutputBin Mailbin1	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin2	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin3	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin4	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin5	*MediaType Label
+*UIConstraints: *MediaType Label 	*OutputBin Mailbin5
+
+*UIConstraints: *OutputBin Mailbin1	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin1
+*UIConstraints: *OutputBin Mailbin2	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin2
+*UIConstraints: *OutputBin Mailbin3	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin3
+*UIConstraints: *OutputBin Mailbin4	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin4
+*UIConstraints: *OutputBin Mailbin5	*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*OutputBin Mailbin5
+  
+*% === ICC Match Constraints =============================
+*UIConstraints: *CMMExpert False        *CMMatch False
+
+*UIConstraints: *CMMatchOpt True        *CMMatch False
+*UIConstraints: *CMMatchOpt False       *CMMatch True
+
+*UIConstraints: *CMMatchOpt False       *ICCRGBSource None
+*UIConstraints: *CMMatchOpt False       *ICCRGBSource sRGB
+*UIConstraints: *CMMatchOpt False       *ICCRGBSource TrinitronG1.8D50
+*UIConstraints: *CMMatchOpt False       *ICCRGBSource AppleRGB
+*UIConstraints: *CMMatchOpt False       *ICCRGBSource PrePress
+
+*UIConstraints: *CMMatchOpt False       *ColorSimul: None
+*UIConstraints: *CMMatchOpt False       *ColorSimul: SWOP
+*UIConstraints: *CMMatchOpt False       *ColorSimul: Inkjet
+*UIConstraints: *CMMatchOpt False       *ColorSimul: EuroColor
+*UIConstraints: *CMMatchOpt False       *ColorSimul: CMYK
+*UIConstraints: *CMMatchOpt False       *ColorSimul: Commercial
+
+*% End of Constraints ==================================
+
+
+*% === Basic Device Capabilities ============
+
+*LanguageLevel: "2"
+*Protocols: BCP
+
+*FreeVM: "5500000"
+
+*ColorDevice: True
+*SingleUserMode: True
+*DefaultColorSpace: CMYK
+*AccurateScreensSupport: True
+*End
+*TTRasterizer: Type42
+*?TTRasterizer: "
+  save
+  42 /FontType resourcestatus
+  { pop pop (Type42)} {pop pop (None)} ifelse = flush
+  restore"
+*End
+
+*FileSystem: True
+*?FileSystem: "
+  save false
+  (%disk?%)
+  { currentdevparams dup /Writeable known
+    { /Writeable get {pop true} if }  {pop} ifelse
+  } 10 string /IODevice resourceforall
+  {(True)}{(False)} ifelse = flush
+  restore"
+*End
+*Throughput: "5"
+*Password: "(0)"
+*ExitServer: "
+  count 0 eq
+  { false } { true exch startjob } ifelse
+  not
+  { (WARNING: Cannot modify initial VM.) =
+    (Missing or invalid password.) =
+    (Please contact the author of this software.) = flush quit
+  } if"
+*End
+*Reset: "
+  count 0 eq
+  { false } { true exch startjob } ifelse
+  not
+  { (WARNING: Cannot reset printer.) =
+    (Missing or invalid password.) =
+    (Please contact the author of this software.) = flush quit
+  } if
+  systemdict /quit get exec
+  (WARNING : Printer Reset Failed.) = flush"
+*End
+
+*OpenUI *Resolution/Choose Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 1200dpi
+*Resolution 600dpi/600 dpi: "{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*Resolution 1200dpi/1200 dpi: "{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*?Resolution: "
+  save
+	currentpagedevice /HWResolution get
+	0 get
+	(          ) cvs print
+	(dpi)
+	= flush
+  restore
+"
+*End
+*CloseUI: *Resolution
+
+*% ============ Halftone Information ===============
+*ScreenFreq: "106.0"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "{180 mul cos exch 180 mul cos add 2 div}"
+*ScreenProc Line: "{ pop }"
+*ScreenProc Ellipse: "{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+
+*% ================== Paper Handling ===================
+*%Code in this section both selects a tray and sets up a frame buffer.
+*OpenUI  *PageSize: PickOne
+*OrderDependency: 30 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize A5/A5:				            "<</PageSize [420 595] /ImagingBBox null>> setpagedevice"
+*PageSize Statement/Statement:           	    "<</PageSize [396 612] /ImagingBBox null>> setpagedevice"
+*PageSize A4/A4:				            "<</PageSize [596 842] /ImagingBBox null>> setpagedevice"
+*PageSize Letter/Letter:		                "<</PageSize [612 792] /ImagingBBox null>> setpagedevice"
+*PageSize Executive/Executive:	                "<</PageSize [522 756] /ImagingBBox null>> setpagedevice"
+*PageSize B5/B5 (JIS) 182 x 257 mm:				"<</PageSize [516 729] /ImagingBBox null>> setpagedevice"
+*PageSize EnvISOB5/B5 (ISO) 176 x 250 mm:		"<</PageSize [499 709] /ImagingBBox null>> setpagedevice"
+*PageSize Quarto/Quarto 215 x 275 mm:			"<</PageSize [576 720] /ImagingBBox null>> setpagedevice"
+*PageSize Foolscap/Foolscap 8 x 13 in:	"<</PageSize [576 936] /ImagingBBox null>> setpagedevice"
+*PageSize LetterPlus/SP Folio 8 1/2 x 12 1/2 in:			"<</PageSize [612 914] /ImagingBBox null>> setpagedevice"
+*PageSize FanFoldGermanLegal/Folio 210 x 330 mm:		"<</PageSize [612 936] /ImagingBBox null>> setpagedevice"
+*PageSize JapanesePostCard/Postcard 100 x 148 mm:	"<</PageSize [284 419] /ImagingBBox null>> setpagedevice"
+*PageSize Legal/Legal:			"<</PageSize [612 1008] /ImagingBBox null>> setpagedevice"
+*PageSize GTPostCard/GT Postcard 102 x 165 mm:		"<</PageSize [288 468] /ImagingBBox null>> setpagedevice"
+*PageSize Env10/Envelope #10 4 1/8 x 9 1/2:			"<</PageSize [297 684] /ImagingBBox null>> setpagedevice"
+*PageSize EnvDL/Envelope DL 110 x 220 mm:				"<</PageSize [312 624] /ImagingBBox null >> setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch 3.875 x 7.5 in:	"<</PageSize [279 540] /ImagingBBox null>> setpagedevice"
+*PageSize EnvC5/Envelope C5 162 x 229 mm:				"<</PageSize [459 649] /ImagingBBox null>> setpagedevice"
+*PageSize EnvC6/Envelope C6 114 x 162 mm:				"<</PageSize [324 459] /ImagingBBox null>> setpagedevice"
+*PageSize EnvChou3/Japanese Envelope Chou #3:	    "<</PageSize [340 666] /ImagingBBox null>> setpagedevice"
+*PageSize EnvChou4/Japanese Envelope Chou #4:	    "<</PageSize [255 581] /ImagingBBox null>> setpagedevice"
+*?PageSize: "
+ save
+   currentpagedevice /PageSize get aload pop
+   2 copy gt {exch} if 
+   (Unknown) 
+   25 dict
+   [420 595]  (A5)
+   [612 396]  (Statement)
+   [595 842]  (A4)
+   [612 792]  (Letter)
+   [522 757]  (Executive)
+   [516 729]  (B5)
+   [499 709]  (EnvISOB5)
+   [576 720]  (Quarto)
+   [576 936]  (Foolscap)
+   [612 914]  (SPFolio)
+   [612 936]  (Folio)
+   [612 1008] (Legal)
+   [280 417]  (JapanesePostCard)
+   [288 468]  (GTPostCard)
+   [297 684]  (Env10)
+   [312 624]  (EnvDL)
+   [280 540]  (EnvMonarch)
+   [460 648]  (EnvC5)
+   [324 460]  (EnvC6)
+   [340 666]  (EnvChou3)
+   [255 581]  (EnvChou4)
+
+   { exch aload pop 4 index sub abs 5 le exch 
+   5 index sub abs 5 le and 
+      {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+restore 
+"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion A5:					"<</PageSize [420 595] /ImagingBBox null>> setpagedevice"
+*PageRegion Statement:			"<</PageSize [396 612] /ImagingBBox null>> setpagedevice"
+*PageRegion A4:					"<</PageSize [596 842] /ImagingBBox null>> setpagedevice"
+*PageRegion Letter:				"<</PageSize [612 792] /ImagingBBox null>> setpagedevice"
+*PageRegion Executive:			"<</PageSize [522 756] /ImagingBBox null>> setpagedevice"
+*PageRegion B5:					"<</PageSize [516 729] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvISOB5:			"<</PageSize [499 709] /ImagingBBox null>> setpagedevice"
+*PageRegion Quarto:				"<</PageSize [576 720] /ImagingBBox null>> setpagedevice"
+*PageRegion Foolscap:			"<</PageSize [576 936] /ImagingBBox null>> setpagedevice"
+*PageRegion LetterPlus:			"<</PageSize [612 914] /ImagingBBox null>> setpagedevice"
+*PageRegion FanFoldGermanLegal:	"<</PageSize [612 936] /ImagingBBox null>> setpagedevice"
+*PageRegion Legal:				"<</PageSize [612 1008] /ImagingBBox null>> setpagedevice"
+*PageRegion JapanesePostCard:	"<</PageSize [284 419] /ImagingBBox null>> setpagedevice"
+*PageRegion GTPostCard:			"<</PageSize [288 468] /ImagingBBox null>> setpagedevice"
+*PageRegion Env10:				"<</PageSize [297 684] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvDL: 				"<</PageSize [312 624] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvMonarch:			"<</PageSize [279 540] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvC5:				"<</PageSize [459 649] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvC6: 				"<</PageSize [323 459] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvChou3:			"<</PageSize [340 666] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvChou4:			"<</PageSize [255 581] /ImagingBBox null>> setpagedevice"
+*?PageRegion: "
+ save
+   currentpagedevice /PageSize get aload pop
+   2 copy gt {exch} if 
+   (Unknown) 
+   25 dict
+   [420 595]  (A5)
+   [612 396]  (Statement)
+   [595 842]  (A4)
+   [612 792]  (Letter)
+   [522 757]  (Executive)
+   [516 729]  (B5)
+   [499 709]  (EnvISOB5)
+   [576 720]  (Quarto)
+   [576 936]  (Foolscap)
+   [612 914]  (SPFolio)
+   [612 936]  (Folio)
+   [612 1008] (Legal)
+   [280 417]  (JapanesePostCard)
+   [288 468]  (GTPostCard)
+   [297 684]  (Env10)
+   [312 624]  (EnvDL)
+   [280 540]  (EnvMonarch)
+   [460 648]  (EnvC5)
+   [324 460]  (EnvC6)
+   [340 666]  (EnvChou3)
+   [255 581]  (EnvChou4)
+
+   { exch aload pop 4 index sub abs 5 le exch 
+   5 index sub abs 5 le and 
+      {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+restore 
+"
+*End
+*CloseUI: *PageRegion
+
+*% The following entries provide information about specific paper keywords.
+*DefaultImageableArea: Letter
+*ImageableArea A5:              			"14 14 405 581"
+*ImageableArea Statement:       			"14 14 382 598"
+*ImageableArea A4: 							"14 14 581 828"
+*ImageableArea Letter: 						"14 14 597 777"
+*ImageableArea Executive: 					"14 14 508 742"
+*ImageableArea B5:							"14 14 502 715"
+*ImageableArea EnvISOB5:					"14 14 485 695"
+*ImageableArea Quarto/Quarto:				"14 14 562 706"
+*ImageableArea Foolscap:					"14 14 562 922"
+*ImageableArea LetterPlus/SP_Folio:			"14 14 598 900"
+*ImageableArea FanFoldGermanLegal/Folio:	"14 14 598 922"
+*ImageableArea Legal: 						"14 14 598 994"
+*ImageableArea JapanesePostCard/Postcard(100x148mm):	"14 14 270 405"
+*ImageableArea GTPostCard/GT Postcard:		"14 14 274 454"
+*ImageableArea EnvDL: 						"14 14 298 610"
+*ImageableArea EnvMonarch:					"14 14 265 526"
+*ImageableArea EnvC5:						"14 14 445 635"
+*ImageableArea EnvC6:						"14 14 309 445"
+*ImageableArea Env10:						"14 14 283 670"
+*ImageableArea EnvChou3:					"14 14 326 652"
+*ImageableArea EnvChou4:					"14 14 241 567"
+
+*?ImageableArea: "
+ save /cvp { cvi (            ) cvs print ( ) print } bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat ( ) = flush
+ restore
+"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: Letter
+*PaperDimension A5:            				"420 595"
+*PaperDimension Statement:					"396 612"
+*PaperDimension A4: 						"595 842"
+*PaperDimension Letter: 					"612 792"
+*PaperDimension Executive: 					"522 756"
+*PaperDimension B5:							"516 729"
+*PaperDimension EnvISOB5/B5 ISO:			"499 709"
+*PaperDimension Quarto/Quarto:				"576 720"
+*PaperDimension Foolscap:					"576 936"
+*PaperDimension LetterPlus/SP_Folio:		"612 914"
+*PaperDimension FanFoldGermanLegal/Folio:	"612 936"
+*PaperDimension Legal: 						"612 1008"
+*PaperDimension JapanesePostCard/Postcard(100x148mm):	"280 417"
+*PaperDimension GTPostCard/GT Postcard:		"288 468"
+*PaperDimension Env10: 						"297 684"
+*PaperDimension EnvDL: 						"312 624"
+*PaperDimension EnvMonarch/Monarch:			"279 540"
+*PaperDimension EnvC5:						"459 649"
+*PaperDimension EnvC6:						"323 459"
+*PaperDimension EnvChou3:                   "340 666"
+*PaperDimension EnvChou4:                   "255 581"
+
+*OpenUI *OutputBin/Output Bin: PickOne
+*OrderDependency: 50 AnySetup *OutputBin
+*DefaultOutputBin: Upper
+*OutputBin Upper/Upper Tray: "
+  currentpagedevice /OutputAttributes get 1 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [1] put
+    put setpagedevice
+  } ifelse"
+*End
+ 
+*OutputBin Mailbin1/Mail Bin 1: "
+  currentpagedevice /OutputAttributes get 2 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [2] put
+    put setpagedevice
+  } ifelse"
+*End
+ 
+*OutputBin Mailbin2/Mail Bin 2: "
+  currentpagedevice /OutputAttributes get 3 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [3] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*OutputBin Mailbin3/Mail Bin 3: "
+  currentpagedevice /OutputAttributes get 4 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [4] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*OutputBin Mailbin4/Mail Bin 4: "
+  currentpagedevice /OutputAttributes get 5 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [5] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*OutputBin Mailbin5/Mail Bin 5: "
+  currentpagedevice /OutputAttributes get 6 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [6] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*?OutputBin: "
+save
+  5 dict
+  dup /1 (Upper) put
+  dup /2 (Mailbin1) put
+  dup /3 (Mailbin2) put
+  dup /4 (Mailbin3) put
+  dup /5 (Mailbin4) put
+  dup /6 (Mailbin5) put
+  currentpagedevice /OutputAttributes get
+  dup /Priority known
+  { /Priority get 0 get (      ) cvs cvn get }
+  {
+    dup length 1 eq
+    { {pop} forall (       ) cvs cvn get }
+    { pop pop (Unknown) } ifelse
+  } ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *OutputBin
+
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 20 AnySetup *InputSlot
+*DefaultInputSlot: Upper
+*InputSlot Multipurpose/Multipurpose Tray: "
+  currentpagedevice /InputAttributes get 1 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [1] put
+    put setpagedevice
+  } ifelse"
+*End
+*InputSlot Upper/Upper Tray: "
+  currentpagedevice /InputAttributes get 2 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [2] put
+    put setpagedevice
+  } ifelse"
+*End 
+*InputSlot OptionalTray/Optional Tray: "
+  currentpagedevice /InputAttributes get 5 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [5] put
+    put setpagedevice
+  } ifelse"
+*End
+
+
+*?InputSlot: "
+save
+  3 dict
+  dup /1 (Multipurpose) put
+  dup /2 (Upper) put
+  dup /5 (OptionalTray) put
+  currentpagedevice /InputAttributes get
+  dup /Priority known
+  { /Priority get 0 get (      ) cvs cvn get }
+  {
+    dup length 1 eq
+    { {pop} forall (       ) cvs cvn get }
+    { pop pop (Unknown) } ifelse
+  } ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *InputSlot
+
+*DefaultOutputOrder: Normal
+
+*OpenUI *MediaType/Media Type:  PickOne
+*OrderDependency: 40 AnySetup *MediaType
+*DefaultMediaType: PlainPaper
+*MediaType PlainPaper/Plain Paper: 		"<< /MediaType (Plain Paper) >> setpagedevice"
+*MediaType Transparency/Transparency: 	"<< /MediaType (Transparency) >> setpagedevice"
+*MediaType ThickStock/Thick Stock: 		"<< /MediaType (Thick Stock) >> setpagedevice"
+*MediaType Label/Label Stock:		 	"<< /MediaType (Labels) >> setpagedevice"
+*?MediaType: "
+  save
+    currentpagedevice /MediaType
+     {get} stopped
+       {pop pop (Plain)} {dup null eq {pop (Plain)} if} ifelse
+    = flush
+  restore"
+*End
+*CloseUI: *MediaType
+
+*OpenUI *TraySwitch/Auto Tray switching: Boolean
+*OrderDependency: 40 AnySetup *TraySwitch
+*DefaultTraySwitch: False
+*TraySwitch True/Enabled: "<< /TraySwitch true >> setpagedevice"
+*TraySwitch False/Disabled: "<< /TraySwitch false >> setpagedevice"
+*?TraySwitch: "
+save
+  currentpagedevice /TraySwitch get
+  {(True)}{(False)}ifelse = flush
+restore
+"
+*End
+*CloseUI: *TraySwitch
+
+*% ================== Color Configuration ===================
+
+*OpenUI *CMMmatch/Internal ICC Color Matching (RGB, CMYK): PickOne
+*OrderDependency: 40 AnySetup *CMMmatch
+*DefaultCMMmatch: True
+*CMMmatch True/Enabled:		"//statusdict /setcolormatching known {statusdict begin true setcolormatching end} if"
+*CMMmatch False/Disabled:	"//statusdict /setcolormatching known {statusdict begin false setcolormatching end} if"
+*CloseUI: *CMMmatch
+
+*OpenUI *DestinationProfile/Destination Profile: PickOne
+*OrderDependency: 45 AnySetup *DestinationProfile
+*DefaultDestinationProfile: None
+*DestinationProfile Auto/Automatic: ""
+*CloseUI: *DestinationProfile
+
+*OpenUI *ICCRGBSource/ICC RGB Source: PickOne
+*OrderDependency: 55 AnySetup *ICCRGBSource
+*DefaultICCRGBSource: sRGB
+*ICCRGBSource None/None:						"//statusdict /setrgbsourceprofile known {statusdict begin (None) setrgbsourceprofile end} if"
+*ICCRGBSource sRGB/sRGB:						"//statusdict /setrgbsourceprofile known {statusdict begin (sRGB) setrgbsourceprofile end} if"
+*ICCRGBSource TrinitronG1.8D50/Trinitron G1.8 D50:	"//statusdict /setrgbsourceprofile known {statusdict begin (Trin G1.8 D50) setrgbsourceprofile end} if"
+*ICCRGBSource AppleRGB/Apple RGB:				"//statusdict /setrgbsourceprofile known {statusdict begin (Apple RGB) setrgbsourceprofile end} if"
+*ICCRGBSource PrePress/Pre Press:				"//statusdict /setrgbsourceprofile known {statusdict begin (PrePress) setrgbsourceprofile end} if"
+*ICCRGBSource Printer/Printer Default:" "
+*CloseUI: *ICCRGBSource
+
+*OpenUI *ColorSimul/ICC Simulation Profile: PickOne
+*OrderDependency: 55 AnySetup *ColorSimul
+*DefaultColorSimul: None
+*ColorSimul None/None:				"//statusdict /setsimulationprofile known {statusdict begin (None) setsimulationprofile end} if"
+*ColorSimul SWOP/Swop:				"//statusdict /setsimulationprofile known {statusdict begin (SWOP) setsimulationprofile end} if"
+*ColorSimul Inkjet/Inkjet Proofer:	"//statusdict /setsimulationprofile known {statusdict begin (Inkjet Proofer) setsimulationprofile end} if"
+*ColorSimul EuroColor/Eurocolor:	"//statusdict /setsimulationprofile known {statusdict begin (Eurocolor) setsimulationprofile end} if"
+*ColorSimul CMYK/CMYK Display:		"//statusdict /setsimulationprofile known {statusdict begin (CMYK Display) setsimulationprofile end} if"
+*ColorSimul Commercial/Commercial:	"//statusdict /setsimulationprofile known {statusdict begin (Commercial) setsimulationprofile end} if"
+*ColorSimul Printer/Printer Default:" "
+*CloseUI: *ColorSimul
+
+*OpenUI *CRDColSpc/CRD Color Space: PickOne
+*OrderDependency: 55 AnySetup *CRDColSpc
+*DefaultCRDColSpc: PrinterDefault
+*CRDColSpc DeviceRGB/Device RGB:"/colspABC { [/DeviceRGB ] } def" 
+*CRDColSpc sRGB/sRGB:"/colspABC { [/CIEBasedABC << /DecodeLMN [ {dup 0.03928 le
+	{12.92321 div} {0.055 add 1.055 div 2.4 exp}ifelse} bind dup dup] 
+	/MatrixLMN [0.412457 0.212673 0.019334 0.357576 0.715152 0.119192 0.180437 0.072175 0.950301] 
+	/WhitePoint [0.9505 1.0000 1.0890] >> ]	} def"
+*End
+*CRDColSpc TrinitronG1.8D50/Trinitron G1.8 D50:"/colspABC { [/CIEBasedABC << /DecodeLMN [ {1.8 exp}bind dup dup ]
+	/MatrixLMN [0.5243 0.2852 0.0294 0.3084 0.6554 0.1377 0.1316 0.0594 0.6579]
+	/WhitePoint [0.9642 1.0000 0.8249] >> ] } def"
+*End
+*CRDColSpc AppleRGB/Apple RGB:"/colspABC { [/CIEBasedABC << /DecodeLMN [ {1.8 exp} bind dup dup ]
+	/MatrixLMN [0.475538 0.255147 0.01849 0.339707 0.67254 0.113396 0.148967 0.07224 0.693332]
+	/WhitePoint [0.9642 1.0000 0.8249] >> ] } def"
+*End 
+*CRDColSpc PrePress/Pre Press:"/colspABC { [/CIEBasedABC << /DecodeLMN [ {2.2 exp} bind dup dup ]
+	/MatrixLMN [0.609744 0.311098 0.019509 0.205265 0.625625 0.060917 0.149204 0.063188 0.744792]
+	/WhitePoint [0.9642 1.0000 0.8249] >> ] } def"
+*End 
+*CRDColSpc PrinterDefault/Printer Default:"" 
+*CloseUI: *CRDColSpc
+
+*OpenUI *ColorRenderDict/CRD: PickOne
+*OrderDependency: 55 AnySetup *ColorRenderDict
+*DefaultColorRenderDict: Photographic
+*ColorRenderDict Colorimetric/Colorimetric: "<< /CRDFamily /Colorimetric >> //statusdict /QMSsetscreencrd get exec"    
+*ColorRenderDict Business/Business: "<< /CRDFamily /Business >> //statusdict /QMSsetscreencrd get exec
+	/colspABC { [/CIEBasedABC << /DecodeLMN [ {dup 0.03928 le
+	{12.92321 div} {0.055 add 1.055 div 2.4 exp}ifelse} bind dup dup] 
+	/MatrixLMN [0.412457 0.212673 0.019334 0.357576 0.715152 0.119192 0.180437 0.072175 0.950301] 
+	/WhitePoint [0.9505 1.0000 1.0890] >> ]	} def
+" 
+*End   
+*ColorRenderDict Photographic/Photographic: "//statusdict /QMSsetscreencrd known {<< /CRDFamily /Photographic >> //statusdict /QMSsetscreencrd get exec} if"
+*ColorRenderDict None/Printer Default: ""
+*CloseUI: *ColorRenderDict
+
+*OpenUI *Halftones/QMS Halftones: PickOne
+*OrderDependency: 55 AnySetup *Halftones
+*DefaultHalftones: AgfaABS
+*Halftones PrinterDefault/Printer Default: ""    
+*Halftones AgfaABS/Agfa Balanced Screening: "//statusdict /QMSsetscreencrd known {<< /ScreenFamily /AgfaABS >> statusdict /QMSsetscreencrd get exec} if"    
+*CloseUI: *Halftones
+
+*OpenUI *AutoCustomColor/Automatic Color Control: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*AutoCustomColor Colormodel/Color models: "CMYK"
+*AutoCustomColor CRDMatch/CRD Match: "False"
+*AutoCustomColor CRDImage/CRD Image: "Photographic"
+*AutoCustomColor CRDText/CRD Text:"Business"
+*AutoCustomColor CRDGraphics/CRD Graphics:"Photographic"
+*AutoCustomColor CSA/CRD Color Space: "DeviceRGB"
+*AutoCustomColor CMMmatch/CMM Match: "True"
+*AutoCustomColor RGBSource/RGB Source: "sRGB"
+*AutoCustomColor Simulation/Simulation: "None"
+*AutoCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *AutoCustomColor
+
+
+*OpenUI *DisableCustomColor/Disable Printer Color Matching: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*DisableCustomColor Colormodel/Color models: "CMYK"
+*DisableCustomColor CRDMatch/CRD Match: "False"
+*DisableCustomColor CRDImage/CRD Image: "Photographic"
+*DisableCustomColor CRDText/CRD Textt:"Business"
+*DisableCustomColor CRDGraphics/CRD Graphics:"Photographic"
+*DisableCustomColor CSA/CRD Color Space: "DeviceRGB"
+*DisableCustomColor CMMmatch/CMM Match: "False"
+*DisableCustomColor RGBSource/RGB Source: "None"
+*DisableCustomColor Simulation/Simulation: "None"
+*DisableCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *DisableCustomColor
+
+*OpenUI *SwopCustomColor/SWOP Simulation (CMYK): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*SwopCustomColor Colormodel/Color models: "CMYK"
+*SwopCustomColor CRDMatch/CRD Match: "False"
+*SwopCustomColor CRDImage/CRD Image: "None"
+*SwopCustomColor CRDText/CRD Text:"None"
+*SwopCustomColor CRDGraphics/CRD Graphics:"None"
+*SwopCustomColor CSA/CRD Color Space: "DeviceRGB"
+*SwopCustomColor CMMmatch/CMM Match: "True"
+*SwopCustomColor RGBSource/RGB Source: "sRGB"
+*SwopCustomColor Simulation/Simulation: "SWOP"
+*SwopCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *SwopCustomColor
+
+*OpenUI *EuroCustomColor/Eurocolor Simulation (CMYK): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*EuroCustomColor Colormodel/Color models: "CMYK"
+*EuroCustomColor CRDMatch/CRD Match: "False"
+*EuroCustomColor CRDImage/CRD Image: "None"
+*EuroCustomColor CRDText/CRD Text:"None"
+*EuroCustomColor CRDGraphics/CRD Graphics:"None"
+*EuroCustomColor CSA/CRD Color Space: "DeviceRGB"
+*EuroCustomColor CMMmatch/CMM Match: "True"
+*EuroCustomColor RGBSource/RGB Source: "sRGB"
+*EuroCustomColor Simulation/Simulation: "EuroColor"
+*EuroCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *EuroCustomColor
+
+*OpenUI *CommPressCustomColor/Commercial Press Simulation: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*CommPressCustomColor Colormodel/Color models: "CMYK"
+*CommPressCustomColor CRDMatch/CRD Match: "False"
+*CommPressCustomColor CRDImage/CRD Image: "None"
+*CommPressCustomColor CRDText/CRD Text:"None"
+*CommPressCustomColor CRDGraphics/CRD Graphics:"None"
+*CommPressCustomColor CSA/CRD Color Space: "DeviceRGB"
+*CommPressCustomColor CMMmatch/CMM Match: "True"
+*CommPressCustomColor RGBSource/RGB Source: "sRGB"
+*CommPressCustomColor Simulation/Simulation: "Commercial"
+*CommPressCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *CommPressCustomColor
+
+*OpenUI *GrayCustomColor/Color as Grayscale: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*GrayCustomColor Colormodel/Color models: "Gray"
+*GrayCustomColor CRDMatch/CRD Match: "False"
+*GrayCustomColor CRDImage/CRD Image: "None"
+*GrayCustomColor CRDText/CRD Text:"None"
+*GrayCustomColor CRDGraphics/CRD Graphics:"None"
+*GrayCustomColor CSA/CRD Color Space: "DeviceRGB"
+*GrayCustomColor CMMmatch/CMM Match: "False"
+*GrayCustomColor RGBSource/RGB Source: "None"
+*GrayCustomColor Simulation/Simulation: "None"
+*GrayCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *GrayCustomColor
+
+*OpenUI *AllBlackCustomColor/Color as All Black: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*AllBlackCustomColor Colormodel/Color models: "Gray"
+*AllBlackCustomColor CRDMatch/CRD Match: "False"
+*AllBlackCustomColor CRDImage/CRD Image: "None"
+*AllBlackCustomColor CRDText/CRD Text:"None"
+*AllBlackCustomColor CRDGraphics/CRD Graphics:"None"
+*AllBlackCustomColor CSA/CRD Color Space: "DeviceRGB"
+*AllBlackCustomColor CMMmatch/CMM Match: "False"
+*AllBlackCustomColor RGBSource/RGB Source: "None"
+*AllBlackCustomColor Simulation/Simulation: "None"
+*AllBlackCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: *AllBlackCustomColor
+
+*OpenUI *CustomColor/QColor-Custom: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*DefaultCustomColor: AutoCustomColor
+*CustomColor AutoCustomColor/Automatic Color Control:""
+*CustomColor DisableCustomColor/Disable Printer Color Matching:""
+*CustomColor SwopCustomColor/SWOP Simulation (CMYK):""
+*CustomColor EuroCustomColor/Eurocolor Simulation (CMYK):""
+*CustomColor CommPressCustomColor/Commercial Press Simulation:""
+*CustomColor GrayCustomColor/Color as Grayscale:""
+*CustomColor AllBlackCustomColor/Color as All Black:""
+*CloseUI: *CustomColor
+
+
+*OpenUI *Duplex: PickOne
+*OrderDependency: 40 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/Simplex: "
+	<</Duplex false /Tumble false>> setpagedevice"
+*End
+*Duplex DuplexNoTumble/Long Edge:"
+	<</Duplex true /Tumble false>> setpagedevice"
+*End
+*Duplex DuplexTumble/Short Edge:"
+	<</Duplex true /Tumble true>> setpagedevice"
+*End
+*?Duplex: "save
+   currentpagedevice /Duplex get
+   { currentpagedevice /Tumble get
+       {(DuplexTumble)}{(DuplexNoTumble)}ifelse
+   }
+   { (None)}
+   ifelse = flush
+restore
+"
+*End
+*CloseUI: *Duplex
+
+*% ================ Font Information =====================
+
+*DefaultFont: Courier
+*Font AlbertusMT-Italic: Standard "(001.000)" Standard Disk
+*Font AlbertusMT-Light: Standard "(001.000)" Standard Disk
+*Font AlbertusMT: Standard "(001.000)" Standard Disk
+*Font AntiqueOlive-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font AntiqueOlive-Compact: Standard "(501.008)" ExtendedRoman Disk
+*Font AntiqueOlive-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font AntiqueOlive-Roman: Standard "(501.008)" ExtendedRoman Disk
+*Font Apple-Chancery: Standard "(001.001)" ExtendedRoman Disk
+*Font Arial-BoldItalicMT: Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-BoldMT: Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-ItalicMT: Standard "(501.012)" ExtendedRoman Disk
+*Font AvantGarde-Book: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-BookOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-Demi: Standard "(501.010)" ExtendedRoman Disk
+*Font AvantGarde-DemiOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Bodoni-Bold: Standard "(501.006)" ExtendedRoman Disk
+*Font Bodoni-BoldItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Italic: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Poster: Standard "(501.009)" ExtendedRoman Disk
+*Font Bodoni-PosterCompressed: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni: Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Demi: Standard "(501.007)" ExtendedRoman Disk
+*Font Bookman-DemiItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Light: Standard "(501.006)" ExtendedRoman Disk
+*Font Bookman-LightItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Chicago: Standard "(501.011)" ExtendedRoman Disk
+*Font Clarendon-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Clarendon-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font Clarendon: Standard "(501.009)" ExtendedRoman Disk
+*Font CooperBlack-Italic: Standard "(001.003)" Standard Disk
+*Font CooperBlack: Standard "(001.003)" Standard Disk
+*Font Copperplate-ThirtyThreeBC: Standard "(001.002)" Standard Disk
+*Font Copperplate-ThirtyTwoBC: Standard "(001.002)" Standard Disk
+*Font Coronet-Regular: Standard "(001.000)" ExtendedRoman Disk
+*Font Courier-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-Oblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier: Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-BoldExtendedTwo: Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-ExtendedTwo: Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile: Standard "(501.008)" ExtendedRoman Disk
+*Font Geneva: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-Bold: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-BoldCondensed: Standard "(501.006)" ExtendedRoman Disk
+*Font GillSans-BoldItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Condensed: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-ExtraBold: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans-LightItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans: Standard "(501.009)" ExtendedRoman Disk
+*Font Goudy-Bold: Standard "(001.002)" Standard Disk
+*Font Goudy-BoldItalic: Standard "(001.002)" Standard Disk
+*Font Goudy-ExtraBold: Standard "(001.001)" Standard Disk
+*Font Goudy-Italic: Standard "(001.002)" Standard Disk
+*Font Goudy: Standard "(001.003)" Standard Disk
+*Font Helvetica-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-BoldObl: Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Oblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Oblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Narrow: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Oblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica: Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-Black: Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-BlackItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font HoeflerText-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font HoeflerText-Ornaments: Special "(001.001)" Special Disk
+*Font HoeflerText-Regular: Standard "(501.009)" ExtendedRoman Disk
+*Font JoannaMT-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-BoldItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT: Standard "(501.009)" ExtendedRoman Disk
+*Font LetterGothic-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-BoldSlanted: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-Slanted: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Book: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-BookOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Demi: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-DemiOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Marigold: Standard "(001.000)" Standard Disk
+*Font Monaco: Standard "(501.012)" ExtendedRoman Disk
+*Font MonaLisa-Recut: Standard "(001.000)" Standard Disk
+*Font NewCenturySchlbk-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font NewCenturySchlbk-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Italic: Standard "(501.011)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Roman: Standard "(501.008)" ExtendedRoman Disk
+*Font NewYork: Standard "(501.013)" ExtendedRoman Disk
+*Font Optima-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Optima-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font Optima-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font Optima: Standard "(501.010)" ExtendedRoman Disk
+*Font Oxford: Standard "(001.000)" Standard Disk
+*Font Palatino-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-BoldItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Palatino-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-Roman: Standard "(501.006)" ExtendedRoman Disk
+*Font StempelGaramond-Bold: Standard "(501.007)" ExtendedRoman Disk
+*Font StempelGaramond-BoldItalic: Standard "(501.012)" ExtendedRoman Disk
+*Font StempelGaramond-Italic: Standard "(501.009)" ExtendedRoman Disk
+*Font StempelGaramond-Roman: Standard "(501.011)" ExtendedRoman Disk
+*Font Symbol: Special "(001.008)" Special Disk
+*Font Taffy: Standard "(001.001)" Standard Disk
+*Font Times-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font Times-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font Times-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font Times-Roman: Standard "(501.010)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldItalicMT: Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldMT: Standard "(501.009)" ExtendedRoman Disk
+*Font TimesNewRomanPS-ItalicMT: Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPSMT: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-BoldExt: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldExtObl: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldOblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-Condensed: Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-CondensedBold: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedBoldOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedOblique: Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-Extended: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-ExtendedObl: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-LightOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Oblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers: Standard "(501.009)" ExtendedRoman Disk
+*Font Wingdings-Regular: Special "(001.001)" Special Disk
+*Font ZapfChancery-MediumItalic: Standard "(002.000)" ExtendedRoman Disk
+*Font ZapfChanceryCE-MediumItalic: Win1250 "(002.000)" ExtendedRoman Disk
+*Font ZapfDingbats: Special "(001.005S)" Special Disk
+
+*?FontQuery: "
+  save
+  { count 1 gt
+    { exch dup 127 string cvs (/) print print (:) print
+     /Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+    } { exit } ifelse
+  } bind loop
+  (*) = flush restore"
+*End
+
+*?FontList: "
+   save (*) {cvn ==} 128 string /Font resourceforall
+   (*) = flush restore"
+*End
+
+
+
+
+*%---- New stuff here......
+
+*OpenUI *Collate/Collation: Boolean
+*OrderDependency: 70 AnySetup *Collate
+*DefaultCollate: False
+*Collate False/False: "
+  (<<) cvx exec
+    /Collate false
+  (>>) cvx exec setpagedevice"
+*End
+*Collate True/True: "
+  (<<) cvx exec
+    /Collate true
+  (>>) cvx exec setpagedevice"
+*End
+*?Collate: "
+  save
+  currentpagedevice /Collate get {(True)}{(False)}ifelse
+  = flush restore"
+*End
+*CloseUI: *Collate
+
+*% end of PPD file for MINOLTA-QMS magicolor 2200
+

@@ -1,0 +1,128 @@
+; s3gsavg4.INF for Microsoft ,net Server
+;
+; Copyright (c) 1999 - 2000 By S3 Incorporated.
+; Copyright (c) 2001 - 2002 By S3 Graphics, Inc.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=Display
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_Provider%
+LayoutFile=layout.inf
+DriverVer=08/20/2002, 06.13.10.8013
+;13.95.13
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;
+;  Disk and Directory sections
+;
+
+[DestinationDirs]
+DefaultDestDir      = 11
+S3SAVAGE4.Miniport  = 12    ; drivers
+S3SAVAGE4.Display   = 11    ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%S3GRAPHICS%   = S3.Mfg
+
+;
+; This section should be modified to reflect the chip strings the
+; user will see in the Displays applet when the new driver is being
+; installed from the driver diskette.
+;
+[S3.Mfg]
+S3 Graphics Inc. Savage4 (Microsoft Corporation) = S3SAVAGE4, PCI\VEN_5333&DEV_8A22
+
+
+;
+; General installation section
+;
+
+[S3SAVAGE4]
+CopyFiles=S3SAVAGE4.Miniport, S3SAVAGE4.Display
+
+;
+; File sections
+;
+
+[S3SAVAGE4.Miniport]
+S3gsav4m.sys      ; miniport driver
+
+[S3SAVAGE4.Display]
+S3gsav4.dll       ; Savage4 display driver
+
+[S3SAVAGE4.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+
+;
+; Service Installation
+;
+
+[S3SAVAGE4.Services]
+AddService = S3SAVAGE4, 0x00000002, S3SAVAGE4_Service_Inst, S3SAVAGE4_EventLog_Inst
+
+[S3SAVAGE4_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\S3gsav4m.sys
+
+[S3SAVAGE4_EventLog_Inst]
+AddReg = S3SAVAGE4_EventLog_AddReg
+
+[S3SAVAGE4_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\S3gsav4m.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+
+[S3SAVAGE4.SoftwareSettings]
+AddReg = S3SAVAGE4_SoftwareDeviceSettings
+DelReg = S3SAVAGE4_UserPreferences   ; user-selected preferences
+
+[S3SAVAGE4_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,      %REG_MULTI_SZ%, S3gsav4
+HKR,, VgaCompatible,                %REG_DWORD%,    0
+HKR,, CapabilityOverride,           %REG_DWORD%,    8
+
+[S3SAVAGE4_UserPreferences]
+HKR,, UseDDCInfo
+HKR,, NtscTvPositionX
+HKR,, NtscTvPositionY
+HKR,, Pal6TvPositionX
+HKR,, Pal6TvPositionY
+HKR,, Pal8TvPositionX
+HKR,, Pal8TvPositionY
+HKR,, DisplaysActivePreference
+HKR,, TvStandardPreference
+HKR,, DdcMaxRefresh
+HKR,, GammaFor16BppModes
+HKR,, GammaFor32BppModes
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_MULTI_SZ   = 0x00010000
+REG_DWORD      = 0x00010001
+
+;
+; Localizable Strings
+;
+
+DiskId         = "S3 Graphics, Inc. Installation DISK (VIDEO)"
+S3GRAPHICS     = "S3 Graphics, Inc."
+INF_Provider   = "S3 Graphics, Inc."
+

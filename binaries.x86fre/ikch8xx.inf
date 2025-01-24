@@ -1,0 +1,181 @@
+; Copyright (c) Intel Corporation (2000).
+;
+; INTEL MAKES NO WARRANTY OF ANY KIND REGARDING THE CODE.  THIS CODE IS
+; LICENSED ON AN "AS IS" BASIS AND INTEL WILL NOT PROVIDE ANY SUPPORT,
+; ASSISTANCE, INSTALLATION, TRAINING OR OTHER SERVICES.  INTEL DOES NOT
+; PROVIDE ANY UPDATES, ENHANCEMENTS OR EXTENSIONS.  INTEL SPECIFICALLY
+; DISCLAIMS ANY WARRANTY OF MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR ANY
+; PARTICULAR PURPOSE, OR ANY OTHER WARRANTY.  Intel disclaims all liability,
+; including liability for infringement of any proprietary rights, relating to
+; use of the code. No license, express or implied, by estoppel or otherwise,
+; to any intellectual property rights is granted herein.
+;
+; IKCH8XX.INF  -- This file contains installation information for the Intel 8XX chipset(s) 
+; default KCH WDM Driver
+;               
+
+[Version]
+signature="$CHICAGO$"
+Class=IntelUnifiedDisplayDriver
+ClassGUID={D07AF4AC-3BED-458d-9A68-380F23572661}
+Provider=%Intel%
+LayoutFile=layout.inf
+DriverVer=11/11/2002,6.13.01.3259
+
+[Manufacturer]
+%IntelMfg%=Intel
+
+[DestinationDirs]
+;DefaultDestDir = 11
+KCH.Device.CopyDrivers = 11
+KCH.Device.CopyDriversNT = 10,system32\drivers
+
+;WHQL requirement: Uncomment this section later on once we have PnP
+;method of installing/loading/unloading WDM KCH drivers across all 
+;OS platforms enabled.
+;[ControlFlags]
+;ExcludeFromSelect=DISPLAY\%KCHDevID%
+
+[Intel]
+%KCHChildDriver.DeviceDesc%=KCH.Device,DISPLAY\%KCHDevID%
+
+[ClassInstall]
+Addreg=KCHClass.AddReg
+
+[ClassInstall32]
+Addreg=KCHClass.AddRegNT
+
+[KCH.Device]
+AddReg=     KCH.Device.AddReg
+CopyFiles=  KCH.Device.CopyDrivers
+
+[KCH.Device.NT]
+AddReg=     KCH.Device.AddRegNT
+CopyFiles=  KCH.Device.CopyDriversNT
+
+[KCH.Device.AddReg]
+;HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,%KCHDriverName%
+HKR,,DeviceFuncGUID,,%KCHDevFunc0GUID%
+HKR,,DevicePNPID,,%KCHDevID%
+HKR,,DriverDesc,,%KCHChildDriver.DeviceDesc%
+
+[KCH.Device.AddRegNT]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,%KCHDriverName%
+HKR,,DeviceFuncGUID,,%KCHDevFunc0GUID%
+HKR,,DevicePNPID,,%KCHDevID%
+HKR,,DriverDesc,,%KCHChildDriver.DeviceDesc%
+
+[KCH_Parameters_AddReg]
+HKR,,DeviceFuncGUID,,%KCHDevFunc0GUID%
+
+[KCHClass.AddReg]
+HKR,,,,%KCHClass.Desc%
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+ 
+[KCHClass.AddRegNT]
+HKR,,,,%KCHClass.Desc%
+HKR,,Class,,IntelUnifiedDisplayDriver
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will be displayed by Device Manager - For live updates
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+
+[KCH.Device.CopyDrivers]
+ialmkchw.sys
+
+[KCH.Device.CopyDriversNT]
+ialmkchw.sys
+
+[KCH.Device.Interfaces]
+AddInterface=%KCHChildIntfGUID%,"GLOBAL",KCHChildInterface,
+
+[KCHChildInterface]
+AddReg=KCHChildInterface.AddReg
+
+[KCHChildInterface.AddReg]
+HKR,,Class,,%KCHClassGUID%
+HKR,,FriendlyName,,%KCHChildDriver.FriendlyName%
+
+[KCH.Device.NT.Services]
+AddService = %KCHDevFunc0GUID%, 0x00000002, KCH.ServiceInstall, KCH_EventLog_Inst,System,""
+
+[KCH.Device.Services]
+
+[KCH_EventLog_Inst]
+AddReg=KCH_EventLog_AddReg
+
+[KCH_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\system32\drivers\%KCHDriverName%"
+HKR,,TypesSupported,0x00010001,7
+
+
+[KCH.ServiceInstall]
+DisplayName   = %KCHChildDriver.DeviceDesc%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\system32\drivers\%KCHDriverName%
+AddReg		= KCH_Parameters_AddReg
+
+;---------------------------------------------------------------
+;                S t r i n g s
+;---------------------------------------------------------------
+
+[Strings]
+
+;----------------
+; Non-Localizable
+;----------------
+
+SERVICE_KERNEL_DRIVER=1
+SERVICE_SYSTEM_START=1 
+SERVICE_AUTO_START=2
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+
+;
+;
+; These are customizable
+;
+KCHDevID="IN-KCH-8XX-CHIPSETS-3259"
+KCHDriverSig=0x12354678
+KCHDriverID="IN-KCH-8XX-CHIPSETS-3259"
+KCHDriverName="ialmkchw.sys"
+KCHDevFuncGUID="{D31A0762-0CEB-444e-ACFF-B049A1F6FE91}"
+KCHDevFunc0GUID="{D31A0762-0CEB-444e-ACFF-B049A1F6FE91}"
+
+;
+;
+; These do not change - ever !
+;
+KCHClassGUID="{D07AF4AC-3BED-458d-9A68-380F23572661}"
+KCHChildIntfGUID="{C7CDEEAB-80A4-497f-8B31-A5D01D23F1F2}"
+
+
+;----------------
+; Localizable
+;----------------
+
+Intel="Intel"
+IntelMfg="Intel Corporation"
+DiskId1="Intel Corporation Installation Disk #1"
+;
+;
+; Do not change this line !
+;
+KCHClass.Desc="Intel® Unified Graphics Drivers"
+;
+;
+; Put device specifics here ->
+;
+KCHChildDriver.DeviceDesc="Intel(R) Graphics Chipset (KCH) Driver"
+KCHChildDriver.FriendlyName="Intel(R) KCH Driver"
+
+

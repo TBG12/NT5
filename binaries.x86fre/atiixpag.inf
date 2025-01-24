@@ -1,0 +1,441 @@
+;-----------------------------------------------
+; ATI Display Information file : ATIIXPAG.INF
+; Installation INF for the ATI display driver.
+; Copyright(C) 1998-2002 ATI Technologies Inc.
+; Windows XP
+; Base INF Last Updated 2002/07/02
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%ATI%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=08/08/2002, 6.13.10.6153
+
+[DestinationDirs]
+DefaultDestDir      = 11
+ati2mtag.Miniport   = 12  ; drivers
+ati2mtag.Display    = 11  ; system32
+
+[ControlFlags]
+ExcludeFromSelect=*
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATI.Mfg
+
+[ATI.Mfg]
+"RADEON 7000 (Microsoft Corporation)" =                 ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_00BA1002
+"RADEON 7000 (Microsoft Corporation)" =                 ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_003A1002
+"RADEON 7000 (Microsoft Corporation)" =                 ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_000B1002
+"RADEON 7000 / RADEON VE (Microsoft Corporation)" =     ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_01BA1002
+"RADEON 7000 / RADEON VE (Microsoft Corporation)" =     ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_013b1002
+"RADEON 7000 / RADEON VE (Microsoft Corporation)" =     ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_013A1002
+"RADEON 7000 / RADEON VE (Microsoft Corporation)" =     ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_00381002
+"RADEON 7000 / RADEON VE (Microsoft Corporation)" =     ati2mtag_RV100,   PCI\VEN_1002&DEV_5159&SUBSYS_000A1002
+
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_053A1002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_01391002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_008A1002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_00391002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_00381002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_001A1002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_001A1002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_000A1002
+"RADEON 7200 (Microsoft Corporation)" =                 ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_00081002
+
+"RADEON 7500 (Microsoft Corporation)" =                 ati2mtag_RV200,   PCI\VEN_1002&DEV_5157&SUBSYS_013A1002
+
+"RADEON 8500/RADEON 8500LE (Microsoft Corporation)" =   ati2mtag_R200,    PCI\VEN_1002&DEV_514c&SUBSYS_003a1002
+"RADEON 8500/RADEON 8500LE (Microsoft Corporation)" =   ati2mtag_R200,    PCI\VEN_1002&DEV_514C&SUBSYS_013A1002
+
+"ALL-IN-WONDER RADEON (Microsoft Corporation)" =        ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_02AA1002
+"ALL-IN-WONDER RADEON (Microsoft Corporation)" =        ati2mtag_default, PCI\VEN_1002&DEV_5144&SUBSYS_00291002
+"ALL-IN-WONDER RADEON AGP (Microsoft Corporation)"=     ati2mtag_default,  PCI\VEN_1002&DEV_5144&SUBSYS_03AA1002
+"ALL-IN-WONDER RADEON SDR AGP (Microsoft Corporation)"= ati2mtag_default,  PCI\VEN_1002&DEV_5144&SUBSYS_00281002
+"ALL-IN-WONDER RADEON PCI (Microsoft Corporation)"=     ati2mtag_default,  PCI\VEN_1002&DEV_5144&SUBSYS_00291002
+
+"ALL-IN-WONDER RADEON 7500 (Microsoft Corporation)" =   ati2mtag_RV200,   PCI\VEN_1002&DEV_5157&SUBSYS_0F2A1002
+
+"ALL-IN-WONDER RADEON 8500 (Microsoft Corporation)" =   ati2mtag_R200,    PCI\VEN_1002&DEV_514C&SUBSYS_0F2A1002
+"ALL-IN-WONDER RADEON 8500DV (Microsoft Corporation)" = ati2mtag_R200,    PCI\VEN_1002&DEV_4242&SUBSYS_02AA1002
+
+"RADEON 7000 RADEON VE Family (Microsoft Corporation)" =        ati2mtag_RV100,   PCI\VEN_1002&DEV_5159
+"RADEON 7200 Family (Microsoft Corporation)" =                  ati2mtag_default, PCI\VEN_1002&DEV_5144
+"RADEON 7500 Family (Microsoft Corporation)" =                  ati2mtag_RV200,   PCI\VEN_1002&DEV_5157
+"RADEON 8500 Family (Microsoft Corporation)" =                  ati2mtag_R200,    PCI\VEN_1002&DEV_514c
+"RADEON 8500/RADEON 8500LE Family (Microsoft Corporation)" = 	ati2mtag_R200,    PCI\VEN_1002&DEV_514E
+"RADEON 8500/RADEON 8500LE Family (Microsoft Corporation)" = 	ati2mtag_R200,    PCI\VEN_1002&DEV_514F
+"RADEON 8500/RADEON 8500LE Family (Microsoft Corporation)" = 	ati2mtag_R200,    PCI\VEN_1002&DEV_516C
+"RADEON 8500 DV Edition Family (Microsoft Corporation)" = 	ati2mtag_R200,    PCI\VEN_1002&DEV_4242
+;"RADEON RV250 Family (Microsoft)" =                             ati2mtag_RV250, PCI\VEN_1002&DEV_4966
+
+;
+; General installation section
+;
+
+[ati2mtag_default]
+Include=msdv.inf
+CopyFiles=ati2mtag.Miniport, ati2mtag.Display
+
+[ati2mtag_RV100]
+Include=msdv.inf
+CopyFiles=ati2mtag.Miniport, ati2mtag.Display
+
+[ati2mtag_RV200]
+Include=msdv.inf
+CopyFiles=ati2mtag.Miniport, ati2mtag.Display
+
+[ati2mtag_RV250]
+Include=msdv.inf
+CopyFiles=ati2mtag.Miniport, ati2mtag.Display
+
+[ati2mtag_R200]
+Include=msdv.inf
+CopyFiles=ati2mtag.Miniport, ati2mtag.Display
+
+[ati2mtag_RemoveService]
+ati2mtag
+
+;
+; File sections
+;
+
+[ati2mtag.Miniport]
+ati2mtag.sys
+
+[ati2mtag.Display]
+ati2dvag.dll
+ati3d1ag.dll
+ati3d2ag.dll
+
+;
+; Service Installation
+;
+
+[ati2mtag_default.Services]
+AddService = ati2mtag, 0x00000002, ati2mtag_Service_Inst, ati2mtag_EventLog_Inst
+
+[ati2mtag_RV100.Services]
+AddService = ati2mtag, 0x00000002, ati2mtag_Service_Inst, ati2mtag_EventLog_Inst
+
+[ati2mtag_RV200.Services]
+AddService = ati2mtag, 0x00000002, ati2mtag_Service_Inst, ati2mtag_EventLog_Inst
+
+[ati2mtag_RV250.Services]
+AddService = ati2mtag, 0x00000002, ati2mtag_Service_Inst, ati2mtag_EventLog_Inst
+
+[ati2mtag_R200.Services]
+AddService = ati2mtag, 0x00000002, ati2mtag_Service_Inst, ati2mtag_EventLog_Inst
+
+[ati2mtag_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\ati2mtag.sys
+
+[ati2mtag_EventLog_Inst]
+AddReg = ati2mtag_EventLog_AddReg
+
+[ati2mtag_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\ati2mtag.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+;
+; Software Installation
+;
+
+[ati2mtag_default.SoftwareSettings]
+AddReg = ati2mtag_SoftwareDeviceSettings
+AddReg = ati2mtag_DEFAULT_SoftwareDeviceSettings
+DelReg = ati2mtag_RemoveDeviceSettings
+
+[ati2mtag_RV100.SoftwareSettings]
+AddReg = ati2mtag_SoftwareDeviceSettings
+AddReg = ati2mtag_RV100_SoftwareDeviceSettings
+AddReg = atioglxx_OpenGLSoftwareSettings
+DelReg = ati2mtag_RemoveDeviceSettings
+
+[ati2mtag_RV200.SoftwareSettings]
+AddReg = ati2mtag_SoftwareDeviceSettings
+AddReg = ati2mtag_RV200_SoftwareDeviceSettings
+DelReg = ati2mtag_RemoveDeviceSettings
+
+[ati2mtag_RV250.SoftwareSettings]
+AddReg = ati2mtag_SoftwareDeviceSettings
+AddReg = ati2mtag_RV250_SoftwareDeviceSettings
+DelReg = ati2mtag_RemoveDeviceSettings
+
+[ati2mtag_R200.SoftwareSettings]
+AddReg = ati2mtag_SoftwareDeviceSettings
+AddReg = ati2mtag_R200_SoftwareDeviceSettings
+DelReg = ati2mtag_RemoveDeviceSettings
+
+[ati2mtag_DEFAULT_SoftwareDeviceSettings]
+HKR,, DisableEnumAllChilds,        %REG_DWORD%,    1
+HKR,, GCORULE_HIGHDISPRI,          %REG_DWORD%,    1
+HKR,, DisableFullAdapterInit,      %REG_DWORD%,    0
+HKR,, GCOOPTION_DigitalCrtInfo,    %REG_BINARY%,   A3,38,61,C1,A3,38,61,B1
+HKR,, DALNonStandardModesBCD1, %REG_BINARY%,12,80,07,68,00,00,00,00,17,92,13,44,00,00,00,00,18,00,14,40,00,00,00,00,16,00,12,00,00,00,00,70,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD1, %REG_BINARY%,12,80,09,60,00,00,00,00
+HKR,, DALRULE_NOFORCEBOOT,                  %REG_DWORD%,    1
+HKR,, DFPRULE_HotplugSupported, %REG_DWORD%, 1
+
+[ati2mtag_RV100_SoftwareDeviceSettings]
+HKR,, DisableLCD,                  %REG_DWORD%,    1
+HKR,, DALRULE_SAVEPANLOCK,         %REG_DWORD%,    1
+HKR,, DisableEnumAllChilds,        %REG_DWORD%,    1
+HKR,, GCORULE_HIGHDISPRI,          %REG_DWORD%,    1
+HKR,, DisableFullAdapterInit,      %REG_DWORD%,    0
+HKR,, GCOOPTION_DigitalCrtInfo,    %REG_BINARY%,   A3,38,61,C1,A3,38,61,B1
+HKR,, DALNonStandardModesBCD1, %REG_BINARY%,12,80,07,68,00,00,00,00,17,92,13,44,00,00,00,00,18,56,13,92,00,00,00,00,18,00,14,40,00,00,00,00,16,00,12,00,00,00,00,70
+HKR,, DALRestrictedModesBCD1, %REG_BINARY%,12,80,09,60,00,00,00,00
+HKR,, DALRULE_NOFORCEBOOT,                  %REG_DWORD%,    1
+HKR,, DisableDualView,                 %REG_DWORD%,    0
+HKR,, DFPRULE_HotplugSupported, %REG_DWORD%, 1
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,      %REG_DWORD%,    1
+HKR,, GCORULE_IntTMDSReduceBlankTiming,      %REG_DWORD%,    1
+
+[ati2mtag_RV200_SoftwareDeviceSettings]
+HKR,, DisableLCD,                  %REG_DWORD%,    1
+HKR,, DALRULE_SAVEPANLOCK,         %REG_DWORD%,    1
+HKR,, DisableEnumAllChilds,        %REG_DWORD%,    1
+HKR,, DisableIDCT,                 %REG_DWORD%,    0
+HKR,, DisableFullAdapterInit,      %REG_DWORD%,    0
+HKR,, GCOOPTION_DigitalCrtInfo,    %REG_BINARY%,   A3,38,61,C1,A3,38,61,B1
+HKR,, DALNonStandardModesBCD1, %REG_BINARY%,12,80,07,68,00,00,00,00,17,92,13,44,00,00,00,00,18,00,14,40,00,00,00,00,16,00,12,00,00,00,00,70,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD1, %REG_BINARY%,12,80,09,60,00,00,00,00
+HKR,, DALRULE_NOFORCEBOOT,                  %REG_DWORD%,    1
+HKR,, DisableDualView,                 %REG_DWORD%,    0
+HKR,, DFPRULE_HotplugSupported, %REG_DWORD%, 1
+HKR,, WmVidMemSize,                %REG_DWORD%,    0
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,      %REG_DWORD%,    1
+HKR,, GCORULE_IntTMDSReduceBlankTiming,      %REG_DWORD%,    1
+
+[ati2mtag_RV250_SoftwareDeviceSettings]
+HKR,, DisableEnumAllChilds,        %REG_DWORD%,    1
+HKR,, DisableFullAdapterInit,      %REG_DWORD%,    0
+HKR,, DisableDynamicEnableMode,    %REG_DWORD%,    1
+HKR,, GCOOPTION_DigitalCrtInfo,    %REG_BINARY%,   A3,38,61,C1,A3,38,61,B1
+HKR,, DALNonStandardModesBCD1, %REG_BINARY%,12,80,07,68,00,00,00,00,17,92,13,44,00,00,00,00,18,00,14,40,00,00,00,00,16,00,12,00,00,00,00,70,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD1, %REG_BINARY%,12,80,09,60,00,00,00,00
+HKR,, DALRULE_NOFORCEBOOT,                  %REG_DWORD%,    1
+HKR,, GCORULE_R200TVPLLWA, %REG_DWORD%, 1
+HKR,, TVR200Flag, %REG_DWORD%, 1
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,      %REG_DWORD%,    1
+HKR,, GCORULE_IntTMDSReduceBlankTiming,      %REG_DWORD%,    1
+
+[ati2mtag_R200_SoftwareDeviceSettings]
+HKR,, DisableEnumAllChilds,        %REG_DWORD%,    1
+HKR,, MemInitLatencyTimer,         %REG_DWORD%,    0x775771BF
+HKR,, DisableFullAdapterInit,      %REG_DWORD%,    0
+HKR,, GCOOPTION_DigitalCrtInfo,    %REG_BINARY%,   A3,38,61,C1,A3,38,61,B1
+HKR,, DALNonStandardModesBCD1, %REG_BINARY%,12,80,07,68,00,00,00,00,17,92,13,44,00,00,00,00,18,00,14,40,00,00,00,00,16,00,12,00,00,00,00,70,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD1, %REG_BINARY%,12,80,09,60,00,00,00,00
+HKR,, DALRULE_NOFORCEBOOT,                  %REG_DWORD%,    0
+HKR,, AntiAlias,                            %REG_SZ%,       1
+HKR,, DisableDualView,                 %REG_DWORD%,    0
+HKR,, GCORULE_R200TVPLLWA, %REG_DWORD%, 1
+HKR,, TVR200Flag, %REG_DWORD%, 1
+HKR,, DFPRULE_HotplugSupported, %REG_DWORD%, 1
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,      %REG_DWORD%,    1
+HKR,, GCORULE_IntTMDSReduceBlankTiming,      %REG_DWORD%,    1
+HKR,, HDTVRULE_HDTVGDOENABLE,        %REG_DWORD%,    1
+HKR,, HDTVRULE_HDTVSIGNALFORMAT,   %REG_DWORD%,    1
+
+[ati2mtag_SoftwareDeviceSettings]
+HKR,, DDC2Disabled,                         %REG_DWORD%,    0
+HKR,, DisableBlockWrite,                    %REG_DWORD%,    1
+HKR,, DisableDMACopy,                       %REG_DWORD%,    0
+HKR,, InstalledDisplayDrivers,              %REG_MULTI_SZ%, ati2dvag
+HKR,, MultiFunctionSupported,               %REG_DWORD%,    1
+HKR,, TestEnv,                              %REG_DWORD%,    0
+HKR,, TimingSelection,                      %REG_DWORD%,    0
+HKR,, VgaCompatible,                        %REG_DWORD%,    0
+HKR,,"Adaptive De-interlacing",             %REG_DWORD%,    1
+HKR,,"VPE Adaptive De-interlacing",         %REG_DWORD%,    1
+HKR,, GCOOPTION_DisableGPIOPowerSaveMode,   %REG_DWORD%,    1
+HKLM,"Software\ATI Technologies\CBT",ReleaseVersion,,"7.72.10.1.2-020808r-Microsoft"
+HKR,, ReleaseVersion,,"7.72.10.1.2-020808r-Microsoft"
+HKR,, BuildNumber,,"06153"
+HKR,, drv,, "ati2dvag.dll"
+HKR,, DALGameGammaScale,       %REG_DWORD%,   0x00646464
+HKR,"ATI WDM Configurations","PnP ID Version",%REG_SZ%,"20"
+HKR,, DALRULE_ADDNATIVEMODESTOMODETABLE,    %REG_DWORD%,    1
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,                  %REG_DWORD%,    0
+HKR,, DisableTiling,                        %REG_DWORD%,    0
+HKR,, ExtEvent_EnableHotPlug,      %REG_DWORD%,    0
+HKR,, DisableHotPlugDFP,	%REG_DWORD%,	1
+HKR,, TVContrastDefaultNTSC,        %REG_DWORD%,    88
+HKR,, OvlTheaterMode, %REG_BINARY%, 00,00,00,00
+HKR,, DisableOvlTheaterMode,              %REG_DWORD%,    0
+HKR,, UseVMRPitch,                        %REG_DWORD%,    1
+HKR,, DisableMMSnifferCode,               %REG_DWORD%,    0
+HKR,, DisableProgPCILatency,              %REG_DWORD%,    0
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER, %REG_DWORD%,    0
+HKR,, DALRULE_GetTVFakeEDID,              %REG_DWORD%,    0
+HKR,, Catalyst_Version,,"02.1"
+HKR,, DALRULE_REGISTRYACCESS,             %REG_DWORD%,    0
+HKR,, CapabilityOverride,		  %REG_DWORD%,    8
+HKR,, DALRULE_CRTSUPPORTSALLMODES,       %REG_DWORD%,    1
+
+;[DriverInfoAddReg]
+; This section is added to all INFs to add registry entries for Driver Info.
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Description,,%DriverDescription%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,CurrentVer,,%DriverOEMVersion%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Ver_%DriverOEMVersion%,,%DriverVersionID%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,BaseDriverFileName,,%BaseDriverFileName%
+HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,BaseDriverFileVersion,,%BaseDriverFileVersion%
+
+[ati2mtag_RemoveDeviceSettings]
+HKR,"Desktop",NoAtipta
+HKR,, ActiveBusCaps
+HKR,, Adaptive De-interlacing
+HKR,, AgpLevel
+HKR,, AntiAlias
+HKR,, ATIPoll
+HKR,, DALCurrentObjectData
+HKR,, DALLastConnected
+HKR,, DALLastSelected
+HKR,, DALLastTypes
+HKR,, DALNonStandardModesBCD
+HKR,, DALObjectData
+HKR,, DALObjectData0
+HKR,, DALObjectData1
+HKR,, DALR6 CRT_MaxModeInfo
+HKR,, DALR6 CRT2_MaxModeInfo
+HKR,, DALR6 DFP_MaxModeInfo
+HKR,, DALR6 DFPx_MaxModeInfo
+HKR,, DALR6 GCO_Index0
+HKR,, DALRestrictedModesBCD
+HKR,, DALRULE_ADDNATIVEMODESTOMODETABLE
+HKR,, DALRULE_CRTSUPPORTSALLMODES
+HKR,, DALRULE_DISABLEBANDWIDTH
+HKR,, DALRULE_DISPLAYSRESTRICTMODES
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER
+HKR,, DALRULE_NOFORCEBOOT
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER
+HKR,, DALRULE_RESTRICTUNKNOWNMONITOR
+HKR,, DALRULE_SAVEPANLOCK
+HKR,, DALSelectObjectData0
+HKR,, DALSelectObjectData1
+HKR,, DDC2Disabled
+HKR,, DefaultMode
+HKR,, DFPRULE_HotplugSupported
+HKR,, DisableAGP
+HKR,, DisableAGPDFB
+HKR,, DisableAGPPM4
+HKR,, DisableAGPTexture
+HKR,, DisableAGPWrite
+HKR,, DisableBlockWrite
+HKR,, DisableD3D
+HKR,, DisableDMA
+HKR,, DisableDMACopy
+HKR,, DisableDrvAlphaBlend
+HKR,, DisableDrvStretchBlt
+HKR,, DisableDynamicEnableMode
+HKR,, DisableEngine
+HKR,, DisableEnumAllChilds
+HKR,, DisableFullAdapterInit
+HKR,, DisableHierarchicalZ
+HKR,, DisableHWAAFonts
+HKR,, DisableIDCT
+HKR,, DisableLCD
+HKR,, DisableMMLIB
+HKR,, DisableOpenGLScrAccelerate
+HKR,, DisablePllInit
+HKR,, DisablePrimaryTiling
+HKR,, DisableRptrWriteBack
+HKR,, DisableTCL
+HKR,, DisableTiling
+HKR,, DisableTimeStampWriteBack
+HKR,, DisableUSWC
+HKR,, DisableVideoUSWC
+HKR,, DisableVPE
+HKR,, EnableWaitUntilIdxTriList2
+HKR,, ExtEvent_BroadcastDispChange
+HKR,, ExtEvent_DriverMessageSupport
+HKR,, ExtEvent_EnableChgLCDResOnHotKey
+HKR,, ExtEvent_EnableHotPlug
+HKR,, ExtEvent_EnableMouseRotation
+HKR,, ExtEvent_EnablePolling
+HKR,, ExtEvent_EnablePowerPlay
+HKR,, ExtEvent_LCDSetMaxResOnDockChg
+HKR,, ExtEvent_UpdateAdapterInfoOnHK
+HKR,, GCORULE_HIGHDISPRI
+HKR,, GCORULE_R200TVPLLWA
+HKR,, LVB
+HKR,, MaxAgpVb
+HKR,, MaxAGPVB
+HKR,, MaxLocalVb
+HKR,, MaxLocalVB
+HKR,, MemInitLatencyTimer
+HKR,, QSindirectBufferLocation
+HKR,, QSringBufferLocation
+HKR,, RequestedBusCaps
+HKR,, SubmitOnDraw
+HKR,, TestedBusCaps
+HKR,, TestEnv
+HKR,, TimingSelection
+HKR,, TVR200Flag
+HKR,, VgaCompatible
+HKR,, VPE Adaptive De-interlacing
+
+[ati2mtag_default.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[ati2mtag_RV100.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[ati2mtag_RV200.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[ati2mtag_R200.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[ati2mtag_RV250.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId       = "ATI Technologies Inc. Installation DISK (VIDEO)"
+GraphAdap    = "Graphics Adapter"
+ATI          = "ATI Technologies Inc."
+ATIR200="Chaplin (R200)" 
+
+; Driver Information Entries
+DriverMfgr="ATI Technologies Inc."			; IHV name
+DriverVersionID="7.72.10.1.2"				; The IHV driver version
+BaseDriverFileName="ati2mtag.sys" 			; Key file for version 
+BaseDriverFileVersion="6.13.10.6153" 			; version of key file 
+; These items will be set by IHV and updated by OEM 
+DriverOEM="Microsoft Corporation"			; name of the OEM 
+DriverFamily="Video" 					; device family (NIC, Storage, Video...)
+DriverProduct="ATI Radeon" 				; Specific Name of device (chipset, for example)
+DriverDescription="Graphics Driver" 			; Description of device (product name, OS or system supported)
+DriverOEMVersion="7.72.10.1.2-020808r"                  ; OEM-specified version 

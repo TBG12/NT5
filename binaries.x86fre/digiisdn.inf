@@ -1,0 +1,126 @@
+;
+; DIGIISDN.INF
+; Digi ISDN
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature="$Windows NT$"
+Class=Net
+ClassGUID={4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider=%MS%
+Layoutfile= Layout.inf
+DriverVer=03/27/2002,3.10.225.0
+
+[Manufacturer]
+%DIGI%=DIGIISDN
+
+[DIGIISDN]
+%IsdnT1.DeviceDesc%  = IsdnT1.ndi,   DXB\DIGIT1
+%IsdnE1.DeviceDesc%  = IsdnE1.ndi,   DXB\DIGIE1
+%IsdnBRI.DeviceDesc% = IsdnBRI.ndi,  DXB\DIGIBRI
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DestinationDirs]
+
+[IsdnT1.ndi.NT]
+AddReg          = Isdn.ndi.reg, IsdnT1.staticparams.reg
+Characteristics = 0x09 ;NCF_REMOVABLE | NCF_HIDDEN | NCF_VIRTUAL
+
+[IsdnE1.ndi.NT]
+AddReg          = Isdn.ndi.reg, IsdnE1.staticparams.reg
+Characteristics = 0x09 ;NCF_REMOVABLE | NCF_HIDDEN | NCF_VIRTUAL
+
+[IsdnBRI.ndi.NT]
+AddReg          = Isdn.ndi.reg, IsdnBRI.staticparams.reg
+Characteristics = 0x09 ;NCF_REMOVABLE | NCF_HIDDEN | NCF_VIRTUAL
+
+[IsdnT1.ndi.NT.CoInstallers]
+AddReg=Isdn.CoInstaller_AddReg
+CopyFiles=IsdnT1.ndi.NT.CoInstallers_CopyFiles
+
+[IsdnT1.ndi.NT.CoInstallers_CopyFiles]
+
+[IsdnE1.ndi.NT.CoInstallers]
+AddReg=Isdn.CoInstaller_AddReg
+CopyFiles=IsdnE1.ndi.NT.CoInstallers_CopyFiles
+
+[IsdnE1.ndi.NT.CoInstallers_CopyFiles]
+
+[IsdnBRI.ndi.NT.CoInstallers]
+AddReg=Isdn.CoInstaller_AddReg
+CopyFiles=IsdnBRI.ndi.NT.CoInstallers_CopyFiles
+
+[IsdnBRI.ndi.NT.CoInstallers_CopyFiles]
+
+[Isdn.CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000,"DigiInf.dll,DigiDxbClientCoInstaller"
+
+[IsdnT1.ndi.NT.Services]
+AddService = DIGIISDN, 2, Isdn.AddService, Isdn.AddEventLog
+
+[IsdnE1.ndi.NT.Services]
+AddService = DIGIISDN, 2, Isdn.AddService, Isdn.AddEventLog
+
+[IsdnBRI.ndi.NT.Services]
+AddService = DIGIISDN, 2, Isdn.AddService, Isdn.AddEventLog
+
+[Isdn.AddService]
+DisplayName     = %DIGIISDN.DispName%
+ServiceType     = 1 ; SERVICE_KERNEL_DRIVER
+StartType       = 3 ; SERVICE_DEMAND_START
+ErrorControl    = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\DIGIISDN.SYS
+LoadOrderGroup  = NDIS ; DEFAULT_GROUP
+
+[Isdn.AddEventLog]
+AddReg=Isdn.AddEventLog.reg
+
+[Isdn.AddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\digiisdn.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[Isdn.ndi.reg]
+HKR, Ndi, Service,  , "DIGIISDN"
+HKR, Ndi, HelpText, , %Isdn.HelpText%
+HKR, Ndi\Interfaces, DefUpper,   , "ndiswan"
+HKR, Ndi\Interfaces, UpperRange, , "ndiswan"
+HKR, Ndi\Interfaces, DefLower,   , "nolower"
+HKR, Ndi\Interfaces, LowerRange, , "nolower"
+
+[IsdnT1.staticparams.reg]
+HKR, Parameters, ServiceName,,"DigiIsdn"
+HKR, "",WanEndPoints, 0x00010001, 23
+
+[IsdnE1.staticparams.reg]
+HKR, Parameters, ServiceName,,"DigiIsdn"
+HKR, "",WanEndPoints, 0x00010001, 30
+
+[IsdnBRI.staticparams.reg]
+HKR, Parameters, ServiceName,,"DigiIsdn"
+HKR, "",WanEndPoints, 0x00010001, 2
+
+
+
+[Strings]
+;**************************************************************************************
+; Non-localizable Strings
+;**************************************************************************************
+;BEGIN ENG - US English Strings
+MS= "Microsoft"
+DIGI="Digi International"
+IsdnT1.DeviceDesc  = "Digi ISDN T1"
+IsdnE1.DeviceDesc  = "Digi ISDN E1"
+IsdnBRI.DeviceDesc = "Digi ISDN BRI"
+DIGIISDN.DispName = "Digi DXB ISDN Driver"
+;END ENG - US English Strings
+
+;**************************************************************************************
+; Localizable Strings
+;**************************************************************************************
+;BEGIN ENG - US English Strings
+Isdn.HelpText = "This device supports Dial-up Networking over ISDN"
+;END ENG - US English Strings
+
+

@@ -1,0 +1,2295 @@
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.110"
+*GPDFileName: "hplj8000.gpd"
+*Include: "StdNames.gpd"
+*Include: "ttfsub.gpd"
+*ModelName: "HP LaserJet 8000 Series PCL"
+*MasterUnits: PAIR(1200, 1200)
+
+*ResourceDLL: "pcl5eres.dll"
+*HelpFile: "hpcljx.hlp"
+
+*Feature: RESDLL
+{
+    *Option: FontRes
+    {
+        *Name: "hpcfont.dll"
+    }
+}
+
+*PrinterType: PAGE
+*MaxCopies: 999
+*FontCartSlots: 3
+
+*PrintRate: 24
+*PrintRateUnit: PPM
+*PrintRatePPM: 24
+
+*rcInstalledOptionNameID:    443 *% Installed
+*rcNotInstalledOptionNameID: 444 *% Not Installed
+*% IMPORTANT NOTE:
+*% The OEM customization code that goes with this minidriver (hpoemui.dll)
+*% assumes that all these output bins are defined and are defined in the
+*% current order.  (Don't change it!)  These are hard-coded defines in
+*% the OEM code.
+*% define the order the output bins appear in the UI  --- do this first to insure ordering!
+*Feature: OutputBin{ *Option:Option1{} *Option:Option2{} *Option:Option3{} *Option:Option4{}
+    *Option:Option5{} *Option:Option6{} *Option:Option7{} *Option:Option8{} *Option:Option9{}
+    *Option:Option10{} *Option:Option11{} *Option:Option12{} *Option:Option13{} *Option:Option14{}
+    *Option:Option15{} *Option:Option16{} *Option:Option17{}}
+
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.2
+            *NoPageEject?: TRUE
+            *Cmd: "<1B>&l0o1E"
+        }
+    }
+    *Option: LANDSCAPE_CC90
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.2
+            *NoPageEject?: TRUE
+            *Cmd: "<1B>&l1o1E"
+        }
+    }
+}
+
+*Feature: InputBin{ *Option: Option1{} *Option: Option7{} *Option: UPPER{} *Option: LOWER{} *Option: Option10{} *Option: Option8{} *Option: Option9{} *Option: MANUAL{} *Option: ENVFEED{} }
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 271  *% Automatically Select
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l7H"
+        }
+    }
+    *Option: UPPER
+    {
+        *rcNameID: 277 *% Upper Paper tray
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l1H"
+        }
+    }
+    *Option: MANUAL
+    {
+        *rcNameID: 494 *% Manual Paper feed
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l2H"
+        }
+    }
+
+    *Option: ENVFEED
+    {
+        *rcNameID: =ENV_FEED_DISPLAY  *% Envelope Feeder
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l6H"
+        }
+    }
+    *Option: LOWER
+    {
+        *rcNameID: 410  *% Lower Paper tray
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l4H"
+        }
+    }
+    *Option: Option7
+    {
+        *rcNameID: 276  *% MP Tray
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l8H"
+        }
+    }
+    *Option: Option8
+    {
+        *rcNameID: 428 *% tray 4
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l20H"
+        }
+    }
+    *Option: Option9
+    {
+        *rcNameID: 467 *% tray 5
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l21H"
+        }
+    }
+    *Option: Option10
+    {
+        *rcNameID: 531 *%2K tray 4
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "<1B>&l20H"
+        }
+    }
+}
+
+*% IMPORTANT NOTE:
+*% The OEM customization code assumes that this feature's keyname is
+*%   "EnvFeeder"
+*% The OEM customization code assumes that the options are named "TRUE" and
+*%   "FALSE"
+*%
+*% explicit feature to constrain env feeder
+*Feature: EnvFeeder
+{
+    *rcNameID: =ENV_FEED_DISPLAY
+    *HelpIndex: 12000
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: FALSE
+    *Option: FALSE
+    {
+        *rcNameID: 444
+        *Constraints: InputBin.ENVFEED
+    }
+    *Option: TRUE
+    {
+        *rcNameID: 443
+    }
+}
+
+*% IMPORTANT NOTE:
+*% The OEM customization code assumes that this feature's keyname is
+*%   "HCI"
+*% The OEM customization code assumes that the options are named "TRUE" and
+*%   "FALSE"
+*%
+*Feature: HCI
+{
+    *rcNameID: 373   *%High Capacity Input
+    *HelpIndex: 12001
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: NONE
+    *Option: NONE
+    {
+        *rcNameID: 444
+        *Constraints: LIST(InputBin.Option8,InputBin.Option9,InputBin.Option10)
+
+    }
+    *Option: 2X500HCI
+    {
+        *rcNameID: 586
+        *Constraints: InputBin.Option10
+    }
+    *Option: 2000HCI
+    {
+        *rcNameID: 427
+        *Constraints: LIST(InputBin.Option8,InputBin.Option9)
+    }
+}
+
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *Name: "600 x 600 " =DOTS_PER_INCH
+        *DPI: PAIR(600, 600)
+        *TextDPI: PAIR(600, 600)
+        *MinStripBlankPixels: 32
+        EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+        *SpotDiameter: 100
+        *Command: CmdBeginRaster { *Cmd : "<1B>*r1A" }
+        *Command: CmdEndRaster { *Cmd : "<1B>*rB" }
+        *Command: CmdSendBlockData { *Cmd : "<1B>*b" %d{NumOfDataBytes}"W" }
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.6
+            *Cmd: "@PJL SET RESOLUTION=600<0A>@PJL ENTER LANGUAGE=PCL<0A0D1B>E<1B>*t600R"
+        }
+    }
+    *Option: Option2
+    {
+        *Name: "300 x 300 " =DOTS_PER_INCH
+        *DPI: PAIR(300, 300)
+        *TextDPI: PAIR(300, 300)
+        *MinStripBlankPixels: 32
+        EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+        *SpotDiameter: 100
+        *Command: CmdBeginRaster { *Cmd : "<1B>*r1A" }
+        *Command: CmdEndRaster { *Cmd : "<1B>*rB" }
+        *Command: CmdSendBlockData { *Cmd : "<1B>*b" %d{NumOfDataBytes}"W" }
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.6
+            *Cmd: "@PJL SET RESOLUTION=300<0A>@PJL ENTER LANGUAGE=PCL<0A0D1B>E<1B>*t300R"
+        }
+    }
+}
+
+*BlockMacro: PaperConstraints
+{
+    *Constraints: LIST(InputBin.UPPER, InputBin.LOWER, InputBin.Option8, InputBin.Option9 ,InputBin.Option10)
+}
+
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *HelpIndex: 13022
+    *DefaultOption: LETTER
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(9600, 12800)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l2a8c1E<1B>*p0x0Y<1B>*c0t5760x7680Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(9800, 12720)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 12960)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l2a8c1E<1B>*p0x0Y<1B>*c0t7632x5880Y"
+                }
+            }
+        }
+    }
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 5230
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(9600, 16400)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l3a8c1E<1B>*p0x0Y<1B>*c0t5760x9840Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(9800, 16320)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 16560)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l3a8c1E<1B>*p0x0Y<1B>*c0t9792x5880Y"
+                }
+            }
+        }
+    }
+    *Option: EXECUTIVE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *InsertBlock: =PaperConstraints
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(8100, 12200)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l1a8c1E<1B>*p0x0Y<1B>*c0t4860x7320Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(8300, 12120)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 12360)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l1a8c1E<1B>*p0x0Y<1B>*c0t7272x4980Y"
+                }
+            }
+        }
+    }
+    *Option: 11X17
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 9350
+        *Constraints: LIST(InputBin.UPPER, InputBin.ENVFEED,InputBin.Option8)
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(12600, 20000)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l6a8c1E<1B>*p0x0Y<1B>*c0t7560x12000Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(12800, 19920)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 20160)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l6a8c1E<1B>*p0x0Y<1B>*c0t11952x7680Y"
+                }
+            }
+        }
+    }
+    *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4249
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(9352, 13630)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l26a8c1E<1B>*p0x0Y<1B>*c0t5611x8178Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(9520, 13558)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 13794)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l26a8c1E<1B>*p0x0Y<1B>*c0t8135x5712Y"
+                }
+            }
+        }
+    }
+    *Option: ENV_10
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *InsertBlock: =PaperConstraints
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4348, 11000)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l81a8c1E<1B>*p0x0Y<1B>*c0t2609x6600Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4548, 10920)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 11160)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l81a8c1E<1B>*p0x0Y<1B>*c0t6552x2729Y"
+                }
+            }
+        }
+    }
+    *Option: ENV_DL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *InsertBlock: =PaperConstraints
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4628, 9992)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l90a8c1E<1B>*p0x0Y<1B>*c0t2777x5995Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4796, 9920)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 10156)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l90a8c1E<1B>*p0x0Y<1B>*c0t5952x2878Y"
+                }
+            }
+        }
+    }
+    *Option: ENV_MONARCH
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *InsertBlock: =PaperConstraints
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4048, 8600)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l80a8c1E<1B>*p0x0Y<1B>*c0t2429x5160Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4248, 8520)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 8760)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l80a8c1E<1B>*p0x0Y<1B>*c0t5112x2549Y"
+                }
+            }
+        }
+    }
+    *Option: ENV_B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *InsertBlock: =PaperConstraints
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(7746, 11410)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l100a8c1E<1B>*p0x0Y<1B>*c0t4648x6846Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(7914, 11338)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 11574)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l100a8c1E<1B>*p0x0Y<1B>*c0t6803x4748Y"
+                }
+            }
+        }
+    }
+    *Option: A3
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 9667
+        *Constraints: LIST(InputBin.UPPER, InputBin.ENVFEED, InputBin.Option8)
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(13462, 19442)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l27a8c1E<1B>*p0x0Y<1B>*c0t8077x11665Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(13630, 19370)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 19606)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l27a8c1E<1B>*p0x0Y<1B>*c0t11622x8178Y"
+                }
+            }
+        }
+    }
+    *Option: B4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 6391
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(11572, 16796)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l46a8c1E<1B>*p0x0Y<1B>*c0t6943x10078Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(11740, 16724)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 16960)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l46a8c1E<1B>*p0x0Y<1B>*c0t10034x7044Y"
+                }
+            }
+        }
+    }
+    *Option: A5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Constraints: InputBin.ENVFEED
+        *InsertBlock: =PaperConstraints
+        *PageProtectMem: 2125
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(6424, 9520)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l25a8c1E<1B>*p0x0Y<1B>*c0t3854x5712Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(6592, 9448)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 9684)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l25a8c1E<1B>*p0x0Y<1B>*c0t5669x3955Y"
+                }
+            }
+        }
+    }
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *InsertBlock: =PaperConstraints
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(8030, 11740)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l45a8c1E<1B>*p0x0Y<1B>*c0t4818x7044Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(8198, 11668)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 11904)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l45a8c1E<1B>*p0x0Y<1B>*c0t7001x4919Y"
+                }
+            }
+        }
+    }
+    *Option: ENV_C5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *InsertBlock: =PaperConstraints
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(7084, 10418)
+                *PrintableOrigin: PAIR(284, 200)
+                *CursorOrigin: PAIR(284, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l91a8c1E<1B>*p0x0Y<1B>*c0t4250x6251Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(7252, 10346)
+                *PrintableOrigin: PAIR(200, 236)
+                *CursorOrigin: PAIR(200, 10582)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l91a8c1E<1B>*p0x0Y<1B>*c0t6208x4351Y"
+                }
+            }
+        }
+    }
+*Ifdef: WINNT_50
+    *Option: DBL_JAPANESE_POSTCARD_ROTATED
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *InsertBlock: =PaperConstraints
+        *Constraints: InputBin.ENVFEED
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(6392, 9048)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l72a8c1E<1B>*p0x0Y<1B>*c0t3835x5429Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(6592, 8968)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 9208)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l72a8c1E<1B>*p0x0Y<1B>*c0t5381x3955Y"
+                }
+            }
+        }
+    }
+*Endif:   WINNT_50
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(4392,9000)
+        *MaxSize: PAIR(14040, 21240)
+        *MaxPrintableWidth: 14040
+        *MinLeftMargin: 100
+        *CenterPrintable?: FALSE
+        *PageProtectMem: 1692
+        *Constraints: LIST(InputBin.UPPER, InputBin.Option8, InputBin.Option10, InputBin.ENVFEED)
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *CustCursorOriginX:  %d{((PhysPaperWidth - 14040) / 2) +300}
+                *CustCursorOriginY:   %d{200}
+                *CustPrintableOriginX:  %d{300}
+                *CustPrintableOriginY:  %d{200}
+                *CustPrintableSizeX:   %d{ PhysPaperWidth - 600 }
+                *CustPrintableSizeY:  %d{ PhysPaperLength - 400 }
+                *Command: CmdSelect
+                {
+                        *Order: DOC_SETUP.6
+                        *Cmd: "<1B>&l101a8c1e99F<1B>*p0x0Y<1B>*c0t8064x12504Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *switch:  OutputBin
+                {
+                     *% The printer firmware rotates the landscape job 180 if the job is stapled so that the staple
+                     *% can be placed in the top left corner of the document.
+                     *case: Option13
+                     {
+                        *CustCursorOriginX:  %d{((PhysPaperWidth - 14040) / 2) +200 }
+                        *CustCursorOriginY:   %d{PhysPaperLength}
+                        *CustPrintableOriginX:  %d{200}
+                        *CustPrintableOriginY:  %d{240}
+                        *CustPrintableSizeX:   %d{ PhysPaperWidth - 400 }
+                        *CustPrintableSizeY:  %d{ PhysPaperLength - 480 }
+                        *Command: CmdSelect
+                        {
+                                *Order: DOC_SETUP.6
+                                *Cmd: "<1B>&l101a8c1e63F<1B>*p0x0Y<1B>*c0t12456x8184Y"
+                        }
+                     }
+                     *case: Option17
+                     {
+                        *CustCursorOriginX:  %d{((PhysPaperWidth - 14040) / 2) +200 }
+                        *CustCursorOriginY:   %d{PhysPaperLength}
+                        *CustPrintableOriginX:  %d{200}
+                        *CustPrintableOriginY:  %d{240}
+                        *CustPrintableSizeX:   %d{ PhysPaperWidth - 400 }
+                        *CustPrintableSizeY:  %d{ PhysPaperLength - 480 }
+                        *Command: CmdSelect
+                        {
+                                *Order: DOC_SETUP.6
+                                *Cmd: "<1B>&l101a8c1e63F<1B>*p0x0Y<1B>*c0t12456x8184Y"
+                        }
+                     }
+                     *default
+                     {
+                        *CustCursorOriginX:  %d{((PhysPaperWidth - 14040) / 2) +200 }
+                        *CustCursorOriginY:   %d{21000}
+                        *CustPrintableOriginX:  %d{200}
+                        *CustPrintableOriginY:  %d{240}
+                        *CustPrintableSizeX:   %d{ PhysPaperWidth - 400 }
+                        *CustPrintableSizeY:  %d{ PhysPaperLength - 480 }
+                        *Command: CmdSelect
+                        {
+                                *Order: DOC_SETUP.6
+                                *Cmd: "<1B>&l101a8c1e63F<1B>*p0x0Y<1B>*c0t12456x8184Y"
+                        }
+                     }
+                } 
+            } 
+        } 
+    }
+    *Option: MyMax117x177
+    {
+        *% Maximum 11.7 x17.7
+        *rcNameID: 262
+        *PageDimensions: PAIR(14040, 21240)
+        *PageProtectMem: 10000
+        *InsertBlock: =PaperConstraints
+        *Constraints: InputBin.ENVFEED
+        *Constraints: Duplex.VERTICAL
+        *Constraints: Duplex.HORIZONTAL
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(13440, 20840)
+                *PrintableOrigin: PAIR(300, 200)
+                *CursorOrigin: PAIR(300, 200)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l101a1e99F<1B>*p0x0Y<1B>*c0t8064x12504Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(13640, 20760)
+                *PrintableOrigin: PAIR(200, 240)
+                *CursorOrigin: PAIR(200, 21000)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.6
+                    *Cmd: "<1B>&l101a1e63F<1B>*p0x0Y<1B>*c0t12456x8184Y"
+                }
+            }
+        }
+    }
+}
+
+*Feature: MediaType
+{
+    *rcNameID: =MEDIA_TYPE_DISPLAY
+    *DefaultOption: AutoSelect
+    *Option: AutoSelect
+    {
+        *rcNameID: 271
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: ""
+        }
+    }
+    *Option: Plain
+    {
+        *rcNameID: 435   *% Plain
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n6WdPlain"
+        }
+    }
+    *Option: Preprinted
+    {
+        *rcNameID: 436   *% Preprinted
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n11WdPreprinted"
+        }
+    }
+    *Option: Letterhead
+    {
+        *rcNameID: 437   *% Letterhead
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n11WdLetterhead"
+        }
+    }
+    *Option: Transparency
+    {
+        *rcNameID: =TRANSPARENCY_DISPLAY    *% Transparency
+        *Constraints: LIST(Duplex.VERTICAL, Duplex.HORIZONTAL, OutputBin.Option13)
+        *Constraints: LIST(InputBin.UPPER, InputBin.LOWER, InputBin.Option8, InputBin.Option9, InputBin.Option10, InputBin.ENVFEED)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n13WdTransparency"
+        }
+    }
+    *Option: Prepunched
+    {
+        *rcNameID: 438   *% Prepunched
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n11WdPrepunched"
+        }
+    }
+    *Option: Labels
+    {
+        *rcNameID: 439   *% Labels
+        *Constraints: LIST(Duplex.VERTICAL, Duplex.HORIZONTAL, OutputBin.Option13)
+        *Constraints: LIST(InputBin.UPPER, InputBin.LOWER, InputBin.Option8, InputBin.Option9, InputBin.Option10)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n7WdLabels"
+        }
+    }
+    *Option: Bond
+    {
+        *rcNameID: 269   *% Bond
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n5WdBond"
+        }
+    }
+    *Option: Recycled
+    {
+        *rcNameID: 440   *% Recycled
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n9WdRecycled"
+        }
+    }
+    *Option: Color
+    {
+        *rcNameID: 441   *% Color
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n6WdColor"
+        }
+    }
+    *Option: CardStock
+    {
+        *rcNameID: 442   *% Cardstock
+        *Constraints: LIST(InputBin.Option8, InputBin.Option9, InputBin.Option10)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n11WdCard Stock"
+        }
+    }
+    *Option: Rough
+    {
+        *rcNameID: 495   *% Rough
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>&n6WdRough"
+        }
+    }
+}
+
+*% printer supports collation in harddisk and in ram
+*% (see CopyCmd and PrinterHardDisk)
+*Feature: Collate
+{
+    *rcNameID: 392 
+    *DefaultOption: OFF
+    *Option: ON
+    {
+        *rcNameID: =ON_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *% Collate works with disk or Ram disk
+            *% Printer will take care of collated copies
+            *Cmd: "@PJL SET QTY=" %d{NumOfCopies}"<0A>"
+        }
+    }
+    *Option: OFF
+    {
+        *rcNameID: =OFF_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: ""
+        }
+    }
+}
+*% IMPORTANT NOTE:
+*% The OEM customization code assumes that this feature's keyname is
+*%   "PrinterHardDisk"
+*% The OEM customization code assumes that the options are named "TRUE" and
+*%   "FALSE"
+*%
+*Feature: PrinterHardDisk
+{
+    *rcNameID: 430 *% Printer Hard-Disk
+    *HelpIndex: 12002
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: FALSE
+    *Option: FALSE
+    {
+        *rcNameID: 444
+    }
+    *Option: TRUE
+    {
+        *rcNameID: 443
+    }
+}
+
+*Feature: Economode
+{
+    *rcNameID: 377  *% EconoMode
+    *HelpIndex: 12009
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 266
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.3
+            *Cmd: "@PJL SET ECONOMODE=OFF<0A>"
+        }
+    }
+    *Option: Option2
+    {
+        *rcNameID: 267
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.3
+            *Cmd: "@PJL SET ECONOMODE=ON<0A>"
+        }
+    }
+}
+
+*Feature: RET
+{
+    *rcNameID: 378
+    *HelpIndex: 12010
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 296
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.4
+            *Cmd: "@PJL SET RET=ON<0A>"
+        }
+    }
+    *Option: Option2
+    {
+        *rcNameID: 300
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.4
+            *Cmd: "@PJL SET RET=OFF<0A>"
+        }
+    }
+}
+
+*Feature: Halftone
+{
+    *rcNameID: =HALFTONING_DISPLAY
+    *DefaultOption: HT_PATSIZE_AUTO
+    *Option: HT_PATSIZE_AUTO
+    {
+        *rcNameID: =HT_AUTO_SELECT_DISPLAY
+    }
+    *Option: HT_PATSIZE_SUPERCELL_M
+    {
+        *rcNameID: =HT_SUPERCELL_DISPLAY
+    }
+    *Option: HT_PATSIZE_6x6_M
+    {
+        *rcNameID: =HT_DITHER6X6_DISPLAY
+    }
+    *Option: HT_PATSIZE_8x8_M
+    {
+        *rcNameID: =HT_DITHER8X8_DISPLAY
+    }
+}
+*Feature: Memory
+{
+    *rcNameID: =PRINTER_MEMORY_DISPLAY
+    *HelpIndex: 12003
+    *DefaultOption: 16MB
+    *MemConfigMB: PAIR(4, 3)
+    *MemConfigMB: PAIR(8, 7)
+    *MemConfigMB: PAIR(12, 10)
+    *MemConfigMB: PAIR(16, 14)
+    *MemConfigMB: PAIR(20, 17)
+    *MemConfigMB: PAIR(24, 21)
+    *MemConfigMB: PAIR(28, 24)
+    *MemConfigMB: PAIR(32, 28)
+    *MemConfigMB: PAIR(36, 31)
+    *MemConfigMB: PAIR(40, 35)
+    *MemConfigMB: PAIR(44, 39)
+    *MemConfigMB: PAIR(48, 42)
+    *MemConfigMB: PAIR(52, 46)
+    *MemConfigMB: PAIR(56, 49)
+    *MemConfigMB: PAIR(64, 56)
+    *MemConfigMB: PAIR(68, 60)
+    *MemConfigMB: PAIR(72, 64)
+    *MemConfigMB: PAIR(76, 66)
+    *MemConfigMB: PAIR(80, 71)
+    *MemConfigMB: PAIR(84, 75)
+    *MemConfigMB: PAIR(88, 78)
+    *MemConfigMB: PAIR(96, 85)
+    *MemConfigMB: PAIR(100, 89)
+    *MemConfigMB: PAIR(104, 92)
+    *MemConfigMB: PAIR(112, 100)
+    *MemConfigMB: PAIR(128, 111)
+    *MemConfigMB: PAIR(136, 118)
+    *MemConfigMB: PAIR(144, 125)
+    *MemConfigMB: PAIR(160, 139)
+    *MemConfigMB: PAIR(192, 167)
+}
+
+*% IMPORTANT NOTE:
+*% The OEM customization code assumes that this feature's keyname is
+*%   "DuplexUnit"
+*% The OEM customization code assumes that the options are named "TRUE" and
+*%   "FALSE"
+*%
+*% new explicit constraint (non synthesized) for Duplex
+*Feature: DuplexUnit
+{
+    *rcNameID: 429 *% Duplex Unit
+    *HelpIndex: 12004
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: FALSE
+    *Option: FALSE
+    {
+        *rcNameID: 444
+        *DisabledFeatures: LIST(Duplex)
+    }
+    *Option: TRUE
+    {
+        *rcNameID: 443
+    }
+}
+
+*Feature: Duplex
+{
+    *rcNameID: =TWO_SIDED_PRINTING_DISPLAY
+    *DefaultOption: NONE
+    *Option: NONE
+    {
+        *rcNameID: =NONE_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.3
+            *Cmd: "<1B>&l0S"
+        }
+    }
+    *Option: VERTICAL
+    {
+        *rcNameID: =FLIP_ON_LONG_EDGE_DISPLAY
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.4
+            *Cmd: "<1B>&l1S"
+        }
+    }
+    *Option: HORIZONTAL
+    {
+        *rcNameID: =FLIP_ON_SHORT_EDGE_DISPLAY
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.4
+            *Cmd: "<1B>&l2S"
+        }
+    }
+}
+
+*% IMPORTANT NOTE:
+*% The OEM customization code assumes that this feature's keyname is
+*%   "Option21"
+*% The OEM customization code assumes that the options are named "Mailbox",
+*%   "Stacker" and "Separator"
+*Feature: Option21
+{
+    *rcNameID: 423   *% Mailbox Mode
+    *HelpIndex: 12015
+    *FeatureType: PRINTER_PROPERTY
+    *Option: MailboxModeMailbox
+    {
+        *rcNameID: 422  *% Mailbox      
+    }
+    *Option: MailboxModeStacker
+    {
+        *rcNameID: 431  *% Stacker
+        *DisabledFeatures: LIST(Stapling)
+    }
+    *Option: MailboxModeSeparator
+    {
+        *rcNameID: 432  *% Job Separator
+        *DisabledFeatures: LIST(Stapling)
+    }
+    *Option: MailboxModeCollator
+    {
+        *rcNameID: 392  *% Collator
+        *DisabledFeatures: LIST(Stapling)
+    }
+}
+
+*% Feature that allows user to select which, if any, accessory output
+*% bin is installed.
+*% Called "Option20" because that's what PPD calls it.
+*Feature: Option20
+{
+    *rcNameID: 582 *% Accessory output bin
+    *HelpIndex: 12007
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: Standard
+    *Option: Standard
+    {
+        *DisabledFeatures: LIST(Stapling)
+        *rcNameID: 426 *% Left Face Up Tray
+    }
+    *Option: MBM5S
+    {
+        *rcNameID: 425  
+    }
+    *Option: MBM7
+    {
+        *DisabledFeatures: LIST(Stapling)
+        *rcNameID: 587 *% "7-Bin Multi-Bin Mailbox"
+    }
+    *Option: MBM8
+    {
+        *rcNameID: 424
+        *DisabledFeatures: LIST(Stapling)
+    }
+    *Option: 3KStacker
+    {
+        *DisabledFeatures: LIST(Stapling)
+        *rcNameID: 599
+    }
+    *Option: 3KStapler
+    {
+        *rcNameID: 598
+    }
+    *Option: None
+    {
+        *rcNameID: 444
+    }
+}
+
+
+*% define stapling capability for directory services and for 3000 sheet stacker/stapler
+*% + The OEMUI DLL will hide this from the Doc Defaults Advanced tree-view unless
+*% + 3000 sheet stacker/stapler is installed.  For 5MBMS
+*% + the user selects stapling from Output Bin (Stapler).
+*Feature: Stapling
+{
+    *rcNameID: 433 *% Stapler
+    *DefaultOption: Option1
+    *HelpIndex: 12008
+    *Option: Option1
+    {
+        *Name: "None"
+    }
+    *Option: 1diagonal
+    {
+    *%"One Staple Angled"
+            *rcNameID: 631
+    }
+    *Option: 1parallel
+    {
+    *% "One Staple"
+            *rcNameID: 630
+    }
+    *Option: 2parallel
+    {
+    *% "Two Staples"
+            *rcNameID: 632
+    }
+    *Option: 3parallel
+    {
+    *% "Three Staples"
+            *rcNameID: 633
+    }
+    *Option: Stitching
+    {
+    *% "Six Staples"
+            *rcNameID: 634
+    }
+    *Option: Custom
+    {
+    *% "Custom"
+            *rcNameID: 636
+    }
+}
+
+*% Declared at the beginning of the file to insure ordering
+*Feature: OutputBin
+{
+    *rcNameID: =OUTPUTBIN_DISPLAY
+    *HelpIndex: 12006
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *% Auto Select
+        *rcNameID: 271
+        *Command: CmdSelect
+        {
+        }
+    }
+    *Option: Option2
+    {
+        *% Top Face-Down
+        *rcNameID: 282
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=UPPER<0A>"
+        }
+    }
+    *Option: Option3
+    {
+        *% Left Face-Up
+        *rcNameID: 283
+        *OutputOrderReversed?:  TRUE
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=LOWER<0A>"
+        }
+    }
+    *Option: Option4
+    {
+        *% HCO Face-Up
+        *rcNameID: 284
+        *OutputOrderReversed?:  TRUE
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN1<0A>"
+        }
+    }
+    *Option: Option5
+    {
+        *% Mailbox 1
+        *rcNameID: 412
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN2<0A>"
+        }
+    }
+    *Option: Option6
+    {
+        *% Mailbox 2
+        *rcNameID: 413
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>"
+        }
+    }
+    *Option: Option7
+    {
+        *% Mailbox 3
+        *rcNameID: 414
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN4<0A>"
+        }
+    }
+    *Option: Option8
+    {
+        *% Mailbox 4
+        *rcNameID: 415
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN5<0A>"
+        }
+    }
+    *Option: Option9
+    {
+        *% Mailbox 5
+        *rcNameID: 416
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN6<0A>"
+        }
+    }
+    *Option: Option10
+    {
+        *% Mailbox 6
+        *rcNameID: 417
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN7<0A>"
+        }
+    }
+    *Option: Option11
+    {
+        *% Mailbox 7
+        *rcNameID: 418
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN8<0A>"
+        }
+    }
+    *Option: Option12
+    {
+        *% Mailbox 8
+        *rcNameID: 419
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN9<0A>"
+        }
+    }
+    *Option: Option13
+    {
+        *% Stapler
+        *rcNameID: 433   *% Stapler
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN7<0A>@PJL SET FINISH=STAPLE<0A>"
+        }
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency)
+    }
+    *Option: Option14
+    {
+        *% Stacker
+        *rcNameID: 431   *% Stacker
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN2<0A>@PJL SET FINISH=NONE<0A>"
+        }
+    }
+    *Option: Option15
+    {
+        *% Job Separator
+        *rcNameID: 432   *% Job Separator
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN2<0A>"
+        }
+    }
+    *Option: Option16
+    {
+        *% Collator
+        *rcNameID: 392   *% Collator
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN2<0A>"
+        }
+    }
+    *Option: Option17
+    {
+        *% Stapler
+        *Name: "Stacker (stapled)"
+        *%*rcNameID: 432   *% Stacker (stapled)
+        *Constraints: LIST(MediaType.Labels, MediaType.Transparency, MediaType.CardStock)
+        *switch: Stapling
+        {
+            *case: 1diagonal
+            {
+                *Command: CmdSelect
+                {
+                    *Order: JOB_SETUP.5
+                    *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>@PJL SET FINISH=STAPLE<0A>@PJL SET STAPLEOPTION=ONEANGLED<0A>"
+                }
+            }
+            *case: 1parallel
+            {
+                *Command: CmdSelect
+                {
+                    *Order: JOB_SETUP.5
+                    *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>@PJL SET FINISH=STAPLE<0A>@PJL SET STAPLEOPTION=ONE<0A>"
+                }
+            }
+            *case: 2parallel
+            {
+                *Command: CmdSelect
+                {
+                    *Order: JOB_SETUP.5
+                    *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>@PJL SET FINISH=STAPLE<0A>@PJL SET STAPLEOPTION=TWO<0A>"
+                }
+            }
+            *case: 3parallel
+            {
+                *Command: CmdSelect
+                {
+                    *Order: JOB_SETUP.5
+                    *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>@PJL SET FINISH=STAPLE<0A>@PJL SET STAPLEOPTION=THREE<0A>"
+                }
+            }
+            *case: Stitching
+            {
+                *Command: CmdSelect
+                {
+                    *Order: JOB_SETUP.5
+                    *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>@PJL SET FINISH=STAPLE<0A>@PJL SET STAPLEOPTION=SIX<0A>"
+                }
+            }
+            *case: Custom
+            {
+                *Command: CmdSelect
+                {
+                    *Order: JOB_SETUP.5
+                    *Cmd: "@PJL SET OUTBIN=OPTIONALOUTBIN3<0A>@PJL SET FINISH=STAPLE<0A>PJL SET STAPLEOPTION=CUSTOM<0A>"
+                }
+            }
+        }
+    }
+}
+
+*% installed HCO / OutputBin constraints
+
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option4)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option5)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option6)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option7)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option8)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option9)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option10)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option11)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option12)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option13)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option14)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option15)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option16)
+*InvalidCombination: LIST(Option20.Standard, OutputBin.Option17)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option3)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option10)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option11)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option12)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option17)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option5, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option5, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option6, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option6, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option7, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option7, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option8, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option8, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option9, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option9, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option14, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option14, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option15, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option15, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option16, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM5S, OutputBin.Option16, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option13)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option12)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option17)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option5, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option6, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option7, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option8, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option9, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option10, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option11, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option14, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option15, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.A3)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.B4)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.B5)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.11X17)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM7, OutputBin.Option16, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option3)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option13)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option17)
+
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option5, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option6, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option7, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option8, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option9, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option10, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option11, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option12, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option14, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option15, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option16, PaperSize.CUSTOMSIZE)
+
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option5, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option6, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option7, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option8, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option9, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option10, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option11, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option12, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option14, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option15, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.MBM8, OutputBin.Option16, PaperSize.MyMax117x177)
+
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option14, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option14, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option14, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option14, PaperSize.B5)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, PaperSize.B5)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option17, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option17, PaperSize.CUSTOMSIZE)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option17, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option17, PaperSize.B5)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option1, Stapling.1diagonal)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option1, Stapling.1parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option1, Stapling.2parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option1, Stapling.3parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option1, Stapling.Stitching)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option1, Stapling.Custom)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option2, Stapling.1diagonal)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option2, Stapling.1parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option2, Stapling.2parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option2, Stapling.3parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option2, Stapling.Stitching)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option2, Stapling.Custom)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option4, Stapling.1diagonal)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option4, Stapling.1parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option4, Stapling.2parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option4, Stapling.3parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option4, Stapling.Stitching)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option4, Stapling.Custom)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, Stapling.1diagonal)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, Stapling.1parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, Stapling.2parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, Stapling.3parallel)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, Stapling.Stitching)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option14, Stapling.Custom)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option17, Stapling.Option1)
+
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option3)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option5)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option6)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option7)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option8)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option9)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option10)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option11)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option12)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option13)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option15)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option16)
+*InvalidCombination: LIST(Option20.3KStacker, OutputBin.Option17)
+
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option3)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option5)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option6)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option7)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option8)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option9)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option10)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option11)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option12)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option13)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option15)
+*InvalidCombination: LIST(Option20.3KStapler, OutputBin.Option16)
+
+*% OEMMBMode / OutputBin constraints are applied by hpoemui.dll
+*%
+*% allow OutputBin.Option14, 17 because Mailbox is default mode (none is not
+*% an option)
+
+*% Stapling (OutputBin.Option13) / Sizes, Types constraints
+
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.LEGAL)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.EXECUTIVE)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.11X17)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.ENV_10)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.ENV_DL)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.ENV_MONARCH)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.A3)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.B4)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.B5)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.ENV_C5)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.ENV_B5)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.A5)
+*Ifdef:  WINNT_50
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.DBL_JAPANESE_POSTCARD_ROTATED)
+*Endif:  WINNT_50
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.MyMax117x177)
+*InvalidCombination: LIST(OutputBin.Option13, PaperSize.CUSTOMSIZE)
+
+*%paper not supported through 3K stapler
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.ENV_10)
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.ENV_DL)
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.ENV_MONARCH)
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.ENV_C5)
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.ENV_B5)
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.A5)
+*Ifdef:  WINNT_50
+*InvalidCombination: LIST(OutputBin.Option17, PaperSize.DBL_JAPANESE_POSTCARD_ROTATED)
+*Endif:  WINNT_50
+
+*%
+*% Envelopes/JAP DP/A5 to top facedown(2) or left faceup(3) or HCO faceup(4) bin of MBMs
+*% already removed from stapler bins above
+*%
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.ENV_10, OutputBin.Option16)
+
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.ENV_DL, OutputBin.Option16)
+
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option16)
+*InvalidCombination: LIST(PaperSize.ENV_MONARCH, OutputBin.Option17)
+
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.ENV_C5, OutputBin.Option16)
+
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.ENV_B5, OutputBin.Option16)
+
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.A5, OutputBin.Option16)
+
+*Ifdef:  WINNT_50
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.DBL_JAPANESE_POSTCARD_ROTATED, OutputBin.Option16)
+*Endif:  WINNT_50
+
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option5)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option6)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option7)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option8)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option9)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option10)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option11)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option12)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option14)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option15)
+*InvalidCombination: LIST(PaperSize.MyMax117x177, OutputBin.Option16)
+
+*Feature: PageProtect
+{
+    *rcNameID: =PAGE_PROTECTION_DISPLAY
+    *DefaultOption: OFF
+    *Option: ON
+    {
+        *rcNameID: =ON_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.2
+            *Cmd: "@PJL SET PAGEPROTECT=ON<0A>"
+        }
+    }
+    *Option: OFF
+    {
+        *rcNameID: =OFF_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.2
+            *Cmd: "@PJL SET PAGEPROTECT=OFF<0A>"
+        }
+    }
+}
+
+*%-------------------------------------------------------------------------
+*% Job setup commands
+*%-------------------------------------------------------------------------
+*Command: CmdStartJob
+{
+    *Order: JOB_SETUP.1
+    *Cmd: "<1B>%%-12345X"
++         "@PJL COMMENT HP LaserJet 8000 Series PCL<0A>"
+}
+*Command: CmdStartDoc
+{
+    *Order: DOC_SETUP.1
+    *Cmd: "<1B>&u600D<1B>*r0F"
+}
+*Command: CmdStartPage
+{
+    *Order: PAGE_SETUP.1
+    *Cmd: "<1B>*b0M<0D>"
+}
+*Command: CmdEndJob
+{
+    *Order: JOB_FINISH.1
+    *Cmd: "<1B>E<1B>%%-12345X"
+}
+
+*% only set number of copies if Collate is OFF -- otherwise, Printer or
+*% Print Processor will take care of it (see *Feature: Collate)
+*switch: Collate
+{
+    *case: OFF
+    {
+        *Command: CmdCopies
+        {
+            *Order: DOC_SETUP.7
+            *% Uncollated copies!  Set copy count to NumOfCopies...
+            *Cmd: "<1B>&l" %d[1,999]{NumOfCopies}"X"
+        }
+    }
+    *case: ON
+    {
+        *Command: CmdCopies
+        {
+            *Order: DOC_SETUP.7
+            *% Printer collate or Spooler collate!  Set copy count to 1...
+            *Cmd: "<1B>&l1X"
+        }
+    }
+}
+
+*RotateCoordinate?: TRUE
+*RotateRaster?: TRUE
+*RotateFont?: TRUE
+*TextCaps: LIST(TC_CR_90,TC_UA_ABLE)
+*MemoryUsage: LIST(FONT)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 600
+*YMoveUnit: 600
+*Command: CmdXMoveAbsolute { *Cmd : "<1B>*p" %d{(DestX / 2) }"X" }
+*Command: CmdXMoveRelRight { *Cmd : "<1B>*p+" %d[0,9600]{max_repeat((DestXRel / 2) )}"X" }
+*Command: CmdXMoveRelLeft { *Cmd : "<1B>*p-" %d[0,9600]{max_repeat((DestXRel / 2) )}"X" }
+*Command: CmdYMoveAbsolute { *Cmd : "<1B>*p" %d{(DestY / 2) }"Y" }
+*Command: CmdYMoveRelDown { *Cmd : "<1B>*p+" %d{(DestYRel / 2) }"Y" }
+*Command: CmdYMoveRelUp { *Cmd : "<1B>*p-" %d{(DestYRel / 2) }"Y" }
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+*Command: CmdFF { *Cmd : "<0C>" }
+*Command: CmdBackSpace { *Cmd : "<08>" }
+*Command: CmdUniDirectionOn { *Cmd : "<00>" }
+*Command: CmdUniDirectionOff { *Cmd : "<00>" }
+*Command: CmdPushCursor { *Cmd : "<1B>&f0S" }
+*Command: CmdPopCursor { *Cmd : "<1B>&f1S" }
+*Command: CmdSetSimpleRotation { *Cmd : "<1B>&a" %d{PrintDirInCCDegrees}"P" }
+*EjectPageWithFF?: TRUE
+*Command: CmdEnableTIFF4 { *Cmd : "<1B>*b2M" }
+*Command: CmdDisableCompression { *Cmd : "<1B>*b0M" }
+*Command: CmdEnableDRC { *Cmd : "<1B>*b3M" }
+*OutputDataFormat: H_BYTE
+*OptimizeLeftBound?: TRUE
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*DefaultFont: RESDLL.FontRes.16
+*DefaultCTT: 0
+*CharPosition: BASELINE
+*TTFSEnabled?: TRUE
+
+
+*% TT metrics
+*%   Removed all 4 symbol fonts because they weren't printing correctly.  They will be downloaded if client has
+*%   the TT font installed.
+
+*DeviceFonts: LIST(RESDLL.FontRes.1,RESDLL.FontRes.2,RESDLL.FontRes.3,RESDLL.FontRes.4,RESDLL.FontRes.5,
++           RESDLL.FontRes.6,RESDLL.FontRes.7,RESDLL.FontRes.8,RESDLL.FontRes.9,RESDLL.FontRes.10,
++           RESDLL.FontRes.11,RESDLL.FontRes.12,RESDLL.FontRes.13,RESDLL.FontRes.14,RESDLL.FontRes.15,
++           RESDLL.FontRes.16,RESDLL.FontRes.17,RESDLL.FontRes.18,RESDLL.FontRes.19,RESDLL.FontRes.20,
++           RESDLL.FontRes.21,RESDLL.FontRes.22,RESDLL.FontRes.23,RESDLL.FontRes.24,RESDLL.FontRes.25,
++           RESDLL.FontRes.26,RESDLL.FontRes.27,RESDLL.FontRes.28,RESDLL.FontRes.29,RESDLL.FontRes.30,
++           RESDLL.FontRes.31,RESDLL.FontRes.32,RESDLL.FontRes.33,RESDLL.FontRes.34,RESDLL.FontRes.35,
++           RESDLL.FontRes.36,RESDLL.FontRes.37,RESDLL.FontRes.38,RESDLL.FontRes.39,RESDLL.FontRes.40,
++           RESDLL.FontRes.41,RESDLL.FontRes.42,RESDLL.FontRes.43,RESDLL.FontRes.44,RESDLL.FontRes.45,
++           RESDLL.FontRes.46,RESDLL.FontRes.47,RESDLL.FontRes.49,RESDLL.FontRes.50,
++           RESDLL.FontRes.51,RESDLL.FontRes.52,RESDLL.FontRes.53,RESDLL.FontRes.54,RESDLL.FontRes.55,
++           RESDLL.FontRes.56,RESDLL.FontRes.57,RESDLL.FontRes.59,RESDLL.FontRes.60,
++           RESDLL.FontRes.61,RESDLL.FontRes.62,RESDLL.FontRes.63,RESDLL.FontRes.64,RESDLL.FontRes.65,
++           RESDLL.FontRes.66,RESDLL.FontRes.67,RESDLL.FontRes.68,RESDLL.FontRes.69,RESDLL.FontRes.70,
++           RESDLL.FontRes.71,RESDLL.FontRes.72,RESDLL.FontRes.73,RESDLL.FontRes.74,
++           RESDLL.FontRes.76,RESDLL.FontRes.77,RESDLL.FontRes.78,RESDLL.FontRes.79)
+
+
+*% TT font Substituition table for our device fonts
+*% Arial and TNR are substituted in ttfsub.gpd
+*TTFS: AlbertusM
+{
+  *TTFontName: "Albertus Medium"
+  *DevFontName: "Albertus Medium"
+}
+*TTFS: AlbertusX
+{
+  *TTFontName: "Albertus Extra Bold"
+  *DevFontName: "Albertus Extra Bold"
+}
+*TTFS: AntiqueOlive
+{
+  *TTFontName: "Antique Olive"
+  *DevFontName: "Antique Olive"
+}
+*TTFS: CGOmega
+{
+  *TTFontName: "CG Omega"
+  *DevFontName: "CG Omega"
+}
+*TTFS: CGTimes
+{
+  *TTFontName: "CG Times"
+  *DevFontName: "CG Times"
+}
+*TTFS: NewCenturySB
+{
+  *TTFontName: "New Century Schoolbook Roman"
+  *DevFontName: "New Century Schoolbook"
+}
+*TTFS: ClarendonCD
+{
+  *TTFontName: "Clarendon Condensed Bold"
+  *DevFontName: "Clarendon Condensed"
+}
+*TTFS: Coronet
+{
+  *TTFontName: "Coronet"
+  *DevFontName: "Coronet"
+}
+*TTFS: CourierPS
+{
+  *TTFontName: "CourierPS"
+  *DevFontName: "CourierPS"
+}
+*TTFS: Helvetica
+{
+  *TTFontName: "Helvetica"
+  *DevFontName: "Helvetica"
+}
+*TTFS: HelveticaN
+{
+  *TTFontName: "Helvetica Narrow"
+  *DevFontName: "Helvetica Narrow"
+}
+*TTFS: ITCAvantGardeGothicB
+{
+  *TTFontName: "ITC Avant Garde Gothic Book Oblique"
+  *DevFontName: "ITC Avant Garde Gothic"
+}
+*TTFS: ITCAvantGardeGothicD
+{
+  *TTFontName: "ITC Avant Garde Gothic Demi"
+  *DevFontName: "ITC Avant Garde Gothic Demi"
+}
+*TTFS: ITCBookmanDemi
+{
+  *TTFontName: "ITC Bookman Demi"
+  *DevFontName: "ITC Bookman Demi"
+}
+*TTFS: ITCBookmanLight
+{
+  *TTFontName: "ITC Bookman Light"
+  *DevFontName: "ITC Bookman Light"
+}
+*TTFS: ITCZapfChancery
+{
+  *TTFontName: "ITC Zapf Chancery Medium Italic"
+  *DevFontName: "ITC Zapf Chancery"
+}
+*TTFS: LetterGothic
+{
+  *TTFontName: "Letter Gothic"
+  *DevFontName: "Letter Gothic"
+}
+*TTFS: Marigold
+{
+  *TTFontName: "Marigold"
+  *DevFontName: "Marigold"
+}
+*TTFS: Palatino
+{
+  *TTFontName: "Palatino Roman"
+  *DevFontName: "Palatino"
+}
+*TTFS: Times
+{
+  *TTFontName: "Times Roman"
+  *DevFontName: "Times"
+}
+*TTFS: Univers
+{
+  *TTFontName: "Univers Medium"
+  *DevFontName: "Univers"
+}
+*TTFS: UniversCD
+{
+  *TTFontName: "Univers Condensed Medium"
+  *DevFontName: "Univers Condensed"
+}
+*TTFS: CourierNew
+{
+  *TTFontName: "Courier New"
+  *DevFontName: "Courier New"
+}
+*% These 4 fonts need to be substituted to match the name that applications use to select the font.  For
+*% some reason the names are different.
+*TTFS: ClarendonCD1
+{
+  *TTFontName: "Clarendon Condensed"
+  *DevFontName: "Clarendon Condensed"
+}
+*TTFS: Times1
+{
+  *TTFontName: "Times"
+  *DevFontName: "Times"
+}
+*TTFS: Univers1
+{
+  *TTFontName: "Univers"
+  *DevFontName: "Univers"
+}
+*TTFS: UniversCD1
+{
+  *TTFontName: "Univers Condensed"
+  *DevFontName: "Univers Condensed"
+}
+
+
+*FontCartridge: FC1
+{
+    *rcCartridgeNameID: 322
+    *Fonts: LIST(117,118,119,120,121,122,123,124,126,127,128,129,130,131,132,133,125)
+}
+*FontCartridge: FC2
+{
+    *rcCartridgeNameID: 323
+    *Fonts: LIST(1,2,3,4,27,28,29,30,44,45,69,70,71,72,73,74,
++                   75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,
++                   91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107)
+}
+*FontCartridge: FC3
+{
+    *rcCartridgeNameID: 324
+    *Fonts: LIST(31,32,33,34,35,36)
+}
+*FontCartridge: FC4
+{
+    *rcCartridgeNameID: 325
+    *Fonts: LIST(37,38,39,40,41,42,43)
+}
+*FontCartridge: FC5
+{
+    *rcCartridgeNameID: 326
+    *Fonts: LIST(16,17,18,46,47,48,49,108,109,110,111,112,113,114,115,116)
+}
+*FontCartridge: FC6
+{
+    *rcCartridgeNameID: 327
+    *Fonts: LIST(40,41,42,43,59,60,65,66,67,68,69,70,71,72,142,143,
++                   144,145)
+}
+*FontCartridge: FC7
+{
+    *rcCartridgeNameID: 328
+    *Fonts: LIST(10,50,51,52,53,54,55,56,57,58,59,60,62,63,64)
+}
+*FontCartridge: FC8
+{
+    *rcCartridgeNameID: 329
+    *Fonts: LIST(14,19,20,21,22,23,24,25,26)
+}
+*FontCartridge: FC9
+{
+    *rcCartridgeNameID: 330
+    *Fonts: LIST(5,6,7,8,9,11,12,13,14,15,141)
+}
+*FontCartridge: FC10
+{
+    *rcCartridgeNameID: 331
+    *Fonts: LIST(231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,
++                   247,248)
+}
+*FontCartridge: FC11
+{
+    *rcCartridgeNameID: 332
+    *Fonts: LIST(154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,
++                   170,171,172,173,174,175,176,177,178,179,180,181,182)
+}
+*FontCartridge: FC12
+{
+    *rcCartridgeNameID: 333
+    *Fonts: LIST(183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,
++                   199,200,201,202,203,204,205,206,207,208)
+}
+*MinFontID: 16534
+*MaxFontID: 32768
+*switch: Resolution
+{
+    *case: Option1
+    {
+        *FontFormat: HPPCL_OUTLINE
+    }
+    *case: Option2
+    {
+        *FontFormat: HPPCL_RES
+    }
+}
+*Command: CmdSetFontID { *Cmd : "<1B>*c" %d{NextFontID}"D" }
+*Command: CmdSelectFontID { *Cmd : "<1B>(" %d{CurrentFontID}"X" }
+*Command: CmdSetCharCode { *Cmd : "<1B>*c" %d{NextGlyph}"E" }
+*Command: CmdUnderlineOn { *Cmd : "<1B>&dD" }
+*Command: CmdUnderlineOff { *Cmd : "<1B>&d@" }
+*Command: CmdDownloadPattern {*Cmd: "<1B>*c" %d{PatternBrushID}"G" "<1B>*c" %d{PatternBrushSize}"W" }
+*Command: CmdSelectPattern {*Cmd: "<1B>*c" %d{PatternBrushID}"G" "<1B>*v" %d{PatternBrushType}"T" }
+*Command: CmdSelectWhiteBrush { *Cmd : "<1B>*v1o1T" }
+*Command: CmdSelectBlackBrush { *Cmd : "<1B>*v0o0T" }
+*MinGrayFill: 1
+*MaxGrayFill: 100
+*Command: CmdSetRectWidth { *Cmd : "<1B>*c" %d{(RectXSize / 2) }"A" }
+*Command: CmdSetRectHeight { *Cmd : "<1B>*c" %d{(RectYSize / 2) }"B" }
+*Command: CmdRectGrayFill { *Cmd : "<1B>*c" %d{GrayPercentage }"g2P" }
+*Command: CmdRectWhiteFill { *Cmd : "<1B>*c1P" }
+*Command: CmdRectBlackFill { *Cmd : "<1B>*c0P" }
+

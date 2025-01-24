@@ -1,0 +1,235 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+LayoutFile=layout.inf
+Signature="$Windows NT$"
+ClassGUID={4d36e972-e325-11ce-bfc1-08002be10318}
+Class=Net
+Provider=%MSFT%
+DriverVer=10/01/2002,1.1.20.8
+
+[Manufacturer]
+%V_OSITECH% = OSITECH
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[OSITECH]
+%Osi7oS.DeviceDesc% = otc061.ndi, PCI\VEN_10B8&DEV_0006&SUBSYS_800213A2
+%OsiJoS.DeviceDesc% = otc062.ndi, PCI\VEN_10B8&DEV_0006&SUBSYS_800613A2
+
+;-------------------------------------------------------------------------------
+; Ositech Seven of Spades CardBus 10/100Mbps
+;
+[OTC061.ndi]
+AddReg          = 83C175.reg, otc061a.nt.reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; CardBus
+CopyFiles       = OtcethCB.CopyFiles
+
+[OTC061.ndi.Services]
+AddService = OtcethCB, 2, OtcethCB.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Ositech Jack of Spades CardBus 10/100Mbps + V.90
+;
+[OTC062.ndi]
+AddReg          = 83C175.reg, otc061a.nt.reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; CardBus
+CopyFiles       = OtcethCB.CopyFiles
+
+[OTC062.ndi.Services]
+AddService = OtcethCB, 2, OtcethCB.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Otceth Parameters
+;
+; 83C175 common
+[83C175.reg]
+HKR, ,                            DebugFlag, 0, "0"
+HKR, Ndi\params\BurstLength,      ParamDesc, 0, %BurstLength%
+HKR, Ndi\params\BurstLength,      default,   0, "0"
+HKR, Ndi\params\BurstLength,      type,      0, "enum"
+HKR, Ndi\params\BurstLength\enum, "0",       0, %Unlimited%
+HKR, Ndi\params\BurstLength\enum, "1",       0, " 1 DWORD"
+HKR, Ndi\params\BurstLength\enum, "2",       0, " 2 DWORDS"
+HKR, Ndi\params\BurstLength\enum, "4",       0, " 4 DWORDS"
+HKR, Ndi\params\BurstLength\enum, "8",       0, " 8 DWORDS"
+HKR, Ndi\params\BurstLength\enum, "16",      0, "16 DWORDS"
+HKR, Ndi\params\BurstLength\enum, "32",      0, "32 DWORDS"
+
+;Transmit buffers
+HKR, Ndi\params\MaxTransmits,      ParamDesc, 0, %TransmitBuffers%
+HKR, Ndi\params\MaxTransmits,      default,   0, "16"
+HKR, Ndi\params\MaxTransmits,      type,      0, "enum"
+HKR, Ndi\params\MaxTransmits\enum, "4",       0, " 4"
+HKR, Ndi\params\MaxTransmits\enum, "8",       0, " 8"
+HKR, Ndi\params\MaxTransmits\enum, "16",      0, "16"
+HKR, Ndi\params\MaxTransmits\enum, "20",      0, "20"
+
+;Receive buffers
+HKR, Ndi\params\MaxReceives,      ParamDesc, 0, %ReceiveBuffers%
+HKR, Ndi\params\MaxReceives,      default,   0, "32"
+HKR, Ndi\params\MaxReceives,      type,      0, "enum"
+HKR, Ndi\params\MaxReceives\enum, "8",       0, "  8"
+HKR, Ndi\params\MaxReceives\enum, "16",      0, " 16"
+HKR, Ndi\params\MaxReceives\enum, "32",      0, " 32"
+HKR, Ndi\params\MaxReceives\enum, "64",      0, " 64"
+HKR, Ndi\params\MaxReceives\enum, "96",      0, " 96"
+HKR, Ndi\params\MaxReceives\enum, "128",     0, "128"
+HKR, Ndi\params\MaxReceives\enum, "160",     0, "160"
+HKR, Ndi\params\MaxReceives\enum, "192",     0, "192"
+HKR, Ndi\params\MaxReceives\enum, "224",     0, "224"
+HKR, Ndi\params\MaxReceives\enum, "256",     0, "256"
+
+;Extra Receive buffers
+HKR, Ndi\params\ExtraReceives,      ParamDesc, 0, %ExtraReceiveBuffers%
+HKR, Ndi\params\ExtraReceives,      default,   0, "32"
+HKR, Ndi\params\ExtraReceives,      type,      0, "enum"
+HKR, Ndi\params\ExtraReceives\enum, "8",       0, "  8"
+HKR, Ndi\params\ExtraReceives\enum, "16",      0, " 16"
+HKR, Ndi\params\ExtraReceives\enum, "32",      0, " 32"
+HKR, Ndi\params\ExtraReceives\enum, "64",      0, " 64"
+HKR, Ndi\params\MaxReceives\enum,   "96",      0, " 96"
+HKR, Ndi\params\ExtraReceives\enum, "128",     0, "128"
+HKR, Ndi\params\MaxReceives\enum,   "160",     0, "160"
+HKR, Ndi\params\MaxReceives\enum,   "192",     0, "192"
+HKR, Ndi\params\MaxReceives\enum,   "224",     0, "224"
+HKR, Ndi\params\ExtraReceives\enum, "256",     0, "256"
+
+;10Mbps Early Transmit Theshold
+HKR, Ndi\params\TransmitThreshold10,      ParamDesc, 0, %TxThreshold10%
+HKR, Ndi\params\TransmitThreshold10,      default,   0, "64"
+HKR, Ndi\params\TransmitThreshold10,      type,      0, "enum"
+HKR, Ndi\params\TransmitThreshold10\enum, "16",      0, " 16 bytes"
+HKR, Ndi\params\TransmitThreshold10\enum, "32",      0, " 32 bytes"
+HKR, Ndi\params\TransmitThreshold10\enum, "64",      0, " 64 bytes"
+HKR, Ndi\params\TransmitThreshold10\enum, "128",     0, "128 bytes"
+HKR, Ndi\params\TransmitThreshold10\enum, "256",     0, "256 bytes"
+HKR, Ndi\params\TransmitThreshold10\enum, "512",     0, "512 bytes"
+
+;100Mbps Early Transmit Theshold
+HKR, Ndi\params\TransmitThreshold100,      ParamDesc, 0, %TxThreshold100%
+HKR, Ndi\params\TransmitThreshold100,      default,   0, "256"
+HKR, Ndi\params\TransmitThreshold100,      type,      0, "enum"
+HKR, Ndi\params\TransmitThreshold100\enum, "64",      0, "  64 bytes"
+HKR, Ndi\params\TransmitThreshold100\enum, "128",     0, " 128 bytes"
+HKR, Ndi\params\TransmitThreshold100\enum, "256",     0, " 256 bytes"
+HKR, Ndi\params\TransmitThreshold100\enum, "512",     0, " 512 bytes"
+HKR, Ndi\params\TransmitThreshold100\enum, "1024",    0, "1024 bytes"
+
+;Early Receive Theshold
+HKR, Ndi\params\ReceiveThreshold,      ParamDesc, 0, %RxThreshold%
+HKR, Ndi\params\ReceiveThreshold,      default,   0, "128"
+HKR, Ndi\params\ReceiveThreshold,      type,      0, "enum"
+HKR, Ndi\params\ReceiveThreshold\enum, "16",      0, "  16 bytes"
+HKR, Ndi\params\ReceiveThreshold\enum, "32",      0, "  32 bytes"
+HKR, Ndi\params\ReceiveThreshold\enum, "64",      0, "  64 bytes"
+HKR, Ndi\params\ReceiveThreshold\enum, "128",     0, " 128 bytes"
+HKR, Ndi\params\ReceiveThreshold\enum, "256",     0, " 256 bytes"
+HKR, Ndi\params\ReceiveThreshold\enum, "512",     0, " 512 bytes"
+HKR, Ndi\params\ReceiveThreshold\enum, "1024",    0, "1024 bytes"
+
+; Network address override
+HKR, Ndi\params\NetworkAddress, ParamDesc, 0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress, type,      0, "edit"
+HKR, Ndi\params\NetworkAddress, LimitText, 0, "18"
+HKR, Ndi\params\NetworkAddress, UpperCase, 0, "1"
+HKR, Ndi\params\NetworkAddress, default,   0, ""
+HKR, Ndi\params\NetworkAddress, base,      0, "16"
+HKR, Ndi\params\NetworkAddress, optional,  0, "1"
+
+;Early transmit
+HKR, Ndi\params\EarlyTXOff,      ParamDesc, 0, %DisableETX%
+HKR, Ndi\params\EarlyTXOff,      default,   0, "1"
+HKR, Ndi\params\EarlyTXOff,      type,      0, "enum"
+HKR, Ndi\params\EarlyTXOff\enum, "0",       0, %No%
+HKR, Ndi\params\EarlyTXOff\enum, "1",       0, %Yes%
+
+;Early receive
+HKR, Ndi\params\EarlyRXOff,      ParamDesc, 0, %DisableERX%
+HKR, Ndi\params\EarlyRXOff,      default,   0, "0"
+HKR, Ndi\params\EarlyRXOff,      type,      0, "enum"
+HKR, Ndi\params\EarlyRXOff\enum, "0",       0, %No%
+HKR, Ndi\params\EarlyRXOff\enum, "1",       0, %Yes%
+
+;PCI Memory Read Multiple
+HKR, Ndi\params\ReadMultiple,      ParamDesc, 0, %PCIMemReadMul%
+HKR, Ndi\params\ReadMultiple,      default,   0, "1"
+HKR, Ndi\params\ReadMultiple,      type,      0, "enum"
+HKR, Ndi\params\ReadMultiple\enum, "0",       0, %No%
+HKR, Ndi\params\ReadMultiple\enum, "1",       0, %Yes%
+
+;LineSpeed
+HKR, Ndi\params\LineSpeed,      ParamDesc, 0, %NetworkMediaType%
+HKR, Ndi\params\LineSpeed,      default,   0, "0"
+HKR, Ndi\params\LineSpeed,      type,      0, "enum"
+HKR, Ndi\params\LineSpeed\enum, "0",       0, %Auto%
+HKR, Ndi\params\LineSpeed\enum, "2",       0, %10BaseT%
+HKR, Ndi\params\LineSpeed\enum, "32770",   0, %10BaseTFD%
+HKR, Ndi\params\LineSpeed\enum, "8",       0, %100BaseTX%
+HKR, Ndi\params\LineSpeed\enum, "32776",   0, %100BaseTXFD%
+HKR, Ndi\params\LineSpeed\enum, "65535",   0, %Power%
+
+[otc061a.nt.reg]
+HKR, Ndi,            Service,    0, "OTCETHCB"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+;----------------------------------------------------------------------------
+; OtcethCB Service and Install
+;
+[OtcethCB.CopyFiles]
+otc06x5.sys,,,2
+
+[OtcethCB.Service]
+DisplayName    = %OtcethCB.Service.DispName%
+ServiceType    = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType      = 3 ;%SERVICE_DEMAND_START%
+ErrorControl   = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\otc06x5.sys
+LoadOrderGroup = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+OtcethCB.CopyFiles = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MSFT					  = "Microsoft"
+V_OSITECH                 = "Ositech"
+
+BurstLength               = "Burst Length"
+TransmitBuffers           = "Transmit Buffers"
+ReceiveBuffers            = "Receive Buffers"
+ExtraReceiveBuffers       = "Extra Receive Buffers"
+TxThreshold10             = "Transmit Threshold 10"
+TxThreshold100            = "Transmit Threshold 100"
+RxThreshold               = "Receive Threshold"
+NetworkAddress            = "Network Address"
+DisableETX                = "Disable Early Transmit"
+DisableERX                = "Disable Early Receive"
+Yes                       = "Yes"
+No                        = "No"
+PCIMemReadMul             = "PCI Memory Read Multiple"
+NetworkMediaType          = "Network Media Type"
+Auto                      = "Auto Select"
+10BaseT                   = "10BASE-T (10Mbps)"
+10BaseTFD                 = "10BASE-T Full Duplex"
+100BaseTX                 = "100BASE-TX (100Mbps)"
+100BaseTXFD               = "100BASE-TX Full Duplex"
+Power                     = "Power Save Auto Select"
+Unlimited                 = "Unlimited"
+
+Osi7oS.DeviceDesc         = "Ositech 7oS CardBus 10/100 Ethernet Adapter"
+OsiJoS.DeviceDesc         = "Ositech JoS CardBus 10/100 Ethernet Adapter"
+OtcethCB.Service.DispName = "Ositech CardBus Ethernet Driver"

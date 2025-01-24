@@ -1,0 +1,98 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %Msft%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,5.0.11.6504
+
+[Manufacturer]
+%FORE% = FORE
+
+[ControlFlags]
+ExcludeFromSelect    = *
+
+[FORE]
+%FOREHE.DeviceDesc%  = FOREHE.ndi, PCI\VEN_1127&DEV_0400 ;FOREHE
+%FOREHE.DeviceDesc%  = FOREHE.ndi, PCI\VEN_1127&DEV_0400&SUBSYS_04001127
+
+;-------------------------------------------------------------------------------
+; FOREHE 
+;
+[FOREHE.ndi]
+AddReg		= FOREHE.ndi.reg
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType 	= 5
+CopyFiles	= FOREHE.CopyFiles
+
+[FOREHE.ndi.Services]
+AddService 	= FOREHE, 2, FOREHE.AddService, FOREHE.AddEventLog
+
+;-------------------------------------------------------------------------------
+; FOREHE
+;
+[FOREHE.ndi.reg]
+HKR, Ndi,                        Service,    0, "FOREHE"
+HKR, Ndi\Interfaces,             DefLower,   0, "atm"
+HKR, Ndi\Interfaces,             LowerRange, 0, "atm"
+HKR, Ndi\Interfaces,             DefUpper,   0, "ndisatm"
+HKR, Ndi\Interfaces,             UpperRange, 0, "ndisatm"
+
+HKR, Ndi\params\Sonet,           ParamDesc,  0, %OC3Framing%
+HKR, Ndi\params\Sonet,           default,    0, "1"
+HKR, Ndi\params\Sonet,           type,       0, "enum"
+HKR, Ndi\params\Sonet\enum,      "0",        0, %SDH%
+HKR, Ndi\params\Sonet\enum,      "1",        0, %SONET%
+
+HKR, Ndi\params\Unassigned,      ParamDesc,  0, %EmptyCellInsertion%
+HKR, Ndi\params\Unassigned,      default,    0, "1"
+HKR, Ndi\params\Unassigned,      type,       0, "enum"
+HKR, Ndi\params\Unassigned\enum, "0",        0, %Idle%
+HKR, Ndi\params\Unassigned\enum, "1",        0, %Unassigned%
+
+;-------------------------------------------------------------------------------
+; FOREHE Driver and Service
+;
+[FOREHE.CopyFiles]
+FOREHE.SYS,,,2
+
+[FOREHE.AddService]
+DisplayName    = %FOREHE.Service.DispName%
+ServiceType    = 1 ;SERVICE_KERNEL_DRIVER
+StartType      = 3 ;SERVICE_DEMAND_START
+ErrorControl   = 1 ;SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\FOREHE.sys
+LoadOrderGroup = NDIS
+
+[FOREHE.AddEventLog]
+AddReg = FOREHE.AddEventLog.Reg
+
+[FOREHE.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; Destination Dirs
+;
+[DestinationDirs]
+FOREHE.CopyFiles   = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Msft                      = "Microsoft"
+FORE                      = "FORE Systems, Inc."
+
+OC3Framing                = "OC3 Framing"
+SDH                       = "SDH"
+SONET                     = "SONET"
+EmptyCellInsertion        = "Empty Cell Insertion"
+Idle                      = "Idle"
+Unassigned                = "Unassigned"
+
+FOREHE.DeviceDesc         = "ForeRunnerHE ATM Adapter" 
+
+FOREHE.Service.DispName   = "ForeRunnerHE ATM Driver"

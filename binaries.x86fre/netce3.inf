@@ -1,0 +1,199 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,2.11.1.0
+
+[Manufacturer]
+%XIRCOM%  = XIRCOM
+%INTEL%   = INTEL
+%GENERIC% = GENERIC
+%TOSHIBA% = TOSHIBA
+%COMPAQ%  = COMPAQ
+%ACCTON%  = ACCTON
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[XIRCOM]
+%XIRCOMCE3.DeviceDesc%  = XIRCOMCE3.ndi,PCMCIA\XIRCOM-CREDITCARD_10/100-B548   ; Xircom CC Ethernet 10/100
+%XIRCOMRE.DeviceDesc%   = XIRCOMCE3.ndi,PCMCIA\Xircom-RealPort2_Ethernet_10/100_Adapter-CDB0
+
+[INTEL]
+%M16A.DeviceDesc%       = XIRCOMCE3.ndi, PCMCIA\INTEL-ETHEREXPRESS(TM)_PRO/100_PC_CARD_MOBILE_ADAPTER16-33F8 ; M16A
+
+[GENERIC]
+%GENA.DeviceDesc%       = XIRCOMCE3.ndi, PCMCIA\GENERIC-ETHERNET_10/100_PC_CARD-7FEC	;GENA
+
+[TOSHIBA]
+%IPC5008A.DeviceDesc%   = XIRCOMCE3.ndi, PCMCIA\TOSHIBA-10/100_ETHERNET_PC_CARD-6DD6 ; IPC5008A
+%IPC5008A.DeviceDesc%   = XIRCOMCE3.ndi, PCMCIA\Toshiba-10/100_Ethernet_PC_Card-476D ; IPC5008A
+
+[COMPAQ]
+%CPQEPC.DeviceDesc%     = XIRCOMCE3.ndi, PCMCIA\COMPAQ-NETELLIGENT_10/100_PC_CARD-02C3 ; CPQEPC
+
+[ACCTON]
+%EN2226.DeviceDesc%     = XIRCOMCE3.ndi, PCMCIA\ACCTON-FAST_ETHERCARD-16_10/100_PC_Card-E1E4 ; EN2226
+
+;-------------------------------------------------------------------------------
+[XIRCOMCE3.ndi]
+AddReg       	= Addreg.NIC.Params,nt.reg
+Characteristics = 0x84
+BusType      	= 8
+CopyFiles    	= ce3.CopyFiles
+
+;-------------------------------------------------------------------------------
+[XIRCOMCE3.ndi.Services]
+AddService   = CE3, 2, XIRCOMCE3.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+[nt.reg]
+HKR, Ndi\Interfaces              ,UpperRange       ,0, "ndis5"
+HKR, Ndi\Interfaces              ,LowerRange       ,0, "ethernet"
+HKR, Ndi                         ,Service          ,0, "CE3"
+
+;-------------------------------------------------------------------------------
+[XIRCOMCE3.Service]
+DisplayName    = %ce3.Service.DispName%
+ServiceType    = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType      = 3 ;%SERVICE_DEMAND_START%
+ErrorControl   = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ce3n5.sys
+LoadOrderGroup = NDIS
+
+;-------------------------------------------------------------------------------
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\ce3n5.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-------------------------------------------------------------------------------
+[Addreg.NIC.Params]
+;
+; These are the user-configurable parameters which the driver parses.
+HKR,Ndi\params\CableType             ,ParamDesc  ,0, %CableType%
+HKR,Ndi\params\CableType             ,default    ,0, "0"
+HKR,Ndi\params\CableType             ,type       ,0, "enum"
+HKR,Ndi\params\CableType\enum        ,0          ,0, %AutoDetect%
+HKR,Ndi\params\CableType\enum        ,1          ,0, %TwistedPair%
+HKR,Ndi\params\CableType\enum        ,2          ,0, %Coax%
+
+HKR,Ndi\Params\DynamicLinkDetect     ,ParamDesc  ,0, %DynamicLinkDetect%
+HKR,Ndi\Params\DynamicLinkDetect     ,default    ,0, "1"
+HKR,Ndi\Params\DynamicLinkDetect     ,type       ,0, "enum"
+HKR,Ndi\Params\DynamicLinkDetect\enum,0          ,0, %OFF%
+HKR,Ndi\Params\DynamicLinkDetect\enum,1          ,0, %ON%
+
+HKR,Ndi\params\EarlyTransmit         ,ParamDesc  ,0, %EarlyTransmit%
+HKR,Ndi\params\EarlyTransmit         ,default    ,0, "1"
+HKR,Ndi\params\EarlyTransmit         ,type       ,0, "enum"
+HKR,Ndi\params\EarlyTransmit\enum    ,0          ,0, %OFF%
+HKR,Ndi\params\EarlyTransmit\enum    ,1          ,0, %ON%
+
+HKR,Ndi\Params\InitDelay             ,ParamDesc  ,0, %InitializationDelay%
+HKR,Ndi\Params\InitDelay             ,type       ,0, "INT"
+HKR,Ndi\Params\InitDelay             ,default    ,0, "0"
+HKR,Ndi\Params\InitDelay             ,optional   ,0, "1"
+HKR,Ndi\Params\InitDelay             ,min        ,0, "0"
+HKR,Ndi\Params\InitDelay             ,max        ,0, "60"
+HKR,Ndi\Params\InitDelay             ,step       ,0, "1"
+
+HKR,Ndi\params\LineSpeed             ,ParamDesc  ,0, %LineSpeed%
+HKR,Ndi\params\LineSpeed             ,default    ,0, "0"
+HKR,Ndi\params\LineSpeed             ,type       ,0, "enum"
+HKR,Ndi\params\LineSpeed\enum        ,0          ,0, %AutoDetect%
+HKR,Ndi\params\LineSpeed\enum        ,1          ,0, %10Mbps%
+HKR,Ndi\params\LineSpeed\enum        ,2          ,0, %100Mbps%
+
+HKR,Ndi\params\LineMode              ,ParamDesc  ,0, %LineMode%
+HKR,Ndi\params\LineMode              ,default    ,0, "0"
+HKR,Ndi\params\LineMode              ,type       ,0, "enum"
+HKR,Ndi\params\LineMode\enum         ,0          ,0, %AutoDetect%
+HKR,Ndi\params\LineMode\enum         ,1          ,0, %HalfDuplex%
+HKR,Ndi\params\LineMode\enum         ,2          ,0, %FullDuplex%
+
+HKR,Ndi\params\LinkIntegrity         ,ParamDesc  ,0, %LinkIntegrity%
+HKR,Ndi\params\LinkIntegrity         ,default    ,0, "1"
+HKR,Ndi\params\LinkIntegrity         ,type       ,0, "enum"
+HKR,Ndi\params\LinkIntegrity\enum    ,0          ,0, %OFF%
+HKR,Ndi\params\LinkIntegrity\enum    ,1          ,0, %ON%
+
+HKR,Ndi\params\Mode                  ,ParamDesc  ,0, %Mode%
+HKR,Ndi\params\Mode                  ,default    ,0, "0"
+HKR,Ndi\params\Mode                  ,type       ,0, "enum"
+HKR,Ndi\params\Mode\enum             ,0          ,0, %IOMode%
+HKR,Ndi\params\Mode\enum             ,1          ,0, %MemMap%
+
+HKR,Ndi\params\NetworkAddress        ,ParamDesc  ,0, %NetworkAddress%
+HKR,Ndi\params\NetworkAddress        ,default    ,0, ""
+HKR,Ndi\params\NetworkAddress        ,type       ,0, "edit"
+HKR,Ndi\params\NetworkAddress        ,LimitText  ,0, "12"
+HKR,Ndi\params\NetworkAddress        ,UpperCase  ,0, "1"
+HKR,Ndi\params\NetworkAddress        ,optional   ,0, "1"
+
+; Default = 7K; 1K-29K step 1K
+HKR,Ndi\params\TransmitBufferSize    ,ParamDesc  ,0, %TransmitBufferSize%
+HKR,Ndi\params\TransmitBufferSize    ,default    ,0, "11264"
+HKR,Ndi\params\TransmitBufferSize    ,type       ,0, "word"
+HKR,Ndi\params\TransmitBufferSize    ,min        ,0, "1024"
+HKR,Ndi\params\TransmitBufferSize    ,max        ,0, "29696"
+HKR,Ndi\params\TransmitBufferSize    ,step       ,0, "1024"
+
+;-------------------------------------------------------------------------------
+[ce3.CopyFiles]
+CE3N5.SYS,,,2
+
+;-------------------------------------------------------------------------------
+[DestinationDirs]
+ce3.CopyFiles  = 12
+DefaultDestDir = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MSFT       = "Microsoft"
+XIRCOM     = "Xircom"
+INTEL      = "Intel"
+GENERIC    = "Generic"
+TOSHIBA    = "Toshiba"
+COMPAQ     = "Compaq"
+ACCTON     = "Accton"
+
+XIRCOMCE3.DeviceDesc	  = "Xircom Ethernet Adapter 10/100"
+XIRCOMRE.DeviceDesc	  = "Xircom RealPort2 Ethernet 10/100 Adapter"
+M16A.DeviceDesc           = "Intel EtherExpress PRO/100 Mobile PC Card 16 Adapter"
+GENA.DeviceDesc           = "Ethernet 10/100 PC Card"
+IPC5008A.DeviceDesc       = "Toshiba IPC5008A 10/100 Ethernet PC Card"
+CPQEPC.DeviceDesc         = "Compaq Netelligent 10/100 PC Card"
+EN2226.DeviceDesc         = "Accton Fast Ethernet-16 10/100 PC Card"
+
+ce3.Service.DispName	  = "Xircom Ethernet Adapter 10/100 Service"
+
+CableType		  = "CableType"
+DynamicLinkDetect	  = "DynamicLinkDetect"
+OFF		          = "OFF"
+ON			  = "ON"
+EarlyTransmit		  = "EarlyTransmit"
+InitializationDelay	  = "InitializationDelay"
+LineSpeed		  = "LineSpeed"
+AutoDetect		  = "AutoDetect"
+10Mbps			  = "10 Mbps"
+100Mbps			  = "100 Mbps"
+LineMode		  = "LineMode"
+HalfDuplex		  = "HalfDuplex"
+FullDuplex		  = "FullDuplex"
+LinkIntegrity		  = "LinkIntegrity"
+Mode			  = "Mode"
+IOMode                    = "I/O Mode"
+MemMap                    = "Memory Mapped Mode"
+NetworkAddress		  = "NetworkAddress"
+TransmitBufferSize	  = "TransmitBufferSize"
+TwistedPair		  = "10BT/100BTX (TP)"
+Coax			  = "10B2 (Coax)"

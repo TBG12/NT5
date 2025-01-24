@@ -1,0 +1,12 @@
+:Base dialer.hlp>proc4
+:Title Dialer Help
+:Index Dialer Help =dialer.hlp
+1 Getting Started
+2 Dialing your phone=DIALER_DIAL
+2 Specifying which calling card to use =DIALER_OPTIONS_CALLCARD
+2 Setting up the location you're calling from =DIALER_OPTIONS_LOCATIONS
+1 Managing Phone Numbers
+2 Storing frequently dialed numbers  =DIALER_STORE_FREQUENT
+2 Dialing stored phone numbers  =DIALER_USE_STORED
+1 Troubleshooting
+2 See the Modem Troubleshooter if you have modem problems=!EF(`HH.EXE',`MS-ITS:Windows\\help\\misc.chm::/hsc_tshooter_list.htm',1)

@@ -1,0 +1,892 @@
+*%% 
+*%% HP DeskJet 69xC
+*%%
+*%% Copyright 1998-1999 Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpfdj6xx.gpd"
+
+
+*%%
+*%% Macros
+*%%
+*Macros: OEMProductName
+{
+    OEM_DJ_69x: "HTPD<00 00 00 04 0C 00 00 00>"
+}
+
+*Macros: OEMPhotoPenDyeFormats
+{
+    OEM_DF_K632_C632_PHOTO_PEN:
++       "HTDN<00 00 00 02 06 00>"
++       "HTDF<00 00 00 60>"
++           "<00 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++           "<02 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++           "<04 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++           "<06 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++           "<03 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++           "<05 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
+}
+
+*Macros: PCLPhotoPenPrintModeCRDCommands
+{
+    PCL_CRD_K632_C632_PHOTO_PEN: 
++       "<1B>*g38W<02060258012C00020258012C00020258012C00020258012C00020258012C00020258012C0002>"
+}
+
+*% collection of the macros common to all modes for this product
+*Macros: OEMCommonCombinations
+{
+    OEM_COMMON_INFO: =OEM_PCL9 =OEM_PCL_MARG_26 =OEM_DJ_69x
+}
+
+
+*%%
+*%% Standard Features
+*%%
+*Feature: HPPhotoCartridge
+{
+    *rcNameID: =HP_PHOTO_CARTRIDGE_DISPLAY
+    *ConflictPriority: 15
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: NotInstalled
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED_DISPLAY
+    }
+    *Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED_DISPLAY
+    }
+}
+
+
+*Feature: MediaType
+{
+    *rcNameID: =MEDIA_TYPE_DISPLAY
+    *ConflictPriority: 10
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: STANDARD
+    *Option: STANDARD
+    {
+        *rcNameID: =PLAIN_PAPER_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_PLAIN
+        }
+
+	    EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+    }
+    *Option: HP_PREMIUM_INKJET_PAPER
+    {   
+        *rcNameID: =HP_PREMIUM_INKJET_PAPER_DISPLAY
+        *OptionID: =HP_PREMIUM_INKJET_PAPER_ID
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_SPECIAL
+        }
+ 
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: HP_PHOTO_PAPER
+    {
+        *rcNameID: =HP_PHOTO_PAPER_DISPLAY
+        *OptionID: =HP_PHOTO_PAPER_ID
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_GLOSSY
+        }
+
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: GLOSSY
+    {   
+        *rcNameID: =HP_PREMIUM_PHOTO_PAPER_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_GLOSSY
+        }
+
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: TRANSPARENCY
+    {
+        *rcNameID: =HP_PREMIUM_INKJET_TRANSPARENCY_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_TRANSPARENCY
+        }
+
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+}
+
+
+*Feature: PQ
+{
+    *rcNameID: =PRINT_QUALITY_DISPLAY
+    *ConflictPriority: 20
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: Normal
+    *Option: Econo
+    {
+        *rcNameID: =DRAFT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.47
+            *Cmd: =PCL_PQ_ECONO
+        }
+    }
+    *Option: Normal
+    {
+        *rcNameID: =NORMAL_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.47
+            *Cmd: =PCL_PQ_NORMAL
+        }
+    }
+    *Option: Best
+    {
+        *rcNameID: =BEST_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.47
+            *Cmd: =PCL_PQ_BEST
+        }
+    }
+}
+
+
+*Feature: PM
+{
+    *rcNameID: =PRINT_MODE_DISPLAY
+    *ConflictPriority: 40
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: PlainNormalColor
+    *Option: PlainEconoMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL9
+
+        *Constraints: LIST(ColorMode.Color4, ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainNormalMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL9
+
+        *Constraints: LIST(ColorMode.Color4, ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainBestMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL9
+
+        *Constraints: LIST(ColorMode.Color4, ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+    }
+    *Option: PlainEconoColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K332_C332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL9
+
+        *Constraints: LIST(ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainNormalColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C332 =OEM_MEDIA_HP_PLAIN =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4, ColorMode.Gray8)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainNormalColorPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PLAIN =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4, ColorMode.Gray8)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainBestColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C332 =OEM_MEDIA_HP_PLAIN =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4, ColorMode.Gray8)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainBestColorPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PLAIN =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4, ColorMode.Gray8)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: SpecialNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C332 =OEM_MEDIA_HP_PREMIUM_INKJET =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: SpecialNormalPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PREMIUM_INKJET =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: SpecialBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632 =OEM_MEDIA_HP_PREMIUM_INKJET =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: SpecialBestPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PREMIUM_INKJET =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PhotoNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C332 =OEM_MEDIA_HP_PHOTO =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PhotoNormalPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PHOTO =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PhotoBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632 =OEM_MEDIA_HP_PHOTO =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PhotoBestPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PHOTO =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PremPhotoNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C332 =OEM_MEDIA_HP_PREMIUM_PHOTO =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PremPhotoNormalPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PREMIUM_PHOTO =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PremPhotoBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632 =OEM_MEDIA_HP_PREMIUM_PHOTO =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PremPhotoBestPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PREMIUM_PHOTO =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: TransparencyNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632 =OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: TransparencyNormalPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: TransparencyBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632 =OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: TransparencyBestPhotoPen
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K632_C632_PHOTO_PEN
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K632_C632_PHOTO_PEN =OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY =OEM_PQ_BEST
+ 
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r600x600)
+   }
+}
+
+
+*%%
+*%% Print Quality Macros
+*%%
+*switch: MediaType
+{
+    *case: STANDARD
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Mono, PM.PlainEconoMono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Mono, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Mono, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Mono, PM.PlainEconoMono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Mono, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Mono, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *default:
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST(ColorMode.Color4,  PM.PlainEconoColor,          PQ.Econo,  Resolution.r300x300)
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.PlainNormalColorPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.PlainBestColorPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST(ColorMode.Color4,  PM.PlainEconoColor,  PQ.Econo,  Resolution.r300x300)
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.PlainNormalColor, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.PlainBestColor,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                }
+            }
+        }
+    }
+    *case: HP_PREMIUM_INKJET_PAPER
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.SpecialNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.SpecialBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.SpecialNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.SpecialBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+            *case: Gray8
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.SpecialNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.SpecialBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.SpecialNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.SpecialBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+            *default:
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.SpecialNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.SpecialBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.SpecialNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.SpecialBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+        }
+    }
+    *case: HP_PHOTO_PAPER
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PhotoNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PhotoBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PhotoNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PhotoBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+            *case: Gray8
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PhotoNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PhotoBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PhotoNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PhotoBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+            *default:
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.PhotoNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.PhotoBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.PhotoNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.PhotoBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+        }
+    }
+    *case: GLOSSY
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremPhotoNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremPhotoBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremPhotoNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremPhotoBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+            *case: Gray8
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremPhotoNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremPhotoBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremPhotoNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremPhotoBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+            *default:
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.PremPhotoNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.PremPhotoBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.PremPhotoNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.PremPhotoBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BESTQUALITY
+                    }
+                }
+            }
+        }
+    }
+    *case: TRANSPARENCY
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.TransparencyNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.TransparencyBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.TransparencyNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.TransparencyBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                }
+            }
+            *case: Gray8
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.TransparencyNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.TransparencyBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Gray8, PM.TransparencyNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Gray8, PM.TransparencyBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                }
+            }
+            *default:
+            {
+                *switch: HPPhotoCartridge
+                {
+                    *case: Installed
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.TransparencyNormalPhotoPen, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.TransparencyBestPhotoPen,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                    *case: NotInstalled
+                    {
+                        *DraftQualitySettings:  LIST()
+                        *BetterQualitySettings: LIST(ColorMode.Color24, PM.TransparencyNormal, PQ.Normal, Resolution.r300x300)
+                        *BestQualitySettings:   LIST(ColorMode.Color24, PM.TransparencyBest,   PQ.Best,   Resolution.r300x300)
+                        *DefaultQuality: BETTERQUALITY
+                    }
+                }
+            }
+        }
+    }
+}

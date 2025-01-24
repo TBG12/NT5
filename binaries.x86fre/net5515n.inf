@@ -1,0 +1,108 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %Msft%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,5.1.2257.1
+
+[Manufacturer]
+%INTRPH%=INTERPHASE
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[INTERPHASE]
+%PCI\VEN_107E&DEV_0008.DeviceDesc% = IP5515.ndi, PCI\VEN_107E&DEV_0008 ;Atlantic
+%PCI\VEN_107E&DEV_0008.DeviceDesc% = IP5515.ndi, PCI\VEN_107E&DEV_0008&SUBSYS_0008107E
+
+[IP5515.ndi.NT]
+AddReg          = IP5515.ndi.reg
+BusType         = 5
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_REMOVEABLE | NCF_HAS_UI
+CopyFiles       = IP5515.CopyFiles
+
+[IP5515.ndi.reg]
+HKR, Ndi,            Service,    0, "IP5515"
+HKR, Ndi\Interfaces, LowerRange, 0, "atm"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndisatm"
+
+HKR, Ndi\params\VcHashTableSize, ParamDesc, 0, %VcHashTableSize%
+HKR, Ndi\params\VcHashTableSize, default,   0, "20"
+HKR, Ndi\params\VcHashTableSize, min,       0, "13"
+HKR, Ndi\params\VcHashTableSize, max,       0, "32"
+HKR, Ndi\params\VcHashTableSize, step,      0, "1"
+HKR, Ndi\params\VcHashTableSize, base,      0, "10"
+HKR, Ndi\params\VcHashTableSize, type,      0, "int"
+
+HKR, Ndi\params\ReceiveBufferSize, ParamDesc, 0, %ReceiveBufferSize%
+HKR, Ndi\params\ReceiveBufferSize, default,   0, "0"
+HKR, Ndi\params\ReceiveBufferSize, min,       0, "0"
+HKR, Ndi\params\ReceiveBufferSize, max,       0, "10240"
+HKR, Ndi\params\ReceiveBufferSize, step,      0, "1024"
+HKR, Ndi\params\ReceiveBufferSize, base,      0, "10"
+HKR, Ndi\params\ReceiveBufferSize, type,      0, "int"
+
+HKR, Ndi\params\NumberOfMapRegisters, ParamDesc, 0, %NumberOfMapRegisters%
+HKR, Ndi\params\NumberOfMapRegisters, default,   0, "200"
+HKR, Ndi\params\NumberOfMapRegisters, min,       0, "32"
+HKR, Ndi\params\NumberOfMapRegisters, max,       0, "200"
+HKR, Ndi\params\NumberOfMapRegisters, step,      0, "1"
+HKR, Ndi\params\NumberOfMapRegisters, base,      0, "10"
+HKR, Ndi\params\NumberOfMapRegisters, type,      0, "int"
+
+HKR, Ndi\params\SUNIMode, ParamDesc, 0, %SUNIMode%
+HKR, Ndi\params\SUNIMode, default,   0, "0"
+HKR, Ndi\params\SUNIMode, min,       0, "0"
+HKR, Ndi\params\SUNIMode, max,       0, "1"
+HKR, Ndi\params\SUNIMode, step,      0, "1"
+HKR, Ndi\params\SUNIMode, base,      0, "10"
+HKR, Ndi\params\SUNIMode, type,      0, "int"
+
+
+[IP5515.ndi.NT.Services]
+AddService = ip5515, 2, ip5515.AddService, IP5515.AddEventLog
+
+[ip5515.AddService]
+DisplayName    = %ip5515.Service.DispName%
+ServiceType    = 1    ;SERVICE_KERNEL_DRIVER
+StartType      = 3    ;SERVICE_DEMAND_START
+ErrorControl   = 1    ;SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ip5515.sys
+LoadOrderGroup = NDIS
+
+[IP5515.AddEventLog]
+AddReg = IP5515.AddEventLog.Reg
+
+[IP5515.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[IP5515.CopyFiles]
+ip5515.sys,,,2
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+DefaultDestDir   = 12 ; Drivers directory
+IP5515.CopyFiles = 12
+
+;
+; Translatable strings
+;
+
+[Strings]
+Msft    = "Microsoft"
+INTRPH  = "Interphase"
+
+VcHashTableSize = "VC Hash Table Size"
+ReceiveBufferSize = "Receive Buffer Size"
+NumberOfMapRegisters = "Number Of Transmit Map Registers"
+SUNIMode = "SUNI Mode: SONET-0, SDH-1"
+
+PCI\VEN_107E&DEV_0008.DeviceDesc = "Interphase 5525/5575 PCI ATM Adapter"
+
+ip5515.Service.DispName = "Interphase ATM Adapter Driver"

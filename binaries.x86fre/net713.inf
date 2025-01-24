@@ -1,0 +1,109 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Msft%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,2.13.2195.1
+
+[Manufacturer]
+%Dlink%     = Dlink
+%Mxic%      = Mxic
+%NDC%       = NDC
+
+[ControlFlags]
+ExcludeFromSelect  = *
+
+[Dlink]
+%DL0531.DeviceDesc%  = MX0531.ndi, PCI\VEN_10d9&DEV_0531&SUBSYS_12001186 ; D-Link DFE-540TX ProFAST 10/100 Adapter
+
+[Mxic]
+%MX0531.DeviceDesc%  = MX0531.ndi, PCI\VEN_10d9&DEV_0531                 ; MXIC MX98715 ACPI
+
+[NDC]
+%NDC0531.DeviceDesc% = MX0531.ndi, PCI\VEN_10d9&DEV_0531&SUBSYS_811015E8 ; SOHOware 10/100 PCI Network Adapter
+
+;-------------------------------------------------------------------------------
+; MXIC MX98715 PCI Fast Ethernet Adapters (10/100)
+;
+[MX0531.ndi]
+AddReg          = MX0531.id.reg, MXNIC.reg, params.reg
+BusType         = 5
+Characteristics = 0x84
+CopyFiles       = mxic.CopyFiles
+
+[MX0531.ndi.Services]
+AddService      = mxnic, 2, mx9871x.Service, common.EventLog
+
+[MX0531.id.reg]
+HKR, , AdapterCFID, 0, "053110d9"
+
+;-------------------------------------------------------------------------------
+; MXNIC Advanced Properties
+;
+[params.reg]
+; Connection Type
+HKR, Ndi\params\ConnectionType,      ParamDesc,   0, %ConnectionType%
+HKR, Ndi\params\ConnectionType,      default,     0, "0"
+HKR, Ndi\params\ConnectionType,      type,        0, "enum"
+HKR, Ndi\params\ConnectionType\enum, 0,           0, %Automatic%
+HKR, Ndi\params\ConnectionType\enum, 1,           0, %100FD%
+HKR, Ndi\params\ConnectionType\enum, 2,           0, %100%
+HKR, Ndi\params\ConnectionType\enum, 3,           0, %10FD%
+HKR, Ndi\params\ConnectionType\enum, 4,           0, %10%
+
+;-------------------------------------------------------------------------------
+; MXNIC Service and Driver
+;
+[MXNIC.reg]
+; Interfaces
+HKR, Ndi,                            Service,     0, "MXNIC"
+HKR, Ndi\Interfaces,                 UpperRange,  0, "ndis5"
+HKR, Ndi\Interfaces,                 LowerRange,  0, "ethernet"
+HKR, ,                               AdapterType, 0, "5"
+HKR, ,                               BusType,     0, "5"
+
+[mx9871x.Service]
+DisplayName     = %mx9871x.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\mxnic.sys
+LoadOrderGroup  = NDIS
+
+[mxic.CopyFiles]
+mxnic.sys,,,2
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+mxic.CopyFiles  = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Msft                     = "Microsoft"
+Dlink                    = "D-Link"
+Mxic                     = "Macronix"
+NDC                      = "NDC"  
+
+ConnectionType           = "Connection Type"
+Automatic                = "Auto Negotiate"
+10                       = "10 Mbps"
+100                      = "100 Mbps"
+10FD                     = "10 Mbps Full Duplex"
+100FD                    = "100 Mbps Full Duplex"
+
+DL0531.DeviceDesc        = "D-Link DFE-540TX ProFAST 10/100 Adapter"
+MX0531.DeviceDesc        = "Macronix MX98715-Based Ethernet Adapter (Generic)"
+NDC0531.DeviceDesc       = "SOHOware 10/100 PCI Network Adapter"
+
+mx9871x.Service.DispName = "Macronix MX987xx Family Fast Ethernet NT Driver"

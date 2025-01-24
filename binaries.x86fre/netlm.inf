@@ -1,0 +1,79 @@
+; netlm.inf
+; 
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+Signature  = "$Windows NT$"
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %MSFT%
+Class      = Net
+DriverVer=10/01/2002,5.0.2128.1
+
+[Manufacturer]
+%D-Link%   = D-Link
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[D-Link]
+%MfabcA% = LMNDIS.ndi,MF\FE560_DEV1
+
+[LMNDIS.ndi.NT]
+Characteristics = 0x84
+BusType         = 8
+AddReg          = common.reg, LMNDIS.ndi.registry
+CopyFiles       = LMNDIS.ndis5.CopyFiles
+
+[LMNDIS.ndi.NT.Services]
+AddService = LMNDIS3, 2, LMNDIS.Service, LMNDIS.AddEventLog
+
+[common.reg]
+HKR,Ndi\params\ConnectionType,               ParamDesc,  0, %ConnectionType%
+HKR,Ndi\params\ConnectionType,               default,    0, "5"
+HKR,Ndi\params\ConnectionType,               type,       0, "enum"
+HKR,Ndi\params\ConnectionType\enum,          0,          0, %10HD%
+HKR,Ndi\params\ConnectionType\enum,          2,          0, %10FD%
+HKR,Ndi\params\ConnectionType\enum,          4,          0, %100HD%
+HKR,Ndi\params\ConnectionType\enum,          5,          0, %AutoSense%
+
+[LMNDIS.ndi.registry]
+HKR, Ndi,               Service,    0, "LMNDIS3"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+HKR,               ,    Pcmcia    , 0, "2"
+
+[LMNDIS.Service]
+DisplayName     =   %LMNDIS.Service.DispName%
+ServiceType     =   1 ;%SERVICE_KERNEL_DRIVER%
+StartType       =   3 ;%SERVICE_AUTO_START%
+ErrorControl    =   1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   =   %12%\LMNDIS3.sys
+LoadOrderGroup  =   NDIS
+
+[LMNDIS.AddEventLog]
+AddReg = LMNDIS.AddEventLog.reg
+
+[LMNDIS.AddEventLog.reg]
+HKR, ,   EventMessageFile,  0x00020000,"%%SystemRoot%%\System32\netevent.dll"
+HKR, ,   TypesSupported,    0x00010001, 7
+
+[LMNDIS.ndis5.CopyFiles]
+lmndis3.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir         = 12
+LMNDIS.ndis5.CopyFiles = 12
+
+[Strings]
+D-Link 	                = "D-Link"
+MSFT                    = "Microsoft"
+
+ConnectionType          = "Connection Type"
+AutoSense               = "Auto Sense"
+100HD                   = "100Mbps"
+10HD                    = "10Mbps"
+10FD                    = "10Mbps Full Duplex"
+
+LMNDIS.Service.DispName = "D-Link DMF-560TXD DirectPort PC Card (LAN) Device Driver"
+MfabcA                  = "D-Link DMF-560TXD DirectPort PC Card (LAN)"

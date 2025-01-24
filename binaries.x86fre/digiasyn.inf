@@ -1,0 +1,74 @@
+; DIGIASYN.INF
+; Digi Multiport Serial Ports
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MS%
+Layoutfile=Layout.inf
+DriverVer=03/27/2002,3.10.225.0
+
+[Manufacturer]
+%DIGI%=DIGIASYN
+
+[DIGIASYN]
+%Asyn.DeviceDesc% = AsynPort, DXB\DIGIASYN
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[DestinationDirs]
+
+[AsynPort.NT]
+AddReg=AsynPort.AddReg
+;;Characteristics = 0x28;	NCF_REMOVABLE | NCF_HIDDEN
+
+[AsynPort.NT.HW]
+AddReg=AsynPortHW.AddReg
+
+[AsynPort.NT.Services]
+AddService   = DIGIASYN,2,AsynPort.AddService,AsynPort.AddEventLog
+
+[AsynPort.NT.CoInstallers]
+AddReg = Asynport.CoInstallers_AddReg
+CopyFiles=AsynPort.NT.CoInstallers_CopyFiles
+
+[AsynPort.NT.CoInstallers_CopyFiles]
+
+[AsynPort.CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"digiinf.dll,DigiDxbClientCoInstaller"
+
+[AsynPort.AddReg]
+HKR, Parameters,ServiceName,,"DigiAsyn"
+; The dll will write this based on adapter type
+;HKR, Parameters,"InternalModem",0x00010001,1
+
+[AsynPortHW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+;;HKR,,"LowerFilters",0x00010000,"DIGIDXB"
+
+[AsynPort.AddService]
+DisplayName		=	%DIGIASYN.DispName%
+ServiceType		=	1 ; SERVICE_KERNEL_DRIVER
+StartType		=	3 ; SERVICE_DEMAND_START
+ErrorControl		=	1 ; SERVICE_ERROR_NORMAL
+ServiceBinary		=	%12%\DigiAsyn.sys     ;12=drivers directory
+LoadOrderGroup=Extended base
+
+[AsynPort.AddEventLog]
+AddReg=AsynPort.AddEventLog.AddReg
+
+[AsynPort.AddEventLog.AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\digiasyn.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+;BEGIN ENG - US English Strings
+MS= "Microsoft"
+DIGI="Digi International"
+Asyn.DeviceDesc  = "Digi ASYN"
+DIGIASYN.DispName = "Digi Dxb ASYN Driver"
+;END ENG - US English Strings

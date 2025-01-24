@@ -1,0 +1,205 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile=layout.inf
+Signature="$Windows NT$"
+InfVersion=01.01.01
+Provider=%MS%
+Class=MultiFunction
+ClassGUID    =    {4d36e971-e325-11ce-bfc1-08002be10318}
+DriverVer=10/01/2002,1.25.5.0
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%MHZ%=MHZ
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[MHZ]
+%MHZE%=MHZ5.mf,PCMCIA\MEGAHERTZ-CC/XJEM3336-706C
+%MHZF%=MHZ6.mf,PCMCIA\MEGAHERTZ-CC/XJEM3288-2D55
+%MHZG%=MHZ7.mf,PCMCIA\MEGAHERTZ-XJEM1144/CCEM1144-0FDE
+
+[MHZ5.mf]
+CopyFiles=mf.CopyFiles
+
+[MHZ6.mf]
+CopyFiles=mf.CopyFiles
+
+[MHZ7.mf]
+CopyFiles=mf.CopyFiles
+
+[MHZ5.mf.HW]
+AddReg=MHZ5.mf.RegHW
+
+[MHZ6.mf.HW]
+AddReg=MHZ6.mf.RegHW
+
+[MHZ7.mf.HW]
+AddReg=MHZ7.mf.RegHW
+
+
+[MHZ5.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\MHZXJ336_DEV0
+HKR,Child0000,ResourceMap,1,00,02,04        ;Modem
+HKR,Child0001,HardwareID,,MF\MHZXJ336_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04    ;Net
+
+[MHZ6.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\MHZXJ228_DEV0
+HKR,Child0000,ResourceMap,1,00,02,04        ;Modem
+HKR,Child0001,HardwareID,,MF\MHZXJ228_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04    ;Net
+
+[MHZ7.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\MHZXJ144_DEV0
+HKR,Child0000,ResourceMap,1,00,02,04        ;Modem
+HKR,Child0001,HardwareID,,MF\MHZXJ144_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04    ;Net
+
+
+[MHZ5.mf.LogConfigOverride]
+LogConfig    =    MHZ.mf.Override0
+LogConfig    =    MHZ.mf.Override1
+LogConfig    =    MHZ.mf.Override2
+LogConfig    =    MHZ.mf.Override3
+
+[MHZ6.mf.LogConfigOverride]
+LogConfig    =    MHZ.mf.Override0
+LogConfig    =    MHZ.mf.Override1
+LogConfig    =    MHZ.mf.Override2
+LogConfig    =    MHZ.mf.Override3
+
+[MHZ7.mf.LogConfigOverride]
+LogConfig    =    MHZ7.mf.Override0
+LogConfig    =    MHZ7.mf.Override1
+LogConfig    =    MHZ7.mf.Override2
+LogConfig    =    MHZ7.mf.Override3
+
+[MHZ.mf.Override0]
+IOConfig     =    3F8-3FF   ; Com1
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=35:0(W A)
+;MfCardConfig =    100:35:0
+;MfCardConfig =    100:35:1
+
+[MHZ.mf.Override1]
+IOConfig     =    2F8-2FF   ; Com2
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=21:0(W A)
+;MfCardConfig =    100:21:0
+;MfCardConfig =    100:21:1
+
+[MHZ.mf.Override2]
+IOConfig     =    3E8-3EF   ; Com3
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=2D:0(W A)
+;MfCardConfig =    100:2D:0
+;MfCardConfig =    100:2D:1
+
+[MHZ.mf.Override3]
+IOConfig     =    2E8-2EF   ; Com4
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=23:0(W A)
+;MfCardConfig =    100:23:0
+;MfCardConfig =    100:23:1
+
+
+[MHZ7.mf.Override0]
+IOConfig     =    3F8-3FF   ; Com1
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=23:0(W A)
+;MfCardConfig =    100:35:0
+;MfCardConfig =    100:35:1
+
+[MHZ7.mf.Override1]
+IOConfig     =    2F8-2FF   ; Com2
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=23:0(W A)
+;MfCardConfig =    100:21:0
+;MfCardConfig =    100:21:1
+
+[MHZ7.mf.Override2]
+IOConfig     =    3E8-3EF   ; Com3
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=23:0(W A)
+;MfCardConfig =    100:2D:0
+;MfCardConfig =    100:2D:1
+
+[MHZ7.mf.Override3]
+IOConfig     =    2E8-2EF   ; Com4
+IOConfig     =    100-10F,120-12F,140-14F,160-16F,200-20F,220-22F,240-24F,260-26F,300-30F,320-32F,340-34F,360-36F
+;IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+MemConfig    =    1000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=27:0(W A)
+;MfCardConfig =    100:23:0
+;MfCardConfig =    100:23:1
+
+
+
+[MHZ5.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[MHZ6.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[MHZ7.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+[mf.CopyFiles]
+mf.sys,,,2
+
+[DestinationDirs]
+mf.CopyFiles = 12   ; system32\drivers
+MHZ.ndis5.CopyFiles = 12
+
+[Strings]
+MS="3Com"
+MHZ="Megahertz"
+MHZE="Megahertz XJEM336 LAN + Modem PC Card"
+MHZF="Megahertz XJEM288 LAN + Modem PC Card"
+MHZG="Megahertz XJEM144 LAN + Modem PC Card"
+MFClassName  =    "Multifunction PCMCIA Device Driver"

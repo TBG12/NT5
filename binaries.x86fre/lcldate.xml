@@ -1,0 +1,65 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[Choose the file date.]]></Text>
+	</Title>
+	<Label TopMargin="8" BottomMargin="2">
+		<Text><![CDATA[When was it &modified?]]></Text>
+	</Label>
+	<Radio Id="5620" Checked="1" Height="13" TopMargin="3" Group="1">
+		<Text>Don't remember</Text>
+	</Radio>
+	<Radio Id="5622" Height="13" TopMargin="3">
+		<Text>Within the last week</Text>
+        <SearchProp Name="DateNDays">7</SearchProp>
+        <SearchProp Name="WhichDate">1</SearchProp>
+	</Radio>
+	<Radio Id="5623" Height="13" TopMargin="3">
+		<Text>Past month</Text>
+        <SearchProp Name="DateNMonths">1</SearchProp>
+        <SearchProp Name="WhichDate">1</SearchProp>
+	</Radio>
+	<Radio Id="5624" Height="13" TopMargin="3">
+		<Text>Within the past year</Text>
+        <SearchProp Name="DateNDays">365</SearchProp>
+        <SearchProp Name="WhichDate">1</SearchProp>
+	</Radio>
+	<Radio Id="5636" Height="13" TopMargin="3">
+		<Text>Specify dates</Text>
+	</Radio>
+	<CtrlRow>
+		<Label TopMargin="3" LeftMargin="0" Width="0">
+			<Text><![CDATA[Search for]]></Text>
+		</Label>
+		<Control Class="ComboBox" Id="5644" Style="10551299" LeftMargin="16" RightMargin="0" TopMargin="3" Width="113" Height="100" Group="1">
+			<SearchProp Name="WhichDate" />
+			<Item>
+				<Name>Modified Date</Name>
+				<Value>1</Value>
+			</Item>
+			<Item>
+				<Name>Created Date</Name>
+				<Value>2</Value>
+			</Item>
+			<Item>
+				<Name>Accessed Date</Name>
+				<Value>3</Value>
+			</Item>
+		</Control>
+	</CtrlRow>
+	<CtrlRow>
+		<Label TopMargin="5" LeftMargin="16" Width="30">
+			<Text><![CDATA[from]]></Text>
+		</Label>
+		<Control Class="SysDateTimePick32" Id="5637" Height="20" Width="120" Style="65536" LeftMargin="3" TopMargin="3">
+			<SearchProp Name="DateGE" />
+		</Control>
+	</CtrlRow>
+	<CtrlRow>
+		<Label TopMargin="5" LeftMargin="16" Width="30">
+			<Text><![CDATA[to]]></Text>
+		</Label>
+		<Control Class="SysDateTimePick32" Id="5638" Height="20" Width="120" Style="65536" LeftMargin="3" TopMargin="3">
+			<SearchProp Name="DateLE" />
+		</Control>
+	</CtrlRow>
+</SimpleDialog>

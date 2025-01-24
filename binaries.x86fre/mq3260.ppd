@@ -1,0 +1,1017 @@
+*PPD-Adobe:  "4.3"
+*% Adobe Systems Printer Description File
+*% For "MINOLTA-QMS 3260 Print System" version 2011.26
+*% Copyright (c), MINOLTA-QMS Inc.
+*% Date:	01/01/00
+*% Modified:	01/01/00
+
+*FormatVersion: "4.3"
+*FileVersion: "1.1"
+*PCFileName: "MQ3260.PPD"
+
+*Product: "(MINOLTA-QMS 3260 Print System)"
+*PSVersion: "(2011.27) 2"
+*Manufacturer: "MINOLTA-QMS"
+*ModelName: "MINOLTA-QMS 3260 Print System (PS)"
+*NickName: "MINOLTA-QMS 3260 Print System"
+
+*% ===General Information and Defaults ======================
+
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*LanguageLevel: "2"
+*AcceptsTrueType: True
+*FreeVM: "2107193"
+
+*% ===Installable Options ==================================
+
+*OpenGroup: InstallableOptions/Installable Options
+
+*OpenUI *OptionalBin/Optional Input Bin: Boolean
+*DefaultOptionalBin: False
+*OptionalBin True/Installed: ""
+*OptionalBin False/Not Installed: ""
+*CloseUI: *OptionalBin
+
+*OpenUI *Optionalenvelope/Envelope Feeder: Boolean
+*DefaultOptionalenvelope: False
+*Optionalenvelope True/Installed: ""
+*Optionalenvelope False/Not Installed: ""
+*CloseUI: *Optionalenvelope
+
+*OpenUI *Optionalstacker/Stacker Stapler: Boolean
+*DefaultOptionalstacker: False
+*Optionalstacker True/Installed: ""
+*Optionalstacker False/Not Installed: ""
+*CloseUI: *Optionalstacker
+
+*OpenUI *Optionalduplexer/Optional Duplexer: Boolean
+*DefaultOptionalduplexer: False
+*Optionalduplexer True/Installed: ""
+*Optionalduplexer False/Not Installed: ""
+*CloseUI: *Optionalduplexer
+
+*OpenUI *OptionalDisk/Optional Hard Disk: Boolean
+*DefaultOptionalDisk: False
+*OptionalDisk True/Installed: ""
+*OptionalDisk False/Not Installed: ""
+*CloseUI: *OptionalDisk
+
+*OpenUI *OptionalMemory/Installed Memory: PickOne
+*DefaultOptionalMemory: 16MB
+*OptionalMemory 16MB/Standard 16 MB: ""
+*OptionalMemory 32MB/Upgraded to 32 MB or more: ""
+*CloseUI: *OptionalMemory
+
+*OpenUI *Optionalmultires/Multi-Res Board: Boolean
+*DefaultOptionalmultires: False
+*Optionalmultires True/Installed: ""
+*Optionalmultires False/Not Installed: ""
+*CloseUI: *Optionalmultires
+
+*CloseGroup: InstallableOptions
+
+*% ===DUPLEX Constraints ===================================
+
+*UIConstraints: *Optionalduplexer False *Duplex DuplexNoTumble
+*UIConstraints: *Optionalduplexer False *Duplex DuplexTumble
+
+*UIConstraints: *Duplex DuplexTumble	*PageSize Postcard
+*UIConstraints: *PageSize Postcard	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize Envelope
+*UIConstraints: *PageSize Envelope	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize Com10
+*UIConstraints: *PageSize Com10		*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize Monarch
+*UIConstraints: *PageSize Monarch	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize DL
+*UIConstraints: *PageSize DL		*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble	*PageSize C5
+*UIConstraints: *PageSize C5		*Duplex DuplexTumble
+
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Postcard
+*UIConstraints: *PageSize Postcard	*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Envelope
+*UIConstraints: *PageSize Envelope	*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Com10
+*UIConstraints: *PageSize Com10		*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize Monarch
+*UIConstraints: *PageSize Monarch	*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize DL
+*UIConstraints: *PageSize DL		*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble	*PageSize C5
+*UIConstraints: *PageSize C5		*Duplex DuplexNoTumble
+
+*% OPTIONAL INPUT BIN Constraints==============================
+*UIConstraints: *OptionalBin False	*InputSlot Optional  
+*UIConstraints: *InputSlot Optional	*OptionalBin False  
+*UIConstraints: *OptionalBin False	*InputSlot Optional2 
+*UIConstraints: *InputSlot Optional2	*OptionalBin False 
+*UIConstraints: *OptionalBin False	*InputSlot Optional3  
+*UIConstraints: *InputSlot Optional3	*OptionalBin False  
+
+*UIConstraints: *Optionalenvelope False	*InputSlot Envelope 
+*UIConstraints: *InputSlot Envelope	*Optionalenvelope False	 
+
+*UIConstraints: *InputSlot Upper		*PageSize Postcard
+*UIConstraints: *PageSize Postcard		*InputSlot Upper
+*UIConstraints: *InputSlot Upper		*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Upper
+*UIConstraints: *InputSlot Upper		*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*InputSlot Upper
+*UIConstraints: *InputSlot Upper		*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Upper
+*UIConstraints: *InputSlot Upper		*PageSize C5
+*UIConstraints: *PageSize C5 			*InputSlot Upper
+*UIConstraints: *InputSlot Upper		*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*InputSlot Upper
+
+*UIConstraints: *InputSlot Lower		*PageSize Postcard
+*UIConstraints: *PageSize Postcard 		*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize A5
+*UIConstraints: *PageSize A5 			*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize Statement
+*UIConstraints: *PageSize Statement 	*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize C5
+*UIConstraints: *PageSize C5 			*InputSlot Lower
+*UIConstraints: *InputSlot Lower		*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*InputSlot Lower
+
+
+*UIConstraints: *InputSlot Optional		*PageSize Postcard
+*UIConstraints: *PageSize Postcard 		*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize A5
+*UIConstraints: *PageSize A5 			*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize Statement
+*UIConstraints: *PageSize Statement 	*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize C5
+*UIConstraints: *PageSize C5 			*InputSlot Optional
+*UIConstraints: *InputSlot Optional		*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*InputSlot Optional
+
+
+*UIConstraints: *InputSlot Optional2	*PageSize Postcard
+*UIConstraints: *PageSize Postcard 		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize A6
+*UIConstraints: *PageSize A6 			*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize Statement
+*UIConstraints: *PageSize Statement 	*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize A3
+*UIConstraints: *PageSize A3 			*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize Folio
+*UIConstraints: *PageSize Folio			*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize C5
+*UIConstraints: *PageSize C5 			*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize 11x17
+*UIConstraints: *PageSize 11x17		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize Legal
+*UIConstraints: *PageSize Legal			*InputSlot Optional2
+
+*UIConstraints: *InputSlot Optional3	*PageSize Postcard
+*UIConstraints: *PageSize Postcard 		*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize A6
+*UIConstraints: *PageSize A6 			*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize Statement
+*UIConstraints: *PageSize Statement 	*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize A3
+*UIConstraints: *PageSize A3 			*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize Folio
+*UIConstraints: *PageSize Folio			*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize C5
+*UIConstraints: *PageSize C5 			*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize 11x17
+*UIConstraints: *PageSize 11x17			*InputSlot Optional3
+*UIConstraints: *InputSlot Optional3	*PageSize Legal
+*UIConstraints: *PageSize Legal			*InputSlot Optional3
+
+*UIConstraints: *InputSlot Envelope		*PageSize Postcard
+*UIConstraints: *PageSize Postcard 		*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize A5
+*UIConstraints: *PageSize A5 			*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize Statement
+*UIConstraints: *PageSize Statement 	*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize A3
+*UIConstraints: *PageSize A3 			*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize 11x17			
+*UIConstraints: *PageSize 11x17			*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize Legal
+*UIConstraints: *PageSize Legal			*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize Letter
+*UIConstraints: *PageSize Letter		*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize Executive
+*UIConstraints: *PageSize Executive		*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize A4
+*UIConstraints: *PageSize A4 			*InputSlot Envelope
+*UIConstraints: *InputSlot Envelope		*PageSize Folio
+*UIConstraints: *PageSize Folio			*InputSlot Envelope
+
+*% OPTIONAL OUTPUT BIN Constraints==============================
+*% Optional Stacker Stapler Constraints ============================
+
+*UIConstraints: *Optionalstacker False	*OutputBin TopStack 
+*UIConstraints: *OutputBin TopStack		*Optionalstacker False 
+*UIConstraints: *Optionalstacker False	*OutputBin CenterStack 
+*UIConstraints: *OutputBin CenterStack	*Optionalstacker False 
+*UIConstraints: *Optionalstacker False	*OutputBin BottomStack 
+*UIConstraints: *OutputBin BottomStack	*Optionalstacker False 
+
+*UIConstraints: *OutputBin TopStack		*PageSize Postcard
+*UIConstraints: *PageSize Postcard		*OutputBin TopStack
+*UIConstraints: *OutputBin TopStack		*PageSize Folio
+*UIConstraints: *PageSize Folio			*OutputBin TopStack
+*UIConstraints: *OutputBin TopStack		*PageSize Com10
+*UIConstraints: *PageSize Com10			*OutputBin TopStack
+*UIConstraints: *OutputBin TopStack		*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*OutputBin TopStack
+*UIConstraints: *OutputBin TopStack		*PageSize DL
+*UIConstraints: *PageSize DL			*OutputBin TopStack
+*UIConstraints: *OutputBin TopStack		*PageSize C5
+*UIConstraints: *PageSize C5			*OutputBin TopStack
+*UIConstraints: *OutputBin TopStack		*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*OutputBin TopStack
+
+*UIConstraints: *OutputBin CenterStack	*PageSize Postcard
+*UIConstraints: *PageSize Postcard		*OutputBin CenterStack
+*UIConstraints: *OutputBin CenterStack	*PageSize Folio
+*UIConstraints: *PageSize Folio			*OutputBin CenterStack
+*UIConstraints: *OutputBin CenterStack	*PageSize Com10
+*UIConstraints: *PageSize Com10			*OutputBin CenterStack
+*UIConstraints: *OutputBin CenterStack	*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*OutputBin CenterStack
+*UIConstraints: *OutputBin CenterStack	*PageSize DL
+*UIConstraints: *PageSize DL			*OutputBin CenterStack
+*UIConstraints: *OutputBin CenterStack	*PageSize C5
+*UIConstraints: *PageSize C5			*OutputBin CenterStack
+*UIConstraints: *OutputBin CenterStack	*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*OutputBin CenterStack
+   
+*UIConstraints: *OutputBin BottomStack	*PageSize Postcard
+*UIConstraints: *PageSize Postcard		*OutputBin BottomStack
+*UIConstraints: *OutputBin BottomStack	*PageSize Folio
+*UIConstraints: *PageSize Folio			*OutputBin BottomStack
+*UIConstraints: *OutputBin BottomStack	*PageSize Com10
+*UIConstraints: *PageSize Com10			*OutputBin BottomStack
+*UIConstraints: *OutputBin BottomStack	*PageSize Monarch
+*UIConstraints: *PageSize Monarch		*OutputBin BottomStack
+*UIConstraints: *OutputBin BottomStack	*PageSize DL
+*UIConstraints: *PageSize DL			*OutputBin BottomStack
+*UIConstraints: *OutputBin BottomStack	*PageSize C5
+*UIConstraints: *PageSize C5			*OutputBin BottomStack
+*UIConstraints: *OutputBin BottomStack	*PageSize Envelope
+*UIConstraints: *PageSize Envelope		*OutputBin BottomStack
+   
+*UIConstraints: *Optionalstacker False	*AdvStaple Front 
+*UIConstraints: *AdvStaple Front	*Optionalstacker False 
+*UIConstraints: *Optionalstacker False	*AdvStaple Back 
+*UIConstraints: *AdvStaple Back		*Optionalstacker False 
+*UIConstraints: *Optionalstacker False	*AdvStaple Center 
+*UIConstraints: *AdvStaple Center	*Optionalstacker False 
+
+*UIConstraints: *OutputBin FaceUp 	*AdvStaple Front
+*UIConstraints: *AdvStaple Front	*OutputBin FaceUp
+*UIConstraints: *OutputBin FaceUp	*AdvStaple Back 
+*UIConstraints: *AdvStaple Back		*OutputBin FaceUp
+*UIConstraints: *OutputBin FaceUp	*AdvStaple Center
+*UIConstraints: *AdvStaple Center	*OutputBin FaceUp
+
+*UIConstraints: *OutputBin Upper	*AdvStaple Front 
+*UIConstraints: *AdvStaple Front	*OutputBin Upper
+*UIConstraints: *OutputBin Upper	*AdvStaple Back
+*UIConstraints: *AdvStaple Back	*OutputBin Upper
+*UIConstraints: *OutputBin Upper	*AdvStaple Center
+*UIConstraints: *AdvStaple Center *OutputBin Upper
+
+*UIConstraints: *OutputBin FaceUp	*Jog True
+*UIConstraints: *Jog True		*OutputBin FaceUp
+
+*% ===Multi-res Constraints ===
+*UIConstraints: *Optionalmultires False		*MiserMode True
+*UIConstraints: *MiserMode True				*Resolution 1200dpi
+*UIConstraints: *Resolution 1200dpi			*MiserMode True
+
+*%===End of Constraints=====================================
+
+
+
+*FileSystem: True
+*?FileSystem: "
+save
+  statusdict /diskonline get exec {(True)}{(False)} ifelse = flush
+restore
+"
+*End
+*Throughput: "32"
+*Password: "0"
+*ExitServer: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not { 
+     (WARNING : Cannot perform the exitserver command.) = 
+     (Password supplied is not valid.) = 
+     (Please contact the author of this software.) = flush quit
+     } if
+"
+*End
+*Reset: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+    (WARNING: Cannot reset printer.) =
+    (Missing or invalid password.) =
+    (Please contact the author of this software.) = flush quit
+    } if
+ systemdict /quit get exec
+ (WARNING : Printer Reset Failed.) = flush
+"
+*End
+
+*OpenUI *Resolution/Choose Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 600dpi
+*Resolution 300dpi/300 dpi:		"{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*Resolution 600dpi/600 dpi:		"{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*Resolution 1200dpi/1200 dpi:	"{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*?Resolution: "
+  save
+    currentpagedevice /HWResolution get
+    0 get
+    (          ) cvs print
+    (dpi)
+    = flush
+  restore
+"
+*End
+*CloseUI: *Resolution
+
+*% ============ Halftone Information ===============
+*ScreenFreq: "71.0"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "
+{ 1.4 0.24 
+  { 2 
+   { 3 1 roll add dup 1.0 gt { 2.0 sub } if 
+   } repeat 
+   abs exch abs 2 copy add 1 gt 
+   { 1 sub dup mul exch 1 sub dup mul add 1 sub } 
+   { dup mul exch dup mul add 1 exch sub}
+    ifelse 
+  } exec 
+}
+"
+*End
+*ScreenProc Line: "{ pop }"
+*ScreenProc Ellipse: "{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+*% ================== Paper Handling ===================
+*%Code in this section both selects a tray and sets up a frame buffer.
+*OpenUI  *PageSize: PickOne
+*OrderDependency: 30 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/Letter: "(<<) cvx exec /PageSize [612 792] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Legal/Legal: "(<<) cvx exec /PageSize [612 1008] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Executive/Executive: "(<<) cvx exec /PageSize [522 757] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize 11x17/11x17: "(<<) cvx exec /PageSize [792 1224] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize A3/A3: "(<<) cvx exec /PageSize [842 1191] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize A4/A4: "(<<) cvx exec /PageSize [596 842] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize A5/A5: "(<<) cvx exec /PageSize [420 596] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize A6/A6: "(<<) cvx exec /PageSize [297 420] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize B5/B5 (JIS) 182 x 257 mm: "(<<) cvx exec /PageSize [516 729] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize B4/B4 (JIS) 257 x 364 mm: "(<<) cvx exec /PageSize [729 1032] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Folio/Folio: "(<<) cvx exec /PageSize [612 936] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Envelope/QMS Envelope: "(<<) cvx exec /PageSize [499 703] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Com10/Envelope #10 4 1/8 x 9 1/2: "(<<) cvx exec /PageSize [297 684] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize DL/Envelope DL 110 x 220 mm: "(<<) cvx exec /PageSize [312 624] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize C5/Envelope C5 162 x 229 mm: "(<<) cvx exec /PageSize [459 649] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Monarch/Envelope Monarch 3.875 x 7.5 in: "(<<) cvx exec /PageSize [279 540] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Statement/Statement: "(<<) cvx exec /PageSize [396 612] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageSize Postcard/Postcard 4.14 x 5.85 in: "(<<) cvx exec /PageSize [298 420] /ImagingBBox null (>>) cvx exec setpagedevice"
+*?PageSize: "
+ save
+   currentpagedevice /PageSize get aload pop
+   2 copy gt {exch} if 
+   (Unknown) 
+   (<<) cvx exec
+   [612 792] (Letter)
+   [612 1008] (Legal)
+   [522 757] (Executive)
+   [792 1224] (11x17)
+   [842 1191] (A3)
+   [596 842] (A4)
+   [420 596] (A5)
+   [297 420] (A6)
+   [516 729] (B5)
+   [729 1032] (B4)
+   [612 936] (Folio)
+   [499 703] (Envelope)
+   [297 684] (Com10)
+   [312 624] (DL)
+   [459 649] (C5)
+   [279 540] (Monarch)
+   [396 612] (Statement)
+   [298 421] (Postcard)
+   (>>) cvx exec
+ { exch aload pop 4 index sub abs 5 le exch 
+   5 index sub abs 5 le and 
+      {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+restore 
+"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter: "(<<) cvx exec /PageSize [612 792] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Legal: "(<<) cvx exec /PageSize [612 1008] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Executive: "(<<) cvx exec /PageSize [522 757] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion 11x17: "(<<) cvx exec /PageSize [792 1224] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion A3: "(<<) cvx exec /PageSize [842 1191] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion A4: "(<<) cvx exec /PageSize [596 842] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion A5: "(<<) cvx exec /PageSize [420 596] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion A6: "(<<) cvx exec /PageSize [297 420] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion B5: "(<<) cvx exec /PageSize [516 729] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion B4: "(<<) cvx exec /PageSize [729 1032] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Folio: "(<<) cvx exec /PageSize [612 936] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Envelope: "(<<) cvx exec /PageSize [499 703] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Com10: "(<<) cvx exec /PageSize [297 684] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion DL: "(<<) cvx exec /PageSize [312 624] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion C5: "(<<) cvx exec /PageSize [459 649] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Monarch: "(<<) cvx exec /PageSize [279 540] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Statement: "(<<) cvx exec /PageSize [396 612] /ImagingBBox null (>>) cvx exec setpagedevice"
+*PageRegion Postcard: "(<<) cvx exec /PageSize [298 421] /ImagingBBox null (>>) cvx exec setpagedevice"
+*CloseUI: *PageRegion
+
+*% The following entries provide information about specific paper keywords.
+*DefaultImageableArea: Letter
+*ImageableArea Letter: 		"10 10 602 782"
+*ImageableArea Legal: 		"10 10 602 998"
+*ImageableArea Executive: 	"10 10 512 747"
+*ImageableArea 11x17: 		"10 10 782 1214"
+*ImageableArea A3: 			"10 10 832 1181"
+*ImageableArea A4: 			"10 10 586 832"
+*ImageableArea A5: 			"10 10 410 586"
+*ImageableArea A6: 			"10 10 287 410"
+*ImageableArea B5: 			"10 10 506 719"
+*ImageableArea B4: 			"10 10 719 1022"
+*ImageableArea Folio:		"10 10 602 926"
+*ImageableArea Envelope: 	"10 10 489 693"
+*ImageableArea Com10: 	 	"10 10 287 674"
+*ImageableArea DL: 	 		"10 10 302 614"
+*ImageableArea C5: 			"10 10 449 639"
+*ImageableArea Monarch:  	"10 10 269 530"
+*ImageableArea Statement: 	"10 10 386 602"
+*ImageableArea Postcard: 	"10 10 288 411"
+
+*?ImageableArea: "
+ save /cvp { cvi (            ) cvs print ( ) print } bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat ( ) = flush
+ restore
+"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: Letter
+*PaperDimension Letter: 	"612 792"
+*PaperDimension Legal: 		"612 1008"
+*PaperDimension Executive: 	"522 757"
+*PaperDimension 11x17: 		"792 1224"
+*PaperDimension A3: 		"842 1191"
+*PaperDimension A4: 		"596 842"
+*PaperDimension A5: 		"420 596"
+*PaperDimension A6: 		"297 420"
+*PaperDimension B5: 		"516 729"
+*PaperDimension B4: 		"729 1032"
+*PaperDimension Folio:		"612 936"
+*PaperDimension Envelope: 	"499 703"
+*PaperDimension Com10: 		"297 684"
+*PaperDimension DL: 		"312 624"
+*PaperDimension C5: 		"459 649"
+*PaperDimension Monarch: 	"279 540"
+*PaperDimension Statement: 	"396 612"
+*PaperDimension Postcard: 	"298 421"
+
+*OpenUI *OutputBin: PickOne
+*OrderDependency: 50 AnySetup *OutputBin
+*DefaultOutputBin: Upper
+*OutputBin Upper/Upper Tray: "
+  currentpagedevice /OutputAttributes get 1 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [1] put
+    put setpagedevice
+  } ifelse"
+*End
+ 
+*OutputBin FaceUp/Side-FaceUp: "
+  currentpagedevice /OutputAttributes get 2 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [2] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*OutputBin TopStack/Top-Stack: "
+  currentpagedevice /OutputAttributes get 3 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [3] put
+    put setpagedevice
+  } ifelse"
+*End
+ 
+*OutputBin CenterStack/Center-Stack: "
+  currentpagedevice /OutputAttributes get 4 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [4] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*OutputBin BottomStack/Bottom-Stack: "
+  currentpagedevice /OutputAttributes get 5 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /OutputAttributes
+    1 dict dup /Priority [5] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*?OutputBin: "
+save
+  5 dict
+  dup /1 (Upper) put
+  dup /2 (FaceUp) put
+  dup /3 (TopStack) put
+  dup /4 (CenterStack) put
+  dup /5 (BottomStack) put
+  currentpagedevice /OutputAttributes get
+  dup /Priority known
+  { /Priority get 0 get (      ) cvs cvn get }
+  {
+    dup length 1 eq
+    { {pop} forall (       ) cvs cvn get }
+    { pop pop (Unknown) } ifelse
+  } ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *OutputBin
+
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 20 AnySetup *InputSlot
+*DefaultInputSlot: Multipurpose
+*InputSlot Multipurpose/Multipurpose Feeder: "
+  currentpagedevice /InputAttributes get 1 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [1] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*InputSlot Upper/Upper Tray: "
+  currentpagedevice /InputAttributes get 2 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [2] put
+    put setpagedevice
+  } ifelse"
+*End
+ 
+*InputSlot Lower/Lower Tray: "
+  currentpagedevice /InputAttributes get 3 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [3] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*InputSlot Envelope/Envelope Tray: "
+  currentpagedevice /InputAttributes get 4 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [4] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*InputSlot Optional/Optional5: "
+  currentpagedevice /InputAttributes get 5 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [5] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*InputSlot Optional2/Optional6: "
+  currentpagedevice /InputAttributes get 6 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [6] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*InputSlot Optional3/Optional7: "
+  currentpagedevice /InputAttributes get 7 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [7] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*?InputSlot: "
+save
+  7 dict
+  dup /1 (Multipurpose) put
+  dup /2 (Upper) put
+  dup /3 (Lower) put
+  dup /4 (Envelope) put
+  dup /5 (Optional) put
+  dup /6 (Optional2) put
+  dup /7 (Optional3) put
+  currentpagedevice /InputAttributes get
+  dup /Priority known
+  { /Priority get 0 get (      ) cvs cvn get }
+  {
+    dup length 1 eq
+    { {pop} forall (       ) cvs cvn get }
+    { pop pop (Unknown) } ifelse
+  } ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *InputSlot
+
+*DefaultOutputOrder: Normal
+
+*OpenUI *ManualFeed/Manual Feeder: Boolean
+*OrderDependency: 20 AnySetup *ManualFeed
+*DefaultManualFeed: False
+*ManualFeed True/True: "1 dict dup /ManualFeed true put setpagedevice"
+*ManualFeed False/False: "1 dict dup /ManualFeed false put setpagedevice"
+*?ManualFeed: "
+  save
+    currentpagedevice /ManualFeed get
+    {(True)}{(False)}ifelse = flush
+  restore"
+*End
+*CloseUI: *ManualFeed
+
+*DefaultOutputOrder: Normal
+
+*OpenUI *Duplex: PickOne
+*OrderDependency: 40 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/Simplex: "
+	<</Duplex false /Tumble false>> setpagedevice"
+*End
+*Duplex DuplexNoTumble/Long Edge:"
+	<</Duplex true /Tumble false>> setpagedevice"
+*End
+*Duplex DuplexTumble/Short Edge:"
+	<</Duplex true /Tumble true>> setpagedevice"
+*End
+*?Duplex: "save
+   currentpagedevice /Duplex get
+   { currentpagedevice /Tumble get
+       {(DuplexTumble)}{(DuplexNoTumble)}ifelse
+   }
+   { (None)}
+   ifelse = flush
+restore
+"
+*End
+*CloseUI: *Duplex
+
+*OpenUI *Jog/Offset Stacking: PickOne
+*OrderDependency: 50 AnySetup *Jog
+*DefaultJog: False
+*Jog True/True: "<< /Jog 3 >> setpagedevice"
+*Jog False/False: "<< /Jog 0 >> setpagedevice"
+*?Jog: "
+save
+  currentpagedevice /Jog get
+  {(True)}{(False)}ifelse = flush
+restore
+"
+*End
+*CloseUI: *Jog
+
+*OpenUI *TraySwitch/Auto Tray switching: Boolean
+*OrderDependency: 45 AnySetup *TraySwitch
+*DefaultTraySwitch: False
+*TraySwitch True/Enabled: "<< /TraySwitch true >> setpagedevice"
+*TraySwitch False/Disabled: "<< /TraySwitch false >> setpagedevice"
+*?TraySwitch: "
+save
+  currentpagedevice /TraySwitch get
+  {(True)}{(False)}ifelse = flush
+restore
+"
+*End
+*CloseUI: *TraySwitch
+
+*OpenUI *Halftones/QMS Halftones: PickOne
+*OrderDependency: 50 AnySetup *Halftones
+*DefaultHalftones: PrinterDefault 
+*Halftones PrinterDefault/Printer Default: ""
+*Halftones Advanced/Advanced: "<< /ScreenFamily /Advanced >> //statusdict /QMSsetscreencrd get exec"
+*Halftones Basic/Basic: "<< /ScreenFamily /Basic >> //statusdict /QMSsetscreencrd get exec"
+*Halftones Standard/Standard: "<< /ScreenFamily /Standard >> //statusdict /QMSsetscreencrd get exec"
+*CloseUI: *Halftones
+
+*OpenUI *MiserMode/Conserve Toner: Boolean
+*OrderDependency: 55 AnySetup *MiserMode
+*DefaultMiserMode: False
+*MiserMode False/False: "statusdict begin 0 setmisermode end"
+*MiserMode True/True: "statusdict begin 1 setmisermode end"
+*?MiserMode: "
+ save statusdict begin
+  2 dict begin
+   /0 (False) def
+   /1 (True) def
+   misermode
+     {( ) cvs cvn load exec} stopped not{= flush}if
+  end
+ end restore"
+*End
+*CloseUI: *MiserMode
+
+*% ================ Font Information =====================
+
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006)"
+*Font AvantGarde-BookOblique: Standard "(001.006)"
+*Font AvantGarde-Demi: Standard "(001.007)"
+*Font AvantGarde-DemiOblique: Standard "(001.007)"
+*Font Bookman-Demi: Standard "(001.003)"
+*Font Bookman-DemiItalic: Standard "(001.003)"
+*Font Bookman-Light: Standard "(001.003)"
+*Font Bookman-LightItalic: Standard "(001.003)"
+*Font Courier: Standard "(002.004)"
+*Font Courier-Bold: Standard "(002.004)"
+*Font Courier-BoldOblique: Standard "(002.004)"
+*Font Courier-Oblique: Standard "(002.004)"
+*Font Helvetica: Standard "(001.006)"
+*Font Helvetica-Bold: Standard "(001.007)"
+*Font Helvetica-BoldOblique: Standard "(001.007)"
+*Font Helvetica-Condensed: Standard "(001.001)"
+*Font Helvetica-Condensed-Bold: Standard "(001.002)"
+*Font Helvetica-Condensed-BoldObl: Standard "(001.002)"
+*Font Helvetica-Condensed-Oblique: Standard "(001.001)"
+*Font Helvetica-Narrow: Standard "(001.006)"
+*Font Helvetica-Narrow-Bold: Standard "(001.007)"
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007)"
+*Font Helvetica-Narrow-Oblique: Standard "(001.006)"
+*Font Helvetica-Oblique: Standard "(001.006)"
+*Font NewCenturySchlbk-Bold: Standard "(001.009)"
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007)"
+*Font NewCenturySchlbk-Italic: Standard "(001.006)"
+*Font NewCenturySchlbk-Roman: Standard "(001.007)"
+*Font Palatino-Bold: Standard "(001.005)"
+*Font Palatino-BoldItalic: Standard "(001.005)"
+*Font Palatino-Italic: Standard "(001.005)"
+*Font Palatino-Roman: Standard "(001.005)"
+*Font Symbol: Special "(001.007)"
+*Font Times-Bold: Standard "(001.007)"
+*Font Times-BoldItalic: Standard "(001.009)"
+*Font Times-Italic: Standard "(001.007)"
+*Font Times-Roman: Standard "(001.007)"
+*Font ZapfChancery-MediumItalic: Standard "(001.007)"
+*Font ZapfDingbats: Special "(001.004)"
+*?FontQuery: "
+ save
+   { count 1 gt
+      { exch dup 127 string cvs (/) print print (:) print
+        /Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+      } { exit } ifelse 
+   } bind loop
+   (*) = flush
+ restore
+"
+*End
+
+*?FontList: "
+save
+  (*) {cvn ==} 128 string /Font resourceforall
+  (*) = flush
+restore
+"
+*End
+
+*% Printer Messages (verbatim from printer):
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+
+*% Status (format: %%[ status: <one of these> ]%% )
+*Status: "idle"
+*Status: "busy"
+*Status: "waiting"
+*Status: "printing"
+*Status: "warming up"
+
+*% Input Sources (format: %%[ status: <stat>; source: <one of these> ]%% )
+*Source: "Serial 25"
+*Source: "AppleTalk"
+*Source: "Parallel"
+*Source: "Optional I/O"
+
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%%)
+*PrinterError: "out of paper"
+*PrinterError: "paper jam"
+*PrinterError: "off line"
+
+*DeviceAdjustMatrix: "[1 0 0 1 0 0]"
+
+*% ============= Color Separation Information =====================
+
+*DefaultColorSep: ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi
+
+*InkName: ProcessBlack/Process Black
+*InkName: CustomColor/QColor-Custom
+*InkName: ProcessCyan/Process Cyan
+*InkName: ProcessMagenta/Process Magenta
+*InkName: ProcessYellow/Process Yellow
+
+*% ============= For 53 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.53lpi.300dpi/53 lpi / 300 dpi: "45"
+*ColorSepScreenAngle CustomColor.53lpi.300dpi/53 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.53lpi.300dpi/53 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.53lpi.300dpi/53 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.53lpi.300dpi/53 lpi / 300 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.53lpi.300dpi/53 lpi / 300 dpi: "53"
+*ColorSepScreenFreq CustomColor.53lpi.300dpi/53 lpi / 300 dpi: "53"
+*ColorSepScreenFreq ProcessCyan.53lpi.300dpi/53 lpi / 300 dpi: "53"
+*ColorSepScreenFreq ProcessMagenta.53lpi.300dpi/53 lpi / 300 dpi: "53"
+*ColorSepScreenFreq ProcessYellow.53lpi.300dpi/53 lpi / 300 dpi: "53"
+
+*% ============= For 71 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.71lpi.300dpi/71 lpi / 300 dpi: "45"
+*ColorSepScreenAngle CustomColor.71lpi.300dpi/71 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.71lpi.300dpi/71 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.71lpi.300dpi/71 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.71lpi.300dpi/71 lpi / 300 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.71lpi.300dpi/71 lpi / 300 dpi: "71"
+*ColorSepScreenFreq CustomColor.71lpi.300dpi/71 lpi / 300 dpi: "71"
+*ColorSepScreenFreq ProcessCyan.71lpi.300dpi/71 lpi / 300 dpi: "71"
+*ColorSepScreenFreq ProcessMagenta.71lpi.300dpi/71 lpi / 300 dpi: "71"
+*ColorSepScreenFreq ProcessYellow.71lpi.300dpi/71 lpi / 300 dpi: "71"
+
+*% ============= For 80 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.80lpi.300dpi/80 lpi / 300 dpi: "45"
+*ColorSepScreenAngle CustomColor.80lpi.300dpi/80 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.80lpi.300dpi/80 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.80lpi.300dpi/80 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.80lpi.300dpi/80 lpi / 300 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.80lpi.300dpi/80 lpi / 300 dpi: "80"
+*ColorSepScreenFreq CustomColor.80lpi.300dpi/80 lpi / 300 dpi: "80"
+*ColorSepScreenFreq ProcessCyan.80lpi.300dpi/80 lpi / 300 dpi: "80"
+*ColorSepScreenFreq ProcessMagenta.80lpi.300dpi/80 lpi / 300 dpi: "80"
+*ColorSepScreenFreq ProcessYellow.80lpi.300dpi/80 lpi / 300 dpi: "80"
+
+*% ============= For 106 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.300dpi/106 lpi / 300 dpi: "45"
+*ColorSepScreenAngle CustomColor.106lpi.300dpi/106 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.106lpi.300dpi/106 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.106lpi.300dpi/106 lpi / 300 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.106lpi.300dpi/106 lpi / 300 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.300dpi/106 lpi / 300 dpi: "106"
+*ColorSepScreenFreq CustomColor.106lpi.300dpi/106 lpi / 300 dpi: "106"
+*ColorSepScreenFreq ProcessCyan.106lpi.300dpi/106 lpi / 300 dpi: "106"
+*ColorSepScreenFreq ProcessMagenta.106lpi.300dpi/106 lpi / 300 dpi: "106"
+*ColorSepScreenFreq ProcessYellow.106lpi.300dpi/106 lpi / 300 dpi: "106"
+
+*% ============= For 71 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "45"
+*ColorSepScreenAngle CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "71"
+*ColorSepScreenFreq CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "71"
+*ColorSepScreenFreq ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "71"
+*ColorSepScreenFreq ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "71"
+*ColorSepScreenFreq ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "71"
+
+*% ============= For 80 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.80lpi.600dpi/80 lpi / 600 dpi: "45"
+*ColorSepScreenAngle CustomColor.80lpi.600dpi/80 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.80lpi.600dpi/80 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.80lpi.600dpi/80 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.80lpi.600dpi/80 lpi / 600 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.80lpi.600dpi/80 lpi / 600 dpi: "80"
+*ColorSepScreenFreq CustomColor.80lpi.600dpi/80 lpi / 600 dpi: "80"
+*ColorSepScreenFreq ProcessCyan.80lpi.600dpi/80 lpi / 600 dpi: "80"
+*ColorSepScreenFreq ProcessMagenta.80lpi.600dpi/80 lpi / 600 dpi: "80"
+*ColorSepScreenFreq ProcessYellow.80lpi.600dpi/80 lpi / 600 dpi: "80"
+
+*% ============= For 106 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.600dpi/106 lpi / 600 dpi: "45"
+*ColorSepScreenAngle CustomColor.106lpi.600dpi/106 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.106lpi.600dpi/106 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.106lpi.600dpi/106 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.106lpi.600dpi/106 lpi / 600 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.600dpi/106 lpi / 600 dpi: "106"
+*ColorSepScreenFreq CustomColor.106lpi.600dpi/106 lpi / 600 dpi: "106"
+*ColorSepScreenFreq ProcessCyan.106lpi.600dpi/106 lpi / 600 dpi: "106"
+*ColorSepScreenFreq ProcessMagenta.106lpi.600dpi/106 lpi / 600 dpi: "106"
+*ColorSepScreenFreq ProcessYellow.106lpi.600dpi/106 lpi / 600 dpi: "106"
+
+*% ============= For 106 lpi / 1200 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.1200dpi/106 lpi / 1200 dpi: "45"
+*ColorSepScreenAngle CustomColor.106lpi.1200dpi/106 lpi / 1200 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.106lpi.1200dpi/106 lpi / 1200 dpi: "45"
+*ColorSepScreenAngle ProcessMagenta.106lpi.1200dpi/106 lpi / 1200 dpi: "45"
+*ColorSepScreenAngle ProcessYellow.106lpi.1200dpi/106 lpi / 1200 dpi: "45"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.1200dpi/106 lpi / 1200 dpi: "106"
+*ColorSepScreenFreq CustomColor.106lpi.1200dpi/106 lpi / 1200 dpi: "106"
+*ColorSepScreenFreq ProcessCyan.106lpi.1200dpi/106 lpi / 1200 dpi: "106"
+*ColorSepScreenFreq ProcessMagenta.106lpi.1200dpi/106 lpi / 1200 dpi: "106"
+*ColorSepScreenFreq ProcessYellow.106lpi.1200dpi/106 lpi / 1200 dpi: "106"
+
+*% end of PPD file for MINOLTA-QMS 3260 Print System

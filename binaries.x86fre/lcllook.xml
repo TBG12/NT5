@@ -1,0 +1,12 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[In which location do you want to search?]]></Text>
+	</Title>
+	<Label TopMargin="8" BottomMargin="2">
+		<Text><![CDATA[&Look in:]]></Text>
+	</Label>
+	<Control Class="ComboBoxEx32" Id="5606" Style="65602" Height="300" AutoComplete="1">
+        <Text>C:\</Text>
+        <SearchProp Name="LookIn" />
+    </Control>
+</SimpleDialog>

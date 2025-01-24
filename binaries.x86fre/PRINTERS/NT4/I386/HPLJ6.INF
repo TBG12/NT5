@@ -1,0 +1,110 @@
+
+; HPLJ6.INF (for SPD)
+;
+; List of supported printers, manufacturers
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%MS%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+;
+[Manufacturer]
+"HP"
+
+;
+; Model sections. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file.
+;
+
+[HP]
+"HP LaserJet 6P"                                         = PCL5EMS2.DLL.BIDI
+"HP LaserJet 6MP"                                        = PCL5EMS2.DLL.BIDI
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. The section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[PCL5EMS2.DLL.BIDI]
+CopyFiles=@PCL5EMS2.DLL,@PJLMON.DLL,RASDD
+DataSection=RASDD_DATA
+DataFile=PCL5EMS2.DLL
+LanguageMonitor=%PJL_MONITOR%
+
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation) or if it's a color
+; profile (since the DestinationDirs can only handle sections, and not
+; individual files).
+;
+
+[RASDD]
+RASDD.DLL
+RASDDUI.DLL
+RASDDUI.HLP
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+[RASDD_DATA]
+DriverFile=RASDD.DLL
+ConfigFile=RASDDUI.DLL
+HelpFile=RASDDUI.HLP
+
+;
+; Call SetupSetDirectoryId with 66000 to set the target directory at runtime
+; (depending on which environment drivers are getting installed)
+;
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+;
+; diskid = description,tagfile,unused,subdir
+;
+[SourceDisksNames.x86]
+4 = %ntcd%,,,
+
+[SourceDisksNames.alpha]
+4 = %ntcd%,,,
+
+;
+; These sections are used during text-mode setup and correspond
+; to the targetdirectory field in the [SourceDisksFiles] section.
+;
+
+;
+; filename_on_source = diskid,subdir,size,checksum,spare,spare
+; extra fields are nt-specific
+;   bootmediaord,targetdirectory,upgradedisposition,textmodedisposition,targetname
+;
+[SourceDisksFiles]
+rasdd.dll    = 4
+rasddui.dll  = 4
+rasddui.hlp  = 4
+PCL5EMS2.dll  = 4
+PJLMON.DLL   = 4
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+PJL_MONITOR="PJL Language Monitor,PJLMON.DLL"
+ntcd="Windows 2000 CD-ROM"

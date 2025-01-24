@@ -1,0 +1,495 @@
+*%% 
+*%% HP DeskJet value macros
+*%%
+
+*Include: "stdnames.gpd"
+
+
+*%% 
+*%% String Resource ID Macros
+*%%
+*Macros: HPPaperSizeNames
+{
+    US_INDEX_CARD_3X5_DISPLAY:                  1200
+    US_INDEX_CARD_4X6_DISPLAY:                  1201
+    US_INDEX_CARD_5X8_DISPLAY:                  1202
+    KENV_1_DISPLAY:                             1203
+    KENV_2_DISPLAY:                             1204
+    KENV_3_DISPLAY:                             1205
+    KENV_4_DISPLAY:                             1206
+    ENV_A2_DISPLAY:                             1207                                   
+    HP_GREETING_CARD_ENV_DISPLAY:               1208
+    SUPER_B_DISPLAY:                            1209
+    LETTER_BANNER_DISPLAY:                      1210
+    A4_BANNER_DISPLAY:                          1211
+    HP_ENV_4x5_DISPLAY:                         1212
+    HP_ENV_5x8_DISPLAY:                         1213
+
+    A3_NOBI:                                    1290
+    JAPANESE_ENVELOPE_YOU_2:                    1291
+}
+
+
+*Macros: HPInputBinNames
+{
+    TRAY1_DISPLAY:                              1300           
+    TRAY2_DISPLAY:                              1301
+    TRAY3_DISPLAY:                              1302
+    PHOTO_TRAY_DISPLAY:                         1303
+}
+
+*Macros: HPMediaTypeNames
+{
+    HP_GLOSSY_PAPER_DISPLAY:                    1600     
+    HP_TRANSPARENCY_DISPLAY:                    1601
+    HP_CX_JETSERIES_PAPER_DISPLAY:              1602
+    HP_DELUXE_PHOTO_PAPER_DISPLAY:              1603
+    HP_PHOTO_PAPER_DISPLAY:                     1604
+    HP_PREMIUM_INKJET_PAPER_DISPLAY:            1605 
+    HP_PREMIUM_INKJET_HEAVYWEIGHT_DISPLAY:      1606
+    HP_PREMIUM_INKJET_TRANSPARENCY_DISPLAY:     1607
+    HP_PREMIUM_INKJET_RAPIDDRY_TRANS_DISPLAY:   1608
+    HP_PREMIUM_PHOTO_PAPER_DISPLAY:             1609
+    HP_PREMIUM_GLOSSY_PAPER_DISPLAY:            1610
+    HP_BRIGHT_WHITE_INKJET_PAPER_DISPLAY:       1611
+    HP_IRON_ON_TSHIRT_TRANSFERS_DISPLAY:        1612
+    HP_GREETING_CARD_PAPER_DISPLAY:             1613
+    HP_GLOSSY_GREETING_CARD_PAPER_DISPLAY:      1614
+    HP_BANNER_PAPER_DISPLAY:                    1615
+    HP_FLYER_BROCHURE_PAPER_DISPLAY:            1616
+    HP_PREMIUM_PLUS_PHOTO_DISPLAY:              1617
+    HP_PROFESSIONAL_BROCHURE_GLOSSY_DISPLAY:    1618
+    HP_PROFESSIONAL_BROCHURE_MATTE_DISPLAY:     1619
+
+    HP_COLORFAST_PHOTO_PAPER_DISPLAY:           1620		
+    HP_TEXTURED_GREETING_CARD_DISPLAY:          1621  
+    OTHER_INKJET_PAPER_DISPLAY:                 1622
+    OTHER_TRANSPARENCY_FILM_DISPLAY:            1623
+    OTHER_PHOTO_PAPER_DISPLAY:                  1624
+    OTHER_GREETING_CARDS_DISPLAY:               1625
+    OTHER_BROCHURE_PAPER_DISPLAY:               1626
+    OTHER_SPECIALTY_PAPER_DISPLAY:              1627
+
+    HIGH_QUALITY_POSTCARD_DISPLAY:              1690
+    INKJET_POSTCARD_DISPLAY:                    1691
+    PHOTO_GLOSSY_PAPER_HIGH_QUALITY_DISPLAY:    1692
+    PHOTO_PRINT_POSTCARD_DISPLAY:               1693
+    PHOTO_PRINT_SHEET_DISPLAY:                  1694
+    SPECIAL_PAPER_DISPLAY:                      1695
+    SPECIAL_POSTCARD_DISPLAY:                   1696
+    SPECIAL_TRANSPARENCY_FILM_DISPLAY:          1697
+}
+
+*Macros: HPMediaTypeIDs
+{
+    HP_GLOSSY_PAPER_ID:                         =HP_GLOSSY_PAPER_DISPLAY     
+    HP_TRANSPARENCY_ID:                         =HP_TRANSPARENCY_DISPLAY
+    HP_CX_JETSERIES_PAPER_ID:                   =HP_CX_JETSERIES_PAPER_DISPLAY
+    HP_DELUXE_PHOTO_PAPER_ID:                   =HP_DELUXE_PHOTO_PAPER_DISPLAY
+    HP_PHOTO_PAPER_ID:                          =HP_PHOTO_PAPER_DISPLAY
+    HP_PREMIUM_INKJET_PAPER_ID:                 =HP_PREMIUM_INKJET_PAPER_DISPLAY 
+    HP_PREMIUM_INKJET_HEAVYWEIGHT_ID:           =HP_PREMIUM_INKJET_HEAVYWEIGHT_DISPLAY
+    HP_PREMIUM_INKJET_TRANSPARENCY_ID:          =HP_PREMIUM_INKJET_TRANSPARENCY_DISPLAY
+    HP_PREMIUM_INKJET_RAPIDDRY_TRANS_ID:        =HP_PREMIUM_INKJET_RAPIDDRY_TRANS_DISPLAY
+    HP_PREMIUM_PHOTO_PAPER_ID:                  =HP_PREMIUM_PHOTO_PAPER_DISPLAY
+    HP_PREMIUM_GLOSSY_PAPER_ID:                 =HP_PREMIUM_GLOSSY_PAPER_DISPLAY
+    HP_BRIGHT_WHITE_INKJET_PAPER_ID:            =HP_BRIGHT_WHITE_INKJET_PAPER_DISPLAY
+    HP_IRON_ON_TSHIRT_TRANSFERS_ID:             =HP_IRON_ON_TSHIRT_TRANSFERS_DISPLAY
+    HP_GREETING_CARD_PAPER_ID:                  =HP_GREETING_CARD_PAPER_DISPLAY
+    HP_GLOSSY_GREETING_CARD_PAPER_ID:           =HP_GLOSSY_GREETING_CARD_PAPER_DISPLAY
+    HP_BANNER_PAPER_ID:                         =HP_BANNER_PAPER_DISPLAY
+    HP_FLYER_BROCHURE_PAPER_ID:                 =HP_FLYER_BROCHURE_PAPER_DISPLAY
+    HP_PREMIUM_PLUS_PHOTO_ID:                   =HP_PREMIUM_PLUS_PHOTO_DISPLAY
+    HP_PROFESSIONAL_BROCHURE_GLOSSY_ID:         =HP_PROFESSIONAL_BROCHURE_GLOSSY_DISPLAY
+    HP_PROFESSIONAL_BROCHURE_MATTE_ID:          =HP_PROFESSIONAL_BROCHURE_MATTE_DISPLAY
+
+    HP_COLORFAST_PHOTO_PAPER_ID:                =HP_COLORFAST_PHOTO_PAPER_DISPLAY	
+    HP_TEXTURED_GREETING_CARD_ID:               =HP_TEXTURED_GREETING_CARD_DISPLAY  
+    OTHER_INKJET_PAPER_ID:                      =OTHER_INKJET_PAPER_DISPLAY
+    OTHER_TRANSPARENCY_FILM_ID:                 =OTHER_TRANSPARENCY_FILM_DISPLAY
+    OTHER_PHOTO_PAPER_ID:                       =OTHER_PHOTO_PAPER_DISPLAY
+    OTHER_GREETING_CARDS_ID:                    =OTHER_GREETING_CARDS_DISPLAY
+    OTHER_BROCHURE_PAPER_ID:                    =OTHER_BROCHURE_PAPER_DISPLAY
+    OTHER_SPECIALTY_PAPER_ID:                   =OTHER_SPECIALTY_PAPER_DISPLAY
+
+    HIGH_QUALITY_POSTCARD_ID:                   =HIGH_QUALITY_POSTCARD_DISPLAY
+    INKJET_POSTCARD_ID:                         =INKJET_POSTCARD_DISPLAY
+    PHOTO_GLOSSY_PAPER_HIGH_QUALITY_ID:         =PHOTO_GLOSSY_PAPER_HIGH_QUALITY_DISPLAY
+    PHOTO_PRINT_POSTCARD_ID:                    =PHOTO_PRINT_POSTCARD_DISPLAY
+    PHOTO_PRINT_SHEET_ID:                       =PHOTO_PRINT_SHEET_DISPLAY
+    SPECIAL_PAPER_ID:                           =SPECIAL_PAPER_DISPLAY
+    SPECIAL_POSTCARD_ID:                        =SPECIAL_POSTCARD_DISPLAY
+    SPECIAL_TRANSPARENCY_FILM_ID:               =SPECIAL_TRANSPARENCY_FILM_DISPLAY
+}
+
+*Macros: HPQualityNames
+{
+    BEST_DISPLAY:                               1800  
+    NORMAL_DISPLAY:                             1801
+    DRAFT_DISPLAY:                              1802             
+    PRINT_QUALITY_DISPLAY:                      1803
+    SUPER_PHOTO_MODE_DISPLAY:                   1804
+}
+
+*Macros: HPImagingFeatureAndOptionNames
+{
+    BRIGHTNESS_DISPLAY:                         1900
+    INTENSITY_DISPLAY:                          1910
+        INT_DARKER_DISPLAY:                     1911
+        INT_DARK_DISPLAY:                       1912
+        INT_NORMAL_DISPLAY:                     1913
+        INT_LIGHT_DISPLAY:                      1914
+        INT_LIGHTER_DISPLAY:                    1915
+
+    COLOR_TONE_DISPLAY:                         1920
+        TONE_COOLER_DISPLAY:                    1921
+        TONE_COOL_DISPLAY:                      1922
+        TONE_NORMAL_DISPLAY:                    1923
+        TONE_WARM_DISPLAY:                      1924
+        TONE_WARMER_DISPLAY:                    1925
+        
+    SATURATION_DISPLAY:                         1930
+        SAT_MUTED_DISPLAY:                      1931
+        SAT_DULL_DISPLAY:                       1932
+        SAT_NORMAL_DISPLAY:                     1933
+        SAT_VIVID_DISPLAY:                      1934
+        SAT_VIBRANT_DISPLAY:                    1935
+
+    INK_VOLUME_DISPLAY:                         1940
+        INK_LIGHTER_DISPLAY:                    1941
+        INK_LIGHT_DISPLAY:                      1942
+        INK_NORMAL_DISPLAY:                     1943
+        INK_HEAVY_DISPLAY:                      1944
+        INK_HEAVIER_DISPLAY:                    1945
+
+    OPTIMIZE_PHOTO_COPY_DISPLAY:                1950
+        *% use ON_DISPLAY/OFF_DISPLAY
+    MIRROR_IMAGE_DISPLAY:                       1951
+
+    *% GPD halftoning feature and option names.
+    HPHT_DLLNAME:                               HPHTDLLName
+    HPHT_DLLNAME_DEFAULT:                       HPFIMG50
+
+    HPHT_BRIGHTNESS:                            HPHTBrightness
+    HPHT_INTENSITY:                             HPHTIntensity
+    HPHT_COLOR_TONE:                            HPHTColorTemp
+    HPHT_SATURATION:                            HPHTVividness
+    HPHT_INK_VOLUME:                            HPHTInkLevels
+    HPHT_OPTIMIZE_PHOTO_COPY:                   HPHTPhotoCopy
+
+    HPHT_SLIDER_HIGHER:                         HPHTSliderHigher 
+    HPHT_SLIDER_HIGH:                           HPHTSliderHigh
+    HPHT_SLIDER_MIDDLE:                         HPHTSliderMiddle
+    HPHT_SLIDER_LOW:                            HPHTSliderLow
+    HPHT_SLIDER_LOWER:                          HPHTSliderLower
+
+    HPHT_ON:                                    HPHTOn
+    HPHT_OFF:                                   HPHTOff
+}
+
+*Macros: OtherHPNames
+{
+    INSTALLED_DISPLAY:                          2450
+    NOT_INSTALLED_DISPLAY:                      2451
+    HP_PHOTO_CARTRIDGE_DISPLAY:                 2452
+    GRAYSCALE_DISPLAY:                          2453
+    YES_DISPLAY:                                2454
+    NO_DISPLAY:                                 2455
+    PRINT_MODE_DISPLAY:                         2456
+    AUTO_SELECT_DISPLAY:                        2457
+    ON_DISPLAY:                                 2458
+    OFF_DISPLAY:                                2459
+}
+
+*Macros:  HPPersonalityNames
+{
+    PERSONALITY_PPA_DISPLAY:                    2700
+}
+
+
+*%% 
+*%% OEMCustomData Macros
+*%%
+*Macros: OEMDataPrinterType
+{
+    OEM_PPA:                    "PTYP<00 00 00 04>1PCS"
+    OEM_PCL2:                   "PTYP<00 00 00 04>2MCP"
+    OEM_PCL9:                   "PTYP<00 00 00 04>9MCP"
+    OEM_PCLA:                   "PTYP<00 00 00 04>AMCP"
+}
+
+*Macros: OEMDataPCLMargins
+{
+    OEM_PCL_MARG_0:             "PCMG<00 00 00 04 00 00 00 00>"
+    OEM_PCL_MARG_26:            "PCMG<00 00 00 04 1A 00 00 00>"
+    OEM_PCL_MARG_35:            "PCMG<00 00 00 04 23 00 00 00>"
+    OEM_PCL_MARG_DUP:           "DUPL<00 00 00 04 64 00 00 00>"
+}
+
+*Macros: OEMDataDyeFormats:
+{
+    OEM_DF_K332:   
++               "HTDN<00 00 00 02 01 00>"
++               "HTDF<00 00 00 10>"
++                   "<00 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_K662:   
++               "HTDN<00 00 00 02 01 00>"
++               "HTDF<00 00 00 10>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
+
+    OEM_DF_K332_C332: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
+    
+    OEM_DF_K334_C333: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<02 00 00 00 03 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 03 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 03 00 2C 01 2C 01 00 00 FE FF FF FF>"
+    
+    OEM_DF_K334_C334: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<02 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_K632_C332: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 2c 01 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_K632_C632: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 2c 01 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 02 00 58 02 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_K662_C332: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_K662_C334: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<02 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<06 00 00 00 04 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_K662_C664: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<02 00 00 00 04 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<04 00 00 00 04 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<06 00 00 00 04 00 58 02 58 02 00 00 FE FF FF FF>"
+
+    OEM_DF_K662_C662: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<06 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
+
+    OEM_DF_K662_C668: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<02 00 00 00 08 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<04 00 00 00 08 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<06 00 00 00 08 00 58 02 58 02 00 00 FE FF FF FF>"
+
+    OEM_DF_K12122_C12122: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 B0 04 B0 04 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 B0 04 B0 04 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 B0 04 B0 04 00 00 FE FF FF FF>"
++                   "<06 00 00 00 02 00 B0 04 B0 04 00 00 FE FF FF FF>"
+
+    OEM_DF_K12122_C12124: 
++               "HTDN<00 00 00 02 04 00>"
++               "HTDF<00 00 00 40>"
++                   "<00 00 00 00 02 00 B0 04 B0 04 00 00 FE FF FF FF>"
++                   "<02 00 00 00 04 00 B0 04 B0 04 00 00 FE FF FF FF>"
++                   "<04 00 00 00 04 00 B0 04 B0 04 00 00 FE FF FF FF>"
++                   "<06 00 00 00 04 00 B0 04 B0 04 00 00 FE FF FF FF>"
+
+    OEM_DF_HPA_SEQK332: 
++               "HTDN<00 00 00 02 01 00>"
++               "HTDF<00 00 00 10>"
++                   "<00 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_HPA_SEQK662:
++               "HTDN<00 00 00 02 01 00>"
++               "HTDF<00 00 00 10>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
+
+    OEM_DF_HPA_SEQC332:
++               "HTDN<00 00 00 02 03 00>"
++               "HTDF<00 00 00 30>"
++                   "<00 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 2C 01 2C 01 00 00 FE FF FF FF>"
+
+    OEM_DF_HPA_SEQC662:
++               "HTDN<00 00 00 02 03 00>"
++               "HTDF<00 00 00 30>"
++                   "<00 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<02 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
++                   "<04 00 00 00 02 00 58 02 58 02 00 00 FE FF FF FF>"
+}
+
+*Macros: OEMDataPQSettings:
+{
+    OEM_PQ_BEST:                "HTPQ<00 00 00 04 00 00 00 00>"
+    OEM_PQ_NORMAL:              "HTPQ<00 00 00 04 01 00 00 00>"
+    OEM_PQ_ECONO:               "HTPQ<00 00 00 04 02 00 00 00>"
+}
+
+*Macros: OEMDataMediaTypes
+{
+    OEM_MEDIA_HP_PLAIN:                         "HTMD<00 00 00 04 00 00 00 00>"
+    OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY:   "HTMD<00 00 00 04 05 00 00 00>"
+    OEM_MEDIA_HP_PREMIUM_INKJET_RAPIDDRY_TRANS: "HTMD<00 00 00 04 09 00 00 00>"
+    OEM_MEDIA_HP_PREMIUM_INKJET:                "HTMD<00 00 00 04 0A 00 00 00>"
+    OEM_MEDIA_HP_PREMIUM_INKJET_HEAVYWEIGHT:    "HTMD<00 00 00 04 10 00 00 00>"
+    OEM_MEDIA_HP_PHOTO:                         "HTMD<00 00 00 04 0E 00 00 00>"
+    OEM_MEDIA_HP_PREMIUM_PHOTO:                 "HTMD<00 00 00 04 0B 00 00 00>"
+    OEM_MEDIA_HP_PREMIUM_PLUS_PHOTO:            "HTMD<00 00 00 04 11 00 00 00>"
+}
+
+
+*%% 
+*%% PCL/PJL Command Macros
+*%%
+*Macros: PCLPrintModeCRDCommands
+{
+    PCL_CRD_K332:               "<1B>*g8W<0201012C012C0002>"
+    PCL_CRD_K632:               "<1B>*g8W<02010258012C0002>"
+    PCL_CRD_K662:               "<1B>*g8W<0201025802580002>"
+    PCL_CRD_K332_C332:          "<1B>*g26W<0204012C012C0002012C012C0002012C012C0002012C012C0002>"
+    PCL_CRD_K334_C333:          "<1B>*g26W<0204012C012C0004012C012C0003012C012C0003012C012C0003>"
+    PCL_CRD_K334_C334:          "<1B>*g26W<0204012C012C0004012C012C0004012C012C0004012C012C0004>"
+    PCL_CRD_K632_C332:          "<1B>*g26W<02040258012C0002012C012C0002012C012C0002012C012C0002>"
+    PCL_CRD_K632_C632:          "<1B>*g26W<02040258012C00020258012C00020258012C00020258012C0002>"
+    PCL_CRD_K662_C332:          "<1B>*g26W<0204025802580002012C012C0002012C012C0002012C012C0002>"
+    PCL_CRD_K662_C334:          "<1B>*g26W<0204025802580002012C012C0004012C012C0004012C012C0004>"
+    PCL_CRD_K662_C664:          "<1B>*g26W<0204025802580002025802580004025802580004025802580004>"
+    PCL_CRD_K662_C662:          "<1B>*g26W<0204025802580002025802580002025802580002025802580002>"
+    PCL_CRD_K662_C668:          "<1B>*g26W<0204025802580002025802580008025802580008025802580008>"
+    PCL_CRD_K12122_C12122:      "<1B>*g26W<020404B004B0000204B004B0000204B004B0000204B004B00002>"
+    PCL_CRD_K12122_C12124:      "<1B>*g26W<020404B004B0000204B004B0000404B004B0000404B004B00004>"
+    HPA_CRD_SEQK33:             "<1B>*g12W<06070001012C012C09000101>"
+    HPA_CRD_SEQK66:             "<1B>*g12W<060700010258025809000101>"
+    HPA_CRD_SEQC33:             "<1B>*g12W<06070001012C012C0A012001>"
+    HPA_CRD_SEQC66:             "<1B>*g12W<06070001025802580A012001>"
+}
+
+*Macros: PCLPrintQualityCommands
+{
+    PCL_PQ_ECONO:               "<1B>*o-1M"
+    PCL_PQ_NORMAL:              "<1B>*o0M"
+    PCL_PQ_BEST:                "<1B>*o1M"
+}
+
+*Macros: PCLMediaTypeCommands
+{
+    PCL_MEDIA_PLAIN:            "<1B>&l0M"
+    PCL_MEDIA_BOND:             "<1B>&l1M"
+    PCL_MEDIA_SPECIAL:          "<1B>&l2M"
+    PCL_MEDIA_GLOSSY:           "<1B>&l3M"
+    PCL_MEDIA_TRANSPARENCY:     "<1B>&l4M"
+    PCL_MEDIA_FAST_GLOSSY:      "<1B>&l5M"
+    PCL_MEDIA_FAST_TRANSP:      "<1B>&l6M"
+    PCL_MEDIA_PREMIUM_PHOTO:    "<1B>&l7M"
+    PCL_MEDIA_BROCHURE_GLOSSY:  "<1B>&l8M"
+    PCL_MEDIA_INKJET_HEAVY:     "<1B>&l9M"
+    PCL_MEDIA_BROCHURE_MATTE:   "<1B>&l10M"
+}
+
+*Macros: PCLMediaSizeCommands:
+{
+    PCL_US_LETTER:              "<1B>&l2A"
+    PCL_US_LEGAL:               "<1B>&l3A"
+    PCL_US_EXECUTIVE:           "<1B>&l1A"
+    PCL_LEDGER:                 "<1B>&l6A"
+    PCL_MINI:                   "<1B>&l15A"
+    PCL_SUPER_B:                "<1B>&l16A"
+    PCL_A3:                     "<1B>&l27A"
+    PCL_A4:                     "<1B>&l26A"
+    PCL_A5:                     "<1B>&l25A"
+    PCL_A6:                     "<1B>&l73A"
+    PCL_B4:                     "<1B>&l46A"
+    PCL_B5:                     "<1B>&l45A"
+    PCL_ENV_MONARCH:            "<1B>&l80A"
+    PCL_ENV_10:                 "<1B>&l81A"
+    PCL_ENV_A2:                 "<1B>&l109A"
+    PCL_ENV_DL:                 "<1B>&l90A"
+    PCL_ENV_C5:                 "<1B>&l91A"
+    PCL_ENV_C6:                 "<1B>&l92A"
+    PCL_JAPANESE_POSTCARD:      "<1B>&l71A"
+    PCL_INDEX_3x5:              "<1B>&l78A"
+    PCL_INDEX_4x6:              "<1B>&l74A"
+    PCL_INDEX_5x8:              "<1B>&l75A"
+    PCL_CUSTOMSIZE:             "<1B>&l101A"
+}
+
+*Macros: PCLMediaSourceCommands
+{
+    PCL_MEDSOURCE_PRELOAD:      "<1B>&l-2H"
+    PCL_MEDSOURCE_TRACTORFEED:  "<1B>&l-1H"
+    PCL_MEDSOURCE_TRAY1:        "<1B>&l1H"
+    PCL_MEDSOURCE_MANUALFEED:   "<1B>&l2H"
+    PCL_MEDSOURCE_ENVMANFEED:   "<1B>&l3H"
+    PCL_MEDSOURCE_TRAY2:        "<1B>&l4H"
+    PCL_MEDSOURCE_OPTIONAL:     "<1B>&l5H"
+    PCL_MEDSOURCE_AUTOSELECT:   "<1B>&l7H"
+}
+
+*Macros: PCLOrientationCommands
+{
+    PCL_ORIENT_PORTRAIT:        "<1B>&l0O"
+    PCL_ORIENT_LANDSCAPE:       "<1B>&l1O"
+    PCL_ORIENT_REVERSE_PORT:    "<1B>&l2O"
+    PCL_ORIENT_REVERSE_LAND:    "<1B>&l3O"
+}
+
+*Macros: PCLRasterWidthCommands
+{
+    PCL_RASWIDTH_300LETTER:     "<1B>*r2400S"
+    PCL_RASWIDTH_600LETTER:     "<1B>*r4800S"
+}
+
+*Macros: PCLMiscCommands
+{
+    PCL_RESET:                  "<1B>E"
+}
+
+*Macros: PJLCommands
+{
+    PJL_EXIT_LANGUAGE:          =PCL_RESET "<1B>%%-12345X"
+    PJL_ENTER_PCL:              =PJL_EXIT_LANGUAGE "@PJL ENTER LANGUAGE=PCL<0D><0A>"      =PCL_RESET
+    PJL_ENTER_PCL3GUI:          =PJL_EXIT_LANGUAGE "@PJL ENTER LANGUAGE=PCL3GUI<0D><0A>"  =PCL_RESET
+    PJL_ENTER_PCLSLEEK:         =PJL_EXIT_LANGUAGE "@PJL ENTER LANGUAGE=PCLSLEEK<0D><0A>" =PCL_RESET
+}
+

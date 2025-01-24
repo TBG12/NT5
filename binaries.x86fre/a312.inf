@@ -1,0 +1,173 @@
+; Copyright (c) Intel Corporation (2000).
+;
+; INTEL MAKES NO WARRANTY OF ANY KIND REGARDING THE CODE.  THIS CODE IS
+; LICENSED ON AN "AS IS" BASIS AND INTEL WILL NOT PROVIDE ANY SUPPORT,
+; ASSISTANCE, INSTALLATION, TRAINING OR OTHER SERVICES.  INTEL DOES NOT
+; PROVIDE ANY UPDATES, ENHANCEMENTS OR EXTENSIONS.  INTEL SPECIFICALLY
+; DISCLAIMS ANY WARRANTY OF MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR ANY
+; PARTICULAR PURPOSE, OR ANY OTHER WARRANTY.  Intel disclaims all liability,
+; including liability for infringement of any proprietary rights, relating to
+; use of the code. No license, express or implied, by estoppel or otherwise,
+; to any intellectual property rights is granted herein.
+;
+; A312.INF  -- This file contains installation information for the BC7501 AIM3 Driver
+;               
+
+[Version]
+signature="$CHICAGO$"
+Class=DisplayCodec
+ClassGUID={E6ABB47D-8339-4c60-BE92-E9045FF5A33D}
+Provider=%Intel%
+LayoutFile=layout.inf
+DriverVer=11/11/2002
+
+[Manufacturer]
+%IntelMfg%=Intel
+
+[DestinationDirs]
+;DefaultDestDir = 11
+AIM.Device.CopyDrivers = 11
+AIM.Device.CopyDriversNT = 10,system32\drivers
+
+;WHQL requirement: Uncomment this section later on once we have PnP
+;method of installing/loading/unloading WDM AIM drivers across all 
+;OS platforms enabled.
+;[ControlFlags]
+;ExcludeFromSelect=DISPLAY\%AimDevID%
+
+[Intel]
+%AimChildDriver.DeviceDesc%=AIM.Device,DISPLAY\%AimDevID%
+
+[ClassInstall]
+Addreg=AIMClass.AddReg
+
+[ClassInstall32]
+Addreg=AIMClass.AddRegNT
+
+[AIM.Device]
+AddReg=     AIM.Device.AddReg
+CopyFiles=  AIM.Device.CopyDrivers
+
+[AIM.Device.NT]
+AddReg=     AIM.Device.AddRegNT
+CopyFiles=  AIM.Device.CopyDriversNT
+
+[AIM.Device.AddReg]
+;HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,%AimDriverName%
+HKR,,DeviceFuncGUID,,%AimDevFuncGUID%
+HKR,,DevicePNPID,,%AimDevID%
+HKR,,DriverDesc,,%AimChildDriver.DeviceDesc%
+
+[AIM.Device.AddRegNT]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,%AimDriverName%
+HKR,,DeviceFuncGUID,,%AimDevFuncGUID%
+HKR,,DevicePNPID,,%AimDevID%
+HKR,,DriverDesc,,%AimChildDriver.DeviceDesc%
+
+[AIM_Parameters_AddReg]
+HKR,,DeviceFuncGUID,,%AimDevFuncGUID%
+
+[AIMClass.AddReg]
+HKR,,,,%AimClass.Desc%
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+ 
+[AIMClass.AddRegNT]
+HKR,,,,%AimClass.Desc%
+HKR,,Class,,DisplayCodec
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+;HKR,,NoDisplayClass,,1	;Class will be displayed by Device Manager - For live updates
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+ 
+[AIM.Device.CopyDrivers]
+A312.sys
+
+[AIM.Device.CopyDriversNT]
+A312.sys
+
+[AIM.Device.Interfaces]
+AddInterface=%AimChildIntfGUID%,"GLOBAL",AimChildInterface,
+
+[AimChildInterface]
+AddReg=AimChildInterface.AddReg
+
+[AimChildInterface.AddReg]
+HKR,,Class,,%AimClassGUID%
+HKR,,FriendlyName,,%AimChildDriver.FriendlyName%
+
+[AIM.Device.NT.Services]
+AddService = %AimDevFuncGUID%, 0x00000002, Aim.ServiceInstall, Aim_EventLog_Inst,System,"Aim3"
+
+[AIM.Device.Services]
+
+[Aim_EventLog_Inst]
+AddReg=Aim_EventLog_AddReg
+
+[Aim_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\system32\drivers\%AimDriverName%"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Aim.ServiceInstall]
+DisplayName   = %AimChildDriver.DeviceDesc%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\system32\drivers\%AimDriverName%
+AddReg		= AIM_Parameters_AddReg
+
+;---------------------------------------------------------------
+;                S t r i n g s
+;---------------------------------------------------------------
+
+[Strings]
+
+;----------------
+; Non-Localizable
+;----------------
+
+SERVICE_KERNEL_DRIVER=1
+SERVICE_SYSTEM_START=1 
+SERVICE_AUTO_START=2
+SERVICE_DEMAND_START=3
+SERVICE_ERROR_NORMAL=1
+;
+;
+; These are customizable
+;
+AimDevID="BC-7501"
+AimDriverSig=0x12354678		; Supplied by Intel
+AimDriverName="A312.sys"
+AimDevFuncGUID="{69F517A1-B8FA-11d5-99B7-00B0D0800CD5}"
+;
+;
+; These do not change - ever !
+;
+AimClassGUID="{E6ABB47D-8339-4c60-BE92-E9045FF5A33D}"
+AimChildIntfGUID="{E87E75CE-0792-4534-AB89-5CFC95747B77}"
+
+;----------------
+; Localizable
+;----------------
+
+Intel="Intel"
+IntelMfg="Intel Corporation"
+DiskId1="Intel Corporation Installation Disk #1"
+;
+;
+; Do not change this line !
+;
+AimClass.Desc="Intel AIM 3.0 Codec"
+;
+;
+; Put device specifics here ->
+;
+AimChildDriver.DeviceDesc="AIM 3.0 BC-7501"
+AimChildDriver.FriendlyName="Broadcom 7501 DVI Encoder"

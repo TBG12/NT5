@@ -1,0 +1,151 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature           = "$Windows NT$"
+Class               = Net
+ClassGUID           = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider            = %MSFT%
+LayoutFile          = layout.inf
+DriverVer=10/01/2002,5.84.2.0
+
+[Manufacturer]
+%V_COMPAQ%  = COMPAQ
+
+[ControlFlags]
+ExcludeFromSelect   = *
+
+[COMPAQ]
+%NC4621.DeviceDesc%   = NC4621.ndi,   PCI\VEN_10B6&DEV_0003&SUBSYS_B0FD0E11 ; NC4621
+%GEN.DeviceDesc%      = NC4621.ndi,   PCI\VEN_10B6&DEV_0003
+
+;-------------------------------------------------------------------------------
+; Compaq Token-Ring NIC NC4621 PCI, 4/16, WOL adapter section
+;
+[NC4621.ndi]
+AddReg          = CPQTRND5.reg, NC4621WOL.reg
+BusType         = 5
+Characteristics = 0x84
+CopyFiles       = NC4621.Copyfiles
+
+[NC4621.ndi.Services]
+AddService      = CPQTRND5, 2, CPQTRND5.AddService, CPQTRND5.EventLog
+
+[NC4621WOL.reg]
+HKR, , WOL,  0, "0"
+
+;-------------------------------------------------------------------------------
+;	CPQTRND5.SYS driver section
+;
+[CPQTRND5.reg]
+HKR, , 				        AdapterType, 0, "11"
+HKR, ,                                  Platform,    0, "2"
+HKR, Ndi,                               Service,     0, "CPQTRND5"
+HKR, Ndi\interfaces,                    UpperRange,  0, "ndis5"
+HKR, Ndi\interfaces,                    LowerRange,  0, "tokenring"
+
+HKR, NDI\params\MaxFrameSize,           ParamDesc,   0, %MaxFrameSize%
+HKR, NDI\params\MaxFrameSize,           default,     0, "4216"
+HKR, NDI\params\MaxFrameSize,           type,        0, "int"
+HKR, NDI\params\MaxFrameSize,           min,         0, "1024"
+HKR, NDI\params\MaxFrameSize,           max,         0, "17839"
+
+HKR, NDI\params\RxSlots,                ParamDesc,   0, %RxSlots%
+HKR, NDI\params\RxSlots,                default,     0, "4"
+HKR, NDI\params\RxSlots,                type,        0, "int"
+HKR, NDI\params\RxSlots,                min,         0, "2"
+HKR, NDI\params\RxSlots,                max,         0, "64"
+HKR, NDI\params\RxSlots,                optional,    0, "1"
+
+HKR, NDI\params\TxSlots,                ParamDesc,   0, %TxSlots%
+HKR, NDI\params\TxSlots,                default,     0, "4"
+HKR, NDI\params\TxSlots,                type,        0, "int"
+HKR, NDI\params\TxSlots,                min,         0, "2"
+HKR, NDI\params\TxSlots,                max,         0, "64"
+HKR, NDI\params\TxSlots,                optional,    0, "1"
+
+HKR, NDI\params\Quiet,                  ParamDesc,   0, %Quiet%
+HKR, NDI\params\Quiet,                  default,     0, "1"
+HKR, NDI\params\Quiet,                  type,        0, "enum"
+HKR, NDI\params\Quiet\enum,             0,           0, %Yes%
+HKR, NDI\params\Quiet\enum,             1,           0, %No%
+
+HKR, NDI\params\TestAndXIDEnabled,      ParamDesc,   0, %TestXID%
+HKR, NDI\params\TestAndXIDEnabled,      default,     0, "1"
+HKR, NDI\params\TestAndXIDEnabled,      type,        0, "enum"
+HKR, NDI\params\TestAndXIDEnabled\enum, 0,           0, %No%
+HKR, NDI\params\TestAndXIDEnabled\enum, 1,           0, %Yes%
+
+HKR, NDI\params\StatsGathering,         ParamDesc,   0, %StatsGathering%
+HKR, NDI\params\StatsGathering,         default,     0, "0"
+HKR, NDI\params\StatsGathering,         type,        0, "enum"
+HKR, NDI\params\StatsGathering\enum,    0,           0, %No%
+HKR, NDI\params\StatsGathering\enum,    1,           0, %Yes%
+
+HKR, NDI\params\RingSpeed,              ParamDesc,   0, %RingSpeed%
+HKR, NDI\params\RingSpeed,              default,     0, "1"
+HKR, NDI\params\RingSpeed,              type,        0, "enum"
+HKR, NDI\params\RingSpeed\enum,         1,           0, %AtAdapter%
+HKR, NDI\params\RingSpeed\enum,         2,           0, %4M%
+HKR, NDI\params\RingSpeed\enum,         3,           0, %16M%
+
+HKR, NDI\params\NetworkAddress,         ParamDesc,   0, %LAA%
+HKR, NDI\params\NetworkAddress,         default,     0, ""
+HKR, NDI\params\NetworkAddress,         type,        0, "edit"
+HKR, NDI\params\NetworkAddress,         LimitText,   0, "12"
+HKR, NDI\params\NetworkAddress,         UpperCase,   0, "1"
+HKR, NDI\params\NetworkAddress,         optional,    0, "1"
+
+;-------------------------------------------------------------------------------
+; CPQTRND5 Service and Driver
+;
+
+[CPQTRND5.AddService]
+DisplayName     = %CPQTRND5.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\cpqtrnd5.sys
+LoadOrderGroup  = NDIS
+
+[CPQTRND5.EventLog]
+AddReg = CPQTRND5.AddEventLog.reg
+
+[CPQTRND5.AddEventLog.reg]
+HKR,,EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\cpqtrnd5.sys"
+HKR,,TypesSupported,   0x00010001, 7
+
+[NC4621.Copyfiles]
+cpqtrnd5.sys,,,2
+
+;------------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+NC4621.CopyFiles    = 12
+
+;-------------------------------------------------------------------------------
+;	Localizable strings
+;
+[strings]
+MSFT                      = "Microsoft"
+V_COMPAQ                  = "COMPAQ"
+
+MaxFrameSize              = "Maximum Frame Size"
+StatsGathering            = "Statistics Gathering Mode"
+No                        = "No"
+Yes                       = "Yes"
+Quiet                     = "Warn If No Lobe Cable"
+RingSpeed                 = "Ring Speed"
+AtAdapter                 = "Default (Set at Adapter)"
+RxSlots                   = "RX Pipeline Slots"
+TxSlots                   = "TX Pipeline Slots"
+4M                        = "4Mb/s"
+16M                       = "16Mb/s"
+TestXID                   = "Respond to TEST/XID Frames"
+LAA                       = "Network Address"
+
+NC4621.DeviceDesc      	  = "Compaq NC4621 PCI Token-Ring Adapter"
+GEN.DeviceDesc            = "Compaq NC4621 PCI Token-Ring Adapter"
+
+CPQTRND5.Service.DispName = "Compaq CPQTRND5 Token-Ring Adapter driver"
+

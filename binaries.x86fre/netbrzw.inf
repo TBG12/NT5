@@ -1,0 +1,180 @@
+; (c) Copyright 2000, Mircrosoft
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=07/01/2001,4.4.1.18
+
+[Manufacturer]
+%BreezeCOM%   = BreezeCOM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[BreezeCOM]
+%BRZWLAN.DeviceDesc% = BRZWLAN.ndi,	PCMCIA\BREEZECOM-0A02-0102
+
+;-------------------------------------------------------------------------------
+; BreezeNET Wireless LAN PC Card
+;
+[BRZWLAN.ndi]
+AddReg		= nt5comm.reg, *BRZWLAN.defcfg.reg, CardConfig, AdvParams
+DelReg          = BRZWLAN.UpdDelReg
+Characteristics = 0x84	; NCF_HAS_GUI+NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+CopyFiles	= BRZWLAN.CopyFiles
+
+
+[BRZWLAN.ndi.Services]
+AddService = BRZWLAN, 2, BRZWLAN.ServiceInstall, StdEventlog
+
+;-------------------------------------------------------------------------------
+; BRZWLAN Service and Driver
+;
+[BRZWLAN.ndi.LogConfigOverride]
+LogConfig=BRZWLAN.LogConfigOverride
+
+[BRZWLAN.LogConfigOverride]
+IRQConfig=3,4,5,6,7,9,10,11,12,13,14,15
+MemConfig=2000@C8000-FFFFFFFF%FFFFE000(D)
+MemConfig=2000@C8000-FFFFFFFF%FFFFE000(D)
+PcCardConfig = 41:00000000:00000000(AC)
+
+
+[nt5comm.reg]
+HKR, ,               BusType,    0, "8"         
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR, Ndi,            Service,    0, "BRZWLAN"
+
+[BRZWLAN.ServiceInstall]
+ServiceBinary   = %12%\BRZWLAN.sys
+DisplayName     = %BRZWLAN.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_AUTO_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+LoadOrderGroup  = NDIS
+
+[AdvParams]
+HKR, Ndi\params\_ESSID,     ParamDesc,          0, %Brz_ESSID%
+HKR, Ndi\params\_ESSID,     default,            0, "ESSID1"
+HKR, Ndi\params\_ESSID,     type,               0, "edit"
+HKR, Ndi\params\_ESSID,     LimitText,          0, "29"
+HKR, Ndi\params\_ESSID,     UpperCase,          0, "0"
+HKR, Ndi\params\_ESSID,     optional,           0, "1"
+
+HKR, Ndi\Params\_COUNTRY,                  ParamDesc,  0, %Brz_COUNTRY%
+HKR, Ndi\Params\_COUNTRY,                  type,       0, "enum"
+HKR, Ndi\Params\_COUNTRY,                  default,    0, "5" ;USA
+HKR, Ndi\Params\_COUNTRY,                  optional,   0, "1"
+HKR, Ndi\Params\_COUNTRY\enum,             "5",        0, %Brzc_US%
+HKR, Ndi\Params\_COUNTRY\enum,             "6",        0, %Brzc_JP%
+HKR, Ndi\Params\_COUNTRY\enum,             "4",        0, %Brzc_FR%
+HKR, Ndi\Params\_COUNTRY\enum,             "3",        0, %Brzc_EU%
+HKR, Ndi\Params\_COUNTRY\enum,             "1",        0, %Brzc_NL%
+HKR, Ndi\Params\_COUNTRY\enum,             "11",       0, %Brzc_SP%
+HKR, Ndi\Params\_COUNTRY\enum,             "8",        0, %Brzc_IL%
+HKR, Ndi\Params\_COUNTRY\enum,             "7",        0, %Brzc_AU%
+HKR, Ndi\Params\_COUNTRY\enum,             "9",        0, %Brzc_CA%
+HKR, Ndi\Params\_COUNTRY\enum,             "10",       0, %Brzc_KR%
+
+
+[BRZWLAN.UpdDelReg]
+; delete stale stuff after win9x upgrade:
+HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\Run, "BreezeTray"
+
+
+;-------------------------------------------------------------------------------
+;BEGIN card configuration parameters
+;Firmw. ver. from 4.3.0
+;Date: 12-May-99 pa
+;Country: US FCC (code=0x05)
+;-------------------------------------------------------------------------------
+[*BRZWLAN.defcfg.reg]
+HKR,,FirmwareVersionCheck,3, 00
+HKR,,General,3,\
+00,00,00,00,00,00,00,00, \
+00,00,00,00,00,00,00,00, \
+00,00,00,00,00,00,00,00, \
+00,00,00,00,00,00,00,00
+HKR,,InterScanInterval,3, E8,03,00,00
+HKR,,InitialPowerPolicy,3, 00
+HKR,,PermittedNetworkTypes,3, 01
+HKR,,PowerSavingDoTxPeriod,3, F4,01,00,00
+HKR,,PowerSavingNoTxPeriod,3, E8,03,00,00
+HKR,,ScansBeforeNewIbss,3, 01,00
+HKR,,Selected,3, 00
+HKR,,Translation,3, 01
+HKR,,Unique,3, 00,00,00,00,00,00,00,00
+HKR,,WepOperation,3, 00
+
+;Default CardConfig ("ESSID1")
+[CardConfig]
+HKR,,CardConfigVer,3, 8E,01,01,00 ;0x0001018E=65934
+
+HKR,,CardConfig,3,\
+45,53,53,49,44,31,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,09,00,02,06,18,06,02,00,04,00,02,\
+00,01,\       ;rxon
+00,14,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,01,00,01,00,03,06,40,00,01,00,02,\
+00,05,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+00,00,00,01,FF,B3,FF,B8,00,07,00,0F
+;---------- END card configuration parameters
+
+[StdEventlog]
+AddReg=StdEventlog.Addreg
+
+[StdEventlog.Addreg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\netevent.dll"
+HKR,,TypesSupported, 0x00010001, 7
+
+[BRZWLAN.CopyFiles]
+BRZWLAN.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir    = 12
+BRZWLAN.CopyFiles = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+Msft                      =     "Microsoft"
+BreezeCOM        	  =  	"BreezeCOM"
+BRZWLAN.DeviceDesc        = 	"BreezeNET Wireless LAN PC Card"
+BRZWLAN.Service.DispName  = 	"BreezeNET Wireless LAN PC Card Driver"
+;+ For adv. parameters:
+Brz_ESSID                 =     "Network ID (ESSID)"
+Brz_COUNTRY               =     "Country/Region"
+;Country codes
+Brzc_US                   =     "USA FCC"
+Brzc_JP                   =     "Japan"
+Brzc_FR                   =     "France"
+Brzc_EU                   =     "Europe ETSI"
+Brzc_IL                   =     "Israel"
+Brzc_CA                   =     "Canada"
+Brzc_KR                   =     "Korea"
+Brzc_SP                   =     "Spain"
+Brzc_AU                   =     "Australia"
+Brzc_NL                   =     "The Netherlands"

@@ -1,0 +1,117 @@
+*%*****************************************************************************
+*%
+*% GPD Macros 
+*% HPGPDFileVersion: "1.002"
+*%
+*%*****************************************************************************
+
+*%*********************************************************************
+*%  Specific to HP Business Inkjet 2250
+*%  	Standard DLL files to include
+*%*********************************************************************
+
+*%% HP Business Inkjets value macros
+*%% Copyright 2000-2001 Hewlett-Packard, Co.
+*%% All Rights Reserved.
+
+*%%*CodePage: 1252      *% Windows 3.1 US (ANSI) code page
+
+*%*********************************************************************
+*%      The resource DLL contains strings, icons, bitmaps, fonts, etc.
+*%*********************************************************************
+
+*Feature: RESDLL
+{
+    *Option: FontRes
+    {
+        *Name: "hpcfont.dll"
+    }
+    *Option: StrResDLL
+    {
+        *Name: "hpcstr.dll"
+    }
+}
+
+*%*****************************************************************************
+*%
+*%		Value Macros Specific for HP Business Inkjet 2250
+*%
+*%*****************************************************************************
+*CodePage: 1252      *% Windows 3.1 US (ANSI) code page
+
+*%*********************************************************************
+*% Start Macro definitions
+*%*********************************************************************
+
+*Macros: InstallableNames
+{
+	INSTALLED_OPTION:			RESDLL.StrResDLL.131
+	NOTINSTALLED_OPTION:		RESDLL.StrResDLL.132
+}
+
+*Macros: HPInputBinNames
+{
+      TRAY1_DISPLAY:            	RESDLL.StrResDLL.128           
+      TRAY2_DISPLAY:                RESDLL.StrResDLL.129
+      TRAY3_DISPLAY:                RESDLL.StrResDLL.130
+
+}
+
+*Macros: SpecialStrings
+{
+	GRAPHICS_MODE_DISPLAY:		RESDLL.StrResDLL.141
+	DPI_600_DISPLAY:			RESDLL.StrResDLL.135
+	DPI_300_DISPLAY:			RESDLL.StrResDLL.151
+	RET_DISPLAY:			RESDLL.StrResDLL.136
+	RET_ON_DISPLAY:			RESDLL.StrResDLL.137
+	RET_OFF_DISPLAY:			RESDLL.StrResDLL.138
+	RET_PRINTER_DEFAULT:		RESDLL.StrResDLL.139
+	ENABLE_DISPLAY:			RESDLL.StrResDLL.160
+	DISABLE_DISPLAY:			RESDLL.StrResDLL.161
+	HPGLMODE_DISPLAY:			RESDLL.StrResDLL.122
+	RASTERMODE_DISPLAY:		RESDLL.StrResDLL.123
+	RIPMODE_DISPLAY:			RESDLL.StrResDLL.158
+	COLORSMART_DISPLAY:		RESDLL.StrResDLL.144
+	AUTOSELECT_DISPLAY:		RESDLL.StrResDLL.140
+	MANUAL_DISPLAY:			RESDLL.StrResDLL.146
+	TEXT_DISPLAY:			RESDLL.StrResDLL.500
+	GRAPHICS_DISPLAY:			RESDLL.StrResDLL.501
+	PHOTO_DISPLAY:			RESDLL.StrResDLL.502
+	SCREENMATCH_sRGB_DISPLAY:	RESDLL.StrResDLL.505
+	VIVID_DISPLAY:			RESDLL.StrResDLL.506
+ 
+ 	
+}
+
+*Macros: HPPaperSizeNames
+{
+    US_INDEX_CARD_4X6_DISPLAY:      RESDLL.StrResDLL.508
+    US_INDEX_CARD_5X8_DISPLAY:      RESDLL.StrResDLL.509
+    ENV_A2_DISPLAY:                 RESDLL.StrResDLL.510
+    HAGAKI_DISPLAY:                 RESDLL.StrResDLL.507
+    SUPERB_DISPLAY:                 RESDLL.StrResDLL.524
+
+}
+*Macros: HPMediaTypeNames
+{
+    
+	HP_PREMIUM_INKJET_PAPER_DISPLAY:            RESDLL.StrResDLL.511
+	HP_PREMIUM_INKJET_HEAVYWEIGHT_DISPLAY:      RESDLL.StrResDLL.512
+	HP_PREMIUM_INKJET_TRANSPARENCY_DISPLAY:     RESDLL.StrResDLL.513
+	HP_PREMIUM_PHOTO_PAPER_DISPLAY:             RESDLL.StrResDLL.514
+	HP_PHOTO_PAPER_DISPLAY:                     RESDLL.StrResDLL.515
+	HP_PROFESSIONAL_BROCHURE_GLOSSY_DISPLAY:	  RESDLL.StrResDLL.516
+	HP_PROFESSIONAL_BROCHURE_MATTE_DISPLAY:	  RESDLL.StrResDLL.517
+	HP_PREMIUM_INKJET_RAPIDDRY_TRANS_DISPLAY:	  RESDLL.StrResDLL.523
+ }
+
+*Macros: HPQualityNames
+{
+    	BEST_DISPLAY:                               RESDLL.StrResDLL.518
+    	NORMAL_DISPLAY:                             RESDLL.StrResDLL.519
+    	FAST_DISPLAY:                               RESDLL.StrResDLL.520             
+   	PRINT_QUALITY_DISPLAY:                      RESDLL.StrResDLL.521
+}
+
+
+

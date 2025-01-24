@@ -1,0 +1,814 @@
+; ATI Display Information file : atimpab.INF
+; INF file for RAGE3 Mobility ATIDRAB display driver.
+; Manufacturer:  ATI Technologies Inc.
+; Installation file for the ATI RAGE graphics adapter.
+;----------------------------------------------------------------------------
+
+[Version]
+Signature   = "$CHICAGO$"
+Provider    = %MS%
+LayoutFile  =layout.inf
+ClassGUID   = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Class       = Display
+DriverVer   = 06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir    = 11  ; system32
+atimpab.Miniport  = 12  ; drivers
+atimpab.Display   = 11  ; system32
+atimpab.CopyFiles = 11  
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATI_Mfg
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[ATI_Mfg]
+%MOBILITY%  (ACER)      = atimpab_ACER, PCI\VEN_1002&DEV_4C4D&SUBSYS_10041025
+%MOBILITY%  (ACER)      = atimpab_ACER, PCI\VEN_1002&DEV_4C4D&SUBSYS_10061025
+%MOBILITY%  (ACER)      = atimpab_ACER, PCI\VEN_1002&DEV_4C4D&SUBSYS_10071025
+%MOBILITY%  (ACER)      = atimpab_ACER, PCI\VEN_1002&DEV_4C4D&SUBSYS_100A1025
+%MOBILITY%  (ACER)      = atimpab_ACER, PCI\VEN_1002&DEV_4C4D&SUBSYS_10101025
+%MOBILITY%  (ACER)      = atimpab_ACER, PCI\VEN_1002&DEV_4C4D&SUBSYS_10111025
+
+%MOBILITY%  (COMPAL)    = atimpab_COMPAL, PCI\VEN_1002&DEV_4C4D&SUBSYS_000514C0
+%MOBILITY%  (COMPAL)    = atimpab_COMPAL, PCI\VEN_1002&DEV_4C4D&SUBSYS_000614C0
+%MOBILITY%  (COMPAL)    = atimpab_COMPAL, PCI\VEN_1002&DEV_4C4D&SUBSYS_000714C0
+%MOBILITY%  (COMPAL)    = atimpab_COMPAL, PCI\VEN_1002&DEV_4C4D&SUBSYS_000A14C0
+%MOBILITY%  (COMPAL)    = atimpab_COMPAL, PCI\VEN_1002&DEV_4C4D&SUBSYS_000B14C0
+%MOBILITY%  (COMPAL)    = atimpab_COMPAL, PCI\VEN_1002&DEV_4C4D&SUBSYS_000C14C0
+
+%LTPRO% (COMPAQ)        = atimpab_COMPAQ_B, PCI\VEN_1002&DEV_4C42&SUBSYS_B10E0E11
+%LTPRO% (COMPAQ)        = atimpab_COMPAQ_B, PCI\VEN_1002&DEV_4C49&SUBSYS_B11B0E11
+%MOBILITY% (COMPAQ)     = atimpab_COMPAQ_B, PCI\VEN_1002&DEV_4C4D&SUBSYS_B1110E11
+%MOBILITY% (COMPAQ)     = atimpab_COMPAQ_B, PCI\VEN_1002&DEV_4C4D&SUBSYS_B1600E11
+%MOBILITY% (COMPAQ)     = atimpab_COMPAQ_P, PCI\VEN_1002&DEV_4C4D&SUBSYS_B1600E11&REV_64
+%MOBILITY_M1% (COMPAQ)  = atimpab_COMPAQ_P, PCI\VEN_1002&DEV_4C4D&SUBSYS_B111BE11
+%MOBILITY_M1% (COMPAQ)	= atimpab_COMPAQ_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_B18B0E11&REV_64
+
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00AA1028
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00AA1028&REV_64
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00AB1028
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00BB1028
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00BC1028
+
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00DC1028
+%MOBILITY% (DELL)       = atimpab_DELL_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_00DD1028
+
+%MOBILITY_P%  (DELL)    = atimpab_DELL_S, PCI\VEN_1002&DEV_4C4D&SUBSYS_00851028
+%MOBILITY_P%  (DELL)    = atimpab_DELL_S, PCI\VEN_1002&DEV_4C4D&SUBSYS_009E1028
+%MOBILITY_P%  (DELL)    = atimpab_DELL_S, PCI\VEN_1002&DEV_4C4D&SUBSYS_009E1028&REV_64
+%MOBILITY_P%  (DELL)    = atimpab_DELL_S, PCI\VEN_1002&DEV_4C4D&SUBSYS_009F1028
+
+%MOBILITY% (FUJITSU)    = atimpab_FUJITSU, PCI\VEN_1002&DEV_4C52&SUBSYS_10C910CF
+%MOBILITY% (FUJITSU)    = atimpab_FUJITSU, PCI\VEN_1002&DEV_4C4D&SUBSYS_107410CF
+
+%MOBILITY% AGP (GATEWAY) = atimpab_DEFAULT, PCI\VEN_1002&DEV_4C4D&SUBSYS_107410CF
+%MOBILITY% (GATEWAY)    = atimpab_GATEWAY, PCI\VEN_1002&DEV_4C4D&SUBSYS_10742150
+%MOBILITY% (GATEWAY)    = atimpab_GATEWAY, PCI\VEN_1002&DEV_4C4D&SUBSYS_2150107B
+%MOBILITY% (GATEWAY)    = atimpab_GATEWAY, PCI\VEN_1002&DEV_4C4D&SUBSYS_2150107B&REV_64
+
+%MOBILITY% (HP)         = atimpab_HP_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_0010103C
+%MOBILITY% (HP)         = atimpab_HP_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_0010103C&REV_64
+%MOBILITY% PCI (HP)     = atimpab_HP, PCI\VEN_1002&DEV_4C4D&SUBSYS_0011103C
+
+%MOBILITY% (IBM)        = atimpab_IBM, PCI\VEN_1002&DEV_4C4D&SUBSYS_01541014
+%MOBILITY% (IBM)        = atimpab_IBM, PCI\VEN_1002&DEV_4C4D&SUBSYS_01821014
+%MOBILITY% (IBM)        = atimpab_IBM, PCI\VEN_1002&DEV_4C52&SUBSYS_01C01014
+%MOBILITY% (IBM)        = atimpab_IBM, PCI\VEN_1002&DEV_4C52&SUBSYS_01C71014
+
+%LTPRO% (MICRON)        = atimpab_MICRON, PCI\VEN_1002&DEV_4C42&SUBSYS_6A00144D
+
+%MOBILITY% (NEC)        = atimpab_NEC, PCI\VEN_1002&DEV_4C52&SUBSYS_807A1033
+%MOBILITY% (NEC)        = atimpab_NEC, PCI\VEN_1002&DEV_4C4D&SUBSYS_80DD1033
+
+%MOBILITY% (NEC)        = atimpab_NEC_M, PCI\VEN_1002&DEV_4C52&SUBSYS_802D1033
+%MOBILITY% (NEC)        = atimpab_NEC_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_80B71033
+%MOBILITY% (NEC)        = atimpab_NEC_M, PCI\VEN_1002&DEV_4C4D&SUBSYS_80B71033&REV_64
+
+%MOBILITY% (NEC)        = atimpab_NEC_S, PCI\VEN_1002&DEV_4C4d&SUBSYS_80f61033&REV_64
+
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C4D&SUBSYS_80C7104D
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C4D&SUBSYS_80C7104D&REV_64
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C4D&SUBSYS_80AE104D
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C4D&SUBSYS_80AE104D&REV_64
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C4D&SUBSYS_80AF104D
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C4D&SUBSYS_80AF104D&REV_64
+%MOBILITY% (SONY)       = atimpab_SONY, PCI\VEN_1002&DEV_4C52&SUBSYS_80AF104D&REV_64
+
+%MOBILITY%      = atimpab_DEFAULT, PCI\VEN_1002&DEV_4C4D
+%MOBILITY%      = atimpab_DEFAULT, PCI\VEN_1002&DEV_4C52
+%MOBILITY%      = atimpab_DEFAULT, PCI\VEN_1002&DEV_4C4E
+%MOBILITY%      = atimpab_DEFAULT, PCI\VEN_1002&DEV_4C53
+
+%LTPRO%         = atimpab_LT_DEFAULT, PCI\VEN_1002&DEV_4C42
+%LTPRO%         = atimpab_LT_DEFAULT, PCI\VEN_1002&DEV_4C44
+%LTPRO%         = atimpab_LT_DEFAULT, PCI\VEN_1002&DEV_4C49
+%LTPRO%         = atimpab_LT_DEFAULT, PCI\VEN_1002&DEV_4C50
+%LTPRO%         = atimpab_LT_DEFAULT, PCI\VEN_1002&DEV_4C51
+
+;
+; atimpab OEM specific installation sections
+; ------------------------------------------
+
+[atimpab_ACER]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_ACER
+
+DelReg=atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_ACER.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+[atimpab_COMPAL]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_COMPAL
+
+DelReg=atimpab.AddReg_COMPAL,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display
+; CleanService=atimpab.RemoveService
+
+[atimpab_COMPAL.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_COMPAQ_B]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_COMPAQ_B
+
+DelReg=atimpab.AddReg,atimpab.AddReg_COMPAQ_B,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display
+; CleanService=atimpab.RemoveService
+
+[atimpab_COMPAQ_B.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_COMPAQ_P]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_COMPAQ_P
+
+DelReg=atimpab.AddReg,atimpab.AddReg_COMPAQ_P,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_COMPAQ_P.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+[atimpab_COMPAQ_M]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_COMPAQ_M
+
+DelReg=atimpab.AddReg,atimpab.AddReg_COMPAQ_M,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_COMPAQ_M.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+
+
+[atimpab_DELL_M]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_DELL_M
+
+DelReg=atimpab.AddReg,atimpab.AddReg_DELL_M,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_DELL_M.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_DELL_S]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_DELL_S
+
+DelReg=atimpab.AddReg,atimpab.AddReg_DELL_S,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_DELL_S.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_FUJITSU]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_FUJITSU
+
+DelReg=atimpab.AddReg_FUJITSU, atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_FUJITSU.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_GATEWAY]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_GATEWAY
+
+DelReg=atimpab.AddReg_GATEWAY, atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_GATEWAY.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_HP]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_HP
+
+DelReg=atimpab.AddReg,atimpab.AddReg_HP,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_HP.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_HP_M]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_HP,atimpab.AddReg_HP_M
+
+DelReg=atimpab.AddReg,atimpab.AddReg_HP,atimpab.AddReg_HP_M,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_HP_M.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_IBM]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg,atimpab.AddReg_IBM
+
+DelReg=atimpab.AddReg,atimpab.AddReg_IBM,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_IBM.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_MICRON]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_MICRON
+
+DelReg=atimpab.AddReg_MICRON,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_MICRON.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_NEC]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_NEC
+
+DelReg=atimpab.AddReg_NEC,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_NEC.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_NEC_M]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_NEC,atimpab.AddReg_NEC_M
+
+DelReg=atimpab.AddReg_NEC,atimpab.AddReg_NEC_M, atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_NEC_M.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_NEC_S]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_NEC,atimpab.AddReg_NEC_S
+
+DelReg=atimpab.AddReg_NEC,atimpab.AddReg_NEC_M, atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_NEC_S.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+
+[atimpab_SONY]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+; AddReg=atimpab.AddReg_SONY
+
+DelReg=atimpab.AddReg_SONY, atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_SONY.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+[atimpab_DEFAULT]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+AddReg=atimpab.AddReg,atimpab.AddReg_DEFAULT
+
+DelReg=atimpab.AddReg,atimpab.AddReg_DEFAULT,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_DEFAULT.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+[atimpab_LT_DEFAULT]
+DelFiles=atimpab.DelFiles
+CopyFiles=atimpab.Miniport,atimpab.CopyFiles, atimpab.Display
+AddReg=atimpab.AddReg,atimpab.AddReg_LT_DEFAULT
+
+DelReg=atimpab.AddReg,atimpab.AddReg_DEFAULT,atimpab_SoftwareDesktopSettings
+DelFiles=atimpab.CopyFiles, atimpab.Miniport, atimpab.Display, 
+; CleanService=atimpab.RemoveService
+
+[atimpab_LT_DEFAULT.Services]
+AddService=atimpab, 0x00000002, atimpab_Generic_Service_Inst, atimpab_EventLog_Inst
+AddService=Ati HotKey Poller,, atievxx_Generic_Service_Inst, atievxx_EventLog_Inst 
+
+;
+; Software installation
+;
+
+[atimpab_ACER.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_ACER
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_COMPAL.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_COMPAL
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_COMPAQ_B.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_COMPAQ_B
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_COMPAQ_P.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_COMPAQ_P
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_COMPAQ_M.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_COMPAQ_M
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_DELL_M.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_DELL_M
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_DELL_S.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_DELL_S
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_FUJITSU.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_FUJITSU
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_GATEWAY.SoftwareSettings]
+DelReg = atimpab.DelReg
+AddReg = atimpab.AddReg_GATEWAY
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_HP.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_HP
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_HP_M.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_HP
+AddReg = atimpab.AddReg_HP_M
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_IBM.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_IBM
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_MICRON.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_MICRON
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_NEC.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_NEC
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_NEC_M.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_NEC
+AddReg = atimpab.AddReg_NEC_M
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_NEC_S.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_NEC
+AddReg = atimpab.AddReg_NEC_S
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_SONY.SoftwareSettings]
+DelReg = atimpab.DelReg
+; AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab.AddReg_SONY
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_DEFAULT.SoftwareSettings]
+DelReg = atimpab.DelReg
+AddReg = atimpab.AddReg_DEFAULT
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+
+[atimpab_LT_DEFAULT.SoftwareSettings]
+DelReg = atimpab.DelReg
+AddReg = atimpab.AddReg_LT_DEFAULT
+AddReg = atimpab_SoftwareDeviceSettings
+AddReg = atimpab_TVOutSoftwareSettings
+AddReg = atimpab_SoftwareDesktopSettings
+;
+; atimpab general installation sections
+; ------------------------------------
+
+; [atimpab.RemoveService]
+; atimpab
+; Ati HotKey Poller
+
+;
+; File sections
+;
+
+[atimpab.CopyFiles]
+
+[atimpab.Miniport]
+atimpab.sys
+
+[atimpab.Display]
+atidrab.dll
+atievxx.exe 
+
+[atimpab.DelFiles]
+
+[atimpab.DelReg]
+HKR,, ASICInitEnabled
+HKR,, BIOSRepostEnabled
+HKR,, FakeEdidDisabled
+HKR,, DALObjectData0
+HKR,, DALObjectData1
+HKR,, DALSelectObjectData0
+HKR,, DALSelectObjectData1
+HKR,, DALCurrentObjectData
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\TempPages"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",Atitask
+HKLM,"SOFTWARE\ATI Technologies\Desktop\Icon"
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\ATI ICD Settings"
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\Controls Folder\Display\shellex\PropertySheetHandlers\ATIPagesEx",,,"{700B1221-CAFF-11d1-B9DE-000000001B1B}"
+
+;
+; Service installation
+;
+
+[atimpab_EventLog_Inst]
+AddReg=atimpab_EventLog_AddReg
+
+[atimpab_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\atimpab.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[atimpab_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\atimpab.sys
+
+
+[atievxx_Generic_Service_Inst] 
+ServiceType    = 0x110 
+StartType      = 2 
+ErrorControl   = 1 
+ServiceBinary  = %11%\atievxx.exe 
+
+[atievxx_EventLog_Inst] 
+AddReg=atievxx_EventLog_AddReg 
+
+[atievxx_EventLog_AddReg] 
+HKR,,EventMessageFile,0x00020000,"%11%\atievxx.exe" 
+HKR,,TypesSupported,0x00010001,7 
+
+
+;
+; Generic AddReg section
+;
+
+[atimpab.AddReg]
+
+;
+; OEM specific AddReg section
+;
+
+[atimpab.AddReg_ACER]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, DALRULE_USEENABLEDATBOOTSCHEME,       %REG_DWORD%,    1 
+HKR,, DALRULE_USECMOSDISPLAYSETTINGS,       %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,        %REG_DWORD%,    1 
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER,   %REG_DWORD%,    1 
+HKR,"Desktop",Projector,1,01,00,00,00 
+HKR,"Desktop",ActiveTvOutFilters,1,02,00,00,00 
+
+
+[atimpab.AddReg_COMPAL]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+
+[atimpab.AddReg_COMPAQ_B]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,"DefaultSettings.BitsPerPel",           %REG_DWORD%,    16
+
+[atimpab.AddReg_COMPAQ_P]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,, DALNonStandardModesBCD,               %REG_BINARY%,   14, 00, 10, 50, 00, 00, 00, 00
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKLM,"Software\ATI Technologies\Desktop",EnableIcon,,"0" 
+
+[atimpab.AddReg_COMPAQ_M]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,  %REG_DWORD%,    1 
+
+[atimpab.AddReg_DELL_M]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,  %REG_DWORD%,    1 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1 
+
+[atimpab.AddReg_DELL_S]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1 
+HKR,, DALNonStandardModes,                  %REG_BINARY%,   78, 05, 1A, 04, 00, 00, 00, 00, 40, 06, B0, 04, 20, 00, 55, 00 
+
+[atimpab.AddReg_FUJITSU]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+
+[atimpab.AddReg_GATEWAY]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, RPRORegOptionLmGcoSpectrumConst32,    %REG_DWORD%,    80 
+
+[atimpab.AddReg_HP]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,        %REG_DWORD%,    1 
+HKR,, DALRULE_USEENABLEDATBOOTSCHEME,       %REG_DWORD%,    1 
+
+[atimpab.AddReg_HP_M]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKR,, DALNonStandardModes,                  %REG_BINARY%,   78, 05, 1A, 04, 00, 00, 00, 00, 40, 06, B0, 04, 20, 00, 55, 00 
+
+[atimpab.AddReg_IBM]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER,   %REG_DWORD%,    1 
+HKR,, DALRestrictedModes,                   %REG_BINARY%,   D0, 02, E0, 01, 00, 00, 00, 00, 50, 03, E0, 01, 00, 00, 00, 00, 60, 03, E0, 01, 00, 00, 00, 00, 00, 04, 58, 02, 00, 00, 00, 00, 80, 04, 60, 03, 00, 00, 00, 00, 40, 06
+HKR,, DALRULE_USECMOSDISPLAYSETTINGS,       %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,        %REG_DWORD%,    1 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1
+HKR,, LCD_BLANK_WORKARONGFORSYSTEMBIOS,     %REG_DWORD%,    1 
+
+[atimpab.AddReg_MICRON]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,, DALRULE_USEENABLEDATBOOTSCHEME,       %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,        %REG_DWORD%,    1 
+; HKR,, BiosRepostEnabled,                    %REG_DWORD%,    1 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1 
+
+[atimpab.AddReg_NEC]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,, DALRULE_USEENABLEDATBOOTSCHEME,       %REG_DWORD%,    1 
+HKR,, DALRULE_GETVGAEXPANSIONATBOOT,        %REG_DWORD%,    1 
+; HKR,, BiosRepostEnabled,                    %REG_DWORD%,    1 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1 
+
+[atimpab.AddReg_NEC_M]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0 
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKR,, DALNonStandardModes,                  %REG_BINARY%,   78, 05, 1A, 04, 00, 00, 00, 00, 40, 06, B0, 04, 20, 00, 55, 00
+; HKR,, BiosRepostEnabled,                    %REG_DWORD%,    1 
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1 
+
+[atimpab.AddReg_NEC_S]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, BiosRepostEnabled,                    %REG_DWORD%,    2
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKR,, DALNonStandardModes,                  %REG_BINARY%,   78, 05, 1A, 04, 00, 00, 00, 00, 40, 06, B0, 04, 20, 00, 55, 00
+HKR,, DALRULE_SETLCDASDEFAULTDEVICE,        %REG_DWORD%,    1 
+
+[atimpab.AddReg_SONY]
+HKR,, BiosRepostEnabled,                    %REG_DWORD%,    2
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, DALRestrictedModesBCD,		    %REG_BINARY%,   07,20,04,80,00,00,00,00, 08,48,04,80,00,00,00,00, 08,64,04,80,00,00,00,00, 10,24,06,00,00,00,00,00, 11,52,08,64,00,00,00,00
+HKR,, DALNonStandardModesBCD,		    %REG_BINARY%,   14, 00, 10, 50, 00, 00, 00, 00, 10, 24, 04, 80, 00, 00, 00, 00, 08, 00, 04, 80, 00, 00, 00, 00
+
+[atimpab.AddReg_DEFAULT]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    1 
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKR,, DALRestrictedModes,                   %REG_BINARY%,   D0, 02, E0, 01, 00, 00, 00, 00, 50, 03, E0, 01, 00, 00, 00, 00, 60, 03, E0, 01, 00, 00, 00, 00, 00, 04, 58, 02, 00, 00, 00, 00, 80, 04, 60, 03, 00, 00, 00, 00
+HKR,, DALNonStandardModes,                  %REG_BINARY%,   78, 05, 1A, 04, 00, 00, 00, 00, 40, 06, B0, 04, 20, 00, 55, 00
+HKR,, DALNonStandardModesBCD,               %REG_BINARY%,   14, 00, 10, 50, 00, 00, 00, 00, 10, 24, 04, 80, 00, 00, 00, 00, 08, 00, 04, 80, 00, 00, 00, 00, 12, 80, 06, 00, 00, 00, 00, 00, 10, 24, 05, 12, 00, 00, 00, 00
+
+[atimpab.AddReg_LT_DEFAULT]
+HKR,, ASICInitEnabled,                      %REG_DWORD%,    0
+HKR,, BiosRepostEnabled,                    %REG_DWORD%,    0
+HKR,, FakeEdidDisabled,                     %REG_DWORD%,    1 
+HKR,, DALRestrictedModes,                   %REG_BINARY%,   D0, 02, E0, 01, 00, 00, 00, 00, 50, 03, E0, 01, 00, 00, 00, 00, 60, 03, E0, 01, 00, 00, 00, 00, 00, 04, 58, 02, 00, 00, 00, 00, 80, 04, 60, 03, 00, 00, 00, 00
+HKR,, DALNonStandardModes,                  %REG_BINARY%,   78, 05, 1A, 04, 00, 00, 00, 00, 40, 06, B0, 04, 20, 00, 55, 00
+HKR,, DALNonStandardModesBCD,               %REG_BINARY%,   10, 24, 04, 80, 00, 00, 00, 00, 08, 00, 04, 80, 00, 00, 00, 00, 12, 80, 06, 00, 00, 00, 00, 00, 10, 24, 05, 12, 00, 00, 00, 00
+
+[atimpab_SoftwareDeviceSettings]
+HKR,, LTProTextureFilteringDisabled,        %REG_DWORD%,    0
+HKR,, MobilityVariant,                      %REG_DWORD%,    0
+HKR,, BlockWriteDisabled,                   %REG_DWORD%,    1
+HKR,, FastFillDisabled,                     %REG_DWORD%,    0
+HKR,, HDTVEnabled,                          %REG_DWORD%,    0
+HKR,, TimingSelection,                      %REG_DWORD%,    0
+HKR,, InstalledDisplayDrivers,              %REG_MULTI_SZ%, atidrab
+HKR,, VgaCompatible,                        %REG_DWORD%,    0
+HKR,, OpenGLICDDisabled,                    %REG_DWORD%,    1
+HKR,, CheckD3Enabled,                       %REG_DWORD%,    1
+HKR,, DALRULE_NOTVANDLCDONCRTC,             %REG_DWORD%,    1
+HKR,, DALRULE_SELECTION_SCHEME,             %REG_DWORD%,    1
+HKR,, DDLRProRegOptionPatchLcdSyncProblem,  %REG_DWORD%,    1
+HKR,, DDLRProRegOptionPLLProblemNBlankDelay, %REG_DWORD%,   1
+HKR,, DDLRegOptionLTUseNonExtPLL4Primary,   %REG_DWORD%,    1
+HKR,, USWCEnabled,			    %REG_DWORD%,    1
+HKR,, ATIPoll,%REG_DWORD%,1
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER,   %REG_DWORD%,    1 
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,  %REG_DWORD%,    1
+HKR,, DALRULE_DISPLAYSRESTRICTMODES,        %REG_DWORD%,    0
+HKR,, DALRULE_RESTRICTUNKNOWNMONITOR,       %REG_DWORD%,    0
+HKR,, DALRULE_CRTSUPPORTSALLMODES,          %REG_DWORD%,    1
+HKR,"Desktop",,,
+HKR,"Desktop\Rotation\Defaults",NormalView,1,28,0e,00,00
+HKR,"Desktop\Rotation\Defaults",Rotate90,1,27,0e,00,00
+HKR,"Desktop\Rotation\Defaults",Rotate180,1,26,0e,00,00
+HKR,"Desktop\Rotation\Defaults",Rotate270,1,25,0e,00,00
+HKR,"Desktop\Rotation\Defaults",ToggleBetween0-180Degrees,1,52,06,00,00
+HKR,"Desktop\Rotation",ToggleBetween0-180Degrees,1,52,06,00,00
+HKLM,"Software\ATI Technologies\Desktop",HelpID,,"0" 
+HKLM,"SYSTEM\CurrentControlSet\Services\atimpab\Device0",ATIPoll,%REG_DWORD%,1
+HKLM,"SOFTWARE\ATI Technologies\Driver\OpenGL\Private",disableBM,%REG_DWORD%,1
+
+
+
+[atimpab_SoftwareDesktopSettings]
+HKR,,drv,,"Atidrab.dll"
+HKR,,ReleaseVersion,,"M6.12-INBUILD"
+
+[atimpab_TVOutSoftwareSettings]
+
+;
+; Windows NT 5.0 special settings
+;
+
+[Strings]
+
+;
+; Non-localizable strings
+;
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_BINARY    = 0x00000001
+REG_DWORD     = 0x00010001
+
+;
+; Localizable strings
+;
+
+DiskId     = "ATI Installation Disk"
+ATI        = "ATI Technologies, Inc."
+MS         = "Microsoft"
+
+;
+; 
+;
+
+LTPRO="ATI 3D RAGE LT PRO"
+MOBILITY="ATI RAGE Mobility"
+MOBILITY_L="ATI RAGE Mobility-L"
+MOBILITY_P="ATI RAGE Mobility-P"
+MOBILITY_M="ATI RAGE Mobility-M"
+MOBILITY_M1="ATI RAGE Mobility-M1"
+
+;
+; Property Page Language Dependent Strings for ENU
+;
+
+ENU_ICON_ATI_ICON_SETTINGS="ATI Icon Settings"
+ENU_ICON_DISPLAY_SETTINGS="Display Settings"
+ENU_ICON_DEVICE_SETTINGS="Device Settings"
+ENU_ICON_DISPLAY_DRIVER="ATI Desktop"
+ENU_ICON_FLATPANEL="ATI Flat Panel"
+ENU_ICON_TVOUT="ATI Television Display"
+ENU_UNINSTALL_DISPLAY_DRIVER="ATI Display Driver"

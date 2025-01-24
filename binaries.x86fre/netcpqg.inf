@@ -1,0 +1,306 @@
+; Copyright (c) 2002, Microsoft
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Msft%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,6.3.6.31
+
+[Manufacturer]
+%Compaq%    = Compaq
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Compaq]
+%N1000.DeviceDesc% = N1000.ndi,       PCI\VEN_8086&DEV_1000&SUBSYS_B0DF0E11 ; Compaq NC6132 Gigabit Module
+%N1001.DeviceDesc% = N1000.ndi,       PCI\VEN_8086&DEV_1000&SUBSYS_B0E00E11 ; Compaq NC6133 Gigabit Module
+%N1002.DeviceDesc% = N1000.ndi,       PCI\VEN_8086&DEV_1000&SUBSYS_B1230E11 ; Compaq NC6134 Gigabit NIC
+%N1003.DeviceDesc% = N1001Fiber.ndi,  PCI\VEN_8086&DEV_1001&SUBSYS_004A0E11 ; Compaq NC6136 Gigabit Server Adapter
+%N1004.DeviceDesc% = N1004Copper.ndi, PCI\VEN_8086&DEV_1004&SUBSYS_B1A40E11 ; Compaq NC7131 Gigabit Server Adapter
+%N1005.DeviceDesc% = N1004Copper.ndi, PCI\VEN_8086&DEV_1004&SUBSYS_00490E11 ; Compaq NC7132 Gigabit Upgrade Module
+
+;-------------------------------------------------------------------------------
+; Compaq NC6132/NC6133/NC6134 Gigabit Server Adapter
+;
+[N1000.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+AddReg          = Kodiak.reg, Advanced.reg
+CopyFiles       = n1000.CopyFiles
+
+[N1000.ndi.NTx86.Services]
+AddService = N1000, 2, n1000_NTx86.Service, common.EventLog
+
+[N1000.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+AddReg          = Kodiak.reg, Advanced.reg
+CopyFiles       = n1000_NTIA64.CopyFiles
+
+[N1000.ndi.NTIA64.Services]
+AddService = N1000, 2, n1000_NTIA64.Service, common.EventLog_NTIA64
+
+;-------------------------------------------------------------------------------
+; Compaq NC6136 Gigabit Server Adapter
+;
+[N1001Fiber.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+AddReg          = Kodiak.reg, Kodiak2.reg, Advanced.reg, 82543GC.reg
+AddReg          = Livengood.reg, Checksumoff.reg
+CopyFiles       = n1000.CopyFiles
+
+[N1001Fiber.ndi.NTx86.Services]
+AddService = N1000, 2, n1000_NTx86.Service, common.EventLog
+
+[N1001Fiber.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+AddReg          = Kodiak.reg, Kodiak2.reg, Advanced.reg, 82543GC.reg
+AddReg          = Livengood.reg, Checksumoff.reg
+CopyFiles       = n1000_NTIA64.CopyFiles
+
+[N1001Fiber.ndi.NTIA64.Services]
+AddService = N1000, 2, n1000_NTIA64.Service, common.EventLog_NTIA64
+
+;-------------------------------------------------------------------------------
+; Compaq NC7131/NC7132 Gigabit Server Adapter
+;
+[N1004Copper.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+AddReg          = Kodiak.reg, Kodiak2.reg, Copper.reg, Advanced.reg, 82543GC.reg
+AddReg          = Livengood.reg, Checksumoff.reg
+CopyFiles       = n1000.CopyFiles
+
+[N1004Copper.ndi.NTx86.Services]
+AddService = N1000, 2, n1000_NTx86.Service, common.EventLog
+
+[N1004Copper.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+AddReg          = Kodiak.reg, Kodiak2.reg, Copper.reg, Advanced.reg, 82543GC.reg
+AddReg          = Livengood.reg, Checksumoff.reg
+CopyFiles       = n1000_NTIA64.CopyFiles
+
+[N1004Copper.ndi.NTIA64.Services]
+AddService = N1000, 2, n1000_NTIA64.Service, common.EventLog_NTIA64
+
+;-----------------------------------------------------------------------------
+; Registry Settings (decimal)
+;
+[Kodiak.reg]
+
+HKR, Ndi\Interfaces,                           UpperRange,         0, "ndis5"
+HKR, Ndi\Interfaces,                           LowerRange,         0, "ethernet"
+HKR, Ndi,                                      Service,            0, "N1000"
+
+; NumTxDescriptors
+HKR, Ndi\params\NumTxDescriptors,              ParamDesc,          0, %NumTxDescriptors%
+HKR, Ndi\params\NumTxDescriptors,              default,            0, "256"
+HKR, Ndi\params\NumTxDescriptors,              min,                0, "80"
+HKR, Ndi\params\NumTxDescriptors,              max,                0, "768"
+HKR, Ndi\params\NumTxDescriptors,              step,               0, "8"
+HKR, Ndi\params\NumTxDescriptors,              Base,               0, "10"
+HKR, Ndi\params\NumTxDescriptors,              type,               0, "int"
+
+; NumRxDescriptors
+HKR, Ndi\params\NumRxDescriptors,              ParamDesc,          0, %NumRxDescriptors%
+HKR, Ndi\params\NumRxDescriptors,              default,            0, "160"
+HKR, Ndi\params\NumRxDescriptors,              min,                0, "80"
+HKR, Ndi\params\NumRxDescriptors,              max,                0, "768"
+HKR, Ndi\params\NumRxDescriptors,              step,               0, "8"
+HKR, Ndi\params\NumRxDescriptors,              Base,               0, "10"
+HKR, Ndi\params\NumRxDescriptors,              type,               0, "int"
+
+; NumCoalesceBuffers
+HKR, Ndi\params\NumCoalesceBuffers,            ParamDesc,          0, %NumCoalesceBuffers%
+HKR, Ndi\params\NumCoalesceBuffers,            default,            0, "128"
+HKR, Ndi\params\NumCoalesceBuffers,            min,                0, "16"
+HKR, Ndi\params\NumCoalesceBuffers,            max,                0, "768"
+HKR, Ndi\params\NumCoalesceBuffers,            step,               0, "8"
+HKR, Ndi\params\NumCoalesceBuffers,            Base,               0, "10"
+HKR, Ndi\params\NumCoalesceBuffers,            type,               0, "int"
+
+; ChecksumTxTcp
+HKR, Ndi\Params\ChecksumTxTcp,                 ParamDesc,          0, %ChecksumTxTcp%
+HKR, Ndi\Params\ChecksumTxTcp,                 default,            0, "1"
+HKR, Ndi\Params\ChecksumTxTcp\Enum,            "0",                0, %Off%
+HKR, Ndi\Params\ChecksumTxTcp\Enum,            "1",                0, %On%
+HKR, Ndi\Params\ChecksumTxTcp,                 type,               0, "enum"
+
+; ChecksumRxTcp
+HKR, Ndi\Params\ChecksumRxTcp,                 ParamDesc,          0, %ChecksumRxTcp%
+HKR, Ndi\Params\ChecksumRxTcp,                 default,            0, "1"
+HKR, Ndi\Params\ChecksumRxTcp\Enum,            "0",                0, %Off%
+HKR, Ndi\Params\ChecksumRxTcp\Enum,            "1",                0, %On%
+HKR, Ndi\Params\ChecksumRxTcp,                 type,               0, "enum"
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,                ParamDesc,          0, %LAA%
+HKR, Ndi\params\NetworkAddress,                Default,            0, ""
+HKR, Ndi\params\NetworkAddress,                type,               0, "edit"
+HKR, NDI\params\NetworkAddress,                LimitText,          0, "12"
+HKR, NDI\params\NetworkAddress,                UpperCase,          0, "1"
+HKR, NDI\params\NetworkAddress,                optional,           0, "1"
+
+; Hardwired defaults
+HKR,,                                          PciScanMethod,      0, "3"
+HKR,,                                          TxIntDelay,         0, "28"
+HKR,,                                          MWIEnable,          0, "1"
+HKR,,                                          CustomMessages,     0, "1"
+HKR,,                                          DmaFairness,        0, "0"
+HKR,,                                          MulticastFilterType,0, "0"
+HKR,,                                          VlanFiltering,      0, "1"
+HKR,,                                          QtagSwControlled,   0, "1"
+HKR,,                                          FlowControl,        0, "0"
+HKR,,                                          ReportTxEarly,      0, "0"
+
+[Kodiak2.reg]
+; CheckSumTxIp
+HKR, Ndi\Params\CheckSumTxIp,                  ParamDesc,          0, %CheckSumTxIp%
+HKR, Ndi\Params\CheckSumTxIp,                  default,            0, "1"
+HKR, Ndi\Params\CheckSumTxIp\Enum,             "0",                0, %Off%
+HKR, Ndi\Params\CheckSumTxIp\Enum,             "1",                0, %On%
+HKR, Ndi\Params\CheckSumTxIp,                  type,               0, "enum"
+
+; NumTxDescriptors
+HKR, Ndi\params\NumTxDescriptors,              max,                0, "256"
+
+; NumRxDescriptors
+HKR, Ndi\params\NumRxDescriptors,              max,                0, "256"
+
+; Hardwired defaults
+HKR,,                                          QtagSwControlled,   0, "0"
+HKR,,                                          FlowControl,        0, "3"
+HKR,,                                          ReportTxEarly,      0, "1"
+
+[Livengood.reg]
+HKR,,                                          FlowControl,        0, "3"
+
+[Checksumoff.reg]
+HKR, Ndi\Params\ChecksumRxTcp,                 default,            0, "0"
+HKR, Ndi\Params\ChecksumTxTcp,                 default,            0, "0"
+HKR, Ndi\Params\CheckSumTxIp,                  default,            0, "0"
+
+[82543GC.reg]
+
+; Hardwired Defaults
+HKR,,                                          TcpSegmentation,    0, "0"
+
+[Copper.reg]
+
+; SpeedDuplex
+HKR, Ndi\Params\SpeedDuplex,                   ParamDesc,          0, %SpeedDuplex%
+HKR, Ndi\Params\SpeedDuplex,                   default,            0, "0"
+HKR, Ndi\Params\SpeedDuplex,                   type,               0, "enum"
+HKR, Ndi\Params\SpeedDuplex\Enum,              "0",                0, %AutoDetect%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "1",                0, %10Mb-Half-Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "2",                0, %10Mb-Full-Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "3",                0, %100Mb-Half-Duplex%
+HKR, Ndi\Params\SpeedDuplex\Enum,              "4",                0, %100Mb-Full-Duplex%
+HKR,,				               SpeedDuplex,        2, "0"
+
+;----------------------------------------------------------------------------
+; Packet specifics
+;
+[Advanced.reg]
+; 802.1p/802.1Q Tagging
+HKR, Ndi\Params\TaggingMode,                   ParamDesc,          0, %TaggingMode%
+HKR, Ndi\Params\TaggingMode,                   default,            0, "0"
+HKR, Ndi\Params\TaggingMode\Enum,              "0",                0, %Off%
+HKR, Ndi\Params\TaggingMode\Enum,              "1",                0, %On%
+HKR, Ndi\Params\TaggingMode,                   type,               0, "enum"
+
+HKR,,                                          MaxFrameSize,       2, "1514"
+HKR,,                                          NetVlanEnable,      2, "0"
+
+[n1000.CopyFiles]
+n1000325.sys,,,2
+
+[n1000_NTx86.Service]
+DisplayName     = %n1000.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\n1000325.sys
+LoadOrderGroup  = NDIS
+
+;-----------------------------------------------------------------------------
+; Common base for all drivers for Eventlog
+;
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\n1000325.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[n1000_NTIA64.CopyFiles]
+n1000645.sys,,,2
+
+[n1000_NTIA64.Service]
+DisplayName     = %N1000.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\n1000645.sys
+LoadOrderGroup  = NDIS
+
+;-----------------------------------------------------------------------------
+; Common base for all drivers for Eventlog
+;
+[common.EventLog_NTIA64]
+AddReg = common.AddEventLog_NTIA64.reg
+
+[common.AddEventLog_NTIA64.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\n1000645.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+DefaultDestDir  = 12
+n1000.CopyFiles = 12
+n1000_NTIA64.CopyFiles = 12
+
+;-----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Msft                     = "Microsoft"
+Compaq			 = "Compaq"
+
+CheckSumTxIp             = "Offload Transmit IP Checksum"
+ChecksumTxTcp            = "Offload Transmit TCP Checksum"
+ChecksumRxTcp            = "Offload Receive TCP Checksum"
+
+LAA                      = "Locally Administered Address"
+NumTxDescriptors         = "Number of Transmit Descriptors"
+NumRxDescriptors         = "Number of Receive Buffers"
+NumCoalesceBuffers       = "Number of Coalesce Buffers"
+
+100Mb-Full-Duplex        = "100Mbps/Full Duplex"
+100Mb-Half-Duplex        = "100Mbps/Half Duplex"
+10Mb-Full-Duplex         = "10Mbps/Full Duplex"
+10Mb-Half-Duplex         = "10Mbps/Half Duplex"
+AutoDetect               = "Auto Detect"
+SpeedDuplex              = "Link Speed & Duplex"
+
+TaggingMode              = "QoS Packet Tagging"
+
+On                       = "On"
+Off                      = "Off"
+
+N1000.DeviceDesc         = "Compaq NC6132 Gigabit Module"
+N1001.DeviceDesc         = "Compaq NC6133 Gigabit Module"
+N1002.DeviceDesc         = "Compaq NC6134 Gigabit NIC"
+N1003.DeviceDesc         = "Compaq NC6136 Gigabit Server Adapter"
+N1004.DeviceDesc         = "Compaq NC7131 Gigabit Server Adapter"
+N1005.DeviceDesc         = "Compaq NC7132 Gigabit Upgrade Module"
+
+N1000.Service.DispName   = "Compaq Gigabit NIC Driver"

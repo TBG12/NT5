@@ -1,0 +1,89 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,5.1.2462.102
+
+[Manufacturer]
+%ALIR% = ALICOM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[ALICOM]
+%ALI5261.DeviceDesc%   = ALI5261.ndi,    PCI\VEN_10B9&DEV_5261
+
+[ALI5261.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = ALI9PCI.reg, ALI5261.con.reg, 5261.pci.reg
+CopyFIles       = ALI9PCI.CopyFiles
+
+[ALI5261.ndi.NT.Services]
+AddService = ALI5261, 2, ALI5261.Service, common.EventLog
+
+[ALI9PCI.CopyFiles]
+ALI5261.SYS,,,2
+
+[ALI5261.con.reg]
+;Common
+;ConnectionType
+HKR, Ndi\params\ConnectionType,      ParamDesc,  0, %ConnectionType%
+HKR, Ndi\params\ConnectionType,      default,    0, "0"
+HKR, Ndi\params\ConnectionType,      type,       0, "enum"
+HKR, Ndi\params\ConnectionType\enum, 0,          0, %AutoSense%
+HKR, Ndi\params\ConnectionType\enum, 2,          0, %100Mbps%
+HKR, Ndi\params\ConnectionType\enum, 4,          0, %100Mbps_Full_Duplex%
+HKR, Ndi\params\ConnectionType\enum, 1,          0, %10Mbps%
+HKR, Ndi\params\ConnectionType\enum, 3,          0, %10Mbps_Full_Duplex%
+
+[5261.pci.reg]
+HKR, , AdapterType              , 0, "5"
+HKR, , BusType                  , 0, "5"
+HKR, , StoreAndForward          , 0, "1"
+HKR, , TransmitThreshold        , 0, "200"
+HKR, , ACPIEnable               , 0, "4"
+
+[ALI9PCI.reg]
+HKR, Ndi,            Service,      0, "ALI5261"
+HKR, Ndi\Interfaces, UpperRange,   0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange,   0, "ethernet"
+HKR, ,               AdapterPCIID, 0, "526110B9"
+HKR, Ndi,            DeviceID,     0, "PCI\VEN_10B9&DEV_5261"
+
+[ALI5261.Service]
+DisplayName     = %ALI9PCI.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\ALI5261.SYS
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+DefaultDestDir    = 12
+ALI9PCI.CopyFiles = 12
+
+[Strings]
+MSFT                     = "Microsoft"
+ConnectionType           = "Connection Type"
+AutoSense                = "AutoSense"
+100Mbps                  = "100Mbps"
+100Mbps_Full_Duplex      = "100Mbps Full_Duplex"
+10Mbps                   = "10Mbps"
+10Mbps_Full_Duplex       = "10Mbps Full_Duplex"
+
+ALIR                     = "Acer Laboratories Inc."
+ALI5261.DeviceDesc	 = "ALi PCI Fast Ethernet Controller"
+ALI9PCI.Service.DispName = "ALi Based Ethernet NT Driver"
+

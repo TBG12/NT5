@@ -1,0 +1,469 @@
+; Copyright (c) 2001, Microsoft
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %Msft%
+LayoutFile = layout.inf
+DriverVer=07/01/2001,2.4.2001.719
+
+[Manufacturer]
+%3Com%     = 3Com
+%ADMtek%   = ADMtek
+%Accton%   = ACCTON
+%Belkin%   = Belkin
+%Billionton% = Billionton
+%DLINK%    = DLINK
+%Hawking%  = Hawking
+%Linksys%  = Linksys
+%IODATA%   = IODATA
+%Melco%    = Melco
+%NDC%      = NDC
+%OCT%      = OCT
+%SmartB%   = SmartB
+%SMC%      = SMC
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3Com]
+%3C460B.DeviceDesc%     = AN986.Ndi,     USB\VID_0506&PID_4601
+
+[ADMtek]
+%ADM8511.DeviceDesc%    = ADM8511.Ndi,   USB\VID_07A6&PID_8511
+%AN986.DeviceDesc%      = AN986.Ndi,     USB\VID_07A6&PID_0986
+
+[ACCTON]
+%EN1046.DeviceDesc%     = EN1046.Ndi,    USB\VID_083A&PID_1046
+%EN1060.DeviceDesc%     = EN1060.Ndi,    USB\VID_083A&PID_1060
+%EN1060TH.DeviceDesc%   = EN1060TH.Ndi,  USB\VID_083A&PID_3060
+%EN1046_1.DeviceDesc%   = EN1046_1.Ndi,  USB\VID_083A&PID_3046
+%EN1046_2.DeviceDesc%   = EN1046_2.Ndi,  USB\VID_083A&PID_5046
+
+[Belkin]
+%Belkin.DeviceDesc%     = ADM8511.Ndi,   USB\VID_050D&PID_0122
+
+[Billionton]
+%USB100B.DeviceDesc%    = AN986.Ndi,     USB\VID_08DD&PID_0986
+%USB100B.DeviceDesc%    = AN986.Ndi,     USB\VID_08DD&PID_1986
+%USB100B.DeviceDesc%    = ADM8511.Ndi,   USB\VID_08DD&PID_8511
+
+[DLINK]
+%DSB-650.DeviceDesc%    = AN986.Ndi,     USB\VID_2001&PID_ABC1
+
+[Hawking]
+
+[Linksys]
+%USB10T.DeviceDesc%     = AN986.Ndi,     USB\VID_066B&PID_2202
+%USB100.DeviceDesc%     = AN986.Ndi,     USB\VID_066b&PID_2203
+
+[IODATA]
+%IODATA.DeviceDesc%     = AN986.Ndi,     USB\VID_04BB&PID_0913
+
+[Melco]
+%BUFFALO.DeviceDesc%    = AN986.ndi,     USB\VID_0411&PID_0005
+
+[NDC]
+%NDC100.DeviceDesc%     = AN986.Ndi,     USB\VID_15E8&PID_9100
+%NDC110.DeviceDesc%     = ADM8511.Ndi,   USB\VID_15E8&PID_9110
+
+[OCT]
+%OCT.DeviceDesc%  	= ADM8511.Ndi,	 USB\VID_0B39&PID_0901
+
+[SmartB]
+%SmartNIC2.DeviceDesc%  = ADM8511.Ndi,   USB\VID_08D1&PID_0003
+
+[SMC]
+%Smc1046.DeviceDesc%    = Smc1046.Ndi,   USB\VID_0707&PID_0200
+%Smc1046.DeviceDesc%    = Smc1046.Ndi,   USB\VID_0707&PID_0201
+
+[ADM8511.Ndi.NT]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, ADM8511.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA for pass InfCheck.exe
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[AN986.Ndi.NT]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, AN986.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA for pass InfCheck.exe
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[EN1046.Ndi]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, EN1046.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA For bypass WHQL
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[EN1060.Ndi]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, EN1060.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA For bypass WHQL
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[EN1060TH.Ndi]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, EN1060TH.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA For bypass WHQL
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[EN1046_1.Ndi]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, EN1046.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA For bypass WHQL
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[EN1046_2.Ndi]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, EN1046.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA For bypass WHQL
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[Smc1046.Ndi]
+AddReg          = ADM8511.NT.Reg, ADM8511.Params, EN1046.Con.Reg
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 1 ; ISA For bypass WHQL
+CopyFiles       = ADM8511.ndis.copyfiles.NT
+
+[ADM8511.Ndi.NT.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[AN986.Ndi.NT.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[EN1046.Ndi.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[EN1060.Ndi.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[EN1060TH.Ndi.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[EN1046_1.Ndi.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[EN1046_2.Ndi.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[Smc1046.Ndi.Services]
+AddService = ADM8511, 2, ADM8511.Service, Common.EventLog
+
+[ADM8511.Params]
+HKR, ,TxPacketDesc,    0, "40"   ; 0x28
+HKR, ,RxPacketDesc,    0, "20"   ; 0x14
+
+
+[EN1046.Con.Reg]
+HKR, Ndi\Params\MediaType,              ParamDesc,      , %MediaType%
+HKR, Ndi\Params\MediaType,              default,        , "0"
+HKR, Ndi\Params\MediaType,              type,           , "enum"
+HKR, Ndi\Params\MediaType\enum,         0,              , %AutoSense%
+HKR, Ndi\Params\MediaType\enum,         1,              , %10HD%
+HKR, Ndi\Params\MediaType\enum,         2,              , %10FD%
+HKR, Ndi\Params\MediaType\enum,         3,              , %100HD%
+HKR, Ndi\Params\MediaType\enum,         4,              , %100FD%
+
+HKR, ,                                  MediaSel,       , "1"         ; Ethernet
+HKR, ,                                  MagicPkt,       , "0"
+HKR, ,                                  LinkWakeup,     , "0"
+
+HKR, Ndi\Params\FlowControl,            ParamDesc,      , %FlowControl%
+HKR, Ndi\Params\FlowControl,            default,        , "1"
+HKR, Ndi\Params\FlowControl,            type,           , "enum"
+HKR, Ndi\Params\FlowControl\enum,       0,              , %Enable%
+HKR, Ndi\Params\FlowControl\enum,       1,              , %Disable%
+
+HKR, Ndi\Params\FlowControl_Tx,         ParamDesc,      , %FlowControlBaseRxPackets%
+HKR, Ndi\Params\FlowControl_Tx,         default,        , "0"
+HKR, Ndi\Params\FlowControl_Tx,         type,           , "enum"
+HKR, Ndi\Params\FlowControl_Tx\enum,    0,              , "Disable"
+HKR, Ndi\Params\FlowControl_Tx\enum,    1,              , " 1 Packet"
+HKR, Ndi\Params\FlowControl_Tx\enum,    2,              , " 2 Packets"
+HKR, Ndi\Params\FlowControl_Tx\enum,    3,              , " 4 Packets"
+HKR, Ndi\Params\FlowControl_Tx\enum,    4,              , " 8 Packets"
+HKR, Ndi\Params\FlowControl_Tx\enum,    5,              , "16 Packets"
+HKR, Ndi\Params\FlowControl_Tx\enum,    6,              , "32 Packets"
+
+HKR, ,                                  AlivePara,      , "0"
+
+HKR, Ndi\Params\FlowControl_Rx,         ParamDesc,      , %FlowControlBaseRxSize%
+HKR, Ndi\Params\FlowControl_Rx,         default,        , "0"
+HKR, Ndi\Params\FlowControl_Rx,         type,           , "enum"
+HKR, Ndi\Params\FlowControl_Rx\enum,    0,              , %Disable%
+HKR, Ndi\Params\FlowControl_Rx\enum,    1,              , " 1K"
+HKR, Ndi\Params\FlowControl_Rx\enum,    2,              , " 2K"
+HKR, Ndi\Params\FlowControl_Rx\enum,    3,              , " 4K"
+HKR, Ndi\Params\FlowControl_Rx\enum,    4,              , " 8K"
+HKR, Ndi\Params\FlowControl_Rx\enum,    5,              , "16K"
+HKR, Ndi\Params\FlowControl_Rx\enum,    6,              , "32K"
+
+[EN1060.Con.Reg]
+HKR, ,                                  MediaSel,       , "2" ; HPNA
+
+HKR,Ndi\Params\FlowControl,             ParamDesc,      , %FlowControl%
+HKR,Ndi\Params\FlowControl,             default,        , "1"
+HKR,Ndi\Params\FlowControl,             type,           , "enum"
+HKR,Ndi\Params\FlowControl\enum,        0,              , %Enable%
+HKR,Ndi\Params\FlowControl\enum,        1,              , %Disable%
+
+HKR,Ndi\Params\FlowControl_Tx,          ParamDesc,      , %FlowControlBaseRxPackets%
+HKR,Ndi\Params\FlowControl_Tx,          default,        , "0"
+HKR,Ndi\Params\FlowControl_Tx,          type,           , "enum"
+HKR,Ndi\Params\FlowControl_Tx\enum,     0,              , %Disable%
+HKR,Ndi\Params\FlowControl_Tx\enum,     1,              , " 1 Packet"
+HKR,Ndi\Params\FlowControl_Tx\enum,     2,              , " 2 Packets"
+HKR,Ndi\Params\FlowControl_Tx\enum,     3,              , " 4 Packets"
+HKR,Ndi\Params\FlowControl_Tx\enum,     4,              , " 8 Packets"
+HKR,Ndi\Params\FlowControl_Tx\enum,     5,              , "16 Packets"
+HKR,Ndi\Params\FlowControl_Tx\enum,     6,              , "32 Packets"
+
+HKR, ,                                  AlivePara,      , "0"
+
+HKR,Ndi\Params\FlowControl_Rx,          ParamDesc,      , %FlowControlBaseRxSize%
+HKR,Ndi\Params\FlowControl_Rx,          default,        , "0"
+HKR,Ndi\Params\FlowControl_Rx,          type,           , "enum"
+HKR,Ndi\Params\FlowControl_Rx\enum,     0,              , %Disable%
+HKR,Ndi\Params\FlowControl_Rx\enum,     1,              , " 1K"
+HKR,Ndi\Params\FlowControl_Rx\enum,     2,              , " 2K"
+HKR,Ndi\Params\FlowControl_Rx\enum,     3,              , " 4K"
+HKR,Ndi\Params\FlowControl_Rx\enum,     4,              , " 8K"
+HKR,Ndi\Params\FlowControl_Rx\enum,     5,              , "16K"
+HKR,Ndi\Params\FlowControl_Rx\enum,     6,              , "32K"
+
+[EN1060TH.Con.Reg]
+HKR,Ndi\Params\MediaType,               ParamDesc,      , %MediaType%
+HKR,Ndi\Params\MediaType,               default,        , "0"
+HKR,Ndi\Params\MediaType,               type,           , "enum"
+HKR,Ndi\Params\MediaType\enum,          0,              , %AutoSense%
+HKR,Ndi\Params\MediaType\enum,          1,              , %10HD%
+HKR,Ndi\Params\MediaType\enum,          2,              , %10FD%
+HKR,Ndi\Params\MediaType\enum,          3,              , %100HD%
+HKR,Ndi\Params\MediaType\enum,          4,              , %100FD%
+
+HKR,Ndi\Params\MediaSel,                ParamDesc,      , %SelectMedia%
+HKR,Ndi\Params\MediaSel,                default,        , "0"
+HKR,Ndi\Params\MediaSel,                type,           , "enum"
+HKR,Ndi\Params\MediaSel\enum,           0,              , %AutoSense%
+HKR,Ndi\Params\MediaSel\enum,           1,              , %ETH%
+HKR,Ndi\Params\MediaSel\enum,           2,              , %HPNA%
+
+HKR, ,                                  MagicPkt,       , "0"
+
+HKR, ,                                  AlivePara,      , "0"
+
+HKR, ,                                  LinkWakeup,     , "0"
+
+[ADM8511.Con.Reg]
+HKR,Ndi\Params\MediaType,ParamDesc,,%MediaType%
+HKR,Ndi\Params\MediaType,default,,"0"
+HKR,Ndi\Params\MediaType,type,,"enum"
+HKR,Ndi\Params\MediaType\enum,0,,%AutoSense%
+HKR,Ndi\Params\MediaType\enum,1,,%10HD%
+HKR,Ndi\Params\MediaType\enum,2,,%10FD%
+HKR,Ndi\Params\MediaType\enum,3,,%100HD%
+HKR,Ndi\Params\MediaType\enum,4,,%100FD%
+
+HKR,Ndi\Params\MediaSel,ParamDesc,,%SelectMedia%
+HKR,Ndi\Params\MediaSel,default,,"0"
+HKR,Ndi\Params\MediaSel,type,,"enum"
+HKR,Ndi\Params\MediaSel\enum,0,,%AutoSense%
+HKR,Ndi\Params\MediaSel\enum,1,,%Ethernet%
+HKR,Ndi\Params\MediaSel\enum,2,,%HomeLan%
+
+HKR, ,                                  MagicPkt,       , "0"
+
+HKR, ,                                  AlivePara,      , "0"
+
+HKR, ,                                  LinkWakeup,     , "0"
+
+HKR,Ndi\Params\FlowControl,ParamDesc,,%FlowControl%
+HKR,Ndi\Params\FlowControl,default,,"1"
+HKR,Ndi\Params\FlowControl,type,,"enum"
+HKR,Ndi\Params\FlowControl\enum,0,,%Enable%
+HKR,Ndi\Params\FlowControl\enum,1,,%Disable%
+
+HKR,Ndi\Params\FlowControl_Tx,ParamDesc,,%FlowControlBaseRxPackets%
+HKR,Ndi\Params\FlowControl_Tx,default,,"0"
+HKR,Ndi\Params\FlowControl_Tx,type,,"enum"
+HKR,Ndi\Params\FlowControl_Tx\enum,0,,%Disable%
+HKR,Ndi\Params\FlowControl_Tx\enum,1,,%1Packet%
+HKR,Ndi\Params\FlowControl_Tx\enum,2,,%2Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,3,,%4Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,4,,%8Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,5,,%16Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,6,,%32Packets%
+
+HKR,Ndi\Params\FlowControl_Rx,ParamDesc,,%FlowControlBaseRxSize%
+HKR,Ndi\Params\FlowControl_Rx,default,,"0"
+HKR,Ndi\Params\FlowControl_Rx,type,,"enum"
+HKR,Ndi\Params\FlowControl_Rx\enum,0,,%Disable%
+HKR,Ndi\Params\FlowControl_Rx\enum,1,,%1K%
+HKR,Ndi\Params\FlowControl_Rx\enum,2,,%2K%
+HKR,Ndi\Params\FlowControl_Rx\enum,3,,%4K%
+HKR,Ndi\Params\FlowControl_Rx\enum,4,,%8K%
+HKR,Ndi\Params\FlowControl_Rx\enum,5,,%16K%
+HKR,Ndi\Params\FlowControl_Rx\enum,6,,%32K%
+
+[AN986.Con.Reg]
+HKR,Ndi\Params\MediaType,ParamDesc,,%MediaType%
+HKR,Ndi\Params\MediaType,default,,"0"
+HKR,Ndi\Params\MediaType,type,,"enum"
+HKR,Ndi\Params\MediaType\enum,0,,%AutoSense%
+HKR,Ndi\Params\MediaType\enum,1,,%10HD%
+HKR,Ndi\Params\MediaType\enum,2,,%10FD%
+HKR,Ndi\Params\MediaType\enum,3,,%100HD%
+HKR,Ndi\Params\MediaType\enum,4,,%100FD%
+
+HKR,Ndi\Params\MediaSel,ParamDesc,,%SelectMedia%
+HKR,Ndi\Params\MediaSel,default,,"0"
+HKR,Ndi\Params\MediaSel,type,,"enum"
+HKR,Ndi\Params\MediaSel\enum,0,,%AutoSense%
+HKR,Ndi\Params\MediaSel\enum,1,,%Ethernet%
+HKR,Ndi\Params\MediaSel\enum,2,,%HomeLan%
+
+HKR, ,                                  MagicPkt,       , "0"
+
+HKR, ,                                  LinkWakeup,     , "0"
+
+HKR,Ndi\Params\FlowControl,ParamDesc,,%FlowControl%
+HKR,Ndi\Params\FlowControl,default,,"1"
+HKR,Ndi\Params\FlowControl,type,,"enum"
+HKR,Ndi\Params\FlowControl\enum,0,,%Enable%
+HKR,Ndi\Params\FlowControl\enum,1,,%Disable%
+
+HKR,Ndi\Params\FlowControl_Tx,ParamDesc,,%FlowControlBaseRxPackets%
+HKR,Ndi\Params\FlowControl_Tx,default,,"0"
+HKR,Ndi\Params\FlowControl_Tx,type,,"enum"
+HKR,Ndi\Params\FlowControl_Tx\enum,0,,%Disable%
+HKR,Ndi\Params\FlowControl_Tx\enum,1,,%1Packet%
+HKR,Ndi\Params\FlowControl_Tx\enum,2,,%2Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,3,,%4Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,4,,%8Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,5,,%16Packets%
+HKR,Ndi\Params\FlowControl_Tx\enum,6,,%32Packets%
+
+HKR,Ndi\Params\FlowControl_Rx,ParamDesc,,%FlowControlBaseRxSize%
+HKR,Ndi\Params\FlowControl_Rx,default,,"0"
+HKR,Ndi\Params\FlowControl_Rx,type,,"enum"
+HKR,Ndi\Params\FlowControl_Rx\enum,0,,%Disable%
+HKR,Ndi\Params\FlowControl_Rx\enum,1,,%1K%
+HKR,Ndi\Params\FlowControl_Rx\enum,2,,%2K%
+HKR,Ndi\Params\FlowControl_Rx\enum,3,,%4K%
+HKR,Ndi\Params\FlowControl_Rx\enum,4,,%8K%
+HKR,Ndi\Params\FlowControl_Rx\enum,5,,%16K%
+HKR,Ndi\Params\FlowControl_Rx\enum,6,,%32K%
+
+[ADM8511.NT.Reg]
+; Interfaces
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi,            Service,    0, "ADM8511"
+HKR,,                Platform,   0, "1"
+
+[ADM8511.Service]
+DisplayName    = %ADM8511.Service.DispName%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\ADM8511.SYS
+LoadOrderGroup = NDIS,NTKERN,NDIS
+
+[Common.EventLog]
+AddReg = Common.AddEventLog.Reg
+
+[Common.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported  , 0x00010001, 7
+
+[ADM8511.ndis.copyfiles.NT]
+ADM8511.SYS,,,2
+
+[DestinationDirs]
+ADM8511.ndis.copyfiles.NT = 12
+DefaultDestDir            = 12
+
+[Strings]
+Msft    = "Microsoft"
+3com    = "3Com"
+ADMtek  = "ADMtek Incorporated"
+Accton  = "Accton"
+Belkin  = "Belkin"
+Billionton = "Billionton"
+DLINK   = "D-Link"
+Hawking = "Hawking"
+IODATA  = "I-O DATA DEVICE,INC."
+Linksys = "Linksys"
+Melco   = "Buffalo"
+NDC     = "National Datacomm Corporation"
+OCT     = "OCT"
+SMC     = "SMC"
+SmartB  = "smartBridges"
+
+MediaType             = "Media Type"
+AutoSense             = "AutoSense"
+10HD                  = "10BaseT"
+10FD                  = "10BaseT Full_Duplex"
+100HD                 = "100BaseTX"
+100FD                 = "100BaseTX Full_Duplex"
+
+SelectMedia           = "Select Media"
+Ethernet              = "Ethernet"
+HomeLan               = "Home Lan"
+Disable               = "Disable"
+Enable                = "Enable"
+
+LinkStatusWakeup      = "Link Status Wakeup"
+FlowControl           = "Flow Control"
+
+FlowControlBaseRxPackets = "Flow Control Base Rx Packets"
+1Packet               = " 1 Packet"
+2Packets              = " 2 Packets"
+4Packets              = " 4 Packets"
+8Packets              = " 8 Packets"
+16Packets              = "16 Packets"
+32Packets              = "32 Packets"
+
+ETH                     = "Ethernet"
+HPNA                    = "Phoneline"
+
+FlowControlBaseRxSize  = "Flow Control Base Rx Size"
+1K                     = " 1K"
+2K                     = " 2K"
+4K                     = " 4K"
+8K                     = " 8K"
+16K                    = "16K"
+32K                    = "32K"
+
+TestMode               = "Test Mode"
+Mode0                  = "Mode 0"
+Mode1                  = "Mode 1"
+Mode2                  = "Mode 2"
+Mode3                  = "Mode 3"
+Mode4                  = "Mode 4"
+
+3C460B.DeviceDesc      = "3Com 3C460B 10/100 Mbps USB Ethernet Network Adapter"
+En1046.DeviceDesc      = "Accton USB 10/100 Series Adapter"
+En1060.DeviceDesc      = "Accton USB HomeLine Adapter"
+En1060TH.DeviceDesc    = "Accton USB 1/10/100 Adapter"
+En1046_1.DeviceDesc    = "Accton USB 10/100 Series Adapter"
+En1046_2.DeviceDesc    = "Accton USB 10/100 Series Adapter"
+ADM8511.DeviceDesc     = "ADMtek ADM8511 USB To Fast Ethernet Converter"
+AN986.DeviceDesc       = "ADMtek AN986 USB To Fast Ethernet Converter"
+buffalo.DeviceDesc     = "Buffalo LUA-TX 10/100 USB Ethernet Converter"
+DSB-650.DeviceDesc     = "D-Link DSB-650 USB Ethernet Adapter"
+Hawking.DeviceDesc     = "Hawking UF100 USB 10/100 Network Adapter"
+USB10T.DeviceDesc      = "Linksys USB 10Base-T Ethernet Adapter"
+USB100.DeviceDesc      = "Linksys Etherfast USB 10/100 Ethernet Adapter"
+Smc1046.DeviceDesc     = "SMC EZ Connect USB/Ethernet Series Converter"
+SmartNIC2.DeviceDesc   = "smartNIC2 BroadBand Network Adapter"
+NDC100.DeviceDesc      = "SOHOware NUB100 10/100 USB Network Adapter"
+NDC110.DeviceDesc      = "SOHOware NUB110 10/100 USB Network Adapter"
+USB100B.DeviceDesc     = "Billionton USB 10/100 LAN Adapter"
+OCT.DeviceDesc         = "OCT USB To Fast Ethernet Converter"
+Belkin.DeviceDesc      = "Belkin USB Ethernet Adapter"
+IODATA.DeviceDesc      = "I-O Data USB-ET/TX-S USB Ethernet Adapter"
+
+
+ADM8511.Service.DispName = "ADMtek ADM8511/AN986 USB To Fast Ethernet Converter"

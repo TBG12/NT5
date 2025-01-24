@@ -1,0 +1,103 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %Msft%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,5.0.11.6504
+
+[Manufacturer]
+%FORE% = FORE
+
+
+[ControlFlags]
+ExcludeFromSelect     = *
+
+
+[FORE]
+%PCA200E.DeviceDesc%  = PCA200E.ndi, PCI\VEN_1127&DEV_0300  ;PCA-200E
+
+;-------------------------------------------------------------------------------
+; PCA200E 
+;
+[PCA200E.ndi]
+AddReg          = PCA200E.ndi.reg
+Characteristics = 0x84  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5
+CopyFiles       = PCA200E.CopyFiles
+
+[PCA200E.ndi.Services]
+AddService      = PCA200E, 2, PCA200E.AddService, PCA200E.AddEventLog
+
+
+;-------------------------------------------------------------------------------
+; PCA-200E
+;
+[PCA200E.ndi.reg]
+HKR, Ndi,                        Service,    0, "PCA200E"
+HKR, Ndi\Interfaces,             DefLower,   0, "atm"
+HKR, Ndi\Interfaces,             LowerRange, 0, "atm"
+HKR, Ndi\Interfaces,             DefUpper,   0, "ndisatm"
+HKR, Ndi\Interfaces,             UpperRange, 0, "ndisatm"
+
+HKR, Ndi\params\Sonet,           ParamDesc,  0, %OC3Framing%
+HKR, Ndi\params\Sonet,           default,    0, "1"
+HKR, Ndi\params\Sonet,           type,       0, "enum"
+HKR, Ndi\params\Sonet\enum,      "0",        0, %SDH%
+HKR, Ndi\params\Sonet\enum,      "1",        0, %SONET%
+
+HKR, Ndi\params\Unassigned,      ParamDesc,  0, %EmptyCellInsertion%
+HKR, Ndi\params\Unassigned,      default,    0, "1"
+HKR, Ndi\params\Unassigned,      type,       0, "enum"
+HKR, Ndi\params\Unassigned\enum, "0",        0, %Idle%
+HKR, Ndi\params\Unassigned\enum, "1",        0, %Unassigned%
+
+
+;-------------------------------------------------------------------------------
+; PCA Driver and Service
+;
+[PCA200E.CopyFiles]
+PCA200E.SYS,,,2
+PCA200E.BIN,,,2
+
+[PCA200E.AddService]
+DisplayName    = %PCA200E.Service.DispName%
+ServiceType    = 1 ;SERVICE_KERNEL_DRIVER
+StartType      = 3 ;SERVICE_DEMAND_START
+ErrorControl   = 1 ;SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\PCA200E.sys
+LoadOrderGroup = NDIS
+
+[PCA200E.AddEventLog]
+AddReg = PCA200E.AddEventLog.Reg
+
+[PCA200E.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+;-------------------------------------------------------------------------------
+; Destination Dirs
+;
+[DestinationDirs]
+PCA200E.CopyFiles  = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Msft                      = "Microsoft"
+FORE                      = "FORE Systems, Inc."
+
+OC3Framing                = "OC3 Framing"
+SDH                       = "SDH"
+SONET                     = "SONET"
+EmptyCellInsertion        = "Empty Cell Insertion"
+Idle                      = "Idle"
+Unassigned                = "Unassigned"
+
+PCA200E.DeviceDesc        = "ForeRunner PCA-200EPC ATM Adapter" 
+
+PCA200E.Service.DispName  = "ForeRunner PCA-200EPC ATM Driver"

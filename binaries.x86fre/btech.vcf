@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Technology;Brooktrout
+FN:Brooktrout Technology
+ORG:Brooktrout Technology
+TEL;WORK;VOICE:+1 (781) 449-4100
+TEL;WORK;FAX:+1 (781) 449-9520
+ADR;WORK:;;250 First Avenue;Needham;MA;02494;United States of America
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:250 First Avenue=0D=0ANeedham, MA 02494=0D=0AUnited States of America
+URL:
+URL:http://www.brooktrout.com
+EMAIL;PREF;INTERNET:info@brooktrout.com
+REV:20010225T181644Z
+END:VCARD

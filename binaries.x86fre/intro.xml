@@ -1,0 +1,17 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[Welcome to Search Companion!]]></Text>
+	</Title>
+	<Label TopMargin="8">
+		<Text>Before you begin, choose how you want to search:</Text>
+	</Label>
+	<Radio Id="5100" Checked="1" TopMargin="8">
+		<Text><![CDATA[With an animated &screen character]]></Text>
+	</Radio>
+	<Radio Id="5101" TopMargin="5">
+		<Text><![CDATA[&Without an animated screen character]]></Text>
+	</Radio>
+	<Label TopMargin="10">
+		<Text>To change this setting at a later time, click Change preferences.</Text>
+	</Label>
+</SimpleDialog>

@@ -1,0 +1,124 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+Signature  = "$Windows NT$"
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %MSFT%
+Class      = Net
+DriverVer=10/01/2002,1.1.8.6000
+
+[Manufacturer]
+%3COM% = 3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%3CCFEM556%   = FEM556.ndi,   MF\3CCFEM556_DEV1
+%3CCFEM556B%  = FEM556B.ndi,  MF\3CCFEM556B_DEV1
+%3CCFEM556BI% = FEM556BI.ndi, MF\3CCFEM556BI_DEV1
+
+[FEM556.ndi] 
+CopyFiles       = 3ccfem556.ndis5.CopyFiles
+AddReg          = ADDREG_FEM556.ndi.reg, 3CCFEM556.ndi.reg, OSType.ndi.reg, VerStr.ndi.reg
+Characteristics = 0x4   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[FEM556B.ndi] 
+CopyFiles       = 3ccfem556B.ndis5.CopyFiles
+AddReg          = ADDREG_FEM556B.ndi.reg, 3CCFEM556.ndi.reg, OSType.ndi.reg, VerStr.ndi.reg
+Characteristics = 0x4   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[FEM556BI.ndi] 
+CopyFiles       = 3ccfem556BI.ndis5.CopyFiles
+AddReg          = ADDREG_FEM556BI.ndi.reg, 3CCFEM556.ndi.reg, OSType.ndi.reg, VerStr.ndi.reg
+Characteristics = 0x4   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[FEM556.ndi.Services]
+AddService       = fem556, 2, fem556.Service, fem556.EventLog
+
+[FEM556B.ndi.Services]
+AddService       = fem556B, 2, fem556B.Service, fem556.EventLog
+
+[FEM556BI.ndi.Services]
+AddService       = fem556BI, 2, fem556BI.Service, fem556.EventLog
+
+[fem556.Service]
+DisplayName     = %fem556.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\fem556na.sys
+LoadOrderGroup  = NDIS
+
+[fem556B.Service]
+DisplayName     = %fem556B.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\fem556nb.sys
+LoadOrderGroup  = NDIS
+
+[fem556BI.Service]
+DisplayName     = %fem556BI.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\fem556ni.sys
+LoadOrderGroup  = NDIS
+
+[fem556.EventLog]
+AddReg = fem556.AddEventLog.reg
+
+[fem556.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[OSType.ndi.reg]
+HKR, , OSType, 0, "1"
+
+[VerStr.ndi.reg]
+HKR, , Verstr, 0, "1"
+
+[ADDREG_FEM556.ndi.reg]
+HKR,Ndi, Service, 0, "fem556"
+
+[ADDREG_FEM556B.ndi.reg]
+HKR,Ndi, Service, 0, "fem556B"
+
+[ADDREG_FEM556BI.ndi.reg]
+HKR,Ndi, Service, 0, "fem556BI"
+
+[3CCFEM556.ndi.reg]
+HKR, Ndi\Interfaces,    UpperRange,  0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange,  0, "ethernet"
+HKR, ,                  AdapterType, 0, "1103"
+
+[3ccfem556.ndis5.CopyFiles]
+fem556na.sys,fem556n5.sys,,2
+
+[3ccfem556B.ndis5.CopyFiles]
+fem556nb.sys,fem556n5.sys,,2
+
+[3ccfem556BI.ndis5.CopyFiles]
+fem556ni.sys,fem556n5.sys,,2
+
+[DestinationDirs]
+3ccfem556.ndis5.CopyFiles   = 12
+3ccfem556B.ndis5.CopyFiles  = 12
+3ccfem556BI.ndis5.CopyFiles = 12
+
+[Strings]
+MSFT                     = "Microsoft"
+3COM                     = "3Com"
+
+3CCFEM556                = "3Com Megahertz 10-100 LAN + 56K Modem (Ethernet)"
+3CCFEM556B               = "3Com Megahertz (B) 10-100 LAN + 56K Modem (Ethernet)"
+3CCFEM556BI              = "3Com Megahertz (BI) 10-100 LAN + 56K Modem (Ethernet)"
+
+fem556.device.DispName   = "3Com 3ccfem556 PCMCIA Device Driver"
+fem556B.device.DispName  = "3Com 3ccfem556B PCMCIA Device Driver"
+fem556BI.device.DispName = "3Com 3ccfem556BI PCMCIA Device Driver"

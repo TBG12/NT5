@@ -1,0 +1,470 @@
+; ATIRADN1.INF
+;
+; Windows XP
+;
+; Installation inf for the ATI Technologies Inc. ati graphics adapter.
+;
+
+[Version]
+Signature = "$CHICAGO$"
+Provider=%MS%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir      = 11
+atimtag.Miniport    = 12  ; drivers
+atimtag.Display     = 11  ; system32
+atimtag.Display_M6  = 11  ; system32
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATI.Mfg
+
+[ATI.Mfg]
+
+;%RADEON_ME% (ATI)  = atimtag_M6, PCI\VEN_1002&DEV_4C59&SUBSYS_4C591002
+%RADEON_ME% (DELL)  = atimtag_M6, PCI\VEN_1002&DEV_4C59&SUBSYS_00E31028
+%RADEON_ME% (DELL)  = atimtag_M6, PCI\VEN_1002&DEV_4C59&SUBSYS_00E41028
+%RADEON_ME% (HP)    = atimtag_M6, PCI\VEN_1002&DEV_4C59&SUBSYS_001A103C
+
+;
+; General installation section
+;
+
+[atimtag]
+; Include=msdv.inf
+CopyFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+
+DelReg=atimtag_SoftwareDesktopSettings, atimtag_SoftwareDesktopSettings_ENU
+DelFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+DelReg=atimtag_DEFAULT_SoftwareDeviceSettings, ation4ag_OpenGLSoftwareSettings
+; CleanService=atimtag.RemoveService
+
+[atimtag.CoInstallers]
+AddReg=CoInstallers.AddReg
+CopyFiles=atimtag.CoInstallersCopy
+
+[atimtag_R6WS]
+; Include=msdv.inf
+CopyFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+
+DelReg=atimtag_SoftwareDesktopSettings, atimtag_SoftwareDesktopSettings_ENU
+DelFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+DelReg=atimtag_DEFAULT_SoftwareDeviceSettings, ation4ag_OpenGLSoftwareSettings
+; CleanService=atimtag.RemoveService
+
+[atimtag_R6WS.CoInstallers]
+AddReg=CoInstallers.AddReg
+CopyFiles=atimtag.CoInstallersCopy
+
+
+[atimtag_RV100]
+; Include=msdv.inf
+CopyFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+
+DelReg=atimtag_SoftwareDesktopSettings, atimtag_SoftwareDesktopSettings_ENU
+DelFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+DelReg=atimtag_DEFAULT_SoftwareDeviceSettings, ation4ag_OpenGLSoftwareSettings
+; CleanService=atimtag.RemoveService
+
+[atimtag_RV100.CoInstallers]
+AddReg=CoInstallers.AddReg
+CopyFiles=atimtag.CoInstallersCopy
+
+
+[atimtag_M6]
+; Include=msdv.inf
+CopyFiles=atimtag.Miniport, atimtag.Display_M6, atimtag.OpenGL
+
+DelReg=atimtag_SoftwareDesktopSettings, atimtag_SoftwareDesktopSettings_ENU
+DelFiles=atimtag.Miniport, atimtag.Display, atimtag.OpenGL
+DelReg=atimtag_DEFAULT_SoftwareDeviceSettings, ation4ag_OpenGLSoftwareSettings
+; CleanService=atimtag.RemoveService
+
+[atimtag_M6.CoInstallers]
+AddReg=CoInstallers.AddReg
+CopyFiles=atimtag.CoInstallersCopy
+
+[CoInstallers.AddReg]
+; HKR,,EnumPropPages32,,"atiidtxx.dll,DetailsPageProvider"
+; HKR,,CoInstallers32,0x10000,"atiicpxx.dll,CoCopyINF"
+
+;
+; File sections
+;
+
+[atimtag.Miniport]
+atimtag.sys
+
+[atimtag.Display]
+atidvag.dll
+
+[atimtag.Display_M6]
+atidvag.dll
+Atievxx.exe
+
+[atimtag.OpenGL]
+; atio2kag.dll
+
+[atimtag.CoInstallersCopy]
+;Atiidtxx.dll
+;atiicpxx.dll,,,0x10
+
+;
+; Service Installation
+;
+
+[atimtag.Services]
+AddService = atimtag, 0x00000002, atimtag_Service_Inst, atimtag_EventLog_Inst
+
+[atimtag_R6WS.Services]
+AddService = atimtag, 0x00000002, atimtag_Service_Inst, atimtag_EventLog_Inst
+
+[atimtag_RV100.Services]
+AddService = atimtag, 0x00000002, atimtag_Service_Inst, atimtag_EventLog_Inst
+
+[atimtag_M6.Services]
+AddService = atimtag, 0x00000002, atimtag_Service_Inst, atimtag_EventLog_Inst
+AddService=Ati HotKey Poller,, Atievxx_Generic_Service_Inst, Atievxx_EventLog_Inst
+
+[atimtag_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\atimtag.sys
+
+[atimtag_EventLog_Inst]
+AddReg = atimtag_EventLog_AddReg
+
+[atimtag_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\atimtag.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[Atievxx_Generic_Service_Inst]
+ServiceType    = 0x110
+StartType      = 2
+ErrorControl   = 1
+ServiceBinary  = %11%\Atievxx.exe
+
+[Atievxx_EventLog_Inst]
+AddReg=Atievxx_EventLog_AddReg
+
+[Atievxx_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%11%\Atievxx.exe"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+
+[atimtag.SoftwareSettings]
+AddReg = atimtag_DEFAULT_SoftwareDeviceSettings
+AddReg = atimtag_RADEON_SoftwareDeviceSettings
+; AddReg = ation4ag_OpenGLSoftwareSettings
+;AddReg = atimtag_SoftwareDesktopSettings
+; AddReg = atimtag_SoftwareDesktopSettings_ENU
+DelReg = atimtag_RemoveDeviceSettings
+
+[atimtag_R6WS.SoftwareSettings]
+AddReg = atimtag_DEFAULT_SoftwareDeviceSettings
+AddReg = atimtag_R6WS_SoftwareDeviceSettings
+; AddReg = ation4ag_OpenGLSoftwareSettings
+;AddReg = atimtag_SoftwareDesktopSettings
+; AddReg = atimtag_SoftwareDesktopSettings_ENU
+DelReg = atimtag_RemoveDeviceSettings
+
+[atimtag_RV100.SoftwareSettings]
+AddReg = atimtag_DEFAULT_SoftwareDeviceSettings
+AddReg = atimtag_RV100_SoftwareDeviceSettings
+; AddReg = ation4ag_OpenGLSoftwareSettings
+;AddReg = atimtag_SoftwareDesktopSettings
+; AddReg = atimtag_SoftwareDesktopSettings_ENU
+DelReg = atimtag_RemoveDeviceSettings
+
+[atimtag_M6.SoftwareSettings]
+AddReg = atimtag_DEFAULT_SoftwareDeviceSettings
+AddReg = atimtag_M6_SoftwareDeviceSettings
+; AddReg = ation4ag_OpenGLSoftwareSettings
+;AddReg = atimtag_SoftwareDesktopSettings
+; AddReg = atimtag_SoftwareDesktopSettings_ENU
+DelReg = atimtag_RemoveDeviceSettings
+
+[atimtag_DEFAULT_SoftwareDeviceSettings]
+HKLM,"Software\ATI Technologies\CBT",ReleaseVersion,,"7.57-inbuild"
+HKLM,"Software\ATI Technologies\Desktop",NoAtipta,,"0"
+HKR,, AntiAlias,                            %REG_SZ%,       1
+HKR,, DALRULE_ADDNATIVEMODESTOMODETABLE,    %REG_DWORD%,    1
+HKR,, DDC2Disabled,                         %REG_DWORD%,    0
+HKR,, DisableAGPPM4,                        %REG_DWORD%,    0
+HKR,, DisableBlockWrite,                    %REG_DWORD%,    1
+HKR,, DisableD3D,                           %REG_DWORD%,    0
+HKR,, DisableDMACopy,                       %REG_DWORD%,    0
+HKR,, DisableDrvStretchBlt,                 %REG_DWORD%,    1
+HKR,, DisableFullAdapterInit,               %REG_DWORD%,    0
+HKR,, DisableFullAdapterInit,               %REG_DWORD%,    0
+HKR,, DisableHierarchicalZ,                 %REG_SZ%,       1
+HKR,, DisableIDCT,                          %REG_SZ%,       0
+HKR,, DisableMMLIB,                         %REG_DWORD%,    0
+HKR,, DisablePrimaryTiling,                 %REG_DWORD%,    0
+HKR,, DisableTCL,                           %REG_DWORD%,    0
+HKR,, DisableTiling,                        %REG_DWORD%,    0
+HKR,, DisableTimeStampWriteBack,            %REG_DWORD%,    1
+HKR,, DisableTimeStampWriteBack,            %REG_DWORD%,    1
+HKR,, DisableUSWC,                          %REG_DWORD%,    1
+HKR,, DisableVPE,                           %REG_DWORD%,    0
+HKR,, EnableWaitUntilIdxTriList2,           %REG_SZ%,       1
+HKR,, InstalledDisplayDrivers,              %REG_MULTI_SZ%, atidvag
+HKR,, MaxAgpVb,                             %REG_SZ%,       0
+HKR,, MaxLocalVb,                           %REG_SZ%,       0x00200000
+HKR,, ReleaseVersion,                       %REG_SZ%,       "v135.7"
+HKR,, SubmitOnDraw,                         %REG_SZ%,       0
+HKR,, AgpLevel,                             %REG_DWORD%,    2
+HKR,, TestEnv,                              %REG_DWORD%,    0
+HKR,, TimingSelection,                      %REG_DWORD%,    0
+HKR,, VgaCompatible,                        %REG_DWORD%,    0
+HKR,, drv,                                             ,    "atidvag.dll"
+HKR,,"Adaptive De-interlacing",             %REG_DWORD%,    1
+HKR,,"VPE Adaptive De-interlacing",         %REG_DWORD%,    1
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER,  %REG_DWORD%,    1
+HKR,, DALRULE_DISPLAYSRESTRICTMODES,        %REG_DWORD%,    0
+HKR,, DALRULE_RESTRICTUNKNOWNMONITOR,       %REG_DWORD%,    0
+HKR,, DALRULE_CRTSUPPORTSALLMODES,          %REG_DWORD%,    1
+HKR,, CapabilityOverride,                   %REG_DWORD%,    8
+
+[atimtag_RADEON_SoftwareDeviceSettings]
+HKR,, DALRULE_NOFORCEBOOT,          %REG_DWORD%,    1
+HKR,, GCORULE_HIGHDISPRI,           %REG_DWORD%,    1
+HKR,, DisableEnumAllChilds,         %REG_DWORD%,    1
+HKR,, DALNonStandardModesBCD,	    %REG_BINARY%,   18,00,14,40,00,00,00,00,17,92,13,44,00,00,00,00,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD, 	    %REG_BINARY%,   12,80,09,60,00,00,00,00
+
+[atimtag_R6WS_SoftwareDeviceSettings]
+HKR,, LVB,                          %REG_SZ%,       0
+HKR,, DisableLCD,                   %REG_DWORD%,    1
+HKR,, DALRULE_SAVEPANLOCK,          %REG_DWORD%,    1
+HKR,, DALRULE_NOFORCEBOOT,          %REG_DWORD%,    1
+HKR,, DisableEnumAllChilds,         %REG_DWORD%,    1
+HKR,, DALNonStandardModesBCD,       %REG_BINARY%,   17,92,13,44,00,00,00,00,18,00,14,40,00,00,00,00,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD,        %REG_BINARY%,   12,80,09,60,00,00,00,00
+
+[atimtag_RV100_SoftwareDeviceSettings]
+HKR,, LVB,                          %REG_SZ%,       0
+HKR,, DisableLCD,                   %REG_DWORD%,    1
+HKR,, DALRULE_SAVEPANLOCK,          %REG_DWORD%,    1
+HKR,, DALRULE_NOFORCEBOOT,          %REG_DWORD%,    1
+HKR,, DisableEnumAllChilds,         %REG_DWORD%,    1
+HKR,, DALNonStandardModesBCD,       %REG_BINARY%,   18,00,14,40,00,00,00,00,17,92,13,44,00,00,00,00,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD,        %REG_BINARY%,   12,80,09,60,00,00,00,00
+
+[atimtag_M6_SoftwareDeviceSettings]
+HKR,, DALRULE_MOBILEFEATURES,       %REG_DWORD%,    1
+HKR,, DALRULE_NOTVANDLCDONCRTC,     %REG_DWORD%,    1
+HKR,, DALOPTION_MinResBCD,          %REG_BINARY%,   00,00,00,00,00,00,00,60
+HKR,, DALNonStandardModesBCD,       %REG_BINARY%,   14,00,10,50,00,00,00,00
+HKR,, DALRestrictedModesBCD,        %REG_BINARY%,   12,80,09,60,00,00,00,00
+HKR,, ATIPoll,                      %REG_DWORD%,    1
+
+[atimtag_RemoveDeviceSettings]
+; HKLM,"Software\ATI Technologies\CBT"
+; HKLM,"Software\ATI Technologies\Desktop"
+HKR,, DALNonStandardModesBCD
+HKR,, DALRULE_ADDNATIVEMODESTOMODETABLE
+HKR,, DALRULE_HIGHDISPRI
+HKR,, DALRULE_MOBILEFEATURES
+HKR,, DALRULE_NOFORCEBOOT
+HKR,, DALRULE_NOTVANDLCDONCRTC
+HKR,, DALRULE_SAVEPANLOCK
+HKR,, DALRULE_SELECTION_SCHEME
+HKR,, DALRestrictedModesBCD
+HKR,, DDC2Disabled
+HKR,, DisableAGPPM4
+HKR,, DisableBlockWrite
+HKR,, DisableD3D
+HKR,, DisableDMACopy
+HKR,, DisableDrvStretchBlt
+HKR,, DisableFullAdapterInit
+HKR,, DisableHierarchicalZ
+HKR,, DisableIDCT
+HKR,, DisableLCD
+HKR,, DisableMMLIB
+HKR,, DisablePrimaryTiling
+HKR,, DisableTCL
+HKR,, DisableTiling
+HKR,, DisableTimeStampWriteBack
+HKR,, DisableUSWC
+HKR,, DisableVPE
+HKR,, EnableWaitUntilIdxTriList2
+HKR,, Flags1
+HKR,, LVB
+HKR,, MaxAgpVb
+HKR,, MaxLocalVb
+HKR,, ReleaseVersion
+HKR,, SubmitOnDraw
+HKR,, TestEnv
+HKR,, TimingSelection
+HKR,,"Adaptive De-interlacing"
+HKR,,"VPE Adaptive De-interlacing"
+HKR,, DALObjectData0
+HKR,, DALObjectData1
+HKR,, DALSelectObjectData0
+HKR,, DALSelectObjectData1
+HKR,, DALCurrentObjectData
+
+[ation4ag_OpenGLSoftwareSettings]
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvag", Version, %REG_DWORD%, 2
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvag", DriverVersion, %REG_DWORD%, 1
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvag", Flags, %REG_DWORD%, 0
+; HKLM, "Software\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\atidvag", Dll, %REG_SZ%, atio2kag.dll
+
+
+[atimtag_SoftwareDesktopSettings]
+; only used for Deinstallation
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\ControlsFolder\Display\shellex\PropertySheetHandlers\ATIPagesEx",,,"{700B1221-CAFF-11d1-B9DE-000000001B1B}"
+HKCR,"CLSID\{700B1221-CAFF-11d1-B9DE-000000001B1B}\InProcServer32",,,"atippaxx.dll"
+HKCR,"CLSID\{700B1221-CAFF-11d1-B9DE-000000001B1B}\InProcServer32",ThreadingModel,,"Apartment"
+;HKCR,"CLSID\{01204A61-8C2F-11d1-B8EF-006097B589E9}\InProcServer32",,,"AtiSServ.dll"
+;HKCR,"CLSID\{05729E61-8CFC-11d1-B8EF-006097B589E9}\InProcServer32",,,"AtiSServ.dll"
+;HKCR,"CLSID\{1017B701-8C35-11d1-B8EF-006097B589E9}\InProcServer32",,,"AtiSServ.dll"
+HKCR,"Display.DisplayServer",,,"DisplayServer Class"
+HKCR,"Display.DisplayServer\CLSID",,,"{E62DCD80-C262-11d1-A419-006097923041}"
+HKCR,"Display.DisplayServer.1",,,"DisplayServer Class"
+HKCR,"Display.DisplayServer.1\CLSID",,,"{E62DCD80-C262-11d1-A419-006097923041}"
+HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}",,,"DisplayServer Class"
+HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}\InProcServer32",,,"atipdsxx.dll"
+HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}\ProgID",,,"Display.DisplayServer.1"
+HKCR,"CLSID\{E62DCD80-C262-11d1-A419-006097923041}\VersionIndependentProgID",,,"Display.DisplayServer"
+HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}",,,"User Interface Object, AtiPropertySheet"
+HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}\InProcServer32",,,"atipuixx.dll"
+HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}\ProgID",,,"UserInterfaceObject.AtiPropertySheet.1"
+HKCR,"CLSID\{F2B8E361-D2E2-11D1-A41F-00609729B902}\VersionIndependentProgID",,,"UserInterfaceObject.AtiPropertySheet"
+HKLM,%SW_DT%,HelpID,,"3"
+HKLM,%SW_DT%,EnableIcon,,"1"
+
+HKR,"Desktop",D3D,%REG_DWORD%,1
+HKR,"Desktop",OpenGL,%REG_DWORD%,1
+HKR,"Desktop",,,
+HKR,"Desktop",Rage6,,""
+
+HKLM,%SW_DTI%,"Side Image",,"1"
+HKLM,%SW_DTI%,"Show Icons",,"0"
+HKLM,%SW_ATI_SET%,Executable,,"atiptaxx.exe -?"
+HKLM,%SW_ATI_SET%,Icon,,"atiptaxx.exe"
+HKLM,%SW_ATI_SET%,IconIndex,,"0"
+HKLM,%SW_DSP_SET%,Executable,,"rundll32 shell32.dll,Control_RunDLL desk.cpl"
+HKLM,%SW_DSP_SET%,Icon,,"desk.cpl"
+HKLM,%SW_DSP_SET%,IconIndex,,"1"
+HKLM,%SW_DEV_SET%,Executable,,"rundll32 shell32.dll,Control_RunDLL sysdm.cpl"
+HKLM,%SW_DEV_SET%,Icon,,"sysdm.cpl"
+HKLM,%SW_DEV_SET%,IconIndex,,"0"
+
+HKLM,%SW_HLP_M64DRV%,Executable,,"m"
+HKLM,%SW_HLP_M64DRV%,Icon,,"winhelp.exe"
+HKLM,%SW_HLP_M64DRV%,IconIndex,,"0"
+HKLM,%SW_HLP_TVOUT%,Executable,,"t"
+HKLM,%SW_HLP_TVOUT%,Icon,,"winhelp.exe"
+HKLM,%SW_HLP_TVOUT%,IconIndex,,"0"
+HKLM,%SW_HLP_TVOUT%,Context,,"152"
+HKLM,%SW_HLP_TVOUT%,TVOut,,"1"
+HKLM,%SW_HLP_TVOUT%,ExecutableExtend,,">subcon"
+HKLM,%SW_PRO_M64DRV%,Executable,,"m"
+HKLM,%SW_PRO_M64DRV%,Icon,,"atiptaxx.exe"
+HKLM,%SW_PRO_M64DRV%,IconIndex,,"14"
+HKLM,%SW_PRO_M64DRV%,Context,,"90"
+HKLM,%SW_PRO_M64DRV%,ExecutableExtend,,">subcon"
+HKLM,%SW_PRO_TVOUT%,Executable,,"t"
+HKLM,%SW_PRO_TVOUT%,Icon,,"atiptaxx.exe"
+HKLM,%SW_PRO_TVOUT%,IconIndex,,"14"
+HKLM,%SW_PRO_TVOUT%,Context,,"200"
+HKLM,%SW_PRO_TVOUT%,ExecutableExtend,,">subcon"
+HKLM,%SW_PRO_TVOUT%,TVOut,,"1"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run",AtiPTA,,"atiptaxx.exe"
+;HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\ATI Display Driver",DisplayName,,%ENU_UNINSTALL_DISPLAY_DRIVER%
+HKLM,%SW_FLT_SET%,Executable,,"f"
+HKLM,%SW_FLT_SET%,Icon,,"winhelp.exe"
+HKLM,%SW_FLT_SET%,IconIndex,,"0"
+HKLM,%SW_FLT_SET%,ExecutableExtend,,">subcon"
+HKLM,%SW_FLT_SET%,Context,,"117"
+
+;[DriverInfoAddReg]
+; This section is added to all INFs to add registry entries for Driver Info.
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Description,,%DriverDescription%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,CurrentVer,,%DriverOEMVersion%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,Ver_%DriverOEMVersion%,,%DriverVersionID%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,BaseDriverFileName,,%BaseDriverFileName%
+;HKLM,Software\InstalledOptions\%DriverOEM%\%DriverFamily%\%DriverMfgr%\%DriverProduct%,BaseDriverFileVersion,,%BaseDriverFileVersion%
+
+[atimtag_SoftwareDesktopSettings_ENU]
+; only used for Deinstallation
+HKLM,%SW_ATI_SET%,,,"ATI Icon Settings"
+HKLM,%SW_DSP_SET%,,,"Display Settings"
+HKLM,%SW_DEV_SET%,,,"Device Settings"
+HKLM,%SW_HLP_M64DRV%,,,"ATI Desktop"
+HKLM,%SW_HLP_TVOUT%,,,"ATI Television Display"
+HKLM,%SW_PRO_M64DRV%,,,"ATI Desktop"
+HKLM,%SW_PRO_TVOUT%,,,"ATI Television Display"
+HKLM,%SW_HLP_FP%,,,"ATI Flat Panel"
+
+[atimtag.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+
+[atimtag_RV100.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+
+[atimtag_M6.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = "System\CurrentControlSet\Services"
+SW_MS_UINS_M64DRV  = "Software\Microsoft\Windows\CurrentVersion\Uninstall\ATI Display Driver"
+
+SW_ATI_SET="Software\ATI Technologies\Desktop\IconTA\Settings\ATI Icon Settings"
+SW_FLT_SET="Software\ATI Technologies\Desktop\IconTA\Help\ATI Flat Panel"
+SW_DSP_SET="Software\ATI Technologies\Desktop\IconTA\Settings\Display Settings"
+SW_DEV_SET="Software\ATI Technologies\Desktop\IconTA\Settings\Device Settings"
+SW_HLP_M64DRV="Software\ATI Technologies\Desktop\IconTA\Help\ATI Display Driver"
+SW_HLP_TVOUT="Software\ATI Technologies\Desktop\IconTA\Help\ATI TV Out"
+SW_PRO_M64DRV="Software\ATI Technologies\Desktop\IconTA\Problem\ATI Display Driver"
+SW_PRO_TVOUT="Software\ATI Technologies\Desktop\IconTA\Problem\ATI TV Out"
+SW_DW="Software\ATI Technologies\Desktop\0000\Display Weights"
+RUNONCE="SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce"
+SW_DU="SOFTWARE\ATI Technologies\Desktop\UIO"
+SW_DUC="SOFTWARE\ATI Technologies\Desktop\UIO\Colour"
+SW_DT="Software\ATI Technologies\Desktop"
+SW_DTI="Software\ATI Technologies\Desktop\IconTA"
+SW_HLP_FP="Software\ATI Technologies\Desktop\IconTA\Help\ATI Flat Panel"
+
+;
+; Localizable Strings
+;
+
+DiskId          = "ATI Technologies Inc. Installation DISK"
+GraphAdap       = "Graphics Adapter"
+ATI             = "ATI Technologies Inc."
+RADEON          = "ATI RADEON"
+RADEON_DDR      = "ATI RADEON DDR (AGP)"
+RADEON_SDR      = "ATI RADEON SDR (AGP)"
+RADEON_SDR_PCI  = "ATI RADEON SDR (PCI)"
+RADEON_VE       = "ATI RADEON VE DDR"
+RADEON_VE_SDR   = "ATI RADEON VE SDR"
+RADEON_ME       = "ATI RADEON Mobility"
+MS              = "Microsoft"

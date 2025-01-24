@@ -1,0 +1,68 @@
+; pcl5ms.inf ( for NT 4.0 Service Pack 3 )
+
+[Version]
+Signature="$Windows NT$"
+Provider=%MS%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+
+[Manufacturer]
+"HP"
+
+[HP]
+"HP DeskJet 855Cse"                                    = PCL5MS.DLL
+"HP DeskJet 855Cxi"                                    = PCL5MS.DLL
+"HP DeskJet 870C"                                      = PCL5MS.DLL
+"HP DeskJet 870Cse"                                    = PCL5MS.DLL
+"HP DeskJet 870Cxi"                                    = PCL5MS.DLL
+
+
+[PCL5MS.DLL]
+CopyFiles=@PCL5MS.DLL,RASDD
+DataSection=RASDD_DATA
+
+
+[RASDD]
+RASDD.DLL
+RASDDUI.DLL
+RASDDUI.HLP
+
+[RASDD_DATA]
+DriverFile=RASDD.DLL
+ConfigFile=RASDDUI.DLL
+HelpFile=RASDDUI.HLP
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+;
+; diskid = description,tagfile,unused,subdir
+;
+
+[SourceDisksNames.x86]
+4 = %ntcd%,,,
+
+[SourceDisksNames.alpha]
+4 = %ntcd%,,,
+
+[SourceDisksNames.ppc]
+4 = %ntcd%,,,
+
+;
+; filename_on_source = diskid,subdir,size,checksum,spare,spare
+; extra fields are nt-specific
+;   bootmediaord,targetdirectory,upgradedisposition,textmodedisposition,targetname
+;
+
+[SourceDisksFiles]
+pcl5ms.dll = 4
+rasdd.dll = 4
+rasddui.dll = 4
+rasddui.hlp = 4
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+ntcd="Windows 2000 CD-ROM"

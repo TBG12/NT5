@@ -1,0 +1,13 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[What word or words do you remember in the name or contents of the file?]]></Text>
+	</Title>
+	<Edit Id="5604" Height="20" TopMargin="10" AutoComplete="2">
+    </Edit>
+	<Radio Id="5763" Height="13" TopMargin="3" Group="1">
+		<Text><![CDATA[Only search file names]]></Text>
+	</Radio>
+	<Radio Id="5764" Height="13" TopMargin="3">
+		<Text><![CDATA[Search anywhere in the file]]></Text>
+	</Radio>
+</SimpleDialog>
