@@ -1,0 +1,20 @@
+*%% 
+*%% HP OfficeJet V40
+*%%
+*%% Copyright 2000, Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpfdj95x.gpd"
+
+*%%
+*%% Global Entries
+*%%
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+
+*ModelName: "HP OfficeJet V40"
+*GPDFileName: "HPOJV40.GPD"
+
+*PrintRate: 12
+*PrintRateUnit: PPM

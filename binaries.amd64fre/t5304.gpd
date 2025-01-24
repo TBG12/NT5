@@ -1,0 +1,231 @@
+*%$Header:   /disc2/scon/apps/windrv/2000/t5000/w2k/t5000.gpv   1.2   16 Feb 2000 09:56:18   nguy_hu  $
+*%
+*%$Log:   /disc2/scon/apps/windrv/2000/t5000/w2k/t5000.gpv  $
+*%
+*%     Rev 1.2   16 Feb 2000 09:56:18   nguy_hu
+*%  remove STARTDOC, STARTPAGE dummy commands
+*%  
+*%
+*%     Rev 1.1   10 Feb 2000 10:22:12   nguy_hu
+*%  add custom options to the Advanced Doc Prop page
+*%
+*%     Rev 1.0   29 Nov 1999 08:14:10   kari_af
+*%  Initial revision.
+*GPDSpecVersion: "1.0"
+*Include: "StdNames.gpd"
+*Include: "T5KC.GPD"
+*% *GPDFileVersion: "1.0"
+*Include: "PTNXVER.GPD"
+*GPDFileName: "T5304.GPD"
+*ModelName: "Printronix T5304"
+*MasterUnits: PAIR(300,300)
+*ResourceDLL: "T5000.Dll"
+*PrinterType: PAGE
+*MaxCopies: 99
+*FontCartSlots: 1
+
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: 300x300
+    *Option: 300x300
+    {
+        *Name: "300 x 300 " =DOTS_PER_INCH
+        *DPI: PAIR(300,300)
+        *TextDPI: PAIR(300,300)
+        *MinStripBlankPixels: 32
+        EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+        *SpotDiameter: 100
+        *%Command: CmdBeginRaster { *Cmd : "BEGIN RASTER" }
+        *%Command: CmdEndRaster { *Cmd : "END RASTER" }
+        *Command: CmdSendBlockData { *Cmd : ""} *%GFX DATA : " %d{NumOfDataBytes }"Bytes" }
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *%Cmd: "300DPI"
+        }
+    }
+}
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+   *DefaultOption: ENV_9*%LETTER
+    *Option: ENV_9
+    {
+        *rcNameID: =ENV_9_DISPLAY
+        *PrintableArea: PAIR(1161,2661)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+*%            *CallbackID: 3
+        }
+    }
+    *%*Option: LETTER
+    *%{
+        *%*rcNameID: =LETTER_DISPLAY
+        *%*PrintableArea: PAIR(1350, 3300)
+        *%*PrintableOrigin: PAIR(0, 0)
+        *%*Command: CmdSelect
+        *%{
+            *%*Order: DOC_SETUP.5
+*%*%            *CallbackID: 3
+        *%}
+    *%}
+    *Option: 4.0x6.0
+    {   *rcNameID: =PAPER_4_0x6_0
+        *OptionID:   =ID_PAPER_4_0x6_0
+        *PageDimensions: PAIR(1200,1800)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(1200,1800)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+        }
+    }
+    *Option: 1.5x1.0
+    {   *rcNameID: =PAPER_1_5x1_0
+        *OptionID:   =ID_PAPER_1_5x1_0
+        *PageDimensions: PAIR(450,300)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(450,300)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "Label6.0x4.0"
+        }
+    }
+   *Option: 2.0x1.0
+    {   *rcNameID: =PAPER_2_0x1_0
+        *OptionID:   =ID_PAPER_2_0x1_0
+        *PageDimensions: PAIR(600,300)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(600,300)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "Label6.0x4.0"
+        }
+    }
+   *Option: 2.5x1.5
+    {   *rcNameID: =PAPER_2_5x1_5
+        *OptionID:   =ID_PAPER_2_5x1_5
+        *PageDimensions: PAIR(750,450)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(750,450)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "Label6.0x4.0"
+        }
+    }
+    *Option: 3.0x2.0
+    {   *rcNameID: =PAPER_3_0x2_0
+        *OptionID:   =ID_PAPER_3_0x2_0
+        *PageDimensions: PAIR(900,600)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(900,600)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "Label6.0x4.0"
+        }
+    }
+   *Option: 3.0x3.0
+    {   *rcNameID: =PAPER_3_0x3_0
+        *OptionID:   =ID_PAPER_3_0x3_0
+        *PageDimensions: PAIR(900,900)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(900,900)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "Label6.0x4.0"
+        }
+    }
+   *Option: 4.0x2.0
+    {   *rcNameID: =PAPER_4_0x2_0
+        *OptionID:   =ID_PAPER_4_0x2_0
+        *PageDimensions: PAIR(1200,600)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(1200,600)
+        *PrintableOrigin: PAIR(0, 0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "Label6.0x4.0"
+        }
+    }
+    *Option: 4.0x3.0
+    {
+        *rcNameID: =PAPER_4_0x3_0
+        *OptionID:   =ID_PAPER_4_0x3_0
+        *PageDimensions: PAIR(1200, 900)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(1200, 900)
+        *PrintableOrigin: PAIR(0,0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+        }
+    }
+   *Option: 4.0x4.0
+    {
+        *rcNameID: =PAPER_4_0x4_0
+        *OptionID:   =ID_PAPER_4_0x4_0
+        *PageDimensions: PAIR(1200, 1200)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(1200, 1200)
+        *PrintableOrigin: PAIR(0,0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+        }
+    }
+    *Option: 4.0x8.0
+    {
+        *rcNameID: =PAPER_4_0x8_0
+        *OptionID:   =ID_PAPER_4_0x8_0
+        *PageDimensions: PAIR(1200,1800)
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(1200,1800)
+        *PrintableOrigin: PAIR(0,0)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+         }
+    }
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(225, 75)
+        *MaxSize: PAIR(1350, 29700)
+        *MaxPrintableWidth: 1350
+        *MinLeftMargin: 0
+        *CenterPrintable?: TRUE
+        *PageProtectMem: 4000
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *%Cmd: "CUSTOMSIZE"
+*%"<1B>&l0e48d" %d{(((PhysPaperLength + 1) * 48) / 300) }"p" %d{(((PhysPaperLength + 1) * 48) / 300) }
+*%+ "F<1B>!f" %d{(PhysPaperWidth + 150) }"W<1B>*p0x0Y"
+        }
+    }
+}
+*Feature: MaxIps
+{
+ *DefaultOption: 8
+ *Name:"MaxIps"
+ *Option: 8
+    {
+        *Name:"8"
+    }
+}
+*HelpFile: "PTNXT5K.HLP"

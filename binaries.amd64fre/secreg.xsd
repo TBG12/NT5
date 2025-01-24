@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- **********************************************************************-->
+<!--                                                                       -->
+<!-- Copyright (c) 2000-2001 Microsoft Corporation	              	       -->
+<!--                                                                       -->
+<!-- This schema defines the rule xml information                          -->
+<!--                                                                       -->
+<!-- **********************************************************************-->
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- Top level node "Rule" contianing the rule information-->
+	<xsd:element name="Rule">
+		<xsd:complexType>
+			<xsd:sequence>
+				<!-- each rule can support more than one action-->
+				<xsd:element name="Action" type="ActionType" minOccurs="1" maxOccurs="6" />
+			</xsd:sequence>
+			<!-- A Rule information xml needs to decalre which version of the schema it is following-->
+			<xsd:attribute name="SchemaVersion" type="xsd:string" use="required" />
+			<!-- A unique Name idententifier for the Rule-->
+			<xsd:attribute name="Name" type="xsd:string" use="required" />
+			<!-- The Rule version-->
+			<xsd:attribute name="RuleVersion" type="xsd:string" use="required" />
+			<!-- Type of the Rule-->
+			<xsd:attribute name="Type" type="TypeType" use="required" />
+		</xsd:complexType>
+	</xsd:element>
+	<!-- For each action the rule defines it will have an "Action" Element-->
+	<xsd:complexType name="ActionType">
+		<xsd:sequence>
+			<!-- Each action element has its own associated script-->
+			<xsd:element name="Script" type="xsd:string" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+		<!-- and Action name defining the action that this script perform-->
+		<xsd:attribute name="ActionName" type="ActionNameType" use="required" />
+	</xsd:complexType>
+	<!--Currently supported actions-->
+	<xsd:simpleType name="ActionNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Check" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--Currently supported Rule types-->
+	<xsd:simpleType name="TypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="COM" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

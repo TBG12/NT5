@@ -1,0 +1,1334 @@
+*%% 
+*%% Common definitions for HP DeskJet 89x Series printers 
+*%%
+*%% Copyright 1998-1999 Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpvnam50.gpd"
+
+*%%
+*%% Pre-declare all features and options as hack for bug 404504
+*%%
+
+*Feature:PSAlignmentFile{*Option:HPV880AL{}}
+
+*Feature:PSHelpFile{*Option:HPVDJ200{}}
+
+*Feature:Orientation{*Option:PORTRAIT{} *Option:LANDSCAPE_CC270{}}
+
+*Feature:InputBin{*Option:UPPER{} *Option:MANUAL{} *Option:ENVMANUAL{}}
+
+*Feature:PaperSize{*Option:LETTER{} *Option:LEGAL{} *Option:EXECUTIVE{} *Option:A4{} *Option:A5{}
++ *Option:A6{} *Option:B5{} *Option:ENV_10{} *Option:ENV_DL{} *Option:ENV_C6{} *Option:ENV_A2{}
++ *Option:JAPANESE_POSTCARD{} *Option:INDEX_4x6{} *Option:INDEX_5x8{} *Option:CUSTOMSIZE{}}
+
+*Feature:Resolution{*Option:r300x300{} *Option:r600x600{}}
+
+*Feature:PM{ *Option:PlainEconoMono{} *Option:PlainNormalMono{} *Option:PlainBestMono{}
++ *Option:PlainEconoColor{} *Option:PlainNormalColor{} *Option:PlainBestColor{}
++ *Option:TransparencyNormal{} *Option:TransparencyBest{} *Option:RapidTransEcono{}
++ *Option:RapidTransNormal{} *Option:RapidTransBest{} *Option:SpecialNormal{} *Option:SpecialBest{}
++ *Option:PremiumHeavyNormal{} *Option:PremiumHeavyBest{} *Option:PhotoNormal{} *Option:PhotoBest{}
++ *Option:PremPhotoNormal{} *Option:PremPhotoBest{}}
+
+*Feature:MediaType{ *Option:STANDARD{} *Option:TRANSPARENCY{} *Option:HP_PREMIUM_INKJET_RAPIDDRY_TRANS{}
++ *Option:HP_PREMIUM_INKJET_PAPER{} *Option:HP_PREMIUM_INKJET_HEAVYWEIGHT{} *Option:HP_PHOTO_PAPER{}
++ *Option:GLOSSY{}}
+
+*Feature:PQ{*Option:Normal{} }
+
+*Feature:ColorMode{ *Option:Mono{} *Option:Color4{} *Option:Gray8{} *Option:Color24{}}
+
+*Feature:PQ{ *Option:Econo{}  *Option:Best{}}
+
+*Feature:=HPHT_DLLNAME{ *Option:=HPHT_DLLNAME_DEFAULT{}}
+
+
+*%%
+*%% Global Entries
+*%%
+*ResourceDLL: "hpvui50.dll"
+
+*rcPersonalityID: =PERSONALITY_PCL_DISPLAY 
+
+*MasterUnits: PAIR(600, 600)
+*OutputOrderReversed?: TRUE
+*PrinterType: SERIAL
+
+*%%
+*%% Macros
+*%%
+*Macros: OEMProductName
+{
+    OEM_DJ_89x:           "HTPD<00 00 00 04 15 00 00 00>"
+}
+
+*% collection of the macros common to all modes for this product
+*Macros: OEMCommonCombinations
+{
+    OEM_COMMON_INFO: =OEM_PCL2 =OEM_PCL_MARG_0 =OEM_DJ_89x
+}
+
+*Feature: PSAlignmentFile
+{
+    *Name: "PSAlign"
+    *Option: HPV880AL
+    {
+        *Name: ""
+    }
+}
+
+
+*Feature: PSHelpFile
+{
+    *Name: "PSHelp"
+    *Option: HPVDJ200
+    {
+        *Name: ""
+    }
+}
+
+
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.60
+            *Cmd: =PCL_ORIENT_PORTRAIT
+        }
+    }
+    *% hollywood based mechs rotate envelopes 270, so use this as the default rotation
+    *Option: LANDSCAPE_CC270
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.60
+            *% note: even though landscape, we MUST send portrait cmd to printer!!!
+            *Cmd: =PCL_ORIENT_PORTRAIT
+        }
+    }
+}
+
+
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: UPPER
+    *Option: UPPER
+    {
+        *rcNameID: =UPPER_TRAY_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.40
+            *Cmd: =PCL_MEDSOURCE_TRAY1 =PCL_MEDSOURCE_PRELOAD
+        }
+    }
+    *Option: MANUAL
+    {
+        *rcNameID: =MANUAL_FEED_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.40
+            *Cmd: =PCL_MEDSOURCE_MANUALFEED
+        }
+    }
+    *Option: ENVMANUAL
+    {
+        *rcNameID: =ENV_MANUAL_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.40
+            *Cmd: =PCL_MEDSOURCE_ENVMANFEED
+        }
+    }
+}
+
+
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: LETTER
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_US_LETTER
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 6276)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4800, 6276)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(4950, 24)
+            }
+        }
+    }
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_US_LEGAL
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 8076)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4800, 8076)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(4950, 24)
+            }
+        }
+    }
+    *Option: EXECUTIVE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_US_EXECUTIVE
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4048, 5912)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4048, 5912)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(4198, 24)
+            }
+        }
+    }
+    *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_A4
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 6690)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(80, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4800, 6690)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(4880, 24)
+            }
+        }
+    }
+    *Option: A5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_A5
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(3344, 4572)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(3344, 4572)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(3420, 24)
+            }
+        }
+    }
+    *Option: A6
+    {
+        *rcNameID: =A6_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_A6
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2328, 3174)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2328, 3174)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(2404, 24)
+            }
+        }
+    }
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_B5
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4136, 5746)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(80, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(4136, 5746)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(4216, 24)
+            }
+        }
+    }
+    *Option: ENV_10
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_ENV_10
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2320, 5376)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2320, 5376)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(2396, 24)
+            }
+        }
+    }
+    *Option: ENV_DL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_ENV_DL
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2440, 4872)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2440, 4872)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(2516, 24)
+            }
+        }
+    }
+    *Option: ENV_C6
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_ENV_C6
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2528, 3502)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(80, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2528, 3502)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(2608, 24)
+            }
+        }
+    }
+    *Option: ENV_A2
+    {
+        *rcNameID: =ENV_A2_DISPLAY
+        *PageDimensions: PAIR(2616, 3450)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_ENV_A2
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2456, 3126)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(80, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2456, 3126)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(2536, 24)
+            }
+        }
+    }
+    *Option: JAPANESE_POSTCARD
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_JAPANESE_POSTCARD
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2208, 3174)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2208, 3174)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(2284, 24)
+            }
+        }
+    }
+    *Option: INDEX_4x6
+    {
+        *rcNameID: =US_INDEX_CARD_4X6_DISPLAY
+        *PageDimensions: PAIR(2400, 3600)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_INDEX_4x6
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2240, 3276)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(80, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2240, 3276)
+                *PrintableOrigin: PAIR(80, 24)
+                *CursorOrigin: PAIR(2320, 24)
+            }
+        }
+    }
+    *Option: INDEX_5x8
+    {
+        *rcNameID: =US_INDEX_CARD_5X8_DISPLAY
+        *PageDimensions: PAIR(3000, 4800)
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_INDEX_5x8
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2848, 4476)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *PrintableArea: PAIR(2848, 4476)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(2924, 24)
+            }
+        }
+    }
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *MinSize: PAIR(2364, 3420)
+        *MaxSize: PAIR(5100, 8400)
+        *MaxPrintableWidth: 1
+        *MinLeftMargin: 152
+        *CenterPrintable?: FALSE
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.30
+            *Cmd: =PCL_US_LEGAL
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *CustCursorOriginX:    %d{152}
+                *CustCursorOriginY:    %d{24}
+                *CustPrintableOriginX: %d{152}
+                *CustPrintableOriginY: %d{24}
+                *CustPrintableSizeX:   %d{PhysPaperWidth - 304}
+                *CustPrintableSizeY:   %d{PhysPaperLength - 324}
+            }
+            *case: LANDSCAPE_CC270
+            {
+                *CustCursorOriginX:    %d{PhysPaperWidth - 152}
+                *CustCursorOriginY:    %d{24}
+                *CustPrintableOriginX: %d{152}
+                *CustPrintableOriginY: %d{24}
+                *CustPrintableSizeX:   %d{PhysPaperWidth - 304}
+                *CustPrintableSizeY:   %d{PhysPaperLength - 324}
+            }
+        }
+    }
+}
+
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *ConflictPriority: 50
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: r300x300
+    *Option: r300x300
+    {
+        *Name: "300 x 300 " =DOTS_PER_INCH
+        *DPI: PAIR(300, 300)
+        *TextDPI: PAIR(300, 300)
+        *SpotDiameter: 100
+    }
+    *Option: r600x600
+    {
+        *Name: "600 x 600 " =DOTS_PER_INCH
+        *DPI: PAIR(600, 600)
+        *TextDPI: PAIR(600, 600)
+        *SpotDiameter: 100
+    }
+}
+
+*Feature: PM
+{
+    *rcNameID: =PRINT_MODE_DISPLAY
+    *ConflictPriority: 40
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: PlainNormalColor
+    *Option: PlainEconoMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL2
+        *Constraints: LIST(ColorMode.Color4, ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainNormalMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K332
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL2
+        *Constraints: LIST(ColorMode.Color4, ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainBestMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL2
+        *Constraints: LIST(ColorMode.Color4, ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+    }
+    *Option: PlainEconoColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K332_C332
+        }
+        EXTERN_GLOBAL: *OEMCustomData: =OEM_PCL2
+        
+        *Constraints: LIST(ColorMode.Gray8, ColorMode.Color24)
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainNormalColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PLAIN =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4, ColorMode.Gray8)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PlainBestColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PLAIN =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4, ColorMode.Gray8)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+    }
+    *Option: TransparencyNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+
+    }
+    *Option: TransparencyBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PREMIUM_INKJET_TRANSPARENCY =OEM_PQ_BEST
+    
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+
+    }
+    *Option: RapidTransEcono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PREMIUM_INKJET_RAPIDDRY_TRANS =OEM_PQ_ECONO
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: RapidTransNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PREMIUM_INKJET_RAPIDDRY_TRANS =OEM_PQ_NORMAL
+    
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)    
+    }
+    *Option: RapidTransBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PREMIUM_INKJET_RAPIDDRY_TRANS =OEM_PQ_BEST
+    
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+    
+    }
+    *Option: SpecialNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PREMIUM_INKJET =OEM_PQ_NORMAL
+    
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)    
+    }
+    *Option: SpecialBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PREMIUM_INKJET =OEM_PQ_BEST
+        
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)    
+    }
+    *Option: PremiumHeavyNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PREMIUM_INKJET_HEAVYWEIGHT =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PremiumHeavyBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PREMIUM_INKJET_HEAVYWEIGHT =OEM_PQ_BEST
+    
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+    
+    }
+    *Option: PhotoNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PHOTO =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PhotoBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PHOTO =OEM_PQ_BEST
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+
+    }
+    *Option: PremPhotoNormal
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C334
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C334 =OEM_MEDIA_HP_PREMIUM_PHOTO =OEM_PQ_NORMAL
+
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: LIST(Resolution.r600x600)
+    }
+    *Option: PremPhotoBest
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.50
+            *Cmd: =PCL_CRD_K662_C664
+        }
+
+        EXTERN_GLOBAL: *OEMCustomData: 
++           =OEM_COMMON_INFO
++           =OEM_DF_K662_C664 =OEM_MEDIA_HP_PREMIUM_PHOTO =OEM_PQ_BEST
+        *Constraints: LIST(ColorMode.Mono, ColorMode.Color4)
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: LIST(Resolution.r300x300)
+    }
+}
+
+
+*Feature: MediaType
+{
+    *rcNameID: =MEDIA_TYPE_DISPLAY
+    *ConflictPriority: 10
+    *DefaultOption: STANDARD
+    *UpdateQualityMacro?: TRUE
+
+    *Option: STANDARD
+    {
+        *rcNameID: =PLAIN_PAPER_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_PLAIN
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+    }
+    *Option: TRANSPARENCY
+    {
+        *rcNameID: =HP_PREMIUM_INKJET_TRANSPARENCY_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd:  =PCL_MEDIA_TRANSPARENCY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: HP_PREMIUM_INKJET_RAPIDDRY_TRANS
+    {
+        *rcNameID: =HP_PREMIUM_INKJET_RAPIDDRY_TRANS_DISPLAY
+        *OptionID: =HP_PREMIUM_INKJET_RAPIDDRY_TRANS_ID
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_FAST_TRANSP
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: HP_PREMIUM_INKJET_PAPER
+    {   
+        *rcNameID: =HP_PREMIUM_INKJET_PAPER_DISPLAY
+        *OptionID: =HP_PREMIUM_INKJET_PAPER_ID
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_SPECIAL
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: HP_PREMIUM_INKJET_HEAVYWEIGHT
+    {   
+        *rcNameID: =HP_PREMIUM_INKJET_HEAVYWEIGHT_DISPLAY
+        *OptionID: =HP_PREMIUM_INKJET_HEAVYWEIGHT_ID
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_SPECIAL
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: HP_PHOTO_PAPER
+    {   
+        *rcNameID: =HP_PHOTO_PAPER_DISPLAY
+        *OptionID: =HP_PHOTO_PAPER_ID
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_GLOSSY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+    *Option: GLOSSY
+    {   
+        *rcNameID: =HP_PREMIUM_PHOTO_PAPER_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.45
+            *Cmd: =PCL_MEDIA_GLOSSY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+}
+
+*Feature: ColorMode
+{
+    *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+    *ConflictPriority: 30
+    *UpdateQualityMacro?: TRUE
+    *DefaultOption: Color24
+
+    *Option: Mono
+    {
+        *rcNameID: =MONO_DISPLAY
+        *Color?: FALSE
+        *DevNumOfPlanes: 1
+        *DevBPP: 1
+
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: =PJL_ENTER_PCL
+        }
+    }
+    *Option: Color4
+    {
+        *rcNameID: =COLOR_DISPLAY
+        *Color?: TRUE
+        *ColorPlaneOrder: LIST(BLACK, CYAN, MAGENTA, YELLOW)
+        *DevNumOfPlanes: 4
+        *DevBPP: 1
+        *DrvBPP: 4
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: =PJL_ENTER_PCL3GUI
+        }
+    }
+    *Option: Gray8
+    {   
+        *rcNameID: =GRAYSCALE_DISPLAY
+        *Color?: FALSE
+        *DevNumOfPlanes: 0
+        *DevBPP: 0
+        *DrvBPP: 8
+        *IPCallbackID: 1
+        *Command: CmdSendBlockData { *Cmd: "" }
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: =PJL_ENTER_PCL3GUI
+        }
+    }
+    *Option: Color24
+    {   
+        *rcNameID: =24BPP_DISPLAY
+        *Color?: TRUE
+        *DevNumOfPlanes: 0
+        *DevBPP: 0
+        *DrvBPP: 24
+        *IPCallbackID: 1
+        *Command: CmdSendBlockData { *Cmd: "" }
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.10
+            *Cmd: =PJL_ENTER_PCL3GUI
+        }
+    }
+}
+
+*Feature: PQ
+{
+    *rcNameID: =PRINT_QUALITY_DISPLAY
+    *ConflictPriority: 20
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: Normal
+    *Option: Econo
+    {
+        *rcNameID: =DRAFT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.47
+            *Cmd: =PCL_PQ_ECONO
+        }
+    }
+    *Option: Normal
+    {
+        *rcNameID: =NORMAL_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.47
+            *Cmd: =PCL_PQ_NORMAL
+        }
+    }
+    *Option: Best
+    {
+        *rcNameID: =BEST_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.47
+            *Cmd: =PCL_PQ_BEST
+        }
+    }
+}
+
+
+*Feature: =HPHT_DLLNAME
+{
+    *Name: "Img"
+    *Option: =HPHT_DLLNAME_DEFAULT 
+    {
+        *Name: ""
+    }
+}
+
+
+*%%
+*%% Print Quality Macros
+*%%
+*switch: MediaType
+{
+    *case: STANDARD
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Mono, PM.PlainEconoMono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Mono, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Mono, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Mono, PM.PlainEconoMono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Mono, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Mono, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Color4,  PM.PlainEconoColor,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PlainNormalColor, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PlainBestColor,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+        }
+    }
+    *case: TRANSPARENCY
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.TransparencyNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.TransparencyBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.TransparencyNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.TransparencyBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.TransparencyNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.TransparencyBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+        }
+    }
+    *case: HP_PREMIUM_INKJET_RAPIDDRY_TRANS
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Gray8, PM.RapidTransEcono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.RapidTransNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.RapidTransBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Gray8, PM.RapidTransEcono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.RapidTransNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.RapidTransBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Color24, PM.RapidTransEcono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.RapidTransNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.RapidTransBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+        }
+    }
+    *case: HP_PREMIUM_INKJET_PAPER
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.SpecialNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.SpecialBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.SpecialNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.SpecialBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.SpecialNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.SpecialBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+        }
+    }
+    *case: HP_PREMIUM_INKJET_HEAVYWEIGHT
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremiumHeavyNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremiumHeavyBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremiumHeavyNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremiumHeavyBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PremiumHeavyNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PremiumHeavyBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+        }
+    }
+    *case: HP_PHOTO_PAPER
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PhotoNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PhotoBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PhotoNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PhotoBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PhotoNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PhotoBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+        }
+    }
+    *case: GLOSSY
+    {
+        *switch: ColorMode
+        {
+            *case: Mono
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremPhotoNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremPhotoBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PremPhotoNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PremPhotoBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PremPhotoNormal, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PremPhotoBest,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+        }
+    }
+}
+
+
+*%%
+*%% Printer Configuration Commands
+*%%
+*Command: CmdStartDoc
+{
+    *Order: DOC_SETUP.20
+    *Cmd: "<1B>&u600D<1B>*o5W<04 09 00 00 00>"
+}
+
+*Command: CmdEndDoc
+{
+    *Order: DOC_FINISH.10
+    *Cmd: =PJL_EXIT_LANGUAGE
+}
+
+*Command: CmdStartPage
+{
+    *Order: PAGE_SETUP.10
+    *Cmd: "<1B>&l0E<1B>*p0y0X<1B>&l0L<1B>*r1A"
+}
+
+*Command: CmdEndPage
+{
+    *Order: PAGE_FINISH.10
+    *Cmd: "<1B>*rC<0C>"
+}
+
+
+*%%
+*%% Printing Attributes and Commands
+*%%
+*RotateCoordinate?: TRUE
+*RotateRaster?: FALSE
+
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*EjectPageWithFF?: FALSE
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 600
+*YMoveUnit: 600
+*Command: CmdDisableCompression { *Cmd: "<1B>*b0M" }
+*Command: CmdEnableTIFF4        { *Cmd: "<1B>*b2M" }
+*Command: CmdSendBlockData      { *Cmd: "<1B>*b" %d{NumOfDataBytes}"W" }
+*Command: CmdSendBlackData      { *Cmd: "<1B>*b" %d{NumOfDataBytes}"V" }
+*Command: CmdSendCyanData       { *Cmd: "<1B>*b" %d{NumOfDataBytes}"V" }
+*Command: CmdSendMagentaData    { *Cmd: "<1B>*b" %d{NumOfDataBytes}"V" }
+*Command: CmdSendYellowData     { *Cmd: "<1B>*b" %d{NumOfDataBytes}"W" }
+*Command: CmdXMoveAbsolute { *Cmd: "<1B>*p" %d{DestX}"X" }
+*Command: CmdYMoveAbsolute { *Cmd: "<1B>*p" %d{DestY}"Y" }
+*Command: CmdCR { *Cmd: "<0D>" }
+*Command: CmdLF { *Cmd: "<0A>" }
+*Command: CmdFF { *Cmd: "<0C>" }
+
+*OutputDataFormat: H_BYTE
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*RasterSendAllData?: TRUE

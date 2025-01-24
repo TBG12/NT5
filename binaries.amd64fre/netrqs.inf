@@ -1,0 +1,54 @@
+;__________________________________________________________
+;
+; -- NETRQS.INF --
+;
+; OCM INF for:
+; Microsoft Remote Quarantine Service
+;
+; Copyright (c), Microsoft Corporation
+;__________________________________________________________
+
+[version]
+signature               ="$Windows NT$"
+Provider                ="Microsoft"
+LayoutFile              =layout.inf
+DriverVer=10/01/2002,5.2.3790.1433
+
+
+;______________________________________________________________
+;
+; Install Section: 
+;______________________________________________________________
+
+[NetRQS]
+CopyFiles               = NetRQS_Files
+Uninstall               = NetRQS.Remove
+RegisterDlls            = NetRQS.Register
+
+;__________________________________________________________
+;
+; Removal Section
+;__________________________________________________________
+[NetRQS.Remove]
+UnregisterDlls         = NetRQS.Unregister
+DelFiles               = NetRQS_Files
+
+
+[NetRQS.Register]
+11,, rqsInst.dll, 1
+
+[NetRQS.Unregister]
+11,, rqsInst.dll, 1
+
+
+;__________________________________________________________
+;
+;       Destination Directories
+;__________________________________________________________
+[DestinationDirs]
+NetRQS_Files = 11
+
+[NetRQS_Files]
+rqs.exe,,,2
+rqsInst.dll,,,2
+

@@ -1,0 +1,151 @@
+; ATI Display Information file : ATIIXPAD.INF
+; INF file for ATI2DRAD display driver.
+; Copyright(C) 1998-2002 ATI Technologies Inc.
+; Windows XP
+; This is the INF file for EM64T and AMD64 installation.
+
+[Version]
+Signature = "$CHICAGO$"
+Provider  = %ATI%
+ClassGUID = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Class     = Display
+DriverVer = 12/03/2004, 6.14.10.6025
+
+LayoutFile=Layout.inf
+
+[DestinationDirs]
+
+DefaultDestDir       = 11  ; system32
+ati2mpad.Miniport    = 12  ; drivers
+ati2mpad.Display     = 11  ; system32
+;Uninstall.CopyFiles  = 11  ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATIMfg, NTamd64
+
+[ATIMfg.NTamd64]
+"XPERT 98 AGP 2X (Microsoft Corporation)"		= ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_00841002
+"XPERT 98 RXL AGP 2X (Microsoft Corporation)"		= ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_00081002
+"XPERT 98 RXL  AGP 2X (Microsoft Corporation)"		= ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_00041002
+"XPERT 98  AGP 2X (Microsoft Corporation)"		= ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_80841002
+"XPERT 98 RXL   AGP 2X (Microsoft Corporation)"		= ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_80081002
+"XPERT 98 RXL    AGP 2X (Microsoft Corporation)"	= ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_80041002
+"RAGE XL AGP 2X (Microsoft Corporation)"		= ati2mpad, PCI\VEN_1002&DEV_474D
+"RAGE XL PCI (Microsoft Corporation)"			= ati2mpad, PCI\VEN_1002&DEV_474F
+"RAGE XL  PCI (Microsoft Corporation)"			= ati2mpad, PCI\VEN_1002&DEV_4752
+
+
+;
+; ati2mpad general installation section
+; ------------------------------------
+
+[ati2mpad]
+;DelFiles=ati2mpad.DelFiles
+CopyFiles=ati2mpad.Miniport, ati2mpad.Display
+
+;MSlay: [SourceDisksNames.amd64]
+;MSlay: 1 = %DiskId%,,,""
+
+;MSlay: [SourceDisksFiles]
+
+;MSlay: ati2mpad.sys = 1
+;MSlay: ati2drad.dll = 1
+
+;
+; File sections
+;
+
+[ati2mpad.Display]
+ati2drad.dll
+
+[ati2mpad.Miniport]
+ati2mpad.sys
+
+;
+; Software installation
+;
+
+[ati2mpad.SoftwareSettings]
+;DelReg = ati2mpad.DelReg
+AddReg = ati2mpad_SoftwareDeviceSettings
+;AddReg = ati2mpad_OpenGLSoftwareSettings
+;AddReg = ati2mpad_TVOutSoftwareSettings
+;AddReg = ati2mpad_SoftwareDesktopSettings
+
+[ati2mpad_SoftwareDeviceSettings]
+HKR,, MobilityVariant,               %REG_DWORD%,    0
+HKR,, BlockWriteDisabled,            %REG_DWORD%,    1
+HKR,, FastFillDisabled,              %REG_DWORD%,    0
+HKR,, HDTVEnabled,                   %REG_DWORD%,    0
+HKR,, TimingSelection,               %REG_DWORD%,    0
+HKR,, InstalledDisplayDrivers,       %REG_MULTI_SZ%, ati2drad
+HKR,, VgaCompatible,                 %REG_DWORD%,    0
+HKR,, OpenGLICDDisabled,             %REG_DWORD%,    1
+HKR,, CheckD3Enabled,                %REG_DWORD%,    1
+HKR,, USWCDisabled,                  %REG_DWORD%,    0
+;HKR,, PCIRetryDisabled,             %REG_DWORD%,    0
+HKR,, LoadSubSystemID,               %REG_DWORD%,    1
+HKR,, DALRULE_NOTVANDLCDONCRTC,      %REG_DWORD%,    1
+HKR,, DALRULE_SELECTION_SCHEME,      %REG_DWORD%,    1
+HKR,, DALRULE_NOFORCEBOOT,           %REG_DWORD%,    1
+HKR,, DDLRProRegOptionPatchLcdSyncProblem, %REG_DWORD%,    1
+HKR,, DDLRProRegOptionPLLProblemNBlankDelay, %REG_DWORD%,    1
+HKR,, D3DDisabled,                   %REG_DWORD%,    1
+HKR,, OverlayDisabled,               %REG_DWORD%,    1
+HKR,, DirectDrawDisabled,            %REG_DWORD%,    1
+HKR,, DALRestrictedModesBCD,         %REG_BINARY%,   07,20,04,80,00,00,00,00, 08,48,04,80,00,00,00,00, 08,64,04,80,00,00,00,00, 10,24,06,00,00,00,00,00, 00,00,00,00,00,24,00,00
+;HKR,, DALNonStandardModesBCD,        %REG_BINARY%,   14,00,10,50,00,00,00,00
+HKLM,"SOFTWARE\ATI Technologies\Driver\OpenGL\Private",disableBM,%REG_DWORD%,1
+HKR,,drv,,"Ati2drad.dll"
+HKR,,ReleaseVersion,,"J5.30.10.3-041203-Microsoft"
+
+;
+; Service installation
+;
+
+[ati2mpad.Services]
+AddService=ati2mpad, 0x00000002, ati2mpad_Generic_Service_Inst, ati2mpad_EventLog_Inst
+
+[ati2mpad_EventLog_Inst]
+AddReg=ati2mpad_EventLog_AddReg
+
+[ati2mpad_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\ati2mpad.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[ati2mpad_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\ati2mpad.sys
+
+
+;[ati2mpad.RemoveService]
+;ati2mpad
+
+[Strings]
+
+;
+; Non-localizable strings
+;
+
+REG_SZ        = 0x00000000
+REG_MULTI_SZ  = 0x00010000
+REG_EXPAND_SZ = 0x00020000
+REG_BINARY    = 0x00000001
+REG_DWORD     = 0x00010001
+SERVICEROOT   = "System\CurrentControlSet\Services"
+
+;
+; Localizable strings
+;
+
+DiskId     = "ATI Technologies Driver Installation Disk"
+ati        = "ATI Technologies, Inc."
+MS         = "Microsoft"
+

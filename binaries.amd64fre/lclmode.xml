@@ -1,0 +1,11 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[Choose the default files and folders search behavior.]]></Text>
+	</Title>
+	<Radio Id="6300" Height="13" LeftMargin="12" TopMargin="3" Group="1">
+		<Text><![CDATA[&Standard - includes step-by-step options that help you refine your search]]></Text>
+	</Radio>
+	<Radio Id="6301" Height="13" LeftMargin="12" TopMargin="3" BottomMargin="2">>
+		<Text><![CDATA[A&dvanced - includes options to manually enter search criteria.  Recommended for advanced users only]]></Text>
+	</Radio>
+</SimpleDialog>

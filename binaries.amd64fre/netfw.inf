@@ -1,0 +1,13 @@
+[version]
+Signature      = "$Windows NT$"
+DriverVer=10/01/2002,5.2.3790.1830
+
+[DefaultInstall]
+AddReg=ICF.AddReg.DomainProfile
+AddReg=ICF.AddReg.StandardProfile
+
+[ICF.AddReg.DomainProfile]
+HKLM,"SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\AuthorizedApplications\List","%windir%\system32\sessmgr.exe",0x00000000,"%windir%\system32\sessmgr.exe:*:enabled:@xpsp2res.dll,-22019"
+
+[ICF.AddReg.StandardProfile]
+HKLM,"SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\AuthorizedApplications\List","%windir%\system32\sessmgr.exe",0x00000000,"%windir%\system32\sessmgr.exe:*:enabled:@xpsp2res.dll,-22019"

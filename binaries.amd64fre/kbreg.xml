@@ -1,0 +1,81 @@
+<SCWKBRegistration>
+
+<!-- Conflict Resolution Algorithm:
+//
+// 1. System (for services only)
+// 2. Custom (last one at this level wins)
+// 3. Root
+// 4. Extensions (last one at this level wins)
+//
+-->
+
+	<KBs OSVersionMajorInfo = "5" OSVersionMinorInfo = "2" OSDescription = "Windows Server 2003">
+		<Root>
+			<Name> W2k3.xml </Name>
+		</Root>
+		<Custom>
+		</Custom>
+		<Extensions>
+			<Name> CommerceServer.xml </Name>
+			<Name> ISA.xml </Name>
+			<Name> Exchange.xml </Name>
+			<Name> OperationsManager2000.xml </Name>
+			<Name> SQLServer2000.xml </Name>
+			<Name> STS.xml </Name>
+			<Name> SPS.xml </Name>
+			<Name> SMS.xml </Name>
+		</Extensions>
+	</KBs>
+
+<!-- Reserved for Win2k Knowledge Base:
+	<KBs OSVersionMajorInfo = "5" OSVersionMinorInfo = "0" OSDescription = "Windows 2000 Server">
+		<Root>
+			<Name> Win2kKB.xml </Name>
+		</Root>
+		<Custom>
+			<Name> Custom2.xml </Name>
+			<Name> Custom3.xml </Name>
+		</Custom>
+		<Extensions>
+			<Name> Extension3.xml </Name>
+			<Name> Extension4.xml </Name>
+		</Extensions>
+	</KBs>
+-->
+
+<!--
+// How to enable Security Configuration Wizard for demonstration purposes on Windows XP:
+// =====================================================================================
+// Version one of the Security Configuration Wizard (SCW) is designed to help improve the security of server class machines.
+// While SCW may be run on Windows XP desktops, SCW only allows you to select target servers that are running Windows Server 2003 by default.
+// This comment describes how you can enable the targeting of Windows XP Desktop machines in case you want to demonstrate the
+// tool from an Windows XP laptop for example.
+//
+// In order to enable the selection of a target server running a given OS Version, you need to associate a knowledge base
+// with that OS Version.  The following entry associates the Windows Server 2003 knowledge base with the XP Operating System
+// solely for the purposes of demonstration.
+// To enable Security Configuration Wizard for demonstration purposes on Windows XP, just remove the XML comment tags.
+//
+// IMPORTANT: While associating a knowledge base with the XP OS will allow you to target an XP machine in order to present the User Interface, it will
+// NOT allow the XP machine to actually be configured with the generated policy. This is because there are no configuration engine extensions registered
+// for XP.
+-->
+
+<!-- Remove this comment tag and the associated end comment tag to enable SCW to target Windows XP machines for demonstration purposes.  See details above:
+
+	<KBs OSVersionMajorInfo = "5" OSVersionMinorInfo = "1" OSDescription = "Windows XP">
+		<Root>
+			<Name> W2k3.xml </Name>
+		</Root>
+		<Custom>
+		</Custom>
+		<Extensions>
+			<Name> OperationsManager2000.xml </Name>
+			<Name> SQLServer2000.xml </Name>
+			<Name> STS.xml </Name>
+			<Name> SPS.xml </Name>
+		</Extensions>
+	</KBs>
+-->
+
+</SCWKBRegistration>

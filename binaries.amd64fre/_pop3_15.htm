@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Secure Password Authentication</TITLE>
+<SCRIPT SRC="linkcss.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0">
+<H1>Secure Password Authentication</H1>
+
+
+
+<P CLASS="important">Important</P>
+<UL>
+    <LI>
+      If you change this parameter, you must stop and then restart the POP3 service. You can manage the POP3 service from <B>Services</b> on the <B>Administrative Tools</b> menu, which you can access by logging on locally to the server or by connecting to the server using Terminal Services.
+	</LI>
+</UL>
+
+
+
+
+<P>Active Directory integrated authentication and local Windows accounts authentication support both plaintext and Secure Password Authentication (SPA) e-mail client authentication.</P>
+
+<P>Plaintext authentication transmits the user's credentials in an unsecured, unencrypted format. Because Secure Password Authentication requires that e-mail clients transmit both the user name and password using secure authentication, it is recommended over plaintext authentication.</P>
+
+<P class="proclabel">To configure the POP3 service to require Secure Password Authentication</P>
+
+
+<OL>
+<LI>On the primary navigation bar, click <b>E-mail</b>.</LI>
+<LI>Click <b>Server Properties</b>.</LI>
+<LI>Select the <b>Require Secure Password Authentication (SPA) for all client connections</b> check box, and then click <b>OK</b>.</LI>
+</ol>
+
+<h3>E-mail Client Configuration</h3>
+
+<P>If you configure your e-mail server to require SPA, you must also configure all e-mail clients for SPA.</P>
+
+
+<P CLASS="labelproc"><b>To configure Outlook Express for Secure Password Authentication</b></P>
+
+<OL type="1">
+<LI>Click <b>Start</b>, point to <b>All Programs</b>, and click <b>Outlook Express</b>.</LI>
+<LI>Click <b>Tools</b>, and then click <B>Accounts</b>.</LI>
+<LI>Click the <b>Mail</b> tab, click the name of your POP3 e-mail account, and then click <b>Properties</b>.</LI>
+<LI>Click the <b>Servers</b> tab, click the <b>Log on using Secure Password Authentication</b>, and then click <b>OK</b>.</LI>
+
+</oL>
+
+<P class="note">Notes</P>
+<UL>
+    <LI>To perform this procedure, you must be a member of the Administrators group on the local computer, or you must have been delegated the appropriate authority. If the computer is joined to a domain, members of the Domain Administrators group might be able to perform this procedure.
+	</LI>
+	<LI>
+      If you are using an e-mail client other than Outlook Express, check your product documentation for information on how to configure your e-mail client to use Secure Password Authentication (SPA), which might be referred to as &quot;NTLM Authentication.&quot;
+	</LI>
+	<LI>Be sure to update your e-mail client and client operating system with the latest service pack available.</LI>
+	<LI>If a dialog box prompts you for your credentials after you configure Outlook Express for SPA, enter your credentials, as described in the table:
+	<TABLE WIDTH="100%">
+<TR>
+<TH>Value</TH>
+<TH>Description</TH>
+</TR>
+<TR>
+<TD><B>User Name</b></TD>
+<TD>Your user name, not including the domain. For example, if your e-mail address is someone@example.com, you would type someone. If a naming conflict occurred when the 
+mailbox was created, you must use the pre-Windows&nbsp;2000 logon name as the user name.</TD>
+</TR>
+<TR>
+<TD><b>Password</b></TD>
+<TD>Your password.</TD>
+</TR>
+<TR>
+<TD><b>Domain</b></TD>
+<TD>For Active Directory integrated authentication, this is the NetBIOS name of the domain. For local Windows accounts authentication, this is the name of the local computer.</TD>
+</TR>
+</TABLE>
+	</LI>
+		<li>If you are using Active Directory integrated authentication and Secure Password Authentication and a naming conflict occurred when the mailbox was created, the pre-Windows&nbsp;2000 logon name must be used for e-mail client authentication.  
+The modified logon name can be determined by logging on locally to the server or by connecting to the server using Terminal Services and going to the <b>Active Directory Users and Computers</b> snap-in located in the <b>Administrative Tools</b> menu. 
+Go to the <b>Users</b> folder, right-click the user account, and then click <b>Properties</b>. Click the <b>Account</b> tab. The modified account name will appear in 
+<b>User logon name (pre-Windows&nbsp;2000)</b>. You must note the pre-Windows&nbsp;2000 logon name and provide it to the user.  
+
+<p>For more information about naming conflicts, see <A HREF="_POP3_11.htm">Authentication Methods</A>.</p></li>
+	</UL>
+	
+	</body>
+	</html>
+	
+	

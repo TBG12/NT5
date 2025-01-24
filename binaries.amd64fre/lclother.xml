@@ -1,0 +1,24 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text>What are you looking for?</Text>
+	</Title>
+	<Link Id="5700" IconId="290" TopMargin="8">
+        <Text><![CDATA[A &printer on the network]]></Text>
+    </Link>
+	<Link Id="5701" IconId="290" TopMargin="5">
+        <Text><![CDATA[A &computer on the network]]></Text>
+    </Link>
+	<Link Id="5702" IconId="290" TopMargin="5">
+        <Text><![CDATA[Peop&le in your address book]]></Text>
+    </Link>
+	<Label TopMargin="5">
+		<Text><![CDATA[You may also want to...]]></Text>
+	</Label>
+	<Link Id="5504" IconId="24004" TopMargin="8">
+		<Text>
+			<Balloon><![CDATA[&Search the Internet]]></Balloon>
+			<Bar><![CDATA[&Search the Internet]]></Bar>
+		</Text>
+	</Link>
+
+</SimpleDialog>

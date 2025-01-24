@@ -1,0 +1,70 @@
+
+
+<HTML>
+<HEAD>
+<TITLE>Server Properties</TITLE>
+<SCRIPT SRC="linkcss.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0">
+<H1>Server Properties</H1>
+
+<P>From this page, you can set the authentication method, server port, event logging level, and root mail directory for the server running the POP3 service. You can also require Secure Password Authentication (SPA) for all client connections.</P>
+
+<P><b>Authentication Method</b> - Specifies the three different authentication methods that the POP3 service uses to verify users who connect to the mail server.</P>
+
+
+<P>Choose Local Windows accounts authentication if:</P>
+<ul>
+
+<LI>Your mail server is not a domain controller.</LI>
+<BR>-and-
+<LI>You want to create user accounts on the server on which the POP3 service is installed.</LI>
+
+</ul> 
+
+
+<P>Choose Active Directory Integrated authentication if:</P>
+<ul>
+<LI>Your mail server is a domain controller or a member of an Active Directory domain.</LI>
+</ul>
+
+<P>Choose Encrypted Password File authentication if:</P> 
+
+<ul>
+<LI>Your mail server is not using Active Directory.</LI>
+<br>-or-
+<LI>You do not want to have user accounts for the POP3 service on the local computer.</LI>
+</ul>
+
+
+
+<P><b>Server Port</b> - Specifies the port on which the POP3 service monitors for e-mail clients and responds to connection requests. The port is configured by default to the Internet standard of 110. If you change this port, you must inform all users that you are using a non-standard port because most e-mail clients set port 110 as the default port for connecting to a server running the POP3 service.</P>
+
+<P><b>Logging Level</b> - Specifies how much information is recorded by the POP3 service in the event logs. You can use event log information for auditing and troubleshooting. The logging levels are:</P>
+<ul>
+<LI><b>None</b> - No events are logged.</LI>
+<LI><b>Minimum</b> - Only critical events are logged.</LI>
+<LI><b>Medium</b> - Critical and warning events are logged.</LI>
+<LI><b>Maximum</b> - Critical, warning, and informational events are logged.</LI>
+</ul>
+
+<P><b>Require Secure Password Authentication (SPA) for all client connections</b> - Select this option to require all e-mail clients to transmit the user name and password information using secure authentication. Select this option only if you are using Active Directory integrated authentication or local Windows accounts authentication. </P>
+
+
+<P><b>Root Mail Directory</b> - Specifies the mail store, a directory on the local file system or a Universal Naming Convention (UNC) path that the POP3 service uses to store e-mail messages. To set the mail store, provide a path to a directory on the local file system or a UNC path.</P>
+
+
+
+<P CLASS="important">Important</P>
+<UL>
+    <LI>
+      You cannot set the mail store to the root directory of the hard disk, for example C:\, or to a directory in which files are currently in use.
+	</LI>
+</UL>
+
+
+
+
+</BODY>
+</HTML>
+ 

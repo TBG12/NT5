@@ -1,0 +1,8 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text>
+			<![CDATA[Which character would you like to use?]]>
+		</Text>
+	</Title>
+	<Control Class="SA_CharChooser" Id="6000" Style="109051904" Height="306" TopMargin="5" BottomMargin="5" />
+</SimpleDialog>

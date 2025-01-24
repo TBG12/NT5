@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SSRKnowledgeBase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Description">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:element name="DisplayName" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="SourceKB" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Preprocessor">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Manufacturer" type="xs:string" />
+              <xs:element name="Version" type="xs:decimal" />
+              <xs:element name="Inputs">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="KnowledgeBase" />
+                    <xs:element name="SecurityLevel" />
+                    <xs:element name="Policy" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Roles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Role">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Satisfiable" type="xs:string" />
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="Selected" type="xs:string" />
+                    <xs:element name="Services">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Service">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Name" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Ports">
+                      <xs:complexType mixed="true">
+                        <xs:sequence minOccurs="0">
+                          <xs:element maxOccurs="unbounded" name="Port">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Name" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="SourceKB" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Unknown">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Services">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element name="Service">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Selected" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Services">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Service">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="Optional" type="xs:string" />
+                    <xs:element name="Startup_Default" type="xs:string" />
+                    <xs:element minOccurs="0" name="Current_Startup" type="xs:string" />
+                    <xs:element name="Installed" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RoleLocalization">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Role">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="DisplayName" type="xs:string" />
+                    <xs:element name="Description" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ServiceLocalization">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Service">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="DisplayName" type="xs:string" />
+                    <xs:element name="Description" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tasks">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Task">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:choice maxOccurs="unbounded">
+                      <xs:element name="Satisfiable" type="xs:string" />
+                      <xs:element name="Name" type="xs:string" />
+                      <xs:element name="Roles">
+                        <xs:complexType mixed="true">
+                          <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" name="Role">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Name" type="xs:string" />
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Selected" type="xs:string" />
+                      <xs:element name="Services">
+                        <xs:complexType mixed="true">
+                          <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" name="Service">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Name" type="xs:string" />
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Ports">
+                        <xs:complexType mixed="true">
+                          <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" name="Port">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Name" type="xs:string" />
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:choice>
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TaskLocalization">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Task">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="DisplayName" type="xs:string" />
+                    <xs:element name="Description" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ports">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Port">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="Number" type="xs:unsignedShort" />
+                    <xs:element name="Protocols">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Protocol">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Name" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PortLocalization">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Port">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="DisplayName" type="xs:string" />
+                    <xs:element name="Description" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="SourceKB" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="IPSec">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Adapters">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Adapter">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="IPAddress" type="xs:string" />
+                          <xs:element name="Static" type="xs:string" />
+                          <xs:element name="IPSubnet" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

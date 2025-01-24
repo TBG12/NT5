@@ -1,0 +1,45 @@
+[Version]
+Signature="$Windows NT$"
+ClassGUID={00000000-0000-0000-0000-000000000000}
+LayoutFile=layout.inf
+
+[BaseWinOptions]
+InstallSkins
+
+[InstallSkins]
+AddReg=setskindir
+CopyFiles   =Copy.Skin
+DelFiles=Del.OldSkins
+
+[InstallSkins.Reg]
+AddReg=setskindir
+DelFiles=Del.OldSkins
+
+[DestinationDirs]
+Copy.INF=17
+Copy.Skin =16426,Windows Media Player\Skins
+Del.OldSkins =16426,Windows Media Player\Skins
+
+[setskindir]
+HKLM,"SOFTWARE\Microsoft\MediaPlayer","SkinsDir",,"%16426%\Windows Media Player\Skins"
+[Strings]
+;;;;;;;--------------------------------------------
+;-- Only localize strings below this line
+;;;;;;--------------------------------------------
+LANGUAGE="EN"
+
+
+
+[Copy.INF]
+skins.inf
+
+[Del.OldSkins]
+corporate.wmz
+
+[Copy.Skin] 
+;9SeriesDefault.wmz
+Compact.wmz,wCompact.wmz
+Revert.wmz,wRevert.wmz
+;Quicksilver.wmz
+
+

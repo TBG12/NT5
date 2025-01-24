@@ -1,0 +1,9 @@
+*% Epndva5d.gpd
+*% Copyright (c) 1998 Seiko Epson Corporation
+*% Global Include file for Epson Color Inkjet Plugins
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+*GPDFileName: "Epndva5d.gpd"
+*CodePage: 1252
+*ModelName: "Epson Stylus COLOR 777 ESC/P 2"
+*Include: "Epndvx5d.gpd"

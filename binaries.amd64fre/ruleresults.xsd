@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="CheckResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Items" type="ItemsType" minOccurs="0" maxOccurs="1" />
+			</xsd:sequence>
+			<xsd:attribute name="Name" type="xsd:string" use="required" />
+			<xsd:attribute name="Severity" type="xsd:string" use="required" />
+			<xsd:attribute name="Link" type="xsd:string" use="optional" />
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ItemsType">
+		<xsd:sequence>
+			<xsd:element name="Item" type="ItemType" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ItemType">
+		<xsd:sequence>
+			<xsd:element name="Property" type="PropertyType" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="PropertyGroup" type="PropertyGroupType" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="FixItInfo" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="Description" type="xsd:string" use="optional" />
+		<xsd:attribute name="Severity" type="xsd:string" use="required" />
+		<xsd:attribute name="Key" type="xsd:string" use="required" />
+		<xsd:attribute name="Value" type="xsd:string" use="required" />
+	</xsd:complexType>
+	<xsd:complexType name="PropertyGroupType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="Property" type="PropertyType" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="PropertyGroup" type="PropertyGroupType" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="Key" type="xsd:string" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="PropertyType">
+		<xsd:sequence>
+			<xsd:element name="Field" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="Key" type="xsd:string" use="required" />
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,658 @@
+END-USER LICENSE AGREEMENT FOR MICROSOFT
+PRE-RELEASE SOFTWARE
+
+PRERELEASE VERSION OF MICROSOFT
+WINDOWS SERVER 2003 WITH SERVICE PACK 1
+
+PLEASE READ THIS END-USER LICENSE AGREEMENT 
+('EULA') CAREFULLY. BY INSTALLING OR USING 
+THE SOFTWARE THAT ACCOMPANIES THIS EULA 
+('SOFTWARE'), YOU AGREE TO THE TERMS OF THIS 
+EULA. IF YOU DO NOT AGREE, DO NOT USE THE 
+SOFTWARE AND, IF APPLICABLE, RETURN IT TO THE 
+PLACE OF PURCHASE FOR A FULL REFUND. 
+
+THE SOFTWARE CONTAINS FUNCTIONALITY THAT IS 
+TIME SENSITIVE AND IS DESIGNED TO CEASE 
+FUNCTIONING AFTER A CERTAIN PERIOD. PLEASE 
+REFER TO SECTION 4 FOR DETAILS.
+
+THE SOFTWARE DOES NOT TRANSMIT TO MICROSOFT 
+ANY NAMES OR CONTACT INFORMATION FROM YOUR 
+COMPUTER SYSTEM WITHOUT YOUR CONSENT. AS 
+DESCRIBED BELOW, THIS EULA OPERATES AS YOUR 
+CONSENT TO THE TRANSMISSION OF CERTAIN 
+STANDARD COMPUTER INFORMATION FOR INTERNET-
+BASED SERVICES. 
+
+1. GENERAL. This EULA is a legal agreement 
+    between you (either an individual or a single 
+    entity) and Microsoft Corporation 
+    ('Microsoft'). This EULA governs the Software,
+    which includes computer software (including 
+    online and electronic documentation) and any 
+    associated media and printed materials. This 
+    EULA applies to updates, supplements, add-on 
+    components, and Internet-based services 
+    components of the Software that Microsoft may 
+    provide or make available to you unless 
+    Microsoft provides other terms with the 
+    update, supplement, add-on component, or 
+    Internet-based services component. Microsoft 
+    reserves the right to discontinue any 
+    Internet-based services provided to you or 
+    made available to you through the use of the 
+    Software. This EULA also governs any product 
+    support services relating to the Software 
+    except as may be included in another 
+    agreement between you and Microsoft. Features 
+    supported on 32-bit and 64-bit versions, 
+    including some features mentioned in this 
+    EULA, may not be identical or available in 
+    both versions; please refer to product 
+    documentation for a list of specific features 
+    included with each version. 
+
+2. GRANT OF LICENSE. Microsoft grants to you 
+    a limited, non-exclusive, nontransferable, 
+    royalty-free license to install the Software 
+    on as many computers residing on your 
+    premises as the number of product keys 
+    Microsoft has provided to you for the 
+    Software, solely for purposes of testing 
+    software programs that run in conjunction 
+    with the Software, and to evaluate the 
+    Software for the purpose of providing 
+    feedback thereon to Microsoft. This license 
+    is conditioned on your complying with all 
+    terms and conditions of this EULA. 
+
+3. TERM OF AGREEMENT. The license granted in 
+    section 2 will terminate automatically upon 
+    the commercial release of the Software, 
+    unless terminated earlier by Microsoft. 
+    Microsoft may terminate the license at any 
+    time, with or without cause, by notifying you 
+    in writing of termination. Upon the 
+    termination of the license or this EULA, you 
+    will cease use of the Software, and if so 
+    requested, promptly return to Microsoft, or 
+    certify destruction of, all full or partial 
+    copies of the Software provided by Microsoft. 
+    Sections 1, 3-4, 6-9, 12-13, and 17-23 will 
+    survive termination of the license or this 
+    EULA. 
+
+4. TIME-SENSITIVE SOFTWARE. THE SOFTWARE IS 
+    TIME-SENSITIVE AND WILL CEASE TO FUNCTION 
+    THREE HUNDRED SIXTY (360) DAYS AFTER YOU 
+    FIRST INSTALL THE SOFTWARE. NOTICE OF 
+    EXPIRATION WILL NOT BE GIVEN, SO YOU NEED TO 
+    PLAN FOR THE EXPIRATION DATE AND MAKE A COPY 
+    OF AND REMOVE YOUR IMPORTANT DATA BEFORE THE 
+    EXPIRATION DATE. This EULA and your right to 
+    use the Software may terminate before 
+    expiration of the 360-day period (see section 
+    3 above). 
+
+5. MANDATORY ACTIVATION. The Software is 
+    designed to prevent its unlicensed use. If 
+    you do not activate the Software as described 
+    in the set-up sequence within 14 days after 
+    you first install it, you will not be able to 
+    use it. You can activate the Software by 
+    Internet or telephone. Internet and telephone 
+    service charges may apply. You may also need 
+    to reactivate the Software if you alter your 
+    computer or the Software. The Software will 
+    remind you to re-activate it. Information 
+    about activation is available online at the 
+    Microsoft support site 
+
+6. FEEDBACK. You may from time to time 
+    provide suggestions, comments regarding 
+    usability, bug reports, test reports or other 
+    feedback (collectively, 'Feedback') to 
+    Microsoft with respect to the Software. All 
+    Feedback will be given entirely voluntarily. 
+    You agree that (a) Microsoft may freely use, 
+    disclose, reproduce, license, distribute and 
+    otherwise commercialize the Feedback in any 
+    Microsoft product, technology, service, 
+    specification or documentation (collectively, 
+    'Microsoft Offerings'), (b) you also grant 
+    third parties, without charge, only those 
+    patent rights necessary to enable their 
+    products, technologies or services to use or 
+    interface with any specific parts of a 
+    Microsoft Offering that incorporate the 
+    Feedback; and (c) you will not give Microsoft 
+    Feedback subject to license terms that seek 
+    to require any Microsoft Offering that 
+    incorporates or is derived from any Feedback, 
+    or any other Microsoft intellectual property, 
+    to be licensed to or otherwise shared with 
+    any third party. 
+
+7. RESTRICTIONS ON USE. You may not 
+    demonstrate, test, examine, evaluate or 
+    otherwise use the Software in a live 
+    operating environment or with data that has 
+    not been sufficiently backed up. You may not 
+    use the Software for benchmark or performance 
+    testing. 
+
+8. DEMAND FOR EXAMINATION. Microsoft hereby 
+    requests that you fully examine the Software 
+    during the term of the license in section 2 
+    so that you will be fully familiar with it 
+    before obtaining a copy of the non-evaluation 
+    version of the Software. Only your full 
+    examination now will determine whether or not 
+    the non-evaluation version will be 
+    merchantable or fit for your particular 
+    purposes. 
+
+9. COST OF TESTING. There is no charge to 
+    you for evaluation of the Software. Microsoft 
+    will, however, charge you for shipping and 
+    handling expenses relating to shipment of the 
+    Software to your place of business. If the 
+    Software is returned by you, you will also be 
+    responsible for paying the return shipping 
+    expenses.
+
+10. COMPONENT DATA STORAGE. The 32-bit 
+    versions of the Software contain components 
+    that use the data storage technology known as 
+    Microsoft SQL Server Desktop Engine ('MSDE'). 
+    All copies and instances of MSDE contained in 
+    or installed by those Software components may 
+    be used only by those Software components. 
+    Any such copy or instance of MSDE may not be 
+    accessed or used for any other purpose. For 
+    example, applications may not be created or 
+    run on the Software if they access or use the 
+    services or functionality of any copy or 
+    instance of MSDE contained in or installed by 
+    those Software components. In addition, any 
+    MSDE network library files that are disabled 
+    at the time you first install the Software 
+    may not be re-enabled.
+
+11. AUTOMATIC INTERNET-BASED SERVICES. The 
+    Software features described below are enabled 
+    by default to connect via the Internet to 
+    Microsoft computer systems automatically, 
+    without separate notice to you. You consent 
+    to the operation of these features, unless 
+    you choose to switch them off or not use them.
+    Microsoft does not obtain names or contact 
+    information through any of these features 
+    without your consent. For more information 
+    about the Software's Internet-enabled 
+    features, please see 
+    http://go.microsoft.com/fwlink/?LinkId=33575,
+    your Software documentation or the Microsoft
+    online support site. 
+
+    a. Windows Update Features. Under the 
+        Software's default configuration, if you 
+        connect a device to your Server and the 
+        correct device driver is not available on 
+        your Server, then Windows Update features on 
+        your Server (including Device Manager and the 
+        Plug & Play CDM Module) automatically attempt 
+        to check Microsoft computer systems via the 
+        Internet for the correct device driver. 
+        Having this happen automatically makes Plug-
+        and-Play installation of new hardware a 
+        better experience for customers. You may 
+        switch off Windows Update's automatic driver 
+        checking feature.
+
+    b. Web Content Features. Under the 
+        Software's default configuration, if you are 
+        connected to the Internet, several features 
+        of the Software are enabled by default to 
+        retrieve content from Microsoft computer 
+        systems and display it to you. When you 
+        activate such a feature, it uses standard 
+        Internet protocols, which transmit the type 
+        of operating system, browser and language 
+        code of your Server to the Microsoft computer 
+        system so that the content can be viewed 
+        properly from your Server. These features 
+        only operate when you activate them, and you 
+        may choose to switch them off or not use them.
+        Examples of these features include Windows 
+        Catalog, Search Assistant, and the Headlines 
+        and Search features of Help and Support 
+        Center.
+
+    c. Digital Certificates. Use of certificates 
+        based on the X.509 standard is an important 
+        security feature of the Software. Certain 
+        functions of the X.509 implementation (for 
+        example, certificate revocation checking and 
+        certificate path building) connect via the 
+        Internet to computer systems belonging to 
+        Microsoft and other digital certificate 
+        authorities to check the validity of digital 
+        certificates that you receive from third 
+        parties during certain Internet-based 
+        operations (for example, communications 
+        secured with SSL or IPsec, mail secured with 
+        S/MIME, and smartcard authentication). In 
+        accordance with the X.509 standard, the 
+        Software automatically retrieves user 
+        certificates and certificate revocation lists 
+        when you attempt to access certificate 
+        protected content. Additionally, the 
+        Software's Auto Root Update feature will 
+        occasionally update the list of trusted 
+        certificate authorities. Auto Root Update is 
+        an optional feature; you can uninstall it if 
+        you do not desire it to function. The other 
+        security operations based on the X.509 
+        standard can be prevented from operating by 
+        blocking Server Internet access.
+
+    d. Windows Media Digital Rights Management. 
+        Content providers are using the digital 
+        rights management technology for Windows 
+        Media contained in this Software ('WM-DRM') 
+        to protect the integrity of their content 
+        ('Secure Content') so that their intellectual 
+        property, including copyright, in such 
+        content is not misappropriated. Portions of 
+        this Software and third party applications 
+        such as media players use WM-DRM to play 
+        Secure Content ('WM-DRM Software'). If the WM-
+        DRM Software's security has been compromised, 
+        owners of Secure Content ('Secure Content 
+        Owners') may request that Microsoft revoke 
+        the WM-DRM Software's right to copy, display 
+        and/or play Secure Content. Revocation does 
+        not alter the WM-DRM Software's ability to 
+        play unprotected content. A list of revoked 
+        WM-DRM Software is sent to your computer 
+        whenever you download a license for Secure 
+        Content from the Internet. Microsoft may, in 
+        conjunction with such license, also download 
+        revocation lists onto your computer on behalf 
+        of Secure Content Owners. Secure Content 
+        Owners may also require you to upgrade some 
+        of the WM-DRM components in this Software 
+        ('WM-DRM Upgrades') before accessing their 
+        content. When you attempt to play such 
+        content, WM-DRM Software built by Microsoft 
+        will notify you that a WM-DRM Upgrade is 
+        required and then ask for your consent before 
+        the WM-DRM Upgrade is downloaded. WM-DRM 
+        Software built by third parties may do the 
+        same. If you decline the upgrade, you will 
+        not be able to access content that requires 
+        the WM-DRM Upgrade; however, you will still 
+        be able to access unprotected content and 
+        Secure Content that does not require the 
+        upgrade. WM-DRM features that access the 
+        Internet, such as acquiring new licenses 
+        and/or performing a required WM-DRM Upgrade, 
+        can be switched off. When these features are 
+        switched off, you will still be able to play 
+        Secure Content if you have a valid license 
+        for such content already stored on your 
+        computer.
+
+    e. Windows Media Player. Some features of 
+        Windows Media Player automatically contact 
+        Microsoft computer systems if you use Windows 
+        Media Player or specific features of it: 
+        features that (i) check for new codecs if 
+        your Server does not have the correct ones 
+        for content you attempt to play (this feature 
+        may be switched off), and (ii) check for new 
+        versions of Windows Media Player (this 
+        feature will operate only when you are using 
+        Windows Media Player).
+
+12. RESERVATION OF RIGHTS; OTHER 
+    RESTRICTIONS. The Software is protected by 
+    copyright and other intellectual property 
+    laws and treaties. Microsoft or its suppliers 
+    own the title, copyright, and other 
+    intellectual property rights in the Software. 
+    The Software is licensed, not sold. Microsoft 
+    reserves all rights not expressly granted to 
+    you in this EULA. Reverse engineering, 
+    decompiling, or disassembling the Software is 
+    prohibited, except and only to the extent 
+    that such activity is expressly permitted by 
+    applicable law notwithstanding this 
+    limitation. Renting, leasing, or lending the 
+    Software (including providing commercial 
+    hosting services) is also prohibited. 
+
+13. PRODUCT SUPPORT SERVICES
+
+    a. Rights and Obligations. Microsoft may 
+        provide you with product support services 
+        related to the Software. Use of any such 
+        support services is governed by the Microsoft 
+        policies and programs described in the user 
+        manual, in online documentation, on 
+        Microsoft's support webpage, or in other 
+        Microsoft-provided materials. Any software 
+        Microsoft may provide you as part of support 
+        services are governed by this EULA, unless 
+        separate terms are provided. This EULA does 
+        not obligate Microsoft to provide any support 
+        services or to support any software provided 
+        as part of those services.
+
+    b. Consent to Use of Data. You agree that 
+        Microsoft and its affiliates may collect and 
+        use technical information gathered as part of 
+        the support services provided to you, if any, 
+        related to the Software. Microsoft may use 
+        this information solely to improve our 
+        products or to provide customized services or 
+        technologies to you and will not disclose 
+        this information in a form that personally 
+        identifies you. 
+
+14. LINKS TO THIRD PARTY INTERNET SITES.
+    You may link to third party Internet sites 
+    through the use of the Software. Microsoft 
+    does not control the third party sites, and 
+    Microsoft is not responsible for the contents 
+    of any third party sites, any links contained 
+    in third party sites, or any changes or 
+    updates to third party sites. Microsoft is 
+    not responsible for web-casting or any other 
+    form of transmission received from any third 
+    party sites. Microsoft is providing you these 
+    links to third party sites only as a 
+    convenience, and the inclusion of any link 
+    does not imply an endorsement by Microsoft of 
+    the third party site. 
+
+15. SOFTWARE TRANSFER. You may move the 
+    Software to a different computer on your 
+    premises. After the transfer, you must 
+    completely remove the Software from the 
+    former computer. You may not transfer the 
+    Software or this EULA to any third party. 
+
+16. NOTICE REGARDING MPEG-4 VISUAL DECODERS 
+    FOR WINDOWS MEDIA PLAYER. USE OF THIS PRODUCT 
+    IN ANY MANNER THAT COMPLIES WITH THE MPEG-4 
+    VISUAL STANDARD IS PROHIBITED, EXCEPT FOR USE 
+    DIRECTLY RELATED TO (A) DATA OR INFORMATION 
+    (i) GENERATED BY AND OBTAINED WITHOUT CHARGE 
+    FROM A CONSUMER NOT THEREBY ENGAGED IN A 
+    BUSINESS ENTERPRISE, AND (ii) FOR PERSONAL 
+    USE ONLY; AND (B) OTHER USES SPECIFICALLY AND 
+    SEPARATELY LICENSED BY MPEG LA, L.L.C. MPEG 
+    LA, L.L.C., has contractually obligated 
+    Microsoft to provide this notice. 
+
+17. DISCLAIMER OF WARRANTIES. THE SOFTWARE 
+    IS DEEMED ACCEPTED BY YOU. THE SOFTWARE 
+    CONTAINS PRE-RELEASE SOFTWARE AND MAY BE 
+    CHANGED SUBSTANTIALLY BEFORE COMMERCIAL 
+    RELEASE. TO THE MAXIMUM EXTENT PERMITTED
+    BY APPLICABLE LAW, MICROSOFT AND ITS SUPPLIERS 
+    PROVIDE THE SOFTWARE, AND SUPPORT SERVICES 
+    (IF ANY) AS IS AND WITH ALL FAULTS, AND 
+    MICROSOFT AND ITS SUPPLIERS HEREBY DISCLAIM 
+    ALL OTHER WARRANTIES AND CONDITIONS, WHETHER 
+    EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT 
+    NOT LIMITED TO, ANY (IF ANY) IMPLIED 
+    WARRANTIES, DUTIES OR CONDITIONS OF 
+    MERCHANTABILITY, OF FITNESS FOR A PARTICULAR 
+    PURPOSE, OF RELIABILITY OR AVAILABILITY, OF 
+    ACCURACY OR COMPLETENESS OF RESPONSES, OF 
+    RESULTS, OF WORKMANLIKE EFFORT, OF LACK OF 
+    VIRUSES, AND OF LACK OF NEGLIGENCE, ALL WITH 
+    REGARD TO THE SOFTWARE, AND THE PROVISION OF 
+    OR FAILURE TO PROVIDE SUPPORT OR OTHER 
+    SERVICES, INFORMATION, SOFTWARE, AND RELATED 
+    CONTENT THROUGH THE SOFTWARE OR OTHERWISE 
+    ARISING OUT OF THE USE OF THE SOFTWARE. ALSO, 
+    THERE IS NO WARRANTY OR CONDITION OF TITLE, 
+    QUIET ENJOYMENT, QUIET POSSESSION, 
+    CORRESPONDENCE TO DESCRIPTION OR NON-
+    INFRINGEMENT WITH REGARD TO THE SOFTWARE. THE 
+    ENTIRE RISK AS TO THE QUALITY, OR ARISING OUT 
+    OF THE USE OR PERFORMANCE OF THE SOFTWARE AND 
+    ANY SUPPORT SERVICES, REMAINS WITH YOU. 
+
+18. EXCLUSION OF INCIDENTAL, CONSEQUENTIAL 
+    AND CERTAIN OTHER DAMAGES. TO THE MAXIMUM 
+    EXTENT PERMITTED BY APPLICABLE LAW, IN NO 
+    EVENT WILL MICROSOFT OR ITS SUPPLIERS BE
+    LIABLE FOR ANY SPECIAL, INCIDENTAL, PUNITIVE, 
+    INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER 
+    (INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR 
+    LOSS OF PROFITS OR CONFIDENTIAL OR OTHER 
+    INFORMATION, FOR BUSINESS INTERRUPTION, FOR 
+    PERSONAL INJURY, FOR LOSS OF PRIVACY, FOR 
+    FAILURE TO MEET ANY DUTY INCLUDING OF GOOD 
+    FAITH OR OF REASONABEL CARE, FOR NEGLIGENCE, 
+    AND FOR ANY OTHER PECUNIARY OR OTHER LOSS 
+    WHATSOEVER) ARISING OUT OF OR IN ANY WAY 
+    RELATED TO THE USE OF OR INABILITY TO USE THE 
+    SOFTWARE, THE PROVISION OF OR FAILURE TO 
+    PROVIDE SUPPORT OR OTHER SERVICES, 
+    INFORMATION, SOFTWARE, AND RELATED CONTENT 
+    THROUGH THE SOFTWARE OR OTHERWISE ARISING OUT 
+    OF THE USE OF THE SOFTWARE, OR OTHERWISE 
+    UNDER OR IN CONNECTION WITH ANY PROVISION OF 
+    THIS EULA, EVEN INTHE EVENT OF THE FAULT, 
+    TORT (INCLUDING NEGLIGENCE), 
+    MISREPRESENTATION, STRICT LIABILITY, BREACH 
+    OF CONTRACT OR BREACH OF WARRANTY OF 
+    MICROSOFT OR ANY SUPPLIER, AND EVEN IF 
+    MICROSOFT OR ANY SUPPLIER HAS BEEN ADVISED OF 
+    THE POSSIBILITY OF SUCH DAMAGES. BECAUSE SOME 
+    STATES/JURISDICTIONS DO NOT ALLOW THE 
+    EXCLUSION OR LIMITATION OF LIABILITY FOR 
+    CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE 
+    ABOVE LIMITATION MAY NOT APPLY TO YOU. 
+
+19. LIMITATION OF LIABILITY AND REMEDIES. 
+    NOTWITHSTANDING ANY DAMAGES THAT YOU MIGHT 
+    INCUR FOR ANY REASON WHATSOEVER (INCLUDING, 
+    WITHOUT LIMITATION, ALL DAMAGES REFERENCED 
+    HEREIN AND ALL DIRECT OR GENERAL DAMAGES IN 
+    CONTRACT OR ANYTHING ELSE), THE ENTIRE 
+    LIABILITY OF MICROSOFT AND ANY OF ITS 
+    SUPPLIERS UNDER ANY PROVISION OF THIS EULA 
+    AND YOUR EXCLUSIVE REMEDY HEREUNDER WILL BE 
+    LIMITED TO THE GREATER OF THE ACTUAL DAMAGES 
+    YOU INCUR IN REASONABLE RELIANCE ON THE 
+    SOFTWARE UP TO THE AMOUNT ACTUALLY PAID BY 
+    YOU FOR THE SOFTWARE OR US$5.00. THE 
+    FOREGOING LIMITATIONS, EXCLUSIONS AND 
+    DISCLAIMERS WILL APPLY TO THE MAXIMUM EXTENT 
+    PERMITTED BY APPLICABLE LAW, EVEN IF ANY 
+    REMEDY FAILS ITS ESSENTIAL PURPOSE. 
+
+20. GOVERNING LAW, JURISDICTION, ATTORNEYS' 
+    FEES. This EULA will be construed and 
+    controlled by the laws of the State of 
+    Washington, and you consentS to exclusive 
+    jurisdiction and venue in the federal courts 
+    sitting in King County, Washington, unless no 
+    federal jurisdiction exists, in which case 
+    you consents to exclusive jurisdiction and 
+    venue in the Superior Court of King County, 
+    Washington. You waive all defenses of lack of 
+    personal jurisdiction and forum non 
+    conveniens. Process may be served on either 
+    party in the manner authorized by applicable 
+    law or court rule. If either party employs 
+    attorneys to enforce any rights arising out 
+    of or relating to this EULA, the prevailing 
+    party will be entitled to recover its 
+    reasonable attorneys' fees, costs and other 
+    expenses. 
+
+21. U.S. GOVERNMENT RIGHTS. All Software 
+    provided to the U.S. Government pursuant to 
+    solicitations issued on or after December 1, 
+    1995, is provided with the rights and 
+    restrictions described elsewhere herein. All 
+    Software provided to the U.S. Government 
+    pursuant to solicitations issued prior to 
+    December 1, 1995, is provided with RESTRICTED 
+    RIGHTS as provided for in FAR, 48 CFR 52.227-
+    14 (JUNE 1987) or DFAR, 48 CFR 252.227-7013 
+    (OCT 1988), as applicable. 
+
+22. EXPORT RESTRICTIONS. You acknowledge 
+    that the Software is subject to U.S. export 
+    jurisdiction. You agree to comply with all 
+    applicable international and national laws 
+    that apply to the Software, including the U.S.
+    Export Administration Regulations, as well as 
+    end-user, end-use, and destination 
+    restrictions issued by U.S. and other 
+    governments. For additional information see 
+    <http://www.microsoft.com/exporting/>. 
+
+23. ENTIRE AGREEMENT; SEVERABILITY. This 
+    EULA constitutes the complete and exclusive 
+    agreement between Microsoft and you with 
+    respect to the subject matter hereof, and 
+    supersedes all prior or contemporaneous oral 
+    or written communications, proposals, 
+    representations, understandings, or 
+    agreements not specifically incorporated 
+    herein. If any provision of this Agreement is 
+    held to be void, invalid, unenforceable or 
+    illegal, the other provisions will continue 
+    in full force and effect. 
+
+Si vous avez acquis votre logiciel Microsoft 
+au CANADA :
+
+DÉNI DE GARANTIES. Dans la mesure maximale 
+permise par les lois applicables, le Logiciel 
+et les services de soutien technique (le cas 
+échéant) sont fournis TELS QUELS ET AVEC TOUS 
+LES DÉFAUTS par Microsoft et ses fournisseurs,
+lesquels par les présentes dénient toutes 
+autres garanties et conditions expresses, 
+implicites ou en vertu de la loi, notamment, 
+mais sans limitation, (le cas échéant) les 
+garanties, devoirs ou conditions implicites 
+de qualité marchande, d'adaptation à une fin 
+usage particulièere, de fiabilité ou de 
+disponibilité, d'exactitude ou d'exhaustivité 
+des réponses, des résultats, des efforts 
+déployés selon les règles de l'art, d'absence 
+de virus et d'absence de négligence, le tout 
+à l'égard du Logiciel et de la prestation des 
+services de soutien technique ou de 
+l'omission de la 'une telle prestation des 
+services de soutien technique ou à l'égard de 
+la fourniture ou de l'omission de la 
+fourniture de tous autres services, 
+renseignements, logiciels, et contenu qui s'y 
+rapporte grâce au Logiciel ou provenant 
+autrement de l'utilisation du Logiciel . PAR 
+AILLEURS, IL N'Y A AUCUNE GARANTIE OU 
+CONDITION QUANT AU TITRE DE PROPRIÉTÉ, A LA 
+JOUISSANCE OU LA POSSESSION PAISIBLE, A LA 
+CONCORDANCE A UNE DESCRIPTION NI QUANT A UNE 
+ABSENCE DE CONTREFAÇON CONCERNANT LE LOGICIEL.
+
+
+EXCLUSION DES DOMMAGES ACCESSOIRES, 
+INDIRECTS ET DE CERTAINS AUTRES DOMMAGES. 
+DANS LA MESURE MAXIMALE PERMISE PAR LES LOIS 
+APPLICABLES, EN AUCUN CAS MICROSOFT OU SES 
+FOURNISSEURS NE SERONT RESPONSABLES DES 
+DOMMAGES SPÉCIAUX, CONSÉCUTIFS, ACCESSOIRES 
+OU INDIRECTS DE QUELQUE NATURE QUE CE SOIT 
+(NOTAMMENT, LES DOMMAGES A L'ÉGARD DU MANQUE 
+A GAGNER OU DE LA DIVULGATION DE 
+RENSEIGNEMENTS CONFIDENTIELS OU AUTRES, DE LA 
+PERTE D'EXPLOITATION, DE BLESSURES 
+CORPORELLES, DE LA VIOLATION DE LA VIE PRIVÉE,
+DE L'OMISSION DE REMPLIR TOUT DEVOIR, Y 
+COMPRIS D'AGIR DE BONNE FOI OU D'EXERCER UN 
+SOIN RAISONNABLE, DE LA NÉGLIGENCE ET DE 
+TOUTE AUTRE PERTE PÉCUNIAIRE OU AUTRE PERTE 
+DE QUELQUE NATURE QUE CE SOIT) SE RAPPORTANT 
+DE QUELQUE MANIERE QUE CE SOIT A 
+L'UTILISATION DU LOGICIEL OU A L'INCAPACITÉ 
+DE S'EN SERVIR, A LA PRESTATION OU A 
+L'OMISSION DE LA 'UNE TELLE PRESTATION DE 
+SERVICES DE SOUTIEN TECHNIQUE OU A LA 
+FOURNITURE OU A L'OMISSION DE LA FOURNITURE 
+DE TOUS AUTRES SERVICES, RENSEIGNEMENTS, 
+LOGICIELS, ET CONTENU QUI S'Y RAPPORTE GRACE 
+AU LOGICIEL OU PROVENANT AUTREMENT DE 
+L'UTILISATION DU LOGICIEL OU AUTREMENT AUX 
+TERMES DE TOUTE DISPOSITION DE LA U PRÉSENTE 
+CONVENTION AGREEMENT OU RELATIVEMENT A UNE 
+TELLE DISPOSITION, MEME EN CAS DE FAUTE, DE 
+DÉLIT CIVIL (Y COMPRIS LA NÉGLIGENCE), DE 
+RESPONSABILITÉ STRICTE, DE VIOLATION DE 
+CONTRAT OU DE VIOLATION DE GARANTIE DE 
+MICROSOFT OU DE TOUT FOURNISSEUR ET MEME SI 
+MICROSOFT OU TOUT FOURNISSEUR A ÉTÉ AVISÉ DE 
+LA POSSIBILITÉ DE TELS DOMMAGES.
+
+LIMITATION DE RESPONSABILITÉ ET RECOURS. 
+MALGRÉ LES DOMMAGES QUE VOUS PUISSIEZ SUBIR 
+POUR QUELQUE MOTIF QUE CE SOIT (NOTAMMENT, 
+MAIS SANS LIMITATION, TOUS LES DOMMAGES 
+SUSMENTIONNÉS ET TOUS LES DOMMAGES DIRECTS OU 
+GÉNÉRAUX OU AUTRES), LA SEULE RESPONSABILITÉ 
+'OBLIGATION INTÉGRALE DE MICROSOFT ET DE L'UN 
+OU L'AUTRE DE SES FOURNISSEURS AUX TERMES DE 
+TOUTE DISPOSITION DEU LA PRÉSENTE CONVENTION 
+AGREEMENT ET VOTRE RECOURS EXCLUSIF A L'ÉGARD 
+DE TOUT CE QUI PRÉCEDE SE LIMITE AU PLUS 
+ÉLEVÉ ENTRE LES MONTANTS SUIVANTS : LE 
+MONTANT QUE VOUS AVEZ RÉELLEMENT PAYÉ POUR LE 
+LOGICIEL OU 5,00 $US. LES LIMITES, EXCLUSIONS 
+ET DÉNIS QUI PRÉCEDENT (Y COMPRIS LES CLAUSES 
+CI-DESSUS), S'APPLIQUENT DANS LA MESURE 
+MAXIMALE PERMISE PAR LES LOIS APPLICABLES, 
+MEME SI TOUT RECOURS N'ATTEINT PAS SON BUT 
+ESSENTIEL.
+
+A moins que cela ne soit prohibé par le 
+droit local applicable, la présente 
+Convention est régie par les lois de la 
+province d'Ontario, Canada. Vous consentez 
+Chacune des parties à la présente reconnaît 
+irrévocablement à la compétence des tribunaux 
+fédéraux et provinciaux siégeant à Toronto, 
+dans de la province d'Ontario et consent à 
+instituer tout litige qui pourrait découler 
+de la présente auprès des tribunaux situés 
+dans le district judiciaire de York, province 
+d'Ontario.
+
+Au cas où vous auriez des questions 
+concernant cette licence ou que vous désiriez 
+vous mettre en rapport avec Microsoft pour 
+quelque raison que ce soit, veuillez utiliser 
+l'information contenue dans le Logiciel pour 
+contacter la filiale de succursale Microsoft 
+desservant votre pays, dont l'adresse est 
+fournie dans ce produit, ou visitez écrivez à 
+: Microsoft sur le World Wide Web à 
+<http://www.microsoft.com> / Sales 
+Information Center, One Microsoft Way, 
+Redmond, Washington 98052-6399.
+
+EULAID:WS03SP1_R1.0_ALLSRV_NRL_EN
+

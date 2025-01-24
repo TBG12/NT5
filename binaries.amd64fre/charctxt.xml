@@ -1,0 +1,17 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[You rang?]]></Text>
+	</Title>
+	<Label TopMargin="8">
+		<Text><![CDATA[What would you like to do?]]></Text>
+	</Label>
+    <Link Id="5301" IconId="290" TopMargin="5">
+		<Text><![CDATA[&Choose a different animated character]]></Text>
+	</Link>
+    <Link Id="5304" IconId="290" TopMargin="5">
+		<Text><![CDATA[Turn &off the animated character]]></Text>
+	</Link>
+    <Link Id="6200" IconId="290" TopMargin="5">
+		<Text><![CDATA[Do a tric&k]]></Text>
+	</Link>
+</SimpleDialog>

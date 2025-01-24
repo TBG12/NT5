@@ -1,0 +1,26 @@
+[Version]
+Signature= "$Windows NT$"
+[Optional Components]
+WMAccess
+[WMAccess]
+needs = msmsgs
+OptionDesc   = "%WM_NAME%"
+Tip          = "%WM_TIP%"
+IconIndex = *, msgrocm.dll, 2
+InstallType  = 10
+Modes        = 0,1,2,3
+Uninstall    = UninstallWM
+Run          = ShowWM
+[ShowWM]
+Commandline="%10%\system32\rundll32.exe ""%16422%\messenger\msgsc64.dll"",ShowIcons"
+TickCount=500
+[HideWM]
+Commandline="%10%\system32\rundll32.exe ""%16422%\messenger\msgsc64.dll"",HideIcons"
+TickCount=500
+[UninstallWM]
+DelFiles=DelNone
+Run=HideWM
+[DelNone]
+[strings]
+WM_NAME = "Windows Messenger"
+WM_TIP = "Adds or removes access to Windows Messenger from the Start menu."

@@ -1,0 +1,341 @@
+
+[version]
+signature="$Windows NT$"
+LayoutFile=layout.inf
+DriverVer=10/01/2002,5.2.3790.1433
+
+[Optional Components]
+SCW
+
+[Components]
+SCW = off
+
+[SCW]
+OptionDesc     = %SCW_DESC%
+Tip            = %SCW_TIP%
+IconIndex      = *,..\wsecedit.dll,224
+CopyFiles      = SCW.System32CopyFiles,SCW.msscwCopyFiles2,SCW.msscwCopyFiles3,SCW.msscwCopyFiles4,SCW.msscwCopyFiles6
+RegisterDlls   = SCW.RegSvr
+ProfileItems    = SCW.UninstallItems, SCW.InstallItems
+SizeApproximation=2224249
+AddReg        = SCW.AddReg 
+;DelReg        = SCW.DelReg
+Uninstall=Scw.Uninstall
+
+[SCW.InstallItems]
+Name   = %SCW_DESC%
+CmdLine    = 11,, scw.exe
+WorkingDir = 11
+IconPath = 11,,scw.exe
+IconIndex = 0
+InfoTip    = "@%SystemRoot%\system32\scw.exe,-292"
+DisplayResource="%SystemRoot%\system32\scw.exe",2
+SubDir = %AdminTools%
+
+
+[SCW.UninstallItems]
+Name       = %SCW_DESC%,0x00000002      
+SubDir = %AdminTools%
+
+[DestinationDirs]
+SCW.msscwCopyFiles2         = 10, security\msscw\kbs
+SCW.msscwCopyFiles3         = 10, security\msscw\transformfiles
+SCW.msscwCopyFiles4         = 10, security\msscw\transformfiles\view
+SCW.msscwCopyFiles6         = 10, security
+SCW.System32CopyFiles       = 11, 
+
+[SourceDisksNames.x86]
+1="%spcdname%","scw.cab",0,"\i386",0x11,"%spcdtagfile%"
+
+[SourceDisksNames.ia64]
+1="%spcdname%","scw.cab",0,"\ia64",0x11,"%spcdtagfile%"
+
+[SourceDisksNames.amd64]
+1="%cdname%","scw.cab",0,"\amd64",0x11,"%cdtagfile%"
+
+
+[SourceDisksFiles]
+BizTalk.xml =1,,5000,,
+CommerceServer.xml =1,,5000,,
+Exchange.xml =1,,5000,,
+ISA.xml =1,,5000,,
+kbreg.xml =1,,5000,,
+sms.xml =1,,5000,,
+sps.xml =1,,5000,,
+SQLServer2000.xml =1,,5000,,
+sts.xml =1,,5000,,
+w2k3.xml =1,,5000,,
+SMEFRules.xml =1,,5000,,
+ExtFunctions.xsl =1,,5000,,
+scwlocstrings.xml =1,,5000,,
+scwpolicy.xsl =1,,5000,,
+DownArrow.gif =1,,5000,,
+kb.css =1,,5000,,
+RightArrow.gif =1,,5000,,
+SCWKB.xsl =1,,5000,,
+Vars.xsl =1,,5000,,
+SCWAnaLocStrings.xml =1,,5000,,
+SCWAnalysis.xsl =1,,5000,,
+ActiveSockets.dll =1,,5000,,
+scwengf.dll =1,,5000,,
+ScwRegistryExt.dll =1,,5000,,
+ScwServiceExt.dll =1,,5000,,
+ScwAuditExt.dll =1,,5000,,
+ScwIISExt.dll =1,,5000,,
+ScwSceExt.dll =1,,5000,,
+scwhlp.dll =1,,5000,,
+scwengb.dll =1,,5000,,
+scwsddlanalysis.dll =1,,5000,,
+scwcmd.exe =1,,5000,,
+scw.exe =1,,5000,,
+scss.exe =1,,5000,,
+ComplianceExtensions.dll =1,,5000,,
+SeVA.dll =1,,5000,,
+SMEF.dll =1,,5000,,
+SecReg.xsd =1,,5000,,
+RuleResults.xsd =1,,5000,,
+SecPol.xsd =1,,5000,,
+SCWAudit.inf =1,,5000,,
+BizTalkloc.xml =1,,5000,,
+CommerceServerloc.xml =1,,5000,,
+Exchangeloc.xml =1,,5000,,
+ISAloc.xml =1,,5000,,
+smsloc.xml =1,,5000,,
+spsloc.xml =1,,5000,,
+SQLServer2000loc.xml =1,,5000,,
+stsloc.xml =1,,5000,,
+w2k3loc.xml =1,,5000,,
+SCSHost.exe =1,,5000,,
+scwInfo.gif =1,,5000,,
+scwError.gif =1,,5000,,
+scwalert.gif =1,,5000,,
+scwProgress.gif =1,,5000,,
+LogView.xslt =1,,5000,,
+DownArrowHighlight.gif =1,,5000,,
+RightArrowHighlight.gif =1,,5000,,
+scwfirewallext.dll =1,,5000,,
+MSIdentityIntegration.xml =1,,5000,,   
+MSIdentityIntegrationloc.xml =1,,5000,,
+SampleMachineList.xml =1,,5000,,
+OperationsManager.xml =1,,5000,,
+OperationsManagerLoc.xml =1,,5000,,
+scwxmlLoc.xsl =1,,5000,,
+sbs.xml =1,,5000,,
+sbsloc.xml =1,,5000,,
+DefaultSACLs.inf =1,,5000,,
+HIS.xml =1,,5000,,
+HISloc.xml =1,,5000,,
+scwviewer.exe =1,,5000,,
+
+[SCW.System32CopyFiles]
+ActiveSockets.dll
+scwengf.dll
+ScwRegistryExt.dll
+ScwServiceExt.dll
+scwhlp.dll
+scwengb.dll
+scwsddlanalysis.dll
+scwcmd.exe
+scw.exe
+scss.exe
+ComplianceExtensions.dll
+SeVA.dll
+SMEF.dll
+ScwAuditExt.dll
+ScwIISExt.dll
+ScwSceExt.dll
+SCSHost.exe
+scwfirewallext.dll
+scwviewer.exe
+
+[SCW.System32CopyFiles.Security]
+D:(A;CIOI;GA;;;BA)(A;CIOI;GA;;;SY)
+
+;security\msscw\kbs
+[SCW.msscwCopyFiles2]
+BizTalk.xml
+CommerceServer.xml
+Exchange.xml
+ISA.xml
+kbreg.xml
+sms.xml
+sps.xml
+SQLServer2000.xml
+sts.xml
+w2k3.xml
+SCWAudit.inf
+BizTalkloc.xml
+CommerceServerloc.xml
+Exchangeloc.xml
+ISAloc.xml
+smsloc.xml
+spsloc.xml
+SQLServer2000loc.xml
+stsloc.xml
+w2k3loc.xml
+MSIdentityIntegration.xml   
+MSIdentityIntegrationloc.xml
+SampleMachineList.xml
+OperationsManager.xml
+OperationsManagerLoc.xml
+sbs.xml
+sbsloc.xml
+DefaultSACLs.inf
+HIS.xml
+HISloc.xml
+
+[SCW.msscwCopyFiles2.Security]
+D:(A;CIOI;GA;;;BA)(A;CIOI;GA;;;SY)
+
+;security\msscw\transformfiles
+[SCW.msscwCopyFiles3]
+scwlocstrings.xml
+scwpolicy.xsl
+SCWAnaLocStrings.xml
+SCWAnalysis.xsl
+scwxmlLoc.xsl
+
+[SCW.msscwCopyFiles3.Security]
+D:(A;CIOI;GA;;;BA)(A;CIOI;GA;;;SY)
+
+;security\msscw\transformfiles\view
+[SCW.msscwCopyFiles4]
+DownArrow.gif
+kb.css
+RightArrow.gif
+SCWKB.xsl
+Vars.xsl
+scwInfo.gif
+scwError.gif
+scwalert.gif
+scwProgress.gif
+LogView.xslt
+DownArrowHighlight.gif
+RightArrowHighlight.gif
+
+
+[SCW.msscwCopyFiles4.Security]
+D:(A;CIOI;GA;;;BA)(A;CIOI;GA;;;SY)
+
+;security
+[SCW.msscwCopyFiles6]
+SMEFRules.xml
+SecReg.xsd
+RuleResults.xsd
+SecPol.xsd
+
+[SCW.msscwCopyFiles6.Security]
+D:(A;CIOI;GA;;;BA)(A;CIOI;GA;;;SY)
+
+[Scw.Uninstall]
+UnregisterDlls = SCW.UnRegister
+DelFiles = SCW.System32CopyFiles,SCW.msscwCopyFiles2,SCW.msscwCopyFiles3,SCW.msscwCopyFiles4,SCW.msscwCopyFiles6,SCW.msscwCopyFiles8,SCW.msscwCopyFiles9,SCW.msscwCopyFiles10,SCW.msscwCopyFiles11
+DelReg   = SCW.DelReg
+ProfileItems    = SCW.UninstallItems
+
+[SCW.RegSvr]
+11,,ActiveSockets.dll,1
+11,,scwengf.dll,1
+11,,scwengb.dll,1
+11,,scwsddlanalysis.dll,1
+11,,scw.exe,1
+11,,ScwRegistryExt.dll,1
+11,,ScwServiceExt.dll,1
+11,,ComplianceExtensions.dll,1
+11,,SeVA.dll,1
+11,,SMEF.dll,1
+11,,ScwAuditExt.dll,1
+11,,ScwIISExt.dll,1
+11,,ScwSceExt.dll,1
+11,,scwfirewallext.dll,1
+
+[SCW.UnRegister]
+11,,ActiveSockets.dll,1
+11,,scwengf.dll,1
+11,,scwengb.dll,1
+11,,scwsddlanalysis.dll,1
+11,,scw.exe,1
+11,,ScwRegistryExt.dll,1
+11,,ScwServiceExt.dll,1
+11,,ComplianceExtensions.dll,1
+11,,SeVA.dll,1
+11,,SMEF.dll,1
+11,,ScwAuditExt.dll,1
+11,,ScwIISExt.dll,1
+11,,ScwSceExt.dll,1
+11,,scwfirewallext.dll,1
+
+[SCW.AddReg]
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SCW",,,"%10%\security\msscw\scw.exe"
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SCW","Path",,"%10%\security\msscw\"
+
+[SCW.DelReg]
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SCW"
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SCW"
+
+[InstallDesktopShortcut]
+ProfileItems = SecurityConfigWizard
+
+[SecurityConfigWizard]
+Name           = %SCW_DESC%,8,25
+CmdLine        = 10,Help,scwhelp.chm
+InfoTip        = "@%SystemRoot%\System32\ws03res.dll,-69501"
+DisplayResource = "%SystemRoot%\System32\ws03res.dll",69500
+
+[Strings]
+SCW_CAB_DESCRIPTION = "Service Pack 1 CD-ROM"
+SCW_DESC = "Security Configuration Wizard"
+SCW_TIP = "Provides guided attack surface reduction for Windows Servers."
+AdminTools = "Administrative Tools"
+
+
+
+
+cdname      = "Windows Server 2003 Standard x64 Edition CD-ROM"
+productname = "Windows Server 2003 Standard x64 Edition"
+
+
+
+
+
+
+
+bootname1  = "Windows Server 2003, Standard Edition Setup Boot Disk"
+bootname2  = "Windows Server 2003, Standard Edition Setup Disk #2"
+bootname3  = "Windows Server 2003, Standard Edition Setup Disk #3"
+bootname4  = "Windows Server 2003, Standard Edition Setup Disk #4"
+bootname5  = "Windows Server 2003, Standard Edition Setup Disk #5"
+bootname6  = "Windows Server 2003, Standard Edition Setup Disk #6"
+bootname7  = "Windows Server 2003, Standard Edition Setup Disk #7"
+
+
+
+cdtagfile = "\win51as"
+
+cdtagfilei = "\win51is"
+
+cdtagfilem = "\win51ms"
+
+cdtagfilea = "\win51as"
+
+boottagfile1      = "\disk101"
+boottagfile2      = "\disk102"
+boottagfile3      = "\disk103"
+boottagfile4      = "\disk104"
+boottagfile5      = "\disk105"
+boottagfile6      = "\disk106"
+boottagfile7      = "\disk107"
+
+spcdname	  = "Service Pack 1 CD-ROM"
+
+
+
+spcdtagfile = "\win51as.sp1"
+
+spcdtagfilei = "\win51is.sp1"
+
+spcdtagfilem = "\win51ms.sp1"
+
+spcdtagfilea = "\win51as.sp1"
+
+

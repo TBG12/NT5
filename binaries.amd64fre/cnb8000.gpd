@@ -1,0 +1,1366 @@
+*%
+*% Canon Bubble-Jet BJC-8000
+*%
+*% Copyright 2000 CANON INC.
+*% All Right Reserved
+*%
+
+
+*%
+*% include files
+*%
+
+*Include: "STDNAMES.GPD"
+*Include: "CNBJGRC2.GPD"
+*Include: "CNBVM.GPD"
+
+
+*%
+*% help file
+*%
+
+*HelpFile: "CNBJHLP2.HLP"
+
+
+*%
+*% global entries
+*%
+
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "0.84"
+*GPDFileName: "CNB8000.GPD"
+*CodePage: 1252
+*ResourceDLL: "CNBJUI2.DLL"
+*ModelName: "Canon Bubble-Jet BJC-8000"
+*MasterUnits: PAIR(600,600)
+*PrinterType: SERIAL
+*PrintRateUnit: PPM
+*PrintRate: 8
+*OutputOrderReversed?: TRUE
+
+
+*%
+*% Features and Options
+*%
+
+*% paper size
+*%
+
+*Feature: PaperSize
+{
+  *rcNameID: =PAPER_SIZE_DISPLAY
+  *ConflictPriority: 25
+  *DefaultOption: LETTER
+
+  *Option: A5
+  {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+    *PrintableArea: PAIR(3334,4722)
+    *PrintableOrigin: PAIR(81,71)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<080001d90000014e0000>"
+    }
+  }
+
+  *Option: A4
+  {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+    *PrintableArea: PAIR(4798,6778)
+    *PrintableOrigin: PAIR(81,71)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<080002a6000001e00000>"
+    }
+  }
+
+  *Option: B5
+  {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+    *PrintableArea: PAIR(4136,5832)
+    *PrintableOrigin: PAIR(81,71)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<080002480000019e0000>"
+    }
+  }
+
+  *Option: LETTER
+  {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+    *PrintableArea: PAIR(4798,6362)
+    *PrintableOrigin: PAIR(152,71)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<0800027d000001e00007>"
+    }
+  }
+
+  *Option: LEGAL
+  {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+    *PrintableArea: PAIR(4798,8162)
+    *PrintableOrigin: PAIR(152,71)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<08000331000001e00007>"
+    }
+  }
+
+  *Option: ENV_10_BREADTHWISE
+  {
+    *rcNameID: =RC_STRING_ENV_10_BREADTHWISE
+    *PrintableArea: PAIR(4798,2236)
+    *PrintableOrigin: PAIR(152,71)
+    *PageDimensions: PAIR(5700,2474)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<080000e0000001e00007>"
+    }
+  }
+
+  *Option: ENV_DL_BREADTHWISE
+  {
+    *rcNameID: =RC_STRING_ENV_DL_BREADTHWISE
+    *PrintableArea: PAIR(4798,2360)
+    *PrintableOrigin: PAIR(152,71)
+    *PageDimensions: PAIR(5196,2598)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<080000ed000001e00007>"
+    }
+  }
+
+  *Option: LETTER_BLEED
+  {
+    *rcNameID: =RC_STRING_LETTER_BLEED
+    *PrintableArea: PAIR(5160,6660)
+    *PrintableOrigin: PAIR(120,660)
+    *PageDimensions: PAIR(5400,7980)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<0800029a000002040000>"
+    }
+  }
+
+  *Option: A4_BLEED
+  {
+    *rcNameID: =RC_STRING_A4_BLEED
+    *PrintableArea: PAIR(5020,7080)
+    *PrintableOrigin: PAIR(120,660)
+    *PageDimensions: PAIR(5260,8400)
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<080002c4000001f60000>"
+    }
+  }
+
+  *Option: CUSTOMSIZE
+  {
+    *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+    *MaxSize: PAIR(5700,13800)
+    *MinSize: PAIR(2362,2362)
+    *MinLeftMargin: 81
+    *MaxPrintableWidth: 4800
+    *CustCursorOriginX: %d{81}
+    *CustCursorOriginY: %d{71}
+    *CustPrintableOriginX: %d{81}
+    *CustPrintableOriginY: %d{71}
+    *CustPrintableSizeX: %d{PhysPaperWidth - 162}
+    *CustPrintableSizeY: %d{PhysPaperLength - 237}
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.10
+      *Cmd: "<1b>(p<0800>"%m{(PhysPaperLength - 237 + 5) / 6}"<0000>"%m{min(480,(PhysPaperWidth - 162 + 5) / 6)}"<0000>"
+    }
+  }
+}
+
+*% BJ cartridge
+*%
+
+*Feature: InkSystem
+{
+  *rcNameID: =RC_STRING_BJCARTRIDGE
+  *FeatureType: DOC_PROPERTY
+  *ConflictPriority: 10
+  *DefaultOption: BK_COLOR
+  *UpdateQualityMacro?: TRUE
+  *HelpIndex: =IDH_GPD_INK_3
+
+  *Option: BK_COLOR
+  {
+    *rcNameID: =RC_STRING_BK_COLOR
+    *rcIconID: =IDI_INKSYS
+  }
+
+  *Option: BK_PHOTO
+  {
+    *rcNameID: =RC_STRING_BK_PHOTO
+    *rcIconID: =IDI_INKSYS
+  }
+}
+
+*% grayscale
+*%
+
+*Feature: ColorMode
+{
+  *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+  *ConflictPriority: 30
+  *DefaultOption: CMYK24
+  *UpdateQualityMacro?: TRUE
+
+  *%
+  *% Gray/Off
+  *%
+  *Option: CMYK24
+  {
+    *rcNameID: =RC_STRING_CMYK24
+    *DevBPP: 0
+    *DevNumOfPlanes: 0
+    *Color?: TRUE
+    *DrvBPP: 24
+    *IPCallbackID: 1
+    *RasterMode: DIRECT
+  }
+
+  *%
+  *% Gray/On
+  *%
+  *Option: MONO
+  {
+    *rcNameID: =RC_STRING_MONO
+    *DevBPP: 0
+    *DevNumOfPlanes: 0
+    *Color?: FALSE
+    *DrvBPP: 8
+    *IPCallbackID: 1
+    *RasterMode: DIRECT
+  }
+}
+
+*% media type
+*%
+
+*Feature: MediaType
+{
+  *rcNameID: =MEDIA_TYPE_DISPLAY
+  *ConflictPriority: 20
+  *DefaultOption: STANDARD
+  *UpdateQualityMacro?: TRUE
+
+  *Option: STANDARD
+  {
+    *rcNameID: =PLAIN_PAPER_DISPLAY
+    *OptionID: 513
+    *switch: PaperSize
+    {
+      *case: LETTER_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *case: A4_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *default
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<00>"
+        }
+      }
+    }
+  }
+
+  *Option: CANON_HIGHRES
+  {
+    *rcNameID: =RC_STRING_HIGHRES
+    *OptionID: 529
+    *switch: PaperSize
+    {
+      *case: LETTER_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *case: A4_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *default
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<07>"
+        }
+      }
+    }
+  }
+
+  *Option: CANON_M304
+  {
+    *rcNameID: =RC_STRING_M304
+    *OptionID: 535
+    *switch: PaperSize
+    {
+      *case: LETTER_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *case: A4_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *default
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<05>"
+        }
+      }
+    }
+  }
+
+  *Option: CANON_ENVELOPE
+  {
+    *rcNameID: =RC_STRING_ENVELOPE
+    *OptionID: 521
+    *switch: PaperSize
+    {
+      *case: LETTER_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *case: A4_BLEED
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<0a>"
+        }
+      }
+      *default
+      {
+        *Command: CmdSelect
+        {
+          *Order: DOC_SETUP.21
+          *Cmd: "<08>"
+        }
+      }
+    }
+  }
+}
+
+*% print quality (3 position)
+*%
+
+*Feature: Resolution
+{
+  *rcNameID: =RESOLUTION_DISPLAY
+  *ConflictPriority: 40
+  *DefaultOption: STANDARD
+
+  *Option: DRAFT
+  {
+    *rcNameID: =RC_STRING_HS
+    *OptionID: -2
+    *DPI: PAIR(300,300)
+    *TextDPI: PAIR(300,300)
+    *SpotDiameter: 0
+  }
+
+  *Option: STANDARD
+  {
+    *rcNameID: =RC_STRING_HQ
+    *OptionID: -3
+    *DPI: PAIR(600,600)
+    *TextDPI: PAIR(600,600)
+    *SpotDiameter: 0
+  }
+
+  *Option: HIGH
+  {
+    *rcNameID: =RC_STRING_FINE
+    *OptionID: -4
+    *switch: InkSystem
+    {
+      *case: BK_COLOR
+      {
+        *DPI: PAIR(600,600)
+        *TextDPI: PAIR(600,600)
+      }
+      *case: BK_PHOTO
+      {
+        *DPI: PAIR(300,300)
+        *TextDPI: PAIR(300,300)
+      }
+    }
+    *SpotDiameter: 0
+  }
+}
+
+*% halftone
+*%
+
+*% The meaning of halftone options are as follows:
+*%
+*% HT_PATSIZE_8X8:         For Graphics (Dither)
+*% HT_PATSIZE_SUPERCELL_M: For Pictures (Error diffusion)
+*% HT_PATSIZE_AUTO:        Auto Select
+
+*Feature: Halftone
+{
+  *rcNameID: =HALFTONING_DISPLAY
+  *ConflictPriority: 50
+  *DefaultOption: HT_PATSIZE_AUTO
+
+  *%
+  *% Dither Pattern
+  *%
+  *Option: HT_PATSIZE_8x8_M
+  {
+    *rcNameID: =RC_STRING_PATTERN
+  }
+
+  *%
+  *% Error Diffusion
+  *%
+  *Option: HT_PATSIZE_SUPERCELL_M
+  {
+    *rcNameID: =RC_STRING_ERRORDIFFUSION
+  }
+
+  *%
+  *% Auto
+  *%
+  *Option: HT_PATSIZE_AUTO
+  {
+    *rcNameID: =HT_AUTO_SELECT_DISPLAY
+  }
+}
+
+*% input bin
+*%
+
+*Feature: InputBin
+{
+  *rcNameID: =PAPER_SOURCE_DISPLAY
+  *ConflictPriority: 60
+  *DefaultOption: AUTO
+
+  *Option: AUTO
+  {
+    *rcNameID: =AUTO_DISPLAY
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.20
+      *Cmd: "<1b>(l<020034>"
+    }
+  }
+
+  *Option: MANUAL
+  {
+    *rcNameID: =MANUAL_FEED_DISPLAY
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.20
+      *Cmd: "<1b>(l<020031>"
+    }
+  }
+}
+
+*% orientation
+*%
+
+*Feature: Orientation
+{
+  *rcNameID: =ORIENTATION_DISPLAY
+  *DefaultOption: PORTRAIT
+
+  *Option: PORTRAIT
+  {
+    *rcNameID: =PORTRAIT_DISPLAY
+  }
+
+  *Option: LANDSCAPE_CC270
+  {
+    *rcNameID: =LANDSCAPE_DISPLAY
+  }
+}
+
+*% brightness
+*%
+
+*Feature: Brightness
+{
+  *rcNameID: =RC_STRING_BRIGHTNESS
+  *DefaultOption: GAMMA_14
+  *HelpIndex: =IDH_GPD_BRIGHTNESS
+
+  *Option: GAMMA_10
+  {
+    *rcNameID: =RC_STRING_BRIGHTNESS_LIGHT
+  }
+
+  *Option: GAMMA_14
+  {
+    *rcNameID: =RC_STRING_BRIGHTNESS_NORMAL
+  }
+
+  *Option: GAMMA_18
+  {
+    *rcNameID: =RC_STRING_BRIGHTNESS_DARK
+  }
+
+  *Option: GAMMA_22
+  {
+    *rcNameID: =RC_STRING_BRIGHTNESS_VERYDARK
+  }
+}
+
+*% ecp mode
+*%
+
+*Feature: EcpMode
+{
+  *rcNameID: =RC_STRING_ECP
+  *FeatureType: PRINTER_PROPERTY
+  *DefaultOption: ON
+  *HelpIndex: =IDH_GPD_ECPMODE
+
+  *Option: ON
+  {
+    *rcNameID: =RC_STRING_ON
+    *Command: CmdSelect
+    {
+      *Order: JOB_SETUP.10
+      *Cmd: "<1b>[K<02 00 00 1F>BJLSTART<0A>ControlMode=Common<0A>SelectParallel=ECP<0A>BJLEND<0A>"
+    }
+  }
+
+  *Option: OFF
+  {
+    *rcNameID: =RC_STRING_OFF
+    *Command: CmdSelect
+    {
+      *Order: JOB_SETUP.10
+      *Cmd: "<1b>[K<02 00 00 1F>BJLSTART<0A>ControlMode=Common<0A>SelectParallel=Nibble<0A>BJLEND<0A>"
+    }
+  }
+}
+
+*% reset printer/printer preparation command
+*%
+
+*Feature: CmdStartJob_ResetPrinter
+{
+  *Name: ""
+  *ConcealFromUI: TRUE
+  *DefaultOption: OPTION_1
+
+  *Option: OPTION_1
+  {
+    *Name: ""
+    *Command: CmdSelect
+    {
+      *Order: JOB_SETUP.11
+      *Cmd: "<1b>[K<02 00 00 0F>"
+    }
+  }
+}
+
+*% printer set/compression mode command
+*%
+
+*Feature: CmdStartDoc_Compression
+{
+  *Name: ""
+  *ConcealFromUI: TRUE
+  *DefaultOption: OPTION_1
+
+  *Option: OPTION_1
+  {
+    *Name: ""
+    *Command: CmdSelect
+    {
+      *Order: DOC_SETUP.1
+      *Cmd: "<1b>(b<01 00 01>"
+    }
+  }
+}
+
+
+*%
+*% Quality Macro
+*%
+
+*switch: InkSystem
+{
+  *case: BK_COLOR
+  {
+    *switch: ColorMode
+    {
+      *case: CMYK24
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_HIGHRES
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_M304
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_ENVELOPE
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BETTERQUALITY
+          }
+        }
+      }
+      *case: MONO
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_HIGHRES
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_M304
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_ENVELOPE
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BETTERQUALITY
+          }
+        }
+      }
+    }
+  }
+  *case: BK_PHOTO
+  {
+    *switch: ColorMode
+    {
+      *case: CMYK24
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BESTQUALITY
+          }
+          *case: CANON_HIGHRES
+          {
+            *BestQualitySettings: LIST()
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_M304
+          {
+            *BestQualitySettings: LIST()
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_ENVELOPE
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BESTQUALITY
+          }
+        }
+      }
+      *case: MONO
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BESTQUALITY
+          }
+          *case: CANON_HIGHRES
+          {
+            *BestQualitySettings: LIST()
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_M304
+          {
+            *BestQualitySettings: LIST()
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: LIST()
+            *DefaultQuality: BETTERQUALITY
+          }
+          *case: CANON_ENVELOPE
+          {
+            *BestQualitySettings: Resolution.HIGH
+            *BetterQualitySettings: Resolution.STANDARD
+            *DraftQualitySettings: Resolution.DRAFT
+            *DefaultQuality: BESTQUALITY
+          }
+        }
+      }
+    }
+  }
+}
+
+
+*%
+*% printing attributes
+*%
+
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*StripBlanks: LIST(TRAILING)
+*EjectPageWithFF?: TRUE
+*TextCaps: TC_RA_ABLE
+*ChangeColorModeOnDoc?: TRUE
+
+
+*%
+*% printing command
+*%
+
+*% printing method/raster resolution/image format
+*% oem custom data
+*%
+
+*switch: InkSystem
+{
+  *case: BK_COLOR
+  {
+    *switch: ColorMode
+    {
+      *case: CMYK24
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300083><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_PLAIN =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_PLAIN =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_PLAIN =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+          *case: CANON_HIGHRES
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300703><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_HIGHRES =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300702><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_HIGHRES =CPD_QUALITY_MQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_M304
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300503><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_M304 =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300502><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_M304 =CPD_QUALITY_MQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_ENVELOPE
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300083><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_ENVELOPE =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_OFF =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+        }
+      }
+      *case: MONO
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310083><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_PLAIN =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_PLAIN =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_PLAIN =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+          *case: CANON_HIGHRES
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310703><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_HIGHRES =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310702><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_HIGHRES =CPD_QUALITY_MQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_M304
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310503><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_M304 =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310502><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_M304 =CPD_QUALITY_MQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_ENVELOPE
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310083><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_ENVELOPE =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_COLOR =CPD_GRAYSCALE_ON =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  *case: BK_PHOTO
+  {
+    *switch: ColorMode
+    {
+      *case: CMYK24
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<03003000c3><1b>(d<0400012c012c><1b>(t<0300049004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_PLAIN =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_PLAIN =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_PLAIN =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+          *case: CANON_HIGHRES
+          {
+            *switch: Resolution
+            {
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300703><1b>(d<040002580258><1b>(t<0300010004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_HIGHRES =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_M304
+          {
+            *switch: Resolution
+            {
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300503><1b>(d<040002580258><1b>(t<0300010004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_M304 =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_ENVELOPE
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<03003000c3><1b>(d<0400012c012c><1b>(t<0300049004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_ENVELOPE =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_OFF =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+        }
+      }
+      *case: MONO
+      {
+        *switch: MediaType
+        {
+          *case: STANDARD
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<03003000c3><1b>(d<0400012c012c><1b>(t<0300049004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_PLAIN =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_PLAIN =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_PLAIN =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+          *case: CANON_HIGHRES
+          {
+            *switch: Resolution
+            {
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300703><1b>(d<040002580258><1b>(t<0300010004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_HIGHRES =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_M304
+          {
+            *switch: Resolution
+            {
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300300503><1b>(d<040002580258><1b>(t<0300010004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_M304 =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+            }
+          }
+          *case: CANON_ENVELOPE
+          {
+            *switch: Resolution
+            {
+              *case: HIGH
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<03003000c3><1b>(d<0400012c012c><1b>(t<0300049004>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HQ =CPD_HALFTONE_ED
+              }
+              *case: STANDARD
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310081><1b>(d<040002580258><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_ENVELOPE =CPD_QUALITY_NORMAL =CPD_HALFTONE_DITHER
+              }
+              *case: DRAFT
+              {
+                *Command: CmdStartDoc
+                {
+                  *Order: DOC_SETUP.5
+                  *Cmd: "<1b>(c<0300310000><1b>(d<0400012c012c><1b>(t<0300010001>"
+                }
+
+                *OEMCustomData: =CPD_CARTRIDGE_BK_PHOTO =CPD_GRAYSCALE_ON =CPD_MEDIA_ENVELOPE =CPD_QUALITY_HS =CPD_HALFTONE_DITHER
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+*% compress mode
+*%
+
+*Command: CmdEndDoc
+{
+  *Order: DOC_FINISH.1
+  *Cmd: "<1b>(b<01 00 00>"
+}
+
+*% emulation mode
+*%
+
+*Command: CmdEndJob
+{
+  *Order: JOB_FINISH.1
+  *Cmd: "<1b>@"
+}
+
+*% cursor control
+*%
+
+*Command: CmdFF { *Cmd : "<1b>(e<02000001><0C>" }
+
+*% These definitions are not actually used for printing - only for documentation purpose.
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+
+*% raster data emission
+*%
+
+*% These definitions are not actually used for printing - only for documentation purpose.
+*Command: CmdSendBlockData { *Cmd: "<1b>(A" %l{NumOfDataBytes + 1} "K" }
+*Command: CmdSendYellowData { *Cmd: "<1b>(A" %l{NumOfDataBytes + 1} "Y" }
+*Command: CmdSendMagentaData { *Cmd: "<1b>(A" %l{NumOfDataBytes + 1} "M" }
+*Command: CmdSendCyanData { *Cmd: "<1b>(A" %l{NumOfDataBytes + 1} "C" }
+*Command: CmdSendBlackData { *Cmd: "<1b>(A" %l{NumOfDataBytes + 1} "K" }
+
+
+*%
+*% menu link
+*%
+
+*% print quality
+*%
+
+*InvalidCombination: LIST(InkSystem.BK_PHOTO, MediaType.CANON_HIGHRES, Resolution.HIGH)
+*InvalidCombination: LIST(InkSystem.BK_PHOTO, MediaType.CANON_M304, Resolution.HIGH)
+*InvalidCombination: LIST(MediaType.CANON_HIGHRES, Resolution.DRAFT)
+*InvalidCombination: LIST(MediaType.CANON_M304, Resolution.DRAFT)
+
+*% halftone
+*%
+
+*InvalidCombination: LIST(Resolution.DRAFT, Halftone.HT_PATSIZE_SUPERCELL_M)
+*InvalidCombination: LIST(MediaType.STANDARD, Resolution.STANDARD,Halftone.HT_PATSIZE_SUPERCELL_M)
+*InvalidCombination: LIST(MediaType.CANON_ENVELOPE, Resolution.STANDARD,Halftone.HT_PATSIZE_SUPERCELL_M)
+*InvalidCombination: LIST(MediaType.CANON_HIGHRES, Halftone.HT_PATSIZE_8x8_M)
+*InvalidCombination: LIST(MediaType.CANON_M304, Halftone.HT_PATSIZE_8x8_M)
+*InvalidCombination: LIST(MediaType.STANDARD, Resolution.HIGH,Halftone.HT_PATSIZE_8x8_M)
+*InvalidCombination: LIST(MediaType.CANON_ENVELOPE, Resolution.HIGH,Halftone.HT_PATSIZE_8x8_M)
+

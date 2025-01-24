@@ -1,0 +1,1175 @@
+; MSPRINT3.INF
+;
+; List of supported printers, manufacturers A through Z which
+; aren't listed in MSPRINT.INF or MSPRINT2.INF
+
+[Version]
+Signature="$CHICAGO$"
+Class=Printer
+ClassGUID={4d36e979-e325-11ce-bfc1-08002be10318}
+Provider=%MS%
+LayoutFile=layout.inf, layout1.inf, layout2.inf
+CatalogFile=win4prt.cat
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+
+[Manufacturer]
+"Brother"
+"Bull"
+"Canon"
+"Dataproducts"
+"Digital"
+"Epson"
+"HP"
+"Kyocera"
+"Mannesmann"
+"NEC"
+"Oki"
+"Olivetti"
+"Samsung"
+"Sharp"
+"Tally"
+"Xerox"
+
+;
+; Model sections. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file.
+;
+; Each model lists a variation of its own name as a compatible ID. This
+; is done primarily as an optimization during upgrade.
+;
+
+[Brother]
+"Brother HL-1060"                 = PCL5EMS.DRV,LPTENUM\BrotherHL-1060_serie7EF0,BrotherHL-1060_serie7EF0,Brother_HL-1060
+"Brother HL-1260"                 = PCL5EMS.DRV,LPTENUM\BrotherHL-12605F3A,BrotherHL-12605F3A,Brother_HL-1260
+"Brother HL-1260e"                = PCL5EMS.DRV,LPTENUM\BrotherHL-1260e381F,BrotherHL-1260e381F,Brother_HL-1260e
+"Brother HL-1660"                 = PCL5EMS.DRV,LPTENUM\BrotherHL-16609E7B,BrotherHL-16609E7B,Brother_HL-1660
+"Brother HL-630"                  = HPPCLB.DRV,Brother_HL-630
+"Brother HL-660"                  = PCL5EMS.DRV,LPTENUM\_Brother_HL-660_seriF641,_Brother_HL-660_seriF641,Brother_HL-660
+"Brother HL-730"                  = HPPCLB.DRV,LPTENUM\BrotherHL-730_series2928,BrotherHL-730_series2928,Brother_HL-730
+"Brother HL-760"                  = PCL5EMS.DRV,LPTENUM\BrotherHL-760_series7917,BrotherHL-760_series7917,Brother_HL-760
+"Brother MFC-3900"                = HPPCLB.DRV,Brother_MFC-3900
+"Brother MFC-4000"                = HPPCLB.DRV,Brother_MFC-4000
+"Brother MFC-4400"                = HPPCLB.DRV,Brother_MFC-4400
+"Brother MFC-4500"                = HPPCLB.DRV,Brother_MFC-4500
+"Brother MFC-5000"                = HPPCLB.DRV,Brother_MFC-5000
+"Brother MFC-5550"                = HPPCLB.DRV,Brother_MFC-5550
+"Brother MFC-6000"                = HPPCLB.DRV,Brother_MFC-6000
+
+[Bull]
+"Bull Compuprint PM 1035e"        = BULLASER.DRV,Bull_Compuprint_PM_1035e
+"Bull Compuprint PM 1225"         = BULLASER.DRV,Bull_Compuprint_PM_1225
+"Bull Compuprint PM 1435e"        = BULLASER.DRV,Bull_Compuprint_PM_1435e
+"Bull Compuprint PM 1625"         = BULLASER.DRV,Bull_Compuprint_PM_1625
+"Bull Compuprint PM 1645e"        = BULLASER.DRV,Bull_Compuprint_PM_1645e
+"Bull Compuprint Signum 2043"     = BULL9B.DRV,Bull_Compuprint_Signum_2043
+"Bull Compuprint Signum 2048"     = BULL24B.DRV,Bull_Compuprint_Signum_2048
+"Bull Compuprint Signum 2076"     = BULL18B.DRV,Bull_Compuprint_Signum_2076
+"Bull Compuprint Signum 2078"     = BULL24B.DRV,Bull_Compuprint_Signum_2078
+"Bull Compuprint PM 100"          = JP350B.DRV,Bull_Compuprint_PM_100
+"Bull Compuprint PM 200"          = JP350B.DRV,Bull_Compuprint_PM_200
+"Bull Compuprint PM 201"          = JP350B.DRV,Bull_Compuprint_PM_201
+"Bull Compuprint PM 300 (B/W)"    = JP350B.DRV,Bull_Compuprint_PM_300_(B/W)
+"Bull Compuprint PM 300 (Color)"  = JP350B.DRV,Bull_Compuprint_PM_300_(Color)
+
+[Canon]
+"Canon Bubble-Jet BJ-10e"         = CANON330.DRV,Canon_Bubble-Jet_BJ-10e
+"Canon Bubble-Jet BJ-10ex"        = CANON330.DRV,Canon_Bubble-Jet_BJ-10ex
+"Canon Bubble-Jet BJ-10sx"        = CANON330.DRV,Canon_Bubble-Jet_BJ-10sx
+"Canon Bubble-Jet BJ-20"          = CANON330.DRV,Canon_Bubble-Jet_BJ-20
+"Canon Bubble-Jet BJ-30"          = CAN800B.DRV,Canon_Bubble-Jet_BJ-30
+"Canon Bubble-Jet BJ-100"         = CANON800.DRV,Canon_Bubble-Jet_BJ-100
+"Canon Bubble-Jet BJ-130"         = CANON330.DRV,Canon_Bubble-Jet_BJ-130
+"Canon Bubble-Jet BJ-130e"        = CANON330.DRV,Canon_Bubble-Jet_BJ-130e
+"Canon Bubble-Jet BJ-200"         = CANON800.DRV,Canon_Bubble-Jet_BJ-200
+"Canon Bubble-Jet BJ-200e"        = CANON800.DRV,Canon_Bubble-Jet_BJ-200e
+"Canon Bubble-Jet BJ-200ex"       = CAN800B.DRV,Canon_Bubble-Jet_BJ-200ex
+"Canon Bubble-Jet BJ-230"         = CANON800.DRV,Canon_Bubble-Jet_BJ-230
+"Canon Bubble-Jet BJ-300"         = CANON330.DRV,Canon_Bubble-Jet_BJ-300
+"Canon Bubble-Jet BJ-330"         = CANON330.DRV,Canon_Bubble-Jet_BJ-330
+"Canon Bubble-Jet BJC-70"         = CANONBJC70,Canon_Bubble-Jet_BJC-70
+"Canon Bubble-Jet BJC-210"        = CAN800B.DRV,LPTENUM\CanonBJC-2105D67,CanonBJC-2105D67,Canon_Bubble-Jet_BJC-210
+"Canon Bubble-Jet BJC-240"        = CANONBJC240,LPTENUM\CanonBJC-2400D64,CanonBJC-2400D64,Canon_Bubble-Jet_BJC-240
+"Canon Bubble-Jet BJC-600"        = CANONBJC600,Canon_Bubble-Jet_BJC-600
+"Canon Bubble-Jet BJC-600e"       = CANONBJC600,Canon_Bubble-Jet_BJC-600e
+"Canon Bubble-Jet BJC-800"        = CANONBJC800,Canon_Bubble-Jet_BJC-800
+"Canon Bubble-Jet BJC-4000"       = CANON800.DRV,Canon_Bubble-Jet_BJC-4000
+"Canon Bubble-Jet BJC-4100"       = CAN800B.DRV,LPTENUM\CanonBJC-4100B79D,CanonBJC-4100B79D,Canon_Bubble-Jet_BJC-4100
+"Canon Bubble-Jet BJC-4200"       = CANONBJC4200,LPTENUM\CanonBJC-4200B76D,CanonBJC-4200B76D,Canon_Bubble-Jet_BJC-4200
+"Canon Bubble-Jet BJC-4550"       = CAN800B.DRV,LPTENUM\CanonBJC-455026DF,CanonBJC-455026DF,Canon_Bubble-Jet_BJC-4550
+"Canon C LBP 360 PS"              = CLBP3601.SPD,Canon_C_LBP_360_PS
+"Canon LBP-1260"                  = PCL5EMS.DRV,Canon_LBP-1260
+"Canon LBP-2460"                  = PCL5EMS.DRV,LPTENUM\CanonLBP-2460707C,CanonLBP-2460707C,Canon_LBP-2460
+"Canon LBP-1260 Plus"             = PCL5EMS.DRV,LPTENUM\CanonLBP-1260_Plus6C70,CanonLBP-1260_Plus6C70,Canon_LBP-1260_Plus
+"Canon LBP-1260C PCL"             = PCL5EMS2.DRV,LPTENUM\CanonLBP-1260C9874,CanonLBP-1260C9874,Canon_LBP-1260C_PCL
+"Canon LBP-1260 Plus PS"          = CN126PE1.SPD,Canon_LBP-1260_Plus_PS
+"Canon LBP-1260 PS"               = CN1260E1.SPD,Canon_LBP-1260_PS
+"Canon LBP-2460PS"                = CN2460E1.SPD,Canon_LBP-2460PS
+"Canon LBP-430W"                  = HPPCLB.DRV,Canon_LBP-430W
+"Canon LBP-4"                     = CANONLBP.DRV,Canon_LBP-4
+"Canon LBP-4 Plus"                = CANONLBP.DRV,Canon_LBP-4_Plus
+"Canon LBP-4i"                    = HPPCL5MS.DRV,Canon_LBP-4i
+"Canon LBP-4sx"                   = HPPCL5MS.DRV,Canon_LBP-4sx
+"Canon LBP-4U"                    = CANONLBP.DRV,Canon_LBP-4U
+"Canon LBP-4 Lite"                = CANONLBP.DRV,Canon_LBP-4_Lite
+"Canon LBP-430"                   = HPPCL5MS.DRV,Canon_LBP-430
+"Canon LBP-4 PS-2 v51.4"          = CNLBP4_1.SPD,Canon_LBP-4_PS-2_v51.4
+"Canon LBP-860"                   = HPPCL5MS.DRV,Canon_LBP-860
+"Canon LBP-8 II"                  = CANONLBP.DRV,Canon_LBP-8_II
+"Canon LBP-8 IIR"                 = CANONLBP.DRV,Canon_LBP-8_IIR
+"Canon LBP-8 IIT"                 = CANONLBP.DRV,Canon_LBP-8_IIT
+"Canon LBP-8 III"                 = CANONLBP.DRV,Canon_LBP-8_III
+"Canon LBP-8 III Plus"            = CANONLBP.DRV,Canon_LBP-8_III_Plus
+"Canon LBP-8III PS-1 v51.4"       = CNLBP8_1.SPD,Canon_LBP-8III_PS-1_v51.4
+"Canon LBP-8 IIIR"                = CANONLBP.DRV,Canon_LBP-8_IIIR
+"Canon LBP-8IIIR PS-1 v51.4"      = CNLBP8R1.SPD,Canon_LBP-8IIIR_PS-1_v51.4
+"Canon LBP-8 IIIT"                = CANONLBP.DRV,Canon_LBP-8_IIIT
+"Canon LBP-8IIIT PS-1 v51.4"      = CNLBP8T1.SPD,Canon_LBP-8IIIT_PS-1_v51.4
+"Canon LBP-8 IV"                  = CANONLBP.DRV,Canon_LBP-8_IV
+"Canon LBP-8sx"                   = HPPCL5MS.DRV,Canon_LBP-8sx
+"Canon PS-IPU Color Laser Copier" = CN_500_1.SPD,Canon_PS-IPU_Color_Laser_Copier
+"Canon PS-IPU Kanji Color Copier" = CN_500J1.SPD,Canon_PS-IPU_Kanji_Color_Copier
+
+[Dataproducts]
+"DPC Typhoon 16"                  = DPCPCL.DRV,DPC_Typhoon_16
+"DPC Typhoon 20"                  = DPCPCL.DRV,DPC_Typhoon_20
+"DPC Typhoon 30"                  = DPCPCL.DRV,DPC_Typhoon_30
+"DPC Typhoon 40"                  = DPCPCL.DRV,DPC_Typhoon_40
+"DPC Typhoon 60"                  = DPCPCL.DRV,DPC_Typhoon_60
+"DPC Typhoon 8"                   = DPCPCL.DRV,DPC_Typhoon_8
+
+[Digital]
+"Digital LA400 MultiPrinter"      = DECESCP2.DRV,LPTENUM\DigitalLA4000E7F,DigitalLA4000E7F,Digital_LA400_MultiPrinter
+"Digital DECcolorwriter 120ic"    = JP350B.DRV,Digital_DECcolorwriter_120ic
+"Digital DECcolorwriter 520ic"    = JP350B.DRV,Digital_DECcolorwriter_520ic
+"Digital DEClaser 1800 (PCL)"     = PCL5MS.DRV,Digital_DEClaser_1800_(PCL)
+"Digital DEClaser 3500 (PCL)"     = PCL5MS.DRV,Digital_DEClaser_3500_(PCL)
+"Digital DEClaser 5100 (PCL)"     = PCL5EMS.DRV,Digital_DEClaser_5100_(PCL)
+"Digital DECwriter 100i"          = JP350B.DRV,Digital_DECwriter_100i
+"Digital DECwriter 110i"          = JP350B.DRV,Digital_DECwriter_110i
+"Digital DECwriter 500i"          = JP350B.DRV,Digital_DECwriter_500i
+
+[Epson]
+"Epson ActionLaser 1000"          = HPPCL.DRV,Epson_ActionLaser_1000
+"Epson ActionLaser 1500"          = HPPCL5MS.DRV,Epson_ActionLaser_1500
+"Epson ActionLaser 1600"          = HPPCL5MS.DRV.BIDI,LPTENUM\EPSONActionLaser_1606530,EPSONActionLaser_1606530,Epson_ActionLaser_1600
+"Epson ActionLaser II"            = HPPCL.DRV,Epson_ActionLaser_II
+"Epson ActionLaser Plus"          = HPPCL.DRV,Epson_ActionLaser_Plus
+"EPSON AL-1000/1500 EpsonScript"  = ESCRIPT2.SPD,EPSON_AL-1000/1500_EpsonScript
+"EPSON AL-1600 EPSONScript"       = ESCRIPT4.SPD,EPSON_AL-1600_EPSONScript
+"Epson AP-2000"                   = EPSON9.DRV,Epson_AP-2000
+"Epson AP-2250"                   = EPSON9.DRV,Epson_AP-2250
+"Epson AP-2500"                   = EPSON9.DRV,Epson_AP-2500
+"Epson AP-3000"                   = EPSON24.DRV,Epson_AP-3000
+"Epson AP-3250 ESC/P 2"           = ESCP2MS.DRV,Epson_AP-3250_ESC/P_2
+"Epson AP-3260 ESC/P 2"           = ESCP2MS.DRV,Epson_AP-3260_ESC/P_2
+"Epson AP-3300 ESC/P 2"           = ESCP2MSB.DRV,LPTENUM\EPSONActionPrinter_3A93A,EPSONActionPrinter_3A93A,Epson_AP-3300_ESC/P_2
+"Epson AP-4000"                   = EPSON24.DRV,Epson_AP-4000
+"Epson AP-4500"                   = EPSON24.DRV,Epson_AP-4500
+"Epson AP-5000 ESC/P 2"           = ESCP2MS.DRV,Epson_AP-5000_ESC/P_2
+"Epson AP-5000+ ESC/P 2"          = ESCP2MS.DRV,Epson_AP-5000+_ESC/P_2
+"Epson AP-5500 ESC/P 2"           = ESCP2MS.DRV,Epson_AP-5500_ESC/P_2
+"Epson AP-5500+ ESC/P 2"          = ESCP2MS.DRV,Epson_AP-5500+_ESC/P_2
+"Epson DFX-5000"                  = EPSON9.DRV,Epson_DFX-5000
+"Epson DFX-5000+"                 = EPSON9B.DRV,Epson_DFX-5000+
+"Epson DFX-8000"                  = EPSON9.DRV,Epson_DFX-8000
+"Epson DLQ-2000"                  = EPSON24.DRV,Epson_DLQ-2000
+"Epson DLQ-3000 ESC/P 2"          = ESCP2MSB.DRV,LPTENUM\EPSONDLQ-3000D843,EPSONDLQ-3000D843,Epson_DLQ-3000_ESC/P_2
+"Epson DLQ-3000+ ESC/P 2"         = ESCP2MSB.DRV,LPTENUM\EPSONDLQ-3000+EED9,EPSONDLQ-3000+EED9,Epson_DLQ-3000+_ESC/P_2
+"Epson Compatible 24 Pin"         = EPSON24.DRV,Epson_Compatible_24_Pin
+"Epson Compatible 9 Pin"          = EPSON9.DRV,Epson_Compatible_9_Pin
+"Epson EPL-3000"                  = PCL5EMS.DRV,LPTENUM\EPSONEPL-3000585E,EPSONEPL-3000585E,Epson_EPL-3000
+"EPSON EPL-3000 EpsonScript"      = ESCRIPT6.SPD,EPSON_EPL-3000_EpsonScript
+"Epson EPL-4000"                  = HPPCL.DRV,Epson_EPL-4000
+"Epson EPL-4100"                  = HPPCL.DRV,Epson_EPL-4100
+"Epson EPL-4200"                  = HPPCL5MS.DRV,Epson_EPL-4200
+"Epson EPL-4300"                  = HPPCL5MS.DRV,Epson_EPL-4300
+"Epson EPL-5000"                  = HPPCL.DRV,Epson_EPL-5000
+"EPSON EPL-5000/5200 EpsonScript" = ESCRIPT1.SPD,EPSON_EPL-5000/5200_EpsonScript
+"Epson EPL-5200"                  = HPPCL5MS.DRV.BIDI,Epson_EPL-5200
+"Epson EPL-5200+"                 = PCL5EMS.DRV.BIDI,LPTENUM\EPSONEPL-5200+5F10,EPSONEPL-5200+5F10,Epson_EPL-5200+
+"EPSON EPL-5200+ EpsonScript"     = ESCRIPT7.SPD,EPSON_EPL-5200+_EpsonScript
+"Epson EPL-5500"                  = PCL5EMS.DRV.BIDI,LPTENUM\EPSONEPL_55001063,EPSONEPL_55001063,Epson_EPL-5500
+"EPSON EPL-5500 EPSONScript"      = ESCRIPT8.SPD,EPSON_EPL-5500_EPSONScript
+"Epson EPL-5600"                  = HPPCL5MS.DRV.BIDI,LPTENUM\EPSONEPL-5600D1BE,EPSONEPL-5600D1BE,Epson_EPL-5600
+"EPSON EPL-5600 EPSONScript"      = ESCRIPT3.SPD,EPSON_EPL-5600_EPSONScript
+"Epson EPL-6000"                  = HPPCL.DRV,Epson_EPL-6000
+"Epson EPL-7000"                  = HPPCL.DRV,Epson_EPL-7000
+"Epson EPL-7100"                  = HPPCL.DRV,Epson_EPL-7100
+"Epson EPL-7500"                  = EPL75523.SPD,Epson_EPL-7500
+"Epson EPL-8000"                  = HPPCL5MS.DRV,Epson_EPL-8000
+"Epson EPL-8100"                  = HPPCL5MS.DRV,Epson_EPL-8100
+"Epson EPL-9000"                  = PCL5EMS.DRV.BIDI,LPTENUM\EPSONEPL-9000825D,EPSONEPL-9000825D,Epson_EPL-9000
+"EPSON EPL-9000 EPSONScript"      = ESCRIPT5.SPD,EPSON_EPL-9000_EPSONScript
+"Epson EPL-N1200"                 = PCL5EMS2.DRV.BIDI,LPTENUM\EPSONEPL-N1200DA15,EPSONEPL-N1200DA15,Epson_EPL-N1200
+"Epson EPL-N2000"                 = PCL5EMS2.DRV.BIDI,LPTENUM\EPSONEPL-N20005EB4,EPSONEPL-N20005EB4,Epson_EPL-N2000
+"Epson EPL-N1200/A4 EPSONScript"  = ESCRIPTB.SPD,Epson_EPL-N1200/A4_EPSONScript
+"Epson EPL-N2000/A4 EPSONScript"  = ESCRIPTD.SPD,Epson_EPL-N2000/A4_EPSONScript
+"Epson EX-800"                    = EPSON9.DRV,Epson_EX-800
+"Epson EX-1000"                   = EPSON9.DRV,Epson_EX-1000
+"Epson FX-80"                     = EPSON9.DRV,Epson_FX-80
+"Epson FX-80+"                    = EPSON9.DRV,Epson_FX-80+
+"Epson FX-85"                     = EPSON9.DRV,Epson_FX-85
+"Epson FX-86e"                    = EPSON9.DRV,Epson_FX-86e
+"Epson FX-100"                    = EPSON9.DRV,Epson_FX-100
+"Epson FX-100+"                   = EPSON9.DRV,Epson_FX-100+
+"Epson FX-105"                    = EPSON9.DRV,Epson_FX-105
+"Epson FX-185"                    = EPSON9.DRV,Epson_FX-185
+"Epson FX-286"                    = EPSON9.DRV,Epson_FX-286
+"Epson FX-286e"                   = EPSON9.DRV,Epson_FX-286e
+"Epson FX-800"                    = EPSON9.DRV,Epson_FX-800
+"Epson FX-850"                    = EPSON9.DRV,Epson_FX-850
+"Epson FX-870"                    = EPSON9.DRV,Epson_FX-870
+"Epson FX-880"                    = EPSON9B.DRV,LPTENUM\EPSONFX-8807471,EPSONFX-8807471,Epson_FX-880
+"Epson FX-1000"                   = EPSON9.DRV,Epson_FX-1000
+"Epson FX-1050"                   = EPSON9.DRV,Epson_FX-1050
+"Epson FX-1170"                   = EPSON9.DRV,Epson_FX-1170
+"Epson FX-2170"                   = EPSON9B.DRV,LPTENUM\EPSONFX-2170DA65,EPSONFX-2170DA65,Epson_FX-2170
+"Epson GQ-3500"                   = HPPCLB.DRV,Epson_GQ-3500
+"Epson JX-80"                     = EPSON9.DRV,Epson_JX-80
+"Epson L-750"                     = EPSON24.DRV,Epson_L-750
+"Epson L-1000"                    = EPSON24.DRV,Epson_L-1000
+"EPSON LP-3000PS F2 v52.3"        = EPL3KF21.SPD,EPSON_LP-3000PS_F2_v52.3
+"EPSON LP-3000PS F5 v52.3"        = EPL3KF51.SPD,EPSON_LP-3000PS_F5_v52.3
+"Epson LQ-100 ESC/P 2"            = ESCP2MS.DRV,Epson_LQ-100_ESC/P_2
+"Epson LQ-150 ESC/P 2"            = ESCP2MS.DRV,Epson_LQ-150_ESC/P_2
+"Epson LQ-200"                    = EPSON24.DRV,Epson_LQ-200
+"Epson LQ-300 ESC/P 2"            = ESCP2MSB.DRV,LPTENUM\EPSONLQ-3007C5B,EPSONLQ-3007C5B,Epson_LQ-300_ESC/P_2
+"Epson LQ-400"                    = EPSON24.DRV,Epson_LQ-400
+"Epson LQ-450"                    = EPSON24.DRV,Epson_LQ-450
+"Epson LQ-500"                    = EPSON24.DRV,Epson_LQ-500
+"Epson LQ-510"                    = EPSON24.DRV,Epson_LQ-510
+"Epson LQ-550"                    = EPSON24.DRV,Epson_LQ-550
+"Epson LQ-560"                    = EPSON24.DRV,Epson_LQ-560
+"Epson LQ-570 ESC/P 2"            = ESCP2MS.DRV,Epson_LQ-570_ESC/P_2
+"Epson LQ-570+ ESC/P 2"           = ESCP2MS.DRV,Epson_LQ-570+_ESC/P_2
+"Epson LQ-670 ESC/P 2"            = ESCP2MSB.DRV,LPTENUM\EPSONLQ-6704D49,EPSONLQ-6704D49,Epson_LQ-670_ESC/P_2
+"Epson LQ-800"                    = EPSON24.DRV,Epson_LQ-800
+"Epson LQ-850"                    = EPSON24.DRV,Epson_LQ-850
+"Epson LQ-850+"                   = EPSON24.DRV,Epson_LQ-850+
+"Epson LQ-860"                    = EPSON24.DRV,Epson_LQ-860
+"Epson LQ-860+"                   = EPSON24.DRV,Epson_LQ-860+
+"Epson LQ-870 ESC/P 2"            = ESCP2MS.DRV,Epson_LQ-870_ESC/P_2
+"Epson LQ-950"                    = EPSON24.DRV,Epson_LQ-950
+"Epson LQ-1000"                   = EPSON24.DRV,Epson_LQ-1000
+"Epson LQ-1010"                   = EPSON24.DRV,Epson_LQ-1010
+"Epson LQ-1050"                   = EPSON24.DRV,Epson_LQ-1050
+"Epson LQ-1050+"                  = EPSON24.DRV,Epson_LQ-1050+
+"Epson LQ-1060"                   = EPSON24.DRV,Epson_LQ-1060
+"Epson LQ-1060+"                  = EPSON24.DRV,Epson_LQ-1060+
+"Epson LQ-1070 ESC/P 2"           = ESCP2MS.DRV,Epson_LQ-1070_ESC/P_2
+"Epson LQ-1070+ ESC/P 2"          = ESCP2MS.DRV,Epson_LQ-1070+_ESC/P_2
+"Epson LQ-1170 ESC/P 2"           = ESCP2MS.DRV,Epson_LQ-1170_ESC/P_2
+"Epson LQ-1500"                   = EPSON24.DRV,Epson_LQ-1500
+"Epson LQ-2070 ESC/P 2"           = ESCP2MSB.DRV,LPTENUM\EPSONLQ-2070233E,EPSONLQ-2070233E,Epson_LQ-2070_ESC/P_2
+"Epson LQ-2170 ESC/P 2"           = ESCP2MSB.DRV,LPTENUM\EPSONLQ-2170E36F,EPSONLQ-2170E36F,Epson_LQ-2170_ESC/P_2
+"Epson LQ-2500"                   = EPSON24.DRV,Epson_LQ-2500
+"Epson LQ-2550"                   = EPSON24.DRV,Epson_LQ-2550
+"Epson LX-80"                     = EPSON9.DRV,Epson_LX-80
+"Epson LX-86"                     = EPSON9.DRV,Epson_LX-86
+"Epson LX-100"                    = EPSON9.DRV,Epson_LX-100
+"Epson LX-300"                    = EPSON9B.DRV,Epson_LX-300
+"Epson LX-400"                    = EPSON9.DRV,Epson_LX-400
+"Epson LX-800"                    = EPSON9.DRV,Epson_LX-800
+"Epson LX-810"                    = EPSON9.DRV,Epson_LX-810
+"Epson LX-850"                    = EPSON9.DRV,Epson_LX-850
+"Epson LX-850+"                   = EPSON9.DRV,Epson_LX-850+
+"Epson LX-1050"                   = EPSON9.DRV,Epson_LX-1050
+"Epson LX-1050+"                  = EPSON9B.DRV,Epson_LX-1050+
+"Epson MX-80"                     = EPSON9.DRV,Epson_MX-80
+"Epson MX-80 F/T"                 = EPSON9.DRV,Epson_MX-80_F/T
+"Epson MX-100"                    = EPSON9.DRV,Epson_MX-100
+"EPSON PostScript CARD v52.5"     = EP826051.SPD,EPSON_PostScript_CARD_v52.5
+"Epson RX-80"                     = EPSON9.DRV,Epson_RX-80
+"Epson RX-80 F/T"                 = EPSON9.DRV,Epson_RX-80_F/T
+"Epson RX-80 F/T+"                = EPSON9.DRV,Epson_RX-80_F/T+
+"Epson RX-100"                    = EPSON9.DRV,Epson_RX-100
+"Epson RX-100+"                   = EPSON9.DRV,Epson_RX-100+
+"Epson SQ-850"                    = EPSON24.DRV,Epson_SQ-850
+"Epson SQ-870 ESC/P 2"            = ESCP2MS.DRV,Epson_SQ-870_ESC/P_2
+"Epson SQ-1170 ESC/P 2"           = ESCP2MS.DRV,Epson_SQ-1170_ESC/P_2
+"Epson SQ-2000"                   = EPSON24.DRV,Epson_SQ-2000
+"Epson SQ-2500"                   = EPSON24.DRV,Epson_SQ-2500
+"Epson SQ-2550"                   = EPSON24.DRV,Epson_SQ-2550
+"Epson Stylus 300 ESC/P 2"        = ESCP2MS.DRV,Epson_Stylus_300_ESC/P_2
+"Epson Stylus 800 ESC/P 2"        = ESCP2MS.DRV,Epson_Stylus_800_ESC/P_2
+"Epson Stylus 1000 ESC/P 2"       = ESCP2MS.DRV,Epson_Stylus_1000_ESC/P_2
+"Epson Stylus COLOR ESC/P 2"      = ESCP2MS.DRV,LPTENUM\EPSONStylus_COLORCB5A,EPSONStylus_COLORCB5A,Epson_Stylus_COLOR_ESC/P_2
+"Epson Stylus Pro ESC/P 2"        = STYLUS_COLOR,LPTENUM\EPSONStylus_Pro05CA,EPSONStylus_Pro05CA,Epson_Stylus_Pro_ESC/P_2
+"Epson Stylus Pro XL ESC/P 2"     = STYLUS_COLOR,LPTENUM\EPSONStylus_Pro_XL9118,EPSONStylus_Pro_XL9118,Epson_Stylus_Pro_XL_ESC/P_2
+"Epson Stylus Pro XL+ ESC/P 2"    = STYLUS_COLOR,LPTENUM\EPSONStylus_Pro_XL+15D1,EPSONStylus_Pro_XL+15D1,Epson_Stylus_Pro_XL+_ESC/P_2
+"Epson T-750"                     = EPSON9.DRV,Epson_T-750
+"Epson T-1000"                    = EPSON9.DRV,Epson_T-1000
+
+[HP]
+"HP D 640"                        = PCL5EMS2.DRV.BIDI,HP_D_640
+"HP Color LaserJet (MS)"          = HP_COLOR_LASERJET,HP_Color_LaserJet_(MS)
+"HP Color LaserJet 5/5M PS"       = HPCLJ5V2.SPD,LPTENUM\Hewlett-Packard71C4,Hewlett-Packard71C4,HP_Color_LaserJet_5/5M_PS
+"HP Color LaserJet 5/5M PS 9X"    = HPCLJ5X9.SPD,HP_Color_LaserJet_5/5M_PS_9X
+"HP Color LaserJet PS"            = HP__CLJ1.SPD,HP_Color_LaserJet_PS
+"HP CopyJet"                      = HP_COLOR_LASERJET5,HP_CopyJet
+"HP CopyJet M/PS"                 = HPCOPYJ1.SPD,HP_CopyJet_M/PS
+"HP DeskJet"                      = HPDSKJET.DRV,HP_DeskJet
+"HP DeskJet 310 Printer"          = DESKJETC.DRV,HP_DeskJet_310_Printer
+"HP DeskJet 320 Printer"          = DESKJETC.DRV,HP_DeskJet_320_Printer
+"HP DeskJet 340"                  = HPDSKJTB.DRV,HP_DeskJet_340
+"HP DeskJet 340 (Monochrome)"     = HPDSKJTB.DRV,HP_DeskJet_340_(Monochrome)
+"HP DeskJet 400"                  = HPDSKJTB.DRV,HP_DeskJet_400,LPTENUM\Hewlett-PackardHP_DeC418,Hewlett-PackardHP_DeC418
+"HP DeskJet 400 (Monochrome)"     = HPDSKJTB.DRV,HP_DeskJet_400_(Monochrome),LPTENUM\Hewlett-PackardHP_DeC418,Hewlett-PackardHP_DeC418
+"HP DeskJet 500"                  = HPDSKJET.DRV,HP_DeskJet_500
+"HP DeskJet 500C Printer"         = DESKJETC.DRV,HP_DeskJet_500C_Printer
+"HP DeskJet 510"                  = HPDSKJET.DRV,HP_DeskJet_510
+"HP DeskJet 520 Printer"          = DESKJETC.DRV,HP_DeskJet_520_Printer
+"HP DeskJet 540 Printer"          = DESKJETC.DRV,LPTENUM\Hewlett-PackardDeskJ8D69,Hewlett-PackardDeskJ8D69,HP_DeskJet_540_Printer
+"HP DeskJet 550C Printer"         = DESKJETC.DRV,HP_DeskJet_550C_Printer
+"HP DeskJet 560C Printer"         = DESKJETC.DRV,HP_DeskJet_560C_Printer
+"HP DeskJet 600 (Color)"          = HPDSKJTB.DRV,HP_DeskJet_600_(Color),LPTENUM\HEWLETT-PACKARDDESKJ4D9B,HEWLETT-PACKARDDESKJ4D9B
+"HP DeskJet 600 (Monochrome)"     = HPDSKJTB.DRV,HP_DeskJet_600_(Monochrome),LPTENUM\HEWLETT-PACKARDDESKJ4D9B,HEWLETT-PACKARDDESKJ4D9B
+"HP DeskJet 660 (Color)"          = HPDSKJTB.DRV,HP_DeskJet_660_(Color),LPTENUM\HEWLETT-PACKARDDESKJ5BAD,HEWLETT-PACKARDDESKJ5BAD
+"HP DeskJet 680C"                 = HPDSKJTB.DRV,HP_DeskJet_680C,LPTENUM\HEWLETT-PACKARDDESKJ98CC,HEWLETT-PACKARDDESKJ98CC
+"HP DeskJet 682C"                 = HPDSKJTB.DRV,HP_DeskJet_682C,LPTENUM\HEWLETT-PACKARDDESKJ98CC,HEWLETT-PACKARDDESKJ98CC
+"HP DeskJet 690C"                 = HPDSKJTB.DRV,HP_DeskJet_690C,LPTENUM\HEWLETT-PACKARDDESKJ589D,HEWLETT-PACKARDDESKJ589D
+"HP DeskJet 692C"                 = HPDSKJTB.DRV,HP_DeskJet_692C,LPTENUM\HEWLETT-PACKARDDESKJ589D,HEWLETT-PACKARDDESKJ589D
+"HP DeskJet 693C"                 = HPDSKJTB.DRV,HP_DeskJet_693C,LPTENUM\HEWLETT-PACKARDDESKJ589D,HEWLETT-PACKARDDESKJ589D
+"HP DeskJet 694C"                 = HPDSKJTB.DRV,HP_DeskJet_694C,LPTENUM\HEWLETT-PACKARDDESKJ589D,HEWLETT-PACKARDDESKJ589D
+"HP DeskJet 850C"                 = HP800C,HP_DeskJet_850C,LPTENUM\HEWLETT-PACKARDDESKJB35F,HEWLETT-PACKARDDESKJB35F
+"HP DeskJet 855C"                 = HP800C,HP_DeskJet_855C,LPTENUM\HEWLETT-PACKARDDESKJB35F,HEWLETT-PACKARDDESKJB35F
+"HP DeskJet 855Cse"               = HP800C,HP_DeskJet_855Cse,LPTENUM\HEWLETT-PACKARDDESKJB35F,HEWLETT-PACKARDDESKJB35F
+"HP DeskJet 855Cxi"               = HP800C,HP_DeskJet_855Cxi,LPTENUM\HEWLETT-PACKARDDESKJB35F,HEWLETT-PACKARDDESKJB35F
+"HP DeskJet 870C"                 = HP800C,HP_DeskJet_870C,LPTENUM\HEWLETT-PACKARDDESKJ73FE,HEWLETT-PACKARDDESKJ73FE
+"HP DeskJet 870Cse"               = HP800C,HP_DeskJet_870Cse,LPTENUM\HEWLETT-PACKARDDESKJ73FE,HEWLETT-PACKARDDESKJ73FE
+"HP DeskJet 870Cxi"               = HP800C,HP_DeskJet_870Cxi,LPTENUM\HEWLETT-PACKARDDESKJ73FE,HEWLETT-PACKARDDESKJ73FE
+"HP DeskJet 1200C (MS)"           = HP1200C,HP_DeskJet_1200C_(MS)
+"HP DeskJet 1200C/PS"             = HP1200C1.SPD,HP_DeskJet_1200C/PS
+"HP DeskJet 1600C"                = HP1600C,LPTENUM\Hewlett-PackardDeskJ8E87,Hewlett-PackardDeskJ8E87,HP_DeskJet_1600C
+"HP DeskJet 1600CM/PS"            = HP1600C1.SPD,HP_DeskJet_1600CM/PS
+"HP DeskJet Plus"                 = HPDSKJET.DRV,HP_DeskJet_Plus
+"HP DeskJet Portable Printer"     = DESKJETC.DRV,HP_DeskJet_Portable_Printer
+"HP LaserJet 4"                   = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_La185F, Hewlett-PackardHP_La185F,HP_LaserJet_4
+"HP LaserJet 4M"                  = HPPCL5MS.DRV.BIDI,HP_LaserJet_4M
+"HP LaserJet 4/4M PostScript"     = HP4M_V4.SPD,HP_LaserJet_4/4M_PostScript
+"HP LaserJet 4 Plus"              = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_LaC3A1,Hewlett-PackardHP_LaC3A1,HP_LaserJet_4_Plus
+"HP LaserJet 4M Plus"             = HPPCL5MS.DRV.BIDI,HP_LaserJet_4M_Plus,Hewlett-PackardHP_LaC3A1
+"HP LaserJet 4/4M Plus PS"        = HP4PLUS4.SPD,HP_LaserJet_4/4M_Plus_PS,Hewlett-PackardHP_LaC3A1
+"HP LaserJet 4L"                  = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardLaserC029,Hewlett-PackardLaserC029,HP_LaserJet_4L
+"HP LaserJet 4ML"                 = HPPCL5MS.DRV.BIDI,HP_LaserJet_4ML,Hewlett-PackardHP_LaECF6
+"HP LaserJet 4ML PostScript"      = HP4ML_V4.SPD,LPTENUM\Hewlett-PackardHP_LaECF6,Hewlett-PackardHP_LaECF6,HP_LaserJet_4ML_PostScript,Hewlett-PackardLaserC029
+"HP LaserJet 4P"                  = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_La7EE2,Hewlett-PackardHP_La7EE2,HP_LaserJet_4P
+"HP LaserJet 4MP"                 = HPPCL5MS.DRV.BIDI,HP_LaserJet_4MP,Hewlett-PackardHP_La25F7
+"HP LaserJet 4P/4MP PostScript"   = HP4MP_V4.SPD,LPTENUM\Hewlett-PackardHP_La25F7,Hewlett-PackardHP_La25F7,HP_LaserJet_4P/4MP_PostScript,Hewlett-PackardHP_La7EE2
+"HP LaserJet 4Si"                 = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_La973E,Hewlett-PackardHP_La973E,HP_LaserJet_4Si
+"HP LaserJet 4Si MX"              = HPPCL5MS.DRV.BIDI,HP_LaserJet_4Si_MX,Hewlett-PackardHP_La973E
+"HP LaserJet 4Si/4SiMX PS"        = HP4SI_V4.SPD,HP_LaserJet_4Si/4SiMX_PS,Hewlett-PackardHP_La973E
+"HP LaserJet 4V"                  = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_La7C62,Hewlett-PackardHP_La7C62,HP_LaserJet_4V
+"HP LaserJet 4MV"                 = HPPCL5MS.DRV.BIDI,HP_LaserJet_4MV,Hewlett-PackardHP_La7C62
+"HP LaserJet 4V/4MV PostScript"   = HP4MV_V4.SPD,HP_LaserJet_4V/4MV_PostScript,Hewlett-PackardHP_La7C62
+"HP LaserJet 5P"                  = HPPCL5MS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_LaEEE3,Hewlett-PackardHP_LaEEE3,HP_LaserJet_5P
+"HP LaserJet 5MP"                 = HPPCL5MS.DRV.BIDI,HP_LaserJet_5MP,Hewlett-PackardHP_LaE5A6
+"HP LaserJet 5P/5MP PostScript"   = HPLJP_V4.SPD,LPTENUM\Hewlett-PackardHP_LaE5A6,Hewlett-PackardHP_LaE5A6,HP_LaserJet_5P/5MP_PostScript
+"HP LaserJet 5"                   = PCL5EMS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_LaE238, Hewlett-PackardHP_LaE238,HP_LaserJet_5
+"HP LaserJet 5L PCL"              = PCL5EMS.DRV,LPTENUM\Hewlett-PackardHP_La27E2,Hewlett-PackardHP_La27E2,HP_LaserJet_5L_PCL
+"HP LaserJet 5M"                  = PCL5EMS.DRV.BIDI,HP_LaserJet_5M
+"HP LaserJet 5/5M PostScript"     = HPLJ5M_4.SPD,LPTENUM\Hewlett-PackardHP_LaE723, Hewlett-PackardHP_LaE723,HP_LaserJet_5/5M_PostScript
+"HP LaserJet 5N"                  = PCL5EMS.DRV.BIDI,HP_LaserJet_5N
+"HP LaserJet 5Si"                 = PCL5EMS.DRV.BIDI,LPTENUM\Hewlett-PackardHP_La576F,Hewlett-PackardHP_La576F,HP_LaserJet_5Si
+"HP LaserJet 5Si MX"              = PCL5EMS.DRV.BIDI,HP_LaserJet_5Si_MX
+"HP LaserJet 5Si/5Si MX PS"       = HPLJ5SI1.SPD,HP_LaserJet_5Si/5Si_MX_PS
+"HP LaserJet 5Si Mopier PS"       = HPLJ5SIM.SPD,HP_LaserJet_5Si_Mopier_PS
+"HP LaserJet 6L PCL"              = PCL5EMS3.DRV,LPTENUM\Hewlett-PackardHP_LaD7E2,Hewlett-PackardHP_LaD7E2,HP_LaserJet_6L_PCL
+"HP LaserJet 6MP"                 = PCL5EMS2.DRV.BIDI,HP_LaserJet_6MP
+"HP LaserJet 6P"                  = PCL5EMS2.DRV.BIDI,LPTENUM\Hewlett-PackardHP_La1EE3,Hewlett-PackardHP_La1EE3,HP_LaserJet_6P
+"HP LaserJet 6P/6MP - PostScript" = HPLJ6P_4.SPD,LPTENUM\Hewlett-PackardHP_LaE556,Hewlett-PackardHP_LaE556,HP_LaserJet_6P/6MP_-_PostScript
+"HP LaserJet III"                 = HPPCL5MS.DRV,HP_LaserJet_III
+"HP LaserJet III PS Cartridge"    = HPIII522.SPD,HP_LaserJet_III_PS_Cartridge
+"HP LaserJet III PostScript+"     = HPLJ_31.SPD,HP_LaserJet_III_PostScript+
+"HP LaserJet IIID"                = HPPCL5MS.DRV,HP_LaserJet_IIID
+"HP LaserJet IIID PS Cartridge"   = HP_3D522.SPD,HP_LaserJet_IIID_PS_Cartridge
+"HP LaserJet IIID PostScript+"    = HPLJ_3D1.SPD,HP_LaserJet_IIID_PostScript+
+"HP LaserJet IIIP"                = HPPCL5MS.DRV,HP_LaserJet_IIIP
+"HP LaserJet IIIP PS Cartridge"   = HP_3P522.SPD,HP_LaserJet_IIIP_PS_Cartridge
+"HP LaserJet IIIP PostScript+"    = HPLJ_3P1.SPD,HP_LaserJet_IIIP_PostScript+
+"HP LaserJet IIISi"               = HPPCL5MS.DRV,HP_LaserJet_IIISi
+"HP LaserJet IIISi PostScript"    = HP3SI523.SPD,HP_LaserJet_IIISi_PostScript
+"HP LaserJet Series II"           = HPPCL.DRV,HP_LaserJet_Series_II
+"HP LaserJet IID"                 = HPPCL.DRV,HP_LaserJet_IID
+"HP LaserJet IID PS Cartridge"    = HPIID522.SPD,HP_LaserJet_IID_PS_Cartridge
+"HP LaserJet IIP"                 = HPPCL.DRV,HP_LaserJet_IIP
+"HP LaserJet IIP Plus"            = HPPCL.DRV,HP_LaserJet_IIP_Plus
+"HP LaserJet IIP PS Cartridge"    = HPIIP522.SPD,HP_LaserJet_IIP_PS_Cartridge
+"HP LaserJet"                     = HPPCL.DRV,HP_LaserJet
+"HP LaserJet Plus"                = HPPCL.DRV,HP_LaserJet_Plus
+"HP LaserJet 2000"                = HPPCL.DRV,HP_LaserJet_2000
+"HP LaserJet 500+"                = HPPCL.DRV,HP_LaserJet_500+
+"HP OfficeJet"                    = HPDSKJET.DRV,LPTENUM\Hewlett-PackardOffic448D,LPTENUM\Hewllet-PackardOfficB33C,Hewlett-PackardOffic448D,Hewllet-PackardOfficB33C,HP_OfficeJet
+"HP OfficeJet LX"                 = HPDSKJTB.DRV,HP_OfficeJet_LX
+"HP PaintJet"                     = PAINTJET.DRV,HP_PaintJet
+"HP PaintJet XL"                  = PAINTJET.DRV,HP_PaintJet_XL
+"HP PaintJet XL 300"              = HP300XL,HP_PaintJet_XL_300
+"HP PaintJet XL300 PostScript"    = HPPJXL31.SPD,HP_PaintJet_XL300_PostScript
+"HP QuietJet"                     = QUIETJET.DRV,HP_QuietJet
+"HP QuietJet Plus"                = QUIETJET.DRV,HP_QuietJet_Plus
+"HP ThinkJet (2225 C-D)"          = THINKJET.DRV,HP_ThinkJet_(2225_C-D)
+"HP 7470A"                        = HPPLOT.DRV,HP_7470A
+"HP 7475A"                        = HPPLOT.DRV,HP_7475A
+"HP 7550A"                        = HPPLOT.DRV,HP_7550A
+"HP 7580A"                        = HPPLOT.DRV,HP_7580A
+"HP 7580B"                        = HPPLOT.DRV,HP_7580B
+"HP 7585A"                        = HPPLOT.DRV,HP_7585A
+"HP 7585B"                        = HPPLOT.DRV,HP_7585B
+"HP 7586B"                        = HPPLOT.DRV,HP_7586B
+"HP ColorPro"                     = HPPLOT.DRV,HP_ColorPro
+"HP ColorPro with GEC"            = HPPLOT.DRV,HP_ColorPro_with_GEC
+"HP DraftPro"                     = HPPLOT.DRV,HP_DraftPro
+"HP DraftPro DXL"                 = HPPLOT.DRV,HP_DraftPro_DXL
+"HP DraftPro EXL"                 = HPPLOT.DRV,HP_DraftPro_EXL
+"HP DraftMaster I"                = HPPLOT.DRV,HP_DraftMaster_I
+"HP DraftMaster II"               = HPPLOT.DRV,HP_DraftMaster_II
+
+[Kyocera]
+"Kyocera FS-600"                  = KYOCERAX.DRV,LPTENUM\KyoceraFS-6003992,KyoceraFS-6003992,Kyocera_FS-600
+"Kyocera FS-1550+"                = KYOCERAX.DRV,LPTENUM\KyoceraFS-1550+605C,KyoceraFS-1550+605C,Kyocera_FS-1550+
+"Kyocera FS-1600"                 = KYOCERAX.DRV,Kyocera_FS-1600
+"Kyocera FS-1600+"                = KYOCERAX.DRV,LPTENUM\KyoceraFS-1600+254C,KyoceraFS-1600+254C,Kyocera_FS-1600+
+"Kyocera FS-1600A"                = KYOCERAX.DRV,Kyocera_FS-1600A
+"Kyocera FS-1700"                 = KYOCERAX.DRV,LPTENUM\KyoceraFS-17000C08,KyoceraFS-17000C08,Kyocera_FS-1700
+"Kyocera FS-3400+"                = KYOCERAX.DRV,LPTENUM\KyoceraFS-3400+5D34,KyoceraFS-3400+5D34,Kyocera_FS-3400+
+"Kyocera FS-3600"                 = KYOCERAX.DRV,Kyocera_FS-3600
+"Kyocera FS-3600+"                = KYOCERAX.DRV,LPTENUM\KyoceraFS-3600+E535,KyoceraFS-3600+E535,Kyocera_FS-3600+
+"Kyocera FS-3600A"                = KYOCERAX.DRV,Kyocera_FS-3600A
+"Kyocera FS-3700"                 = KYOCERAX.DRV,LPTENUM\KyoceraFS-3700B409,KyoceraFS-3700B409,Kyocera_FS-3700
+"Kyocera FS-6500"                 = KYOCERAX.DRV,Kyocera_FS-6500
+"Kyocera FS-6500+"                = KYOCERAX.DRV,LPTENUM\KyoceraFS-6500+A1F9,KyoceraFS-6500+A1F9,Kyocera_FS-6500+
+"Kyocera FS-7000"                 = KYOCERAX.DRV,LPTENUM\KyoceraFS-700047B9,KyoceraFS-700047B9,Kyocera_FS-7000
+"Kyocera LS-6550"                 = KYOCERAX.DRV,LPTENUM\KyoceraLS-6550E801,KyoceraLS-6550E801,Kyocera_LS-6550
+
+[Mannesmann]
+"Mannesmann Tally MT 360-2T"      = MANTL24B.DRV,Mannesmann_Tally_MT_360-2T
+"Mannesmann Tally T2033"          = MANTL24B.DRV,LPTENUM\Mannesmann_TallyT20356BC,Mannesmann_TallyT20356BC,Mannesmann_Tally_T2033
+"Mannesmann Tally T2045"          = MANTL24B.DRV,LPTENUM\Mannesmann_TallyT204643E,Mannesmann_TallyT204643E,Mannesmann_Tally_T2045
+"Mannesmann Tally T2133"          = MANTL24B.DRV,LPTENUM\Mannesmann_TallyT21396ED,Mannesmann_TallyT21396ED,Mannesmann_Tally_T2133
+"Mannesmann Tally T7070"          = MANTL24B.DRV,LPTENUM\Mannesmann_Tally7070C907,Mannesmann_Tally7070C907,Mannesmann_Tally_T7070
+"Mannesmann Tally T9005 Plus"     = PCL5MS.DRV,Mannesmann_Tally_T9005_Plus
+"Mannesmann Tally T9008"          = PCL5EMS.DRV,Mannesmann_Tally_T9008
+"Mannesmann Tally T9012"          = MTPCL.DRV,Mannesmann_Tally_T9012
+"Mannesmann Tally T9108"          = HPPCLB.DRV,LPTENUM\Mannesmann_tallyT910A411,Mannesmann_tallyT910A411,Mannesmann_Tally_T9108
+"Mannesmann Tally T9208"          = MTPCL.DRV,Mannesmann_Tally_T9208
+
+[NEC]
+"NEC Silentwriter LC 860"         = HPPCLB.DRV,NEC_Silentwriter_LC_860
+
+[Oki]
+"OKI OJ-300C"                     = HPDSKJTB.DRV,OKI_OJ-300C
+"Oki OL-1200ex"                   = PCL5EMS.DRV,LPTENUM\Oki_Data_Corporation02F7,Oki_Data_Corporation02F7,Oki_OL-1200ex
+"Oki OL-810ex"                    = PCL5EMS.DRV,LPTENUM\Oki_Data_Corporation6B5D,Oki_Data_Corporation6B5D,Oki_OL-810ex
+
+[Olivetti]
+"Olivetti JP 70"                  = JP350B.DRV,Olivetti_JP_70
+"Olivetti JP 90 (Color)"          = JP350B.DRV,Olivetti_JP_90_(Color)
+"Olivetti JP 90 (Monochrome)"     = JP350B.DRV,Olivetti_JP_90_(Monochrome)
+"Olivetti JP 170 (Color)"         = JP350B.DRV,Olivetti_JP_170_(Color)
+"Olivetti JP 170 (Monochrome)"    = JP350B.DRV,Olivetti_JP_170_(Monochrome)
+"Olivetti JP 170 S (Color)"       = JP350B.DRV,Olivetti_JP_170_S_(Color)
+"Olivetti JP 170 S (Monochrome)"  = JP350B.DRV,Olivetti_JP_170_S_(Monochrome)
+"Olivetti JP 190 (Color)"         = JP350B.DRV,Olivetti_JP_190_(Color)
+"Olivetti JP 190 (Monochrome)"    = JP350B.DRV,Olivetti_JP_190_(Monochrome)
+"Olivetti JP 270"                 = JP350B.DRV,Olivetti_JP_270
+"Olivetti JP 370 (Color)"         = JP350B.DRV,Olivetti_JP_370_(Color)
+"Olivetti JP 370 (Monochrome)"    = JP350B.DRV,Olivetti_JP_370_(Monochrome)
+"Olivetti JP 470 (Color)"         = JP350B.DRV,Olivetti_JP_470_(Color)
+"Olivetti JP 470 (Monochrome)"    = JP350B.DRV,Olivetti_JP_470_(Monochrome)
+"Olivetti JP 790 (Color)"         = JP350B.DRV,LPTENUM\OlivettiJP_790_(ColoBEED,OlivettiJP_790_(ColoBEED,Olivetti_JP_790_(Color)
+
+[Sharp]
+"Sharp JX-9680"                   = SHRPCL5E.DRV.BIDI,Sharp_JX-9680
+"Sharp JX-9685"                   = SHRPCL5E.DRV.BIDI,LPTENUM\SHARPJX96852A75,SHARPJX96852A75,Sharp_JX-9685
+"Sharp AO-4100P"                  = DPCPCL.DRV,Sharp_AO-4100P
+
+[Samsung]
+"Samsung ML-84(PCL)"              = SML84.DRV,Samsung_ML-84(PCL)
+"Samsung ML-85(PCL)"              = SML85.DRV,Samsung_ML-85(PCL)
+"Samsung QL-84"                   = SML84.DRV,Samsung_QL-84
+"Samsung QL-85"                   = SML85.DRV,LPTENUM\SAMSUNGQwikLaserB878,SAMSUNGQwikLaserB878,Samsung_QL-85
+"Samsung SI-630A"                 = SSMYJET.DRV,Samsung_SI-630A
+"Samsung MJ-630A"                 = SSMYJET.DRV,Samsung_MJ-630A
+"Samsung MJ-705A"                 = SSMYJET.DRV,Samsung_MJ-705A
+"Samsung MJC-640A"                = SSMYJET.DRV,Samsung_MJC-640A
+"Samsung MJC-650A"                = SSMYJET.DRV,Samsung_MJC-650A
+
+[Tally]
+"Tally T2060C"                    =MANTL24B.DRV,LPTENUM\TallyT2060C1DDB,TallyT2060C1DDB,Tally_T2060C
+"Tally T2060"                     =MANTL24B.DRV,LPTENUM\TallyT20601B6E,TallyT20601B6E,Tally_T2060
+"Tally T2060-2T"                  =MANTL24B.DRV,LPTENUM\TallyT2060-2TBBEF,TallyT2060-2TBBEF,Tally_T2060-2T
+
+[Xerox]
+"Xerox 3006"                      = X3006.DRV,Xerox_3006
+"Xerox 4505"                      = XEROXPCL.DRV,Xerox_4505
+"Xerox 4510"                      = XEROXPCL.DRV,Xerox_4510
+"Xerox DocuPrint 4508"            = XEROXPCL.DRV,LPTENUM\XEROX45081708,XEROX45081708,Xerox_DocuPrint_4508
+"Xerox DCS 35"                    = XEROXDCS.DRV,Xerox_DCS_35
+"Xerox DWC Pro 610"               = XPRO610.DRV,Xerox_DWC_Pro_610
+"Xerox 4520"                      = XEROXPCL.DRV,Xerox_4520
+"Xerox DocuPrint 4512"            = XEROXPCL.DRV,Xerox_DocuPrint_4512
+"Xerox DocuPrint 4517"            = XEROXPCL.DRV,LPTENUM\Xerox4517FEEC,Xerox4517FEEC,Xerox_DocuPrint_4517
+"Xerox 4220/4230/MRP PCL"         = X42XXPCL.DRV,Xerox_4220/4230/MRP_PCL
+"Xerox 4215/MRP PCL"              = X42XXPCL.DRV,Xerox_4215/MRP_PCL
+"Xerox 4219/MRP PCL"              = X42XXPCL.DRV,Xerox_4219/MRP_PCL
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. The section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[BULLASER.DRV]
+CopyFiles=@BULLASER.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[BULL9B.DRV]
+CopyFiles=@BULL9B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[BULL18B.DRV]
+CopyFiles=@BULL18B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[BULL24B.DRV]
+CopyFiles=@BULL24B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CANON330.DRV]
+CopyFiles=@CANON330.DRV,UNI
+DataSection=UNI_DATA
+
+[CANON800.DRV]
+CopyFiles=@CANON800.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CAN800B.DRV]
+CopyFiles=@CAN800B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[CANONBJC70]
+DriverFile=CANON800.DRV
+DataFile=CANON800.DRV
+CopyFiles=@CANON800.DRV,COLOR_CANON_BJC_70,UNICLR
+DataSection=UNI_DATA
+
+[CANONBJC240]
+DriverFile=CAN800B.DRV
+DataFile=CAN800B.DRV
+CopyFiles=@CAN800B.DRV,COLOR_CANON_BJC_240,UNICLR
+DataSection=UNI_DATA
+
+[CANONBJC600]
+DriverFile=CANON800.DRV
+DataFile=CANON800.DRV
+CopyFiles=@CANON800.DRV,COLOR_CANON_BJC_600,UNICLR
+DataSection=UNI_DATA
+
+[CANONBJC800]
+DriverFile=CANON800.DRV
+DataFile=CANON800.DRV
+CopyFiles=@CANON800.DRV,COLOR_CANON_BJC_800,UNICLR
+DataSection=UNI_DATA
+
+[CANONBJC4200]
+DriverFile=CAN800B.DRV
+DataFile=CAN800B.DRV
+CopyFiles=@CAN800B.DRV,COLOR_CANON_BJC_4200,UNICLR
+DataSection=UNI_DATA
+
+[CANONLBP.DRV]
+CopyFiles=@CANONLBP.DRV,UNI
+DataSection=UNI_DATA
+
+[CLBP3601.SPD]
+CopyFiles=@CLBP3601.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CN126PE1.SPD]
+CopyFiles=@CN126PE1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CN1260E1.SPD]
+CopyFiles=@CN1260E1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CN2460E1.SPD]
+CopyFiles=@CN2460E1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CNLBP4_1.SPD]
+CopyFiles=@CNLBP4_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CNLBP8_1.SPD]
+CopyFiles=@CNLBP8_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CNLBP8R1.SPD]
+CopyFiles=@CNLBP8R1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CNLBP8T1.SPD]
+CopyFiles=@CNLBP8T1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CN_500_1.SPD]
+CopyFiles=@CN_500_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CN_500J1.SPD]
+CopyFiles=@CN_500J1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[DECESCP2.DRV]
+CopyFiles=@DECESCP2.DRV,UNICLR
+DataSection=UNI_DATA
+
+[DESKJETC.DRV]
+CopyFiles=DESKJETC,COLOR_DESKJETC
+HelpFile=HPVDJC.HLP
+DefaultDataType=EMF
+
+[DPCPCL.DRV]
+CopyFiles=@DPCPCL.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[EPL75523.SPD]
+CopyFiles=@EPL75523.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EPL3KF21.SPD]
+CopyFiles=@EPL3KF21.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EPL3KF51.SPD]
+CopyFiles=@EPL3KF51.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EP826051.SPD]
+CopyFiles=@EP826051.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT2.SPD]
+CopyFiles=@ESCRIPT2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT4.SPD]
+CopyFiles=@ESCRIPT4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT6.SPD]
+CopyFiles=@ESCRIPT6.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT1.SPD]
+CopyFiles=@ESCRIPT1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT7.SPD]
+CopyFiles=@ESCRIPT7.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT8.SPD]
+CopyFiles=@ESCRIPT8.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT3.SPD]
+CopyFiles=@ESCRIPT3.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPT5.SPD]
+CopyFiles=@ESCRIPT5.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPTB.SPD]
+CopyFiles=@ESCRIPTB.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCRIPTD.SPD]
+CopyFiles=@ESCRIPTD.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[EPSON24.DRV]
+CopyFiles=@EPSON24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[EPSON9.DRV]
+CopyFiles=@EPSON9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[EPSON9B.DRV]
+CopyFiles=@EPSON9B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[ESCP2MS.DRV]
+CopyFiles=@ESCP2MS.DRV,UNICLR
+DataSection=UNI_DATA
+
+[ESCP2MSB.DRV]
+CopyFiles=@ESCP2MSB.DRV,UNICLR
+DataSection=UNI_DATA
+
+[HP800C]
+CopyFiles=@PCL5MS.DRV,COLOR_HP_800C,UNICLR,FINSTALL
+DataSection=UNI_DATA
+DriverFile=PCL5MS.DRV
+DataFile=PCL5MS.DRV
+
+[HP1200C]
+CopyFiles=@HPPCL5MS.DRV,COLOR_HP_1200C,UNICLR,FINSTALL
+DataSection=UNI_DATA
+DriverFile=HPPCL5MS.DRV
+DataFile=HPPCL5MS.DRV
+
+[HP1600C]
+CopyFiles=@PCL5EMS.DRV,@PJLMON.DLL,COLOR_HP_1600C,UNICLR,FINSTALL
+DataSection=UNI_DATA
+DriverFile=PCL5EMS.DRV
+DataFile=PCL5EMS.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[HPDSKJET.DRV]
+CopyFiles=@HPDSKJET.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[HPDSKJTB.DRV]
+CopyFiles=@HPDSKJTB.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[HPPCL.DRV]
+CopyFiles=@HPPCL.DRV,FINSTALL,UNI
+DataSection=UNI_DATA
+
+[HPPCL5MS.DRV.BIDI]
+CopyFiles=@HPPCL5MS.DRV,@PJLMON.DLL,UNI,FINSTALL
+DataSection=UNI_DATA
+DriverFile=HPPCL5MS.DRV
+DataFile=HPPCL5MS.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[HP_COLOR_LASERJET]
+CopyFiles=@HPPCL5MS.DRV,@PJLMON.DLL,UNICLR,FINSTALL,COLOR_HP_LASER
+DataSection=UNI_DATA
+DriverFile=HPPCL5MS.DRV
+DataFile=HPPCL5MS.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[HP_COLOR_LASERJET5]
+CopyFiles=@PCL5EMS.DRV,@PJLMON.DLL,UNICLR,FINSTALL
+DataSection=UNI_DATA
+DriverFile=PCL5EMS.DRV
+DataFile=PCL5EMS.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[HPPCL5MS.DRV]
+CopyFiles=@HPPCL5MS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[HPPCLB.DRV]
+CopyFiles=@HPPCLB.DRV,FINSTALL,UNI
+DataSection=UNI_DATA
+
+[HPPJXL31.SPD]
+CopyFiles=@HPPJXL31.SPD,COLOR_HP_300XL_PS,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPPLOT.DRV]
+CopyFiles=@HPPLOT.DRV,@HPPLOT.HLP
+HelpFile=HPPLOT.HLP
+
+[HP_3D522.SPD]
+CopyFiles=@HP_3D522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP_3P522.SPD]
+CopyFiles=@HP_3P522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP3SI523.SPD]
+CopyFiles=@HP3SI523.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP4ML_V4.SPD]
+CopyFiles=@HP4ML_V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP4MV_V4.SPD]
+CopyFiles=@HP4MV_V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP4PLUS4.SPD]
+CopyFiles=@HP4PLUS4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP300XL]
+CopyFiles=@HPPCL5MS.DRV,COLOR_HP_300XL,UNICLR,FINSTALL
+DataSection=UNI_DATA
+DriverFile=HPPCL5MS.DRV
+DataFile=HPPCL5MS.DRV
+
+[HP1200C1.SPD]
+CopyFiles=@HP1200C1.SPD,COLOR_HP_1200C_PS,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPDSKJET.DRV]
+CopyFiles=@HPDSKJET.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[HPIID522.SPD]
+CopyFiles=@HPIID522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPIII522.SPD]
+CopyFiles=@HPIII522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPIIP522.SPD]
+CopyFiles=@HPIIP522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ_31.SPD]
+CopyFiles=@HPLJ_31.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ_3D1.SPD]
+CopyFiles=@HPLJ_3D1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ_3P1.SPD]
+CopyFiles=@HPLJ_3P1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ6P_4.SPD]
+CopyFiles=@HPLJ6P_4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJP_V4.SPD]
+CopyFiles=@HPLJP_V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP4M_V4.SPD]
+CopyFiles=@HP4M_V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP4MP_V4.SPD]
+CopyFiles=@HP4MP_V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP4SI_V4.SPD]
+CopyFiles=@HP4SI_V4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPCLJ5V2.SPD]
+CopyFiles=@HPCLJ5V2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPCLJ5X9.SPD]
+CopyFiles=@HPCLJ5X9.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP__CLJ1.SPD]
+CopyFiles=@HP__CLJ1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPCOPYJ1.SPD]
+CopyFiles=@HPCOPYJ1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HP1600C1.SPD]
+CopyFiles=@HP1600C1.SPD,COLOR_HP_1600C_PS,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ5M_4.SPD]
+CopyFiles=@HPLJ5M_4.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ5SI1.SPD]
+CopyFiles=@HPLJ5SI1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[HPLJ5SIM.SPD]
+CopyFiles=@HPLJ5SIM.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[KYOCERAX.DRV]
+CopyFiles=@KYOCERAX.DRV,FINSTALL,UNI
+DataSection=UNI_DATA
+
+[PCL5EMS.DRV.BIDI]
+CopyFiles=@PCL5EMS.DRV,@PJLMON.DLL,UNI,FINSTALL
+DataSection=UNI_DATA
+DriverFile=PCL5EMS.DRV
+DataFile=PCL5EMS.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[PCL5EMS.DRV]
+CopyFiles=@PCL5EMS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PCL5EMS2.DRV]
+CopyFiles=@PCL5EMS2.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PCL5EMS2.DRV.BIDI]
+CopyFiles=@PCL5EMS2.DRV,@PJLMON.DLL,UNI,FINSTALL
+DataSection=UNI_DATA
+DriverFile=PCL5EMS2.DRV
+DataFile=PCL5EMS2.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[PCL5EMS3.DRV]
+CopyFiles=@PCL5EMS3.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PCL5MS.DRV]
+CopyFiles=@PCL5MS.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[JP350B.DRV]
+CopyFiles=@JP350B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[KYOCERAX.DRV]
+CopyFiles=@KYOCERAX.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[MANTL24B.DRV]
+CopyFiles=@MANTL24B.DRV,UNICLR
+DataSection=UNI_DATA
+
+[MTPCL.DRV]
+CopyFiles=@MTPCL.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PAINTJET.DRV]
+CopyFiles=@PAINTJET.DRV,UNICLR
+DataSection=UNI_DATA
+
+[QUIETJET.DRV]
+CopyFiles=@QUIETJET.DRV,UNI
+DataSection=UNI_DATA
+
+[SML84.DRV]
+CopyFiles=@SML84.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[SML85.DRV]
+CopyFiles=@SML85.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[SHRPCL5E.DRV.BIDI]
+CopyFiles=@SHRPCL5E.DRV,@PJLMON.DLL,UNI,FINSTALL
+DataSection=UNI_DATA
+DriverFile=SHRPCL5E.DRV
+DataFile=SHRPCL5E.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[SSMYJET.DRV]
+CopyFiles=@SSMYJET.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[STYLUS_COLOR]
+DriverFile=ESCP2MSB.DRV
+DataFile=ESCP2MSB.DRV
+CopyFiles=@ESCP2MSB.DRV,COLOR_EPSON_STYLUS,UNICLR
+DataSection=UNI_DATA
+
+[THINKJET.DRV]
+CopyFiles=@THINKJET.DRV,UNI
+DataSection=UNI_DATA
+
+[XEROXDCS.DRV]
+CopyFiles=@XEROXDCS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[XEROXPCL.DRV]
+CopyFiles=@XEROXPCL.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[XPRO610.DRV]
+CopyFiles=@XPRO610.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[X42XXPCL.DRV]
+CopyFiles=@X42XXPCL.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[X3006.DRV]
+CopyFiles=@X3006.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation) or if it's a color
+; profile (since the DestinationDirs can only handle sections, and not
+; individual files).
+;
+
+[COLOR_CANON_BJC_70]
+BJC70P.ICM
+BJC70S.ICM
+
+[COLOR_CANON_BJC_240]
+BJC240P.ICM
+BJC240S.ICM
+
+[COLOR_CANON_BJC_600]
+BJC600.ICM
+
+[COLOR_CANON_BJC_800]
+BJC800.ICM
+
+[COLOR_CANON_BJC_4200]
+BJC4200P.ICM
+BJC4200S.ICM
+
+[COLOR_DESKJETC]
+HPDESK.ICM
+
+[COLOR_EPSON_STYLUS]
+EPSONSCP.ICM
+EPSONSCS.ICM
+
+[COLOR_HP_1200C]
+HP1200C.ICM
+
+[COLOR_HP_1200C_PS]
+HP1200PS.ICM
+
+[COLOR_HP_1600C]
+HP1600P.ICM
+HP1600S.ICM
+HP1600SF.ICM
+
+[COLOR_HP_1600C_PS]
+HP1600CP.ICM
+HP1600CS.ICM
+
+[COLOR_HP_300XL]
+HPXL300.ICM
+
+[COLOR_HP_300XL_PS]
+HPXL30PS.ICM
+
+[COLOR_HP_800C]
+HP800P.ICM
+HP800S.ICM
+
+[COLOR_HP_LASER]
+HPCLRLSR.ICM
+
+[COLOR_QMS_100_30]
+QMS10030.ICM
+
+[COLOR_TEKTRONIX_200I]
+TPHA200I.ICM
+
+[COLOR_TEKTRONIX_III_PXI]
+TPHAIII.ICM
+
+[DESKJETC]
+DESKJETC.DRV
+HPVCM.HPM
+HPVIOL.DLL
+HPVMON.DLL
+HPVRES.DLL
+HPCOLOR.DLL
+HPVUI.DLL
+HPVDJC.HLP
+
+[FINSTALL]
+FINSTALL.DLL
+FINSTALL.HLP
+
+[PSCRIPT]
+PSCRIPT.DRV
+PSCRIPT.HLP
+PSCRIPT.INI
+TESTPS.TXT
+APPLE380.SPD
+FONTS.MFM
+ICONLIB.DLL
+PSMON.DLL
+
+[UNI]
+UNIDRV.DLL
+UNIDRV.HLP
+ICONLIB.DLL
+
+[UNICLR]
+UNIDRV.DLL
+UNIDRV.HLP
+DMCOLOR.DLL
+ICONLIB.DLL
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+
+[PSCRIPT_DATA]
+DriverFile=PSCRIPT.DRV
+HelpFile=PSCRIPT.HLP
+LanguageMonitor=%PS_MONITOR%
+
+[UNI_DATA]
+HelpFile=UNIDRV.HLP
+DefaultDataType=EMF
+
+;
+; Color profiles go to the colors directory. All other files go to the
+; system directory
+;
+
+[DestinationDirs]
+DefaultDestDir=11
+COLOR_CANON_BJC_70=23
+COLOR_CANON_BJC_240=23
+COLOR_CANON_BJC_600=23
+COLOR_CANON_BJC_800=23
+COLOR_CANON_BJC_4200=23
+COLOR_QMS_100_30=23
+COLOR_TEKTRONIX_200I=23
+COLOR_TEKTRONIX_III_PXI=23
+COLOR_HP_1200C=23
+COLOR_HP_1200C_PS=23
+COLOR_HP_1600C=23
+COLOR_HP_1600C_PS=23
+COLOR_DESKJETC=23
+COLOR_EPSON_STYLUS=23
+COLOR_HP_500C=23
+COLOR_HP_550C=23
+COLOR_HP_560C=23
+COLOR_HP_300XL=23
+COLOR_HP_300XL_PS=23
+COLOR_HP_800C=23
+COLOR_HP_LASER=23
+COLOR_KODAK_COLOREASE=23
+
+;
+; Hints for installing language monitors from a print server. These
+; strings are not localized (since the localizable portion comes
+; directly from the server).
+;
+[LanguageMonitorHints]
+"PJL Language Monitor"="PJL Language Monitor,PJLMON.DLL"
+"PostScript Language Monitor"="PostScript Language Monitor,PSMON.DLL"
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+PJL_MONITOR="PJL Language Monitor,PJLMON.DLL"
+PS_MONITOR="PostScript Language Monitor,PSMON.DLL"

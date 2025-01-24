@@ -1,0 +1,723 @@
+#pragma classflags("forceupdate")
+#pragma namespace ("\\\\.\\Root\\WMI")
+
+
+[Dynamic,
+ Description("DNS Server Trace Provider") : amended,
+ Guid("{57840c25-fa99-4f0d-928d-d81d1851e3dd}"),
+ locale("MS\\0x409")
+ ]
+class MSDNSSRV_Trace:EventTrace
+{
+};
+
+[Dynamic,
+ Description("DNS Server Query") : amended,
+ Guid("{62664813-e82f-4ce6-8d6d-264c0d415d99}"),
+ locale("MS\\0x409"),
+ DisplayName("DNS Server") : amended,
+ EventVersion(0)
+ ]
+class MSDNSSRV_Query:MSDNSSRV_Trace
+{
+};
+
+[Dynamic,
+ Description("IPv4 Query Event (Basic Version)") : amended,
+ locale("MS\\0x409"),
+ EventTypeName("IPv4 Query Event    (Basic Version)") : amended,
+ EventType(9)
+ ]
+class MSDNSSRV_v4QueryEventBasic:MSDNSSRV_Query
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read] 
+    string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read] 
+    uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read] 
+    uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read] 
+    uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("IPAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Padding1") : amended,
+     read]
+     uint32 pad1;
+    [WmiDataId(9),
+     Description("Padding2") : amended,
+     read]
+     uint32 pad2;
+    [WmiDataId(10),
+     Description("Padding3") : amended,
+     read]
+     uint32 pad3;
+    [WmiDataId(11),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(12),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(13),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(14),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(15),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(16),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(17),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(18),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+    [WmiDataId(19),
+     Description("Query Type") : amended,
+     read]
+     uint16 QueryType;
+    [WmiDataId(20),
+     Description("Query Class") : amended,
+     read]
+     uint16 QueryClass;
+    [WmiDataId(21),
+     Description("Query") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Question;
+};
+
+[Dynamic,
+ Description("IPv6 Query Event (Basic Version)") : amended,
+ locale("MS\\0x409"),
+ EventTypeName("IPv6 Query Event    (Basic Version)") : amended,
+ EventType(10)
+ ]
+class MSDNSSRV_v6QueryEventBasic:MSDNSSRV_Query
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("TDIAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(9),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(10),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(11),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(12),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(13),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(14),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(15),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+    [WmiDataId(16),
+     Description("Query Type") : amended,
+     read]
+     uint16 QueryType;
+    [WmiDataId(17),
+     Description("Query Class") : amended,
+     read]
+     uint16 QueryClass;
+    [WmiDataId(18),
+     Description("Query") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Question;
+};
+
+[Dynamic,
+ Description("IPv4 Query Event (Full Version)") : amended,
+ Locale("MS\\0x409"),
+ EventTypeName("IPv4 Query Event    ( Full Version)") : amended,
+ EventType(11)
+ ]
+class MSDNSSRV_v4QueryEventFull:MSDNSSRV_Query
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("IPAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Padding1") : amended,
+     read]
+     uint32 pad1;
+    [WmiDataId(9),
+     Description("Padding2") : amended,
+     read]
+     uint32 pad2;
+    [WmiDataId(10),
+     Description("Padding3") : amended,
+     read]
+     uint32 pad3;
+    [WmiDataId(11),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(12),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(13),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(14),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(15),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(16),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(17),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(18),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+    [WmiDataId(19),
+     Description("PacketContents") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketContents;
+};
+
+
+[Dynamic,
+ Description("IPv6 Query Event (Full Version)") : amended,
+ locale("MS\\0x409"),
+ EventTypeName("IPv6 Query Event    ( Full Version)") : amended,
+ EventType(12)
+ ]
+class MSDNSSRV_v6QueryEventFull:MSDNSSRV_Query
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("TDIAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(9),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(10),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(11),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(12),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(13),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(14),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(15),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+    [WmiDataId(16),
+     Description("PacketContents") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketContents;
+};
+
+[Dynamic,
+ Description("DNS Server Response") : amended,
+ Guid("{982a041a-49d0-4146-bc4a-a45ab395bdd5}"),
+ locale("MS\\0x409"),
+ DisplayName("DNS Server") : amended,
+ EventVersion(0)
+ ]
+class MSDNSSRV_Response: MSDNSSRV_Trace
+{
+};
+
+[Dynamic,
+ Description("IPv4 Response Event (Basic Version)") : amended,
+ locale("MS\\0x409"),
+ EventTypeName("IPv4 Response Event (Basic Version)") : amended,
+ EventType(9)
+ ]
+class MSDNSSRV_v4ResponseEventBasic:MSDNSSRV_Response
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("IPAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Padding1") : amended,
+     read]
+     uint32 pad1;
+    [WmiDataId(9),
+     Description("Padding2") : amended,
+     read]
+     uint32 pad2;
+    [WmiDataId(10),
+     Description("Padding3") : amended,
+     read]
+     uint32 pad3;
+    [WmiDataId(11),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(12),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(13),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(14),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(15),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(16),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(17),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(18),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+};
+
+[Dynamic,
+ Description("IPv6 Response Event (Basic Version)") : amended,
+ locale("MS\\0x409"),
+ EventTypeName("IPv6 Response Event (Basic Version)") : amended,
+ EventType(10)
+ ]
+class MSDNSSRV_v6ResponseEventBasic:MSDNSSRV_Response
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("TDIAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(9),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(10),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(11),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(12),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(13),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(14),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(15),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+};
+
+[Dynamic,
+ Description("IPv4 Response Event (Full Version)") : amended,
+ Locale("MS\\0x409"),
+ EventTypeName("IPv4 Response Event ( Full Version)") : amended,
+ EventType(11)
+ ]
+class MSDNSSRV_v4ResponseEventFull:MSDNSSRV_Response
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("IPAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Padding1") : amended,
+     read]
+     uint32 pad1;
+    [WmiDataId(9),
+     Description("Padding2") : amended,
+     read]
+     uint32 pad2;
+    [WmiDataId(10),
+     Description("Padding3") : amended,
+     read]
+     uint32 pad3;
+    [WmiDataId(11),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(12),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(13),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(14),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(15),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(16),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(17),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(18),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+    [WmiDataId(19),
+     Description("PacketContents") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketContents;
+};
+
+
+[Dynamic,
+ Description("IPv6 Response Event (Full Version)") : amended,
+ locale("MS\\0x409"),
+ EventTypeName("IPv6 Response Event ( Full Version)") : amended,
+ EventType(12)
+ ]
+class MSDNSSRV_v6ResponseEventFull:MSDNSSRV_Response
+{
+    [WmiDataId(1),
+     Description("Packet Direction") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketDirection;
+    [WmiDataId(2),
+     Description("Query Time") : amended,
+     read]
+     uint32 QueryTime;
+    [WmiDataId(3),
+     Description("Queuing Time") : amended,
+     read]
+     uint32 QueuingTime;
+    [WmiDataId(4),
+     Description("Expiry Time") : amended,
+     read]
+     uint32 ExpiryTime;
+    [WmiDataId(5),
+     Description("Transport Protocol") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string TransportProtocol;
+    [WmiDataId(6),
+     Description("Remote Port") : amended,
+     read]
+     uint16 RemotePort;
+    [WmiDataId(7),
+     Description("Remote IP Address") : amended,
+     extension("TDIAddr"),
+     read]
+     object RemoteAddress;
+    [WmiDataId(8),
+     Description("Transaction ID") : amended,
+     read]
+     uint16 Xid;
+    [WmiDataId(9),
+     Description("Query Opcode") : amended,
+     read]
+     sint8 QueryOpCode;
+    [WmiDataId(10),
+     Description("Response Opcode") : amended,
+     read]
+     sint8 ResponseOpCode;
+    [WmiDataId(11),
+     Description("DNS Flags") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string Flags;
+    [WmiDataId(12),
+     Description("Number of Question Resource Records") : amended,
+     read]
+     uint16 NumQuestions;
+    [WmiDataId(13),
+     Description("Number of Answer Resource Records") : amended,
+     read]
+     uint16 NumAnswerRRs;
+    [WmiDataId(14),
+     Description("Number of Authoritative Resource Records") : amended,
+     read]
+     uint16 NumAuthRRs;
+    [WmiDataId(15),
+     Description("Number of Additional Resource Records") : amended,
+     read]
+     uint16 NumAdditionalRRs;
+    [WmiDataId(16),
+     Description("PacketContents") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string PacketContents;
+};
+

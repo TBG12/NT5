@@ -1,0 +1,56 @@
+
+
+
+[version]
+signature="$Windows NT$"
+ClassGUID={00000000-0000-0000-0000-000000000000}
+LayoutFile=layout.inf
+Provider=%Msft%
+DriverVer=10/01/2002,5.2.3790.1433
+
+[Optional Components]
+ComputeServer        
+
+[ComputeServer]
+OptionDesc           = %COMP_OPTIONDESC_COMPUTESERVER%
+Tip                  = %COMP_OPTIONDESC_COMPUTESERVER_TIP%
+IconIndex            = 0
+
+CopyFiles            = ComputeServer_Bin
+AddReg               = ComputeServer_Reg
+
+
+[ComputeServer_Reg]
+
+
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BE-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BF-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C0-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C1-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BE-5E3D-11d2-8789-68CB20524153}", , , "hpcbrand.dll, -1004"
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BF-5E3D-11d2-8789-68CB20524153}", , , "hpcbrand.dll, -1001"
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C0-5E3D-11d2-8789-68CB20524153}", , , "hpcbrand.dll, -1003"
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C1-5E3D-11d2-8789-68CB20524153}", , , "hpcbrand.dll, -1002"
+
+
+HKU,  ".Default\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\Welcome", "srvwiz", 0x10001, 0x00000000
+HKCU, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\Welcome", "srvwiz", 0x10001, 0x00000000
+
+
+[DestinationDirs] 
+ComputeServer_Bin       = 11  
+
+[SourceDisksNames]
+1="NT Setup",,0
+
+[SourceDisksFiles]
+
+
+[ComputeServer_Bin]
+
+
+
+[Strings]
+COMP_OPTIONDESC_COMPUTESERVER       = "Microsoft Windows Compute Server"
+COMP_OPTIONDESC_COMPUTESERVER_TIP   = "Provides the ability to convert this server to a Microsoft Windows Compute Server."
+Msft                                = "Microsoft"

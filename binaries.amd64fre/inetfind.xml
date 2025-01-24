@@ -1,0 +1,24 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[What words do you want to highlight on the results page?]]></Text>
+	</Title>
+	<Label Id="5800" TopMargin="5">
+		<Text><![CDATA[Note: this only highlights words on the single results page.]]></Text>
+	</Label>
+	<Radio Id="5801" TopMargin="5" BottomMargin="2">
+		<Text><![CDATA[High&light other text:]]></Text>
+	</Radio>
+	<Label TopMargin="5" Hidden="1">
+		<Text><![CDATA[Highlight other text:]]></Text>
+	</Label>
+	<Edit Id="5802" Height="20" Group="1" />
+	<Button Id="5804" TopMargin="10">
+		<Text><![CDATA[Hi&ghlight Next]]></Text>
+	</Button>
+	<Link Id="5006" IconId="23" TopMargin="10">
+		<Text>
+			<Balloon><![CDATA[Start a &new search]]></Balloon>
+			<Bar><![CDATA[Start a &new search]]></Bar>
+		</Text>
+	</Link>
+</SimpleDialog>

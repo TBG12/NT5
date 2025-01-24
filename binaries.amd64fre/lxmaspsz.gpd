@@ -1,0 +1,207 @@
+*% MASTER UNITS 1200X1200
+*% Marconi drb 11.16.00
+
+*Feature:  PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: LETTER
+    *Option: LETTER
+    {
+        *rcNameID: RESDLL.OEMRes.507
+        *PrintableArea: PAIR(9600, 12520)
+        *PrintableOrigin: PAIR(456, 80)
+     }   *% -----  end LETTER
+
+    *Option: A4
+    {
+        *rcNameID: RESDLL.OEMRes.508
+        *PrintableArea: PAIR(9600, 13350)
+        *PrintableOrigin: PAIR(260, 80)
+    }  *% -------- end A4
+
+    *Option: LEGAL
+    {
+        *rcNameID: RESDLL.OEMRes.509
+        *PrintableArea: PAIR(9600, 16120)
+        *PrintableOrigin: PAIR(456, 80)
+     } *%  ----- end LEGAL
+
+    *Option: B5
+    {
+        *rcNameID: RESDLL.OEMRes.510
+        *PrintableArea: PAIR(8278, 11462)
+        *PrintableOrigin: PAIR(300, 80)
+     } *% end -------------- B5
+
+    *Option: EXECUTIVE
+    {
+        *rcNameID: RESDLL.OEMRes.511
+        *PrintableArea: PAIR(8380, 11920)
+        *PrintableOrigin: PAIR(300, 80)
+    } *% ------------- End Executive
+
+    *Option: A5
+    {
+        *rcNameID: RESDLL.OEMRes.512
+        *PrintableArea: PAIR(6672, 9242)
+        *PrintableOrigin: PAIR(300, 80)
+     } *% ----------- End A5
+
+    *Option: A6
+    {
+        *rcNameID: RESDLL.OEMRes.513
+        *PrintableArea: PAIR(4640, 6312)
+        *PrintableOrigin: PAIR(300, 80)
+    }  *% -------- end A6 cardstock
+
+    *Option: IndexCard3X5
+    {
+        *rcNameID: RESDLL.OEMRes.501
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.4
+            *CallbackID: 258			*% DMPAPER_USER+2
+        }
+        *PageDimensions: PAIR(3600, 6000)
+        *PrintableArea: PAIR(3280, 5320)
+        *PrintableOrigin: PAIR(300, 80)
+     } *% ----  end  INDEX CARD 3X5
+*IgnoreBlock: {
+    *Option: Banner
+    {
+        *rcNameID: RESDLL.OEMRes.502
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.4
+            *CallbackID: 259			*% DMPAPER_USER+3
+        }
+        *PageDimensions: PAIR(10200, 13200)
+        *PrintableArea: PAIR(9600, 13200)
+        *PrintableOrigin: PAIR(300, 0)
+    }*% ---------- End BANNER
+
+    *Option: BannerA4
+    {
+        *rcNameID: RESDLL.OEMRes.503
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.4
+            *CallbackID: 260			*% DMPAPER_USER+4
+        }
+        *PageDimensions: PAIR(9920, 14028)
+        *PrintableArea: PAIR(9600, 14028)
+        *PrintableOrigin: PAIR(160, 0)
+    } *% -------- end Banner a4
+} *% *****************end IgnoreBlock
+
+    *Option: PostCard4X6
+    {
+        *rcNameID: RESDLL.OEMRes.504
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.4
+            *CallbackID: 257			*% DMPAPER_USER+1
+        }
+        *PageDimensions: PAIR(4800, 7200)
+        *PrintableArea: PAIR(4480, 6520)
+        *PrintableOrigin: PAIR(300, 80)
+    } *% -------  end postcard 4X6
+
+
+    *Option: ENV_PERSONAL
+    {
+        *rcNameID: RESDLL.OEMRes.514
+        *PrintableArea: PAIR(4100, 7120) *% was 4190
+        *PrintableOrigin: PAIR(280, 80) *% locked when put 200,80
+    } *% -------- End ENV_PERSONAL
+
+
+    *Option: ENV_9
+    {
+        *rcNameID: RESDLL.OEMRes.515
+        *PrintableArea: PAIR(4390, 9970) *% was 4490
+        *PrintableOrigin: PAIR(300, 80)
+    }  *% ------------ end Envelope #9
+
+    *Option: ENV_10
+     {
+        *rcNameID: RESDLL.OEMRes.516
+        *PrintableArea: PAIR(4690, 10720) *% was 4790
+                *PrintableOrigin: PAIR(300, 80)
+     }  *% -------- end ENV_10
+
+    *Option: ENV_DL
+    {
+        *rcNameID: RESDLL.OEMRes.517
+        *PrintableArea: PAIR(4936, 9714)
+        *PrintableOrigin: PAIR(300, 80)
+    }  *% -------- end ENV_DL
+
+    *Option: ENV_C5
+    {
+        *rcNameID: RESDLL.OEMRes.518
+        *PrintableArea: PAIR(7394, 10138)
+        *PrintableOrigin: PAIR(300, 80)
+    }  *% END ----     ENVELOPE C5
+
+
+    *Option: ENV_C6
+    {
+        *rcNameID: RESDLL.OEMRes.519
+        *PrintableArea: PAIR(5126, 6974)
+        *PrintableOrigin: PAIR(300, 80)
+    }  *% ------- end Envelope C6
+
+    *Option: ENV_B5
+    {
+        *rcNameID: RESDLL.OEMRes.520
+        *PrintableArea: PAIR(8054, 11130)
+        *PrintableOrigin: PAIR(300, 80)
+    } *% END ------  Envelope B5
+
+    *Option: ENV_MONARCH
+    {
+        *rcNameID: RESDLL.OEMRes.521
+        *PrintableArea: PAIR(4390, 8320)
+        *PrintableOrigin: PAIR(300, 80)
+    }  *% ------- end envelope 7 3/4
+
+    *Option: EnvBarional
+    {
+        *rcNameID: RESDLL.OEMRes.505
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.4
+            *CallbackID: 261			*% DMPAPER_USER+5
+        }
+        *PageDimensions: PAIR(5250, 6750)
+        *PrintableArea: PAIR(4990, 6070)
+        *PrintableOrigin: PAIR(300, 80)
+    } *% end BARONIAL  - envelope deminsions 5.63"X4.38"
+
+    *Option: Hagaki
+    {
+        *rcNameID: RESDLL.OEMRes.506
+        *OptionID: 69 			*% JAPANESE POSTCARD
+        *PageDimensions: PAIR(4724, 6992)
+        *PrintableArea: PAIR(4404, 6312)
+        *PrintableOrigin: PAIR(260, 80)
+    }  *% ----- End Hagaki  card
+
+    *% option customsize is under construction 05/17/00
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(360, 360)
+        *MaxSize: PAIR(10020, 20400) *% 8.5X17 max paper size
+        *MaxPrintableWidth:9600
+        *MinLeftMargin: 0
+        *CenterPrintable?: FALSE
+        *TopMargin: 0
+        *BottomMargin: 0
+  }  *%  ----   End CustomSize
+} *% -- END PAPERSIZES
+
+
+
+

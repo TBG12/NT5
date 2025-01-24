@@ -1,0 +1,123 @@
+/* Security Configuration Wizard: This is the StyleSheet for Security Policy XSLT file.*/
+
+
+.kbbody 
+{ 
+	font-family:			verdana,arial,tahoma,sans-serif; 
+	font-size:				x-small;	
+	margin-bottom:			200px;
+	margin:					0px;
+	padding:				0px;
+	background-color:		background;
+}
+
+/*--- This is the header for the whole KB ---*/
+
+.kbheader
+{	
+	font-family:		verdana,arial,tahoma,sans-serif; 
+	font-size:			x-large;
+	padding-left:			10px;
+	color:					window;
+}
+
+.kbheader2
+{	
+	font-family:		verdana,arial,tahoma,sans-serif; 
+	font-size:			x-large;
+x}
+
+/*--- This is the text description that informs the user what the log file is all about ---*/
+
+.logdescription
+{
+	font-family:			verdana,arial,tahoma,sans-serif;
+	font-size:				x-small;
+	color:					window;
+	padding-left:			5px;
+}
+
+.kbdescription
+{
+	font-family:			verdana,arial,tahoma,sans-serif;
+	font-size:				x-small;
+	color:					window;
+	padding-left:			20px;
+}
+
+.kbdescription2
+{
+	font-family:			verdana,arial,tahoma,sans-serif;
+	font-size:				x-small;
+	padding-left:			20px;
+}
+
+/*--- This affects the sections of the KB such as Roles, Tasks, etc. and contains the .kbsectionheaders. ---*/
+
+.kbsections
+{	
+	background-color:	window;
+	border-top:			1px solid buttonhighlight;
+	border-bottom:		1px solid buttonhighlight;
+}
+
+/*--- This is the header for the different sections of the KB such as Roles, Tasks, etc. ---*/
+
+.kbsectionheaders
+{	
+	color:				highlighttext;
+	font-family:		verdana,arial,tahoma,sans-serif; 
+	font-size:			medium;
+	background-color:	highlight;
+	padding-top:		3px;
+	padding-bottom:		3px;
+}
+
+/*--- This is the header of the settings within a section when not expanded ---*/
+
+.settingsheaderscollapsed
+{	
+	color:				windowtext;
+	font-family:		verdana,arial,tahoma,sans-serif; 
+	font-size:			x-small; 
+	
+}
+
+/*--- This is the header of the settings within a section when expanded ---*/
+
+.settingsheadersexpanded
+{	
+	color:				windowtext;
+	font-family:		verdana,arial,tahoma,sans-serif; 
+	font-size:			x-small; 
+	font-weight:		bold;
+	padding-left:		5px;
+}
+
+/*--- This affects the settings area within a section when expanded ---*/
+
+.sectionsexpanded
+{	
+	border:				1px solid threedshadow;
+	background-color:	threedface;
+	padding-top:		2px;
+}
+
+/*--- This affects the description area of a setting within a section when expanded ---*/
+
+.expanddescription
+{	
+	color:				windowtext;
+	font-family:		verdana,arial,tahoma,sans-serif; 
+	font-size:			x-small; 
+	background-color:	window;
+	padding:			5px;
+	margin-top:			2px;	
+}
+
+/*--- This affects the space between the different description types (such as Type, Description, Services, Ports, etc.) of a setting within a section when expanded ---*/
+
+.descriptionsections
+{	
+	margin-bottom:		5px;
+}

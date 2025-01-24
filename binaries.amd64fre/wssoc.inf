@@ -1,0 +1,58 @@
+
+
+
+[version]
+signature="$Windows NT$"
+ClassGUID={00000000-0000-0000-0000-000000000000}
+LayoutFile=layout.inf
+Provider=%Msft%
+DriverVer=10/01/2002,5.2.3790.1433
+
+[Optional Components]
+StorageServer        
+
+[StorageServer]
+OptionDesc           = %COMP_OPTIONDESC_STORAGESERVER%
+Tip                  = %COMP_OPTIONDESC_STORAGESERVER_TIP%
+IconIndex            = 0
+
+CopyFiles            = StorageServer_Bin
+AddReg               = StorageServer_Reg
+
+
+[StorageServer_Reg]
+
+HKLM, "SYSTEM\WPA\PrintServer", "Disabled", 0x10001, 0x00000000
+
+
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BE-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BF-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C0-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C1-5E3D-11d2-8789-68CB20524153}", "DontPaintText", 0x10001, 0x00000001
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BE-5E3D-11d2-8789-68CB20524153}", , , "wssbrand.dll, -1004"
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21BF-5E3D-11d2-8789-68CB20524153}", , , "wssbrand.dll, -1001"
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C0-5E3D-11d2-8789-68CB20524153}", , , "wssbrand.dll, -1003"
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CustomBrand\{F20B21C1-5E3D-11d2-8789-68CB20524153}", , , "wssbrand.dll, -1002"
+
+
+HKU,  ".Default\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\Welcome", "srvwiz", 0x10001, 0x00000000
+HKCU, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\Welcome", "srvwiz", 0x10001, 0x00000000
+
+
+[DestinationDirs] 
+StorageServer_Bin       = 11  
+
+[SourceDisksNames]
+1="NT Setup",,0
+
+[SourceDisksFiles]
+
+
+[StorageServer_Bin]
+
+
+
+[Strings]
+COMP_OPTIONDESC_STORAGESERVER       = "Microsoft Windows Storage Server"
+COMP_OPTIONDESC_STORAGESERVER_TIP   = "Provides the ability to convert this server to a Microsoft Windows Storage Server."
+Msft                                = "Microsoft"

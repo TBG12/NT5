@@ -1,0 +1,1385 @@
+*% GPD file for Epson Color Inkjet Plugin
+*% Copyright (c) 1998 Seiko Epson Corporation
+*OutputOrderReversed?: FALSE
+*Include: "EPNDVX00.GPD"
+*switch: MediaType
+{
+	*case: STANDARD
+	{
+		*DraftQualitySettings: LIST(Preset.ECONOMY)
+		*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: BPLAIN
+	{
+		*switch: ColorMode
+		{
+			*case: Monochrome
+			{
+				*DraftQualitySettings: LIST(Preset.ECONOMY)
+				*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+				*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+				*DefaultQuality: BETTERQUALITY
+			}
+			*case: Color
+			{
+				*DraftQualitySettings: LIST(Preset.AUTO_SPEED)
+				*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+				*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+				*DefaultQuality: BETTERQUALITY
+			}
+		}
+	}
+	*case: Fine
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: SuperFine
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: GlossyPaper
+	{
+	}
+	*case: GlossyFilm
+	{
+		*switch: ColorMode
+		{
+			*case: Monochrome
+			{
+				*DraftQualitySettings: LIST(Preset.ECONOMY)
+				*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+				*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+				*DefaultQuality: BETTERQUALITY
+			}
+			*case: Color
+			{
+				*DraftQualitySettings: LIST(Preset.AUTO)
+				*BetterQualitySettings: LIST(Preset.AUTO)
+				*BestQualitySettings: LIST(Preset.AUTO)
+				*DefaultQuality: BETTERQUALITY
+			}
+		}
+	}
+	*case: TRANSPARENCY
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+}
+*Feature: Preset
+{
+	*rcNameID: 1150
+	*DefaultOption: OFF
+	*Option: OFF
+	{
+		*rcNameID: 1151
+	}
+	*Option: AUTO
+	{
+		*rcNameID: 1152
+	}
+	*Option: AUTO_QUALITY
+	{
+		*rcNameID: 1153
+	}
+	*Option: AUTO_SPEED
+	{
+		*rcNameID: 1154
+	}
+	*Option: ADPHOTO
+	{
+		*rcNameID: 1161
+	}
+	*Option: PHOTO
+	{
+		*rcNameID: 1156
+	}
+	*Option: WORDPRO
+	{
+		*rcNameID: 1155
+	}
+	*Option: TEXT
+	{
+		*rcNameID: 1159
+	}
+	*Option: ECONOMY
+	{
+		*rcNameID: 1158
+	}
+	*Option: ICM
+	{
+		*rcNameID: 1157
+	}
+	*Option: VIDEO
+	{
+		*rcNameID: 1160
+	}
+}
+*Feature: InputBin
+{
+	*rcNameID: 1010
+	*DefaultOption: AUTO
+	*Option: AUTO
+	{
+		*rcNameID: 1011
+	}
+	*Option: MANUAL
+	{
+		*rcNameID: 1012
+	}
+	*Option: Banner
+	{
+		*rcNameID: 1013
+		*OptionID: 513
+	}
+	*Option: TRACTOR
+	{
+		*rcNameID: 1014
+	}
+}
+*Feature: MediaType
+{
+	*rcNameID: 1100
+	*UpdateQualityMacro?: TRUE
+	*DefaultOption: BPLAIN
+	*Option: STANDARD
+	{
+		*rcNameID: 1101
+	}
+	*Option: BPLAIN
+	{
+		*rcNameID: 1109
+		*OptionID: 263
+	}
+	*Option: Fine
+	{
+		*rcNameID: 1102
+		*OptionID: 257
+	}
+	*Option: SuperFine
+	{
+		*rcNameID: 1103
+		*OptionID: 260
+	}
+	*Option: GlossyPaper
+	{
+		*rcNameID: 1104
+		*OptionID: 258
+	}
+	*Option: GlossyFilm
+	{
+		*rcNameID: 1105
+		*OptionID: 259
+	}
+	*Option: TRANSPARENCY
+	{
+		*rcNameID: 1106
+	}
+}
+*Feature: Resolution
+{
+	*rcNameID: 1020
+	*DefaultOption: Normal
+	*Option: Fine
+	{
+		*rcNameID: 1022
+		*DPI: PAIR(720, 720)
+		*TextDPI: PAIR(720, 720)
+		*MinStripBlankPixels: 1
+		*SpotDiameter: 180
+	}
+	*Option: Normal
+	{
+		*rcNameID: 1023
+		*DPI: PAIR(360, 360)
+		*TextDPI: PAIR(360, 360)
+		*MinStripBlankPixels: 1
+		*SpotDiameter: 160
+	}
+	*Option: Economy
+	{
+		*rcNameID: 1024
+		*DPI: PAIR(180, 180)
+		*TextDPI: PAIR(180, 180)
+		*MinStripBlankPixels: 1
+		*SpotDiameter: 120
+	}
+}
+*Feature: PrintArea
+{
+	*rcNameID: 1040
+	*DefaultOption: MAXIMUM
+	*Option: MAXIMUM
+	{
+		*rcNameID: 1041
+	}
+	*Option: CENTERED
+	{
+		*rcNameID: 1042
+		*Constraints: LIST(InputBin.Banner, InputBin.TRACTOR)
+	}
+}
+*Feature: PaperSize
+{
+	*rcNameID: 999
+	*DefaultOption: LETTER
+	*Option: A4
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(5782, 8420)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(5782, 7940)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(5782, 7632)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: A4_ROTATED
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(8248, 5954)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(8248, 5474)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(8248, 5166)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: LETTER
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(5948, 7920)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(5950, 7442)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(5950, 7134)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: LETTER_ROTATED
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(7748, 6120)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(7750, 5642)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(7750, 5334)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: LEGAL
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(5948, 10080)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(5950, 9602)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(5950, 9294)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: ENV_10
+	{
+		*rcNameID: 0x7fffffff
+		*RotateSize?: TRUE
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(6670, 2492)
+				*PrintableOrigin: PAIR(86, 86)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(6670, 2184)
+				*PrintableOrigin: PAIR(86, 394)
+			}
+		}
+		*Constraints: LIST(InputBin.Banner, InputBin.TRACTOR)
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: ENV_DL
+	{
+		*rcNameID: 0x7fffffff
+		*RotateSize?: TRUE
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(6066, 2640)
+				*PrintableOrigin: PAIR(86, 86)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(6066, 2332)
+				*PrintableOrigin: PAIR(86, 394)
+			}
+		}
+		*Constraints: LIST(InputBin.Banner, InputBin.TRACTOR)
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: ENV_C5
+	{
+		*rcNameID: 0x7fffffff
+		*RotateSize?: TRUE
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(6320, 4114)
+				*PrintableOrigin: PAIR(86, 86)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(6318, 3808)
+				*PrintableOrigin: PAIR(86, 392)
+			}
+		}
+		*Constraints: LIST(InputBin.Banner, InputBin.TRACTOR)
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: STATEMENT
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(3788, 6120)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(3790, 5642)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(3790, 5334)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: EXECUTIVE
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(5048, 7560)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(5050, 7082)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(5050, 6774)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: A6
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(2806, 3688)
+				*PrintableOrigin: PAIR(86, 86)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(2806, 3352)
+				*PrintableOrigin: PAIR(86, 422)
+			}
+		}
+		*Constraints: LIST(InputBin.Banner, InputBin.TRACTOR)
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: TABLOID
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(7750, 12240)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(7750, 11762)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(7748, 11456)
+						*PrintableOrigin: PAIR(86, 392)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: CSHEET
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(9892, 15840)
+				*PrintableOrigin: PAIR(670, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(9792, 15360)
+						*PrintableOrigin: PAIR(670, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(8684, 15052)
+						*PrintableOrigin: PAIR(1778, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: B5
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(4988, 7286)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(4988, 6806)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(4988, 6498)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: B4
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(7114, 10320)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(7114, 9840)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(7114, 9532)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: A3
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(8248, 11906)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(8248, 11426)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(8248, 11118)
+						*PrintableOrigin: PAIR(86, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: SuperA3
+	{
+		*rcNameID: 258
+		*PageDimensions: PAIR(9328, 13692)
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(9156, 13692)
+				*PrintableOrigin: PAIR(86, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(9154, 13212)
+						*PrintableOrigin: PAIR(86, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(9152, 12904)
+						*PrintableOrigin: PAIR(88, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: A2
+	{
+		*rcNameID: 0x7fffffff
+		*switch: InputBin
+		{
+			*case: Banner
+			{
+				*PrintableArea: PAIR(9792, 16838)
+				*PrintableOrigin: PAIR(710, 0)
+			}
+			*default:
+			{
+				*switch: PrintArea
+				{
+					*case: MAXIMUM
+					{
+						*PrintableArea: PAIR(9792, 16358)
+						*PrintableOrigin: PAIR(710, 86)
+					}
+					*case: CENTERED
+					{
+						*PrintableArea: PAIR(9098, 16050)
+						*PrintableOrigin: PAIR(1404, 394)
+					}
+				}
+			}
+		}
+		*Constraints: InputBin.TRACTOR
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Long1
+	{
+		*rcNameID: 427
+		*PageDimensions: PAIR(11906, 720)
+		*PrintableArea: PAIR(9792, 720)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long2
+	{
+		*rcNameID: 428
+		*PageDimensions: PAIR(11906, 1440)
+		*PrintableArea: PAIR(9792, 1440)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long3
+	{
+		*rcNameID: 429
+		*PageDimensions: PAIR(11906, 2160)
+		*PrintableArea: PAIR(9792, 2160)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long4
+	{
+		*rcNameID: 430
+		*PageDimensions: PAIR(11906, 2880)
+		*PrintableArea: PAIR(9792, 2880)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long5
+	{
+		*rcNameID: 431
+		*PageDimensions: PAIR(11906, 3600)
+		*PrintableArea: PAIR(9792, 3600)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long6
+	{
+		*rcNameID: 432
+		*PageDimensions: PAIR(11906, 4320)
+		*PrintableArea: PAIR(9792, 4320)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long7
+	{
+		*rcNameID: 433
+		*PageDimensions: PAIR(11906, 5040)
+		*PrintableArea: PAIR(9792, 5040)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long8
+	{
+		*rcNameID: 434
+		*PageDimensions: PAIR(11906, 5760)
+		*PrintableArea: PAIR(9792, 5760)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long9
+	{
+		*rcNameID: 435
+		*PageDimensions: PAIR(11906, 6480)
+		*PrintableArea: PAIR(9792, 6480)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long10
+	{
+		*rcNameID: 436
+		*PageDimensions: PAIR(11906, 7200)
+		*PrintableArea: PAIR(9792, 7200)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long11
+	{
+		*rcNameID: 437
+		*PageDimensions: PAIR(11906, 7920)
+		*PrintableArea: PAIR(9792, 7920)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long12
+	{
+		*rcNameID: 438
+		*PageDimensions: PAIR(11906, 8640)
+		*PrintableArea: PAIR(9792, 8640)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long13
+	{
+		*rcNameID: 439
+		*PageDimensions: PAIR(11906, 9360)
+		*PrintableArea: PAIR(9792, 9360)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long14
+	{
+		*rcNameID: 440
+		*PageDimensions: PAIR(11906, 10080)
+		*PrintableArea: PAIR(9792, 10080)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long15
+	{
+		*rcNameID: 441
+		*PageDimensions: PAIR(11906, 10800)
+		*PrintableArea: PAIR(9792, 10800)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long16
+	{
+		*rcNameID: 442
+		*PageDimensions: PAIR(11906, 11520)
+		*PrintableArea: PAIR(9792, 11520)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long17
+	{
+		*rcNameID: 443
+		*PageDimensions: PAIR(11906, 12240)
+		*PrintableArea: PAIR(9792, 12240)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long18
+	{
+		*rcNameID: 444
+		*PageDimensions: PAIR(11906, 12960)
+		*PrintableArea: PAIR(9792, 12960)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long19
+	{
+		*rcNameID: 445
+		*PageDimensions: PAIR(11906, 13680)
+		*PrintableArea: PAIR(9792, 13680)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long20
+	{
+		*rcNameID: 446
+		*PageDimensions: PAIR(11906, 14400)
+		*PrintableArea: PAIR(9792, 14400)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long21
+	{
+		*rcNameID: 447
+		*PageDimensions: PAIR(11906, 15120)
+		*PrintableArea: PAIR(9792, 15120)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long22
+	{
+		*rcNameID: 448
+		*PageDimensions: PAIR(11906, 15840)
+		*PrintableArea: PAIR(9792, 15840)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long23
+	{
+		*rcNameID: 449
+		*PageDimensions: PAIR(11906, 16560)
+		*PrintableArea: PAIR(9792, 16560)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long24
+	{
+		*rcNameID: 450
+		*PageDimensions: PAIR(11906, 17280)
+		*PrintableArea: PAIR(9792, 17280)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long25
+	{
+		*rcNameID: 451
+		*PageDimensions: PAIR(11906, 18000)
+		*PrintableArea: PAIR(9792, 18000)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long26
+	{
+		*rcNameID: 452
+		*PageDimensions: PAIR(11906, 18720)
+		*PrintableArea: PAIR(9792, 18720)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long27
+	{
+		*rcNameID: 453
+		*PageDimensions: PAIR(11906, 19440)
+		*PrintableArea: PAIR(9792, 19440)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long28
+	{
+		*rcNameID: 454
+		*PageDimensions: PAIR(11906, 20160)
+		*PrintableArea: PAIR(9792, 20160)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long29
+	{
+		*rcNameID: 455
+		*PageDimensions: PAIR(11906, 20880)
+		*PrintableArea: PAIR(9792, 20880)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long30
+	{
+		*rcNameID: 456
+		*PageDimensions: PAIR(11906, 21600)
+		*PrintableArea: PAIR(9792, 21600)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long31
+	{
+		*rcNameID: 457
+		*PageDimensions: PAIR(11906, 22320)
+		*PrintableArea: PAIR(9792, 22320)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long32
+	{
+		*rcNameID: 458
+		*PageDimensions: PAIR(11906, 23040)
+		*PrintableArea: PAIR(9792, 23040)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long33
+	{
+		*rcNameID: 459
+		*PageDimensions: PAIR(11906, 23760)
+		*PrintableArea: PAIR(9792, 23760)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long34
+	{
+		*rcNameID: 460
+		*PageDimensions: PAIR(11906, 24480)
+		*PrintableArea: PAIR(9792, 24480)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long35
+	{
+		*rcNameID: 461
+		*PageDimensions: PAIR(11906, 25200)
+		*PrintableArea: PAIR(9792, 25200)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long36
+	{
+		*rcNameID: 462
+		*PageDimensions: PAIR(11906, 25920)
+		*PrintableArea: PAIR(9792, 25920)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long37
+	{
+		*rcNameID: 463
+		*PageDimensions: PAIR(11906, 26640)
+		*PrintableArea: PAIR(9792, 26640)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long38
+	{
+		*rcNameID: 464
+		*PageDimensions: PAIR(11906, 27360)
+		*PrintableArea: PAIR(9792, 27360)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long39
+	{
+		*rcNameID: 465
+		*PageDimensions: PAIR(11906, 28080)
+		*PrintableArea: PAIR(9792, 28080)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long40
+	{
+		*rcNameID: 466
+		*PageDimensions: PAIR(11906, 28800)
+		*PrintableArea: PAIR(9792, 28800)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long41
+	{
+		*rcNameID: 467
+		*PageDimensions: PAIR(11906, 29520)
+		*PrintableArea: PAIR(9792, 29520)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long42
+	{
+		*rcNameID: 468
+		*PageDimensions: PAIR(11906, 30240)
+		*PrintableArea: PAIR(9792, 30240)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long43
+	{
+		*rcNameID: 469
+		*PageDimensions: PAIR(11906, 30960)
+		*PrintableArea: PAIR(9792, 30960)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Long44
+	{
+		*rcNameID: 470
+		*PageDimensions: PAIR(11906, 31680)
+		*PrintableArea: PAIR(9792, 31680)
+		*PrintableOrigin: PAIR(710, 0)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.TRACTOR)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: Cont10W11H
+	{
+		*rcNameID: 557
+		*PageDimensions: PAIR(7200, 7920)
+		*PrintableArea: PAIR(6460, 7408)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont12_4P
+	{
+		*rcNameID: 584
+		*PageDimensions: PAIR(10800, 2160)
+		*PrintableArea: PAIR(9792, 1648)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont4
+	{
+		*rcNameID: 560
+		*PageDimensions: PAIR(10800, 2880)
+		*PrintableArea: PAIR(9792, 2368)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont45
+	{
+		*rcNameID: 561
+		*PageDimensions: PAIR(10800, 3240)
+		*PrintableArea: PAIR(9792, 2728)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont5
+	{
+		*rcNameID: 563
+		*PageDimensions: PAIR(10800, 3600)
+		*PrintableArea: PAIR(9792, 3088)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont6
+	{
+		*rcNameID: 566
+		*PageDimensions: PAIR(10800, 4320)
+		*PrintableArea: PAIR(9792, 3808)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont7
+	{
+		*rcNameID: 569
+		*PageDimensions: PAIR(10800, 5040)
+		*PrintableArea: PAIR(9792, 4528)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont8
+	{
+		*rcNameID: 571
+		*PageDimensions: PAIR(10800, 5760)
+		*PrintableArea: PAIR(9792, 5248)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont9
+	{
+		*rcNameID: 573
+		*PageDimensions: PAIR(10800, 6480)
+		*PrintableArea: PAIR(9792, 5968)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont10
+	{
+		*rcNameID: 574
+		*PageDimensions: PAIR(10800, 7200)
+		*PrintableArea: PAIR(9792, 6688)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont105
+	{
+		*rcNameID: 577
+		*PageDimensions: PAIR(10800, 7560)
+		*PrintableArea: PAIR(9792, 7048)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont11
+	{
+		*rcNameID: 578
+		*PageDimensions: PAIR(10800, 7920)
+		*PrintableArea: PAIR(9792, 7408)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont12
+	{
+		*rcNameID: 583
+		*PageDimensions: PAIR(10800, 8640)
+		*PrintableArea: PAIR(9792, 8128)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont13
+	{
+		*rcNameID: 585
+		*PageDimensions: PAIR(10800, 9360)
+		*PrintableArea: PAIR(9792, 8848)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Cont14
+	{
+		*rcNameID: 587
+		*PageDimensions: PAIR(10800, 10080)
+		*PrintableArea: PAIR(9792, 9568)
+		*PrintableOrigin: PAIR(370, 256)
+		*Constraints: LIST(InputBin.AUTO, InputBin.MANUAL, InputBin.Banner)
+		*Constraints: PrintArea.CENTERED
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: CUSTOMSIZE
+	{
+		*rcNameID: 256
+		*MinSize: PAIR(2834, 2834)
+		*MaxSize: PAIR(16876, 31680)
+		*MaxPrintableWidth: 9792
+		*MinLeftMargin: 86
+		*CenterPrintable?: FALSE
+
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*TopMargin:    86
+				*BottomMargin: 396
+
+				*switch: Orientation
+				{
+					*case: PORTRAIT
+					{
+						*CustCursorOriginY:     %d{86}
+					}
+					*case: LANDSCAPE_CC270
+					{
+						*CustCursorOriginY:     %d{PhysPaperLength - 86}
+					}
+				}
+				*CustCursorOriginX:     %d{86}
+				*CustPrintableOriginX:  %d{86}
+				*CustPrintableOriginY:  %d{86}
+
+				*CustPrintableSizeX: %d{ min(9792, PhysPaperWidth - 172) }
+				*CustPrintableSizeY: %d{ PhysPaperLength - 482 }
+			}
+			*case: CENTERED
+			{
+				*TopMargin:    396
+				*BottomMargin: 396
+
+				*switch: Orientation
+				{
+					*case: PORTRAIT
+					{
+						*CustCursorOriginY:     %d{396}
+					}
+					*case: LANDSCAPE_CC270
+					{
+						*CustCursorOriginY:     %d{PhysPaperLength - 396}
+					}
+				}
+				*CustCursorOriginX:     %d{max(86, PhysPaperWidth - 9878)}
+				*CustPrintableOriginX:  %d{max(86, PhysPaperWidth - 9878)}
+				*CustPrintableOriginY:  %d{396}
+
+				*CustPrintableSizeX: %d{ min(19756-PhysPaperWidth, PhysPaperWidth - 172) }
+				*CustPrintableSizeY: %d{ PhysPaperLength - 792 }
+			}
+		}
+	}
+}

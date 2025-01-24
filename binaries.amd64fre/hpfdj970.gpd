@@ -1,0 +1,27 @@
+*%% 
+*%% HP DeskJet 970C Series
+*%%
+*%% Copyright 1999, Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpfdj97x.gpd"
+
+*Feature: HPDuplexUnit
+{
+    *rcNameID: =TWO_SIDED_PRINTING_DISPLAY
+    *ConflictPriority: 15
+    *FeatureType: PRINTER_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: Installed
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED_DISPLAY
+    }
+    *Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED_DISPLAY
+        *DisabledFeatures: LIST(Duplex)
+    }
+}

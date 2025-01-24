@@ -1,0 +1,1126 @@
+; MSPRINT2.INF
+;
+; List of supported printers, manufacturers L through Z
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=Printer
+ClassGUID={4d36e979-e325-11ce-bfc1-08002be10318}
+Provider=%MS%
+LayoutFile=layout.inf, layout1.inf, layout2.inf
+CatalogFile=win4prt.cat
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+
+[Manufacturer]
+"Linotronic"
+"Mannesmann"
+"Microtek"
+"Minolta"
+"NEC"
+"OceColor"
+"Oki"
+"Okidata"
+"Olivetti"
+"Panasonic"
+"QMS"
+"QuadLaser"
+"Ricoh"
+"Royal"
+"Seiko"
+"Seikosha"
+"Sharp"
+"Star"
+"Tandy"
+"Tegra"
+"Tektronix"
+"TI"
+"Toshiba"
+"Triumph"
+"Unisys"
+"Varityper"
+"Wang"
+
+;
+; Model sections. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file.
+;
+; Each model lists a variation of its own name as a compatible ID. This
+; is done primarily as an optimization during upgrade.
+;
+
+[Linotronic]
+"Linotronic 100"                  = L100_425.SPD,Linotronic_100
+"Linotronic 200"                  = L200_471.SPD,Linotronic_200
+"Linotronic 300 v47.1"            = L300_471.SPD,Linotronic_300_v47.1
+"Linotronic 300 v49.3"            = L300_493.SPD,Linotronic_300_v49.3
+"Linotronic 300 v52.3"            = LH300__1.SPD,Linotronic_300_v52.3
+"Linotronic 330"                  = LH330__1.SPD,Linotronic_330
+"Linotronic 500"                  = L500_493.SPD,Linotronic_500
+"Linotronic 500 v52.3"            = LH500__1.SPD,Linotronic_500_v52.3
+"Linotronic 530"                  = LH530__1.SPD,Linotronic_530
+"Linotronic 630"                  = LH630__1.SPD,Linotronic_630
+
+[Mannesmann]
+"Mannesmann Tally MT 81"          = MANTAL9.DRV,Mannesmann_Tally_MT_81
+"Mannesmann Tally MT 82"          = MANTAL24.DRV,Mannesmann_Tally_MT_82
+"Mannesmann Tally MT 83"          = MANTAL24.DRV,Mannesmann_Tally_MT_83
+"Mannesmann Tally MT 84"          = MANTAL24.DRV,Mannesmann_Tally_MT_84
+"Mannesmann Tally MT 90"          = OKI9IBM.DRV,Mannesmann_Tally_MT_90
+"Mannesmann Tally MT 91"          = CANON330.DRV,Mannesmann_Tally_MT_91
+"Mannesmann Tally MT 92"          = HPDSKJET.DRV,Mannesmann_Tally_MT_92
+"Mannesmann Tally MT 92C"         = HPDSKJET.DRV,Mannesmann_Tally_MT_92C
+"Mannesmann Tally MT 93"          = CANON330.DRV,Mannesmann_Tally_MT_93
+"Mannesmann Tally MT 94"          = CANON330.DRV,Mannesmann_Tally_MT_94
+"Mannesmann Tally MT 98/99"       = HPDSKJET.DRV,Mannesmann_Tally_MT_98/99
+"Mannesmann Tally MT 130/9"       = MANTAL9.DRV,Mannesmann_Tally_MT_130/9
+"Mannesmann Tally MT 130/24"      = MANTAL24.DRV,Mannesmann_Tally_MT_130/24
+"Mannesmann Tally MT 131/9"       = MANTAL9.DRV,Mannesmann_Tally_MT_131/9
+"Mannesmann Tally MT 131/24"      = MANTAL24.DRV,Mannesmann_Tally_MT_131/24
+"Mannesmann Tally MT 150/24"      = MANTAL24.DRV,Mannesmann_Tally_MT_150/24
+"Mannesmann Tally MT 150/9"       = MANTAL9.DRV,Mannesmann_Tally_MT_150/9
+"Mannesmann Tally MT 151/24"      = MANTAL24.DRV,Mannesmann_Tally_MT_151/24
+"Mannesmann Tally MT 151/9"       = MANTAL9.DRV,Mannesmann_Tally_MT_151/9
+"Mannesmann Tally MT 230/24"      = MANTAL24.DRV,Mannesmann_Tally_MT_230/24
+"Mannesmann Tally MT 230/18"      = MANTAL9.DRV,Mannesmann_Tally_MT_230/18
+"Mannesmann Tally MT 230/9"       = MANTAL9.DRV,Mannesmann_Tally_MT_230/9
+"Mannesmann Tally MT 290"         = MANTAL9.DRV,Mannesmann_Tally_MT_290
+"Mannesmann Tally MT 330"         = MANTAL24.DRV,Mannesmann_Tally_MT_330
+"Mannesmann Tally MT 340"         = MANTAL9.DRV,Mannesmann_Tally_MT_340
+"Mannesmann Tally MT 350"         = MANTAL24.DRV,Mannesmann_Tally_MT_350
+"Mannesmann Tally MT 360"         = MANTAL24.DRV,Mannesmann_Tally_MT_360
+"Mannesmann Tally MT 730/735"     = HPPCL.DRV,Mannesmann_Tally_MT_730/735
+"Mannesmann Tally MT 904 Plus"    = HPPCL5MS.DRV,Mannesmann_Tally_MT_904_Plus
+"Mannesmann Tally MT 908"         = HPPCL5MS.DRV,Mannesmann_Tally_MT_908
+"Mannesmann Tally MT Lite"        = MTLITE.DRV,Mannesmann_Tally_MT_Lite
+"Mannesmann Tally T7010"          = JP350.DRV,Mannesmann_Tally_T7010
+"Mannesmann Tally T7018"          = JP350.DRV,Mannesmann_Tally_T7018
+"Mannesmann Tally T7040 (Mono)"   = JP350.DRV,Mannesmann_Tally_T7040_(Mono)
+"Mannesmann Tally T7040 (Color)"  = JP350.DRV,Mannesmann_Tally_T7040_(Color)
+"Mannesmann Tally T9005"          = HPPCL.DRV,Mannesmann_Tally_T9005
+"Mannesmann Tally T9017"          = HPPCL5MS.DRV,Mannesmann_Tally_T9017
+
+[Microtek]
+"Microtek TrueLaser"              = MT_TI101.SPD,Microtek_TrueLaser
+
+[Minolta]
+"Minolta SP 3000"                 = HPPCL5MS.DRV,Minolta_SP_3000
+"Minolta SP 3500"                 = HPPCL5MS.DRV,Minolta_SP_3500
+
+[NEC]
+"NEC Colormate PS"                = NCOL_519.SPD,NEC_Colormate_PS
+"NEC Colormate PS/40"             = NCCPS401.SPD,NEC_Colormate_PS/40
+"NEC Colormate PS/80"             = NCCPS801.SPD,NEC_Colormate_PS/80
+"NEC Jetmate 400"                 = JP350.DRV,NEC_Jetmate_400
+"NEC Jetmate 800"                 = JP350.DRV,NEC_Jetmate_800
+"NEC Pinwriter CP6"               = NEC24PIN.DRV,NEC_Pinwriter_CP6
+"NEC Pinwriter CP7"               = NEC24PIN.DRV,NEC_Pinwriter_CP7
+"NEC Pinwriter P2plus"            = NEC24PIN.DRV,NEC_Pinwriter_P2plus
+"NEC Pinwriter P5XL"              = NEC24PIN.DRV,NEC_Pinwriter_P5XL
+"NEC Pinwriter P6"                = NEC24PIN.DRV,NEC_Pinwriter_P6
+"NEC Pinwriter P6plus"            = NEC24PIN.DRV,NEC_Pinwriter_P6plus
+"NEC Pinwriter P7"                = NEC24PIN.DRV,NEC_Pinwriter_P7
+"NEC Pinwriter P7plus"            = NEC24PIN.DRV,NEC_Pinwriter_P7plus
+"NEC Pinwriter P9XL"              = NEC24PIN.DRV,NEC_Pinwriter_P9XL
+"NEC Pinwriter P20"               = NEC24PIN.DRV,NEC_Pinwriter_P20
+"NEC Pinwriter P30"               = NEC24PIN.DRV,NEC_Pinwriter_P30
+"NEC Pinwriter P60"               = NEC24PIN.DRV,NEC_Pinwriter_P60
+"NEC Pinwriter P70"               = NEC24PIN.DRV,NEC_Pinwriter_P70
+"NEC Pinwriter P90"               = NEC24PIN.DRV,NEC_Pinwriter_P90
+"NEC Pinwriter P2200"             = NEC24PIN.DRV,NEC_Pinwriter_P2200
+"NEC Pinwriter P3200"             = NEC24PIN.DRV,NEC_Pinwriter_P3200
+"NEC Pinwriter P3300"             = NEC24PIN.DRV,NEC_Pinwriter_P3300
+"NEC Pinwriter P5200"             = NEC24PIN.DRV,NEC_Pinwriter_P5200
+"NEC Pinwriter P5300"             = NEC24PIN.DRV,NEC_Pinwriter_P5300
+"NEC Pinwriter P6200"             = NEC24PIN.DRV,NEC_Pinwriter_P6200
+"NEC Pinwriter P6300"             = NEC24PIN.DRV,NEC_Pinwriter_P6300
+"NEC Pinwriter P9300"             = NEC24PIN.DRV,NEC_Pinwriter_P9300
+"NEC Silentwriter LC 860 Plus"    = HPPCL.DRV,NEC_Silentwriter_LC_860_Plus
+"NEC Silentwriter LC 890"         = N890_470.SPD,NEC_Silentwriter_LC_890
+"NEC Silentwriter LC 890XL"       = N890X505.SPD,NEC_Silentwriter_LC_890XL
+"NEC Silentwriter S102"           = HPPCL5MS.DRV,NEC_Silentwriter_S102
+"NEC Silentwriter2 Model 90"      = N2090522.SPD,NEC_Silentwriter2_Model_90
+"NEC Silentwriter2 290"           = N2290520.SPD,NEC_Silentwriter2_290
+"NEC Silentwriter2 990"           = NCS29901.SPD,NEC_Silentwriter2_990
+"NEC SilentWriter 95"             = NCSW_951.SPD,NEC_SilentWriter_95
+"NEC Silentwriter 95 v2011.111"   = NC95FAX1.SPD,NEC_Silentwriter_95_v2011.111
+
+[OceColor]
+"OceColor G5241 PS"               = O5241503.SPD,OceColor_G5241_PS
+"OceColor G5242 PS"               = O5242503.SPD,OceColor_G5242_PS
+
+[Oki]
+"OKI MICROLINE 801PS+F v52.3"     = OK801PF1.SPD,OKI_MICROLINE_801PS+F_v52.3
+"Oki ML 182 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_182_Elite_(IBM)
+"Oki ML 192 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_192_Elite_(IBM)
+"Oki ML 192 Elite (Microline)"    = OKI9.DRV,Oki_ML_192_Elite_(Microline)
+"Oki ML 193 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_193_Elite_(IBM)
+"Oki ML 193 Elite (Microline)"    = OKI9.DRV,Oki_ML_193_Elite_(Microline)
+"Oki ML 280 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_280_Elite_(IBM)
+"Oki ML 320 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_320_Elite_(IBM)
+"Oki ML 320 Elite (Microline)"    = OKI9.DRV,Oki_ML_320_Elite_(Microline)
+"Oki ML 321 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_321_Elite_(IBM)
+"Oki ML 321 Elite (Microline)"    = OKI9.DRV,Oki_ML_321_Elite_(Microline)
+"Oki ML 380 Elite"                = OKI24.DRV,Oki_ML_380_Elite
+"Oki ML 390 Elite"                = OKI24.DRV,Oki_ML_390_Elite
+"Oki ML 391 Elite"                = OKI24.DRV,Oki_ML_391_Elite
+"Oki ML 393 Elite"                = OKI24.DRV,Oki_ML_393_Elite
+"Oki ML 393C Elite"               = OKI24.DRV,Oki_ML_393C_Elite
+"Oki ML 395 Elite"                = OKI24.DRV,Oki_ML_395_Elite
+"Oki ML 395C Elite"               = OKI24.DRV,Oki_ML_395C_Elite
+"Oki ML 520 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_520_Elite_(IBM)
+"Oki ML 520 Elite (Microline)"    = OKI9.DRV,Oki_ML_520_Elite_(Microline)
+"Oki ML 521 Elite (IBM)"          = OKI9IBM.DRV,Oki_ML_521_Elite_(IBM)
+"Oki ML 521 Elite (Microline)"    = OKI9.DRV,Oki_ML_521_Elite_(Microline)
+"Oki ML 590 Elite"                = OKI24.DRV,Oki_ML_590_Elite
+"Oki ML 590C Elite"               = OKI24.DRV,Oki_ML_590C_Elite
+"Oki ML 591 Elite"                = OKI24.DRV,Oki_ML_591_Elite
+"Oki ML 591C Elite"               = OKI24.DRV,Oki_ML_591C_Elite
+"Oki ML 3410 Elite (IBM)"         = OKI9IBM.DRV,Oki_ML_3410_Elite_(IBM)
+"Oki OL-400"                      = HPPCL.DRV,Oki_OL-400
+"Oki OL-400e"                     = HPPCL.DRV,Oki_OL-400e
+"Oki OL-400ex"                    = HPPCL.DRV,Oki_OL-400ex
+"Oki OL-410"                      = HPPCL5MS.DRV,Oki_OL-410
+"Oki OL410e v2014.105"            = OK_410E1.SPD,Oki_OL410e_v2014.105
+"Oki OL-410ex"                    = HPPCL5MS.DRV,Oki_OL-410ex
+"Oki OL-800"                      = HPPCL.DRV,Oki_OL-800
+"Oki OL-810"                      = HPPCL5MS.DRV,Oki_OL-810
+"Oki OL-830 (PCL)"                = HPPCL.DRV,Oki_OL-830_(PCL)
+"Oki OL-830/PS"                   = OL830525.SPD,Oki_OL-830/PS
+"Oki OL-840"                      = HPPCL.DRV,Oki_OL-840
+"Oki OL-840/PS"                   = OL840518.SPD,Oki_OL-840/PS
+"Oki OL-850"                      = HPPCL.DRV,Oki_OL-850
+"Oki OL-850/PS"                   = OL850525.SPD,Oki_OL-850/PS
+"Oki OL-870"                      = HPPCL5MS.DRV,Oki_OL-870
+"Oki OL-870/PS"                   = OKOL8701.SPD,Oki_OL-870/PS
+
+[Okidata]
+"Okidata LaserLine 6"             = HPPCL.DRV,Okidata_LaserLine_6
+"Okidata ML Pacemark 3410"        = OKI9IBM.DRV,Okidata_ML_Pacemark_3410
+"Okidata ML 92-IBM"               = OKI9IBM.DRV,Okidata_ML_92-IBM
+"Okidata ML 93-IBM"               = OKI9IBM.DRV,Okidata_ML_93-IBM
+"Okidata ML 184-IBM Turbo"        = OKI9IBM.DRV,Okidata_ML_184-IBM_Turbo
+"Okidata ML 192"                  = OKI9.DRV,Okidata_ML_192
+"Okidata ML 192 Plus"             = OKI9.DRV,Okidata_ML_192_Plus
+"Okidata ML 192-IBM"              = OKI9IBM.DRV,Okidata_ML_192-IBM
+"Okidata ML 193"                  = OKI9.DRV,Okidata_ML_193
+"Okidata ML 193 Plus"             = OKI9.DRV,Okidata_ML_193_Plus
+"Okidata ML 193-IBM"              = OKI9IBM.DRV,Okidata_ML_193-IBM
+"Okidata ML 292"                  = OKI9.DRV,Okidata_ML_292
+"Okidata ML 292-IBM"              = OKI9IBM.DRV,Okidata_ML_292-IBM
+"Okidata ML 293"                  = OKI9.DRV,Okidata_ML_293
+"Okidata ML 293-IBM"              = OKI9IBM.DRV,Okidata_ML_293-IBM
+"Okidata ML 320"                  = OKI9.DRV,Okidata_ML_320
+"Okidata ML 320-IBM"              = OKI9IBM.DRV,Okidata_ML_320-IBM
+"Okidata ML 321"                  = OKI9.DRV,Okidata_ML_321
+"Okidata ML 321-IBM"              = OKI9IBM.DRV,Okidata_ML_321-IBM
+"Okidata ML 380"                  = OKI24.DRV,Okidata_ML_380
+"Okidata ML 390"                  = OKI24.DRV,Okidata_ML_390
+"Okidata ML 390 Plus"             = OKI24.DRV,Okidata_ML_390_Plus
+"Okidata ML 391"                  = OKI24.DRV,Okidata_ML_391
+"Okidata ML 391 Plus"             = OKI24.DRV,Okidata_ML_391_Plus
+"Okidata ML 393"                  = OKI24.DRV,Okidata_ML_393
+"Okidata ML 393 Plus"             = OKI24.DRV,Okidata_ML_393_Plus
+"Okidata ML 393C"                 = OKI24.DRV,Okidata_ML_393C
+"Okidata ML 393C Plus"            = OKI24.DRV,Okidata_ML_393C_Plus
+"Okidata ML 395"                  = OKI24.DRV,Okidata_ML_395
+"Okidata ML 395C"                 = OKI24.DRV,Okidata_ML_395C
+"Okidata ML 520"                  = OKI9.DRV,Okidata_ML_520
+"Okidata ML 520-IBM"              = OKI9IBM.DRV,Okidata_ML_520-IBM
+"Okidata ML 521"                  = OKI9.DRV,Okidata_ML_521
+"Okidata ML 521-IBM"              = OKI9IBM.DRV,Okidata_ML_521-IBM
+"Okidata ML 590"                  = OKI24.DRV,Okidata_ML_590
+"Okidata ML 590C"                 = OKI24.DRV,Okidata_ML_590C
+"Okidata ML 591"                  = OKI24.DRV,Okidata_ML_591
+"Okidata ML 591C"                 = OKI24.DRV,Okidata_ML_591C
+"Okidata OL-400"                  = HPPCL.DRV,Okidata_OL-400
+"Okidata OL-400e"                 = HPPCL.DRV,Okidata_OL-400e
+"Okidata OL-410e"                 = HPPCL5MS.DRV,Okidata_OL-410e
+"Okidata OL-800"                  = HPPCL.DRV,Okidata_OL-800
+"Okidata OL-810"                  = HPPCL5MS.DRV,Okidata_OL-810
+"Okidata OL-830"                  = HPPCL.DRV,Okidata_OL-830
+"Okidata OL830 PostScript"        = OKI830US.SPD,Okidata_OL830_PostScript
+"Okidata OL-840"                  = HPPCL.DRV,Okidata_OL-840
+"Okidata OL840 PostScript"        = OKI840US.SPD,Okidata_OL840_PostScript
+"Okidata OL-850"                  = HPPCL.DRV,Okidata_OL-850
+"Okidata OL850 PostScript"        = OKI850US.SPD,Okidata_OL850_PostScript
+"Okidata OL-1200"                 = PCL5EMS.DRV,LPTENUM\Oki_Data_CorporationE68D,Oki_Data_CorporationE68D,Okidata_OL-1200
+"Okidata OL-600e"                 = HPPCLB.DRV,LPTENUM\OKI_DATA_CORPOKIDATA175E,OKI_DATA_CORPOKIDATA175E,Okidata_OL-600e
+"Okidata OL-610e"                 = PCL5EMS.DRV,LPTENUM\OKI_DATA_CORPOKIDATAD70F,OKI_DATA_CORPOKIDATAD70F,Okidata_OL-610e
+"Okidata OL-810e"                 = PCL5EMS.DRV,LPTENUM\Oki_Data_Corporation863F,Oki_Data_Corporation863F,Okidata_OL-810e
+"OKIPAGE 16n"                     = PCL5EMS.DRV,LPTENUM\OKI_DATA_CORPOKIDATAB059,OKI_DATA_CORPOKIDATAB059,OKIPAGE_16n
+
+[Olivetti]
+"Olivetti DM 95"                  = OLIDM9.DRV,Olivetti_DM_95
+"Olivetti DM 109"                 = OLIDM9.DRV,Olivetti_DM_109
+"Olivetti DM 119"                 = OLIDM9.DRV,Olivetti_DM_119
+"Olivetti DM 124"                 = OLIDM24.DRV,Olivetti_DM_124
+"Olivetti DM 124 C"               = OLIDM24.DRV,Olivetti_DM_124_C
+"Olivetti DM 124 L"               = OLIDM24.DRV,Olivetti_DM_124_L
+"Olivetti DM 209 L"               = OLIDM9.DRV,Olivetti_DM_209_L
+"Olivetti DM 224 L"               = OLIDM24.DRV,Olivetti_DM_224_L
+"Olivetti DM 309"                 = OLIDM9.DRV,Olivetti_DM_309
+"Olivetti DM 309 S"               = OLIDM9.DRV,Olivetti_DM_309_S
+"Olivetti DM 309 L"               = OLIDM9.DRV,Olivetti_DM_309_L
+"Olivetti DM 309 SL"              = OLIDM9.DRV,Olivetti_DM_309_SL
+"Olivetti DM 324"                 = OLIDM24.DRV,Olivetti_DM_324
+"Olivetti DM 324 S"               = OLIDM24.DRV,Olivetti_DM_324_S
+"Olivetti DM 324 L"               = OLIDM24.DRV,Olivetti_DM_324_L
+"Olivetti DM 324 SL"              = OLIDM24.DRV,Olivetti_DM_324_SL
+"Olivetti DM 600"                 = OLIDM24.DRV,Olivetti_DM_600
+"Olivetti DM 600 S"               = OLIDM24.DRV,Olivetti_DM_600_S
+"Olivetti DM 624"                 = OLIDM24.DRV,Olivetti_DM_624
+"Olivetti ETV 5000"               = HPPCL.DRV,Olivetti_ETV_5000
+"Olivetti JP 50"                  = JP350.DRV,Olivetti_JP_50
+"Olivetti JP 150"                 = JP350.DRV,Olivetti_JP_150
+"Olivetti JP 150 WS"              = JP350.DRV,Olivetti_JP_150_WS
+"Olivetti JP 250"                 = JP350.DRV,Olivetti_JP_250
+"Olivetti JP 350"                 = JP350.DRV,Olivetti_JP_350
+"Olivetti JP 350S"                = JP350.DRV,Olivetti_JP_350S
+"Olivetti JP 360 (Monochrome)"    = JP350.DRV,Olivetti_JP_360_(Monochrome)
+"Olivetti JP 360 (Color)"         = JP350.DRV,Olivetti_JP_360_(Color)
+"Olivetti JP 450 (Monochrome)"    = JP350.DRV,Olivetti_JP_450_(Monochrome)
+"Olivetti JP 450 (Color)"         = JP350.DRV,Olivetti_JP_450_(Color)
+"Olivetti PG 108"                 = HPPCL.DRV,Olivetti_PG_108
+"Olivetti PG 208 M2"              = HPPCL.DRV,Olivetti_PG_208_M2
+"Olivetti PG 306"                 = HPPCL.DRV,Olivetti_PG_306
+"Olivetti PG 306 PS (13 Fonts)"   = OLIVETI1.SPD,Olivetti_PG_306_PS_(13_Fonts)
+"Olivetti PG 306 PS (35 Fonts)"   = OLIVETI2.SPD,Olivetti_PG_306_PS_(35_Fonts)
+"Olivetti PG 308"                 = HPPCL.DRV,Olivetti_PG_308
+"Olivetti PG 308 HS"              = HPPCL.DRV,Olivetti_PG_308_HS
+"Olivetti PG 308 HS PostScript"   = OLIV5000.SPD,Olivetti_PG_308_HS_PostScript
+"Olivetti PG 404"                 = HPPCL5MS.DRV,Olivetti_PG_404
+"Olivetti PG 408"                 = HPPCL5MS.DRV,Olivetti_PG_408
+
+[Panasonic]
+"Panasonic KX-P1081"              = PANSON9.DRV,Panasonic_KX-P1081
+"Panasonic KX-P1121"              = PANSON24.DRV,Panasonic_KX-P1121
+"Panasonic KX-P1123"              = PANSON24.DRV,Panasonic_KX-P1123
+"Panasonic KX-P1124"              = PANSON24.DRV,Panasonic_KX-P1124
+"Panasonic KX-P1124i"             = PANSON24.DRV,Panasonic_KX-P1124i
+"Panasonic KX-P1150"              = PANSON9.DRV,Panasonic_KX-P1150
+"Panasonic KX-P1170"              = PANSON9.DRV,Panasonic_KX-P1170
+"Panasonic KX-P1180"              = PANSON9.DRV,Panasonic_KX-P1180
+"Panasonic KX-P1624"              = PANSON24.DRV,Panasonic_KX-P1624
+"Panasonic KX-P1654"              = PANSON24.DRV,Panasonic_KX-P1654
+"Panasonic KX-P1695"              = PANSON9.DRV,Panasonic_KX-P1695
+"Panasonic KX-P2023"              = PANSON24.DRV,Panasonic_KX-P2023
+"Panasonic KX-P2180"              = PANSON9.DRV,Panasonic_KX-P2180
+"Panasonic KX-P2123"              = PANSON24.DRV,Panasonic_KX-P2123
+"Panasonic KX-P2124"              = PANSON24.DRV,Panasonic_KX-P2124
+"Panasonic KX-P2624"              = PANSON24.DRV,Panasonic_KX-P2624
+"Panasonic KX-P3123"              = ESCP2MS.DRV,Panasonic_KX-P3123
+"Panasonic KX-P3124"              = ESCP2MS.DRV,Panasonic_KX-P3124
+"Panasonic KX-P3134"              = ESCP2MS.DRV,Panasonic_KX-P3134
+"Panasonic KX-P3634"              = ESCP2MS.DRV,Panasonic_KX-P3634
+"Panasonic KX-P4400"              = HPPCL.DRV,Panasonic_KX-P4400
+"Panasonic KX-P4410"              = HPPCL.DRV,Panasonic_KX-P4410
+"Panasonic KX-P4420"              = HPPCL.DRV,Panasonic_KX-P4420
+"Panasonic KX-P4430"              = HPPCL5MS.DRV,Panasonic_KX-P4430
+"Panasonic KX-P4440"              = HPPCL5MS.DRV,Panasonic_KX-P4440
+"Panasonic KX-P4450"              = HPPCL.DRV,Panasonic_KX-P4450
+"Panasonic KX-P4450i"             = HPPCL.DRV,Panasonic_KX-P4450i
+"Panasonic KX-P4451"              = HPPCL5MS.DRV,Panasonic_KX-P4451
+"Panasonic KX-P4455"              = P4455514.SPD,Panasonic_KX-P4455
+"Panasonic KX-P5400"              = PAP54001.SPD,Panasonic_KX-P5400
+"Panasonic KX-P5410"              = PAP54101.SPD,Panasonic_KX-P5410
+"Panasonic KX-P6500"              = PANPCL4.DRV.BIDI,LPTENUM\PanasonicKX-P65000C98,PanasonicKX-P65000C98,Panasonic_KX-P6500
+
+[QMS]
+"QMS ColorScript 100 Model 10"    = QCS10503.SPD,QMS_ColorScript_100_Model_10
+"QMS ColorScript 100 Model 20"    = QCS20503.SPD,QMS_ColorScript_100_Model_20
+"QMS ColorScript 100 Model 30"    = QCS30503.SPD,QMS_ColorScript_100_Model_30
+"QMS ColorScript 210"             = QMSCS210.SPD,QMS_ColorScript_210
+"QMS ColorScript 230"             = QMSCS230.SPD,QMS_ColorScript_230
+"QMS ColorScript Laser 1000"      = QCS1000.SPD,QMS_ColorScript_Laser_1000
+"QMS 420 Print System"            = QMS420.SPD,QMS_420_Print_System
+"QMS 860 Print System"            = QMS860.SPD,QMS_860_Print_System
+"QMS 860+ Print System"           = Q860PLS2.SPD,QMS_860+_Print_System
+"QMS 1725 Print System"           = QMS1725.SPD,QMS_1725_Print_System
+"QMS 2060 w/Optional"             = QMS2060B.SPD,QMS_2060_w/Optional
+"QMS 3225 Print System"           = QMS3225.SPD,QMS_3225_Print_System
+"QMS 4525 Print System"           = QMS45252.SPD,QMS_4525_Print_System
+"QMS ColorScript 460"             = QMSCS460.SPD,QMS_ColorScript_460
+"QMS ColorScript 480"             = QM_CS480.SPD,QMS_ColorScript_480
+"QMS-PS 1700"                     = QM1700_1.SPD,QMS-PS_1700
+"QMS-PS 410"                      = QMPS4101.SPD,QMS-PS_410
+"QMS-PS 800"                      = Q800_MS.SPD,QMS-PS_800
+"QMS-PS 800 Plus"                 = QMS8P461.SPD,QMS-PS_800_Plus
+"QMS-PS 810"                      = Q810_MS.SPD,QMS-PS_810
+"QMS-PS 810 Turbo"                = Q810T_MS.SPD,QMS-PS_810_Turbo
+"QMS-PS 820"                      = Q820_MS.SPD,QMS-PS_820
+"QMS-PS 820 Turbo"                = Q820T517.SPD,QMS-PS_820_Turbo
+"QMS-PS 825 MR"                   = QM825MR1.SPD,QMS-PS_825_MR
+"QMS-PS 2000"                     = QM2000_1.SPD,QMS-PS_2000
+"QMS-PS 2200"                     = Q2200_MS.SPD,QMS-PS_2200
+"QMS-PS 2210"                     = Q2210_MS.SPD,QMS-PS_2210
+"QMS-PS 2220"                     = Q2220523.SPD,QMS-PS_2220
+
+[QuadLaser]
+"QuadLaser I"                     = HPPCL.DRV,QuadLaser_I
+
+[Ricoh]
+"Ricoh LP-1200"                   = HPPCL5MS.DRV,Ricoh_LP-1200
+
+[Royal]
+"Royal CJP 450"                   = JP350.DRV,Royal_CJP_450
+
+[Seiko]
+"ColorPoint 820 PS USA"           = SK820RU2.SPD,ColorPoint_820_PS_USA
+"ColorPoint 830 PS USA"           = SK830RU2.SPD,ColorPoint_830_PS_USA
+"ColorPoint 835 PS USA"           = SK835RU2.SPD,ColorPoint_835_PS_USA
+"Seiko ColorPoint PS"             = CP_PS241.SPD,Seiko_ColorPoint_PS
+"Seiko ColorPoint PS Model 14"    = SEIKO_14.SPD,Seiko_ColorPoint_PS_Model_14
+"Seiko ColorPoint PSX"            = CPPSX241.SPD,Seiko_ColorPoint_PSX
+"Seiko ColorPoint PSN"            = CPPSNB10.SPD,Seiko_ColorPoint_PSN
+"Seiko ColorPoint2 PSF"           = SKPSFA_1.SPD,Seiko_ColorPoint2_PSF
+"Seiko Personal ColorPoint PS"    = CPPER241.SPD,Seiko_Personal_ColorPoint_PS
+"Seiko Pro ColorPoint PSH"        = CPPRO518.SPD,Seiko_Pro_ColorPoint_PSH
+
+[Seikosha]
+"Seikosha LT-20"                  = SEIKO24E.DRV,Seikosha_LT-20
+"Seikosha SL-80 IP"               = SEIKO24E.DRV,Seikosha_SL-80_IP
+"Seikosha SL-92"                  = SEIKO24E.DRV,Seikosha_SL-92
+"Seikosha SL-92 Plus"             = SEIKO24E.DRV,Seikosha_SL-92_Plus
+"Seikosha SL-95 Color"            = SEIKO24E.DRV,Seikosha_SL-95_Color
+"Seikosha SP-1900"                = SEIKOSH9.DRV,Seikosha_SP-1900
+"Seikosha SP-1900+"               = SEIKOSH9.DRV,Seikosha_SP-1900+
+"Seikosha SP-2415"                = SEIKOSH9.DRV,Seikosha_SP-2415
+"Seikosha SP-2400"                = SEIKOSH9.DRV,Seikosha_SP-2400
+"Seikosha SP-2000"                = SEIKOSH9.DRV,Seikosha_SP-2000
+"Seikosha SpeedJET 200"           = JP350.DRV,Seikosha_SpeedJET_200
+
+[Sharp]
+"Sharp JX-9300"                   = HPPCL.DRV,Sharp_JX-9300
+"Sharp JX-9460"                   = HPPCL5MS.DRV,Sharp_JX-9460
+"Sharp JX-9500"                   = HPPCL.DRV,Sharp_JX-9500
+"Sharp JX-9500E"                  = HPPCL.DRV,Sharp_JX-9500E
+"Sharp JX-9500H"                  = HPPCL.DRV,Sharp_JX-9500H
+"Sharp JX-9600"                   = HPPCL5MS.DRV,Sharp_JX-9600
+"Sharp JX-9660"                   = HPPCL5MS.DRV,Sharp_JX-9660
+"Sharp JX-9700"                   = HPPCL.DRV,Sharp_JX-9700
+"Sharp JX-9700E"                  = HPPCL5MS.DRV,Sharp_JX-9700E
+
+[Star]
+"Star FR-15"                      = STAR9E.DRV,Star_FR-15
+"Star FR-10"                      = STAR9E.DRV,Star_FR-10
+"Star LaserPrinter 4"             = HPPCL.DRV,Star_LaserPrinter_4
+"Star LaserPrinter 4 StarScript"  = STLS04SS.SPD,Star_LaserPrinter_4_StarScript
+"Star LaserPrinter 4III"          = HPPCL5MS.DRV,Star_LaserPrinter_4III
+"Star LaserPrinter 5"             = HPPCL.DRV,Star_LaserPrinter_5
+"Star LaserPrinter 5EX"           = HPPCL5MS.DRV,Star_LaserPrinter_5EX
+"Star LaserPrinter 5 TT/UK"       = STLS5TTU.SPD,Star_LaserPrinter_5_TT/UK
+"Star LaserPrinter 8"             = HPPCL.DRV,Star_LaserPrinter_8
+"Star LaserPrinter 8 II"          = HPPCL.DRV,Star_LaserPrinter_8_II
+"Star LaserPrinter 8III"          = HPPCL5MS.DRV,Star_LaserPrinter_8III
+"Star LaserPrinter 8 DB"          = HPPCL.DRV,Star_LaserPrinter_8_DB
+"Star LaserPrinter 8 DX"          = HPPCL.DRV,Star_LaserPrinter_8_DX
+"Star LaserPrinter 8 LincPage"    = STLS08LP.SPD,Star_LaserPrinter_8_LincPage
+"Star LC-10"                      = STAR9E.DRV,Star_LC-10
+"Star LC-10 Colour"               = STAR9E.DRV,Star_LC-10_Colour
+"Star LC-15"                      = STAR9E.DRV,Star_LC-15
+"Star LC-20"                      = STAR9E.DRV,Star_LC-20
+"Star LC-100 Colour"              = STAR9E.DRV,Star_LC-100_Colour
+"Star LC-200"                     = STAR9E.DRV,Star_LC-200
+"Star LC24-10"                    = STAR24E.DRV,Star_LC24-10
+"Star LC24-15"                    = STAR24E.DRV,Star_LC24-15
+"Star LC24-15 II"                 = STAR24E.DRV,Star_LC24-15_II
+"Star LC24-20"                    = STAR24E.DRV,Star_LC24-20
+"Star LC24-22"                    = STAR24E.DRV,Star_LC24-22
+"Star LC24-30"                    = STAR24E.DRV,Star_LC24-30
+"Star LC24-100"                   = STAR24E.DRV,Star_LC24-100
+"Star LC24-200"                   = STAR24E.DRV,Star_LC24-200
+"Star LC24-200 Colour"            = STAR24E.DRV,Star_LC24-200_Colour
+"Star LC24-300"                   = STAR24E.DRV,Star_LC24-300
+"Star NB24-10"                    = STAR24E.DRV,Star_NB24-10
+"Star NB24-15"                    = STAR24E.DRV,Star_NB24-15
+"Star NL-10"                      = STAR9E.DRV,Star_NL-10
+"Star NX-1000"                    = STAR9E.DRV,Star_NX-1000
+"Star NX-1000 Rainbow"            = STAR9E.DRV,Star_NX-1000_Rainbow
+"Star NX-1001"                    = STAR9E.DRV,Star_NX-1001
+"Star NX-1020 Rainbow"            = STAR9E.DRV,Star_NX-1020_Rainbow
+"Star NX-1500"                    = STAR9E.DRV,Star_NX-1500
+"Star NX-2410"                    = STAR24E.DRV,Star_NX-2410
+"Star NX-2415"                    = STAR24E.DRV,Star_NX-2415
+"Star NX-2415 II"                 = STAR24E.DRV,Star_NX-2415_II
+"Star NX-2420"                    = STAR24E.DRV,Star_NX-2420
+"Star NX-2420 Rainbow"            = STAR24E.DRV,Star_NX-2420_Rainbow
+"Star NX-2420 Rainbow II"         = STAR24E.DRV,Star_NX-2420_Rainbow_II
+"Star NX-2400"                    = STAR24E.DRV,Star_NX-2400
+"Star NX-2430"                    = STAR24E.DRV,Star_NX-2430
+"Star NX-2450"                    = STAR24E.DRV,Star_NX-2450
+"Star NX-2480"                    = STAR24E.DRV,Star_NX-2480
+"Star SJ-48"                      = STAR24E.DRV,Star_SJ-48
+"Star SJ-144"                     = STAR24E.DRV,Star_SJ-144
+"Star XB24-10"                    = STAR24E.DRV,Star_XB24-10
+"Star XB24-15"                    = STAR24E.DRV,Star_XB24-15
+"Star XB24-200"                   = STAR24E.DRV,Star_XB24-200
+"Star XB24-250"                   = STAR24E.DRV,Star_XB24-250
+"Star XB-2410"                    = STAR24E.DRV,Star_XB-2410
+"Star XB-2415"                    = STAR24E.DRV,Star_XB-2415
+"Star XB-2420"                    = STAR24E.DRV,Star_XB-2420
+"Star XB-2425"                    = STAR24E.DRV,Star_XB-2425
+"Star XR-1000"                    = STAR9E.DRV,Star_XR-1000
+"Star XR-1020"                    = STAR9E.DRV,Star_XR-1020
+"Star XR-1500"                    = STAR9E.DRV,Star_XR-1500
+"Star XR-1520"                    = STAR9E.DRV,Star_XR-1520
+"Star ZA-200"                     = STAR9E.DRV,Star_ZA-200
+"Star ZA-250"                     = STAR9E.DRV,Star_ZA-250
+
+[Tandy]
+"Tandy LP-1000"                   = HPPCL.DRV,Tandy_LP-1000
+
+[Tegra]
+"Tegra Genesis"                   = HPPCL.DRV,Tegra_Genesis
+
+[Tektronix]
+"Tektronix Phaser 200e 17"        = TK200172.SPD,Tektronix_Phaser_200e_17
+"Tektronix Phaser 200i"           = TKP200I2.SPD,Tektronix_Phaser_200i
+"Tektronix Phaser 220e 17"        = TK220171.SPD,Tektronix_Phaser_220e_17
+"Tektronix Phaser 220i"           = TKP220I1.SPD,Tektronix_Phaser_220i
+"Tektronix Phaser 300i"           = TKP300I1.SPD,Tektronix_Phaser_300i
+"Tektronix Phaser 480"            = TKPH4801.SPD,Tektronix_Phaser_480
+"Tektronix Phaser II PX"          = PHIIPX.SPD,Tektronix_Phaser_II_PX
+"Tektronix Phaser II PXi"         = TKPHZR22.SPD,Tektronix_Phaser_II_PXi
+"Tektronix Phaser IISDX"          = TKP2SDX1.SPD,Tektronix_Phaser_IISDX
+"Tektronix Phaser III PXi"        = TKPHZR32.SPD,Tektronix_Phaser_III_PXi
+
+[TI]
+"TI 850/855"                      = TI850.DRV,TI_850/855
+"TI microLaser Pro 600"           = HPPCL5MS.DRV,TI_microLaser_Pro_600,TImicroLaser_Pro3DEE
+"TI microLaser Pro 600 2013 PS23" = TIMLP231.SPD,TI_microLaser_Pro_600_2013_PS23
+"TI microLaser Pro 600 2014 PS23" = TIMLP232.SPD,LPTENUM\TImicroLaser_Pro3DEE,TImicroLaser_Pro3DEE,TI_microLaser_Pro_600_2014_PS23
+"TI microLaser PS17"              = TIM17521.SPD,TI_microLaser_PS17
+"TI microLaser PS35"              = TIM35521.SPD,TI_microLaser_PS35
+
+[Toshiba]
+"Toshiba ExpressWriter 420"       = EXPRSS24.DRV,Toshiba_ExpressWriter_420
+"Toshiba ExpressWriter 440"       = EXPRSS24.DRV,Toshiba_ExpressWriter_440
+"Toshiba GX-400"                  = HPPCL5MS.DRV,Toshiba_GX-400
+"Toshiba P1351"                   = TOSHIBA.DRV,Toshiba_P1351
+"Toshiba P351"                    = TOSHIBA.DRV,Toshiba_P351
+"Toshiba P351SX"                  = P351SX2.DRV,Toshiba_P351SX
+"Toshiba PageLaser12"             = HPPCL.DRV,Toshiba_PageLaser12
+
+[Triumph]
+"Triumph Adler SDR 7706"          = HPPCL.DRV,Triumph_Adler_SDR_7706
+"Triumph Adler SDR 7706 PS13"     = TRIUMPH1.SPD,Triumph_Adler_SDR_7706_PS13
+"Triumph Adler SDR 7706 PS35"     = TRIUMPH2.SPD,Triumph_Adler_SDR_7706_PS35
+
+[Unisys]
+"Unisys AP9210"                   = HPPCL.DRV,Unisys_AP9210
+"Unisys AP9415"                   = U9415470.SPD,Unisys_AP9415
+
+[Varityper]
+"Varityper VT-600"                = VT600480.SPD,Varityper_VT-600
+
+[Wang]
+"Wang LDP8"                       = HPPCL.DRV,Wang_LDP8
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. The section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[CANON330.DRV]
+CopyFiles=@CANON330.DRV,UNI
+DataSection=UNI_DATA
+
+[CPPER241.SPD]
+CopyFiles=@CPPER241.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPRO518.SPD]
+CopyFiles=@CPPRO518.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPSNB10.SPD]
+CopyFiles=@CPPSNB10.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CPPSX241.SPD]
+CopyFiles=@CPPSX241.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[CP_PS241.SPD]
+CopyFiles=@CP_PS241.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[ESCP2MS.DRV]
+CopyFiles=@ESCP2MS.DRV,UNICLR
+DataSection=UNI_DATA
+
+[EXPRSS24.DRV]
+CopyFiles=@EXPRSS24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[HPDSKJET.DRV]
+CopyFiles=@HPDSKJET.DRV,UNICLR,FINSTALL
+DataSection=UNI_DATA
+
+[HPPCL.DRV]
+CopyFiles=@HPPCL.DRV,FINSTALL,UNI
+DataSection=UNI_DATA
+
+[HPPCLB.DRV]
+CopyFiles=@HPPCLB.DRV,FINSTALL,UNI
+DataSection=UNI_DATA
+
+[HPPCL5MS.DRV]
+CopyFiles=@HPPCL5MS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[JP350.DRV]
+CopyFiles=@JP350.DRV,UNICLR
+DataSection=UNI_DATA
+
+[KDCOLOR1.SPD]
+CopyFiles=@KDCOLOR1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[L100_425.SPD]
+CopyFiles=@L100_425.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[L200_471.SPD]
+CopyFiles=@L200_471.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[L300_471.SPD]
+CopyFiles=@L300_471.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[L300_493.SPD]
+CopyFiles=@L300_493.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH300__1.SPD]
+CopyFiles=@LH300__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH330__1.SPD]
+CopyFiles=@LH330__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[L500_493.SPD]
+CopyFiles=@L500_493.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH500__1.SPD]
+CopyFiles=@LH500__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH530__1.SPD]
+CopyFiles=@LH530__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[LH630__1.SPD]
+CopyFiles=@LH630__1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[MANTAL24.DRV]
+CopyFiles=@MANTAL24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[MANTAL9.DRV]
+CopyFiles=@MANTAL9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[MT_TI101.SPD]
+CopyFiles=@MT_TI101.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[MTLITE.DRV]
+CopyFiles=@MTLITE.DRV,UNI
+DataSection=UNI_DATA
+
+[N2090522.SPD]
+CopyFiles=@N2090522.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[N2290520.SPD]
+CopyFiles=@N2290520.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[N890_470.SPD]
+CopyFiles=@N890_470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[N890X505.SPD]
+CopyFiles=@N890X505.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NCCPS401.SPD]
+CopyFiles=@NCCPS401.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NCCPS801.SPD]
+CopyFiles=@NCCPS801.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NCOL_519.SPD]
+CopyFiles=@NCOL_519.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NCS29901.SPD]
+CopyFiles=@NCS29901.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NCSW_951.SPD]
+CopyFiles=@NCSW_951.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NC95FAX1.SPD]
+CopyFiles=@NC95FAX1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[NEC24PIN.DRV]
+CopyFiles=@NEC24PIN.DRV,UNICLR
+DataSection=UNI_DATA
+
+[O5241503.SPD]
+CopyFiles=@O5241503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[O5242503.SPD]
+CopyFiles=@O5242503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OK801PF1.SPD]
+CopyFiles=@OK801PF1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OK_410E1.SPD]
+CopyFiles=@OK_410E1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OKI24.DRV]
+CopyFiles=@OKI24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[OKI830US.SPD]
+CopyFiles=@OKI830US.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OKI840US.SPD]
+CopyFiles=@OKI840US.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OKI850US.SPD]
+CopyFiles=@OKI850US.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OKI9.DRV]
+CopyFiles=@OKI9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[OKI9IBM.DRV]
+CopyFiles=@OKI9IBM.DRV,UNICLR
+DataSection=UNI_DATA
+
+[OL830525.SPD]
+CopyFiles=@OL830525.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OL840518.SPD]
+CopyFiles=@OL840518.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OL850525.SPD]
+CopyFiles=@OL850525.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OKOL8701.SPD]
+CopyFiles=@OKOL8701.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OLIV5000.SPD]
+CopyFiles=@OLIV5000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OLIVETI1.SPD]
+CopyFiles=@OLIVETI1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OLIVETI2.SPD]
+CopyFiles=@OLIVETI2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[OLIDM24.DRV]
+CopyFiles=@OLIDM24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[OLIDM9.DRV]
+CopyFiles=@OLIDM9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[P4455514.SPD]
+CopyFiles=@P4455514.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[PAP54001.SPD]
+CopyFiles=@PAP54001.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[PAP54101.SPD]
+CopyFiles=@PAP54101.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[PANSON24.DRV]
+CopyFiles=@PANSON24.DRV,UNICLR
+DataSection=UNI_DATA
+
+[PANSON9.DRV]
+CopyFiles=@PANSON9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[PANPCL4.DRV.BIDI]
+CopyFiles=@PANPCL4.DRV,@PJLMON.DLL,UNI,FINSTALL
+DataSection=UNI_DATA
+DriverFile=PANPCL4.DRV
+DataFile=PANPCL4.DRV
+LanguageMonitor=%PJL_MONITOR%
+
+[PCL5EMS.DRV]
+CopyFiles=@PCL5EMS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PCL5MS.DRV]
+CopyFiles=@PCL5MS.DRV,UNI,FINSTALL
+DataSection=UNI_DATA
+
+[PHIIPX.SPD]
+CopyFiles=@PHIIPX.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[P351SX2.DRV]
+CopyFiles=@P351SX2.DRV,UNICLR
+DataSection=UNI_DATA
+
+[Q2200_MS.SPD]
+CopyFiles=@Q2200_MS.SPD,@Q2220523.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q2210_MS.SPD]
+CopyFiles=@Q2210_MS.SPD,@Q2220523.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q2220523.SPD]
+CopyFiles=@Q2220523.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QM_CS480.SPD]
+CopyFiles=@QM_CS480.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS2060B.SPD]
+CopyFiles=@QMS2060B.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSCS460.SPD]
+CopyFiles=@QMSCS460.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q800_MS.SPD]
+CopyFiles=@Q800_MS.SPD,@Q820T517.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q810_MS.SPD]
+CopyFiles=@Q810_MS.SPD,@Q820T517.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q810T_MS.SPD]
+CopyFiles=@Q810T_MS.SPD,@Q820T517.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q820_MS.SPD]
+CopyFiles=@Q820_MS.SPD,@Q820T517.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q820T517.SPD]
+CopyFiles=@Q820T517.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QCS10503.SPD]
+CopyFiles=@QCS10503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QCS20503.SPD]
+CopyFiles=@QCS20503.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QCS30503.SPD]
+CopyFiles=@QCS30503.SPD,COLOR_QMS_100_30,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QCS1000.SPD]
+CopyFiles=@QCS1000.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QM1700_1.SPD]
+CopyFiles=@QM1700_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QM2000_1.SPD]
+CopyFiles=@QM2000_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMPS4101.SPD]
+CopyFiles=@QMPS4101.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS1725.SPD]
+CopyFiles=@QMS1725.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS3225.SPD]
+CopyFiles=@QMS3225.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS45252.SPD]
+CopyFiles=@QMS45252.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS420.SPD]
+CopyFiles=@QMS420.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QM825MR1.SPD]
+CopyFiles=@QM825MR1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS860.SPD]
+CopyFiles=@QMS860.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[Q860PLS2.SPD]
+CopyFiles=@Q860PLS2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMS8P461.SPD]
+CopyFiles=@QMS8P461.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSCS210.SPD]
+CopyFiles=@QMSCS210.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QMSCS230.SPD]
+CopyFiles=@QMSCS230.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[QUIETJET.DRV]
+CopyFiles=@QUIETJET.DRV,UNI
+DataSection=UNI_DATA
+
+[QWIII.DRV]
+CopyFiles=@QWIII.DRV,UNICLR
+DataSection=UNI_DATA
+
+[SEIKO24E.DRV]
+CopyFiles=@SEIKO24E.DRV,UNICLR
+DataSection=UNI_DATA
+
+[SEIKOSH9.DRV]
+CopyFiles=@SEIKOSH9.DRV,UNICLR
+DataSection=UNI_DATA
+
+[SEIKO_14.SPD]
+CopyFiles=@SEIKO_14.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SK820RU2.SPD]
+CopyFiles=@SK820RU2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SK830RU2.SPD]
+CopyFiles=@SK830RU2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SK835RU2.SPD]
+CopyFiles=@SK835RU2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[SKPSFA_1.SPD]
+CopyFiles=@SKPSFA_1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[STAR24E.DRV]
+CopyFiles=@STAR24E.DRV,UNICLR
+DataSection=UNI_DATA
+
+[STAR9E.DRV]
+CopyFiles=@STAR9E.DRV,UNICLR
+DataSection=UNI_DATA
+
+[STLS04SS.SPD]
+CopyFiles=@STLS04SS.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[STLS5TTU.SPD]
+CopyFiles=@STLS5TTU.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[STLS08LP.SPD]
+CopyFiles=@STLS08LP.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TI850.DRV]
+CopyFiles=@TI850.DRV,UNI
+DataSection=UNI_DATA
+
+[TIM17521.SPD]
+CopyFiles=@TIM17521.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIM35521.SPD]
+CopyFiles=@TIM35521.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP231.SPD]
+CopyFiles=@TIMLP231.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TIMLP232.SPD]
+CopyFiles=@TIMLP232.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK200172.SPD]
+CopyFiles=@TK200172.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TK220171.SPD]
+CopyFiles=@TK220171.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP200I2.SPD]
+CopyFiles=@TKP200I2.SPD,COLOR_TEKTRONIX_200I,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP220I1.SPD]
+CopyFiles=@TKP220I1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP2SDX1.SPD]
+CopyFiles=@TKP2SDX1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKP300I1.SPD]
+CopyFiles=@TKP300I1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPH4801.SPD]
+CopyFiles=@TKPH4801.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPHZR22.SPD]
+CopyFiles=@TKPHZR22.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TKPHZR32.SPD]
+CopyFiles=@TKPHZR32.SPD,COLOR_TEKTRONIX_III_PXI,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TOSHIBA.DRV]
+CopyFiles=@TOSHIBA.DRV,UNI
+DataSection=UNI_DATA
+
+[TRIUMPH1.SPD]
+CopyFiles=@TRIUMPH1.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[TRIUMPH2.SPD]
+CopyFiles=@TRIUMPH2.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[U9415470.SPD]
+CopyFiles=@U9415470.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+[VT600480.SPD]
+CopyFiles=@VT600480.SPD,PSCRIPT
+DataSection=PSCRIPT_DATA
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation) or if it's a color
+; profile (since the DestinationDirs can only handle sections, and not
+; individual files).
+;
+
+[COLOR_QMS_100_30]
+QMS10030.ICM
+
+[COLOR_TEKTRONIX_200I]
+TPHA200I.ICM
+
+[COLOR_TEKTRONIX_III_PXI]
+TPHAIII.ICM
+
+[FINSTALL]
+FINSTALL.DLL
+FINSTALL.HLP
+
+[PSCRIPT]
+PSCRIPT.DRV
+PSCRIPT.HLP
+PSCRIPT.INI
+TESTPS.TXT
+APPLE380.SPD
+FONTS.MFM
+ICONLIB.DLL
+PSMON.DLL
+
+[UNI]
+UNIDRV.DLL
+UNIDRV.HLP
+ICONLIB.DLL
+
+[UNICLR]
+UNIDRV.DLL
+UNIDRV.HLP
+DMCOLOR.DLL
+ICONLIB.DLL
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+
+[PSCRIPT_DATA]
+DriverFile=PSCRIPT.DRV
+HelpFile=PSCRIPT.HLP
+LanguageMonitor=%PS_MONITOR%
+
+[UNI_DATA]
+HelpFile=UNIDRV.HLP
+DefaultDataType=EMF
+
+;
+; Color profiles go to the colors directory. All other files go to the
+; system directory
+;
+
+[DestinationDirs]
+DefaultDestDir=11
+COLOR_QMS_100_30=23
+COLOR_TEKTRONIX_200I=23
+COLOR_TEKTRONIX_III_PXI=23
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+PS_MONITOR="PostScript Language Monitor,PSMON.DLL"

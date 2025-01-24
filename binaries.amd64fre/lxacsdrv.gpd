@@ -1,0 +1,183 @@
+*GPDSpecVersion: "1.0"
+*GPDFileName: "LXACSDRV.GPD"
+*GPDFileVersion: "1.0"
+*Include: "StdNames.gpd"
+
+*ModelName: "Lexmark Z52 Color Jetprinter"
+*MasterUnits: PAIR(2400, 2400)
+*ResourceDLL: "unires.dll"
+*PrinterType: PAGE
+*MaxCopies: 1
+
+*Feature: RESDLL
+{
+    *Option: UniresDLL
+    { *Name: "unires.dll"}
+    *Option: OEMRes
+    {*Name: "lxacsres.dll"}
+}
+
+*PrintRate: 15
+*PrintRateUnit: PPM
+*PrintRatePPM: 15
+
+*Include: "lxacspsz.gpd"
+
+
+*switch: ColorMode
+{
+	*case: 24bpp
+	{
+		*BestQualitySettings: LIST(Resolution.Option1)
+		*BetterQualitySettings: LIST(Resolution.Option3)
+		*DraftQualitySettings: LIST(Resolution.Option4)
+		*DefaultQuality: BETTERQUALITY
+	}
+}
+
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+    }
+    *Option: LANDSCAPE_CC270
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+    }
+}
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: UPPER
+    *Option: UPPER
+    {
+        *rcNameID: =UPPER_TRAY_DISPLAY
+    }
+}
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: Option3
+    *Option: Option1
+    {
+        *rcNameID: RESDLL.OEMRes.304
+        *DPI: PAIR(2400, 1200)
+        *TextDPI: PAIR(2400, 1200)
+        *SpotDiameter: 100
+       *Command: CmdSendBlockData { *Cmd : "" }
+    }
+    *Option: Option2
+    {
+        *rcNameID: RESDLL.OEMRes.305
+        *DPI: PAIR(1200, 1200)
+        *TextDPI: PAIR(1200, 1200)
+        *SpotDiameter: 100
+       *Command: CmdSendBlockData { *Cmd : "" }
+    }
+    *Option: Option3
+    {
+        *rcNameID: RESDLL.OEMRes.306
+        *DPI: PAIR(600, 600)
+        *TextDPI: PAIR(600, 600)
+        *SpotDiameter: 100
+        *Command: CmdSendBlockData { *Cmd : "" }
+    }
+    *Option: Option4
+    {
+        *rcNameID: RESDLL.OEMRes.307
+        *DPI: PAIR(300, 300)
+        *TextDPI: PAIR(300, 300)
+        *SpotDiameter: 100
+       *Command: CmdSendBlockData { *Cmd : "" }
+    }
+}
+
+*Feature: MediaType
+{
+    *rcNameID: =MEDIA_TYPE_DISPLAY
+    *DefaultOption: STANDARD
+    *Option: STANDARD
+    {
+        *rcNameID: =PLAIN_PAPER_DISPLAY
+    }
+    *Option: TRANSPARENCY
+    {
+        *rcNameID: =TRANSPARENCY_DISPLAY
+    }
+    *Option: GLOSSY
+    {
+        *rcNameID: =GLOSSY_PAPER_DISPLAY
+    }
+    *Option: IRONON
+    {
+        *rcNameID: RESDLL.OEMRes.261
+        *OptionID: 258 			*% DMMEDIA_USER+2
+    }
+    *Option: COATED
+    {
+        *rcNameID: RESDLL.OEMRes.264
+        *OptionID: 261 			*% DMMEDIA_USER+5
+    }
+    *Option: GREETING
+    {
+        *rcNameID: RESDLL.OEMRes.265
+        *OptionID: 262 			*% DMMEDIA_USER+6
+    }
+}
+*Feature: ColorMode
+{
+    *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+    *HelpIndex: 12004
+    *DefaultOption: 24bpp
+    *Option: 24bpp
+    {
+        *rcNameID: =24BPP_DISPLAY
+        *DevNumOfPlanes: 1
+        *DevBPP: 24
+        *DrvBPP: 24
+        *PaletteSize: 256
+    }
+
+}
+
+*TextCaps: LIST(TC_CR_90,TC_UA_ABLE)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 300
+*YMoveUnit: 300
+
+*Command: CmdCR { *Cmd : "" }
+*Command: CmdLF { *Cmd : "" }
+*Command: CmdFF { *Cmd : "" }
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+
+
+*Feature: OEMColorIntent
+{
+    *rcNameID: RESDLL.OEMRes.300		*% Color Intent
+    *DefaultOption: Natural
+    *Option: Natural
+    {
+        *rcNameID: RESDLL.OEMRes.301	*% Natural
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.3
+	*CallbackID: 70
+        }
+    }
+    *Option: Vivid
+    {
+        *rcNameID: RESDLL.OEMRes.302	*% Vivid
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.3
+	*CallbackID: 71
+        }
+    }
+}

@@ -1,0 +1,20 @@
+*%% 
+*%% HP OfficeJet G55xi
+*%%
+*%% Copyright 1999, Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpfdj95x.gpd"
+
+*%%
+*%% Global Entries
+*%%
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+
+*ModelName: "HP OfficeJet G55xi"
+*GPDFileName: "HPOJG55I.GPD"
+
+*PrintRate: 12
+*PrintRateUnit: PPM

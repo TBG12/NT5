@@ -1,0 +1,8 @@
+
+
+[Version]
+signature="$WINDOWS NT$"
+SPVersion=SP1
+
+
+[BlockedFilesList]

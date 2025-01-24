@@ -1,0 +1,491 @@
+; Copyright (c) 2003, Microsoft
+
+[Version]
+Signature	= "$windows nt$"
+Class		= Net
+ClassGUID	= {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider	= %msft%
+LayoutFile  	= layout.inf
+DriverVer=10/01/2002,5.2.3790.1069
+
+[Manufacturer]
+%SysKonnect%	= SysKonnect
+
+%Allied%  = Allied
+
+[ControlFlags]
+
+ExcludeFromSelect	= *
+
+[SysKonnect]
+%SK-9872.DeviceDesc%     = GEDualLink.ndi,           PCI\VEN_1148&DEV_4300&SUBSYS_98721148
+%SK-9871-V2.DeviceDesc%  = GESingleLink.ndi,         PCI\VEN_1148&DEV_4320&SUBSYS_50711148
+%SK-9871.DeviceDesc%     = GESingleLink.ndi,         PCI\VEN_1148&DEV_4300&SUBSYS_98711148
+%SK-9862.DeviceDesc%     = GEDualLink.ndi,           PCI\VEN_1148&DEV_4300&SUBSYS_98621148
+%SK-9861-V2.DeviceDesc%  = GESingleLink.ndi,         PCI\VEN_1148&DEV_4320&SUBSYS_50611148
+%SK-9861.DeviceDesc%     = GESingleLink.ndi,         PCI\VEN_1148&DEV_4300&SUBSYS_98611148
+%SK-9851-V2.DeviceDesc%  = GESingleLink.ndi,         PCI\VEN_1148&DEV_4320&SUBSYS_50511148
+%SK-9844.DeviceDesc%     = GEDualLink.ndi,           PCI\VEN_1148&DEV_4300&SUBSYS_98441148
+%SK-9843-V2.DeviceDesc%  = GESingleLink.ndi,         PCI\VEN_1148&DEV_4320&SUBSYS_50431148
+%SK-9843.DeviceDesc%     = GESingleLink.ndi,         PCI\VEN_1148&DEV_4300&SUBSYS_98431148
+%SK-9842.DeviceDesc%     = GEDualLink.ndi,           PCI\VEN_1148&DEV_4300&SUBSYS_98421148
+%SK-9841-V2.DeviceDesc%  = GESingleLink.ndi,         PCI\VEN_1148&DEV_4320&SUBSYS_50411148
+%SK-9841.DeviceDesc%     = GESingleLink.ndi,         PCI\VEN_1148&DEV_4300&SUBSYS_98411148
+%SK-9822.DeviceDesc%     = GEDualLinkCopper.ndi,     PCI\VEN_1148&DEV_4300&SUBSYS_98221148
+%SK-9821-V2.DeviceDesc%  = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_50211148
+%SK-9821.DeviceDesc%     = GESingleLinkCopper.ndi,   PCI\VEN_1148&DEV_4300&SUBSYS_98211148
+%SK-9521.DeviceDesc%     = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_95211148
+%SK-9521-V2.DeviceDesc%  = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_32211148
+%RDK-8012.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_12211148
+%RDK-8011.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_11211148
+%RDK-8009.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_09211148
+%RDK-8008.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_08211148
+%RDK-8007.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_07211148
+%RDK-8006.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_06211148
+%RDK-8004.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_04211148
+%RDK-8003.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_03211148
+%RDK-8002.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_02211148
+%RDK-8001.DeviceDesc%    = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_01211148
+
+
+[Allied]
+%AT2971T.DeviceDesc%     = GESingleLinkV2Copper.ndi, PCI\VEN_1148&DEV_4320&SUBSYS_29741259
+%AT2971SX.DeviceDesc%    = GESingleLink.ndi,         PCI\VEN_1148&DEV_4320&SUBSYS_29731259
+%AT2970TX2.DeviceDesc%   = GEDualLinkCopper.ndi,     PCI\VEN_1148&DEV_4300&SUBSYS_29771259
+%AT2970TX.DeviceDesc%    = GESingleLinkCopper.ndi,   PCI\VEN_1148&DEV_4300&SUBSYS_29721259
+%AT2970SX2.DeviceDesc%   = GEDualLink.ndi,           PCI\VEN_1148&DEV_4300&SUBSYS_29751259
+%AT2970SX.DeviceDesc%    = GESingleLink.ndi,         PCI\VEN_1148&DEV_4300&SUBSYS_29701259
+%AT2970LX2.DeviceDesc%   = GEDualLink.ndi,           PCI\VEN_1148&DEV_4300&SUBSYS_29761259
+%AT2970LX.DeviceDesc%    = GESingleLink.ndi,         PCI\VEN_1148&DEV_4300&SUBSYS_29711259
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <single link>
+
+[GESingleLink.ndi]
+AddReg		= sk98a64.reg, sk98a64.params
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98a64.CopyFiles
+CopyFiles	= wmi
+
+[GESingleLink.ndi.Services]
+AddService	= sk98a64, 2, sk98a64.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <single link>
+
+[GESingleLinkCopper.ndi]
+AddReg		= sk98a64.reg, sk98a64.params, sk98a64.Copper.params
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98a64.CopyFiles
+CopyFiles	= wmi
+
+[GESingleLinkCopper.ndi.Services]
+AddService	= sk98a64, 2, sk98a64.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <single link Version 2.0 Copper>
+
+[GESingleLinkV2Copper.ndi]
+AddReg		= sk98a64.reg, sk98a64.params, sk98a64.Copper.params, sk98a64.V2.Copper.params 
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98a64.CopyFiles
+CopyFiles	=  wmi
+
+[GESingleLinkV2Copper.ndi.Services]
+AddService	= sk98a64, 2, sk98a64.Service, common.EventLog
+
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <dual link>
+
+[GEDualLink.ndi]
+AddReg		= sk98a64.reg, sk98a64.params, sk98a64.DualLink.params
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98a64.CopyFiles
+CopyFiles	=  wmi
+
+
+[GEDualLink.ndi.Services]
+AddService	= sk98a64, 2, sk98a64.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Gigabit Ethernet Adapters <dual link> Copper Adapters
+
+[GEDualLinkCopper.ndi]
+AddReg		= sk98a64.reg, sk98a64.params, sk98a64.DualLink.params, sk98a64.DualLink.Copper.params
+Characteristics	= 0x84
+BusType		= 5
+CopyFiles	= sk98a64.CopyFiles
+CopyFiles	=  wmi
+
+
+[GEDualLinkCopper.ndi.Services]
+AddService	= sk98a64, 2, sk98a64.Service, common.EventLog
+
+
+
+;-------------------------------------------------------------------------------
+; General Driver Parameters
+;
+[sk98a64.params]
+
+HKR, Ndi\Params\NetworkAddress,	ParamDesc,,	%NetAddress%
+HKR, Ndi\Params\NetworkAddress,	Type,,		"edit"
+HKR, Ndi\Params\NetworkAddress,	LimitText,,	"18"
+HKR, Ndi\Params\NetworkAddress,	UpperCase,,	"1"
+HKR, Ndi\Params\NetworkAddress,	Default,,	""
+HKR, Ndi\Params\NetworkAddress,	Optional,,	"1"
+
+HKR, Ndi\Params\MaxFrameSize,	ParamDesc,,	%MaxFrSize%
+HKR, Ndi\Params\MaxFrameSize,	Type,,		"int"
+HKR, Ndi\Params\MaxFrameSize,	Base,,		"10"
+HKR, Ndi\Params\MaxFrameSize,	Min,,		"12"
+HKR, Ndi\Params\MaxFrameSize,	Max,,		"9014"
+HKR, Ndi\Params\MaxFrameSize,	Step,,		"1"
+HKR, Ndi\Params\MaxFrameSize,	Default,,	"1514"
+
+HKR, Ndi\Params\HwChecksum,	ParamDesc,,	%HwCsum%
+HKR, Ndi\Params\HwChecksum,	Type,,		"enum"
+HKR, Ndi\Params\HwChecksum\enum,1,,		%On%
+HKR, Ndi\Params\HwChecksum\enum,0,,		%Off%
+HKR, Ndi\Params\HwChecksum,	Default,,	"1"
+
+HKR, Ndi\Params\Moderate,	ParamDesc,,	%IntMod%
+HKR, Ndi\Params\Moderate,	Type,,		"enum"
+HKR, Ndi\Params\Moderate\enum,1,,		%On%
+HKR, Ndi\Params\Moderate\enum,0,,		%Off%
+HKR, Ndi\Params\Moderate,	Default,,	"1"
+
+HKR, Ndi\Params\FixedIntMod,	ParamDesc,,	%MaxIrq%
+HKR, Ndi\Params\FixedIntMod,	Type,,		"int"
+HKR, Ndi\Params\FixedIntMod,	Base,,		"10"
+HKR, Ndi\Params\FixedIntMod,	Min,,		"1000"
+HKR, Ndi\Params\FixedIntMod,	Max,,		"30000"
+HKR, Ndi\Params\FixedIntMod,	Step,,		"1"
+HKR, Ndi\Params\FixedIntMod,	Default,,	"5000"
+
+HKR, Ndi\Params\MessageLog,	ParamDesc,,	%LogMsg%
+HKR, Ndi\Params\MessageLog,	Type,,		"enum"
+HKR, Ndi\Params\MessageLog\enum,4,,		%Non%
+HKR, Ndi\Params\MessageLog\enum,3,,		%Err%
+HKR, Ndi\Params\MessageLog\enum,2,,		%Wrn%
+HKR, Ndi\Params\MessageLog\enum,1,,		%Sta%
+HKR, Ndi\Params\MessageLog\enum,0,,		%All%
+HKR, Ndi\Params\MessageLog,	Default,,	"1"
+
+HKR, Ndi\Params\MaxReceives,	ParamDesc,,	%NumRcv%
+HKR, Ndi\Params\MaxReceives,	Type,,		"int"
+HKR, Ndi\Params\MaxReceives,	Base,,		"10"
+HKR, Ndi\Params\MaxReceives,	Min,,		"3"
+HKR, Ndi\Params\MaxReceives,	Max,,		"500"
+HKR, Ndi\Params\MaxReceives,	Step,,		"1"
+HKR, Ndi\Params\MaxReceives,	Default,,	"50"
+
+HKR, Ndi\Params\MaxTransmits,	ParamDesc,,	%NumTx%
+HKR, Ndi\Params\MaxTransmits,	Type,,		"int"
+HKR, Ndi\Params\MaxTransmits,	Base,,		"10"
+HKR, Ndi\Params\MaxTransmits,	Min,,		"4"
+HKR, Ndi\Params\MaxTransmits,	Max,,		"200"
+HKR, Ndi\Params\MaxTransmits,	Step,,		"1"
+HKR, Ndi\Params\MaxTransmits,	Default,,	"50"
+
+HKR, Ndi\Params\AutoNegotiation_A,	ParamDesc,,	%AutonegA%
+HKR, Ndi\Params\AutoNegotiation_A,	Type,,		"enum"
+HKR, Ndi\Params\AutoNegotiation_A\enum,2,,		%Sense%
+HKR, Ndi\Params\AutoNegotiation_A\enum,1,,		%On%
+HKR, Ndi\Params\AutoNegotiation_A\enum,0,,		%Off%
+HKR, Ndi\Params\AutoNegotiation_A,	Default,,	"1"
+
+HKR, Ndi\Params\DuplexCapabilities_A,	ParamDesc,,	%DupCapA%
+HKR, Ndi\Params\DuplexCapabilities_A,	Type,,		"enum"
+HKR, Ndi\Params\DuplexCapabilities_A\enum,3,,		%both%
+HKR, Ndi\Params\DuplexCapabilities_A\enum,2,,		%full%
+HKR, Ndi\Params\DuplexCapabilities_A\enum,1,,		%half%
+HKR, Ndi\Params\DuplexCapabilities_A,	Default,,	"3"
+
+HKR, Ndi\Params\FlowControl_A,	ParamDesc,,	%FlowCtrlA%
+HKR, Ndi\Params\FlowControl_A,	Type,,		"enum"
+HKR, Ndi\Params\FlowControl_A\enum,3,,		%bothFC%
+HKR, Ndi\Params\FlowControl_A\enum,2,,		%sym%
+HKR, Ndi\Params\FlowControl_A\enum,1,,		%asym%
+HKR, Ndi\Params\FlowControl_A\enum,0,,		%noFc%
+HKR, Ndi\Params\FlowControl_A,	Default,,	"3"
+
+
+HKR, Ndi\Params\TagHeaderSupport_A,	ParamDesc,,	%QoSSupA%
+HKR, Ndi\Params\TagHeaderSupport_A,	Type,,		"enum"
+HKR, Ndi\Params\TagHeaderSupport_A\enum,1,,		%On%
+HKR, Ndi\Params\TagHeaderSupport_A\enum,0,,		%Off%
+HKR, Ndi\Params\TagHeaderSupport_A,	Default,,	"0"
+
+HKR,, MaxMulticast,,         "128"
+HKR,, WaitForRxResources,,   "1"
+HKR,, SGMapRegistersNeeded,, "64"
+
+
+;-------------------------------------------------------------------------------
+; Additional Driver Parameters for Single Link Copper Adapters
+;
+ [sk98a64.Copper.params]
+;
+; Configurable Parameters
+;
+HKR, Ndi\Params\Role_A,	ParamDesc,,	%RoleA%
+HKR, Ndi\Params\Role_A,	Type,,		"enum"
+HKR, Ndi\Params\Role_A\enum,3,,		%Slave%
+HKR, Ndi\Params\Role_A\enum,2,,		%Master%
+HKR, Ndi\Params\Role_A\enum,0,,		%Auto%
+HKR, Ndi\Params\Role_A,	Default,,	"0"
+
+
+;-------------------------------------------------------------------------------
+; Additional Driver Parameters for Version 2.0 Copper Adapters
+;
+[sk98a64.V2.Copper.params]
+;
+; Configurable Parameters
+;
+
+HKR, Ndi\Params\WakeUpModeCap_A,       ParamDesc,,	%WakeUpCaps%
+HKR, Ndi\Params\WakeUpModeCap_A,       type,,		"enum"
+HKR, Ndi\Params\WakeUpModeCap_A\enum,  0,,		"None"
+HKR, Ndi\Params\WakeUpModeCap_A\enum,  15,,		"OS Controlled"
+HKR, Ndi\Params\WakeUpModeCap_A\enum,  25,,		"Magic Packet"
+HKR, Ndi\Params\WakeUpModeCap_A\enum,  26,,		"Pattern Match"
+HKR, Ndi\Params\WakeUpModeCap_A\enum,  27,,		"Magic Packet and Pattern Match"
+HKR, Ndi\Params\WakeUpModeCap_A\enum,  28,,		"Link Change"
+HKR, Ndi\Params\WakeUpModeCap_A, Default,,		"15"
+
+HKR, Ndi\Params\Speed_A,       ParamDesc,,	%Speed%
+HKR, Ndi\Params\Speed_A,       type,,		"enum"
+HKR, Ndi\Params\Speed_A\enum,  1,,		"Auto"
+HKR, Ndi\Params\Speed_A\enum,  2,,		"10"
+HKR, Ndi\Params\Speed_A\enum,  3,,		"100"
+HKR, Ndi\Params\Speed_A\enum,  4,,		"1000"
+HKR, Ndi\Params\Speed_A,	Default,,	"1"
+
+HKR,, WaitForRxResources,,   "0"
+
+;-------------------------------------------------------------------------------
+; Additional Driver Parameters for Dual Link Adapters
+;
+ [sk98a64.DualLink.params]
+;
+; Configurable Parameters
+;
+
+HKR, Ndi\Params\RlmtChgBCPrio,		ParamDesc,,	%RlmtPrio%
+HKR, Ndi\Params\RlmtChgBCPrio,		Type,,		"enum"
+HKR, Ndi\Params\RlmtChgBCPrio\enum,	1,,		%On%
+HKR, Ndi\Params\RlmtChgBCPrio\enum,	0,,		%Off%
+HKR, Ndi\Params\RlmtChgBCPrio,		Default,,	"0"
+
+HKR, Ndi\Params\RlmtMode,		ParamDesc,,	%RLMT%
+HKR, Ndi\Params\RlmtMode,		Type,,		"enum"
+HKR, Ndi\Params\RlmtMode\enum,		1,,		%Link%
+HKR, Ndi\Params\RlmtMode\enum,		3,,		%OtherPort%
+HKR, Ndi\Params\RlmtMode\enum,		7,,		%Segment%
+HKR, Ndi\Params\RlmtMode,		Default,,	"1"
+
+HKR, Ndi\Params\PreferredPort,		ParamDesc,,	%Preferred%
+HKR, Ndi\Params\PreferredPort,		Type,,		"enum"
+HKR, Ndi\Params\PreferredPort\enum,	1,,		%A%
+HKR, Ndi\Params\PreferredPort\enum,	2,,		%B%
+HKR, Ndi\Params\PreferredPort,		Default,,	"1"
+
+HKR, Ndi\Params\AutoNegotiation_B,	ParamDesc,,	%AutonegB%
+HKR, Ndi\Params\AutoNegotiation_B,	Type,,		"enum"
+HKR, Ndi\Params\AutoNegotiation_B\enum,	2,,		%Sense%
+HKR, Ndi\Params\AutoNegotiation_B\enum,	1,,		%On%
+HKR, Ndi\Params\AutoNegotiation_B\enum,	0,,		%Off%
+HKR, Ndi\Params\AutoNegotiation_B,	Default,,	"1"
+
+HKR, Ndi\Params\DuplexCapabilities_B,	ParamDesc,,	%DupCapB%
+HKR, Ndi\Params\DuplexCapabilities_B,	Type,,		"enum"
+HKR, Ndi\Params\DuplexCapabilities_B\enum,3,,		%both%
+HKR, Ndi\Params\DuplexCapabilities_B\enum,2,,		%full%
+HKR, Ndi\Params\DuplexCapabilities_B\enum,1,,		%half%
+HKR, Ndi\Params\DuplexCapabilities_B,	Default,,	"3"
+
+HKR, Ndi\Params\FlowControl_B,	ParamDesc,,	%FlowCtrlB%
+HKR, Ndi\Params\FlowControl_B,	Type,,		"enum"
+HKR, Ndi\Params\FlowControl_B\enum,3,,		%bothFC%
+HKR, Ndi\Params\FlowControl_B\enum,2,,		%sym%
+HKR, Ndi\Params\FlowControl_B\enum,1,,		%asym%
+HKR, Ndi\Params\FlowControl_B\enum,0,,		%noFc%
+HKR, Ndi\Params\FlowControl_B,	Default,,	"3"
+
+HKR, Ndi\Params\TagHeaderSupport_B,	ParamDesc,,	%QoSSupB%
+HKR, Ndi\Params\TagHeaderSupport_B,	Type,,		"enum"
+HKR, Ndi\Params\TagHeaderSupport_B\enum,1,,		%On%
+HKR, Ndi\Params\TagHeaderSupport_B\enum,0,,		%Off%
+HKR, Ndi\Params\TagHeaderSupport_B,	Default,,	"0"
+
+
+
+;-------------------------------------------------------------------------------
+; Additional Driver Parameters for Dual Link Adapters
+;
+ [sk98a64.DualLink.Copper.params]
+;
+; Configurable Parameters
+;
+
+HKR, Ndi\Params\Role_B,	ParamDesc,,	%RoleB%
+HKR, Ndi\Params\Role_B,	Type,,		"enum"
+HKR, Ndi\Params\Role_B\enum,3,,		%Slave%
+HKR, Ndi\Params\Role_B\enum,2,,		%Master%
+HKR, Ndi\Params\Role_B\enum,0,,		%Auto%
+HKR, Ndi\Params\Role_B,	Default,,	"0"
+
+
+;-------------------------------------------------------------------------------
+; General Registry Entries
+;
+[sk98a64.reg]
+HKR, Ndi, HelpText,, %HelpText%
+HKR, Ndi\Interfaces, UpperRange,, "ndis5"
+HKR, Ndi\Interfaces, LowerRange,, "ethernet"
+HKR, Ndi, Service,, "sk98a64"
+
+[sk98a64.Service]
+DisplayName	= %sk98a64.DriverDesc%
+ServiceType	= 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary  = %12%\sk98a64.sys
+LoadOrderGroup = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,, EventMessageFile,	0x00020000, "%%SystemRoot%%\System32\Drivers\sk98a64.sys"
+HKR,, TypesSupported,	0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; Source Files
+
+[SourceDisksFiles]
+sk98a64.sys	= 1,,
+gewmi.mof    = 1,,
+
+[sk98a64.CopyFiles]
+sk98a64.sys,,,2
+
+
+;-------------------------------------------------------------------------------
+; Destination Directories
+;
+[DestinationDirs]
+
+DefaultDestDir = 12
+sk98a64.CopyFiles	= 12
+
+wmi = 11,wbem\mof
+
+[wmi]
+ gewmi.mof
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+SysKonnect              = "SysKonnect"
+Allied                  = "Allied Telesyn"
+msft			= "Microsoft"
+NetAddress              = "Network Address"
+MaxFrSize               = "Maximum Frame Size"
+HwCsum                  = "Hardware Checksumming"
+WakeUpCaps              = "Wake Up Capabilities"
+Speed	                = "LinkSpeed"
+IntMod                  = "Interrupt Moderation"
+MaxIrq                  = "Max IRQ per Sec"
+LogMsg                  = "Log Status Messages"
+NumRcv                  = "Number of Receive Buffers"
+NumTx                   = "Number of Transmit Buffers"
+RlmtPrio		= "Change RLMT Broadcast Priority"
+RLMT                    = "RLMT Mode"
+Link                    = "CLS"             
+OtherPort               = "CLP"                  
+Segment                 = "CLPSS" 
+Preferred               = "Preferred Port"
+Sense			= "Auto-Sense"
+On                      = "On"
+Off                     = "Off"
+Non                     = "None"
+Err                     = "Errors"
+Wrn                     = "Warnings"
+Sta                     = "Status Messages"
+All                     = "All Messages"
+A                       = "A"
+B                       = "B"
+QoSSupA                 = "802.1p Support Port A"
+QoSSupB                 = "802.1p Support Port B"
+AutonegA		= "Autonegotiation Port A"
+AutonegB		= "Autonegotiation Port B"
+DupCapA			= "DuplexCapabilities Port A"
+DupCapB			= "DuplexCapabilities Port B"
+RoleA			= "Role on Port A"
+RoleB			= "Role on Port B"
+Slave			= "Slave"
+Master			= "Master"
+Auto			= "Auto"
+both			= "Half and Full Duplex"
+full			= "Full Duplex"
+half			= "Half Duplex"
+FlowCtrlA		= "FlowControl Port A"
+FlowCtrlB		= "FlowControl Port B"
+bothFC			= "Asymmetrical and Symmetrical Flow Control"
+sym			= "Symmetrical Flow Control"
+asym			= "Asymmetrical Flow Control"
+noFc			= "No Flow Control"
+
+SK-9872.DeviceDesc      = "SysKonnect SK-9872 Gigabit Ethernet Server Adapter (SK-NET GE-ZX dual link)"
+SK-9871-V2.DeviceDesc   = "SysKonnect SK-9871 V2.0 Gigabit Ethernet 1000Base-ZX Adapter, PCI64, Fiber ZX/SC"
+SK-9871.DeviceDesc      = "SysKonnect SK-9871 Gigabit Ethernet Server Adapter (SK-NET GE-ZX)"
+SK-9862.DeviceDesc      = "SysKonnect SK-9862 Gigabit Ethernet Server Adapter (SK-NET GE-SX Volition dual link)"
+SK-9861-V2.DeviceDesc   = "SysKonnect SK-9861 V2.0 Gigabit Ethernet 1000Base-SX Adapter, PCI64, Fiber SX/VF-45"
+SK-9861.DeviceDesc      = "SysKonnect SK-9861 Gigabit Ethernet Server Adapter (SK-NET GE-SX Volition)"
+SK-9851-V2.DeviceDesc   = "SysKonnect SK-9851 V2.0 Gigabit Ethernet 1000Base-SX Adapter, PCI64, Fiber SX/MTRJ"
+SK-9844.DeviceDesc      = "SysKonnect SK-9844 Gigabit Ethernet Server Adapter (SK-NET GE-SX dual link)"
+SK-9843-V2.DeviceDesc   = "SysKonnect SK-9843 V2.0 Gigabit Ethernet 1000Base-SX Adapter, PCI64, Fiber SX/SC"
+SK-9843.DeviceDesc      = "SysKonnect SK-9843 Gigabit Ethernet Server Adapter (SK-NET GE-SX)"
+SK-9842.DeviceDesc      = "SysKonnect SK-9842 Gigabit Ethernet Server Adapter (SK-NET GE-LX dual link)"
+SK-9841-V2.DeviceDesc   = "SysKonnect SK-9841 V2.0 Gigabit Ethernet 1000Base-LX Adapter, PCI64, Fiber LX/SC"
+SK-9841.DeviceDesc      = "SysKonnect SK-9841 Gigabit Ethernet Server Adapter (SK-NET GE-LX)"
+SK-9822.DeviceDesc      = "SysKonnect SK-9822 Gigabit Ethernet Server Adapter (SK-NET GE-T dual link)"
+SK-9821-V2.DeviceDesc   = "SysKonnect SK-9821 V2.0 Gigabit Ethernet 10/100/1000Base-T Adapter, PCI64, Copper RJ-45"
+SK-9821.DeviceDesc      = "SysKonnect SK-9821 Gigabit Ethernet Server Adapter (SK-NET GE-T)"
+SK-9521.DeviceDesc      = "SysKonnect SK-9521 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+SK-9521-V2.DeviceDesc   = "SysKonnect SK-9521 V2.0 10/100/1000Base-T Adapter, PCI 32bit, Copper RJ-45"
+RDK-8012.DeviceDesc     = "SysKonnect Marvell RDK-8012 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8011.DeviceDesc     = "SysKonnect Marvell RDK-8011 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8009.DeviceDesc     = "SysKonnect Marvell RDK-8009 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8008.DeviceDesc     = "SysKonnect Marvell RDK-8008 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8007.DeviceDesc     = "SysKonnect Marvell RDK-8007 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8006.DeviceDesc     = "SysKonnect Marvell RDK-8006 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8004.DeviceDesc     = "SysKonnect Marvell RDK-8004 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8003.DeviceDesc     = "SysKonnect Marvell RDK-8003 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8002.DeviceDesc     = "SysKonnect Marvell RDK-8002 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+RDK-8001.DeviceDesc     = "SysKonnect Marvell RDK-8001 10/100/1000Base-T Adapter, PCI, Copper RJ-45"
+
+
+AT2971T.DeviceDesc      = "Allied Telesyn AT-2971T Gigabit Ethernet Adapter"
+AT2971SX.DeviceDesc     = "Allied Telesyn AT-2971SX Gigabit Ethernet Adapter"
+AT2970TX2.DeviceDesc    = "Allied Telesyn AT-2970TX/2TX Gigabit Ethernet Adapter"
+AT2970TX.DeviceDesc     = "Allied Telesyn AT-2970TX Gigabit Ethernet Adapter"
+AT2970SX2.DeviceDesc    = "Allied Telesyn AT-2970SX/2SC Gigabit Ethernet Adapter"
+AT2970SX.DeviceDesc     = "Allied Telesyn AT-2970SX Gigabit Ethernet Adapter"
+AT2970LX2.DeviceDesc    = "Allied Telesyn AT-2970LX/2SC Gigabit Ethernet Adapter"
+AT2970LX.DeviceDesc     = "Allied Telesyn AT-2970LX Gigabit Ethernet Adapter"
+
+sk98a64.DriverDesc	= "NDIS5.1 Miniport Driver for SysKonnect SK-98xx and SK-95xx Adapter Families"
+
+
+HelpText		= "This SysKonnect network adapter connects you to the network."
+
+

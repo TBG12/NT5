@@ -1,0 +1,1691 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems PostScript(R) Printer Description File
+*% Copyright 1993-94 Electronics for Imaging, Inc. 
+*% All Rights Reserved. 
+*% Permission is granted for redistribution of this file as
+*% long as this copyright notice is intact and the contents
+*% of the file is not altered in any way from its original form.
+*% End of Copyright statement
+*% Created for Logan P330 Printer
+*% HPFileVersion: 2.0
+
+*FormatVersion: "4.3"
+*FileVersion: "1.004"
+*PCFileName: "HP_CLJ85.PPD"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*Product: "(HP Color LaserJet 8500)"
+*PSVersion: "(3010.104) 1"
+*ModelName: "HP Color LaserJet 8500 PS"
+*ShortNickName: "HP Color LaserJet 8500 PS"
+*NickName: "HP Color LaserJet 8500 PS"
+*Manufacturer: "HP"
+
+*% ===================================
+*% Emulations and Protocols
+*% ===================================
+*Protocols:             PJL TBCP
+*JCLBegin:              ""
+*JCLToPSInterpreter:    "@PJL ENTER LANGUAGE = POSTSCRIPT <0A>"
+*JCLEnd:                "<1B>%-12345X@PJL EOJ<0A><1B>%-12345X"
+
+*% Protocols: BCP TBCP
+
+*% ===================================
+*% Installable Options
+*% ===================================
+
+*OpenGroup: InstallableOptions/Options Installed
+*OpenUI *HPOption_HCI2000/2000 sheet input Tray 4: Boolean
+*DefaultHPOption_HCI2000: False
+*HPOption_HCI2000 True/Installed:   ""
+*HPOption_HCI2000 False/Not Installed:   ""
+*?HPOption_HCI2000: "
+  save
+    userdict /FieryXJdict known {
+    FieryXJdict /getfierysysdict known 
+        {(%%OPT_HCI2000) FieryXJdict /getfierysysdict get exec }
+        { (False) } 
+        ifelse
+    } { (False) } ifelse
+        = flush 
+  restore
+"
+*End
+*CloseUI: *HPOption_HCI2000
+
+
+
+*OpenUI *HPOption_Duplexer/Duplex Unit (for 2-Sided Printing): Boolean
+*DefaultHPOption_Duplexer: False
+*HPOption_Duplexer True/Installed: ""
+*HPOption_Duplexer False/Not Installed: ""
+*?HPOption_Duplexer: "
+  save  
+    userdict /FieryXJdict known {
+    FieryXJdict /getfierysysdict known 
+        {(%%OPT_DUPLEXER) FieryXJdict /getfierysysdict get exec }
+        { (False) } 
+        ifelse 
+        } { (False) } ifelse 
+        = flush
+  restore
+"
+*End
+*CloseUI: *HPOption_Duplexer
+
+*OpenUI *HPOption_MBM/Multi-Bin Mailbox: Boolean
+*DefaultHPOption_MBM: False
+*HPOption_MBM True/Installed:                ""
+*HPOption_MBM False/Not Installed:   ""
+*?HPOption_MBM: "
+  save
+    userdict /FieryXJdict known {
+    FieryXJdict /getfierysysdict known 
+        {(%%OPT_MBM) FieryXJdict /getfierysysdict get exec }
+        { (False) } 
+        ifelse
+    } { (False) } ifelse
+        = flush 
+  restore
+"
+*End
+*CloseUI: *HPOption_MBM
+
+*OpenUI *InstalledMemory/Printer Memory: PickOne
+*DefaultInstalledMemory: 32MB
+*InstalledMemory 32MB/32: ""
+*InstalledMemory 40MB/40: ""
+*InstalledMemory 48MB/48: ""
+*InstalledMemory 56MB/56: ""
+*InstalledMemory 64MB/64: ""
+*InstalledMemory 72MB/72: ""
+*InstalledMemory 80MB/80: ""
+*InstalledMemory 88MB/88: ""
+*InstalledMemory 96MB/96: ""
+*InstalledMemory 104MB/104: ""
+*InstalledMemory 112MB/112: ""
+*InstalledMemory 120MB/120: ""
+*InstalledMemory 128MB/128: ""
+*InstalledMemory 136MB/136: ""
+*InstalledMemory 144MB/144: ""
+*InstalledMemory 152MB/152: ""
+*InstalledMemory 160MB/160: ""
+*InstalledMemory 168MB/168: ""
+*InstalledMemory 176MB/176: ""
+*InstalledMemory 184MB/184: ""
+*InstalledMemory 192MB/192: ""
+*InstalledMemory 200MB/200: ""
+*InstalledMemory 208MB/208: ""
+*InstalledMemory 224MB/224: ""
+*InstalledMemory 256MB/256: ""
+*?InstalledMemory: "
+  save
+    userdict /FieryXJdict known { FieryXJdict /getfierysysdict known 
+        {(%%OPT_MEM) FieryXJdict /getfierysysdict get exec }
+        { (32MB) } 
+        ifelse 
+    } { (32MB) } ifelse
+        = flush 
+  restore
+"
+*End
+*CloseUI: *InstalledMemory
+
+*% ================================================
+*% MultiBin Mailbox mode selection 
+*% Just for driver UI
+*% ================================================
+
+*OpenUI *HPOutputBinMode/Multi-Bin Mailbox Mode: PickOne
+*OrderDependency: 50 AnySetup *HPOutputBinMode
+*DefaultHPOutputBinMode: MailboxModeMailbox
+*HPOutputBinMode MailboxModeMailbox/Mailbox:    " 
+    userdict /FieryXJdict known { (printerinfo mbmmode MAILBOX) =string
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPOutputBinMode MailboxModeStacker/Stacking:   " 
+    userdict /FieryXJdict known { (printerinfo mbmmode STACKER) =string
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPOutputBinMode MailboxModeSeparator/Job Separation:   " 
+    userdict /FieryXJdict known { (printerinfo mbmmode SEPARATOR) =string
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*?HPOutputBinMode: "(MailboxModeMailbox) = flush"
+*CloseUI: *HPOutputBinMode
+
+*OpenUI *PrinterHardDisk/Printer Hard Disk: Boolean
+*DefaultPrinterHardDisk: False
+*PrinterHardDisk False/Not Installed: ""
+*PrinterHardDisk True/Installed: ""
+*?PrinterHardDisk: "
+  save 
+    false
+    (%disk?%)
+    { currentdevparams dup /Writeable known
+    { /Writeable get {pop true} if }  { pop } ifelse
+    } 100 string /IODevice resourceforall
+    {(True)}{(False)} ifelse = flush
+  restore
+"
+*End
+*CloseUI: *PrinterHardDisk
+
+*OpenUI *JobRetention/Job Retention: Boolean
+*DefaultJobRetention: False
+*JobRetention False/Disabled: ""
+*JobRetention True/Enabled: ""
+*CloseUI: *JobRetention
+
+*CloseGroup: InstallableOptions
+
+*% === Options and Constraints =========
+*% == Contraints based on Installable options.
+
+*% For Job Retention to be enabled, the printer hard disk must also be installed
+*UIConstraints: *PrinterHardDisk False *JobRetention True
+*UIConstraints: *JobRetention True *PrinterHardDisk False
+
+*UIConstraints: *PrinterHardDisk False *Collate True
+*UIConstraints: *Collate True *PrinterHardDisk False
+
+*%=== Printer Specific Custom Data - Job Retention Constraints =============================
+*%*****************************************************************************
+*% JRConstraints will have an option value for full, none or partial
+*% (1) JRCHDFull - the printer requires a Hard Disk for ALL JR options
+*% (2) JRCHDPartial - the printer requires a HardDisk only for SOME JR options
+*%                    These options will be specified in another custom feature
+*% (3) JRCHDNone - the printer does NOT require a HardDisk for ANY JR options
+*%*****************************************************************************
+
+*OpenUI *JRConstraints/JRConstraints: PickOne
+*DefaultJRConstraints: JRCHDPartial
+*JRConstraints JRCHDPartial/JRCHDPartial: ""
+*JRConstraints JRCJobRet/JRCJobRet: ""
+*JRConstraints 0/0: ""
+*CloseUI: *JRConstraints
+
+*%=== Printer Specific Feature Data - Job Retention Option Constraints =======================
+*%*************************************************************************************
+*%
+*% Two JR Option constraint features are defined
+*% (1) JRHDInstalled - This lists the JR options available when HD is installed
+*% (2) JRHDNotInstalled - This lists the JR options available when HD is not installed
+*%       The options are as follows - (in this order)
+*%               (a) JRHDOff 
+*%               (b) JRHDProof
+*%               (c) JRHDPrivate
+*%               (d) JRHDQuickCopy
+*%               (e) JRHDStore
+*%   NOTE: The options are the same for both JRHDInstalled and JRHDNotInstalled
+*%*************************************************************************************
+*OpenUI *JRHDInstalled/JRHDInstalled: PickOne
+*DefaultJRHDInstalled: JRHDOff
+*JRHDInstalled JRHDOff/JRHDOff: ""
+*JRHDInstalled JRHDProof/JRHDProof: ""
+*CloseUI: *JRHDInstalled
+
+*OpenUI *JRHDNotInstalled/JRHDNotInstalled: PickOne
+*DefaultJRHDNotInstalled: JRHDOff
+*JRHDNotInstalled JRHDOff/JRHDOff: ""
+*CloseUI: *JRHDNotInstalled
+
+*%=== Printer Specific Custom Data - Printer Model Name=============================
+*OpenUI *HPPrinterModelName/HPPrinterModelName: PickOne
+*DefaultHPPrinterModelName: HP_Color_LaserJet_8500_PS
+*HPPrinterModelName HP_Color_LaserJet_8500_PS/HP Color LaserJet 8500 PS: ""
+*CloseUI *HPPrinterModelName
+
+*%=== Printer Specific Custom Data - Printer Code =============================
+*OpenUI *HPPrinterCode/HPPrinterCode: PickOne
+*DefaultHPPrinterCode: HPC8500
+*HPPrinterCode HPC8500/HP Color LaserJet 8500 PS: ""
+*CloseUI *HPPrinterCode
+
+*% If optional 2000-sheet tray is not installed, disable access to  Tray4
+*UIConstraints: *HPOption_HCI2000 False *InputSlot Tray4
+*UIConstraints: *InputSlot Tray4 *HPOption_HCI2000 False
+
+*% If optional Duplexer is not installed, disable access to Duplex
+*UIConstraints: *HPOption_Duplexer False *Duplex
+*UIConstraints: *HPOption_Duplexer False *Duplex DuplexTumble
+*UIConstraints: *HPOption_Duplexer False *Duplex DuplexNoTumble
+
+*UIConstraints: *Duplex *HPOption_Duplexer False
+*UIConstraints: *Duplex DuplexTumble   *HPOption_Duplexer False
+*UIConstraints: *Duplex DuplexNoTumble *HPOption_Duplexer False
+
+*% if optional Multi-Bin Mailbox is not installed, disable Multi-Bin Mailbox output destinations
+*UIConstraints: *HPOption_MBM False *OutputBin Stacker
+*UIConstraints: *HPOption_MBM False *OutputBin Separator
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin1
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin2
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin3
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin4
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin5
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin6
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin7
+*UIConstraints: *HPOption_MBM False *OutputBin OutputBin8
+
+*UIConstraints: *OutputBin Stacker *HPOption_MBM False 
+*UIConstraints: *OutputBin Separator *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin1 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin2 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin3 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin4 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin5 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin6 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin7 *HPOption_MBM False
+*UIConstraints: *OutputBin OutputBin8 *HPOption_MBM False
+
+*% If Multi-Bin Mailbox mode is Mailbox, disable Stacker and Separator
+*UIConstraints: *HPOutputBinMode MailboxModeMailbox  *OutputBin Stacker
+*UIConstraints: *HPOutputBinMode MailboxModeMailbox  *OutputBin Separator
+*UIConstraints: *OutputBin Stacker   *HPOutputBinMode MailboxModeMailbox
+*UIConstraints: *OutputBin Separator *HPOutputBinMode MailboxModeMailbox
+
+
+*% If Multi-Bin Mailbox mode is Stacker, disable Separator and Individual Mailboxes
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin Separator
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin1
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin2
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin3
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin4
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin5
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin6
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin7
+*UIConstraints: *HPOutputBinMode MailboxModeStacker *OutputBin OutputBin8
+
+*UIConstraints: *OutputBin Separator  *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin1 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin2 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin3 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin4 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin5 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin6 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin7 *HPOutputBinMode MailboxModeStacker
+*UIConstraints: *OutputBin OutputBin8 *HPOutputBinMode MailboxModeStacker
+
+*% If Multi-Bin Mailbox mode is Separator, disable Stacker and Individual Mailboxes
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin Stacker
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin1
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin2
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin3
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin4
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin5
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin6
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin7
+*UIConstraints: *HPOutputBinMode MailboxModeSeparator *OutputBin OutputBin8
+
+*UIConstraints: *OutputBin Stacker    *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin1 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin2 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin3 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin4 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin5 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin6 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin7 *HPOutputBinMode MailboxModeSeparator
+*UIConstraints: *OutputBin OutputBin8 *HPOutputBinMode MailboxModeSeparator
+
+*% Contraints between the various UI's
+
+*% Cannot have CRDTexts and gray
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDText Photographic
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDText Presentation
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDText OHT
+
+
+*UIConstraints: *HPColorSmartCRDText Photographic *ColorModel Gray
+*UIConstraints: *HPColorSmartCRDText Presentation *ColorModel Gray
+*UIConstraints: *HPColorSmartCRDText OHT      *ColorModel Gray
+
+
+*% Cannot have CRDGraphics and gray
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDGraphics Photographic
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDGraphics Presentation
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDGraphics OHT
+
+
+*UIConstraints: *HPColorSmartCRDGraphics Photographic *ColorModel Gray
+*UIConstraints: *HPColorSmartCRDGraphics Presentation *ColorModel Gray
+*UIConstraints: *HPColorSmartCRDGraphics OHT      *ColorModel Gray
+
+*% cannot have CRDImages and gray
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDImages Photographic
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDImages Presentation
+*UIConstraints: *ColorModel Gray *HPColorSmartCRDImages OHT
+
+*UIConstraints: *HPColorSmartCRDImages Photographic *ColorModel Gray
+*UIConstraints: *HPColorSmartCRDImages Presentation *ColorModel Gray
+*UIConstraints: *HPColorSmartCRDImages OHT      *ColorModel Gray
+
+*% Executive/InputSlot
+*UIConstraints: *PageSize Executive *InputSlot Tray2
+*UIConstraints: *PageSize Executive *InputSlot Tray3
+*UIConstraints: *PageSize Executive *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize Executive
+*UIConstraints: *InputSlot Tray3 *PageSize Executive
+*UIConstraints: *InputSlot Tray4 *PageSize Executive
+
+
+*% DoublePostcardRotated/InputSlot
+*UIConstraints: *PageSize DoublePostcardRotated *InputSlot Tray2
+*UIConstraints: *PageSize DoublePostcardRotated *InputSlot Tray3
+*UIConstraints: *PageSize DoublePostcardRotated *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize DoublePostcardRotated
+*UIConstraints: *InputSlot Tray3 *PageSize DoublePostcardRotated
+*UIConstraints: *InputSlot Tray4 *PageSize DoublePostcardRotated
+
+
+*% Env10/HPInputSlot
+*UIConstraints: *PageSize Env10 *InputSlot Tray2
+*UIConstraints: *PageSize Env10 *InputSlot Tray3
+*UIConstraints: *PageSize Env10 *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize Env10
+*UIConstraints: *InputSlot Tray3 *PageSize Env10
+*UIConstraints: *InputSlot Tray4 *PageSize Env10
+
+
+*% EnvMonarch/HPInputSlot
+*UIConstraints: *PageSize EnvMonarch *InputSlot Tray2
+*UIConstraints: *PageSize EnvMonarch *InputSlot Tray3
+*UIConstraints: *PageSize EnvMonarch *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize EnvMonarch
+*UIConstraints: *InputSlot Tray3 *PageSize EnvMonarch
+*UIConstraints: *InputSlot Tray4 *PageSize EnvMonarch
+
+
+
+*% EnvDL/HPInputSlot
+*UIConstraints: *PageSize EnvDL *InputSlot Tray2
+*UIConstraints: *PageSize EnvDL *InputSlot Tray3
+*UIConstraints: *PageSize EnvDL *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize EnvDL
+*UIConstraints: *InputSlot Tray3 *PageSize EnvDL
+*UIConstraints: *InputSlot Tray4 *PageSize EnvDL
+
+*% EnvC5/HPInputSlot
+*UIConstraints: *PageSize EnvC5 *InputSlot Tray2
+*UIConstraints: *PageSize EnvC5 *InputSlot Tray3
+*UIConstraints: *PageSize EnvC5 *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize EnvC5
+*UIConstraints: *InputSlot Tray3 *PageSize EnvC5
+*UIConstraints: *InputSlot Tray4 *PageSize EnvC5
+
+
+*% A5/HPInputSlot
+*UIConstraints: *PageSize A5 *InputSlot Tray2
+*UIConstraints: *PageSize A5 *InputSlot Tray3
+*UIConstraints: *PageSize A5 *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageSize A5
+*UIConstraints: *InputSlot Tray3 *PageSize A5
+*UIConstraints: *InputSlot Tray4 *PageSize A5
+
+
+*% Corresponding PageRegion contraints:
+
+*% Executive/InputSlot
+*UIConstraints: *PageRegion Executive *InputSlot Tray2
+*UIConstraints: *PageRegion Executive *InputSlot Tray3
+*UIConstraints: *PageRegion Executive *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageRegion Executive
+*UIConstraints: *InputSlot Tray3 *PageRegion Executive
+*UIConstraints: *InputSlot Tray4 *PageRegion Executive
+
+
+
+*% DoublePostcardRotated/InputSlot
+*UIConstraints: *PageRegion DoublePostcardRotated *InputSlot Tray2
+*UIConstraints: *PageRegion DoublePostcardRotated *InputSlot Tray3
+*UIConstraints: *PageRegion DoublePostcardRotated *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageRegion DoublePostcardRotated
+*UIConstraints: *InputSlot Tray3 *PageRegion DoublePostcardRotated
+*UIConstraints: *InputSlot Tray4 *PageRegion DoublePostcardRotated
+
+*% Env10/InputSlot
+*UIConstraints: *PageRegion Env10 *InputSlot Tray2
+*UIConstraints: *PageRegion Env10 *InputSlot Tray3
+*UIConstraints: *PageRegion Env10 *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageRegion Env10
+*UIConstraints: *InputSlot Tray3 *PageRegion Env10
+*UIConstraints: *InputSlot Tray4 *PageRegion Env10
+
+*% EnvMonarch /InputSlot
+*UIConstraints: *PageRegion EnvMonarch *InputSlot Tray2
+*UIConstraints: *PageRegion EnvMonarch *InputSlot Tray3
+*UIConstraints: *PageRegion EnvMonarch *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageRegion EnvMonarch
+*UIConstraints: *InputSlot Tray3 *PageRegion EnvMonarch
+*UIConstraints: *InputSlot Tray4 *PageRegion EnvMonarch
+
+
+*% EnvDL/InputSlot
+*UIConstraints: *PageRegion EnvDL *InputSlot Tray2
+*UIConstraints: *PageRegion EnvDL *InputSlot Tray3
+*UIConstraints: *PageRegion EnvDL *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageRegion EnvDL
+*UIConstraints: *InputSlot Tray3 *PageRegion EnvDL
+*UIConstraints: *InputSlot Tray4 *PageRegion EnvDL
+
+*% EnvC5/InputSlot
+*UIConstraints: *PageRegion EnvC5 *InputSlot Tray2
+*UIConstraints: *PageRegion EnvC5 *InputSlot Tray3
+*UIConstraints: *PageRegion EnvC5 *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *PageRegion EnvC5
+*UIConstraints: *InputSlot Tray3 *PageRegion EnvC5
+*UIConstraints: *InputSlot Tray4 *PageRegion EnvC5
+
+*% A5/InputSlot
+*UIConstraints: *InputSlot Tray2 *PageRegion A5
+*UIConstraints: *InputSlot Tray3 *PageRegion A5
+*UIConstraints: *InputSlot Tray4 *PageRegion A5
+*UIConstraints: *PageRegion A5 *InputSlot Tray2
+*UIConstraints: *PageRegion A5 *InputSlot Tray3
+*UIConstraints: *PageRegion A5 *InputSlot Tray4
+
+
+*% tray and media constraints: 
+*UIConstraints: *MediaType Transparent *InputSlot Tray4
+*UIConstraints: *InputSlot Tray4 *MediaType Transparent
+
+*UIConstraints: *MediaType HeavyMedia *InputSlot Tray4
+*UIConstraints: *InputSlot Tray4 *MediaType HeavyMedia
+
+*UIConstraints: *MediaType Labels *InputSlot Tray2
+*UIConstraints: *MediaType Labels *InputSlot Tray3
+*UIConstraints: *MediaType Labels *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *MediaType Labels
+*UIConstraints: *InputSlot Tray3 *MediaType Labels
+*UIConstraints: *InputSlot Tray4 *MediaType Labels
+
+*UIConstraints: *MediaType Cardstock *InputSlot Tray2
+*UIConstraints: *MediaType Cardstock *InputSlot Tray3
+*UIConstraints: *MediaType Cardstock *InputSlot Tray4
+*UIConstraints: *InputSlot Tray2 *MediaType Cardstock
+*UIConstraints: *InputSlot Tray3 *MediaType Cardstock
+*UIConstraints: *InputSlot Tray4 *MediaType Cardstock
+
+*%==========================================
+*% Duplexing & Media Type constraints 
+*%==========================================
+
+*UIConstraints: *MediaType Transparent *Duplex DuplexTumble
+*UIConstraints: *MediaType Transparent *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexTumble *MediaType Transparent 
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Transparent 
+
+*UIConstraints: *MediaType HeavyMedia *Duplex DuplexTumble
+*UIConstraints: *MediaType HeavyMedia *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexTumble  *MediaType HeavyMedia 
+*UIConstraints: *Duplex DuplexNoTumble *MediaType HeavyMedia 
+
+*UIConstraints: *MediaType Labels *Duplex DuplexTumble
+*UIConstraints: *MediaType Labels *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexTumble  *MediaType Labels 
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Labels 
+
+*UIConstraints: *MediaType Cardstock *Duplex DuplexTumble
+*UIConstraints: *MediaType Cardstock *Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexTumble  *MediaType Cardstock 
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Cardstock 
+
+
+*%==========================================
+*%  CustomPageSize/InputSlot 
+*%==========================================
+*NonUIConstraints:*CustomPageSize True *InputSlot Tray2
+*NonUIConstraints:*CustomPageSize True *InputSlot Tray3
+*NonUIConstraints:*CustomPageSize True *InputSlot Tray4
+*NonUIConstraints:*InputSlot Tray2 *CustomPageSize True
+*NonUIConstraints:*InputSlot Tray3 *CustomPageSize True
+*NonUIConstraints:*InputSlot Tray4 *CustomPageSize True
+
+
+
+*% General Information and Defaults ===============
+*FreeVM: "33554432"
+*FCacheSize 32MB: 1048576
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*TTRasterizer: Type42
+*RenderingIntent: Colorimetric
+*ContoneOnly: True
+*ScreenFreq: "100"
+*ScreenAngle: "50"
+*FileSystem: True
+*?FileSystem: "
+    save
+      statusdict /diskstatus known{(True)} {(False)} ifelse = flush
+    restore
+    "
+*End
+*Throughput: "10"
+*Password: "0"
+*ExitServer: "
+   count 0 eq
+   { false } { true exch startjob } ifelse
+   not { (WARNING: Cannot modify initial VM.) =
+            (Missing or invalid password.) =
+            (Please contact the author of this software.) = flush quit
+          } if
+"
+*End
+
+*Reset: "
+   count 0 eq
+   { false } { true exch startjob } ifelse
+   not { (WARNING: Cannot reset printer.) =
+            (Missing or invalid password.) =
+            (Please contact the author of this software.) = flush quit
+          } if
+   systemdict /quit get exec
+   (WARNING: Printer Reset Failed.) = flush
+"
+*End
+
+*DefaultResolution: 600dpi
+*?Resolution: "
+    save
+      initgraphics
+      0 0 moveto currentpoint matrix defaultmatrix transform
+      0 72 lineto currentpoint matrix defaultmatrix transform
+      3 -1 roll sub dup mul
+      3 1 roll exch sub dup mul
+      add sqrt round cvi
+      (          ) cvs print (dpi) = flush
+    restore
+    "
+*End
+
+*AccurateScreensSupport: True
+
+*VMOption 32MB: "33554432"
+*VMOption 40MB: "41943040"
+*VMOption 48MB: "50331648"
+*VMOption 56MB: "58720256"
+*VMOption 64MB: "67108864"
+*VMOption 72MB: "75497472"
+*VMOption 80MB: "83886080"
+*VMOption 88MB: "92274688"
+*VMOption 96MB: "100663296"
+*VMOption 104MB: "109051904"
+*VMOption 112MB: "117440512"
+*VMOption 120MB: "125829120"
+*VMOption 128MB: "134217728"
+*VMOption 136MB: "142606336"
+*VMOption 144MB: "150994944"
+*VMOption 152MB: "159383552"
+*VMOption 160MB: "167772160"
+*VMOption 168MB: "176160768"
+*VMOption 176MB: "184549376"
+*VMOption 184MB: "192937984"
+*VMOption 192MB: "201326592"
+*VMOption 200MB: "209715200"
+*VMOption 208MB: "218103808"
+*VMOption 224MB: "234881024"
+*VMOption 256MB: "268435456"
+
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 15 AnySetup *ColorModel 
+*DefaultColorModel: CMYK
+*ColorModel CMYK/CMYK: "
+    << /ProcessColorModel /DeviceCMYK >> setpagedevice "
+*End
+*ColorModel Gray/Grayscale: " 
+    << /ProcessColorModel /DeviceGray >> setpagedevice "
+*End
+*?ColorModel: " currentpagedevice /ProcessColorModel get ==  if "
+*CloseUI: *ColorModel
+
+*% ===================================
+*% Duplexer definitions
+*% ===================================
+
+*OpenUI *Duplex/Duplex: PickOne
+*OrderDependency: 20 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex DuplexTumble/Duplex Tumble: "
+     <</Duplex true>> setpagedevice  << /Tumble true >> setpagedevice "
+*End 
+*Duplex DuplexNoTumble/Duplex (Two-Sided): " 
+    <</Duplex true>> setpagedevice << /Tumble false >> setpagedevice "
+*End 
+*Duplex None/One Sided: "
+     <</Duplex false>> setpagedevice << /Tumble false >> setpagedevice "
+*End 
+*CloseUI: *Duplex
+
+
+*% ===================================
+*% ColorSmart Stuff
+*% ===================================
+
+*OpenUI *HPColorSmartCRDText/ColorSmartCRD Text: PickOne
+*OrderDependency: 20 AnySetup *HPColorSmartCRDText
+*DefaultHPColorSmartCRDText: Presentation
+*HPColorSmartCRDText None/None:" 
+ "
+*End
+
+*HPColorSmartCRDText Presentation/Vivid: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineTextCRD known
+    {
+        /Presentation FieryXJdict /XJDefineTextCRD get exec 
+    } if
+    } if "
+*End
+*HPColorSmartCRDText Photographic/Screen Match: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineTextCRD known
+    {
+        /Photographic FieryXJdict /XJDefineTextCRD get exec 
+    } if
+    } if "
+*End
+*HPColorSmartCRDText OHT/OHT: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineTextCRD known
+    {
+        /OHT FieryXJdict /XJDefineTextCRD get exec 
+    } if
+    } if "
+*End
+*CloseUI: *HPColorSmartCRDText
+
+
+*OpenUI *HPColorSmartCRDGraphics/ColorSmartCRD Graphics: PickOne
+*OrderDependency: 20 AnySetup *HPColorSmartCRDGraphics
+*DefaultHPColorSmartCRDGraphics: Presentation
+*HPColorSmartCRDGraphics None/None:" 
+ "
+*End
+*HPColorSmartCRDGraphics Presentation/Vivid: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineGraphicsCRD known
+    {
+        /Presentation FieryXJdict /XJDefineGraphicsCRD get exec 
+    } if
+    } if "
+*End
+*HPColorSmartCRDGraphics Photographic/Screen Match: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineGraphicsCRD known
+    {
+        /Photographic FieryXJdict /XJDefineGraphicsCRD get exec 
+    } if
+    } if "
+*End
+*HPColorSmartCRDGraphics OHT/OHT: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineGraphicsCRD known
+    {
+        /OHT FieryXJdict /XJDefineGraphicsCRD get exec 
+    } if
+    } if "
+*End
+*CloseUI: *HPColorSmartCRDGraphics
+
+
+*OpenUI *HPColorSmartCRDImages/ColorSmartCRD Images: PickOne
+*OrderDependency: 20 AnySetup *HPColorSmartCRDImages
+*DefaultHPColorSmartCRDImages: Presentation
+*HPColorSmartCRDImages None/None:" 
+ "
+*End
+
+*HPColorSmartCRDImages Presentation/Vivid: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineImagesCRD known
+    {
+        /Presentation FieryXJdict /XJDefineImagesCRD get exec 
+    } if
+    } if "
+*End
+*HPColorSmartCRDImages Photographic/Screen Match: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineImagesCRD known
+    {
+        /Photographic FieryXJdict /XJDefineImagesCRD get exec 
+    } if
+    } if "
+*End
+*HPColorSmartCRDImages OHT/OHT: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineImagesCRD known
+    {
+        /OHT FieryXJdict /XJDefineImagesCRD get exec 
+    } if
+    } if "
+*End
+*CloseUI: *HPColorSmartCRDImages
+
+
+*OpenUI *HPColorSmartHTText/HalftoneText: PickOne
+*OrderDependency: 20 AnySetup *HPColorSmartHTText
+*DefaultHPColorSmartHTText: Detail
+*HPColorSmartHTText None/None:" 
+ "
+*End
+*HPColorSmartHTText Detail/Detail: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineTextHT known
+    {
+        (Detail) FieryXJdict /XJDefineTextHT get exec 
+    } if
+    } if"
+*End
+*HPColorSmartHTText Smooth/Smooth: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineTextHT known
+    {
+        (Smooth) FieryXJdict /XJDefineTextHT get exec 
+    } if
+    } if "
+*End
+*CloseUI: *HPColorSmartHTText
+
+
+*OpenUI *HPColorSmartHTGraphics/Halftone Graphics: PickOne
+*OrderDependency: 20 AnySetup *HPColorSmartHTGraphics
+*DefaultHPColorSmartHTGraphics: Detail
+*HPColorSmartHTGraphics None/None:" 
+ "
+*End
+*HPColorSmartHTGraphics Detail/Detail: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineGraphicsHT known
+    {
+        (Detail) FieryXJdict /XJDefineGraphicsHT get exec 
+    } if
+    } if "
+*End
+*HPColorSmartHTGraphics Smooth/Smooth: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineGraphicsHT known
+    {
+        (Smooth) FieryXJdict /XJDefineGraphicsHT get exec 
+    } if
+    } if "
+*End
+*CloseUI: *HPColorSmartHTGraphics
+
+
+*OpenUI *HPColorSmartHTImages/Halftone Images: PickOne
+*OrderDependency: 20 AnySetup *HPColorSmartHTImages
+*DefaultHPColorSmartHTImages: Smooth
+*HPColorSmartHTImages None/None:" 
+ "
+*End
+*HPColorSmartHTImages Detail/Detail: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineImagesHT known
+    {
+        (Detail) FieryXJdict /XJDefineImagesHT get exec 
+    } if
+    } if "
+*End
+*HPColorSmartHTImages Smooth/Smooth: "
+    userdict /FieryXJdict known { FieryXJdict /XJDefineImagesHT known
+    {
+        (Smooth) FieryXJdict /XJDefineImagesHT get exec 
+    } if
+    } if "
+*End
+*CloseUI: *HPColorSmartHTImages
+
+
+*% ===================================
+*% Mediatype definitions
+*% ===================================
+
+*OpenUI *MediaType/Media Type: PickOne
+*OrderDependency: 50 AnySetup *MediaType
+*DefaultMediaType: None
+*MediaType None/None: " 
+    userdict /FieryXJdict known {
+    (printerinfo mediatype NONE) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Plain/Plain: " 
+    userdict /FieryXJdict known {
+    (printerinfo mediatype PLAIN) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Preprinted/Preprinted: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype PREPRINTED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Letterhead/Letterhead: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype LETTERHEAD) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Transparent/Transparency: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype TRANSPARENCY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Prepunched/Prepunched: " 
+    userdict /FieryXJdict known { 
+        (printerinfo mediatype PREPUNCHED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Labels/Labels: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype LABELS) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Bond/Bond: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype BOND) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Recycled/Recycled: " 
+    userdict /FieryXJdict known { 
+        (printerinfo mediatype RECYCLED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Color/Color: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype COLOR) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Cardstock/Cardstock: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype CARDSTOCK) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType HeavyMedia/Heavy Media >= 28lbs: "
+    userdict /FieryXJdict known {
+        (printerinfo mediatype HEAVY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Glossy/Glossy: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype GLOSSY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType Envelope/Envelope: "
+    userdict /FieryXJdict known { 
+        (printerinfo mediatype ENVELOPE) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType HeavyType1/28 Lb Type1: " 
+    userdict /FieryXJdict known { 
+        (printerinfo mediatype TYPE28LB1) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*MediaType HeavyType2/28 Lb Type2: " 
+    userdict /FieryXJdict known { 
+        (printerinfo mediatype TYPE28LB2) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*?MediaType: "(Unknown) = flush"
+*CloseUI: *MediaType
+
+*% ===================================
+*% Mediatype definitions for first page 
+*% ===================================
+
+*OpenUI *HPMediaTypeFirst/Media Type First: PickOne
+*OrderDependency: 50 AnySetup *HPMediaTypeFirst
+*DefaultHPMediaTypeFirst: None
+*HPMediaTypeFirst None/None: " 
+ "
+*End
+*HPMediaTypeFirst Plain/Plain: " 
+    userdict /FieryXJdict known { 
+    (printerinfo media_first PLAIN) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Preprinted/Preprinted: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_first PREPRINTED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Letterhead/Letterhead: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_first LETTERHEAD) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Transparent/Transparency: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_first TRANSPARENCY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Prepunched/Prepunched: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_first PREPUNCHED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Labels/Labels: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_first LABELS) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Bond/Bond: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_first BOND) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Recycled/Recycled: "
+     userdict /FieryXJdict known { 
+        (printerinfo media_first RECYCLED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Color/Color: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_first COLOR) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Cardstock/Cardstock: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_first CARDSTOCK) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if"
+*End
+*HPMediaTypeFirst HeavyMedia/Heavy Media >= 28lbs: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_first HEAVY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Glossy/Glossy: " 
+    userdict /FieryXJdict known
+        (printerinfo media_first GLOSSY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst Envelope/Envelope: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype ENVELOPE) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst HeavyType1/28 Lb Type1: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype TYPE28LB1) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeFirst HeavyType2/28 Lb Type2: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype TYPE28LB2) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*?HPMediaTypeFirst: "(Unknown) = flush"
+*CloseUI: *HPMediaTypeFirst
+
+
+*% ===================================
+*% Mediatype definitions for rest of pages
+*% ===================================
+
+*OpenUI *HPMediaTypeRest/Media Type Rest: PickOne
+*OrderDependency: 50 AnySetup *HPMediaTypeRest
+*DefaultHPMediaTypeRest: None
+*HPMediaTypeRest None/None: " 
+ "
+*End
+*HPMediaTypeRest Plain/Plain: " 
+    userdict /FieryXJdict known {
+    (printerinfo media_rest PLAIN) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Preprinted/Preprinted: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_rest PREPRINTED) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Letterhead/Letterhead: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_rest LETTERHEAD) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Transparent/Transparency: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_rest TRANSPARENCY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Prepunched/Prepunched: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_rest PREPUNCHED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Labels/Labels: " 
+    userdict /FieryXJdict known { 
+        (printerinfo media_rest LABELS) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Bond/Bond: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_rest BOND) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Recycled/Recycled: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_rest RECYCLED) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Color/Color: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_rest COLOR) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Cardstock/Cardstock: "
+     userdict /FieryXJdict known {
+        (printerinfo media_rest CARDSTOCK) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest HeavyMedia/Heavy Media >= 28lbs: "
+     userdict /FieryXJdict known {
+        (printerinfo media_rest HEAVY) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Glossy/Glossy: " 
+    userdict /FieryXJdict known {
+        (printerinfo media_rest GLOSSY) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest Envelope/Envelope: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype ENVELOPE) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest HeavyType1/28 Lb Type1: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype TYPE28LB1) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*HPMediaTypeRest HeavyType2/28 Lb Type2: " 
+    userdict /FieryXJdict known {
+        (printerinfo mediatype TYPE28LB2) =string 
+        FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*?HPMediaTypeRest: "(Unknown) = flush"
+*CloseUI: *HPMediaTypeRest
+
+*% ===================================
+*% Color stuff
+*% ===================================
+
+
+*% ================================================
+*% Collate: driver UI only
+*% ================================================
+
+*OpenUI *Collate/Collate: Boolean
+*OrderDependency: 35 AnySetup *Collate
+*DefaultCollate: True
+*Collate True/Yes: "(printerinfo proofnprint mopy) =string FieryXJdict /ExtCmdGetExec get exec {pop} if "
+*Collate False/No: ""
+*?Collate: "(Unknown) = flush"
+*CloseUI: *Collate
+
+*% ================================================
+*% Staple: driver UI only
+*% COMMENTED OUT - NOT IN INITIAL RELEASE
+*% ================================================
+
+*%OpenUI *HPSTAPLE/Staple: PickOne
+*%OrderDependency: 35 AnySetup *HPSTAPLE
+*%DefaultHPSTAPLE: No
+*%HPSTAPLE Yes/Yes: ""
+*%HPSTAPLE No/No: ""
+*%?HPSTAPLE: "(Unknown) = flush"
+*%CloseUI: *HPSTAPLE
+
+
+*% ================================================
+*% Paper source 
+*% ================================================
+
+*OpenUI *InputSlot/Paper Source: PickOne
+*OrderDependency: 20 AnySetup *InputSlot
+*DefaultInputSlot: Tray1
+*InputSlot Tray1/Tray 1: "
+     userdict /FieryXJdict known {
+    (printerinfo trayselect MP_TRAY) =string  
+     FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*InputSlot ManualFeedTray/Manual Feed (Tray 1): "
+    userdict /FieryXJdict known {
+    (printerinfo trayselect MANUAL_FEED) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if
+    1 dict dup /ManualFeed true put setpagedevice "
+*End
+*InputSlot Tray2/Tray 2: "
+    userdict /FieryXJdict known {
+    (printerinfo trayselect MAIN_CASS) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*InputSlot Tray3/Tray 3: "
+    userdict /FieryXJdict known {
+    (printerinfo trayselect OPTIONAL_CASS) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*InputSlot Tray4/Tray 4: "
+    userdict /FieryXJdict known {
+    (printerinfo trayselect HCI_TRAY1) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*?InputSlot: "(Unknown) = flush"
+*CloseUI: *InputSlot
+
+*% ================================================
+*% Paper source for first page different from rest
+*% ================================================
+
+*OpenUI *HPInputSlotFirst/Paper Source First: PickOne
+*OrderDependency: 20 AnySetup *HPInputSlotFirst
+*DefaultHPInputSlotFirst: None
+*HPInputSlotFirst None/None: "
+ "
+*End
+*HPInputSlotFirst Tray1/Tray 1: "(printerinfo trayselect_first MP_TRAY) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if "
+*End
+*HPInputSlotFirst ManualFeedTray/Manual Feed (Tray 1): "(printerinfo trayselect_first MANUAL_FEED) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if
+    1 dict dup /ManualFeed true put setpagedevice "
+*End
+*HPInputSlotFirst Tray2/Tray 2: "(printerinfo trayselect_first MAIN_CASS) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if"
+*End
+*HPInputSlotFirst Tray3/Tray 3: "(printerinfo trayselect_first OPTIONAL_CASS) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if"
+*End
+*HPInputSlotFirst Tray4/Tray 4: "(printerinfo trayselect_first HCI_TRAY1) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if"
+*End
+*?HPInputSlotFirst: "(Unknown) = flush"
+*CloseUI: *HPInputSlotFirst
+
+*% ================================================
+*% Paper source for  rest of pages
+*% ================================================
+
+*OpenUI *HPInputSlotRest/Paper Source Rest: PickOne
+*OrderDependency: 20 AnySetup *HPInputSlotRest
+*DefaultHPInputSlotRest: None
+*HPInputSlotRest None/None: "
+ "
+*End
+*HPInputSlotRest Tray1/Tray 1: "(printerinfo trayselect_rest MP_TRAY) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if "
+*End
+*HPInputSlotRest ManualFeedTray/Manual Feed (Tray 1): "(printerinfo trayselect_rest MANUAL_FEED) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if
+    1 dict dup /ManualFeed true put setpagedevice "
+*End
+*HPInputSlotRest Tray2/Tray 2: "(printerinfo trayselect_rest MAIN_CASS) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if"
+*End
+*HPInputSlotRest Tray3/Tray 3: "(printerinfo trayselect_rest OPTIONAL_CASS) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if"
+*End
+*HPInputSlotRest Tray4/Tray 4: "(printerinfo trayselect_rest HCI_TRAY1) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if"
+*End
+*?HPInputSlotRest: "(Unknown) = flush"
+*CloseUI: *HPInputSlotRest
+
+*% ================================================
+*% Paper Destinations  (output trays)
+*% 1/21 Remove bins 8-16 for final release
+*% ================================================
+
+
+*% Media Output Destination
+*OpenUI *OutputBin/Output Destination: PickOne
+*OrderDependency: 95 AnySetup *OutputBin
+*DefaultOutputBin: Upper
+*OutputBin Upper/Top Output Bin (Face-Down):    " 
+    userdict /FieryXJdict known { 
+    (printerinfo outtrayselect FACE_DOWN) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin Left/Left Output Bin (Face-Up): "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect FACE_UP) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if  "
+*End
+*OutputBin Stacker/Stacker: "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect STACKER) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if"
+*End
+*OutputBin Separator/Job Separator: "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect SEPARATOR) =string
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin1/Mailbox 1:    "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect MBOX_1) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin2/Mailbox 2:    "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect MBOX_2) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin3/Mailbox 3:    "
+    userdict /FieryXJdict known { 
+     (printerinfo outtrayselect MBOX_3) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin4/Mailbox 4:    "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect MBOX_4) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin5/Mailbox 5:    "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect MBOX_5) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin6/Mailbox 6:    " 
+    userdict /FieryXJdict known { 
+    (printerinfo outtrayselect MBOX_6) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin7/Mailbox 7:    "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect MBOX_7) =string  
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*OutputBin OutputBin8/Mailbox 8:    "
+    userdict /FieryXJdict known {
+     (printerinfo outtrayselect MBOX_8) =string 
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+*?OutputBin:" (Unknown) = flush "
+*CloseUI: *OutputBin
+
+*PageStackOrder Upper: Normal
+*PageStackOrder Left: Reverse
+*PageStackOrder MultiBin: Normal
+*PageStackOrder OutputBin1: Normal
+*PageStackOrder OutputBin2: Normal
+*PageStackOrder OutputBin3: Normal
+*PageStackOrder OutputBin4: Normal
+*PageStackOrder OutputBin5: Normal
+*PageStackOrder OutputBin6: Normal
+*PageStackOrder OutputBin7: Normal
+*PageStackOrder OutputBin8: Normal
+
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+*% Black substitution is always on.
+*DefaultBlackSubstitution: True
+*BlackSubstitution True: ""
+*?BlackSubstitution: "(True) == flush"
+
+*% Custom Page Sizes ===================
+*% min: 3.874 x 7.48 (as of 3/21/97) (old: 5.83w x  8.27h)
+*% max:12.00w x 18.50h
+*MaxMediaWidth: "864"
+*MaxMediaHeight: "1332"
+*VariablePaperSize: True
+*HWMargins: 12 12 12 12
+*ParamCustomPageSize Width:  1 points 278 864
+*ParamCustomPageSize Height: 2 points 539 1332
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*% Need to define Orientation correctly  
+*ParamCustomPageSize Orientation: 5 int 0 1
+*% Need to define invocation code correctly  
+*CustomPageSize True: "
+    4 dict begin
+    /Orientation exch def
+    2 array astore /Margins exch def
+    2 array astore /PageSize exch def
+    /ImagingBBox null def
+    currentdict
+    Orientation 1 eq Orientation 3 eq or    {/MediaType (ShortEdgeFeed) def}    {/MediaType null def } ifelse   currentdict /Orientation undef  currentdict     end setpagedevice
+    userdict /FieryXJdict known { 
+    (printerinfo IsCustom YES)=string
+    FieryXJdict /ExtCmdGetExec get exec {pop} if } if "
+*End
+
+*% Paper Handling ===================
+*% Use these entries to set paper size most of the time, unless there is
+*% specific reason to use PageRegion.
+*OpenUI *PageSize/Page Size: PickOne
+*OrderDependency: 90 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/Letter:"
+    << /PageSize [612 792] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [612 792] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize Legal/Legal: " 
+    << /PageSize [612 1008] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [612 1008] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize Executive/Executive: "
+    << /PageSize [522 756] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [522 756] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize Tabloid/11x17: " 
+    << /PageSize [792 1224] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [792 1224] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize A4/A4:"
+    << /PageSize [595 842] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [595 842] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize B4/B4: " 
+    << /PageSize [729 1032] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [729 1032] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize A3/A3: " 
+    << /PageSize [842 1191] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [842 1191] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize Env10/Com-10: "
+    << /PageSize [297 684] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [297 684] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize EnvDL/DL: " 
+    << /PageSize [312 624] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [312 624] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize EnvMonarch/Monarch: "
+    << /PageSize [279 540] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [279 540] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize EnvC5/C5: " 
+    << /PageSize [459 649] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [459 649] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize B5/JIS B5: " 
+    << /PageSize [516 729] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [516 729] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize DoublePostcardRotated/JPostD: "
+    << /PageSize [420 567] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [420 567] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageSize A5/A5:"
+    << /PageSize [420 595] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [420 595] /MediaType (null) >> >> >> setpagedevice "
+*End
+*?PageSize: "
+    save currentpagedevice /PageSize get aload pop
+    2 copy gt {exch} if (Unknown) 
+    14 dict
+    dup [612 792] (Letter) put
+    dup [612 1008] (Legal) put
+    dup [522 756] (Executive) put
+    dup [595 842] (A4) put
+    dup [792 1224] (Tabloid) put
+    dup [842 1191] (A3) put
+    dup [729 1032] (B4) put
+    dup [516 729] (B5) put
+    dup [420 567] (DoublePostcardRotated) put
+    dup [297 684] (Env10) put
+    dup [279 540] (EnvMonarch) put
+    dup [312 624] (EnvDL) put
+    dup [459 649] (EnvC5) put
+    dup [420 595] (A5) put
+    { exch aload pop 4 index sub abs 5 le exch 5 index sub abs 5 le and
+      { exch pop exit } { pop } ifelse
+    } bind forall = flush pop pop
+    restore "
+*End
+*CloseUI: *PageSize
+
+*% These entries will set up the frame buffer. Usually used with manual feed.
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 95 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter/Letter:" 
+    << /PageSize [612 792] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [612 792] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion Legal/Legal: " 
+    << /PageSize [612 1008] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [612 1008] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion Executive/Executive: " 
+    << /PageSize [522 756] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [522 756] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion Tabloid/11x17: " 
+    << /PageSize [792 1224] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [792 1224] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion A4/A4: " 
+    << /PageSize [595 842] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [595 842] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion B4/B4: "
+    << /PageSize [729 1032] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [729 1032] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion A3/A3: " 
+    << /PageSize [842 1191] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [842 1191] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion Env10/Com-10: " 
+    << /PageSize [297 684] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [297 684] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion EnvDL/DL: " 
+    << /PageSize [312 624] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [312 624] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion EnvMonarch/Monarch: " 
+    << /PageSize [279 540] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [279 540] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion EnvC5/C5: " 
+    << /PageSize [459 649] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [459 649] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion B5/JIS B5: "
+    << /PageSize [516 729] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [516 729] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion DoublePostcardRotated/JPostD: " 
+    << /PageSize [420 567] /MediaType (null) 
+    /InputAttributes << 0 << /PageSize [420 567] /MediaType (null) >> >> >> setpagedevice "
+*End
+*PageRegion A5/A5: " 
+    << /PageSize [420 595] /MediaType (null)
+    /InputAttributes << 0 << /PageSize [420 595] /MediaType (null) >> >> >> setpagedevice "
+*End
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: Letter
+*ImageableArea Letter/Letter: "12 12 600 780"
+*ImageableArea Legal/Legal: "12 12 600 996"
+*ImageableArea Executive/Executive: "12 12 510 744"
+*ImageableArea Tabloid/11x17: "12 12 780 1212"
+*ImageableArea A4/A4: "12 12 583 830"
+*ImageableArea B4/B4: "12 12 717 1020"
+*ImageableArea A3/A3: "12 13 830 1179"
+*ImageableArea Env10/Com-10: "12 12 285 672"
+*ImageableArea EnvDL/DL: "12 12 300 612"
+*ImageableArea EnvMonarch/Monarch: "12 12 267 528"
+*ImageableArea EnvC5/C5: "12 12 447 637"
+*ImageableArea B5/JIS B5: "12 13 504 717"
+*ImageableArea DoublePostcardRotated/JPostD: "12 13 408 555"
+*ImageableArea A5/A5: "12 12 408 583" 
+*?ImageableArea: "
+ save /cvp { cvi (            ) cvs print ( ) print } bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat flush
+ restore
+"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: Letter
+*PaperDimension Letter/Letter: "612 792"
+*PaperDimension Legal/Legal:     "612 1008"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension Tabloid/11x17:        "792 1224"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension B4/B4: "729 1032"
+*PaperDimension A3/A3:     "842 1191"
+*PaperDimension Env10/Com-10: "297 684"
+*PaperDimension EnvDL/DL: "312 624"
+*PaperDimension EnvMonarch/Monarch: "279 540"
+*PaperDimension EnvC5/C5: "459 649"
+*PaperDimension B5/JIS B5: "516 729"
+*PaperDimension DoublePostcardRotated/JPostD: "420 567"
+*PaperDimension A5/A5: "420 595"
+
+*RequiresPageRegion All: True
+
+*%fixed by Microsoft
+*%DefaultOutputOrder: Reverse
+*DefaultOutputOrder: Normal
+
+*% Font Information =========================
+*DefaultFont: Courier
+*Font AlbertusMT-Italic: Standard "(001.000)" Standard Disk
+*Font AlbertusMT-Light: Standard "(001.000)" Standard Disk
+*Font AlbertusMT: Standard "(001.000)" Standard Disk
+*Font AntiqueOlive-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font AntiqueOlive-Compact: Standard "(501.008)" ExtendedRoman Disk
+*Font AntiqueOlive-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font AntiqueOlive-Roman: Standard "(501.008)" ExtendedRoman Disk
+*Font Apple-Chancery: Standard "(001.001)" ExtendedRoman Disk
+*Font Arial-BoldItalicMT: Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-BoldMT: Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-ItalicMT: Standard "(501.012)" ExtendedRoman Disk
+*Font ArialMT: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-Book: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-BookOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-Demi: Standard "(501.010)" ExtendedRoman Disk
+*Font AvantGarde-DemiOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Bodoni-Bold: Standard "(501.006)" ExtendedRoman Disk
+*Font Bodoni-BoldItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Italic: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Poster: Standard "(501.009)" ExtendedRoman Disk
+*Font Bodoni-PosterCompressed: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni: Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Demi: Standard "(501.007)" ExtendedRoman Disk
+*Font Bookman-DemiItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Light: Standard "(501.006)" ExtendedRoman Disk
+*Font Bookman-LightItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Carta: Special "(001.001)" Special Disk
+*Font Chicago: Standard "(501.011)" ExtendedRoman Disk
+*Font Clarendon-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Clarendon-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font Clarendon: Standard "(501.009)" ExtendedRoman Disk
+*Font CooperBlack-Italic: Standard "(001.003)" Standard Disk
+*Font CooperBlack: Standard "(001.003)" Standard Disk
+*Font Copperplate-ThirtyThreeBC: Standard "(001.002)" Standard Disk
+*Font Copperplate-ThirtyTwoBC: Standard "(001.002)" Standard Disk
+*Font Coronet-Regular: Standard "(001.000)" ExtendedRoman Disk
+*Font Courier-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-Oblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier: Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-BoldExtendedTwo: Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-ExtendedTwo: Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile: Standard "(501.008)" ExtendedRoman Disk
+*Font Geneva: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-Bold: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-BoldCondensed: Standard "(501.006)" ExtendedRoman Disk
+*Font GillSans-BoldItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Condensed: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-ExtraBold: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans-LightItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans: Standard "(501.009)" ExtendedRoman Disk
+*Font Goudy-Bold: Standard "(001.002)" Standard Disk
+*Font Goudy-BoldItalic: Standard "(001.002)" Standard Disk
+*Font Goudy-ExtraBold: Standard "(001.001)" Standard Disk
+*Font Goudy-Italic: Standard "(001.002)" Standard Disk
+*Font Goudy: Standard "(001.003)" Standard Disk
+*Font Helvetica-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-BoldObl: Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Oblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Oblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Narrow: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Oblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica: Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-Black: Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-BlackItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font HoeflerText-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font HoeflerText-Ornaments: Special "(001.001)" Special Disk
+*Font HoeflerText-Regular: Standard "(501.009)" ExtendedRoman Disk
+*Font JoannaMT-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-BoldItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT: Standard "(501.009)" ExtendedRoman Disk
+*Font LetterGothic-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-BoldSlanted: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-Slanted: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Book: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-BookOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Demi: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-DemiOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Marigold: Standard "(001.000)" Standard Disk
+*Font MonaLisa-Recut: Standard "(001.000)" Standard Disk
+*Font Monaco: Standard "(501.012)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font NewCenturySchlbk-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Italic: Standard "(501.011)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Roman: Standard "(501.008)" ExtendedRoman Disk
+*Font NewYork: Standard "(501.013)" ExtendedRoman Disk
+*Font Optima-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Optima-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font Optima-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font Optima: Standard "(501.010)" ExtendedRoman Disk
+*Font Oxford: Standard "(001.000)" Standard Disk
+*Font Palatino-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-BoldItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Palatino-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-Roman: Standard "(501.006)" ExtendedRoman Disk
+*Font StempelGaramond-Bold: Standard "(501.007)" ExtendedRoman Disk
+*Font StempelGaramond-BoldItalic: Standard "(501.012)" ExtendedRoman Disk
+*Font StempelGaramond-Italic: Standard "(501.009)" ExtendedRoman Disk
+*Font StempelGaramond-Roman: Standard "(501.011)" ExtendedRoman Disk
+*Font Symbol: Special "(001.008)" Special Disk
+*Font Tekton: Standard "(001.001)" Standard Disk
+*Font Times-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font Times-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font Times-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font Times-Roman: Standard "(501.010)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldItalicMT: Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldMT: Standard "(501.009)" ExtendedRoman Disk
+*Font TimesNewRomanPS-ItalicMT: Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPSMT: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-BoldExt: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldExtObl: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldOblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-Condensed: Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-CondensedBold: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedBoldOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedOblique: Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-Extended: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-ExtendedObl: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-LightOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Oblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers: Standard "(501.009)" ExtendedRoman Disk
+*Font Wingdings-Regular: Special "(001.001)" Special Disk
+*Font ZapfChancery-MediumItalic: Standard "(002.000)" ExtendedRoman Disk
+*Font ZapfDingbats: Special "(001.005S)" Special Disk
+*?FontQuery: "
+   save  
+   { count 1 gt
+      { exch dup 127 string cvs (/) print print (:) print
+       /Font resourcestatus {pop pop (Yes)} {(No)} ifelse = 
+      } { exit } ifelse
+   } bind loop
+   (*) = flush
+   restore"
+*End
+
+*?FontList: "
+   save (*) {cvn ==} 128 string /Font resourceforall
+   (*) = flush restore"
+*End
+
+
+*% PPD Last Modified 7.22.98
+*% End of PPD file for Logan

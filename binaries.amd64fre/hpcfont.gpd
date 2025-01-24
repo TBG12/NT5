@@ -1,0 +1,186 @@
+*%-------------------------------------------------------------------------
+*% Font Information shared between GPDS
+*% Copyright (c) 2000-2001 Hewlett-Packard Corporation
+*% HPGPDFileVersion: "1.009"
+*%-------------------------------------------------------------------------
+
+
+*Feature: RESDLL
+{
+    *Option: FontRes
+    {
+        *Name: "hpcfont.dll"
+    }
+}
+
+
+*DefaultFont: RESDLL.FontRes.16
+*DefaultCTT: 0
+*CharPosition: BASELINE
+*TTFSEnabled?: TRUE
+*MinFontID: 16534
+*MaxFontID: 32768
+
+
+*DeviceFonts: LIST(RESDLL.FontRes.1, RESDLL.FontRes.2, RESDLL.FontRes.3, RESDLL.FontRes.4, RESDLL.FontRes.5, 
++                  RESDLL.FontRes.6, RESDLL.FontRes.7, RESDLL.FontRes.8, RESDLL.FontRes.9, RESDLL.FontRes.10,
++                  RESDLL.FontRes.11,RESDLL.FontRes.12,RESDLL.FontRes.13,RESDLL.FontRes.14,RESDLL.FontRes.15,
++                  RESDLL.FontRes.16,RESDLL.FontRes.17,RESDLL.FontRes.18,RESDLL.FontRes.19,RESDLL.FontRes.20,
++                  RESDLL.FontRes.21,RESDLL.FontRes.22,RESDLL.FontRes.23,RESDLL.FontRes.24,RESDLL.FontRes.25,
++                  RESDLL.FontRes.26,RESDLL.FontRes.27,RESDLL.FontRes.28,RESDLL.FontRes.29,RESDLL.FontRes.30,
++                  RESDLL.FontRes.31,RESDLL.FontRes.32,RESDLL.FontRes.33,RESDLL.FontRes.34,RESDLL.FontRes.35,
++                  RESDLL.FontRes.36,RESDLL.FontRes.37,RESDLL.FontRes.38,RESDLL.FontRes.39,RESDLL.FontRes.40,
++                  RESDLL.FontRes.41,RESDLL.FontRes.42,RESDLL.FontRes.43,RESDLL.FontRes.44,RESDLL.FontRes.45,
++                  RESDLL.FontRes.46,RESDLL.FontRes.47,RESDLL.FontRes.49,RESDLL.FontRes.50,RESDLL.FontRes.51,
++                  RESDLL.FontRes.52,RESDLL.FontRes.53,RESDLL.FontRes.54,RESDLL.FontRes.55,RESDLL.FontRes.56,
++                  RESDLL.FontRes.57,RESDLL.FontRes.59,RESDLL.FontRes.60,RESDLL.FontRes.61,RESDLL.FontRes.62,
++                  RESDLL.FontRes.63,RESDLL.FontRes.64,RESDLL.FontRes.65,RESDLL.FontRes.66,RESDLL.FontRes.67,
++                  RESDLL.FontRes.68,RESDLL.FontRes.69,RESDLL.FontRes.70,RESDLL.FontRes.71,RESDLL.FontRes.72,
++                  RESDLL.FontRes.73,RESDLL.FontRes.74,RESDLL.FontRes.76,RESDLL.FontRes.77,RESDLL.FontRes.78,
++                  RESDLL.FontRes.79)
+
+
+
+*%-----------------------------------------------------------------------------
+*% TT font Substituition table for our device fonts
+*% Arial and TNR are substituted in ttfsub.gpd
+*%-----------------------------------------------------------------------------
+*TTFS: AlbertusM
+{
+  *TTFontName: "Albertus Medium"
+  *DevFontName: "Albertus Medium"
+}
+*TTFS: AlbertusX
+{
+  *TTFontName: "Albertus Extra Bold"
+  *DevFontName: "Albertus Extra Bold"
+}
+*TTFS: AntiqueOlive
+{
+  *TTFontName: "Antique Olive"
+  *DevFontName: "Antique Olive"
+}
+*TTFS: CGOmega
+{
+  *TTFontName: "CG Omega"
+  *DevFontName: "CG Omega"
+}
+*TTFS: CGTimes
+{
+  *TTFontName: "CG Times"
+  *DevFontName: "CG Times"
+}
+*TTFS: NewCenturySB
+{
+  *TTFontName: "New Century Schoolbook Roman"
+  *DevFontName: "New Century Schoolbook"
+}
+*TTFS: ClarendonCD
+{
+  *TTFontName: "Clarendon Condensed Bold"
+ *DevFontName: "Clarendon Condensed"
+}
+*TTFS: Coronet
+{
+  *TTFontName: "Coronet"
+  *DevFontName: "Coronet"
+}
+*TTFS: CourierPS
+{
+  *TTFontName: "CourierPS"
+  *DevFontName: "CourierPS"
+}
+*TTFS: Helvetica
+{
+  *TTFontName: "Helvetica"
+  *DevFontName: "Helvetica"
+}
+*TTFS: HelveticaN
+{
+  *TTFontName: "Helvetica Narrow"
+  *DevFontName: "Helvetica Narrow"
+}
+*TTFS: ITCAvantGardeGothicB
+{
+  *TTFontName: "ITC Avant Garde Gothic Book Oblique"
+  *DevFontName: "ITC Avant Garde Gothic"
+}
+*TTFS: ITCAvantGardeGothicD
+{
+  *TTFontName: "ITC Avant Garde Gothic Demi"
+  *DevFontName: "ITC Avant Garde Gothic Demi"
+}
+*TTFS: ITCBookmanDemi
+{
+  *TTFontName: "ITC Bookman Demi"
+  *DevFontName: "ITC Bookman Demi"
+}
+*TTFS: ITCBookmanLight
+{
+  *TTFontName: "ITC Bookman Light"
+  *DevFontName: "ITC Bookman Light"
+}
+*TTFS: ITCZapfChancery
+{
+  *TTFontName: "ITC Zapf Chancery Medium Italic"
+  *DevFontName: "ITC Zapf Chancery"
+}
+*TTFS: LetterGothic
+{
+  *TTFontName: "Letter Gothic"
+  *DevFontName: "Letter Gothic"
+}
+*TTFS: Marigold
+{
+  *TTFontName: "Marigold"
+  *DevFontName: "Marigold"
+}
+*TTFS: Palatino
+{
+  *TTFontName: "Palatino Roman"
+  *DevFontName: "Palatino"
+}
+*TTFS: Times
+{
+  *TTFontName: "Times Roman"
+  *DevFontName: "Times"
+}
+*TTFS: Univers
+{
+  *TTFontName: "Univers Medium"
+  *DevFontName: "Univers"
+}
+*TTFS: UniversCD
+{
+  *TTFontName: "Univers Condensed Medium"
+  *DevFontName: "Univers Condensed"
+}
+*TTFS: CourierNew
+{
+  *TTFontName: "Courier New"
+  *DevFontName: "Courier New"
+}
+
+*TTFS: ClarendonCD1
+{
+  *TTFontName: "Clarendon Condensed"
+ *DevFontName: "Clarendon Condensed"
+}
+*TTFS: Times1
+{
+  *TTFontName: "Times"
+  *DevFontName: "Times"
+}
+*TTFS: Univers1
+{
+  *TTFontName: "Univers"
+  *DevFontName: "Univers"
+}
+*TTFS: UniversCD1
+{
+  *TTFontName: "Univers Condensed"
+  *DevFontName: "Univers Condensed"
+}
+
+
+
