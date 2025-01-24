@@ -1,0 +1,17 @@
+:Base progman.hlp>proc4
+:Title Program Manager
+1 Starting Programs
+2 Starting a program from a group=start_group
+2 Starting a program by using the Run command=START_RUN
+2 Starting and quitting MS-DOS Prompt=START_MSDOS
+1 Working With Groups and Program Items
+2 Creating a group=create_group
+2 Deleting a group=delete_group
+2 Creating a program item=CREATE_ITEM
+2 Deleting a program item=DELETE_ITEM
+2 Changing properties=change_properties
+2 Copying a program item to another group=copy_item
+2 Moving a program item to another group=move_item
+2 Changing an icon for a program item=change_icon
+2 Arranging group windows=arrange_groups
+2 Arranging program-item icons=arrange_items

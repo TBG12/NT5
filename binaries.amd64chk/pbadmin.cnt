@@ -1,0 +1,33 @@
+:Base pbadmin.HLP
+:Title Connection Point Administration
+1 Overview of Connection Point Administration=pbm_overview>overview
+1 How To...
+2 Work with Multiple Phone Books
+3 Adding new phone books=PBM_PROC_ADD_PHONEBOOK>proc4
+3 Copying Phone Books=PBM_PROC_COPY_PHONEBOOK>proc4
+3 Editing phone book options=PBM_PROC_EDIT_PHONEBOOK>proc4
+3 Deleting phone books=PBM_PROC_DELETE_PHONEBOOK>proc4
+2 Manage a Phone Book
+3 Creating and posting phone book updates=PBM_PROC_PHONEBOOK_UPDATE>proc4
+3 Printing phone books=PBM_PROC_PRINT_PHONEBOOK>proc4
+3 Printing POP lists=PBM_PROC_PRINT_POPLIST>proc4
+3 Viewing log files=PBM_PROC_VIEW_LOGFILES>proc4
+3 Set Phone Book Options
+4 Specifying Connection Point Server settings=PBM_PROC_CPS_SETTINGS>proc4
+2 Maintain Phone Book POPs
+3 Adding POPs=PBM_PROC_ADD_POP>proc4
+3 Filtering POPs=PBM_PROC_FILTER_POPS>proc4
+3 Editing POPs=PBM_PROC_EDIT_POP>proc4
+3 Deleting POPs=PBM_PROC_DELETE_POP>proc4
+3 Assigning regions to POPs=PBM_PROC_ASSIGN_REGIONS>proc4
+3 Changing POP status=PBM_PROC_POP_STATUS>proc4
+3 Changing service settings for POPs=PBM_PROC_ASSIGN_FLAGS>proc4
+3 Customize Region Lists
+4 Adding regions=PBM_PROC_ADD_REGIONS>proc4
+4 Importing region lists=PBM_PROC_IMPORT_REGIONS>proc4
+4 Editing regions=PBM_PROC_EDIT_REGIONS>proc4
+4 Deleting regions=PBM_PROC_DELETE_REGIONS>proc4
+1 Tips and Tricks
+2 Using POP service settings=PBM_PROC_TT_USE_FLAG>overview
+2 Creating Regions Lists=PBM_PROC_TT_REGION_LIST>proc4
+2 Using the Connection Manager Administration Kit=PBM_PROC_TT_USE_SPW>proc4

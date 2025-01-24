@@ -1,0 +1,181 @@
+
+; SP2PRINT.INF (for NT 4.0 Service Pack)
+;
+; List of supported printers, manufacturers
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%MS%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+;
+[Manufacturer]
+"Brother"
+"Bull"
+"HP"
+"Lexmark"
+"Oki"
+"Okidata"
+"Xerox"
+
+;
+; Model sections. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file.
+;
+
+[Brother]
+"Brother HL-760"                                       = PCL5EMS.DLL
+"Brother HL-1060"                                      = PCL5EMS.DLL
+"Brother HL-1260e"                                     = PCL5EMS.DLL
+"Brother HL-1660"                                      = PCL5EMS.DLL
+
+[Bull]
+"Bull Compuprint Signum 2076"                          = BULL18.DLL
+
+[HP]
+"HP LaserJet 5Si"                                      = HP5SIM.DLL.BIDI
+"HP LaserJet 5Si MX"                                   = HP5SIM.DLL.BIDI
+"HP LaserJet 5Si Mopier"                               = HP5SIM.DLL.BIDI
+
+[Lexmark]
+"Lexmark 1020 Color Jetprinter"                         = LMINKJET.DLL
+"Lexmark 1020 Color Jetprinter  (Mono)"                 = LMINKJET.DLL
+
+[Oki]
+"OKIPAGE 16n"                                          = PCL5EMS.DLL
+
+[Okidata]
+"OKIPAGE 16n"                                          = PCL5EMS.DLL
+
+[Xerox]
+"Xerox 4220/4230/MRP PCL"                              = X42XXPCL.DLL
+"Xerox 4215/MRP PCL"                                   = X42XXPCL.DLL
+"Xerox 4219/MRP PCL"                                   = X42XXPCL.DLL
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. The section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[BULL18.DLL]
+CopyFiles=@BULL18.DLL,RASDD
+DataSection=RASDD_DATA
+
+[HP5SIM.DLL.BIDI]
+CopyFiles=@HP5SIM.DLL,@HP5SIMUI.DLL,@HP5SIMUI.HLP,@PJLMON.DLL,HPRASDD
+DataSection=HPRASDD_DATA
+DataFile=HP5SIM.DLL
+LanguageMonitor=%PJL_MONITOR%
+
+[LMINKJET.DLL]
+CopyFiles=@LMINKJET.DLL,RASDD
+DataSection=RASDD_DATA
+
+[PCL5EMS.DLL]
+CopyFiles=@PCL5EMS.DLL,RASDD
+DataSection=RASDD_DATA
+
+[X42XXPCL.DLL]
+CopyFiles=@X42XXPCL.DLL,RASDD
+DataSection=RASDD_DATA
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation) or if it's a color
+; profile (since the DestinationDirs can only handle sections, and not
+; individual files).
+;
+
+[RASDD]
+RASDD.DLL
+RASDDUI.DLL
+RASDDUI.HLP
+
+[HPRASDD]
+HPRASDD.DLL
+HPRASDUI.DLL
+HPRASDUI.HLP
+
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+[RASDD_DATA]
+DriverFile=RASDD.DLL
+ConfigFile=RASDDUI.DLL
+HelpFile=RASDDUI.HLP
+
+[HPRASDD_DATA]
+DriverFile=HPRASDD.DLL
+ConfigFile=HPRASDUI.DLL
+HelpFile=HPRASDUI.HLP
+
+;
+; Call SetupSetDirectoryId with 66000 to set the target directory at runtime
+; (depending on which environment drivers are getting installed)
+;
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+;
+; diskid = description,tagfile,unused,subdir
+;
+[SourceDisksNames.x86]
+4 = %ntcd%,,,
+
+[SourceDisksNames.alpha]
+4 = %ntcd%,,,
+
+[SourceDisksNames.ppc]
+4 = %ntcd%,,,
+
+;
+; These sections are used during text-mode setup and correspond
+; to the targetdirectory field in the [SourceDisksFiles] section.
+;
+
+;
+; filename_on_source = diskid,subdir,size,checksum,spare,spare
+; extra fields are nt-specific
+;   bootmediaord,targetdirectory,upgradedisposition,textmodedisposition,targetname
+;
+[SourceDisksFiles]
+bull18.dll   = 4
+epson9.dll  = 4
+hp5sim.dll   = 4
+hp5simui.dll = 4
+hp5simui.hlp = 4
+hprasdd.dll    = 4
+hprasdui.dll  = 4
+hprasdui.hlp  = 4
+lminkjet.dll  = 4
+pcl5ems.dll  = 4
+pjlmon.dll  = 4
+rasdd.dll    = 4
+rasddui.dll  = 4
+rasddui.hlp  = 4
+x42xxpcl.dll  = 4
+
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+ntcd="Windows 2000 CD-ROM"
+PJL_MONITOR="PJL Language Monitor,PJLMON.DLL"

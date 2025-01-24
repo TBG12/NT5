@@ -1,0 +1,21 @@
+:Base MQPSUI
+:Title MINOLTA-QMS PostScript Driver for Windows 2000
+1 Overview=Overview
+1 Supported Printers=list
+1 Graphics Tab
+2 Graphics Tab=IDD_IMAGE
+1 Overlays Tab
+2 Overlays Tab=IDD_OVERLAY
+2 Watermarks Dialog=IDD_WMARK
+1 About Tab
+2 About Tab=IDD_ABOUT
+1 PostScript Tab
+2 PostScript Tab=IDD_POSTSCRIPT
+1 Settings Tab
+2 Settings Tab=IDD_SETTINGS
+1 Consumables Tab
+2 Consumables Tab=IDD_CONSUME
+1 Color Tab
+2 Color Tab=IDD_COLOR
+2 Configure ICC Color Matching=FIDC_CUSTICC
+2 CRD Configuration=IDD_CUSTCRD

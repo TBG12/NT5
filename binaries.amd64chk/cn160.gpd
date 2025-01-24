@@ -1,0 +1,18 @@
+*%%
+*%% Copyright (c) 1997 - 1999 Microsoft Corporation
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%% All Rights Reserved.
+*%%
+*%%	+++++++++++++++++++++++++++++++++
+*%%	++ The model specific GPD file ++
+*%%	+++++++++++++++++++++++++++++++++
+
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.000"
+*GPDFileName: "CN160.GPD"
+*CodePage: 1252
+*ModelName: "Canon GP160 PCL 5e"
+
+*Include: "CN160C.GPD"

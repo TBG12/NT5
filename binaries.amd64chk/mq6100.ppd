@@ -1,0 +1,1035 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems Printer Description File
+*% For "MINOLTA-QMS magicolor 6100" version 2011.26
+*% Copyright (c) MINOLTA-QMS, Inc.
+*% Created :	01/01/00
+*% Modified:	02/09/00
+
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*PCFileName: "MQ6100.PPD"
+
+*Product: "(MINOLTA-QMS magicolor 6100)"
+*PSVersion: "(2014.30) 2"
+
+*Manufacturer: "MINOLTA-QMS"
+*ModelName: "MINOLTA-QMS magicolor 6100 (PS)"
+*NickName: "MINOLTA-QMS magicolor 6100"
+
+*% ===General Information and Defaults ======================
+
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*LanguageLevel: "2"
+*AcceptsTrueType: True
+*FreeVM: "2107193"
+
+*% ===Installable Options ==================================
+
+*OpenGroup: InstallableOptions/Installable Options
+
+*OpenUI *OptionalBin/Optional Input Bin 1: Boolean
+*DefaultOptionalBin: False
+*OptionalBin True/Installed: ""
+*OptionalBin False/Not Installed: ""
+*CloseUI: *OptionalBin
+
+*OpenUI *OptionalBin2/Optional Input Bin 2: Boolean
+*DefaultOptionalBin2: False
+*OptionalBin2 True/Installed: ""
+*OptionalBin2 False/Not Installed: ""
+*CloseUI: *OptionalBin2
+
+*OpenUI *Optionalduplexer/Optional Duplexer: Boolean
+*DefaultOptionalduplexer: False
+*Optionalduplexer True/Installed: ""
+*Optionalduplexer False/Not Installed: ""
+*CloseUI: *Optionalduplexer
+
+*OpenUI *OptionalDisk/Optional Hard Disk: Boolean
+*DefaultOptionalDisk: False
+*OptionalDisk True/Installed: ""
+*OptionalDisk False/Not Installed: ""
+*CloseUI: *OptionalDisk
+
+*OpenUI *OptionalMemory/Installed Memory: PickOne
+*DefaultOptionalMemory: 64MB
+*OptionalMemory 64MB/Standard 64 MB: ""
+*OptionalMemory 96MB/Upgraded 96 MB: ""
+*OptionalMemory 128MB/Upgraded to 128 MB or more: ""
+*CloseUI: *OptionalMemory
+
+*CloseGroup: InstallableOptions
+
+*% ===MEMORY Constraints ===================================
+*UIConstraints: *OptionalMemory 64MB *Resolution 1200dpi
+
+
+*% Duplexing Constraints ==========================
+*UIConstraints: *MediaType Transparency 	*Duplex DuplexNoTumble
+*UIConstraints: *Duplex DuplexNoTumble		*MediaType Transparency
+*UIConstraints: *MediaType Transparency 	*Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexTumble		*MediaType Transparency
+
+*UIConstraints: *Duplex DuplexNoTumble		*PageSize Com10
+*UIConstraints: *PageSize Com10				*Duplex DuplexNoTumble		
+*UIConstraints: *Duplex DuplexTumble		*PageSize Com10
+*UIConstraints: *PageSize Com10				*Duplex DuplexTumble		
+*UIConstraints: *Duplex DuplexNoTumble		*PageSize DL		
+*UIConstraints: *PageSize DL				*Duplex DuplexNoTumble			
+*UIConstraints: *Duplex DuplexTumble		*PageSize DL	
+*UIConstraints: *PageSize DL				*Duplex DuplexTumble		
+*UIConstraints: *Duplex DuplexNoTumble		*PageSize 12x18
+*UIConstraints: *PageSize 12x18				*Duplex DuplexNoTumble		
+*UIConstraints: *Duplex DuplexTumble		*PageSize 12x18
+*UIConstraints: *PageSize 12x18				*Duplex DuplexTumble		
+*UIConstraints: *Duplex DuplexNoTumble		*PageSize 13x18		
+*UIConstraints: *PageSize 13x18				*Duplex DuplexNoTumble			
+*UIConstraints: *Duplex DuplexTumble		*PageSize 13x18	
+*UIConstraints: *PageSize 13x18				*Duplex DuplexTumble		
+
+*% Optional Input Bin Constraints ==========================
+
+*UIConstraints: *OptionalBin False   *InputSlot Optional1
+*UIConstraints: *InputSlot Optional1  *OptionalBin False		
+*UIConstraints: *OptionalBin2 False  *InputSlot Optional2
+*UIConstraints: *InputSlot Optional2 *OptionalBin2 False		
+
+*UIConstraints: *MediaType Transparency *InputSlot Optional1
+*UIConstraints: *InputSlot Optional1     *MediaType Transparency
+*UIConstraints: *MediaType Transparency *InputSlot Optional2
+*UIConstraints: *InputSlot Optional2    *MediaType Transparency
+*UIConstraints: *MediaType ThickStock   *InputSlot Optional1
+*UIConstraints: *InputSlot Optional1     *MediaType ThickStock
+*UIConstraints: *MediaType ThickStock   *InputSlot Optional2
+*UIConstraints: *InputSlot Optional2    *MediaType ThickStock
+
+*UIConstraints: *InputSlot Optional1		*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Optional1
+*UIConstraints: *InputSlot Optional1 	*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Optional1
+*UIConstraints: *InputSlot Optional1 	*PageSize Executive
+*UIConstraints: *PageSize Executive		*InputSlot Optional1
+*UIConstraints: *InputSlot Optional1		*PageSize 13x19
+*UIConstraints: *PageSize 13x19 		*InputSlot Optional1
+*UIConstraints: *InputSlot Optional1		*PageSize 12x18
+*UIConstraints: *PageSize 12x18 		*InputSlot Optional1
+*UIConstraints: *InputSlot Optional1		*PageSize 13x18
+*UIConstraints: *PageSize 13x18 		*InputSlot Optional1
+
+*UIConstraints: *InputSlot Optional2	*PageSize Com10
+*UIConstraints: *PageSize Com10 		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2 	*PageSize DL
+*UIConstraints: *PageSize DL 			*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2 	*PageSize Executive
+*UIConstraints: *PageSize Executive		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize 13x19
+*UIConstraints: *PageSize 13x19 		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize 12x18
+*UIConstraints: *PageSize 12x18 		*InputSlot Optional2
+*UIConstraints: *InputSlot Optional2	*PageSize 13x18
+*UIConstraints: *PageSize 13x18 		*InputSlot Optional2
+
+*% End of Constraints ==================================
+
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*AccurateScreensSupport: True
+*End
+*TTRasterizer: Type42
+*?TTRasterizer: "
+  save
+  42 /FontType resourcestatus
+  { pop pop (Type42)} {pop pop (None)} ifelse = flush
+  restore"
+*End
+
+*FileSystem: True
+*?FileSystem: "
+save
+  statusdict /diskonline get exec {(True)}{(False)} ifelse = flush
+restore
+"
+*End
+*Throughput: "4"
+*Password: "0"
+*ExitServer: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not { 
+	 (WARNING : Cannot perform the exitserver command.) = 
+	 (Password supplied is not valid.) = 
+	 (Please contact the author of this software.) = flush quit
+	 } if
+"
+*End
+*Reset: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+	(WARNING: Cannot reset printer.) =
+	(Missing or invalid password.) =
+	(Please contact the author of this software.) = flush quit
+	} if
+ systemdict /quit get exec
+ (WARNING : Printer Reset Failed.) = flush
+"
+*End
+
+*OpenUI *Resolution/Choose Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 1200dpi
+*Resolution 300dpi/300 dpi:		"{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*Resolution 600dpi/600 dpi:		"{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*Resolution 1200dpi/1200 dpi:	"{Pscript_WinNT_Incr begin /version (2014) def end } stopped pop"
+*?Resolution: "
+  save
+	currentpagedevice /HWResolution get
+	0 get
+	(          ) cvs print
+	(dpi)
+	= flush
+  restore
+"
+*End
+*CloseUI: *Resolution
+
+*OpenUI *PrintQuality/Print Quality: PickOne
+*OrderDependency: 40 AnySetup *PrintQuality
+*DefaultPrintQuality: NormalMode
+*PrintQuality FineMode/Fine Mode: "statusdict begin 1 setfinemode end"
+*PrintQuality NormalMode/Normal Mode: "statusdict begin 0 setfinemode end"
+*CloseUI: *PrintQuality
+
+*OpenUI *Smoothing/Resolution Enhancement Level: PickOne
+*OrderDependency: 40 AnySetup *Smoothing
+*DefaultSmoothing: Medium
+*Smoothing None/Off:		"//statusdict /setdoret known {0 statusdict /setdoret get exec} if"
+*Smoothing Light/Light:		"//statusdict /setdoret known {1 statusdict /setdoret get exec} if"
+*Smoothing Medium/Medium:	"//statusdict /setdoret known {2 statusdict /setdoret get exec} if"
+*Smoothing Dark/Dark:		"//statusdict /setdoret known {3 statusdict /setdoret get exec} if"
+*?Smoothing: "save
+   [(None) (Light) (Medium) (Dark)]
+   statusdict /doret {get exec}
+   stopped { pop pop (Unknown) } if
+   = flush restore"
+*End
+*CloseUI: *Smoothing
+
+*Dithering: False
+
+*OpenUI *Duplex: PickOne
+*OrderDependency: 40 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/Simplex: "
+	<</Duplex false /Tumble false>> setpagedevice"
+*End
+*Duplex DuplexNoTumble/Long Edge:"
+	<</Duplex true /Tumble false>> setpagedevice"
+*End
+*Duplex DuplexTumble/Short Edge:"
+	<</Duplex true /Tumble true>> setpagedevice"
+*End
+*?Duplex: "save
+   currentpagedevice /Duplex get
+   { currentpagedevice /Tumble get
+       {(DuplexTumble)}{(DuplexNoTumble)}ifelse
+   }
+   { (None)}
+   ifelse = flush
+restore
+"
+*End
+*CloseUI: *Duplex
+
+	
+*OpenUI *Separations/Color Separations: Boolean
+*OrderDependency: 40 AnySetup *Separations
+*Separations True/True: "%%IncludeFeature: colorseparation(on)"
+*Separations False/False: "%%IncludeFeature: colorseparation(off)"
+*DefaultSeparations: False
+*?Separations: "
+   save currentpagedevice /Separations get
+  {(True)}{(False)}ifelse = flush restore" 
+*End
+*CloseUI: *Separations
+
+*OpenUI *CMMmatch/Internal ICC Color Matching (RGB, CMYK): Boolean
+*OrderDependency: 40 AnySetup *Separations
+*DefaultCMMmatch: True
+*CMMmatch True/True: "//statusdict /setcolormatching known {statusdict begin true setcolormatching end} if"
+*CMMmatch False/False: "//statusdict /setcolormatching known {statusdict begin false setcolormatching end} if"
+*CloseUI: *CMMmatch
+
+*OpenUI *CustomColor/QColor-Custom: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*DefaultCustomColor: AutoCustomColor
+*CustomColor AutoCustomColor/Automatic Color Control:""
+*CustomColor DisableCustomColor/Disable Printer Color Matching:""
+*CustomColor IccCustomColor/Internal ICC Color Matching (RGB, CMYK):""
+*CustomColor SwopCustomColor/SWOP Simulation (CMYK):""
+*CustomColor EuroCustomColor/Eurocolor Simulation (CMYK):""
+*CustomColor CommPressCustomColor/Commercial Press Simulation:""
+*CustomColor PhotoCustomColor/Photographic (RGB w/ CRD):""
+*CustomColor GraphicsCustomColor/Business Graphics (RGB w/ CRD):""
+*CustomColor TextCustomColor/Text and Spot Color (RGB w/ CRD):""
+*CustomColor GrayCustomColor/Color as Grayscale:""
+*CustomColor AllBlackCustomColor/Color as All Black:""
+*CloseUI: CustomColor
+
+*OpenUI *AutoCustomColor/Automatic Color Control: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*AutoCustomColor Colormodel/Color models: "CMYK"
+*AutoCustomColor CRDMatch/CRD Match: "False"
+*AutoCustomColor CRDImage/CRD Image: "Photographic"
+*AutoCustomColor CRDText/CRD Text:"Business"
+*AutoCustomColor CRDGraphics/CRD Graphics:"Photographic"
+*AutoCustomColor CSA/CRD Color Space: "DeviceRGB"
+*AutoCustomColor CMMmatch/CMM Match: "True"
+*AutoCustomColor RGBSource/RGB Source: "sRGB"
+*AutoCustomColor Simulation/Simulation: "None"
+*AutoCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: AutoCustomColor
+
+*OpenUI *DisableCustomColor/Disable Printer Color Matching: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*DisableCustomColor Colormodel/Color models: "CMYK"
+*DisableCustomColor CRDMatch/CRD Match: "False"
+*DisableCustomColor CRDImage/CRD Image: "Photographic"
+*DisableCustomColor CRDText/CRD Textt:"Business"
+*DisableCustomColor CRDGraphics/CRD Graphics:"Photographic"
+*DisableCustomColor CSA/CRD Color Space: "DeviceRGB"
+*DisableCustomColor CMMmatch/CMM Match: "False"
+*DisableCustomColor RGBSource/RGB Source: "None"
+*DisableCustomColor Simulation/Simulation: "None"
+*DisableCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: DisableCustomColor
+
+*OpenUI *IccCustomColor/Internal ICC Color Matching (RGB, CMYK): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*IccCustomColor Colormodel/Color models: "CMYK"
+*IccCustomColor CRDMatch/CRD Match: "False"
+*IccCustomColor CRDImage/CRD Image: "PrinterDefault"
+*IccCustomColor CRDText/CRD Text:"PrinterDefault"
+*IccCustomColor CRDGraphics/CRD Graphics:"PrinterDefault"
+*IccCustomColor CSA/CRD Color Space: "DeviceRGB"
+*IccCustomColor CMMmatch/CMM Match: "True"
+*IccCustomColor RGBSource/RGB Source: "sRGB"
+*IccCustomColor Simulation/Simulation: "None"
+*IccCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: IccCustomColor
+
+*OpenUI *SwopCustomColor/SWOP Simulation (CMYK): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*SwopCustomColor Colormodel/Color models: "CMYK"
+*SwopCustomColor CRDMatch/CRD Match: "False"
+*SwopCustomColor CRDImage/CRD Image: "PrinterDefault"
+*SwopCustomColor CRDText/CRD Text:"PrinterDefault"
+*SwopCustomColor CRDGraphics/CRD Graphics:"PrinterDefault"
+*SwopCustomColor CSA/CRD Color Space: "DeviceRGB"
+*SwopCustomColor CMMmatch/CMM Match: "True"
+*SwopCustomColor RGBSource/RGB Source: "sRGB"
+*SwopCustomColor Simulation/Simulation: "SWOP"
+*SwopCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: SwopCustomColor
+
+*OpenUI *EuroCustomColor/Eurocolor Simulation (CMYK): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*EuroCustomColor Colormodel/Color models: "CMYK"
+*EuroCustomColor CRDMatch/CRD Match: "False"
+*EuroCustomColor CRDImage/CRD Image: "PrinterDefault"
+*EuroCustomColor CRDText/CRD Text:"PrinterDefault"
+*EuroCustomColor CRDGraphics/CRD Graphics:"PrinterDefault"
+*EuroCustomColor CSA/CRD Color Space: "DeviceRGB"
+*EuroCustomColor CMMmatch/CMM Match: "True"
+*EuroCustomColor RGBSource/RGB Source: "sRGB"
+*EuroCustomColor Simulation/Simulation: "EuroColor"
+*EuroCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: EuroCustomColor
+
+*OpenUI *CommPressCustomColor/Commercial Press Simulation: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*CommPressCustomColor Colormodel/Color models: "CMYK"
+*CommPressCustomColor CRDMatch/CRD Match: "False"
+*CommPressCustomColor CRDImage/CRD Image: "PrinterDefault"
+*CommPressCustomColor CRDText/CRD Text:"PrinterDefault"
+*CommPressCustomColor CRDGraphics/CRD Graphics:"PrinterDefault"
+*CommPressCustomColor CSA/CRD Color Space: "DeviceRGB"
+*CommPressCustomColor CMMmatch/CMM Match: "True"
+*CommPressCustomColor RGBSource/RGB Source: "sRGB"
+*CommPressCustomColor Simulation/Simulation: "Commercial"
+*CommPressCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: CommPressCustomColor
+
+*OpenUI *PhotoCustomColor/Photographic (RGB w/ CRD): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*PhotoCustomColor Colormodel/Color models: "CMYK"
+*PhotoCustomColor CRDMatch/CRD Match: "True"
+*PhotoCustomColor CRDImage/CRD Image: "Photographic"
+*PhotoCustomColor CRDText/CRD Text:"Business"
+*PhotoCustomColor CRDGraphics/CRD Graphics:"Photographic"
+*PhotoCustomColor CSA/CRD Color Space: "sRGB"
+*PhotoCustomColor CMMmatch/CMM Match: "False"
+*PhotoCustomColor RGBSource/RGB Source: "None"
+*PhotoCustomColor Simulation/Simulation: "None"
+*PhotoCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: PhotoCustomColor
+
+*OpenUI *GraphicsCustomColor/Business Graphics (RGB w/ CRD): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*GraphicsCustomColor Colormodel/Color models: "CMYK"
+*GraphicsCustomColor CRDMatch/CRD Match: "True"
+*GraphicsCustomColor CRDImage/CRD Image: "Photographic"
+*GraphicsCustomColor CRDText/CRD Text:"Business"
+*GraphicsCustomColor CRDGraphics/CRD Graphics:"Photographic"
+*GraphicsCustomColor CSA/CRD Color Space: "sRGB"
+*GraphicsCustomColor CMMmatch/CMM Match: "False"
+*GraphicsCustomColor RGBSource/RGB Source: "None"
+*GraphicsCustomColor Simulation/Simulation: "None"
+*GraphicsCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: GraphicsCustomColor
+
+*OpenUI *TextCustomColor/Text and Spot Color (RGB w/ CRD): PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*TextCustomColor Colormodel/Color models: "CMYK"
+*TextCustomColor CRDMatch/CRD Match: "True"
+*TextCustomColor CRDImage/CRD Image: "Photographic"
+*TextCustomColor CRDText/CRD Text:"Business"
+*TextCustomColor CRDGraphics/CRD Graphics:"Business"
+*TextCustomColor CSA/CRD Color Space: "sRGB"
+*TextCustomColor CMMmatch/CMM Match: "False"
+*TextCustomColor RGBSource/RGB Source: "None"
+*TextCustomColor Simulation/Simulation: "None"
+*TextCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: TextCustomColor
+
+*OpenUI *GrayCustomColor/Color as Grayscale: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*GrayCustomColor Colormodel/Color models: "Gray"
+*GrayCustomColor CRDMatch/CRD Match: "False"
+*GrayCustomColor CRDImage/CRD Image: "PrinterDefault"
+*GrayCustomColor CRDText/CRD Text:"PrinterDefault"
+*GrayCustomColor CRDGraphics/CRD Graphics:"PrinterDefault"
+*GrayCustomColor CSA/CRD Color Space: "DeviceRGB"
+*GrayCustomColor CMMmatch/CMM Match: "False"
+*GrayCustomColor RGBSource/RGB Source: "None"
+*GrayCustomColor Simulation/Simulation: "None"
+*GrayCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: GrayCustomColor
+
+*OpenUI *AllBlackCustomColor/Color as All Black: PickOne
+*OrderDependency: 50 AnySetup *CustomColor
+*AllBlackCustomColor Colormodel/Color models: "Gray"
+*AllBlackCustomColor CRDMatch/CRD Match: "False"
+*AllBlackCustomColor CRDImage/CRD Image: "PrinterDefault"
+*AllBlackCustomColor CRDText/CRD Text:"PrinterDefault"
+*AllBlackCustomColor CRDGraphics/CRD Graphics:"PrinterDefault"
+*AllBlackCustomColor CSA/CRD Color Space: "DeviceRGB"
+*AllBlackCustomColor CMMmatch/CMM Match: "False"
+*AllBlackCustomColor RGBSource/RGB Source: "None"
+*AllBlackCustomColor Simulation/Simulation: "None"
+*AllBlackCustomColor ColorSeps/Color Separations: "False"
+*CloseUI: AllBlackCustomColor
+
+*OpenUI *ColorRenderDict/CRD: PickOne
+*OrderDependency: 50 AnySetup *CRD
+*DefaultColorRenderDict: PrinterDefault
+*ColorRenderDict Photographic/Photographic: "//statusdict /QMSsetscreencrd known {<< /CRDFamily /Photographic >> //statusdict /QMSsetscreencrd get exec} if"
+*ColorRenderDict Colorimetric/Colorimetric: "//statusdict /QMSsetscreencrd known {<< /CRDFamily /Colorimetric >> //statusdict /QMSsetscreencrd get exec} if"
+*ColorRenderDict Business/Business:			"//statusdict /QMSsetscreencrd known {<< /CRDFamily /Business >> //statusdict /QMSsetscreencrd get exec} if"
+*ColorRenderDict PrinterDefault/Printer Default: "QMSCurCRD setcolorrendering"
+*ColorRenderDict None/None: ""
+*CloseUI :ColorRenderDict
+
+*OpenUI *Halftones/QMS Halftones: PickOne
+*OrderDependecy: 50 AnySetup *Halftone
+*DefaultHalftones: AgfaABS
+*Halftones PrinterDefault/Printer Default: ""    
+*Halftones Standard/Standard:				"//statusdict /QMSsetscreencrd known {<< /ScreenFamily /Standard >> statusdict /QMSsetscreencrd get exec} if"    
+*Halftones AgfaABS/Agfa Balanced Screening:	"//statusdict /QMSsetscreencrd known {<< /ScreenFamily /AgfaABS >> statusdict /QMSsetscreencrd get exec} if"    
+*CloseUI: Halftones
+
+
+*OpenUI *CRDColSpc/CRD Color Space: PickOne
+*OrderDependency: 50 AnySetup *CRDColSpc
+*DefaultCRDColSpc: sRGB
+*CRDColSpc sRGB/sRGB:"/cspn { [/CIEBasedABC << /DecodeLMN [ {dup 0.03928 le 
+{12.92321 div} {0.055 add 1.055 div 2.4 exp}ifelse} bind dup dup] 
+/MatrixLMN [0.412457 0.212673 0.019334 0.357576 0.715152 0.119192 0.180437 0.072175 0.950301] 
+/WhitePoint [0.9505 1.0000 1.0890] >> ] } def"
+*End 
+*CRDColSpc TrinitronG1.8D50/Trinitron G1.8 D50:"/cspn { [/CIEBasedABC << /DecodeLMN [ {1.8 exp}bind dup dup ] 
+/MatrixLMN [0.5243 0.2852 0.0294 0.3084 0.6554 0.1377 0.1316 0.0594 0.6579] 
+/WhitePoint [0.9642 1.0000 0.8249] >> ] } def"
+*End 
+*CRDColSpc AppleRGB/Apple RGB:"/cspn { [/CIEBasedABC << /DecodeLMN [ {1.8 exp} bind dup dup ] 
+/MatrixLMN [0.475538 0.255147 0.01849 0.339707 0.67254 0.113396 0.148967 0.07224 0.693332] 
+/WhitePoint [0.9642 1.0000 0.8249] >> ] } def"
+*End 
+*CRDColSpc PrePress/Pre Press:"/cspn { [/CIEBasedABC << /DecodeLMN [ {2.2 exp} bind dup dup ] 
+/MatrixLMN [0.609744 0.311098 0.019509 0.205265 0.625625 0.060917 0.149204 0.063188 0.744792] 
+/WhitePoint [0.9505 1 1.0891] >> ] } def"
+*End 
+*CRDColSpc DeviceRGB/Device RGB:"/cspn [/DeviceRGB] def"
+*CRDColSpc PrinterDefault/Printer Default: " "
+*CloseUI: CRDColSpc
+
+*OpenUI *ICCRGBSource/ICC RGB Source: PickOne
+*OrderDependency: 50 AnySetup *RGBSource
+*DefaultICCRGBSource: sRGB
+*ICCRGBSource None/None:						"//statusdict /setrgbsourceprofile known {statusdict begin (None) setrgbsourceprofile end} if"
+*ICCRGBSource sRGB/sRGB:						"//statusdict /setrgbsourceprofile known {statusdict begin (sRGB) setrgbsourceprofile end} if"
+*ICCRGBSource TrinitronG1.8D50/Trinitron G1.8 D50:	"//statusdict /setrgbsourceprofile known {statusdict begin (Trin G1.8 D50) setrgbsourceprofile end} if"
+*ICCRGBSource AppleRGB/Apple RGB:				"//statusdict /setrgbsourceprofile known {statusdict begin (Apple RGB) setrgbsourceprofile end} if"
+*ICCRGBSource PrePress/Pre Press:				"//statusdict /setrgbsourceprofile known {statusdict begin (PrePress) setrgbsourceprofile end} if"
+*ICCRGBSource PrinterDefault/Printer Default:" "
+*CloseUI: ICCRGBSource
+
+*OpenUI *ColorSimul/ICC Simulation Profile: PickOne
+*OrderDependency: 50 AnySetup *ColorSimul
+*DefaultColorSimul: None
+*ColorSimul SWOP/Swop:				"//statusdict /setsimulationprofile known {statusdict begin (SWOP) setsimulationprofile end} if"
+*ColorSimul EuroColor/Eurocolor:	"//statusdict /setsimulationprofile known {statusdict begin (Eurocolor) setsimulationprofile end} if"
+*ColorSimul Commercial/Commercial:	"//statusdict /setsimulationprofile known {statusdict begin (Commercial) setsimulationprofile end} if"
+*ColorSimul None/None:				"//statusdict /setsimulationprofile known {statusdict begin (None) setsimulationprofile end} if"
+*ColorSimul PrinterDefault/Printer Default:" "
+*CloseUI: ColorSimul
+
+*OpenUI *DestinationProfile/Destination Profile: PickOne
+*OrderDependency: 45 AnySetup *DestinationProfile
+*DefaultDestinationProfile: None
+*DestinationProfile Auto/Automatic: ""
+*CloseUI: DestinationProfile
+
+*% Halftone Information ===============
+*ScreenFreq: "106.0"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "{180 mul cos exch 180 mul cos add 2 div}"
+*ScreenProc Line: "{ pop }"
+*ScreenProc Ellipse: "{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+*% Paper Handling =========================================
+*%Code in this section both selects a tray and sets up a frame buffer.
+*OpenUI  *PageSize: PickOne
+*OrderDependency: 30 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter/Letter: "<</PageSize [612 792] /ImagingBBox null>> setpagedevice"
+*PageSize Legal/Legal: "<</PageSize [612 1008] /ImagingBBox null>> setpagedevice"
+*PageSize Executive/Executive: "<</PageSize [522 757] /ImagingBBox null>> setpagedevice"
+*PageSize 11x17/11x17: "<</PageSize [792 1224] /ImagingBBox null>> setpagedevice"
+*PageSize 13x19/13 x 19 in: "<</PageSize [936 1368] /ImagingBBox null>> setpagedevice"
+*PageSize A3/A3: "<</PageSize [842 1191] /ImagingBBox null>> setpagedevice"
+*PageSize A4/A4: "<</PageSize [596 842] /ImagingBBox null>> setpagedevice"
+*PageSize B5/B5 (JIS) 182 x 257 mm: "<</PageSize [516 729] /ImagingBBox null>> setpagedevice"
+*PageSize B5ISO/B5 (ISO) 176 x 250 mm: "<</PageSize [499 709] /ImagingBBox null>> setpagedevice"
+*PageSize B4/B4 (JIS) 257 x 364 mm: "<</PageSize [729 1032] /ImagingBBox null>> setpagedevice"
+*PageSize Com10/Envelope #10 4 1/8 x 9 1/2: "<</PageSize [297 684] /ImagingBBox null>> setpagedevice"
+*PageSize DL/Envelope DL 110 x 220 mm: "<</PageSize [312 624] /ImagingBBox null>> setpagedevice"
+*PageSize 12x18/12 x 18 in: "<</PageSize [864 1296] /ImagingBBox null>> setpagedevice"
+*PageSize 13x18/13 x 18 in: "<</PageSize [936 1296] /ImagingBBox null>> setpagedevice"
+*?PageSize: "
+ save
+   currentpagedevice /PageSize get aload pop
+   2 copy gt {exch} if 
+   (Unknown) 
+   (<<) cvx exec
+   [612 792] (Letter)
+    [612 1008] (Legal) 
+    [522 757] (Executive) 
+    [792 1224] (11x17) 
+    [936 1368] (13x19) 
+    [842 1191] (A3) 
+    [596 842] (A4) 
+    [516 729] (B5)
+    [499 709] (B5ISO)
+    [729 1032] (B4) 
+    [297 684] (Com10) 
+    [312 624] (DL) 
+    [864 1296] (12x18) 
+    [936 1296] (13x18) 
+   (>>) cvx exec
+ { exch aload pop 4 index sub abs 5 le exch 
+   5 index sub abs 5 le and 
+      {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+restore 
+"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter: "<</PageRegion [612 792] /ImagingBBox null>> setpagedevice"
+*PageRegion Legal: "<</PageRegion [612 1008] /ImagingBBox null>> setpagedevice"
+*PageRegion Executive: "<</PageRegion [522 757] /ImagingBBox null>> setpagedevice"
+*PageRegion 11x17: "<</PageRegion [792 1224] /ImagingBBox null>> setpagedevice"
+*PageRegion 13x19: "<</PageRegion [936 1368] /ImagingBBox null>> setpagedevice"
+*PageRegion A3: "<</PageRegion [842 1191] /ImagingBBox null>> setpagedevice"
+*PageRegion A4: "<</PageRegion [596 842] /ImagingBBox null>> setpagedevice"
+*PageRegion B5: "<</PageRegion [516 729] /ImagingBBox null>> setpagedevice"
+*PageRegion B5ISO: "<</PageSize [499 709] /ImagingBBox null>> setpagedevice"
+*PageRegion B4: "<</PageRegion [729 1032] /ImagingBBox null>> setpagedevice"
+*PageRegion Com10: "<</PageRegion [297 684] /ImagingBBox null>> setpagedevice"
+*PageRegion DL: "<</PageRegion [312 624] /ImagingBBox null>> setpagedevice"
+*PageRegion 12x18: "<</PageRegion [864 1296] /ImagingBBox null>> setpagedevice"
+*PageRegion 13x18: "<</PageRegion [936 1296] /ImagingBBox null>> setpagedevice"
+*CloseUI: *PageRegion
+
+*% The following entries provide information about specific paper keywords.
+*DefaultImageableArea: Letter
+*ImageableArea Letter: 		"15 15 597 777"
+*ImageableArea Legal: 		"15 15 597 993"
+*ImageableArea Executive: 	"15 15 507 741"
+*ImageableArea 11x17: 		"15 15 777 1209"
+*ImageableArea 12x18: 		"15 15 849 1281"
+*ImageableArea 13x18: 		"32 15 906 1281"
+*ImageableArea 13x19: 		"32 15 906 1353"
+*ImageableArea A3: 		"15 15 826 1175"
+*ImageableArea A4: 		"15 15 581 827"
+*ImageableArea B5: 		"15 15 501 714"
+*ImageableArea B4: 		"15 15 708 1017"
+*ImageableArea B5ISO: 		"15 15 484 694"
+*ImageableArea Com10: 		"15 15 282 669"
+*ImageableArea DL: 		"15 15 296 609"
+*?ImageableArea: "
+ save /cvp { cvi (            ) cvs print ( ) print } bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat ( ) = flush
+ restore
+"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: Letter
+*PaperDimension Letter:		"612 792"
+*PaperDimension Legal:		"612 1008"
+*PaperDimension Executive:	"522 757"
+*PaperDimension 11x17:		"792 1224"
+*PaperDimension 13x19:		"936 1368"
+*PaperDimension A3:			"842 1191"
+*PaperDimension A4:			"596 842"
+*PaperDimension B5: 		"516 729"
+*PaperDimension B5ISO: 		"499 709"
+*PaperDimension B4:			"729 1032"
+*PaperDimension Com10:		"297 684"
+*PaperDimension DL:			"312 624"
+*PaperDimension 12x18:		"864 1296"
+*PaperDimension 13x18:		"936 1296"
+
+*OpenUI *OutputBin: OnlyOne
+*OrderDependency: 50 AnySetup *OutputBin
+*DefaultOutputBin: OnlyOne
+*OutputBin Upper/Upper Tray: ""
+*End
+*CloseUI *OutputBin
+
+*OpenUI *InputSlot/Paper Source: PickOne
+*OrderDependency: 20 AnySetup *InputSlot
+*DefaultInputSlot: Upper
+*InputSlot Upper/Upper Tray: "
+   currentpagedevice /InputAttributes get 1 get 
+   dup null eq 
+   { pop } 
+   { dup length 1 add dict copy 
+	 dup /InputAttributes
+	 1 dict dup /Priority [1] put
+	 put setpagedevice 
+   } ifelse"
+*End
+
+*InputSlot Optional1/Optional1: "
+  currentpagedevice /InputAttributes get 5 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [5] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*InputSlot Optional2/Optional2: "
+  currentpagedevice /InputAttributes get 6 get 
+  dup null eq 
+  { pop } 
+  { dup length 1 add dict copy 
+    dup /InputAttributes
+    1 dict dup /Priority [6] put
+    put setpagedevice
+  } ifelse"
+*End
+
+*?InputSlot: "
+save
+  2 dict
+  dup /1 (Upper) put
+  dup /5 (Optional1) put
+  dup /6 (Optional2) put
+  currentpagedevice /InputAttributes get
+  dup /Priority known
+  { /Priority get 0 get (      ) cvs cvn get }
+  {
+	dup length 1 eq
+	{ {pop} forall (       ) cvs cvn get }
+	{ pop pop (Unknown) } ifelse
+  } ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *InputSlot
+
+*OpenUI *MediaType/Media Type:  PickOne
+*OrderDependency: 40 AnySetup *MediaType
+*DefaultMediaType: PlainPaper
+*MediaType PlainPaper/Plain Paper: "<< /MediaType (Plain Paper) >> setpagedevice"
+*MediaType Transparency/Transparency: "<< /MediaType (Transparency) >> setpagedevice"
+*MediaType ThickStock/Thick Stock: "<< /MediaType (Thick Stock) >> setpagedevice"
+*?MediaType: "
+  save
+	currentpagedevice /MediaType
+	 {get} stopped
+	   {pop pop (Plain)} {dup null eq {pop (Plain)} if} ifelse
+	= flush
+  restore"
+*End
+*CloseUI: *MediaType
+
+*OpenUI *Collate/Collation:  Boolean
+*OrderDependency:  40 AnySetup *Collate
+*DefaultCollate: False
+*Collate True/True: "%%IncludeFeature: collate(on)"
+*Collate False/False: "%%IncludeFeature: collate(off)"
+*?Collate:"
+save
+  currentpagedevice /Collate get
+  {(True)}{(False)}ifelse = flush restore"
+*End
+*CloseUI: *Collate
+
+*OpenUI *TraySwitch/Auto Tray switching: Boolean
+*OrderDependency: 50 AnySetup *TraySwitch
+*DefaultTraySwitch: False
+*TraySwitch True/Enabled: "<< /TraySwitch true >> setpagedevice"
+*TraySwitch False/Disabled: "<< /TraySwitch false >> setpagedevice"
+*?TraySwitch: "
+save
+  currentpagedevice /TraySwitch get
+  {(True)}{(False)}ifelse = flush
+restore
+"
+*End
+*CloseUI: *TraySwitch
+
+*% Font Information =====================
+
+*DefaultFont: Courier
+*Font AlbertusMT-Italic: Standard "(001.000)" Standard Disk
+*Font AlbertusMT-Light: Standard "(001.000)" Standard Disk
+*Font AlbertusMT: Standard "(001.000)" Standard Disk
+*Font AntiqueOlive-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font AntiqueOlive-Compact: Standard "(501.008)" ExtendedRoman Disk
+*Font AntiqueOlive-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font AntiqueOlive-Roman: Standard "(501.008)" ExtendedRoman Disk
+*Font Apple-Chancery: Standard "(001.001)" ExtendedRoman Disk
+*Font Arial-BoldItalicMT: Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-BoldMT: Standard "(501.009)" ExtendedRoman Disk
+*Font Arial-ItalicMT: Standard "(501.012)" ExtendedRoman Disk
+*Font AvantGarde-Book: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-BookOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font AvantGarde-Demi: Standard "(501.010)" ExtendedRoman Disk
+*Font AvantGarde-DemiOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Bodoni-Bold: Standard "(501.006)" ExtendedRoman Disk
+*Font Bodoni-BoldItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Italic: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni-Poster: Standard "(501.009)" ExtendedRoman Disk
+*Font Bodoni-PosterCompressed: Standard "(501.007)" ExtendedRoman Disk
+*Font Bodoni: Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Demi: Standard "(501.007)" ExtendedRoman Disk
+*Font Bookman-DemiItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font Bookman-Light: Standard "(501.006)" ExtendedRoman Disk
+*Font Bookman-LightItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Chicago: Standard "(501.011)" ExtendedRoman Disk
+*Font Clarendon-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Clarendon-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font Clarendon: Standard "(501.009)" ExtendedRoman Disk
+*Font CooperBlack-Italic: Standard "(001.003)" Standard Disk
+*Font CooperBlack: Standard "(001.003)" Standard Disk
+*Font Copperplate-ThirtyThreeBC: Standard "(001.002)" Standard Disk
+*Font Copperplate-ThirtyTwoBC: Standard "(001.002)" Standard Disk
+*Font Coronet-Regular: Standard "(001.000)" ExtendedRoman Disk
+*Font Courier-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier-Oblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Courier: Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-BoldExtendedTwo: Standard "(501.008)" ExtendedRoman Disk
+*Font Eurostile-ExtendedTwo: Standard "(501.010)" ExtendedRoman Disk
+*Font Eurostile: Standard "(501.008)" ExtendedRoman Disk
+*Font Geneva: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-Bold: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-BoldCondensed: Standard "(501.006)" ExtendedRoman Disk
+*Font GillSans-BoldItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Condensed: Standard "(501.007)" ExtendedRoman Disk
+*Font GillSans-ExtraBold: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font GillSans-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans-LightItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font GillSans: Standard "(501.009)" ExtendedRoman Disk
+*Font Goudy-Bold: Standard "(001.002)" Standard Disk
+*Font Goudy-BoldItalic: Standard "(001.002)" Standard Disk
+*Font Goudy-ExtraBold: Standard "(001.001)" Standard Disk
+*Font Goudy-Italic: Standard "(001.002)" Standard Disk
+*Font Goudy: Standard "(001.003)" Standard Disk
+*Font Helvetica-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-BoldObl: Standard "(501.009)" ExtendedRoman Disk
+*Font Helvetica-Condensed-Oblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Condensed: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-BoldOblique: Standard "(501.010)" ExtendedRoman Disk
+*Font Helvetica-Narrow-Oblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Narrow: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica-Oblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Helvetica: Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-Black: Standard "(501.008)" ExtendedRoman Disk
+*Font HoeflerText-BlackItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font HoeflerText-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font HoeflerText-Ornaments: Special "(001.001)" Special Disk
+*Font HoeflerText-Regular: Standard "(501.009)" ExtendedRoman Disk
+*Font JoannaMT-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-BoldItalic: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font JoannaMT: Standard "(501.009)" ExtendedRoman Disk
+*Font LetterGothic-Bold: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-BoldSlanted: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic-Slanted: Standard "(501.010)" ExtendedRoman Disk
+*Font LetterGothic: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Book: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-BookOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-Demi: Standard "(501.009)" ExtendedRoman Disk
+*Font LubalinGraph-DemiOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Marigold: Standard "(001.000)" Standard Disk
+*Font Monaco: Standard "(501.012)" ExtendedRoman Disk
+*Font MonaLisa-Recut: Standard "(001.000)" Standard Disk
+*Font NewCenturySchlbk-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font NewCenturySchlbk-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Italic: Standard "(501.011)" ExtendedRoman Disk
+*Font NewCenturySchlbk-Roman: Standard "(501.008)" ExtendedRoman Disk
+*Font NewYork: Standard "(501.013)" ExtendedRoman Disk
+*Font Optima-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Optima-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font Optima-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font Optima: Standard "(501.010)" ExtendedRoman Disk
+*Font Oxford: Standard "(001.000)" Standard Disk
+*Font Palatino-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-BoldItalic: Standard "(501.007)" ExtendedRoman Disk
+*Font Palatino-Italic: Standard "(501.008)" ExtendedRoman Disk
+*Font Palatino-Roman: Standard "(501.006)" ExtendedRoman Disk
+*Font StempelGaramond-Bold: Standard "(501.007)" ExtendedRoman Disk
+*Font StempelGaramond-BoldItalic: Standard "(501.012)" ExtendedRoman Disk
+*Font StempelGaramond-Italic: Standard "(501.009)" ExtendedRoman Disk
+*Font StempelGaramond-Roman: Standard "(501.011)" ExtendedRoman Disk
+*Font Symbol: Special "(001.008)" Special Disk
+*Font Taffy: Standard "(001.001)" Standard Disk
+*Font Times-Bold: Standard "(501.009)" ExtendedRoman Disk
+*Font Times-BoldItalic: Standard "(501.009)" ExtendedRoman Disk
+*Font Times-Italic: Standard "(501.010)" ExtendedRoman Disk
+*Font Times-Roman: Standard "(501.010)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldItalicMT: Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPS-BoldMT: Standard "(501.009)" ExtendedRoman Disk
+*Font TimesNewRomanPS-ItalicMT: Standard "(501.011)" ExtendedRoman Disk
+*Font TimesNewRomanPSMT: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-Bold: Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-BoldExt: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldExtObl: Standard "(501.010)" ExtendedRoman Disk
+*Font Univers-BoldOblique: Standard "(501.008)" ExtendedRoman Disk
+*Font Univers-Condensed: Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-CondensedBold: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedBoldOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-CondensedOblique: Standard "(501.011)" ExtendedRoman Disk
+*Font Univers-Extended: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-ExtendedObl: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Light: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-LightOblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers-Oblique: Standard "(501.009)" ExtendedRoman Disk
+*Font Univers: Standard "(501.009)" ExtendedRoman Disk
+*Font Wingdings-Regular: Special "(001.001)" Special Disk
+*Font ZapfChancery-MediumItalic: Standard "(002.000)" ExtendedRoman Disk
+*Font ZapfChanceryCE-MediumItalic: Win1250 "(002.000)" ExtendedRoman Disk
+*Font ZapfDingbats: Special "(001.005S)" Special Disk
+
+*?FontQuery: "
+ save
+   { count 1 gt
+	  { exch dup 127 string cvs (/) print print (:) print
+		/Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+	  } { exit } ifelse 
+   } bind loop
+   (*) = flush
+ restore
+"
+*End
+*?FontList: "
+save
+  (*) {cvn ==} 128 string /Font resourceforall
+  (*) = flush
+restore
+"
+*End
+
+*% Printer Messages (verbatim from printer):
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+
+*% Status (format: %%[ status: <one of these> ]%% )
+*Status: "idle"
+*Status: "busy"
+*Status: "waiting"
+*Status: "printing"
+*Status: "warming up"
+
+*% Input Sources (format: %%[ status: <stat>; source: <one of these> ]%% )
+*Source: "Serial"
+*Source: "SerialB"
+*Source: "LocalTalk"
+*Source: "Parallel"
+
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%%)
+
+*DeviceAdjustMatrix: "[1 0 0 1 0 0]"
+
+*% Color Separation Information =====================
+
+*DefaultColorSep: ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi
+
+*InkName: ProcessBlack/Process Black
+*InkName: CustomColor/QColor-Custom
+*InkName: ProcessCyan/Process Cyan
+*InkName: ProcessMagenta/Process Magenta
+*InkName: ProcessYellow/Process Yellow
+
+*%  For 53 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.53lpi.300dpi/53 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.53lpi.300dpi/53 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.53lpi.300dpi/53 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.53lpi.300dpi/53 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.53lpi.300dpi/53 lpi / 300 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.53lpi.300dpi/53 lpi / 300 dpi: "53.0"
+*ColorSepScreenFreq CustomColor.53lpi.300dpi/53 lpi / 300 dpi: "53.0"
+*ColorSepScreenFreq ProcessCyan.53lpi.300dpi/53 lpi / 300 dpi: "53.0"
+*ColorSepScreenFreq ProcessMagenta.53lpi.300dpi/53 lpi / 300 dpi: "53.0"
+*ColorSepScreenFreq ProcessYellow.53lpi.300dpi/53 lpi / 300 dpi: "53.0"
+
+*%  For 71 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.71lpi.300dpi/71 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.71lpi.300dpi/71 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.71lpi.300dpi/71 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.71lpi.300dpi/71 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.71lpi.300dpi/71 lpi / 300 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.71lpi.300dpi/71 lpi / 300 dpi: "71.0"
+*ColorSepScreenFreq CustomColor.71lpi.300dpi/71 lpi / 300 dpi: "71.0"
+*ColorSepScreenFreq ProcessCyan.71lpi.300dpi/71 lpi / 300 dpi: "71.0"
+*ColorSepScreenFreq ProcessMagenta.71lpi.300dpi/71 lpi / 300 dpi: "71.0"
+*ColorSepScreenFreq ProcessYellow.71lpi.300dpi/71 lpi / 300 dpi: "71.0"
+
+*%  For 80 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.80lpi.300dpi/80 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.80lpi.300dpi/80 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.80lpi.300dpi/80 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.80lpi.300dpi/80 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.80lpi.300dpi/80 lpi / 300 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.80lpi.300dpi/80 lpi / 300 dpi: "80.0"
+*ColorSepScreenFreq CustomColor.80lpi.300dpi/80 lpi / 300 dpi: "80.0"
+*ColorSepScreenFreq ProcessCyan.80lpi.300dpi/80 lpi / 300 dpi: "80.0"
+*ColorSepScreenFreq ProcessMagenta.80lpi.300dpi/80 lpi / 300 dpi: "80.0"
+*ColorSepScreenFreq ProcessYellow.80lpi.300dpi/80 lpi / 300 dpi: "80.0"
+
+*%  For 106 lpi / 300 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.300dpi/106 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.106lpi.300dpi/106 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.106lpi.300dpi/106 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.106lpi.300dpi/106 lpi / 300 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.106lpi.300dpi/106 lpi / 300 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.300dpi/106 lpi / 300 dpi: "106.0"
+*ColorSepScreenFreq CustomColor.106lpi.300dpi/106 lpi / 300 dpi: "106.0"
+*ColorSepScreenFreq ProcessCyan.106lpi.300dpi/106 lpi / 300 dpi: "106.0"
+*ColorSepScreenFreq ProcessMagenta.106lpi.300dpi/106 lpi / 300 dpi: "106.0"
+*ColorSepScreenFreq ProcessYellow.106lpi.300dpi/106 lpi / 300 dpi: "106.0"
+
+*%  For 71 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "71.0"
+*ColorSepScreenFreq CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "71.0"
+*ColorSepScreenFreq ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "71.0"
+*ColorSepScreenFreq ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "71.0"
+*ColorSepScreenFreq ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "71.0"
+
+*%  For 80 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.80lpi.600dpi/80 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.80lpi.600dpi/80 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.80lpi.600dpi/80 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.80lpi.600dpi/80 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.80lpi.600dpi/80 lpi / 600 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.80lpi.600dpi/80 lpi / 600 dpi: "80.0"
+*ColorSepScreenFreq CustomColor.80lpi.600dpi/80 lpi / 600 dpi: "80.0"
+*ColorSepScreenFreq ProcessCyan.80lpi.600dpi/80 lpi / 600 dpi: "80.0"
+*ColorSepScreenFreq ProcessMagenta.80lpi.600dpi/80 lpi / 600 dpi: "80.0"
+*ColorSepScreenFreq ProcessYellow.80lpi.600dpi/80 lpi / 600 dpi: "80.0"
+
+*%  For 106 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.600dpi/106 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.106lpi.600dpi/106 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.106lpi.600dpi/106 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.106lpi.600dpi/106 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.106lpi.600dpi/106 lpi / 600 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.600dpi/106 lpi / 600 dpi: "106.0"
+*ColorSepScreenFreq CustomColor.106lpi.600dpi/106 lpi / 600 dpi: "106.0"
+*ColorSepScreenFreq ProcessCyan.106lpi.600dpi/106 lpi / 600 dpi: "106.0"
+*ColorSepScreenFreq ProcessMagenta.106lpi.600dpi/106 lpi / 600 dpi: "106.0"
+*ColorSepScreenFreq ProcessYellow.106lpi.600dpi/106 lpi / 600 dpi: "106.0"
+
+*%  For 106 lpi / 1200 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.1200dpi/106 lpi / 1200 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.106lpi.1200dpi/106 lpi / 1200 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.106lpi.1200dpi/106 lpi / 1200 dpi: "45.0"
+*ColorSepScreenAngle ProcessMagenta.106lpi.1200dpi/106 lpi / 1200 dpi: "45.0"
+*ColorSepScreenAngle ProcessYellow.106lpi.1200dpi/106 lpi / 1200 dpi: "45.0"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.1200dpi/106 lpi / 1200 dpi: "106.0"
+*ColorSepScreenFreq CustomColor.106lpi.1200dpi/106 lpi / 1200 dpi: "106.0"
+*ColorSepScreenFreq ProcessCyan.106lpi.1200dpi/106 lpi / 1200 dpi: "106.0"
+*ColorSepScreenFreq ProcessMagenta.106lpi.1200dpi/106 lpi / 1200 dpi: "106.0"
+*ColorSepScreenFreq ProcessYellow.106lpi.1200dpi/106 lpi / 1200 dpi: "106.0"
+
+
+*% end of PPD file for MINOLTA-QMS magicolor 6100
+ 

@@ -1,0 +1,267 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,4.14.1.354
+     
+[Manufacturer]
+%Nvidia%    = Nvidia
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Nvidia]
+%NVENET.DeviceDesc%  =  NVENET1.NDI,   PCI\VEN_10DE&DEV_01C3
+%NVENET.DeviceDesc%  =  NVENET2.NDI,   PCI\VEN_10DE&DEV_0066
+%NVENET.DeviceDesc%  =  NVENET3.NDI,   PCI\VEN_10DE&DEV_00D6
+%NVENET.DeviceDesc%  =  NVENET4.NDI,   PCI\VEN_10DE&DEV_0086
+%NVENET.DeviceDesc%  =  NVENET5.NDI,   PCI\VEN_10DE&DEV_00E6
+
+[NVENET1.NDI.NT]
+Characteristics = 0x84                  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5                     ; PciBus
+AddReg          = NVENET1.reg, SpeedSetting.reg
+CopyFiles       = NVENET.CopyFiles
+
+[NVENET1.ndi.NT.Services]
+AddService = NVENET, 2, NVENET.Service, common.EventLog
+
+[NVENET2.NDI.NT]
+Characteristics = 0x84                  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5                     ; PciBus
+AddReg          = NVENET2.reg, SpeedSetting.reg
+CopyFiles       = NVENET.CopyFiles
+
+[NVENET2.ndi.NT.Services]
+AddService = NVENET, 2, NVENET.Service, common.EventLog
+
+[NVENET3.NDI.NT]
+Characteristics = 0x84                  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5                     ; PciBus
+AddReg          = NVENET3.reg, SpeedSetting.reg, ASF.reg
+CopyFiles       = NVENET.CopyFiles
+
+[NVENET3.ndi.NT.Services]
+AddService = NVENET, 2, NVENET.Service, common.EventLog
+
+[NVENET4.NDI.NT]
+Characteristics = 0x84                  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5                     ; PciBus
+AddReg          = NVENET4.reg, SpeedSetting.reg, ASF.reg
+CopyFiles       = NVENET.CopyFiles
+
+[NVENET4.ndi.NT.Services]
+AddService = NVENET, 2, NVENET.Service, common.EventLog
+
+[NVENET5.NDI.NT]
+Characteristics = 0x84                  ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5                     ; PciBus
+AddReg          = NVENET5.reg, SpeedSetting.reg, ASF.reg
+CopyFiles       = NVENET.CopyFiles
+
+[NVENET5.ndi.NT.Services]
+AddService = NVENET, 2, NVENET.Service, common.EventLog
+
+
+[NVENET1.reg]
+HKR,,                                 AdapterCFID,             0, "01C310DE"
+HKR, Ndi,                             Service,                 0, "NVENET"
+HKR, Ndi\Interfaces,                  UpperRange,              0, "ndis5"
+HKR, Ndi\Interfaces,                  LowerRange,              0, "ethernet"
+
+[NVENET2.reg]
+HKR,,                                 AdapterCFID,             0, "006610DE"
+HKR, Ndi,                             Service,                 0, "NVENET"
+HKR, Ndi\Interfaces,                  UpperRange,              0, "ndis5"
+HKR, Ndi\Interfaces,                  LowerRange,              0, "ethernet"
+HKR, NDIS,                            LogDriverName,           0, "NVENET"
+HKR, NDIS,                            MajorNdisVersion,        1, 05
+HKR, NDIS,                            MinorNdisVersion,        1, 01
+HKR, Ndi\Install,                     ndis5,                   0, "NVENET.INSTALL"
+
+[NVENET3.reg]
+HKR,,                                 AdapterCFID,             0, "00D610DE"
+HKR, Ndi,                             Service,                 0, "NVENET"
+HKR, Ndi\Interfaces,                  UpperRange,              0, "ndis5"
+HKR, Ndi\Interfaces,                  LowerRange,              0, "ethernet"
+HKR, NDIS,                            LogDriverName,           0, "NVENET"
+HKR, NDIS,                            MajorNdisVersion,        1, 05
+HKR, NDIS,                            MinorNdisVersion,        1, 01
+HKR, Ndi\Install,                     ndis5,                   0, "NVENET.INSTALL"
+
+[NVENET4.reg]
+HKR,,                                 AdapterCFID,             0, "008610DE"
+HKR, Ndi,                             Service,                 0, "NVENET"
+HKR, Ndi\Interfaces,                  UpperRange,              0, "ndis5"
+HKR, Ndi\Interfaces,                  LowerRange,              0, "ethernet"
+HKR, NDIS,                            LogDriverName,           0, "NVENET"
+HKR, NDIS,                            MajorNdisVersion,        1, 05
+HKR, NDIS,                            MinorNdisVersion,        1, 01
+HKR, Ndi\Install,                     ndis5,                   0, "NVENET.INSTALL"
+
+[NVENET5.reg]
+HKR,,                                 AdapterCFID,             0, "00E610DE"
+HKR, Ndi,                             Service,                 0, "NVENET"
+HKR, Ndi\Interfaces,                  UpperRange,              0, "ndis5"
+HKR, Ndi\Interfaces,                  LowerRange,              0, "ethernet"
+HKR, NDIS,                            LogDriverName,           0, "NVENET"
+HKR, NDIS,                            MajorNdisVersion,        1, 05
+HKR, NDIS,                            MinorNdisVersion,        1, 01
+HKR, Ndi\Install,                     ndis5,                   0, "NVENET.INSTALL"
+
+
+;-----------------------------------------------------------------------------
+
+[SpeedSetting.reg]
+;
+; Wake on Lan from Power Off
+;
+HKR, Ndi\params\OemSetting1,           ParamDesc,              0, %WakeOnLANFromPowerOff%
+HKR, Ndi\params\OemSetting1,           default,                0, "1"
+HKR, Ndi\params\OemSetting1,           type,                   0, "enum"
+HKR, Ndi\params\OemSetting1\enum,      "0",                    0, %Disable%
+HKR, Ndi\params\OemSetting1\enum,      "1",                    0, %Enable%
+
+HKR, Ndi\params\ForceSpeedDpx,         ParamDesc,              0, %SpeedDuplexSettings%
+HKR, Ndi\params\ForceSpeedDpx,         default,                0, "0"
+HKR, Ndi\params\ForceSpeedDpx,         type,                   0, "enum"
+HKR, Ndi\params\ForceSpeedDpx\enum,    "0",                    0, %Automatic%
+HKR, Ndi\params\ForceSpeedDpx\enum,    "1",                    0, %HD10MB%
+HKR, Ndi\params\ForceSpeedDpx\enum,    "2",                    0, %FD10MB%
+HKR, Ndi\params\ForceSpeedDpx\enum,    "3",                    0, %HD100MB%
+HKR, Ndi\params\ForceSpeedDpx\enum,    "4",                    0, %FD100MB%
+; comment above 4 lines to make it split option
+
+HKR, Ndi\params\NetworkAddress,        ParamDesc,0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,        default,  0, " "
+HKR, Ndi\params\NetworkAddress,        type,     0, "edit"
+HKR, Ndi\params\NetworkAddress,        LimitText,0, "12"
+HKR, Ndi\params\NetworkAddress,        UpperCase,0, "1"
+HKR, Ndi\params\NetworkAddress,        optional, 0, "1"
+
+HKR, Ndi\params\PollIntervalInus,      ParamDesc,              0, %OptimizeFor%
+HKR, Ndi\params\PollIntervalInus,      default,                0, "425"
+HKR, Ndi\params\PollIntervalInus,      type,                   0, "enum"
+HKR, Ndi\params\PollIntervalInus\enum, 0,                      0, %Throughput%
+HKR, Ndi\params\PollIntervalInus\enum, 425,                    0, %CPU%
+
+
+[ASF.reg]
+HKR,,                                  ASFEventBitmask,        0, %ASFEventBitmask%
+HKR,,                                  ASFFunctionNameEvent0,  0, %ASFFunctionNameEvent0%
+HKR,,                                  ASFFunctionNameEvent1,  0, %ASFFunctionNameEvent1%
+HKR,,                                  ASFFunctionNameEvent4,  0, %ASFFunctionNameEvent4%
+HKR,,                                  ASFFunctionNameEvent6,  0, %ASFFunctionNameEvent6%
+HKR,,                                  ASFFunctionNameEvent7,  0, %ASFFunctionNameEvent7%
+HKR,,                                  ASFFunctionNameEvent8,  0, %ASFFunctionNameEvent8%
+HKR,,                                  ASFFunctionNameEvent10, 0, %ASFFunctionNameEvent10%
+
+;
+; ASF Support
+;
+HKR,,                                 ASFSupport,             0, "0"
+;
+; ASF Managing station IP address
+;
+HKR,,                                 ASFDestIPAddress,       0, " "
+;
+; ASF Send Count
+;
+HKR,,                                 ASFSendCount,           0, "1"
+;
+; ASF Heart beat
+;
+HKR,,                                 ASFHeartbeat,           0, "600"
+;
+; ASF Event 0
+;
+HKR,,                                 ASFEvent0,              0, "1"
+;
+; ASF Event 1
+;
+HKR,,                                 ASFEvent1,              0, "1"
+;
+; ASF Event 4
+;
+HKR,,                                 ASFEvent4,              0, "1"
+;
+;
+; ASF Event 6 (Shows up "ASF Event6 - Power button presse")
+;
+HKR,,                                 ASFEvent6,               0, "1"
+;
+; ASF Event 7
+;
+HKR,,                                 ASFEvent7,               0, "1"
+;
+; ASF Event 8
+;
+HKR,,                                 ASFEvent8,               0, "1"
+;
+; ASF Event 10
+;
+HKR,,                                 ASFEvent10,              0, "1"
+
+;-------------------------------------------------------------------------------
+; NVNET Service and Driver Section
+; 
+[NVENET.Service]
+DisplayName     = %NVENET.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\NVENET.sys
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[NVENET.CopyFiles]
+NVENET.sys,,,2
+
+[DestinationDirs]
+NVENET.CopyFiles     = 12
+DefaultDestDir       = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MSFT                         = "Microsoft"
+Nvidia                       = "Nvidia"
+
+Enable                       = "Enable"
+Disable                      = "Disable"
+WakeOnLANFromPowerOff        = "WakeOnLAN From PowerOff"
+Throughput                   = "Throughput"
+CPU                          = "CPU"
+NetworkAddress               = "Network Address"
+OptimizeFor                  = "Optimize For"
+SpeedDuplexSettings          = "Speed/duplex settings"
+SpeedDuplexSelectionMethod   = "Speed/duplex selection method"
+Automatic                    = "Full autonegotiation"
+HD10MB			     = "Force 10 Half Duplex"
+FD10MB                       = "Force 10 Full Duplex"
+HD100MB                      = "Force 100 Half Duplex"
+FD100MB                      = "Force 100 Full Duplex"
+
+ASFEventBitmask              = "8191"
+
+ASFFunctionNameEvent0        = "ASFEventBootError"
+ASFFunctionNameEvent1        = "ASFEventFanProblem"
+ASFFunctionNameEvent4        = "ASFEventHeartbeat"
+ASFFunctionNameEvent6        = "ASFEventPowerButton"
+ASFFunctionNameEvent7        = "ASFEventSystemHot"
+ASFFunctionNameEvent8        = "ASFEventCPUOverheated"
+ASFFunctionNameEvent10       = "ASFEventCaseIntrusion"
+
+NVENET.DeviceDesc            = "NVIDIA nForce MCP Networking Controller"
+NVENET.Service.DispName      = "NVIDIA nForce MCP Networking Controller Driver"

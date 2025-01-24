@@ -1,0 +1,115 @@
+
+
+<HTML>
+<HEAD>
+<TITLE>Mail Store</TITLE>
+<SCRIPT SRC="linkcss.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0">
+<H1>Mail Store</H1>
+
+
+<P CLASS="important">Important</P>
+<UL>
+    <LI>
+      If you change this parameter, you must stop and then restart the POP3 service and the IIS Admin service. You can manage these services from <B>Services</b> on the <B>Administrative Tools</b> menu, which you can access by logging on locally to the server or by connecting to the server using Terminal Services.
+	</LI>
+</UL>
+
+
+<P>The mail store is a directory or Universal Naming Convention (UNC) path in which the POP3 service stores all e-mail until users retrieve and download it to their client computer. The POP3 service creates a directory for each of its domains. For each user with a mailbox in that domain, the POP3 service creates a user directory under the directory for the domain.</P>
+
+<P>E-mail that a user receives is stored as an individual file within the user's directory until the user retrieves it using a POP3 e-mail client.  The following is an example of the complete path to an e-mail message stored for user named someone: <BR>C:\inetpub\mailroot\mailbox\example.com\P3_someone.mbx\P3593893.eml</P>
+
+<P>The directory permissions and file permissions for each directory in the mail store are identical. When you configure the mail store, the permissions are set so that only local or domain administrators and the local network service, which the POP3 service is configured to run with, are assigned permissions to the directories. No other user is assigned read/write permissions.</P>
+
+<P>The mail store must have access to adequate hard disk space. To ensure that the mail store functions correctly, estimate the amount of disk space your mail store will use based on the number of users on the server, the volume of e-mail that they will receive, and the average size of the e-mail they will receive.</P>
+
+<P>You can use disk quotas to protect the server from situations where the mail store's disk usage might increase unexpectedly. Disk quotas monitor and control disk space that is used on NTFS file system volumes.</P>
+
+
+
+
+	
+<P class="proclabel"><B>To set the mail store</B></P>
+
+<OL type="1">
+	<LI>On the primary navigation bar, click <b>E-mail</b>.</LI>
+	<LI>Click <b>Server Properties</b>.</LI>
+	<LI>In <b>Root Mail Directory</b>, type the path to the directory of the mail store on the local hard disk. For example, <I>C:\mailstore</i>. Then, click <b>OK</b>.</LI>
+	
+</OL>
+
+<P CLASS="important">Important</P>
+<UL>
+    <LI>Depending on your authentication method, certain characters are not allowed in mailbox names. Periods are allowed, but they cannot be either leading or trailing. The following example illustrates the correct use of a period:
+
+
+<p>john.someone@example.com</p>
+
+<p>The following table lists the characters that are prohibited for each type of authentication.</p>
+
+<TABLE WIDTH="100%">
+<TR>
+<TH>Authentication method</TH>
+<TH>Prohibited characters</TH>
+</TR>
+<TR>
+<TD>Active Directory integrated authentication</TD>
+<TD>@  (  ) / \ [ ]  :  ;  ,   “  &lt;  &gt;  *  =   |   ?  + 
+</TD>
+</TR>
+<TR>
+<TD>Local Windows accounts authentication</TD>
+<TD> @  (  ) / \ [ ]  :  ;  ,   “  &lt;  &gt;  *  =   |   ?  + 
+</TD>
+</TR>
+<TR>
+<TD>Encrypted password file authentication</TD>
+<TD>@  (  ) / \ [ ]  :  ;  ,   “  &lt;  &gt;   *  =   |   ?
+</TD>
+</TR>
+</TABLE>
+	
+
+
+
+	</LI>
+</UL>
+
+
+
+
+<P class="note">Notes</P>
+<UL>
+    <LI>To perform this procedure, you must be a member of the Administrators group on the local computer, or you must have been delegated the appropriate authority. If the computer is joined to a domain, members of the Domain Admins group might be able to perform this procedure.
+	</LI>
+
+<LI>You must configure the mail store to use either a directory on the local hard disk or a Universal Naming Convention (UNC) path. The POP3 service does not support other storage options, such as mapped drives.
+	</LI>
+	
+	<LI>If you need to transfer the mail store to a new directory, you must move the mail store directory to ensure the directory retains the correct ownership; copying the mail store will not work.</LI>
+	<LI>
+      You cannot set the mail store to the root directory of the hard disk, such as C:\, or to a directory in which files are currently in use.
+	</LI>
+	<LI>
+     The default mail store is system_drive:\Inetpub\mailroot\Mailbox.
+	</LI>
+	<LI>
+     Locate the mail store on an NTFS partition. 
+	</LI>
+	<LI>
+     If you change the mail store from its default location or from a previous location, and there is stored e-mail, you must manually move the folders in which the e-mail is stored to the new location. 
+	</LI>
+	<LI>Physical access to a server is a high security risk. To maintain a more secure environment, you must restrict physical access to the server where the mail store exists.</LI>
+	</UL> 
+
+
+
+
+
+
+
+</body>
+</html>
+ 

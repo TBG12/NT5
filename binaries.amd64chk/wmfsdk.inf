@@ -1,0 +1,388 @@
+
+
+[Version]
+Signature="$Windows NT$"
+ClassGUID={00000000-0000-0000-0000-000000000000}
+LayoutFile=layout.inf
+SetupClass=BASE
+
+[BaseWinOptions]
+InstallWMFSDK
+[OLDInstallWMFSDK] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DelReg=DelReg.Uninst
+
+AddReg=DelayReg.OCX,Reg.Codecs
+
+[DelayReg.OCX]
+
+
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_2",, "%11%\regsvr32 /s """%11%\wmnetmgr.dll""""
+
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_3",, "%11%\regsvr32 /s /u """%11%\wmv8dmod.dll""""
+
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_4",, "%11%\regsvr32 /s """%11%\wmvdmod.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_5",, "%11%\regsvr32 /s """%11%\wmvdmoe2.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_6",, "%11%\regsvr32 /s """%11%\wmadmoe.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_7",, "%11%\regsvr32 /s """%11%\wmspdmod.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_8",, "%11%\regsvr32 /s """%11%\wmspdmoe.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_10",, "%11%\regsvr32 /s """%11%\wmsdmoe2.dll""""
+
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_20",, "%11%\regsvr32 /s """%11%\wmadmod.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_21",, "%11%\regsvr32 /s """%11%\mpg4dmod.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_22",, "%11%\regsvr32 /s """%11%\mp43dmod.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_23",, "%11%\regsvr32 /s """%11%\mp4sdmod.dll""""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_24",, "%11%\regsvr32 /s """%11%\wmsdmod.dll""""
+
+
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_30",, "%11%\regsvr32 /s """%11%\laprxy.dll""""
+
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_31",, """"%11%\logagent.exe""" /RegServer"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce","OE_WMPWMFSDK_Install_32",, "%11%\regsvr32 /s """%11%\wmvcore.dll""""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[DelReg.Uninst]
+
+HKCR, "Software\Microsoft\Multimedia\Components\Installed\playback_wmfsdk\Uninstall"
+
+
+HKCR,"windows media\WMSDK\AudioDecode\10" 
+HKCR, Windows Media\WMSDK\AudioDecode\352
+HKCR, Windows Media\WMSDK\AudioDecode\353
+HKCR,"windows media\WMSDK\AudioDecode\354" 
+HKCR,"windows media\WMSDK\AudioDecode\355" 
+
+HKCR, Windows Media\WMSDK\VideoDecode\MSS1
+HKCR,"windows media\WMSDK\VideoDecode\MSS2" 
+HKCR,"windows media\WMSDK\VideoDecode\WMV1" 
+HKCR,"windows media\WMSDK\VideoDecode\WMV2" 
+HKCR,"windows media\WMSDK\VideoDecode\WMV3" 
+HKCR,"windows media\WMSDK\VideoDecode\WMVP" 
+HKCR,"windows media\WMSDK\VideoDecode\MP4S" 
+HKCR,"windows media\WMSDK\VideoDecode\M4S2" 
+
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc", "wma9dmod.dll" 
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc", "wms9dmod.dll" 
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc", "wmspdmod.dll" 
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc", "wmv9dmod.dll" 
+HKLM, "SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc", "mp4sdmod.dll" 
+
+HKCR,%KEY_DMO1%\73646976-0000-0010-8000-00aa00389b71\3334504d-0000-0010-8000-00aa00389b71
+HKCR,%KEY_DMO1%\73646976-0000-0010-8000-00aa00389b71\3334706d-0000-0010-8000-00aa00389b71
+HKCR,%KEY_DMO1%\73646976-0000-0010-8000-00aa00389b71\5334504d-0000-0010-8000-00aa00389b71
+HKCR,%KEY_DMO1%\73646976-0000-0010-8000-00aa00389b71\7334706d-0000-0010-8000-00aa00389b71
+
+HKCR,%KEY_DMO%\73646976-0000-0010-8000-00aa00389b71\Subtypes\3334504d-0000-0010-8000-00aa00389b71
+HKCR,%KEY_DMO%\73646976-0000-0010-8000-00aa00389b71\Subtypes\3334706d-0000-0010-8000-00aa00389b71
+HKCR,%KEY_DMO%\73646976-0000-0010-8000-00aa00389b71\Subtypes\5334504d-0000-0010-8000-00aa00389b71
+HKCR,%KEY_DMO%\73646976-0000-0010-8000-00aa00389b71\Subtypes\7334706d-0000-0010-8000-00aa00389b71
+
+[Reg.Codecs]
+
+
+HKCR, "Windows Media\%REGKEY_WMSDK%\AudioEncode", "10",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\AudioEncode", "354",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\AudioEncode", "355",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "MSS2",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "WMV3",,""
+
+HKCR, "Windows Media\%REGKEY_WMSDK%\AudioEncode", "304",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\AudioEncode", "353",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "MP4S",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "WMV1",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "WMV2",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "WMVP",,""
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoEncode", "MSS1",,""
+
+
+HKCR, "Windows Media\%REGKEY_WMSDK%\AudioDecode",,,
+HKCR, "Windows Media\%REGKEY_WMSDK%\VideoDecode",,,
+
+HKCU, "Software\Microsoft\Windows Media\%REGKEY_WMSDK%",,,
+HKCU, "Software\Microsoft\Windows Media\%REGKEY_WMSDK%\General",,,
+HKCU, "Software\Microsoft\Windows Media\%REGKEY_WMSDK%\Local",,,
+HKCU, "Software\Microsoft\Windows Media\%REGKEY_WMSDK%\Remote",,,
+HKCU, "Software\Microsoft\Windows Media\%REGKEY_WMSDK%\AudioDecode",,,
+HKCU, "Software\Microsoft\Windows Media\%REGKEY_WMSDK%\VideoDecode",,,
+
+[DestinationDirs]
+WMPCopy.System=11
+WMPCopy.System.Downlevel=11
+WMCopy.WinDir = 25
+CopyINF=17
+Del.OldCodecs=11
+
+[RunPost]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CopyINF]
+%PACKAGE_NAME%.inf
+
+[WMCopy.WinDir]
+
+[WMPCopy.System.Downlevel]
+
+msdmo.dll,,,97
+
+
+[WMPCopy.System]
+
+wmasf.dll,,,97
+wmvcore.dll,,,97
+wmidx.dll,,,97
+wmnetmgr.dll,,,97
+
+logagent.exe,,,97
+laprxy.dll,,,97
+
+qasf.dll,,,97
+
+
+
+
+
+wmadmoe.dll,,,97
+
+wmsdmoe2.dll,,,97
+wmspdmoe.dll,,,97
+wmvdmoe2.dll,,,97
+
+
+wmadmod.dll,,,97
+wmsdmod.dll,,,97
+wmspdmod.dll,,,97
+wmvdmod.dll,,,97
+mpg4dmod.dll,,,97
+mp4sdmod.dll,,,97
+mp43dmod.dll,,,97
+
+[Strings]
+KEY_NETSHOW =  "Software\Microsoft\NetShow\Player"
+REGKEY_WMSDK="WMSDK"
+PACKAGE_NAME="WMFSDK"
+KEY_DMO1 = "DirectShow\MediaObjects\82d353df-90bd-4382-8bc2-3f6192b76e34\InputTypes"
+KEY_DMO="DirectShow\MediaObjects\Categories\4a69b442-28be-4991-969c-b500adf5d8a8\InputTypes"
+;;;;;;;--------------------------------------------
+;-- Only localize strings below this line
+;;;;;;--------------------------------------------
+LANGUAGE="EN"
+;Error Messages
+
+
+
+
+
+
+[installwmfsdk]
+AddReg=wDelayReg.OCX,wReg.Codecs
+DelReg=wDelReg.Uninst
+
+[wDelayReg.OCX]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_2,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmnetmgr.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_3,0x00004000,"%16425%\regsvr32 /s /u ""%16425%\wmv8dmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_4,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmvdmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_5,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmvdmoe2.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_6,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmadmoe.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_7,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmspdmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_8,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmspdmoe.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_10,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmsdmoe2.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_20,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmadmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_21,0x00004000,"%16425%\regsvr32 /s ""%16425%\mpg4dmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_22,0x00004000,"%16425%\regsvr32 /s ""%16425%\mp43dmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_23,0x00004000,"%16425%\regsvr32 /s ""%16425%\mp4sdmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_24,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmsdmod.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_30,0x00004000,"%16425%\regsvr32 /s ""%16425%\laprxy.dll"""
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_31,0x00004000,"""%16425%\logagent.exe"" /RegServer"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\RunOnce",OE_WMPWMFSDK_Install_32,0x00004000,"%16425%\regsvr32 /s ""%16425%\wmvcore.dll"""
+
+[wDelReg.Uninst]
+HKCR,"Software\Microsoft\Multimedia\Components\Installed\playback_wmfsdk\Uninstall",,0x00004000
+HKCR,"windows media\WMSDK\AudioDecode\10",,0x00004000
+HKCR,"Windows Media\WMSDK\AudioDecode\352",,0x00004000
+HKCR,"Windows Media\WMSDK\AudioDecode\353",,0x00004000
+HKCR,"windows media\WMSDK\AudioDecode\354",,0x00004000
+HKCR,"windows media\WMSDK\AudioDecode\355",,0x00004000
+HKCR,"Windows Media\WMSDK\VideoDecode\MSS1",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\MSS2",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\WMV1",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\WMV2",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\WMV3",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\WMVP",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\MP4S",,0x00004000
+HKCR,"windows media\WMSDK\VideoDecode\M4S2",,0x00004000
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc",wma9dmod.dll
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc",wms9dmod.dll
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc",wmspdmod.dll
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc",wmv9dmod.dll
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc",mp4sdmod.dll
+HKCR,"DirectShow\MediaObjects\82d353df-90bd-4382-8bc2-3f6192b76e34\InputTypes\73646976-0000-0010-8000-00aa00389b71\3334504d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\82d353df-90bd-4382-8bc2-3f6192b76e34\InputTypes\73646976-0000-0010-8000-00aa00389b71\3334706d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\82d353df-90bd-4382-8bc2-3f6192b76e34\InputTypes\73646976-0000-0010-8000-00aa00389b71\5334504d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\82d353df-90bd-4382-8bc2-3f6192b76e34\InputTypes\73646976-0000-0010-8000-00aa00389b71\7334706d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\Categories\4a69b442-28be-4991-969c-b500adf5d8a8\InputTypes\73646976-0000-0010-8000-00aa00389b71\Subtypes\3334504d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\Categories\4a69b442-28be-4991-969c-b500adf5d8a8\InputTypes\73646976-0000-0010-8000-00aa00389b71\Subtypes\3334706d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\Categories\4a69b442-28be-4991-969c-b500adf5d8a8\InputTypes\73646976-0000-0010-8000-00aa00389b71\Subtypes\5334504d-0000-0010-8000-00aa00389b71",,0x00004000
+HKCR,"DirectShow\MediaObjects\Categories\4a69b442-28be-4991-969c-b500adf5d8a8\InputTypes\73646976-0000-0010-8000-00aa00389b71\Subtypes\7334706d-0000-0010-8000-00aa00389b71",,0x00004000
+
+[wReg.Codecs]
+HKCR,"Windows Media\WMSDK\AudioEncode",10,0x00004000,
+HKCR,"Windows Media\WMSDK\AudioEncode",354,0x00004000,
+HKCR,"Windows Media\WMSDK\AudioEncode",355,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",MSS2,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",WMV3,0x00004000,
+HKCR,"Windows Media\WMSDK\AudioEncode",304,0x00004000,
+HKCR,"Windows Media\WMSDK\AudioEncode",353,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",MP4S,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",WMV1,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",WMV2,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",WMVP,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoEncode",MSS1,0x00004000,
+HKCR,"Windows Media\WMSDK\AudioDecode",,0x00004000,
+HKCR,"Windows Media\WMSDK\VideoDecode",,0x00004000,
+HKCU,"Software\Microsoft\Windows Media\WMSDK",,0x00004000,
+HKCU,"Software\Microsoft\Windows Media\WMSDK\General",,0x00004000,
+HKCU,"Software\Microsoft\Windows Media\WMSDK\Local",,0x00004000,
+HKCU,"Software\Microsoft\Windows Media\WMSDK\Remote",,0x00004000,
+HKCU,"Software\Microsoft\Windows Media\WMSDK\AudioDecode",,0x00004000,
+HKCU,"Software\Microsoft\Windows Media\WMSDK\VideoDecode",,0x00004000,
+

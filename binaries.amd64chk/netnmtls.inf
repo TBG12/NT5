@@ -1,0 +1,265 @@
+;****************************************************************************
+;                        NETMONTLS.INF
+;
+; Microsoft Network Monitor 2.0 Tools install INF
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+;****************************************************************************
+
+[version]
+signature="$Windows NT$"
+Provider=%Msft%
+LayoutFile=layout.inf
+DriverVer=10/01/2002,5.2.3790.1069
+
+;****************************************************************************
+; For Optional Components Use Only
+;****************************************************************************
+;
+[NETMONTOOLS]
+CopyFiles          = CpyFiles_NETMONTOOLS,CpyFiles_NETMONPARSERS,CpyFiles_NETMONCAPTURES,CpyFiles_NETMONSYS32,CpyFiles_NETMONHELP
+AddReg             = Registry.NETMONTOOLS.PrimaryInstall
+Uninstall          = NETMONTOOLS.Remove
+ProfileItems       = NetmonUninstallItems,NetmonInstallItems
+DependOnComponents = MS_NetMon
+
+;****************************************************************************
+
+[NETMONTOOLS.Remove]
+DelReg       = Registry.NETMONTOOLS.Delete
+DelFiles     = RemFiles_NETMONTOOLS,RemFiles_NETMONPARSERS,RemFiles_NETMONCAPTURES,RemFiles_NETMONSYS32,RemFiles_NETMONHELP
+ProfileItems = NetmonUninstallItems, NetmonUninstallItemsCommon
+OptionDesc   = "@%11%\NETMON\netmon.exe,-50003"
+
+;****************************************************************************
+
+[DestinationDirs]
+CpyFiles_NETMONTOOLS     = 11,NETMON            ;System32\NETMON
+CpyFiles_NETMONPARSERS   = 11,NETMON\PARSERS    ;System32\NETMON\PARSERS
+CpyFiles_NETMONCAPTURES  = 11,NETMON\CAPTURES   ;System32\NETMON\CAPTURES
+CpyFiles_NETMONSYS32     = 11
+CpyFiles_NETMONHELP      = 18                   ;HELP
+RemFiles_NETMONTOOLS     = 11,NETMON            ;System32\NETMON
+RemFiles_NETMONPARSERS   = 11,NETMON\PARSERS    ;System32\NETMON\PARSERS
+RemFiles_NETMONCAPTURES  = 11,NETMON\CAPTURES   ;System32\NETMON\CAPTURES
+RemFiles_NETMONSYS32	 = 11
+RemFiles_NETMONHELP      = 18                   ;HELP
+
+;****************************************************************************
+; Administrative Tools shortcut
+
+[NetmonInstallItems]
+Name            = %LinkName%
+CmdLine         = 11,NETMON,netmon.exe
+WorkingDir      = 11,NETMON
+Subdir          = %GroupName%
+InfoTip         = "@%11%\netmon\netmon.exe,-50001"
+FriendlyTypeName= "@%11%\netmon\netmon.exe,-50002"
+IconPath        = 11,NETMON,netmon.exe
+IconIndex       = 0
+DisplayResource = "%11%\netmon\netmon.exe",50000
+
+[NetmonUninstallItems]
+Name       = %LinkName%,0x00000003
+Subdir     = %GroupName%
+
+[NetmonUninstallItemsCommon]
+Name       = %LinkName%,0x00000002
+Subdir     = %GroupName%
+
+;****************************************************************************
+; Registry sections
+[Registry.NETMONTOOLS.PrimaryInstall]
+    HKCR,.cap,,REG_SZ,"netmon.Document"
+    HKCR,.enc,,REG_SZ,"netmon.Document"
+    HKCR,.fdc,,REG_SZ,"netmon.Document"
+    HKCR,.trc,,REG_SZ,"netmon.Document"
+	HKCR,Netmon.Application,,,Netmon.Application
+	HKCR,Netmon.Application\CLSID,,,{280D6122-33A4-11D1-907D-0000F8034195}
+	HKCR,netmon.Application\CLSID,,,"%NETMONTOOLS_Desc%"
+	HKCR,netmon.Application\CLSID,"LocalizedString",%REG_EXPAND_SZ%,"@%11%\NETMON\netmon.exe,-50003"
+	HKCR,netmon.Application\CLSID,"InfoTip",%REG_EXPAND_SZ%,"@%11%\NETMON\netmon.exe,-50001"
+	HKCR,netmon.Document,,,"%NETMONTOOLS_DOC%"
+	HKCR,netmon.Document,"LocalizedString",%REG_EXPAND_SZ%,"@%11%\NETMON\netmon.exe,-50002"
+	HKCR,netmon.Document\shell\open\command,,REG_SZ,%11%\NETMON\netmon.exe """%%1"""
+
+[Registry.NETMONTOOLS.Delete]
+    HKCR,.cap
+    HKCR,.enc
+    HKCR,.fdc
+    HKCR,.trc
+	HKCR,Netmon.Application
+	HKCR,netmon.Document
+	HKCU,Software\Microsoft\Network Monitor
+;****************************************************************************
+; Copy Files sections
+
+[CpyFiles_NETMONTOOLS]
+bhsupp.dll,,,2
+hexedit.dll,,,2
+netmon.exe,,,2
+netmon.ini,,,2
+nmapi.dll,,,2
+parser.dll,,,2
+parser.ini,,,2
+slbs.dll,,,2
+default.adr,,,2
+
+[CpyFiles_NETMONTOOLS.Security]
+"D:P(A;;GRGX;;;BU)(A;;GRGX;;;PU)(A;;GA;;;BA)(A;;GA;;;SY)(A;;GRGX;;;WD)"
+
+[CpyFiles_NETMONSYS32]
+nmsupp.dll,,,2
+
+[CpyFiles_NETMONSYS32.Security]
+"D:P(A;;GRGX;;;BU)(A;;GRGX;;;PU)(A;;GA;;;BA)(A;;GA;;;SY)(A;;GRGX;;;WD)"
+
+[CpyFiles_NETMONPARSERS]
+atalk.ini,bhp001.ini,,2
+atalk.dll,bhp001.dll,,2
+BONE.DLL,bhp002.dll,,2
+BROWSER.DLL,bhp003.dll,,2
+FRAME.DLL,bhp004.dll,,2
+IPX.DLL,bhp005.dll,,2
+IPX.INI,bhp005.ini,,2
+LLC.DLL,bhp006.dll,,2
+LLC.INI,bhp006.ini,,2
+MAC.DLL,bhp007.dll,,2
+MAC.INI,bhp007.ini,,2
+MSRPC.DLL,bhp008.dll,,2
+MSRPC.INI,bhp008.ini,,2
+NCP.DLL,bhp009.dll,,2
+NETBIOS.DLL,bhp010.dll,,2
+NETLOGON.DLL,bhp011.dll,,2
+PPP.DLL,bhp012.dll,,2
+PPP.INI,bhp012.ini,,2
+PPPOE.dll,nmpppoe.dll,,2
+SMB.DLL,bhp013.dll,,2
+SNMP.DLL,bhp014.dll,,2
+TCPIP.DLL,bhp015.dll,,2
+TCPIP.INI,bhp015.ini,,2
+TRAIL.DLL,bhp016.dll,,2
+TRAIL.INI,bhp016.ini,,2
+VINES.DLL,bhp017.dll,,2
+VINES.INI,bhp017.ini,,2
+XNS.DLL,bhp018.dll,,2
+XNS.INI,bhp018.ini,,2
+LOGON.DLL,bhp019.dll,,2
+LSARPC.DLL,bhp020.dll,,2
+WINSPL.DLL,bhp021.dll,,2
+RSVP.DLL,bhp022.dll,,2
+LANE.DLL,bhp023.dll,,2
+ATMARP.DLL,bhp024.dll,,2
+ATMARP.INI,bhp024.ini,,2
+LDAP.DLL,bhp025.dll,,2
+mcast.dll,mcast.dll,,2
+kerbprsr.dll,kerbprsr.dll,,2
+upnpparser.dll,bhp045.dll,,2
+upnpparser.ini,bhp045.ini,,2
+pgmparser.dll,bhp046.dll,,2
+
+[CpyFiles_NETMONPARSERS.Security]
+"D:P(A;;GRGX;;;BU)(A;;GRGX;;;PU)(A;;GA;;;BA)(A;;GA;;;SY)(A;;GRGX;;;WD)"
+
+[CpyFiles_NETMONCAPTURES]
+default.cf,,,2
+default.df,,,2
+
+[CpyFiles_NETMONCAPTURES.Security]
+"D:P(A;;GRGX;;;BU)(A;;GRGX;;;PU)(A;;GA;;;BA)(A;;GA;;;SY)(A;;GRGX;;;WD)"
+
+[CpyFiles_NETMONHELP]
+SMB.HLP,bhp013.hlp,,2
+
+[CpyFiles_NETMONHELP.Security]
+"D:P(A;;GRGX;;;BU)(A;;GRGX;;;PU)(A;;GA;;;BA)(A;;GA;;;SY)"
+
+;****************************************************************************
+; Delete Files sections
+
+[RemFiles_NETMONTOOLS]
+bhsupp.dll
+hexedit.dll
+netmon.exe
+netmon.ini
+nmapi.dll
+parser.dll
+parser.ini
+slbs.dll
+default.adr
+
+[RemFiles_NETMONSYS32]
+nmsupp.dll
+
+[RemFiles_NETMONPARSERS]
+atalk.ini
+atalk.dll
+BONE.DLL
+BROWSER.DLL
+FRAME.DLL
+IPX.DLL
+IPX.INI
+LLC.DLL
+LLC.INI
+MAC.DLL
+MAC.INI
+MSRPC.DLL
+MSRPC.INI
+NCP.DLL
+NETBIOS.DLL
+NETLOGON.DLL
+PPP.DLL
+PPP.INI
+PPPOE.DLL
+SMB.DLL
+SMB.HLP
+SNMP.DLL
+TCPIP.DLL
+TCPIP.INI
+TRAIL.DLL
+TRAIL.INI
+VINES.DLL
+VINES.INI
+XNS.DLL
+XNS.INI
+LOGON.DLL
+LSARPC.DLL
+WINSPL.DLL
+RSVP.DLL
+LANE.DLL
+LDAP.DLL
+ATMARP.DLL
+ATMARP.INI
+mcast.dll
+kerbprsr.dll
+upnpparser.dll
+upnpparser.ini
+pgmparser.dll
+
+[RemFiles_NETMONCAPTURES]
+default.cf
+default.df
+
+[RemFiles_NETMONHELP]
+SMB.HLP
+
+
+[Strings]
+Msft = "Microsoft"
+GroupName = "Administrative Tools"
+LinkName = "Network Monitor"
+
+; Service names
+NETMONTOOLS_Desc = "Microsoft Network Monitor v2.0 Tools"
+NETMONTOOLS_HELP = "Captures network packets for analysis."
+NETMONTOOLS_DOC  = "Microsoft Network Monitor Document"
+NETMONTOOLS_INFOTIP = "Captures frames of network data to help you detect and analyze network problems"
+
+
+REG_MULTI_SZ = 0x10000
+REG_EXPAND_SZ = 0x20000
+REG_DWORD = 0x10001
+SERVICE_DEMAND_START = 3
+SERVICE_AUTO_START = 2
+SERVICE_WIN32_SHARE_PROCESS = 32
+SERVICE_FILE_SYSTEM_DRIVER = 2
+SERVICE_WIN32_OWN_PROCESS = 16

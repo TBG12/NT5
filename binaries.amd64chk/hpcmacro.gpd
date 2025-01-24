@@ -1,0 +1,94 @@
+*%*****************************************************************************
+*%
+*% GPD Macros 
+*% HPGPDFileVersion: "1.007"
+*%
+*%*****************************************************************************
+
+
+*BlockMacro: DuplexConstraints
+{
+    *Constraints: Duplex.HORIZONTAL
+    *Constraints: Duplex.VERTICAL
+}
+
+
+*Macros: StrIDs
+{
+    IDS_A6:                          2  
+    IDS_B5:                          3  
+    IDS_JAPAN_POST:                  4  
+    IDS_DBL_JAPAN_POST_ROTATED:      5  
+    IDS_C4:                          6  
+    IDS_9x12:                        8  
+    IDS_12x18:                       9  
+    IDS_16K:                        10
+
+    IDS_MANUAL_FEED_TRAY1:          29    
+    IDS_STACKER_BIN_STAPLED:        30 
+    IDS_HIGH_CAPACITY_TRAY:         31 
+    IDS_1000_SHEET_SIDE_TRAY:       32 
+    IDS_2000_SHEET_TRAY:            33 
+    IDS_TRAY4_1000:                 34 
+    IDS_TRAY4_2000:                 35 
+    IDS_TRAY4_500:                  36 
+    IDS_TRAY5_500:                  37 
+    IDS_HIGH_CAPACITY_TRAYS:        38 
+    IDS_8BIN_MAILBOX:               39 
+    IDS_TOP_BIN_FACE_DOWN:          40 
+    IDS_LEFT_BIN_FACE_UP:           41 
+    IDS_STAPLER_BIN:                42 
+    IDS_STACKER_BIN:                43 
+    IDS_JOB_SEPARATOR_BIN:          44 
+    IDS_COLLATOR_BIN:               45 
+    
+    IDS_ENVELOPE_TYPE:              70 
+    IDS_HEAVY_28LB_TYPE:            71 
+    IDS_28LB_TYPE1_TYPE:            72 
+    IDS_28LB_TYPE2_TYPE:            73 
+    IDS_ROUGH_TYPE:                 74 
+    IDS_THIN_TYPE:                  75
+    
+    IDS_ECONOMODE:                   90
+    IDS_OPTIMIZE_FOR:                91
+    IDS_AUTO_SELECT:                100
+    
+    IDS_UNSPECIFIED_TYPE:           105
+    IDS_PLAIN_TYPE:                 106
+    IDS_PREPRINTED_TYPE:            107
+    IDS_LETTERHEAD_TYPE:            108
+    IDS_TRANSPARENCY_TYPE:          109
+    IDS_GLOSS_TYPE:                 110
+    IDS_PREPUNCHED_TYPE:            111
+    IDS_LABELS_TYPE:                112
+    IDS_BOND_TYPE:                  113
+    IDS_RECYCLED_TYPE:              114
+    IDS_COLOR_TYPE:                 115
+    IDS_HEAVY_TYPE:                 116
+    IDS_CARDSTOCK_TYPE:             117
+    
+    IDS_HPGL2_MODE:                 122
+    IDS_RASTER_MODE:                123
+    IDS_TRAY1:                      128
+    IDS_TRAY2:                      129
+    IDS_TRAY3:                      130
+    IDS_INSTALLED:                  131
+    IDS_NOTINSTALLED:               132
+    IDS_OPTIONAL_TRAY3:             133
+    IDS_OPTIONAL_DUPLEXER:          134
+    IDS_600DPI:                     135
+    IDS_GMODE:                      141
+    IDS_GFINISH:                    142
+    IDS_CSMART:                     144
+    IDS_CTREATMENT:                 145
+    IDS_MANUAL:                     146
+    IDS_ENABLE:                     160
+    IDS_DISABLE:                    161
+
+    IDS_EDGE_TO_EDGE:               240
+    IDS_PRINTER_AUTO_SELECT:        241
+}
+
+
+
+

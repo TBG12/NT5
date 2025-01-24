@@ -1,0 +1,9 @@
+*% Epndve5a.gpd
+*% Copyright (c) 1998 Seiko Epson Corporation
+*% Global Include file for Epson Color Inkjet Plugins
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+*GPDFileName: "Epndve5a.gpd"
+*CodePage: 1252
+*ModelName: "Epson Stylus COLOR 980 ESC/P 2"
+*Include: "Epndvx5a.gpd"

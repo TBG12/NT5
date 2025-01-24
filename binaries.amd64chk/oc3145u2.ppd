@@ -1,0 +1,488 @@
+*PPD-Adobe: "4.3"
+*% 
+*% Copyright 2000 Oce-Technologies B.V., Venlo, The Netherlands
+*% All rights reserved
+*%
+*% Oce identification: name=3145UPDPS2.PPD version=1.1 date=00-10-19
+*%
+*% 
+
+*FormatVersion: "4.3"
+*FileVersion: "1.1"
+*Manufacturer: "Oce"
+*PCFileName: "OC3145U2.PPD"
+*Product: "(Oce3145NC)"
+*PSVersion: "(2014.071) 1"
+*ModelName: "Oce 3145 PS2"
+*ShortNickName: "Oce 3145"
+*NickName: "Oce 3145 PS2"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+
+*% Basic Capabilities =============================
+*FreeVM: "8388608"
+*LanguageLevel: "2"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: True
+*?FileSystem: "
+save
+  (%disk%) currentdevparams dup /Writeable known
+  { /Writeable get {pop true} if
+  {(True)}{(False)} ifelse = flush
+restore"
+*End
+
+*PrintPSErrors: False
+*Throughput: "45"
+*Password: "0"
+*ExitServer: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not { 
+     (WARNING : Cannot modify initial VM.) = 
+     (Missing or invalid password.) = 
+     (Please contact the author of this software.) = flush quit
+     } if"
+*End
+
+*Reset: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+    (WARNING: Cannot reset printer.) =
+    (Missing or invalid password.) =
+    (Please contact the author of this software.) = flush quit
+    } if
+ systemdict /quit get exec
+ (WARNING : Printer Reset Failed.) = flush"
+*End
+
+*% Font Information
+*%
+*% Truetype fonts are supported by the 3145
+*TTRasterizer: Type42
+*?TTRasterizer: "
+    save
+    42 /FontType resourcestatus
+    { pop pop (Type42)} {(NO Type42} ifelse = flush
+    restore
+    "
+*End
+
+*%==========Resolution Information=========================
+
+*DefaultResolution: 600dpi
+
+*% Paper Handling ==========================
+*OpenGroup: PaperHandling/Paper Handling
+*OpenUI *PageSize/Paper si&ze: PickOne
+*OrderDependency: 30 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize A4: "
+    2 dict dup /PageSize [595 842] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize A3: "
+    2 dict dup /PageSize [842 1191] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize A5: "
+    2 dict dup /PageSize [420 595] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Commercial: "
+    2 dict dup /PageSize [576 765] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Foolscap: "
+    2 dict dup /PageSize [576 935] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Letter: "
+    2 dict dup /PageSize [612 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Legal: "
+    2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Tabloid: "
+    2 dict dup /PageSize [792 1224] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize LegalSmall: "
+    2 dict dup /PageSize [612 936] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Statement: "
+    2 dict dup /PageSize [396 612] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Folio/Standard-Folio: "
+    2 dict dup /PageSize [595 935] put dup /ImagingBBox null put setpagedevice"
+*End
+*?PageSize: "
+ save
+   currentpagedevice /PageSize get aload pop
+   2 copy gt {exch} if 
+   (Unknown) 
+   10 dict begin
+      [595 842] (A4)  def
+      [842 1191] (A3)  def
+      [420 595] (A5)  def
+      [576 765] (Commercial) def
+      [576 935] (Foolscap) def
+      [612 792] (Letter)  def
+      [612 1008] (Legal) def
+      [792 1224] (Tabloid) def
+      [612 936] (LegalSmall) def
+      [396 612] (Statement) def
+      [595 935] (Folio) def
+      currentdict
+   end
+   { exch aload pop 4 index sub abs 5 le exch 
+     5 index sub abs 5 le and 
+     {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+restore"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Page Region: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion A4: "
+    2 dict dup /PageSize [595 842] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion A3: "
+    2 dict dup /PageSize [842 1191] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion A5: "
+    2 dict dup /PageSize [420 595] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Commercial: "
+    2 dict dup /PageSize [595 765] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Foolscap: "
+    2 dict dup /PageSize [576 935] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Letter: "
+    2 dict dup /PageSize [612 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Legal: "
+    2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Tabloid: "
+    2 dict dup /PageSize [792 1224] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion LegalSmall: "
+    2 dict dup /PageSize [612 936] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Statement: "
+    2 dict dup /PageSize [396 612] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Folio/Standard-Folio: "
+    2 dict dup /PageSize [595 935] put dup /ImagingBBox null put setpagedevice"
+*End
+*CloseUI: *PageRegion
+
+*% The following entries provide information about specific paper keywords.
+*DefaultImageableArea: A4
+*ImageableArea A4: "5.7 8.6 589.3 833.4"
+*ImageableArea A3: "5.7 8.6 836.3 1182.4"
+*ImageableArea A5: "5.7 8.6 414.3 586.4"
+*ImageableArea Commercial: "5.7 8.6 589.3 756.4"
+*ImageableArea Foolscap: "5.7 8.6 570.3 927.4"
+*ImageableArea Letter: "5.7 8.6 606.3 783.4"
+*ImageableArea Legal: "5.7 8.6 606.3 999.4"
+*ImageableArea Tabloid: "5.7 8.6 786.3 1215.4"
+*ImageableArea LegalSmall: "5.7 8.6 606.3 927.4"
+*ImageableArea Statement: "5.7 8.6 390.3 603.4"
+*ImageableArea Folio/Standard-Folio: "5.7 8.6 589.3 927.4"
+
+*?ImageableArea: "
+ save /cvp { cvi (            ) cvs print ( ) print } bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat flush
+ restore"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: A4
+*PaperDimension A4: "595 842"
+*PaperDimension A3: "842 1191"
+*PaperDimension A5: "420 595"
+*PaperDimension Commercial: "595 765"
+*PaperDimension Foolscap: "576 935"
+*PaperDimension Letter: "612 792"
+*PaperDimension Legal: "612 1008"
+*PaperDimension Tabloid: "792 1224"
+*PaperDimension LegalSmall: "612 936"
+*PaperDimension Statement: "396 612"
+*PaperDimension Folio/Standard-Folio: "595 935"
+
+*% Input Sources
+*%
+*OpenUI *InputSlot/Paper Source: PickOne
+*OrderDependency: 20 AnySetup *InputSlot
+*DefaultInputSlot: Unknown
+*InputSlot Upper/Tray 1: "statusdict begin 0 setpapertray end"
+*InputSlot Middle/Tray 2: "statusdict begin 1 setpapertray end"
+*InputSlot Lower/Tray 3: "statusdict begin 2 setpapertray end"
+*InputSlot LargeCapacity/Tray 4 (Large Capacity): "statusdict begin 3 setpapertray end"
+*InputSlot ManualFeed/Special Feeder: "1 dict dup /ManualFeed true put setpagedevice"
+*?InputSlot: "
+ save statusdict begin
+  2 dict begin
+   /0 (Upper) def
+   /1 (Middle) def
+   /2 (Lower) def
+   /3 (LargeCapacity) def
+   papertray
+     {( ) cvs cvn load exec} stopped not{= flush}if
+  end
+ end restore"
+*End
+*CloseUI: *InputSlot
+
+*OpenUI *Collate/Collate: Boolean
+*OrderDependency: 50 AnySetup *Collate
+*DefaultCollate: True
+*Collate True/True: "
+   1 dict dup /Collate true put setpagedevice"
+*End
+*Collate False/False: "
+   1 dict dup /Collate false put setpagedevice"
+*End
+*?Collate: "
+save
+  currentpagedevice /Collate get
+  {(True)}{(False)}ifelse = flush
+restore"
+*End
+*CloseUI: *Collate
+
+*OpenUI *Duplex/Duplex: PickOne
+*OrderDependency: 50 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/&1-sided: "
+   2 dict dup /Duplex false put dup /Tumble false put setpagedevice"
+*End
+*Duplex DuplexNoTumble/Duplex Long-Edge Binding: "
+    2 dict dup /Duplex true put dup /Tumble false put setpagedevice"
+*End
+*Duplex DuplexTumble/Duplex Short-Edge Binding: "
+    2 dict dup /Duplex true put dup /Tumble true put setpagedevice"
+*End
+*?Duplex: "
+  save
+    currentpagedevice /Duplex get
+    { currentpagedevice /Tumble get
+      { (DuplexTumble) }
+      { (DuplexNoTumble) }
+      ifelse
+    }
+    { 
+       (None)
+    } ifelse
+    = flush
+  restore"
+*End
+*CloseUI: *Duplex
+
+*CloseGroup: PaperHandling
+
+*AccurateScreensSupport: False
+*DefaultHalftoneType: 3
+
+*ScreenFreq: "70.2"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "
+  { 0.001 add exch 0.002 add exch
+    2 copy add 3 1 roll sub 2 copy 0 ge
+    { 0 ge
+      { 1.0 sub dup mul exch 1.0 sub dup mul add 2.0 sub -0.49 mul }
+      { 1.0 sub dup mul exch -1.0 sub dup mul add 2.0 sub -0.49 mul }
+      ifelse
+    }
+    { 0 ge
+      { -1.0 sub dup mul exch 1.0 sub dup mul add 2.0 sub -0.49 mul }
+      { -1.0 sub dup mul exch -1.0 sub dup mul add 2.0 sub -0.49 mul }
+      ifelse
+    }
+    ifelse
+  }"
+*End
+*ScreenProc Line: "{ pop }"
+*ScreenProc Ellipse: "
+  { dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+*End
+
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+*% Printer Messages (verbatim from printer):
+*%
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+
+*% Status (format: %%[ status: <one of these> ]%% )
+*%
+*Status: "idle"
+*Status: "busy"
+*Status: "waiting"
+
+*% Status (format: %%[ status: <one of these> 
+*% Source: <one of these> ]%% )
+*%
+*Source: "LPR"
+*Source: "RemoteServer"
+*Source: "other"
+
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%%)
+*%
+
+
+*% Color Separation Information
+*%
+*DefaultColorSep: ProcessBlack.53lpi.600dpi/53 lpi / 600 dpi
+
+*% For 60 lpi / 600 dpi
+*%
+*ColorSepScreenAngle ProcessBlack.60lpi.600dpi/60 lpi / 600 dpi: "45"
+*ColorSepScreenAngle CustomColor.60lpi.600dpi/60 lpi / 600 dpi: "45"
+*ColorSepScreenAngle ProcessCyan.60lpi.600dpi/60 lpi / 600 dpi: "15"
+*ColorSepScreenAngle ProcessMagenta.60lpi.600dpi/60 lpi / 600 dpi: "75"
+*ColorSepScreenAngle ProcessYellow.60lpi.600dpi/60 lpi / 600 dpi: "0"
+
+*ColorSepScreenFreq ProcessBlack.60lpi.600dpi/60 lpi / 600 dpi: "60"
+*ColorSepScreenFreq CustomColor.60lpi.600dpi/60 lpi / 600 dpi: "60"
+*ColorSepScreenFreq ProcessCyan.60lpi.600dpi/60 lpi / 600 dpi: "60"
+*ColorSepScreenFreq ProcessMagenta.60lpi.600dpi/60 lpi / 600 dpi: "60"
+*ColorSepScreenFreq ProcessYellow.60lpi.600dpi/60 lpi / 600 dpi: "60"
+
+*% For 53 lpi / 600 dpi
+*%
+*ColorSepScreenAngle ProcessBlack.53lpi.600dpi/53 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.53lpi.600dpi/53 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.53lpi.600dpi/53 lpi / 600 dpi: "71.5651"
+*ColorSepScreenAngle ProcessMagenta.53lpi.600dpi/53 lpi / 600 dpi: "18.4349"
+*ColorSepScreenAngle ProcessYellow.53lpi.600dpi/53 lpi / 600 dpi: "0.0"
+
+*ColorSepScreenFreq ProcessBlack.53lpi.600dpi/53 lpi / 600 dpi: "53.033"
+*ColorSepScreenFreq CustomColor.53lpi.600dpi/53 lpi / 600 dpi: "53.033"
+*ColorSepScreenFreq ProcessCyan.53lpi.600dpi/53 lpi / 600 dpi: "47.4342"
+*ColorSepScreenFreq ProcessMagenta.53lpi.600dpi/53 lpi / 600 dpi: "47.4342"
+*ColorSepScreenFreq ProcessYellow.53lpi.600dpi/53 lpi / 600 dpi: "50.0"
+
+*%  For 71 lpi / 600 dpi  ===============================
+*ColorSepScreenAngle ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "71.5651"
+*ColorSepScreenAngle ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "18.4349"
+*ColorSepScreenAngle ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "0.0"
+
+*ColorSepScreenFreq ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "70.7107"
+*ColorSepScreenFreq CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "70.7107"
+*ColorSepScreenFreq ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "63.2456"
+*ColorSepScreenFreq ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "63.2456"
+*ColorSepScreenFreq ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "66.6667"
+
+*%  For 85 lpi / 600 dpi  =====================
+
+*ColorSepScreenAngle ProcessBlack.85lpi.600dpi/85 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.85lpi.600dpi/85 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.85lpi.600dpi/85 lpi / 600 dpi: "75"
+*ColorSepScreenAngle ProcessMagenta.85lpi.600dpi/85 lpi / 600 dpi: "15"
+*ColorSepScreenAngle ProcessYellow.85lpi.600dpi/85 lpi / 600 dpi: "0.0"
+
+*ColorSepScreenFreq ProcessBlack.85lpi.600dpi/85 lpi / 600 dpi: "85"
+*ColorSepScreenFreq CustomColor.85lpi.600dpi/85 lpi / 600 dpi: "85"
+*ColorSepScreenFreq ProcessCyan.85lpi.600dpi/85 lpi / 600 dpi: "85"
+*ColorSepScreenFreq ProcessMagenta.85lpi.600dpi/85 lpi / 600 dpi: "85"
+*ColorSepScreenFreq ProcessYellow.85lpi.600dpi/85 lpi / 600 dpi: "85"
+
+*%  For 106 lpi /600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.106lpi.600dpi/106 lpi /600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.106lpi.600dpi/106 lpi /600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.106lpi.600dpi/106 lpi /600 dpi: "71.5651"
+*ColorSepScreenAngle ProcessMagenta.106lpi.600dpi/106 lpi /600 dpi: "18.4349"
+*ColorSepScreenAngle ProcessYellow.106lpi.600dpi/106 lpi /600 dpi: "0.0"
+
+*ColorSepScreenFreq ProcessBlack.106lpi.600dpi/106 lpi /600 dpi: "106.066"
+*ColorSepScreenFreq CustomColor.106lpi.600dpi/106 lpi /600 dpi: "106.066"
+*ColorSepScreenFreq ProcessCyan.106lpi.600dpi/106 lpi /600 dpi: "94.8683"
+*ColorSepScreenFreq ProcessMagenta.106lpi.600dpi/106 lpi /600 dpi: "94.8683"
+*ColorSepScreenFreq ProcessYellow.106lpi.600dpi/106 lpi /600 dpi: "100.0"
+
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(002.001)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(002.001)" Standard ROM
+*Font AvantGarde-Demi: Standard "(002.001)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(002.001)" Standard ROM
+*Font Bookman-Demi: Standard "(002.001)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(002.001)" Standard ROM
+*Font Bookman-Light: Standard "(002.001)" Standard ROM
+*Font Bookman-LightItalic: Standard "(002.001)" Standard ROM
+*Font Courier: Standard "(002.001)" Standard ROM
+*Font Courier-Bold: Standard "(002.001)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.001)" Standard ROM
+*Font Courier-Oblique: Standard "(002.001)" Standard ROM
+*Font Garamond-Bold: Standard "(002.001)" Standard ROM
+*Font Garamond-BoldItalic: Standard "(002.001)" Standard ROM
+*Font Garamond-Light: Standard "(002.001)" Standard ROM
+*Font Garamond-LightItalic: Standard "(002.001)" Standard ROM
+*Font Helvetica: Standard "(002.001)" Standard ROM
+*Font Helvetica-Bold: Standard "(002.001)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(002.001)" Standard ROM
+*Font Helvetica-Condensed: Standard "(002.001)" Standard ROM
+*Font Helvetica-Condensed-Bold: Standard "(002.001)" Standard ROM
+*Font Helvetica-Condensed-BoldObl: Standard "(002.001)" Standard ROM
+*Font Helvetica-Condensed-Oblique: Standard "(002.001)" Standard ROM
+*Font Helvetica-Narrow: Standard "(002.001)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(002.001)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(002.001)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(002.001)" Standard ROM
+*Font Helvetica-Oblique: Standard "(002.001)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(002.001)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(002.001)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(002.001)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(002.001)" Standard ROM
+*Font Palatino-Bold: Standard "(002.001)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(002.001)" Standard ROM
+*Font Palatino-Italic: Standard "(002.001)" Standard ROM
+*Font Palatino-Roman: Standard "(002.001)" Standard ROM
+*Font Symbol: Special "(002.001)" Special ROM
+*Font Times-Bold: Standard "(002.001)" Standard ROM
+*Font Times-BoldItalic: Standard "(002.001)" Standard ROM
+*Font Times-Italic: Standard "(002.001)" Standard ROM
+*Font Times-Roman: Standard "(002.001)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(002.001)" Standard ROM
+*Font ZapfDingbats: Special "(002.001)" Standard ROM
+*?FontQuery: "
+save
+ /str 100 string dup 0 (fonts/) putinterval def
+ {
+   count 1 gt
+   {
+     exch dup str 6 94 getinterval cvs
+     (/) print print (:) print
+     FontDirectory exch known
+     {(Yes)}{(No)} ifelse =
+   }
+   {exit} ifelse
+ }bind loop
+ (*) = flush
+restore
+"
+*End
+
+*?FontList: "
+save
+  FontDirectory { pop == } bind forall flush (*) = flush
+restore
+"
+*End
+
+*% end of PPD file for Oce 3145 PS2 Network Copier
+
+
+
+

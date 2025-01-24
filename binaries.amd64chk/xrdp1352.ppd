@@ -1,0 +1,765 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems PostScript(R) Printer Description File
+*% Copyright 1987-1997 Adobe Systems Incorporated. 
+*% All Rights Reserved. 
+*% Permission is granted for redistribution of this file as
+*% long as this copyright notice is intact and the contents
+*% of the file is not altered in any way from its original form.
+*% End of Copyright statement
+*% 
+*%   Filename: XRDP1352.PPD 
+*%   Product Version: 2.0
+*%
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "XRDP1352.PPD"
+*Manufacturer: "Xerox"
+*Product: "(Xerox DocuPrint 135 EPS)"
+*PSVersion: "(3011.106) 504"
+*ModelName: "Xerox DocuPrint 135 EPS"
+*ShortNickName: "Xerox DocuPrint 135 EPS PS3" 
+*NickName: "Xerox DocuPrint 135 EPS (02.00.00) v3011.106"
+*XRCCRelease: "3.0"
+
+*% ==== *Duplex UI Constraints ====
+*UIConstraints: *Duplex *MediaType Transparency
+*UIConstraints: *Duplex *MediaType DrilledTransparency
+
+*% ==== *MediaColor UI Constraints ====
+*UIConstraints: *MediaColor noColor *MediaType Plain
+*UIConstraints: *MediaColor noColor *MediaType Drilled
+*UIConstraints: *MediaColor noColor *MediaType PreCutTab
+*UIConstraints: *MediaColor noColor *MediaType DrilledPreCutTab
+*UIConstraints: *MediaColor noColor *MediaType FullCutTab
+*UIConstraints: *MediaColor noColor *MediaType DrilledFullCutTab
+*UIConstraints: *MediaColor noColor *MediaType Preprinted
+*UIConstraints: *MediaColor noColor *MediaType PreprintedDrilled
+
+*% ==== *MediaType UI Constraints ====
+*UIConstraints: *MediaType Plain *MediaColor noColor
+*UIConstraints: *MediaType Drilled *MediaColor noColor
+*UIConstraints: *MediaType PreCutTab *MediaColor noColor
+*UIConstraints: *MediaType PreCutTab *PageSize ISOB4
+*UIConstraints: *MediaType PreCutTab *PageRegion ISOB4
+*UIConstraints: *MediaType PreCutTab *PageSize B4
+*UIConstraints: *MediaType PreCutTab *PageRegion B4
+*UIConstraints: *MediaType PreCutTab *PageSize Tabloid
+*UIConstraints: *MediaType PreCutTab *PageRegion Tabloid
+*UIConstraints: *MediaType PreCutTab *PageSize Ledger
+*UIConstraints: *MediaType PreCutTab *PageRegion Ledger
+*UIConstraints: *MediaType PreCutTab *PageSize A3
+*UIConstraints: *MediaType PreCutTab *PageRegion A3
+*UIConstraints: *MediaType DrilledPreCutTab *MediaColor noColor
+*UIConstraints: *MediaType DrilledPreCutTab *PageSize ISOB4
+*UIConstraints: *MediaType DrilledPreCutTab *PageRegion ISOB4
+*UIConstraints: *MediaType DrilledPreCutTab *PageSize B4
+*UIConstraints: *MediaType DrilledPreCutTab *PageRegion B4
+*UIConstraints: *MediaType DrilledPreCutTab *PageSize Tabloid
+*UIConstraints: *MediaType DrilledPreCutTab *PageRegion Tabloid
+*UIConstraints: *MediaType DrilledPreCutTab *PageSize Ledger
+*UIConstraints: *MediaType DrilledPreCutTab *PageRegion Ledger
+*UIConstraints: *MediaType DrilledPreCutTab *PageSize A3
+*UIConstraints: *MediaType DrilledPreCutTab *PageRegion A3
+*UIConstraints: *MediaType Transparency *Duplex
+*UIConstraints: *MediaType Transparency *PageSize ISOB4
+*UIConstraints: *MediaType Transparency *PageRegion ISOB4
+*UIConstraints: *MediaType Transparency *PageSize B4
+*UIConstraints: *MediaType Transparency *PageRegion B4
+*UIConstraints: *MediaType Transparency *PageSize Tabloid
+*UIConstraints: *MediaType Transparency *PageRegion Tabloid
+*UIConstraints: *MediaType Transparency *PageSize Ledger
+*UIConstraints: *MediaType Transparency *PageRegion Ledger
+*UIConstraints: *MediaType Transparency *PageSize A3
+*UIConstraints: *MediaType Transparency *PageRegion A3 
+*UIConstraints: *MediaType DrilledTransparency *Duplex
+*UIConstraints: *MediaType DrilledTransparency *PageSize ISOB4
+*UIConstraints: *MediaType DrilledTransparency *PageRegion ISOB4
+*UIConstraints: *MediaType DrilledTransparency *PageSize B4
+*UIConstraints: *MediaType DrilledTransparency *PageRegion B4
+*UIConstraints: *MediaType DrilledTransparency *PageSize Tabloid
+*UIConstraints: *MediaType DrilledTransparency *PageRegion Tabloid
+*UIConstraints: *MediaType DrilledTransparency *PageSize Ledger
+*UIConstraints: *MediaType DrilledTransparency *PageRegion Ledger
+*UIConstraints: *MediaType DrilledTransparency *PageSize A3
+*UIConstraints: *MediaType DrilledTransparency *PageRegion A3
+*UIConstraints: *MediaType FullCutTab *MediaColor noColor
+*UIConstraints: *MediaType DrilledFullCutTab *MediaColor noColor
+*UIConstraints: *MediaType Preprinted *MediaColor noColor
+*UIConstraints: *MediaType PreprintedDrilled *MediaColor noColor
+
+*% ==== *PageRegion UI Constraints ====
+*UIConstraints: *PageRegion ISOB4 *MediaType PreCutTab
+*UIConstraints: *PageRegion ISOB4 *MediaType DrilledPreCutTab
+*UIConstraints: *PageRegion ISOB4 *MediaType Transparency
+*UIConstraints: *PageRegion ISOB4 *MediaType DrilledTransparency
+*UIConstraints: *PageRegion B4 *MediaType PreCutTab
+*UIConstraints: *PageRegion B4 *MediaType DrilledPreCutTab
+*UIConstraints: *PageRegion B4 *MediaType Transparency
+*UIConstraints: *PageRegion B4 *MediaType DrilledTransparency
+*UIConstraints: *PageRegion Tabloid *MediaType PreCutTab
+*UIConstraints: *PageRegion Tabloid *MediaType DrilledPreCutTab
+*UIConstraints: *PageRegion Tabloid *MediaType Transparency
+*UIConstraints: *PageRegion Tabloid *MediaType DrilledTransparency
+*UIConstraints: *PageRegion Ledger *MediaType PreCutTab
+*UIConstraints: *PageRegion Ledger *MediaType DrilledPreCutTab
+*UIConstraints: *PageRegion Ledger *MediaType Transparency
+*UIConstraints: *PageRegion Ledger *MediaType DrilledTransparency
+*UIConstraints: *PageRegion A3 *MediaType PreCutTab
+*UIConstraints: *PageRegion A3 *MediaType DrilledPreCutTab
+*UIConstraints: *PageRegion A3 *MediaType Transparency
+*UIConstraints: *PageRegion A3 *MediaType DrilledTransparency
+
+*% ==== *PageSize UI Constraints ====
+*UIConstraints: *PageSize ISOB4 *MediaType PreCutTab
+*UIConstraints: *PageSize ISOB4 *MediaType DrilledPreCutTab
+*UIConstraints: *PageSize ISOB4 *MediaType Transparency
+*UIConstraints: *PageSize ISOB4 *MediaType DrilledTransparency
+*UIConstraints: *PageSize B4 *MediaType PreCutTab
+*UIConstraints: *PageSize B4 *MediaType DrilledPreCutTab
+*UIConstraints: *PageSize B4 *MediaType Transparency
+*UIConstraints: *PageSize B4 *MediaType DrilledTransparency
+*UIConstraints: *PageSize Tabloid *MediaType PreCutTab
+*UIConstraints: *PageSize Tabloid *MediaType DrilledPreCutTab
+*UIConstraints: *PageSize Tabloid *MediaType Transparency
+*UIConstraints: *PageSize Tabloid *MediaType DrilledTransparency
+*UIConstraints: *PageSize Ledger *MediaType PreCutTab
+*UIConstraints: *PageSize Ledger *MediaType DrilledPreCutTab
+*UIConstraints: *PageSize Ledger *MediaType Transparency
+*UIConstraints: *PageSize Ledger *MediaType DrilledTransparency
+*UIConstraints: *PageSize A3 *MediaType PreCutTab
+*UIConstraints: *PageSize A3 *MediaType DrilledPreCutTab
+*UIConstraints: *PageSize A3 *MediaType Transparency
+*UIConstraints: *PageSize A3 *MediaType DrilledTransparency
+
+*% ==== Device Capabilities ===============
+*LanguageLevel: "3"
+*DefaultInstalledMemory: 256MB
+*InstalledMemory 256MB/Standard: " "
+*FreeVM: "8388608"
+*VMOption 256MB/Standard: "8388608"
+*FCacheSize 256MB/Standard: 8388608
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*VariablePaperSize: True
+*FileSystem: False
+*ADHasEuro: True
+*Throughput: "135"
+*TTRasterizer: Type42
+*?TTRasterizer: "
+save
+42 /FontType resourcestatus
+{ pop pop (Type42) } { (No Type42) } ifelse = flush
+restore
+"
+*End
+*Password: "()"
+*ExitServer: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+     (WARNING: Cannot modify initial VM.) =
+     (Missing or invalid password.) =
+     (Please contact the author of this software.) = flush quit
+     } if
+"
+*End
+
+*DefaultResolution: 600dpi
+*?Resolution: "
+  save
+    currentpagedevice /HWResolution get
+    0 get
+    (          ) cvs print
+    (dpi)
+    = flush
+  restore
+"
+*End
+
+*% Halftone Information ===============
+*DefaultHalftoneType: 3
+*ScreenFreq: "85.0"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "{ 180 mul cos exch 180 mul cos add 2 div }"
+*ScreenProc Line: "{ pop }"
+*ScreenProc Ellipse: "
+	{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+*End
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+*% Paper Handling ===================
+*% Code in this section both selects a tray and sets up a frame buffer.
+
+*MaxMediaWidth: "1031"
+*MaxMediaHeight: "1224"
+*ParamCustomPageSize Width: 1 points 720 1031
+*ParamCustomPageSize Height: 2 points 504 1224
+*ParamCustomPageSize WidthOffset: 3 points 0 567
+*ParamCustomPageSize HeightOffset: 4 points 0 648
+*ParamCustomPageSize Orientation: 5 int 0 1
+
+*CustomPageSize True: "
+pop pop pop % discard orientation & offsets
+2 dict begin
+/PageSize [
+4 -2 roll
+] def
+/ImagingBBox null def
+currentdict end setpagedevice
+"
+*End
+*HWMargins: 0 0 0 0
+
+*OpenUI *PageSize: PickOne
+*OrderDependency: 30.0 AnySetup *PageSize
+*DefaultPageSize: Letter
+*PageSize Letter: "
+    2 dict dup /PageSize [612 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Legal: "
+    2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Tabloid: "
+    2 dict dup /PageSize [792 1224] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize Ledger: "
+    2 dict dup /PageSize [1224 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize A3: "
+    2 dict dup /PageSize [842 1191] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize A4: "
+    2 dict dup /PageSize [595 842] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize FanFoldGermanLegal/FanFoldGermanLegal-8.5x13: "
+    2 dict dup /PageSize [612 936] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize 9x11: "
+    2 dict dup /PageSize [648 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize 223x297mm: "
+    2 dict dup /PageSize [632 842] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize B4: "
+    2 dict dup /PageSize [729 1032] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageSize ISOB4: "
+    2 dict dup /PageSize [709 1001] put dup /ImagingBBox null put setpagedevice"
+*End
+*?PageSize: "
+ save
+   /LedgerX {1 index 1224.0 ne} bind def
+   /LedgerY {1 index 792.0 ne} bind def
+   currentpagedevice /PageSize get aload pop
+   2 copy LedgerX LedgerY and {gt {exch} if} {pop pop} ifelse
+   (Unknown)
+  9 dict
+   dup [612 792] (Letter) put
+   dup [612 1008] (Legal) put
+   dup [792 1224] (Tabloid) put
+   dup [1224 792] (Ledger) put
+   dup [842 1191] (A3) put
+   dup [595 842] (A4) put
+   dup [612 936] (FanFoldGermanLegal) put
+   dup [648 792] (9x11) put
+   dup [632 842] (223x297mm) put
+   dup [729 1032] (B4) put
+   dup [709 1001] (ISOB4) put
+ { exch aload pop 4 index sub abs 5 le exch
+   5 index sub abs 5 le and
+      {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+restore
+"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion:  PickOne
+*OrderDependency: 40.0 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*PageRegion Letter: "
+    2 dict dup /PageSize [612 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Legal: "
+    2 dict dup /PageSize [612 1008] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Tabloid: "
+    2 dict dup /PageSize [792 1224] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion Ledger: "
+    2 dict dup /PageSize [1224 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion A3: "
+    2 dict dup /PageSize [842 1191] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion A4: "
+    2 dict dup /PageSize [595 842] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion FanFoldGermanLegal/FanFoldGermanLegal-8.5x13: "
+    2 dict dup /PageSize [612 936] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion 9x11: "
+    2 dict dup /PageSize [648 792] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion 223x297mm: "
+    2 dict dup /PageSize [632 842] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion B4: "
+    2 dict dup /PageSize [729 1032] put dup /ImagingBBox null put setpagedevice"
+*End
+*PageRegion ISOB4: "
+    2 dict dup /PageSize [709 1001] put dup /ImagingBBox null put setpagedevice"
+*End
+*CloseUI: *PageRegion
+
+*% The following entries provide information about specific paper keywords.
+*DefaultImageableArea: Letter
+*ImageableArea Letter: "0.0 0.0 612.0 792.0"
+*ImageableArea Legal: "0.0 0.0 612.0 1008.0"
+*ImageableArea Tabloid: "0.0 0.0 792.0 1224.0"
+*ImageableArea Ledger: "0.0 0.0 1224.0 792.0"
+*ImageableArea A3: "0.0 0.0 842.0 1191.0"
+*ImageableArea A4: "0.0 0.0 595.0 842.0"
+*ImageableArea FanFoldGermanLegal/FanFoldGermanLegal-8.5x13: "0.0 0.0 612.0 936.0"
+*ImageableArea 9x11: "0.0 0.0 648.0 792.0"
+*ImageableArea 223x297mm: "0.0 0.0 632.0 842.0"
+*ImageableArea B4: "0.0 0.0 729.0 1032.0"
+*ImageableArea ISOB4: "0.0 0.0 709.0 1001.0"
+*?ImageableArea: "
+ save
+   /cvp { (                ) cvs print } bind def
+   /space { ( ) print } bind def
+   /upperX { 7.2 div round } bind def    % Convert points to inches rounded to 1/10th
+   /upperY { 7.2 div round } bind def    % Convert points to inches rounded to 1/10th
+   /rounddiv { cvi 5 mod } bind def       % Determine if metric or American paper size
+   /inches { 7.2 div round 7.2 mul round } bind def       % Convert to inches, round, back to points
+   /millimeters { 72 div 25.4 mul dup dup truncate sub 0.66 lt 
+ 	{ floor 25.4 div 72 mul round} { ceiling 25.4 div 72 mul round} 
+	ifelse } bind def  			      % Convert to mm, round, back to points
+   newpath clippath pathbbox
+   upperY rounddiv exch upperX rounddiv 2 copy eq { add 0 eq {
+	pop pop newpath clippath pathbbox
+	4 -2 roll exch 2 {inches cvp space} repeat
+	exch inches cvp space inches cvp () = flush }
+	{ pop pop newpath clippath pathbbox
+	4 -2 roll exch 2 {millimeters cvp space} repeat
+	exch millimeters cvp space millimeters cvp () = flush } ifelse }
+	{ pop pop pop pop newpath clippath pathbbox
+	4 -2 roll exch 2 {millimeters cvp space} repeat
+	exch millimeters cvp space millimeters cvp () = flush }
+    ifelse
+ restore
+"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: Letter
+*PaperDimension Letter: "612 792"
+*PaperDimension Legal: "612 1008"
+*PaperDimension Tabloid: "792 1224"
+*PaperDimension Ledger: "1224 792"
+*PaperDimension A3: "842 1191"
+*PaperDimension A4: "595 842"
+*PaperDimension FanFoldGermanLegal/FanFoldGermanLegal-8.5x13: "612 936"
+*PaperDimension 9x11: "648 792"
+*PaperDimension 223x297mm: "632 842"
+*PaperDimension B4: "729 1032"
+*PaperDimension ISOB4: "709 1001"
+
+*OpenUI *MediaType:  PickOne
+*OrderDependency: 30.0 AnySetup *MediaType
+*DefaultMediaType: PrinterDefault
+*MediaType PrinterDefault/Printer Default: ""
+*MediaType Plain: "1 dict dup /MediaType (Plain) put setpagedevice"
+*MediaType Drilled: "1 dict dup /MediaType (Drilled) put setpagedevice"
+*MediaType PreCutTab: "1 dict dup /MediaType (PreCutTab) put setpagedevice"
+*MediaType DrilledPreCutTab/Drilled PreCutTab: "
+	1 dict dup /MediaType (Drilled PreCutTab) put setpagedevice"
+*End
+*MediaType Transparency: "
+	1 dict dup /MediaType (Transparency) put setpagedevice"
+*End
+*MediaType DrilledTransparency/Drilled Transparency: "
+	1 dict dup /MediaType (Drilled Transparency) put setpagedevice"
+*End
+*MediaType FullCutTab: "1 dict dup /MediaType (FullCutTab) put setpagedevice"
+*MediaType DrilledFullCutTab/Drilled FullCutTab: "
+	1 dict dup /MediaType (Drilled FullCutTab) put setpagedevice"
+*End
+*MediaType Preprinted: "1 dict dup /MediaType (Preprinted) put setpagedevice"
+*MediaType PreprintedDrilled/Preprinted Drilled:"
+	1 dict dup /MediaType (Drilled Preprinted) put setpagedevice"
+*End
+*?MediaType: "
+save
+  /cvp { (               ) cvs print } bind def
+  currentpagedevice dup /MediaType known
+  { /MediaType get 
+  ( ) search { 3 1 roll pop 2 -1 roll cvp cvp () } 
+   { dup null eq  { pop (Unknown) } if } ifelse } 
+  { pop (Unknown) }
+  ifelse = flush
+restore
+"
+*End
+*CloseUI: *MediaType
+
+*OpenUI *MediaColor:  PickOne
+*OrderDependency: 30.0 AnySetup *MediaColor
+*DefaultMediaColor: PrinterDefault
+*MediaColor PrinterDefault/Printer Default: ""
+*MediaColor white: "1 dict dup /MediaColor (white) put setpagedevice"
+*MediaColor noColor/clear: "1 dict dup /MediaColor (noColor) put setpagedevice"
+*MediaColor blue: "1 dict dup /MediaColor (blue) put setpagedevice"
+*MediaColor buff: "1 dict dup /MediaColor (buff) put setpagedevice"
+*MediaColor green: "1 dict dup /MediaColor (green) put setpagedevice"
+*MediaColor goldenrod: "1 dict dup /MediaColor (goldenrod) put setpagedevice"
+*MediaColor pink: "1 dict dup /MediaColor (pink) put setpagedevice"
+*MediaColor red: "1 dict dup /MediaColor (red) put setpagedevice"
+*MediaColor yellow: "1 dict dup /MediaColor (yellow) put setpagedevice"
+*?MediaColor: "
+  save
+    currentpagedevice /MediaColor
+     {get} stopped
+       {pop pop (white)} {dup null eq {pop (white)} if} ifelse
+    = flush
+  restore
+"
+*End
+*CloseUI: *MediaColor
+
+*RequiresPageRegion All: True
+*LandscapeOrientation: Plus90
+
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 20.0 AnySetup *InputSlot
+*DefaultInputSlot: AutoSelect
+*InputSlot AutoSelect: ""
+*CloseUI: *InputSlot
+
+*DefaultOutputOrder:  Normal
+
+*OpenUI *Duplex:  PickOne
+*OrderDependency: 50.0 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None: "
+	1 dict dup /Duplex false put setpagedevice
+	1 dict dup /Tumble false put setpagedevice"
+*End
+*Duplex DuplexNoTumble: "
+	1 dict dup /Duplex true put setpagedevice
+	1 dict dup /Tumble false put setpagedevice"
+*End
+*Duplex DuplexTumble: "
+	1 dict dup /Duplex true put setpagedevice
+	1 dict dup /Tumble true put setpagedevice"
+*End
+*?Duplex: "save
+   currentpagedevice /Duplex get
+   { currentpagedevice /Tumble get
+       {(DuplexTumble)}{(DuplexNoTumble)}ifelse
+   }
+   { (None)}
+   ifelse = flush
+restore
+"
+*End
+*CloseUI: *Duplex
+
+*OpenUI *Collate: Boolean
+*OrderDependency: 50.0 AnySetup *Collate
+*DefaultCollate: True
+*Collate True: "1 dict dup /Collate true put setpagedevice"
+*Collate False: "1 dict dup /Collate false put setpagedevice"
+*?Collate: "
+save
+  currentpagedevice /Collate get
+  {(True)}{(False)}ifelse = flush
+restore
+"
+*End
+*CloseUI: *Collate
+
+*OpenUI *XRXOutputDestination/Output Destination: PickOne
+*OrderDependency: 60.0 AnySetup *XRXOutputDestination
+*DefaultXRXOutputDestination: PrinterDefault
+*XRXOutputDestination PrinterDefault/Printer Default: ""
+*XRXOutputDestination TopTray/Top Tray: "<< /OutputType (TopTray) >> setpagedevice"
+*XRXOutputDestination Stacker: "<< /OutputType (Stacker) >> setpagedevice"
+*?XRXOutputDestination: "
+currentpagedevice /OutputType get (        ) cvs print = flush
+"
+*End
+*CloseUI: *XRXOutputDestination
+
+*% Font Information =====================
+*DefaultFont: Error
+*Font ACaslon-Italic: Standard "(001.003)" Standard ROM
+*Font ACaslon-Regular: Standard "(001.003)" Standard ROM
+*Font ACaslon-Semibold: Standard "(001.003)" Standard ROM
+*Font ACaslon-SemiboldItalic: Standard "(001.003)" Standard ROM
+*Font AdobeSansMM: Standard "(001.002)" Standard ROM
+*Font AdobeSerifMM: Standard "(001.003)" Standard ROM
+*Font AGaramond-Bold: Standard "(001.003)" Standard ROM
+*Font AGaramond-BoldItalic: Standard "(001.003)" Standard ROM
+*Font AGaramond-Italic: Standard "(001.003)" Standard ROM
+*Font AGaramond-Regular: Standard "(001.003)" Standard ROM
+*Font AlbertusMT: Standard "(001.001)" Standard ROM
+*Font AlbertusMT-Italic: Standard "(001.001)" Standard ROM
+*Font AlbertusMT-Light: Standard "(001.001)" Standard ROM
+*Font Americana: Standard "(001.002)" Standard ROM
+*Font Americana-ExtraBold: Standard "(001.002)" Standard ROM
+*Font AntiqueOlive-Bold: Standard "(001.002)" Standard ROM
+*Font AntiqueOlive-Compact: Standard "(001.002)" Standard ROM
+*Font AntiqueOlive-Italic: Standard "(001.002)" Standard ROM
+*Font AntiqueOlive-Roman: Standard "(001.002)" Standard ROM
+*Font Apple-Chancery: Standard "(001.001)" ExtendedRoman ROM
+*Font Arial-BoldItalicMT: Standard "(001.002)" Standard ROM
+*Font Arial-BoldMT: Standard "(001.002)" Standard ROM
+*Font Arial-ItalicMT: Standard "(001.002)" Standard ROM
+*Font ArialMT: Standard "(001.001)" Standard ROM
+*Font AvantGarde-Book: Standard "(003.000)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(003.000)" Standard ROM
+*Font AvantGarde-Demi: Standard "(003.000)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(003.000)" Standard ROM
+*Font Barmeno-Bold: Standard "(001.002)" Standard ROM
+*Font Barmeno-ExtraBold: Standard "(001.002)" Standard ROM
+*Font Barmeno-Medium: Standard "(001.002)" Standard ROM
+*Font Barmeno-Regular: Standard "(001.002)" Standard ROM
+*Font Blackoak: Standard "(001.002)" Unknown ROM
+*Font Bodoni: Standard "(001.003)" Standard ROM
+*Font Bodoni-Bold: Standard "(001.003)" Standard ROM
+*Font Bodoni-BoldItalic: Standard "(001.003)" Standard ROM
+*Font Bodoni-Italic: Standard "(001.003)" Standard ROM
+*Font Bodoni-Poster: Standard "(001.003)" Standard ROM
+*Font Bodoni-PosterCompressed: Standard "(001.002)" Standard ROM
+*Font Bookman-Demi: Standard "(003.000)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(003.000)" Standard ROM
+*Font Bookman-Light: Standard "(003.000)" Standard ROM
+*Font Bookman-LightItalic: Standard "(003.000)" Standard ROM
+*Font Carta: Special "(001.001)" Special ROM
+*Font Chicago: Standard "(001.000)" ExtendedRoman ROM
+*Font Clarendon: Standard "(001.002)" Standard ROM
+*Font Clarendon-Bold: Standard "(001.002)" Standard ROM
+*Font Clarendon-Light: Standard "(001.002)" Standard ROM
+*Font CooperBlack: Standard "(001.004)" Standard ROM
+*Font CooperBlack-Italic: Standard "(001.004)" Standard ROM
+*Font Copperplate-ThirtyThreeBC: Standard "(001.003)" Standard ROM
+*Font Copperplate-ThirtyTwoBC: Standard "(001.003)" Standard ROM
+*Font Coronet-Regular: Standard "(001.001)" Standard ROM
+*Font Courier: Standard "(004.000)" Standard ROM
+*Font Courier-Bold: Standard "(004.000)" Standard ROM
+*Font Courier-BoldOblique: Standard "(004.000)" Standard ROM
+*Font Courier-Oblique: Standard "(004.000)" Standard ROM
+*Font Eurostile: Standard "(001.003)" Standard ROM
+*Font Eurostile-Bold: Standard "(001.002)" Standard ROM
+*Font Eurostile-BoldExtendedTwo: Standard "(001.003)" Standard ROM
+*Font Eurostile-ExtendedTwo: Standard "(001.003)" Standard ROM
+*Font Formata-Italic: Standard "(001.003)" Standard ROM
+*Font Formata-Medium: Standard "(001.003)" Standard ROM
+*Font Formata-MediumItalic: Standard "(001.003)" Standard ROM
+*Font Formata-Regular: Standard "(001.003)" Standard ROM
+*Font Garamond-Bold: Standard "(001.005)" Standard ROM
+*Font Garamond-BoldItalic: Standard "(001.005)" Standard ROM
+*Font Garamond-Light: Standard "(001.005)" Standard ROM
+*Font Garamond-LightItalic: Standard "(001.005)" Standard ROM
+*Font Geneva: Standard "(001.000)" ExtendedRoman ROM
+*Font GillSans: Standard "(001.003)" Standard ROM
+*Font GillSans-Bold: Standard "(001.002)" Standard ROM
+*Font GillSans-BoldCondensed: Standard "(001.002)" Standard ROM
+*Font GillSans-BoldItalic: Standard "(001.003)" Standard ROM
+*Font GillSans-Condensed: Standard "(001.002)" Standard ROM
+*Font GillSans-ExtraBold: Standard "(001.002)" Standard ROM
+*Font GillSans-Italic: Standard "(001.003)" Standard ROM
+*Font GillSans-Light: Standard "(001.002)" Standard ROM
+*Font GillSans-LightItalic: Standard "(001.003)" Standard ROM
+*Font Goudy: Standard "(001.004)" Standard ROM
+*Font Goudy-Bold: Standard "(001.003)" Standard ROM
+*Font Goudy-BoldItalic: Standard "(001.003)" Standard ROM
+*Font Goudy-ExtraBold: Standard "(001.002)" Standard ROM
+*Font Goudy-Italic: Standard "(001.003)" Standard ROM
+*Font Helvetica: Standard "(003.000)" Standard ROM
+*Font Helvetica-Black: Standard "(001.003)" Standard ROM
+*Font Helvetica-BlackOblique: Standard "(001.003)" Standard ROM
+*Font Helvetica-Bold: Standard "(003.000)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(003.000)" Standard ROM
+*Font Helvetica-Condensed: Standard "(003.000)" Standard ROM
+*Font Helvetica-Condensed-Bold: Standard "(003.000)" Standard ROM
+*Font Helvetica-Condensed-BoldObl: Standard "(003.000)" Standard ROM
+*Font Helvetica-Condensed-Oblique: Standard "(003.000)" Standard ROM
+*Font Helvetica-Light: Standard "(001.004)" Standard ROM
+*Font Helvetica-LightOblique: Standard "(001.004)" Standard ROM
+*Font Helvetica-Narrow: Standard "(003.000)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(003.000)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(003.000)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(003.000)" Standard ROM
+*Font Helvetica-Oblique: Standard "(003.000)" Standard ROM
+*Font HoeflerText-Black: Standard "(001.000)" ExtendedRoman ROM
+*Font HoeflerText-BlackItalic: Standard "(001.000)" ExtendedRoman ROM
+*Font HoeflerText-Italic: Standard "(001.000)" ExtendedRoman ROM
+*Font HoeflerText-Ornaments: Special "(001.001)" Standard ROM
+*Font HoeflerText-Regular: Standard "(001.000)" ExtendedRoman ROM
+*Font JoannaMT: Standard "(001.001)" Standard ROM
+*Font JoannaMT-Bold: Standard "(001.001)" Standard ROM
+*Font JoannaMT-BoldItalic: Standard "(001.001)" Standard ROM
+*Font JoannaMT-Italic: Standard "(001.001)" Standard ROM
+*Font Kaufmann: Standard "(001.002)" Standard ROM
+*Font Korinna-Bold: Standard "(001.002)" Standard ROM
+*Font Korinna-KursivBold: Standard "(001.004)" Standard ROM
+*Font Korinna-KursivRegular: Standard "(001.004)" Standard ROM
+*Font Korinna-Regular: Standard "(001.002)" Standard ROM
+*Font LetterGothic: Standard "(001.005)" Standard ROM
+*Font LetterGothic-Bold: Standard "(001.007)" Standard ROM
+*Font LetterGothic-BoldSlanted: Standard "(001.006)" Standard ROM
+*Font LetterGothic-Slanted: Standard "(001.005)" Standard ROM
+*Font Lithos-Black: Standard "(001.002)" Unknown ROM
+*Font Lithos-Regular: Standard "(001.002)" Unknown ROM
+*Font LubalinGraph-Book: Standard "(001.004)" Standard ROM
+*Font LubalinGraph-BookOblique: Standard "(001.004)" Standard ROM
+*Font LubalinGraph-Demi: Standard "(001.004)" Standard ROM
+*Font LubalinGraph-DemiOblique: Standard "(001.004)" Standard ROM
+*Font Marigold: Standard "(001.001)" Standard ROM
+*Font Monaco: Standard "(001.000)" ExtendedRoman ROM
+*Font MonaLisa-Recut: Standard "(001.001)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(003.000)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(003.000)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(003.000)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(003.000)" Standard ROM
+*Font NewYork: Standard "(001.000)" ExtendedRoman ROM
+*Font Optima: Standard "(001.006)" Standard ROM
+*Font Optima-Bold: Standard "(001.007)" Standard ROM
+*Font Optima-BoldItalic: Standard "(001.001)" Standard ROM
+*Font Optima-Italic: Standard "(001.001)" Standard ROM
+*Font Oxford: Standard "(001.001)" Standard ROM
+*Font Palatino-Bold: Standard "(003.000)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(003.000)" Standard ROM
+*Font Palatino-Italic: Standard "(003.000)" Standard ROM
+*Font Palatino-Roman: Standard "(003.000)" Standard ROM
+*Font Parisian: Standard "(001.002)" Standard ROM
+*Font ParkAvenue: Standard "(001.007)" Standard ROM
+*Font Poetica-SuppOrnaments: Special "(001.001)" Special ROM
+*Font StempelGaramond-Bold: Standard "(001.003)" Standard ROM
+*Font StempelGaramond-BoldItalic: Standard "(001.003)" Standard ROM
+*Font StempelGaramond-Italic: Standard "(001.003)" Standard ROM
+*Font StempelGaramond-Roman: Standard "(001.003)" Standard ROM
+*Font Symbol: Special "(001.008)" Special ROM
+*Font Tekton: Standard "(001.002)" Standard ROM
+*Font Tekton-Bold: Standard "(001.001)" Standard ROM
+*Font Times-Bold: Standard "(003.000)" Standard ROM
+*Font Times-BoldItalic: Standard "(003.000)" Standard ROM
+*Font Times-Italic: Standard "(003.000)" Standard ROM
+*Font Times-Roman: Standard "(003.000)" Standard ROM
+*Font TimesNewRomanPS-BoldItalicMT: Standard "(2.00)" Standard ROM
+*Font TimesNewRomanPS-BoldMT: Standard "(2.00)" Standard ROM
+*Font TimesNewRomanPS-ItalicMT: Standard "(2.00)" Standard ROM
+*Font TimesNewRomanPSMT: Standard "(2.00)" Standard ROM
+*Font Trajan-Bold: Standard "(001.001)" Unknown ROM
+*Font Univers: Standard "(001.004)" Standard ROM
+*Font Univers-Bold: Standard "(001.004)" Standard ROM
+*Font Univers-BoldExt: Standard "(001.001)" Standard ROM
+*Font Univers-BoldExtObl: Standard "(001.001)" Standard ROM
+*Font Univers-BoldOblique: Standard "(001.004)" Standard ROM
+*Font Univers-Condensed: Standard "(001.003)" Standard ROM
+*Font Univers-CondensedBold: Standard "(001.002)" Standard ROM
+*Font Univers-CondensedBoldOblique: Standard "(001.002)" Standard ROM
+*Font Univers-CondensedOblique: Standard "(001.003)" Standard ROM
+*Font Univers-Extended: Standard "(001.001)" Standard ROM
+*Font Univers-ExtendedObl: Standard "(001.001)" Standard ROM
+*Font Univers-Light: Standard "(001.004)" Standard ROM
+*Font Univers-LightOblique: Standard "(001.004)" Standard ROM
+*Font Univers-Oblique: Standard "(001.004)" Standard ROM
+*Font Wingdings-Regular: Special "(2.00)" Special ROM
+*Font WoodtypeOrnaments-Two: Special "(001.002)" Special ROM
+*Font ZapfChancery-MediumItalic: Standard "(003.000)" Standard ROM
+*Font ZapfDingbats: Special "(002.000)" Special ROM
+*?FontQuery: "
+ save
+   { count 1 gt
+      { exch dup 127 string cvs (/) print print (:) print
+	/Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+      } { exit } ifelse
+   } bind loop
+   (*) = flush
+ restore
+"
+*End
+*?FontList: "
+save
+  (*) {cvn ==} 128 string /Font resourceforall
+  (*) = flush
+restore
+"
+*End
+
+*% Printer Messages (verbatim from printer):
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "%%[ Error: invalidfont; OffendingCommand: findfont ]%%"
+*Message: "\FontName\ not found, using Courier"
+*Message: "GOODBYE!: job executed quit operator."
+
+*% Status (format: %%[ status: <one of these> ] %%)
+*Status: "initializing"
+*Status: "idle"
+*Status: "holding"
+*Status: "busy"
+*Status: "waiting"
+
+*% Input Sources (format: %%[ status: <stat>; source: <one of these> ]%% )
+*Source: "AMCP"
+
+*%DeviceAdjustMatrix: "[1 0 0 1 0 0]"
+
+*% Color Separation Information =====================
+
+*DefaultGuaranteedMaxSeparations: 1
+*GuaranteedMaxSeparations 1: ""
+*?GuaranteedMaxSeparations: "
+  currentpagedevice /MaxSeparations get ="
+*End
+
+*DefaultColorSep: ProcessBlack.85lpi.600dpi/85 lpi / 600 dpi
+
+*%  For 85 lpi / 600 dpi  (5,5,2,6,6,2,20/3,0) =====================
+
+*ColorSepScreenAngle ProcessBlack.85lpi.600dpi/85 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.85lpi.600dpi/85 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.85lpi.600dpi/85 lpi / 600 dpi: "71.5651"
+*ColorSepScreenAngle ProcessMagenta.85lpi.600dpi/85 lpi / 600 dpi: "18.4349"
+*ColorSepScreenAngle ProcessYellow.85lpi.600dpi/85 lpi / 600 dpi: "0.0"
+
+*ColorSepScreenFreq ProcessBlack.85lpi.600dpi/85 lpi / 600 dpi: "84.8528"
+*ColorSepScreenFreq CustomColor.85lpi.600dpi/85 lpi / 600 dpi: "84.8528"
+*ColorSepScreenFreq ProcessCyan.85lpi.600dpi/85 lpi / 600 dpi: "94.8683"
+*ColorSepScreenFreq ProcessMagenta.85lpi.600dpi/85 lpi / 600 dpi: "94.8683"
+*ColorSepScreenFreq ProcessYellow.85lpi.600dpi/85 lpi / 600 dpi: "30.0"
+
+*ColorSepScreenProc ProcessYellow.85lpi.600dpi/85 lpi / 600 dpi: "
+{1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch
+1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch
+abs exch abs 2 copy add 1 gt {1 sub dup mul exch 1 sub dup mul add 1
+sub }{dup mul exch dup mul add 1 exch sub }ifelse }"
+*End
+
+*%  For 71 lpi / 600 dpi  ===============================
+
+*ColorSepScreenAngle ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "45.0"
+*ColorSepScreenAngle ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "71.5651"
+*ColorSepScreenAngle ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "18.4349"
+*ColorSepScreenAngle ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "0.0"
+
+*ColorSepScreenFreq ProcessBlack.71lpi.600dpi/71 lpi / 600 dpi: "70.7107"
+*ColorSepScreenFreq CustomColor.71lpi.600dpi/71 lpi / 600 dpi: "70.7107"
+*ColorSepScreenFreq ProcessCyan.71lpi.600dpi/71 lpi / 600 dpi: "63.2456"
+*ColorSepScreenFreq ProcessMagenta.71lpi.600dpi/71 lpi / 600 dpi: "63.2456"
+*ColorSepScreenFreq ProcessYellow.71lpi.600dpi/71 lpi / 600 dpi: "66.6667"
+
+*% Last Edit Date: January 16, 2002
+*% end of PPD file for Xerox DocuPrint 135 EPS

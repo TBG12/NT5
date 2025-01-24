@@ -1,0 +1,17 @@
+[Model Name]
+Name="EPSON Stylus Photo 720"
+D4OffCommand=00 00 00 1b 01 40 45 4a 4c 20 31 32 38 34 2e 34 0a 40 45 4a 4c 20 20 20 20 20 0a
+
+[Calibration]
+ItemNum=2
+Item1=15,1,248
+Item2=15,1,248
+CalibType=Bi-d
+
+[Cleanning]
+HeadClean=All
+
+[NozzleTest]
+TestPattern=All
+BitmapFile=EPUTBM03.WBF
+

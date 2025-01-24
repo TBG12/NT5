@@ -1,0 +1,20 @@
+*%% 
+*%% HP DeskJet 812C
+*%%
+*%% Copyright 1998-1999 Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpvdj89x.gpd"
+
+*%%
+*%% Global Entries
+*%%
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+
+*ModelName: "HP DeskJet 812C"
+*GPDFileName: "HPVDJ812.GPD"
+
+*PrintRate: 6
+*PrintRateUnit: PPM

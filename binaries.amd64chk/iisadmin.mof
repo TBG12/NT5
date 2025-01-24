@@ -1,0 +1,599 @@
+#pragma classflags("forceupdate")
+#pragma namespace ("\\\\.\\Root\\WMI")
+#pragma autorecover
+
+/**************************************************
+ * IISADMIN Trace Data Layout
+ **************************************************/
+
+[Dynamic,
+  Description("IIS: IISADMIN Global") : amended,
+  Guid("{DC1271C2-A0AF-400f-850C-4E42FE16BE1C}"),
+  locale("MS\\0x409")]
+class IIS_AdminTrace:EventTrace
+{
+    [Description ("Enable Flags") : amended,
+        ValueDescriptions{
+            "Startup events",
+            "Shutdown events" } : amended,
+         DefineValues{
+            "ETW_IISADMIN_STARTUP",
+            "ETW_IISADMIN_SHUTDOWN" },
+        Values{
+            "Startup",
+            "Shutdown" },
+        ValueMap{
+            "0x0001",
+            "0x0002" }
+    ]
+    uint32 Flags;
+
+    [Description ("Levels") : amended,
+        ValueDescriptions{
+            "Abnormal exit or termination",
+            "Severe errors",
+            "Warnings",
+            "Information",
+            "Detailed information" } : amended,
+         DefineValues{
+            "TRACE_LEVEL_FATAL",
+            "TRACE_LEVEL_ERROR", 
+            "TRACE_LEVEL_WARNING",
+            "TRACE_LEVEL_INFORMATION",           
+            "TRACE_LEVEL_VERBOSE" },                   
+        Values{
+            "Fatal",
+            "Error",
+            "Warning",
+            "Information",
+            "Verbose" },
+        ValueMap{
+            "0x1",
+            "0x2",
+            "0x3",
+            "0x4",
+            "0x5" },
+        ValueType("index")
+    ]
+    uint32 Level;
+};
+
+/**************************************************
+ * IISAdmin request based debug tracing events layout
+ **************************************************/
+
+//
+// 1. IISAdmin Statup Events
+//
+
+[Dynamic,
+ Description("IISAdmin startup events") : amended,
+ Guid("{E44D0EC7-D4A7-4ad2-8C67-44CD98A29404}"),
+ EventVersion(1),
+ DisplayName("IISAdminStartup"),
+ locale("MS\\0x409")
+]
+class IIS_AdminStartupTrace:IIS_AdminTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of IISADMIN startup") : amended,
+ EventType(1),
+ EventLevel(0),
+ EventTypeName("IISADMIN_START") : amended
+]
+class IIS_AdminStartupStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Start event for service extension startup") : amended,
+ EventType(13),
+ EventLevel(4),
+ EventTypeName("SVCEXT_STARTUP_START") : amended
+]
+class IIS_AdminServiceExtensionStartupStart:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Extension Name") : amended,
+     StringTermination("NullTerminated"),
+     format("w"),
+     read]
+     string ExtName;
+};
+
+[Dynamic,
+ Description("If IISADMIN was unable to startup the service extension, this event will be fired") : amended,
+ EventType(14),
+ EventLevel(1),
+ EventTypeName("SVCEXT_STARTUP_FAILURE") : amended
+]
+class IIS_AdminServiceExtensionStartupFailure:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Extension Name") : amended,
+     StringTermination("NullTerminated"),
+     format("w"),
+     read]
+     string ExtName;
+    [WmiDataId(2),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End event for service extension startup") : amended,
+ EventType(15),
+ EventLevel(4),
+ EventTypeName("SVCEXT_STARTUP_END") : amended
+]
+class IIS_AdminServiceExtensionStartupEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Start event for Admin Base Object registration") : amended,
+ EventType(10),
+ EventLevel(4),
+ EventTypeName("ABO_REGISTER_START") : amended
+]
+class IIS_AdminABORegistrationStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("If IISADMIN was unable to register the Admin Base Objects, this event will be fired") : amended,
+ EventType(11),
+ EventLevel(1),
+ EventTypeName("ABO_REGISTER_FAILURE") : amended
+]
+class IIS_AdminABORegistrationFailed:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End event for ABO registration") : amended,
+ EventType(12),
+ EventLevel(4),
+ EventTypeName("ABO_REGISTER_END") : amended
+]
+class IIS_AdminABORegistrationEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of DCPromo action") : amended,
+ EventType(16),
+ EventLevel(3),
+ EventTypeName("DCPROMO_START") : amended
+]
+class IIS_AdminDCPromoStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Failed DCPromo of the IIS server") : amended,
+ EventType(17),
+ EventLevel(1),
+ EventTypeName("DCPROMO_FAILURE") : amended
+]
+class IIS_AdminDCPromoFailure:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End of DCPromo operation") : amended,
+ EventType(18),
+ EventLevel(3),
+ EventTypeName("DCPROMO_END") : amended
+]
+class IIS_AdminDCPromoEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of parsing the schema") : amended,
+ EventType(19),
+ EventLevel(4),
+ EventTypeName("MBSCHEMA_PARSE_START") : amended
+]
+class IIS_AdminMBSchemaParseStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Failure while parsing schema") : amended,
+ EventType(20),
+ EventLevel(1),
+ EventTypeName("MBSCHEMA_PARSE_FAILURE") : amended
+]
+class IIS_AdminMBSchemaParseFailure:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End of mbschema parsing") : amended,
+ EventType(21),
+ EventLevel(4),
+ EventTypeName("MBSCHEMA_PARSE_END") : amended
+]
+class IIS_AdminMBSchemaParseEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of parsing the metabase") : amended,
+ EventType(22),
+ EventLevel(4),
+ EventTypeName("METABASE_PARSE_START") : amended
+]
+class IIS_AdminMetabaseParseStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Failure to read in session key") : amended,
+ EventType(23),
+ EventLevel(1),
+ EventTypeName("METABASE_PARSE_FAILURE_SESSION_KEY") : amended
+]
+class IIS_AdminMetabaseParseFailureSessionKey:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("Failure to parse xml in metabase") : amended,
+ EventType(24),
+ EventLevel(1),
+ EventTypeName("METABASE_PARSE_FAILURE_MB_XML") : amended
+]
+class IIS_AdminMetabaseParseFailureMetabaseXml:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("Failure to parse a setting in the metabase - this type of error is written out to the error log") : amended,
+ EventType(25),
+ EventLevel(3),
+ EventTypeName("METABASE_PARSE_FAILURE_SETTING") : amended
+]
+class IIS_AdminMetabaseParseFailureMetabaseSetting:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End of metabase read") : amended,
+ EventType(26),
+ EventLevel(4),
+ EventTypeName("METABASE_PARSE_END") : amended
+]
+class IIS_AdminMetabaseParseEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of COM security configuration for metabase") : amended,
+ EventType(27),
+ EventLevel(4),
+ EventTypeName("COM_SECURITY_START") : amended
+]
+class IIS_AdminComSecurityStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Failure to configure COM security for metabase") : amended,
+ EventType(28),
+ EventLevel(1),
+ EventTypeName("COM_SECURITY_FAILURE") : amended
+]
+class IIS_AdminComSecurityFailure:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End of COM Security setup") : amended,
+ EventType(29),
+ EventLevel(4),
+ EventTypeName("COM_SECURITY_END") : amended
+]
+class IIS_AdminComSecurityEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of COM catalog configuration for IISADMIN") : amended,
+ EventType(30),
+ EventLevel(4),
+ EventTypeName("COM_CATALOG_START") : amended
+]
+class IIS_AdminComCatalogStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Failure to configure COM+ catalog for IISADMIN") : amended,
+ EventType(31),
+ EventLevel(2),
+ EventTypeName("COM_CATALOG_FAILURE") : amended
+]
+class IIS_AdminComCatalogFailure:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End of COM+ catalog setup") : amended,
+ EventType(32),
+ EventLevel(4),
+ EventTypeName("COM_CATALOG_END") : amended
+]
+class IIS_AdminComCatalogEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of IISADMIN registration with VSS") : amended,
+ EventType(33),
+ EventLevel(4),
+ EventTypeName("VSS_START") : amended
+]
+class IIS_AdminVSSStart:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Failure to register with VSS -> we’ll still run but won’t know when to snap MB to disk before full system backup") : amended,
+ EventType(34),
+ EventLevel(2),
+ EventTypeName("VSS_FAILURE") : amended
+]
+class IIS_AdminVSSFailure:IIS_AdminStartupTrace
+{
+    [WmiDataId(1),
+     Description("Error code (HRESULT)") : amended,
+     format("x"),
+     read]
+     uint32 ErrorCode;
+};
+
+[Dynamic,
+ Description("End of VSS registration") : amended,
+ EventType(35),
+ EventLevel(4),
+ EventTypeName("VSS_END") : amended
+]
+class IIS_AdminVSSEnd:IIS_AdminStartupTrace
+{
+};
+
+[Dynamic,
+ Description("Marks end of IISADMIN startup") : amended,
+ EventType(2),
+ EventLevel(0),
+ EventTypeName("END") : amended
+]
+class IIS_AdminStartupEnd:IIS_AdminStartupTrace
+{
+};
+
+//
+// 2. IISAdmin Shutdown Events
+//
+
+[Dynamic,
+ Description("IISAdmin shutdown events") : amended,
+ Guid("{08247298-98CF-44f8-9EF7-745A406EDDEA}"),
+ EventVersion(1),
+ DisplayName("IISAdminShutdown"),
+ locale("MS\\0x409")
+]
+class IIS_AdminShutdownTrace:IIS_AdminTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of IISADMIN shudown") : amended,
+ EventType(1),
+ EventLevel(0),
+ EventTypeName("START") : amended
+]
+class IIS_AdminShutdownStart:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("Start event for termination of EWR feature") : amended,
+ EventType(10),
+ EventLevel(4),
+ EventTypeName("EWR_SHUTDOWN_START") : amended
+]
+class IIS_AdminEWRShutdownStart:IIS_AdminShutdownTrace
+{
+};
+
+
+[Dynamic,
+ Description("End event for EWR shutdown") : amended,
+ EventType(11),
+ EventLevel(4),
+ EventTypeName("EWR_SHUTDOWN_END") : amended
+]
+class IIS_AdminEWRShutdownEnd:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("Starting to break listener connection") : amended,
+ EventType(12),
+ EventLevel(4),
+ EventTypeName("LISTENER_SHUTDOWN_START") : amended
+]
+class IIS_AdminListenerShutdownStart:IIS_AdminShutdownTrace
+{
+    [WmiDataId(1),
+     Description("PID of process owning listener") : amended,
+     read]
+     uint32 PID;
+};
+
+[Dynamic,
+ Description("End of disconnecting the Listener") : amended,
+ EventType(13),
+ EventLevel(4),
+ EventTypeName("LISTENER_SHUTDOWN_END") : amended
+]
+class IIS_AdminListenerShutdownEnd:IIS_AdminShutdownTrace
+{
+    [WmiDataId(1),
+     Description("PID of process owning listener") : amended,
+     read]
+     uint32 PID;
+};
+
+[Dynamic,
+ Description("Marks beginning of disconnecting a reference") : amended,
+ EventType(14),
+ EventLevel(4),
+ EventTypeName("ABO_DISCONNECT_START") : amended
+]
+class IIS_AdminABODisconnectStart:IIS_AdminShutdownTrace
+{
+    [WmiDataId(1),
+     Description("PID") : amended,
+     read]
+     uint32 PID;
+};
+
+[Dynamic,
+ Description("End of disconnect for abo ref holder") : amended,
+ EventType(15),
+ EventLevel(4),
+ EventTypeName("ABO_DISCONNECT_END") : amended
+]
+class IIS_AdminABODisconnectEnd:IIS_AdminShutdownTrace
+{
+    [WmiDataId(1),
+     Description("PID") : amended,
+     read]
+     uint32 PID;
+};
+
+[Dynamic,
+ Description("Marks beginning of terminating metadata") : amended,
+ EventType(16),
+ EventLevel(4),
+ EventTypeName("METADATA_SHUTDOWN_START") : amended
+]
+class IIS_AdminTerminateMetadataStart:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("End of metadata shutdown") : amended,
+ EventType(17),
+ EventLevel(4),
+ EventTypeName("METADATA_SHUTDOWN_END") : amended
+]
+class IIS_AdminTerminateMetadataEnd:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of svc extension termination") : amended,
+ EventType(18),
+ EventLevel(4),
+ EventTypeName("SVCEXT_SHUTDOWN_START") : amended
+]
+class IIS_AdminTerminateServiceExtensionStart:IIS_AdminShutdownTrace
+{
+    [WmiDataId(1),
+     Description("Extension Name") : amended,
+     StringTermination("NullTerminated"),
+     format("w"),
+     read]
+     string ExtName;
+};
+
+[Dynamic,
+ Description("End of service extension termination") : amended,
+ EventType(19),
+ EventLevel(4),
+ EventTypeName("SVCEXT_SHUTDOWN_END") : amended
+]
+class IIS_AdminTerminateServiceExtensionEnd:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("Marks beginning of couninitialize operation") : amended,
+ EventType(20),
+ EventLevel(4),
+ EventTypeName("COUNINITIALIZE_START") : amended
+]
+class IIS_AdminCoUnitializeStart:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("End of counintialize") : amended,
+ EventType(21),
+ EventLevel(4),
+ EventTypeName("COUNINITIALIZE_END") : amended
+]
+class IIS_AdminCoUnitializeEnd:IIS_AdminShutdownTrace
+{
+};
+
+[Dynamic,
+ Description("Marks end of IISADMIN shutdown") : amended,
+ EventType(2),
+ EventLevel(0),
+ EventTypeName("IISADMIN_END") : amended
+]
+class IIS_AdminShutdownEnd:IIS_AdminShutdownTrace
+{
+};
+

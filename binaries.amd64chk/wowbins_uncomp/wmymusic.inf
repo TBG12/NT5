@@ -1,0 +1,131 @@
+
+
+[Version]
+Signature="$Windows NT$"
+ClassGUID={00000000-0000-0000-0000-000000000000}
+LayoutFile=layout.inf
+
+[BaseWinOptions]
+InstallWMPlaylist
+
+[InstallWMPlaylist] 
+
+
+
+
+
+
+
+
+
+CopyFiles   =Copy.Playlists
+
+
+
+
+AddReg=SetRegKeys
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[DestinationDirs]
+
+Copy.Playlists=16430,%MYMUSICSTR%\%STR_SAMPLEPLAYLISTS%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[SetRegKeys]
+
+
+HKLM,"%KEY_WMP%\Preferences", "MyPlayLists",,"%24%\%MYDOCSDIR%"
+
+
+
+
+HKLM,"%KEY_WMP%\Preferences", "FirstTime",0x00010001,1
+
+HKLM,"%KEY_WMP%\Setup", "PlaylistsVersion",,"0.0.0.4"
+
+
+
+
+
+
+
+
+
+
+[Copy.Playlists]
+"Favorites -- 4 and 5 star rated.wpl",PLYLST1.wpl 
+"Favorites -- Have not heard recently.wpl",PLYLST2.wpl 
+"Favorites -- Listen to late at night.wpl",PLYLST3.wpl 
+"Favorites -- One Audio CD worth.wpl",PLYLST4.wpl 
+"Favorites -- Listen to on Weekends.wpl",PLYLST5.wpl 
+"Favorites -- Listen to on Weekdays.wpl",PLYLST6.wpl 
+"Fresh tracks -- yet to be played.wpl",PLYLST7.wpl 
+"Fresh tracks -- yet to be rated.wpl",PLYLST8.wpl 
+"Fresh tracks.wpl",PLYLST9.wpl 
+"High bitrate media in my library.wpl",PLYLST10.wpl 
+"Low bitrate media in my library.wpl",PLYLST11.wpl 
+"Favorites -- One Data CD-R worth.wpl",PLYLST12.wpl 
+"Music tracks I have not rated.wpl",PLYLST13.wpl 
+"Music tracks I dislike.wpl",PLYLST14.wpl 
+"Music tracks with content protection.wpl",PLYLST15.wpl 
+
+[Strings]
+KEY_WMP = "SOFTWARE\Microsoft\MediaPlayer"
+MP2_FOLDER = "Windows Media Player"
+
+;;;;;;;--------------------------------------------
+;-- Only localize strings below this line
+;;;;;;--------------------------------------------
+LANGUAGE="EN"
+
+STR_SAMPLEPLAYLISTS="Sample Playlists"
+
+
+
+
+
+
+PLYLST1.wpl="Favorites -- 4 and 5 star rated.wpl"
+PLYLST2.wpl="Favorites -- Have not heard recently.wpl"
+PLYLST3.wpl="Favorites -- Listen to late at night.wpl"
+PLYLST4.wpl="Favorites -- One Audio CD worth.wpl"
+PLYLST5.wpl="Favorites -- Listen to on Weekends.wpl"
+PLYLST6.wpl="Favorites -- Listen to on Weekdays.wpl"
+PLYLST7.wpl="Fresh tracks -- yet to be played.wpl"
+PLYLST8.wpl="Fresh tracks -- yet to be rated.wpl"
+PLYLST9.wpl="Fresh tracks.wpl"
+PLYLST10.wpl="High bitrate media in my library.wpl"
+PLYLST11.wpl="Low bitrate media in my library.wpl"
+PLYLST12.wpl="Favorites -- One Data CD-R worth.wpl"
+PLYLST13.wpl="Music tracks I have not rated.wpl"
+PLYLST14.wpl="Music tracks I dislike.wpl"
+PLYLST15.wpl="Music tracks with content protection.wpl"

@@ -1,0 +1,17 @@
+[Model Name]
+Name="EPSON Stylus COLOR 3000"
+
+[Calibration]
+ItemNum=5
+Item1=7,1,248
+Item2=7,1,248
+Item3=7,1,248
+Item4=7,3,248
+Item5=7,3,248
+
+[Cleanning]
+HeadClean=Black/Color
+
+[NozzleTest]
+TestPattern=Black/Color
+BitmapFile=EPUTBM01.WBF

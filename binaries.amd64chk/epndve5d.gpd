@@ -1,0 +1,9 @@
+*% Epndve5d.gpd
+*% Copyright (c) 1998 Seiko Epson Corporation
+*% Global Include file for Epson Color Inkjet Plugins
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+*GPDFileName: "Epndve5d.gpd"
+*CodePage: 1252
+*ModelName: "Epson Stylus COLOR 680 ESC/P 2"
+*Include: "Epndvx5d.gpd"

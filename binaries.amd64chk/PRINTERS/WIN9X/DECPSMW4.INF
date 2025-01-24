@@ -1,0 +1,102 @@
+; DECPSMW4.INF
+
+[Version]
+Signature="$CHICAGO$"
+Class=Printer
+Provider=%MS%
+LayoutFile=layout.inf, layout1.inf, layout2.inf
+CatalogFile=win4prt.cat
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box
+
+[Manufacturer]
+"Digital"
+
+[Digital]
+"Digital DEClaser 5100/Net"       = D5100_MS.SPD,Digital_DEClaser_5100/Net
+"Digital PrintServer 17/Net"      = D17_MS.SPD,Digital_PrintServer_17/Net
+"Digital PrintServer 17/12mb/Net" = D1712_MS.SPD,Digital_PrintServer_17/12mb/Net
+"Digital PrintServer 17/600/Net"  = D176_MS.SPD,Digital_PrintServer_17/600/Net
+"Digital turboPrintServer 20/Net" = D20_MS.SPD,Digital_turboPrintServer_20/Net
+"Digital PrintServer 32/Net"      = D32_MS.SPD,Digital_PrintServer_32/Net
+"Digital PrintServer 40 Plus/Net" = D40_MS.SPD,Digital_PrintServer_40_Plus/Net
+
+;
+; Installer Sections
+;
+; These sections control file installation, and reference all files that
+; need to be copied. If the section name will be assumed to be the driver
+; file, unless there is an explicit DriverFile section listed.
+;
+
+[D17_MS.SPD]
+CopyFiles=@D17_MS.SPD,@DCLPS171.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+[D1712_MS.SPD]
+CopyFiles=@D1712_MS.SPD,@DCPS1721.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+[D176_MS.SPD]
+CopyFiles=@D176_MS.SPD,@DCPS1761.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+[D20_MS.SPD]
+CopyFiles=@D20_MS.SPD,@DCTPS201.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+[D32_MS.SPD]
+CopyFiles=@D32_MS.SPD,@DCLPS321.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+[D40_MS.SPD]
+CopyFiles=@D40_MS.SPD,@DCLPS401.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+[D5100_MS.SPD]
+CopyFiles=@D5100_MS.SPD,@DC5100_1.SPD,DECPSMW4
+DataSection=DEC_DATA
+
+; Copy Sections
+;
+; Lists of files that are actually copied. These sections are referenced
+; from the installer sections, above. Only create a section if it contains
+; two or more files (if we only copy a single file, identify it in the
+; installer section, using the @filename notation)
+;
+
+[DECPSMW4]
+DECPSMW4.DLL
+DECPSMW4.HLP
+PSCRIPT.DRV
+PSCRIPT.HLP
+TESTPS.TXT
+APPLE380.SPD
+FONTS.MFM
+ICONLIB.DLL
+
+;
+; Data Sections
+;
+; These sections contain data that is shared between devices.
+;
+
+[DEC_DATA]
+DriverFile=PSCRIPT.DRV
+PortMonitor=%DEC_MONITOR%
+
+;
+; All files go to the system directory
+;
+
+[DestinationDirs]
+DefaultDestDir=11
+
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+DEC_MONITOR="Digital Network Port,decpsmw4.dll"

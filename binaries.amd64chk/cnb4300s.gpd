@@ -1,0 +1,1390 @@
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "0.84"
+*GPDFileName: "CNB4300S.GPD"
+*CodePage: 1252
+*ModelName: "Canon Bubble-Jet BJC-4300SP"
+*MasterUnits: PAIR(360, 360)
+*ResourceDLL: "CNBJUI.DLL"
+*Include: "STDNAMES.GPD"
+*Include: "CNBJGRC.GPD"
+*HelpFile: "CNBJHLP.HLP"
+*PrinterType: SERIAL
+*PrintRateUnit: PPM
+*PrintRate: 5
+*OutputOrderReversed?: TRUE
+
+*Feature: PaperSize
+{
+	*rcNameID: =PAPER_SIZE_DISPLAY
+	*ConflictPriority: 25
+	*DefaultOption: LETTER
+
+	*Option: A5
+	{
+		*rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(1998,2832)
+			*PrintableOrigin: PAIR(50,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2000,2833)
+			*PrintableOrigin: PAIR(49,43)
+		}
+		}
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<080001d90000014e0000>"
+		}
+	}
+
+	*Option: A4
+	{
+		*rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(2878,4066)
+			*PrintableOrigin: PAIR(50,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2879,4066)
+			*PrintableOrigin: PAIR(49,43)
+		}
+		}
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<080002a6000001e00000>"
+		}
+	}
+
+	*Option: B5
+	{
+		*rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(2480,3498)
+			*PrintableOrigin: PAIR(50,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2482,3499)
+			*PrintableOrigin: PAIR(49,43)
+		}
+		}
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<080002480000019e0000>"
+		}
+	}
+
+	*Option: LETTER
+	{
+		*rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(2876,3816)
+			*PrintableOrigin: PAIR(92,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2879,3817)
+			*PrintableOrigin: PAIR(91,43)
+		}
+		}
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<0800027d000001e00007>"
+		}
+	}
+
+	*Option: LEGAL
+	{
+		*rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(2876,4896)
+			*PrintableOrigin: PAIR(92,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2879,4897)
+			*PrintableOrigin: PAIR(91,43)
+		}
+		}
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<08000331000001e00007>"
+		}
+	}
+
+	*Option: ENV_10_BREADTHWISE
+	{
+		*rcNameID: =RC_STRING_ENV_10_BREADTHWISE
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(2878,1340)
+			*PrintableOrigin: PAIR(92,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2879,1342)
+			*PrintableOrigin: PAIR(91,43)
+		}
+		}
+		*PageDimensions: PAIR(3420,1484)
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<080000e0000001e00007>"
+		}
+	}
+
+	*Option: ENV_DL_BREADTHWISE
+	{
+		*rcNameID: =RC_STRING_ENV_DL_BREADTHWISE
+		*switch: Resolution
+		{
+		*case: DRAFT
+		{
+			*PrintableArea: PAIR(2878,1416)
+			*PrintableOrigin: PAIR(92,44)
+		}
+		*default
+		{
+			*PrintableArea: PAIR(2879,1416)
+			*PrintableOrigin: PAIR(91,43)
+		}
+		}
+		*PageDimensions: PAIR(3118,1559)
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<080000ed000001e00007>"
+		}
+	}
+
+	*Option: PHOTOCARD
+	{
+		*rcNameID: =RC_STRING_PAPER_PHOTOCARD
+		*switch: MediaType
+		{
+		*case: CANON_PHOTOCARD
+		{
+			*PrintableArea: PAIR(1551,2268)
+			*PrintableOrigin: PAIR(72,396)
+		}
+		*default
+		{
+			*switch: Resolution
+			{
+			*case: DRAFT
+			{
+				*PrintableArea: PAIR(1596,2916)
+				*PrintableOrigin: PAIR(50,44)
+			}
+			*default
+			{
+				*PrintableArea: PAIR(1598,2918)
+				*PrintableOrigin: PAIR(49,43)
+			}
+			}
+		}
+		}
+		*PageDimensions: PAIR(1695,3060)
+		*switch: MediaType
+		{
+		*case: CANON_PHOTOCARD
+		{
+			*Command: CmdSelect
+			{
+				*Order: PAGE_SETUP.60
+				*Cmd: "<1b>(p<080001b5000001030004>"
+			}
+		}
+		*default
+		{
+			*Command: CmdSelect
+			{
+				*Order: PAGE_SETUP.60
+				*Cmd: "<1b>(p<080001e70000010b0000>"
+			}
+		}
+		}
+	}
+
+	*Option: CUSTOMSIZE
+	{
+		*rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*MaxSize: PAIR(3420,8280)
+		*MinSize: PAIR(1418,1418)
+*%		*TopMargin: 43
+*%		*BottomMargin: 100
+		*MinLeftMargin: 49
+		*MaxPrintableWidth: 2880
+		*CustCursorOriginX: %d{49}
+		*CustCursorOriginY: %d{43}
+		*CustPrintableOriginX: %d{49}
+		*CustPrintableOriginY: %d{43}
+		*CustPrintableSizeX: %d{PhysPaperWidth - 98}
+		*CustPrintableSizeY: %d{PhysPaperLength - 143}
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.60
+			*Cmd: "<1b>(p<0800>"%m{PhysPaperLength / 6}"<000001e00000>"
+		}
+	}
+}
+
+*Feature: InputBin
+{
+	*rcNameID: =PAPER_SOURCE_DISPLAY
+	*DefaultOption: AUTO
+
+	*Option: AUTO
+	{
+		*rcNameID: =AUTO_DISPLAY
+		*switch: MediaType
+		{
+		*case: STANDARD
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001400>"
+			}
+		}
+		*case: TRANSPARENCY
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001420>"
+			}
+		}
+		*case: CANON_BPF
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001430>"
+			}
+		}
+		*case: CANON_FABRIC
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001450>"
+			}
+		}
+		*case: CANON_GLOSSYFILM
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001470>"
+			}
+		}
+		*case: CANON_ENVELOPE
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001480>"
+			}
+		}
+		*case: CANON_HIGHRES
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<020014b0>"
+			}
+		}
+		*case: CANON_TSHIRTS
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001430>"
+			}
+		}
+		*case: CANON_M304
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001460>"
+			}
+		}
+		*case: CANON_PHOTOCARD
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001490>"
+			}
+		}
+		*case: CANON_OTHER
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001490>"
+			}
+		}
+		}
+	}
+
+	*Option: MANUAL
+	{
+		*rcNameID: =MANUAL_FEED_DISPLAY
+		*switch: MediaType
+		{
+		*case: STANDARD
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001100>"
+			}
+		}
+		*case: TRANSPARENCY
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001120>"
+			}
+		}
+		*case: CANON_BPF
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001130>"
+			}
+		}
+		*case: CANON_FABRIC
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001150>"
+			}
+		}
+		*case: CANON_GLOSSYFILM
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001170>"
+			}
+		}
+		*case: CANON_ENVELOPE
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001180>"
+			}
+		}
+		*case: CANON_HIGHRES
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<020011b0>"
+			}
+		}
+		*case: CANON_TSHIRTS
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001130>"
+			}
+		}
+		*case: CANON_M304
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001160>"
+			}
+		}
+		*case: CANON_PHOTOCARD
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001190>"
+			}
+		}
+		*case: CANON_OTHER
+		{
+			*Command: CmdSelect {
+				*Order: PAGE_SETUP.50
+				*Cmd: "<1b>(l<02001190>"
+			}
+		}
+		}
+	}
+}
+
+*Feature: ColorMode
+{
+	*rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+	*ConflictPriority: 30
+	*DefaultOption: CMYK24
+	*UpdateQualityMacro?: TRUE
+
+	*Option: MONO1
+	{
+		*rcNameID: =RC_STRING_MONO1
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.30
+			*Cmd: "<1b>(c<030011>"
+		}
+		*Color?: FALSE
+		*RasterMode: DIRECT
+	}
+
+	*Option: CMYK4
+	{
+		*rcNameID: =RC_STRING_CMYK4
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.30
+			*Cmd: "<1b>(c<030010>"
+		}
+		*DevBPP: 1
+		*DevNumOfPlanes: 4
+		*ColorPlaneOrder: LIST(YELLOW, MAGENTA, CYAN, BLACK)
+		*DrvBPP: 4
+		*RasterMode: DIRECT
+	}
+
+	*Option: CMYK24
+	{
+		*rcNameID: =RC_STRING_CMYK24
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.30
+			*Cmd: "<1b>(c<030010>"
+		}
+		*DevBPP: 0
+		*DevNumOfPlanes: 0
+		*ColorPlaneOrder: LIST(YELLOW, MAGENTA, CYAN, BLACK)
+		*DrvBPP: 24
+		*IPCallbackID: 1
+		*RasterMode: DIRECT
+	}
+}
+
+*Feature: Resolution
+{
+	*rcNameID: =RESOLUTION_DISPLAY
+	*ConflictPriority: 40
+	*DefaultOption: STANDARD
+
+	*Option: DRAFT
+	{
+		*rcNameID: =RC_STRING_SUPERECONOMY
+		*OptionID: -1
+		*DPI: PAIR(180, 180)
+		*TextDPI: PAIR(180, 180)
+		*SpotDiameter: 130
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.70
+			*Cmd: "<1b>(d<040001680168>"
+		}
+	}
+
+	*Option: STANDARD
+	{
+		*rcNameID: =RC_STRING_HQ
+		*OptionID: -3
+		*DPI: PAIR(360, 360)
+		*TextDPI: PAIR(360, 360)
+		*SpotDiameter: 180
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.70
+			*Cmd: "<1b>(d<040001680168>"
+		}
+	}
+
+	*Option: HIGH
+	{
+		*rcNameID: =RC_STRING_FINE
+		*OptionID: -4
+		*DPI: PAIR(360, 360)
+		*TextDPI: PAIR(360, 360)
+		*SpotDiameter: 180
+		*switch: ColorMode
+		{
+		*case: CMYK24
+		{
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.70
+					*Cmd: "<1b>(d<0400016802d0>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.70
+					*Cmd: "<1b>(d<040001680168>"
+				}
+			}
+			}
+		}
+		*default
+		{
+			*Command: CmdSelect
+			{
+				*Order: PAGE_SETUP.70
+				*Cmd: "<1b>(d<040001680168>"
+			}
+		}
+		}
+	}
+}
+
+*Feature: Orientation
+{
+	*rcNameID: =ORIENTATION_DISPLAY
+	*DefaultOption: PORTRAIT
+
+	*Option: PORTRAIT
+	{
+		*rcNameID: =PORTRAIT_DISPLAY
+	}
+
+	*Option: LANDSCAPE_CC270
+	{
+		*rcNameID: =LANDSCAPE_DISPLAY
+	}
+}
+
+*Feature: Halftone
+{
+	*rcNameID: =HALFTONING_DISPLAY
+	*DefaultOption: HT_PATSIZE_AUTO
+	*ConflictPriority: 50
+	*UpdateQualityMacro?: TRUE
+
+	*Option: HT_PATSIZE_8x8_M
+	{
+		*rcNameID: =RC_STRING_PATTERN
+	}
+	*Option: HT_PATSIZE_SUPERCELL_M
+	{
+		*rcNameID: =RC_STRING_ERRORDIFFUSION
+	}
+	*Option: HT_PATSIZE_AUTO
+	{
+		*rcNameID: =HT_AUTO_SELECT_DISPLAY
+	}
+}
+
+*Feature: MediaType
+{
+	*rcNameID: =MEDIA_TYPE_DISPLAY
+	*DefaultOption: STANDARD
+	*ConflictPriority: 20
+	*UpdateQualityMacro?: TRUE
+
+	*Option: STANDARD
+	{
+		*rcNameID: =PLAIN_PAPER_DISPLAY
+		*OptionID: 513
+		*switch: Resolution
+		{
+			*case: DRAFT
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0000>"
+				}
+			}
+			*case: STANDARD
+			{
+				*switch: InkSystem
+				{
+				*case: PHOTO
+				{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0100>"
+				}
+				}
+				*default
+				{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0000>"
+				}
+				}
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0100>"
+				}
+			}
+		}
+	}
+
+	*Option: TRANSPARENCY
+	{
+		*rcNameID: =TRANSPARENCY_DISPLAY
+		*OptionID: 514
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<2100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<2100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+	}
+
+	*Option: CANON_BPF
+	{
+		*rcNameID: =RC_STRING_BPF
+		*OptionID: 516
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<3100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<3100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+		*Constraints: LIST( ColorMode.MONO1, ColorMode.CMYK4 )
+	}
+
+	*Option: CANON_FABRIC
+	{
+		*rcNameID: =RC_STRING_FABRIC
+		*OptionID: 517
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<4100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<4100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+	}
+
+	*Option: CANON_GLOSSYFILM
+	{
+		*rcNameID: =RC_STRING_GLOSSYFILM
+		*OptionID: 519
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<6100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<6100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+	}
+
+	*Option: CANON_ENVELOPE
+	{
+		*rcNameID: =RC_STRING_ENVELOPE
+		*OptionID: 521
+		*switch: Resolution
+		{
+			*case: DRAFT
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0000>"
+				}
+			}
+			*case: STANDARD
+			{
+				*switch: InkSystem
+				{
+				*case: PHOTO
+				{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0100>"
+				}
+				}
+				*default
+				{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0000>"
+				}
+				}
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<0100>"
+				}
+			}
+		}
+	}
+
+	*Option: CANON_HIGHRES
+	{
+		*rcNameID: =RC_STRING_HIGHRES
+		*OptionID: 529
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<7100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<7100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+	}
+
+	*Option: CANON_TSHIRTS
+	{
+		*rcNameID: =RC_STRING_TSHIRTS
+		*OptionID: 531
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<3100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<3100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+		*Constraints: LIST( ColorMode.MONO1, ColorMode.CMYK4 )
+	}
+
+	*Option: CANON_M304
+	{
+		*rcNameID: =RC_STRING_M304
+		*OptionID: 535
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<5100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<5100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+	}
+
+	*Option: CANON_PHOTOCARD
+	{
+		*rcNameID: =RC_STRING_MEDIA_PHOTOCARD
+		*OptionID: 537
+		*switch: Resolution
+		{
+			*case: STANDARD
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<5100>"
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<5100>"
+				}
+			}
+		}
+		*Constraints: LIST( Resolution.DRAFT  )
+		*Constraints: LIST( PaperSize.A5,PaperSize.A4,PaperSize.B5,PaperSize.LETTER,PaperSize.LEGAL,PaperSize.ENV_10_BREADTHWISE,PaperSize.ENV_DL_BREADTHWISE,PaperSize.CUSTOMSIZE )
+	}
+
+	*Option: CANON_OTHER
+	{
+		*rcNameID: =RC_STRING_OTHER
+		*OptionID: 641
+		*switch: Resolution
+		{
+			*case: DRAFT
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<1000>"
+				}
+			}
+			*case: STANDARD
+			{
+				*switch: InkSystem
+				{
+				*case: PHOTO
+				{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<1100>"
+				}
+				}
+				*default
+				{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<1000>"
+				}
+				}
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.40
+					*Cmd: "<1100>"
+				}
+			}
+		}
+	}
+}
+
+*Feature: InkSystem
+{
+	*rcNameID: =RC_STRING_INKSYSTEM
+	*FeatureType: DOC_PROPERTY
+	*DefaultOption: REGULAR
+	*ConflictPriority: 10
+	*UpdateQualityMacro?: TRUE
+	*HelpIndex: =IDH_GPD_INK_1
+
+	*Option: REGULAR
+	{
+		*rcNameID: =RC_STRING_REGULAR
+		*rcIconID: =IDI_INKSYS
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+		*switch: Resolution
+		{
+		*case: HIGH
+		{
+			*switch: ColorMode
+			{
+			*case: CMYK24
+			{
+				*switch: Halftone
+				{
+				*case: HT_PATSIZE_8x8_M
+				{
+					*Command: CmdSelect
+					{
+						*Order: PAGE_SETUP.75
+						*Cmd: "<1b>(t<0300010001>"
+					}
+				}
+				*default
+				{
+			*Command: CmdSelect
+			{
+				*Order: PAGE_SETUP.75
+				*Cmd: "<1b>(t<0300028009>"
+			}
+				}
+				}
+			}
+			*default
+			{
+				*Command: CmdSelect
+				{
+					*Order: PAGE_SETUP.75
+					*Cmd: "<1b>(t<0300010001>"
+				}
+			}
+			}
+		}
+		*default
+		{
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.75
+			*Cmd: "<1b>(t<0300010001>"
+		}
+		}
+		}
+	}
+
+	*Option: PHOTO
+	{
+		*rcNameID: =RC_STRING_PHOTO
+		*rcIconID: =IDI_INKSYS
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+		*switch: Resolution
+		{
+		*case: HIGH
+		{
+			*Command: CmdSelect
+			{
+				*Order: PAGE_SETUP.75
+				*Cmd: "<1b>(t<030002800a>"
+			}
+		}
+		*default
+		{
+		*Command: CmdSelect
+		{
+			*Order: PAGE_SETUP.75
+			*Cmd: "<1b>(t<0300028002>"
+		}
+		}
+		}
+		*Constraints: LIST( Resolution.DRAFT)
+		*Constraints: LIST( MediaType.TRANSPARENCY,MediaType.CANON_BPF,MediaType.CANON_FABRIC,MediaType.CANON_GLOSSYFILM,MediaType.CANON_TSHIRTS )
+		*Constraints: LIST(ColorMode.MONO1, ColorMode.CMYK4)
+		*Constraints: LIST(Halftone.HT_PATSIZE_8x8_M)
+	}
+}
+
+
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*StripBlanks: LIST(TRAILING)
+*EjectPageWithFF?: TRUE
+*TextCaps: TC_RA_ABLE
+
+*YMoveUnit: 360
+*Command: CmdYMoveRelDown
+{
+	*Cmd: "<1B>(e<0200>" %m{DestYRel}
+}
+
+*switch: InkSystem
+{
+*case: REGULAR
+{
+	*switch: ColorMode
+	{
+	*case: CMYK24
+	{
+		*switch: MediaType
+		{
+		*case: STANDARD
+		{
+			*DraftQualitySettings: Resolution.DRAFT
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BETTERQUALITY
+		}
+		*case: TRANSPARENCY
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_BPF
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*DefaultQuality: BETTERQUALITY
+			}
+			*default
+			{
+				*DefaultQuality: BESTQUALITY
+			}
+			}
+		}
+		*case: CANON_FABRIC
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*DefaultQuality: BETTERQUALITY
+			}
+			*default
+			{
+				*DefaultQuality: BESTQUALITY
+			}
+			}
+		}
+		*case: CANON_GLOSSYFILM
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_ENVELOPE
+		{
+			*DraftQualitySettings: Resolution.DRAFT
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BETTERQUALITY
+		}
+		*case: CANON_HIGHRES
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*DefaultQuality: BETTERQUALITY
+			}
+			*default
+			{
+				*DefaultQuality: BESTQUALITY
+			}
+			}
+		}
+		*case: CANON_TSHIRTS
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*DefaultQuality: BETTERQUALITY
+			}
+			*default
+			{
+				*DefaultQuality: BESTQUALITY
+			}
+			}
+		}
+		*case: CANON_M304
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*DefaultQuality: BETTERQUALITY
+			}
+			*default
+			{
+				*DefaultQuality: BESTQUALITY
+			}
+			}
+		}
+		*case: CANON_PHOTOCARD
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*switch: Halftone
+			{
+			*case: HT_PATSIZE_8x8_M
+			{
+				*DefaultQuality: BETTERQUALITY
+			}
+			*default
+			{
+				*DefaultQuality: BESTQUALITY
+			}
+			}
+		}
+		*case: CANON_OTHER
+		{
+			*DraftQualitySettings: Resolution.DRAFT
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BETTERQUALITY
+		}
+		}
+	}
+	*default
+	{
+		*switch: MediaType
+		{
+		*case: STANDARD
+		{
+			*DraftQualitySettings: Resolution.DRAFT
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BETTERQUALITY
+		}
+		*case: TRANSPARENCY
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_FABRIC
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_GLOSSYFILM
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_ENVELOPE
+		{
+			*DraftQualitySettings: Resolution.DRAFT
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BETTERQUALITY
+		}
+		*case: CANON_HIGHRES
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_M304
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_PHOTOCARD
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_OTHER
+		{
+			*DraftQualitySettings: Resolution.DRAFT
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BETTERQUALITY
+		}
+		}
+	}
+	}
+}
+*case: PHOTO
+{
+	*switch: ColorMode
+	{
+	*case: CMYK24
+	{
+		*switch: MediaType
+		{
+		*case: STANDARD
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_ENVELOPE
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_HIGHRES
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_M304
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_PHOTOCARD
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		*case: CANON_OTHER
+		{
+			*DraftQualitySettings: LIST()
+			*BetterQualitySettings: Resolution.STANDARD
+			*BestQualitySettings: Resolution.HIGH
+			*DefaultQuality: BESTQUALITY
+		}
+		}
+	}
+	}
+}
+}
+
+*EnableGDIColorMapping?: TRUE
+
+*switch: ColorMode
+{
+*case: CMYK24
+{
+	*Command: CmdStartDoc
+	{
+		*Order: DOC_SETUP.1
+		*Cmd: "<1B>[K<02 00 00 0F><1B>(a<01 00 01><1B>(b<01 00 01>"
+	}
+}
+*default
+{
+	*Command: CmdStartDoc
+	{
+		*Order: DOC_SETUP.1
+		*Cmd: "<1B>[K<02 00 00 0F><1B>(a<01 00 01>"
+	}
+}
+}
+
+*switch: MediaType
+{
+*case: CANON_PHOTOCARD
+{
+	*Command: CmdStartPage
+	{
+		*Order: PAGE_SETUP.85
+		*Cmd: "<1B>(e<02000162>"
+	}
+}
+}
+
+*Command: CmdEndDoc
+{
+	*Order: DOC_FINISH.1
+	*Cmd: "<1B>(a<01 00 00><1B>(b<01 00 00><1B>@"
+}
+
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+*Command: CmdFF { *Cmd : "<1B>(e<02000001><0C>" }
+
+*Command: CmdEnableTIFF4 { *Cmd: "<1B>(b<01 00 01>" }
+*Command: CmdDisableCompression { *Cmd: "<1B>(b<01 00 00>" }
+*Command: CmdSendBlockData { *Cmd: "<1B>(A" %l{1} "K" }
+*Command: CmdSendYellowData { *Cmd: "<1B>(A" %l{1} "Y" }
+*Command: CmdSendMagentaData { *Cmd: "<1B>(A" %l{1} "M" }
+*Command: CmdSendCyanData { *Cmd: "<1B>(A" %l{1} "C" }
+*Command: CmdSendBlackData { *Cmd: "<1B>(A" %l{1} "K" }

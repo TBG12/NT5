@@ -1,0 +1,9 @@
+*% Epndve4s.gpd
+*% Copyright (c) 1998 Seiko Epson Corporation
+*% Global Include file for Epson Color Inkjet Plugins
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+*GPDFileName: "Epndve4s.gpd"
+*CodePage: 1252
+*ModelName: "Epson Stylus Photo 2000P ESC/P"
+*Include: "Epndvx4s.gpd"

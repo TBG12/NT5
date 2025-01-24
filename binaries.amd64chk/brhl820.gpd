@@ -1,0 +1,62 @@
+*GPDSpecVersion: "1.0"
+*GPDFileName: "BRHL820.GPD"
+*GPDFileVersion: "1.0"
+*Include: "brhbp.gpd"
+*ModelName: "Brother HL-820"
+*PrintRate: 8
+*PrintRatePPM: 8
+*PrintRateUnit: PPM
+
+*Feature: PaperQuality
+{
+    *Option: THICKER
+    {
+        *rcNameID: 267
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "@J<0002>@J<0200>"
+        }
+    }
+    *Option: TRANSPARENCY
+    {
+        *rcNameID: 268
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+            *Cmd: "@J<0003>@J<0200>"
+        }
+    }
+}
+*Feature: Memory
+{
+    *rcNameID: =PRINTER_MEMORY_DISPLAY
+    *DefaultOption: 2048KB
+
+        *MemConfigKB: PAIR(2048, 1931)
+}
+*Feature: SleepTime
+{
+    *rcNameID: 262
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: Auto
+
+    *Option: Auto
+    {
+        *rcNameID: 263
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.4
+            *CallbackID: 10
+        }
+    }
+    *Option: ManualSettings
+    {
+        *rcNameID: 264
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.4
+            *CallbackID: 10
+        }
+    }
+}

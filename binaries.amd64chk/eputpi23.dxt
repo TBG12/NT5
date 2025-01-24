@@ -1,0 +1,17 @@
+[Model Name]
+Name="EPSON Stylus COLOR 850"
+
+[Calibration]
+ItemNum=4
+Item1=7,1,248
+Item2=7,1,248
+Item3=7,3,248
+Item4=7,3,248
+Dm_init=ON
+
+[Cleanning]
+HeadClean=Black/Color
+
+[NozzleTest]
+TestPattern=Black/Color
+BitmapFile=EPUTBM01.WBF

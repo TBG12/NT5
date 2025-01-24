@@ -1,0 +1,10 @@
+:Base smtpsnap.hlp
+:Title Microsoft SMTP Service
+1 Microsoft SMTP Service
+2 Access=DB_SMTP_Properties_Access
+2 Delivery=PS_SMTP_Properties_Delivery
+2 Domain Properties=PS_SMTP_DomainProperties
+2 General=PS_SMTP_General_Properties
+2 LDAP Routing=DB_MAIL_LDAP_Routing
+2 Messages=PS_SMTP_Messages_Properties
+2 Security=DB_SMTP_Properties_Security

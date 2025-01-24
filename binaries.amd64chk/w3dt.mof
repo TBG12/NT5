@@ -1,0 +1,227 @@
+//**************************************************
+// *** W3Core Trace Data Layout
+//**************************************************
+#pragma classflags("forceupdate")
+#pragma namespace ("\\\\.\\Root\\WMI")
+#pragma autorecover
+
+[Dynamic,
+  Description("IIS: Request Monitor") : amended,
+  Guid("{3b7b0b4b-4b01-44b4-a95e-3c755719aebf}"),
+  locale("MS\\0x409")]
+class IIS_Reqmon:EventTrace
+{
+    [Description ("Enable Flags") : amended,
+        ValueDescriptions{
+            "Monitor on demand"} : amended,
+         DefineValues{
+            "ETW_IIS_MONITOR_ON_DEMAND" },       
+        Values{
+            "monitorOnDemand" },
+        ValueMap{
+            "0x00000001" }
+    ]
+    uint32 Flags;
+};
+
+[Dynamic,
+ Description("IIS Request Monitor Event") : amended,
+ Guid("{8806a3e2-59b1-4904-8837-92c546795109}"),
+ EventVersion(1),
+ DisplayName("IISRequestMonitor"),
+ locale("MS\\0x409")
+]
+class IIS_ReqMonEvent:IIS_Reqmon
+{
+
+};
+
+[Dynamic,
+ Description("Dumping IIS requests for worker process") : amended,
+ EventType(1),
+ EventTypeName("StartProcessDump") : amended
+]
+class IIS_ReqMonEventsStart:IIS_ReqMonEvent
+{
+    [WmiDataId(1),
+     Description("Worker Process PID") : amended,
+     read]
+     uint32  WorkerProcessPID; 
+    [WmiDataId(2),
+     Description("Requests Served") : amended,
+     read]
+     uint32  RequestsServed; 
+    [WmiDataId(3),
+     Description("TotalWorkerThreads") : amended,
+     read]
+     uint32  TotalWorkerThreads; 
+    [WmiDataId(4),
+     Description("Available Worker Threads") : amended,
+     read]
+     uint32  AvailableWorkerThreads; 
+    [WmiDataId(5),
+     Description("Application Pool ID") : amended,
+     StringTermination("NullTerminated"),
+     format("w"),
+     read]
+     string  AppPoolId;
+    [WmiDataId(6),
+     Description("Process Started Time") : amended,
+     read]
+     uint64  ProcessStartedTime;
+};
+
+[Dynamic,
+ Description("Dumping IIS requests for worker process") : amended,
+ EventType(2),
+ EventTypeName("StopProcessDump") : amended
+]
+class IIS_ReqMonEventsStop:IIS_ReqMonEvent
+{
+    [WmiDataId(1),
+     Description("Worker Process PID") : amended,
+     read]
+     uint32  WorkerProcessPID; 
+};
+
+[Dynamic,
+ Description("IIS Request In Progress") : amended,
+ EventType(3),
+ EventTypeName("IISRequestInProgress") : amended
+]
+class IISRequestInProgress:IIS_ReqMonEvent
+{
+    [WmiDataId(1),
+     Description("Context ID") : amended,
+     extension("Guid"),
+     read]
+     object  ContextId; 
+    [WmiDataId(2),
+     Description("Site ID") : amended,
+     read]
+     uint32  SiteId;
+    [WmiDataId(3),
+     Description("Local IP Address") : amended,
+     StringTermination("NullTerminated"),
+     format("a"),
+     read]
+     string  LocalIPAddress;
+    [WmiDataId(4),
+     Description("Local Port") : amended,
+     read]
+     uint16  LocalPort;
+    [WmiDataId(5),
+     Description("Host Name") : amended,
+     StringTermination("NullTerminated"),
+     format("w"),
+     read]
+     string  HostName;
+    [WmiDataId(6),
+     Description("Application Pool ID") : amended,
+     StringTermination("NullTerminated"),
+     format("w"),
+     read]
+     string  AppPoolId;
+    [WmiDataId(7),
+     Description("Connection ID") : amended,
+     read]
+     uint64  ConnId;
+    [WmiDataId(8),
+     Description("Process ID") : amended,
+     read]
+     uint32  ProcId;
+    [WmiDataId(9),
+     Description("Client IP Address") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string  ClientIP;
+    [WmiDataId(10),
+     Description("Request Verb") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string  ReqVerb;
+    [WmiDataId(11),
+     Description("Request Url") : amended,
+     StringTermination("NullTerminated"),
+     read]
+     string  ReqUrl;
+    [WmiDataId(12),
+     Description("Processing state") : amended,
+    TRACING_NREQ_STATE_INIT,
+    TRACING_NREQ_STATE_NEW_REQUEST_COMPLETED,
+    TRACING_NREQ_STATE_PROCESSING,
+    TRACING_NREQ_STATE_SEND_SYNC,
+    TRACING_NREQ_STATE_SEND_ASYNC,
+    TRACING_NREQ_STATE_SEND_ASYNC_COMPLETED,
+    TRACING_NREQ_STATE_RECEIVE_SYNC,
+    TRACING_NREQ_STATE_RECEIVE_ASYNC,
+    TRACING_NREQ_STATE_RECEIVE_ASYNC_COMPLETED,
+    TRACING_NREQ_STATE_RECEIVE_CLIENT_CERT_SYNC,
+    TRACING_NREQ_STATE_RECEIVE_CLIENT_CERT_ASYNC,
+    TRACING_NREQ_STATE_RECEIVE_CLIENT_CERT_ASYNC_COMPLETED,
+        ValueDescriptions{
+            "Init",
+            "NewRequest",
+            "Processing",
+            "Send Sync",
+            "Send Async",
+            "Send Async Completed",
+            "Receive Sync",
+            "Receive Async",
+            "Receive Async Completed",
+            "Receive Client Cert Sync",
+            "Receive Client Cert Async ",
+            "Receive Client Cert Async completed" } : amended,
+         DefineValues{
+            "Init",
+            "NewRequest",
+            "Processing",
+            "Send Sync",
+            "Send Async",
+            "Send Async Completed",
+            "Receive Sync",
+            "Receive Async",
+            "Receive Async Completed",
+            "Receive Client Cert Sync",
+            "Receive Client Cert Async ",
+            "Receive Client Cert Async completed" },
+        Values{
+            "Init",
+            "NewRequest",
+            "Processing",
+            "Send Sync",
+            "Send Async",
+            "Send Async Completed",
+            "Receive Sync",
+            "Receive Async",
+            "Receive Async Completed",
+            "Receive Client Cert Sync",
+            "Receive Client Cert Async ",
+            "Receive Client Cert Async completed" },
+        ValueMap{
+            "0x00000000",
+            "0x00000001",
+            "0x00000002",
+            "0x00000003",
+            "0x00000004",
+            "0x00000005",
+            "0x00000006",
+            "0x00000007",
+            "0x00000008",
+            "0x00000009",
+            "0x0000000A",
+            "0x0000000B"  },
+        ValueType("index"),
+     read]
+     uint32  ProcessingState;
+    [WmiDataId(13),
+     Description("Time elapsed in WorkerProcess in 100 nsec resolution") : amended,
+     read]
+     uint64  TicksElapsed;
+    [WmiDataId(14),
+     Description("Time elapsed since last change of processing state in 100 nsec resolution") : amended,
+     read]
+     uint64  TicksFromLastState;
+
+};
+
