@@ -1,0 +1,42 @@
+
+
+<HTML>
+<HEAD>
+<TITLE>POP3 Service Disk Quotas</TITLE>
+<SCRIPT SRC="linkcss.js"></SCRIPT>
+</HEAD>
+<BODY TOPMARGIN="0">
+<H1>POP3 Service Disk Quotas</h1>
+
+
+<P CLASS="important">Important</P>
+<UL>
+    <LI>
+      You can configure disk quotas only on NTFS file system partitions. 
+	</LI>
+	<LI>
+	If you are using encrypted password file authentication and want to use disk quotas 
+	with the POP3 service, see the POP3 service documentation in the Help and Support Center.
+
+</LI></UL>
+
+<P>You can use quotas to control and limit the amount of disk space that individual mailboxes on the mail server can use. Disk quotas ensure that individual mailboxes, and the mail store in general, do not use an excessive or unanticipated amount of disk space, which might decrease the performance of the server where the POP3 service is running. For example, if the mail server suddenly receives a large volume of unsolicited e-mail, the mail store expands rapidly and might use all of the available space on the hard disk.</P> 
+
+<P>If you implement quotas, the mail store  expands only to the quota limit that you specified; no more mail is accepted by the server, and the rest of the server still functions normally.</P>
+
+<P>If you are using Active Directory integrated authentication or local Windows accounts authentication, by default, the e-mail delivered to a POP3 service mailbox will have file ownership assigned to the mailbox user. A quota file is created in the mailbox directory that contains the security identifier (SID) of the user account associated with the mailbox. File ownership is then assigned to the user account that corresponds to the SID contained in the quota file. The SID is also used by the NTFS file system disk quota system to enforce the quota limits specified on the user account matching the SID. All e-mail that is transferred to the mailbox's mail store directory is marked with the SID contained in the quota file, which marks the e-mail so it can be monitored by the quota system. </P>
+
+<P>For more information about configuring disk quotas, see <A HREF="_disksvolumes_disk_quotas.htm">Disk Quotas</a>.</P>
+
+<P CLASS="note">Notes</P>
+<UL>
+    <LI>
+      When a mailbox quota is exceeded, the user is not notified. E-mail that is intended for the user will not be accepted and a Non-Delivery Report (NDR), a notice that the e-mail was not delivered to the recipient, will be returned to the sender.
+	  </LI>
+	  <LI>Users should configure their e-mail client to delete from the server e-mail that has been successfully retrieved. If users leave retrieved e-mail on the server, they can quickly exceed their quota. Users might be unaware of the disk usage and impact of storing old e-mail on the server.</LI>
+	  </UL>
+
+</BODY>
+</HTML>
+
+ 

@@ -1,0 +1,15 @@
+﻿<SimpleDialog>
+	<Title>
+		<Text><![CDATA[What kinds of files do you want to search?]]></Text>
+	</Title>
+	<Radio Id="5645" Checked="1" Height="13" TopMargin="8" Group="1">
+		<Text><![CDATA[T&ypical - excludes files that are hidden or in system folders]]></Text>
+        <SearchProp Name="SearchSystemDirs">0</SearchProp>
+        <SearchProp Name="SearchHidden">0</SearchProp>
+	</Radio>
+	<Radio Id="5646" Height="13" TopMargin="3">
+		<Text><![CDATA[Expa&nded - includes all files and folders]]></Text>
+        <SearchProp Name="SearchSystemDirs">1</SearchProp>
+        <SearchProp Name="SearchHidden">1</SearchProp>
+	</Radio>
+</SimpleDialog>

@@ -1,0 +1,552 @@
+[Version]
+Signature = "$Windows NT$"
+
+[Optional Components]
+fp_extensions
+
+[fp_extensions]
+; Core FP server extensions
+Parent = iis
+Needs = iis_www
+OptionDesc = %fp_desc%
+Tip = %fp_tip%
+;Modes = 0,1,3
+IconIndex = *
+SizeApproximation=5335841
+
+; ---------------- Start of directory list --------------
+
+[fp_install_r]
+CopyFiles = FPadmin_ntiis_Intl, FPbin, FPintl, FPisapiAdm, FPisapiAdmImages, FPisapiAut, FPisapiBin, FPisapiHelpPubIntl, FProot_servsupp
+
+; ---------------- Start of file lists --------------
+
+[FPadmin_ntiis_Intl]
+addacct.htm,ntiis_addacct.htm,,32
+addrole.htm,ntiis_addrole.htm,,32
+adduser.htm,ntiis_adduser.htm,,32
+anonusr.htm,ntiis_anonusr.htm,,32
+backup.htm,ntiis_backup.htm,,32
+copyrole.htm,ntiis_copyrole.htm,,32
+database.htm,ntiis_database.htm,,32
+dbset.htm,ntiis_dbset.htm,,32
+delsbweb.htm,ntiis_delsbweb.htm,,32
+disable.htm,ntiis_disable.htm,,32
+editrole.htm,ntiis_editrole.htm,,32
+edituser.htm,ntiis_edituser.htm,,32
+fpadmin.htm,ntiis_fpadmin.htm,,32
+genset.htm,ntiis_genset.htm,,32
+health.htm,ntiis_health.htm,,32
+healthrp.htm,ntiis_healthrp.htm,,32
+invite.htm,ntiis_invite.htm,,32
+invite2.htm,ntiis_invite2.htm,,32
+invite3.htm,ntiis_invite3.htm,,32
+invite4.htm,ntiis_invite4.htm,,32
+mergeweb.htm,ntiis_mergeweb.htm,,32
+mngdisc.htm,ntiis_mngdisc.htm,,32
+mngsub.htm,ntiis_mngsub.htm,,32
+msdepass.htm,ntiis_msdepass.htm,,32
+newsbweb.htm,ntiis_newsbweb.htm,,32
+newsrvr.htm,ntiis_newsrvr.htm,,32
+opengl.htm,ntiis_opengl.htm,,32
+openweb.htm,ntiis_openweb.htm,,32
+password.htm,ntiis_password.htm,,32
+perms.htm,ntiis_perms.htm,,32
+perssub.htm,ntiis_perssub.htm,,32
+policies.htm,ntiis_policies.htm,,32
+pwdmgr.htm,ntiis_pwdmgr.htm,,32
+recalc.htm,ntiis_recalc.htm,,32
+role.htm,ntiis_role.htm,,32
+security.htm,ntiis_security.htm,,32
+srvruser.htm,ntiis_srvruser.htm,,32
+uninstal.htm,ntiis_uninstal.htm,,32
+usage.htm,ntiis_usage.htm,,32
+user.htm,ntiis_user.htm,,32
+usrquota.htm,ntiis_usrquota.htm,,32
+vadmin.htm,ntiis_vadmin.htm,,32
+verctrl.htm,ntiis_verctrl.htm,,32
+wcfgdisc.htm,ntiis_wcfgdisc.htm,,32
+wcfghlth.htm,ntiis_wcfghlth.htm,,32
+wcfgsub.htm,ntiis_wcfgsub.htm,,32
+webadmin.css,ntiis_webadmin.css,,32
+webadmin.htm,ntiis_webadmin.htm,,32
+weblist.htm,ntiis_weblist.htm,,32
+
+[FPbin]
+fp5autl.dll,,,32
+fp5awel.dll,,,32
+fpmmc.dll,,,32
+cfgwiz.exe,,,32
+owsadm.exe,,,32
+owsrmadm.exe,,,32
+fp5avss.dll,,,32
+fpencode.dll,,,32
+fpexedll.dll,,,32
+cfgquiet.ini,,,32
+_vti_inf.htm,,,32
+postinfo.htm,,,32
+
+[FPintl]
+fpmmcsat.dll,,,32
+fpext.msg,,,32
+nortbots.htm,,,32
+
+[FPisapiAdm]
+admin.dll,,,32
+fpadmdll.dll,,,32
+
+[FPisapiAdmImages]
+blank.gif,,,32
+bluedot.gif,,,32
+delete.gif,,,32
+discuss.gif,,,32
+gears_an.gif,,,32
+health.gif,,,32
+navlink.gif,,,32
+newuser.gif,,,32
+offlogo.gif,,,32
+rect.gif,,,32
+settings.gif,,,32
+sortdown.gif,,,32
+sortup.gif,,,32
+subwebs.gif,,,32
+usage.gif,,,32
+users.gif,,,32
+warn_lg.gif,,,32
+web.gif,,,32
+webdisc.gif,,,32
+
+[FPisapiAut]
+author.dll,,,32
+
+[FPisapiBin]
+fpcount.exe,,,32
+shtml.dll,,,32
+srcherr.htx,,,32
+
+[FPisapiHelpPubIntl]
+1p.gif,isapi_pub_1p.gif,,32
+back.gif,isapi_pub_back.gif,,32
+bga_help.gif,isapi_pub_bga_help.gif,,32
+bluedrop.gif,isapi_pub_bluedrop.gif,,32
+blueup.gif,isapi_pub_blueup.gif,,32
+bullet.gif,isapi_pub_bullet.gif,,32
+collpstr.gif,isapi_pub_collpstr.gif,,32
+desg01.gif,isapi_pub_desg01.gif,,32
+desg02.gif,isapi_pub_desg02.gif,,32
+desg03.gif,isapi_pub_desg03.gif,,32
+desg04.gif,isapi_pub_desg04.gif,,32
+desg05.gif,isapi_pub_desg05.gif,,32
+desg06.gif,isapi_pub_desg06.gif,,32
+desg07.gif,isapi_pub_desg07.gif,,32
+desg08.gif,isapi_pub_desg08.gif,,32
+desg09.gif,isapi_pub_desg09.gif,,32
+desg10.gif,isapi_pub_desg10.gif,,32
+desg11.gif,isapi_pub_desg11.gif,,32
+desg12.gif,isapi_pub_desg12.gif,,32
+desg13.gif,isapi_pub_desg13.gif,,32
+desg14.gif,isapi_pub_desg14.gif,,32
+desg15.gif,isapi_pub_desg15.gif,,32
+expndall.gif,isapi_pub_expndall.gif,,32
+expndtri.gif,isapi_pub_expndtri.gif,,32
+home.gif,isapi_pub_home.gif,,32
+minus.gif,isapi_pub_minus.gif,,32
+ms_logo.gif,isapi_pub_ms_logo.gif,,32
+next.gif,isapi_pub_next.gif,,32
+owsns.css,isapi_pub_owsns.css,,32
+plus.gif,isapi_pub_plus.gif,,32
+spacer.gif,isapi_pub_spacer.gif,,32
+bg_help.gif,isapi_pub_bg_help.gif,,32
+expcolla.js,isapi_pub_expcolla.js,,32
+fpagloss.htm,isapi_pub_fpagloss.htm,,32
+fpahome.htm,isapi_pub_fpahome.htm,,32
+fpahow.htm,isapi_pub_fpahow.htm,,32
+fpaindex.htm,isapi_pub_fpaindex.htm,,32
+fpatoc.htm,isapi_pub_fpatoc.htm,,32
+fpattrbl.htm,isapi_pub_fpattrbl.htm,,32
+ows.css,isapi_pub_ows.css,,32
+wsaaces2.htm,isapi_pub_wsaaces2.htm,,32
+wsaacess.htm,isapi_pub_wsaacess.htm,,32
+wsaart1.gif,isapi_pub_wsaart1.gif,,32
+wsaart2.gif,isapi_pub_wsaart2.gif,,32
+wsaccmd.htm,isapi_pub_wsaccmd.htm,,32
+wsacheal.htm,isapi_pub_wsacheal.htm,,32
+wsacrole.htm,isapi_pub_wsacrole.htm,,32
+wsacsubw.htm,isapi_pub_wsacsubw.htm,,32
+wsacusag.htm,isapi_pub_wsacusag.htm,,32
+wsacweb.htm,isapi_pub_wsacweb.htm,,32
+wsaextr0.htm,isapi_pub_wsaextr0.htm,,32
+wsaextr1.htm,isapi_pub_wsaextr1.htm,,32
+wsaextr2.htm,isapi_pub_wsaextr2.htm,,32
+wsaextr3.htm,isapi_pub_wsaextr3.htm,,32
+wsaextr4.htm,isapi_pub_wsaextr4.htm,,32
+wsaextr5.htm,isapi_pub_wsaextr5.htm,,32
+wsaextr6.htm,isapi_pub_wsaextr6.htm,,32
+wsaextr7.htm,isapi_pub_wsaextr7.htm,,32
+wsaextr8.htm,isapi_pub_wsaextr8.htm,,32
+wsaextr9.htm,isapi_pub_wsaextr9.htm,,32
+wsakeybd.htm,isapi_pub_wsakeybd.htm,,32
+wsaphelc.htm,isapi_pub_wsaphelc.htm,,32
+wsaphelm.htm,isapi_pub_wsaphelm.htm,,32
+wsaphelp.htm,isapi_pub_wsaphelp.htm,,32
+wsaprolc.htm,isapi_pub_wsaprolc.htm,,32
+wsaprolg.htm,isapi_pub_wsaprolg.htm,,32
+wsaprolm.htm,isapi_pub_wsaprolm.htm,,32
+wsaprolu.htm,isapi_pub_wsaprolu.htm,,32
+wsapsubc.htm,isapi_pub_wsapsubc.htm,,32
+wsapsubd.htm,isapi_pub_wsapsubd.htm,,32
+wsapsubm.htm,isapi_pub_wsapsubm.htm,,32
+wsapsubr.htm,isapi_pub_wsapsubr.htm,,32
+wsapsubs.htm,isapi_pub_wsapsubs.htm,,32
+wsapuser.htm,isapi_pub_wsapuser.htm,,32
+wsapusgm.htm,isapi_pub_wsapusgm.htm,,32
+wsapusgt.htm,isapi_pub_wsapusgt.htm,,32
+wsapusrd.htm,isapi_pub_wsapusrd.htm,,32
+wsapusre.htm,isapi_pub_wsapusre.htm,,32
+wsapusrn.htm,isapi_pub_wsapusrn.htm,,32
+wsapusrv.htm,isapi_pub_wsapusrv.htm,,32
+wsasearc.htm,isapi_pub_wsasearc.htm,,32
+wsatoc.htm,isapi_pub_wsatoc.htm,,32
+wscopyrt.htm,isapi_pub_wscopyrt.htm,,32
+wsgcgens.htm,isapi_pub_wsgcgens.htm,,32
+wsgcover.htm,isapi_pub_wsgcover.htm,,32
+wsgcpol.htm,isapi_pub_wsgcpol.htm,,32
+wsgcrigh.htm,isapi_pub_wsgcrigh.htm,,32
+wsgcrole.htm,isapi_pub_wsgcrole.htm,,32
+wsgcsec.htm,isapi_pub_wsgcsec.htm,,32
+wsgcweb.htm,isapi_pub_wsgcweb.htm,,32
+wsgcwebs.htm,isapi_pub_wsgcwebs.htm,,32
+wsgextr1.htm,isapi_pub_wsgextr1.htm,,32
+wsgextr2.htm,isapi_pub_wsgextr2.htm,,32
+wsgextr3.htm,isapi_pub_wsgextr3.htm,,32
+wsgextr4.htm,isapi_pub_wsgextr4.htm,,32
+wsgextr5.htm,isapi_pub_wsgextr5.htm,,32
+wsgextr6.htm,isapi_pub_wsgextr6.htm,,32
+wsgextr7.htm,isapi_pub_wsgextr7.htm,,32
+wsgextr8.htm,isapi_pub_wsgextr8.htm,,32
+wsgextr9.htm,isapi_pub_wsgextr9.htm,,32
+wsggloss.htm,isapi_pub_wsggloss.htm,,32
+wsghome.htm,isapi_pub_wsghome.htm,,32
+wsghow.htm,isapi_pub_wsghow.htm,,32
+wsgindex.htm,isapi_pub_wsgindex.htm,,32
+wsgpauth.htm,isapi_pub_wsgpauth.htm,,32
+wsgpcnfg.htm,isapi_pub_wsgpcnfg.htm,,32
+wsgpcrea.htm,isapi_pub_wsgpcrea.htm,,32
+wsgpdef.htm,isapi_pub_wsgpdef.htm,,32
+wsgpdel.htm,isapi_pub_wsgpdel.htm,,32
+wsgpextd.htm,isapi_pub_wsgpextd.htm,,32
+wsgphlth.htm,isapi_pub_wsgphlth.htm,,32
+wsgplim.htm,isapi_pub_wsgplim.htm,,32
+wsgpmrg.htm,isapi_pub_wsgpmrg.htm,,32
+wsgpperf.htm,isapi_pub_wsgpperf.htm,,32
+wsgprest.htm,isapi_pub_wsgprest.htm,,32
+wsgprigh.htm,isapi_pub_wsgprigh.htm,,32
+wsgpscrp.htm,isapi_pub_wsgpscrp.htm,,32
+wsgpsec.htm,isapi_pub_wsgpsec.htm,,32
+wsgpset.htm,isapi_pub_wsgpset.htm,,32
+wsgpsmtp.htm,isapi_pub_wsgpsmtp.htm,,32
+wsgpunin.htm,isapi_pub_wsgpunin.htm,,32
+wsgpupgd.htm,isapi_pub_wsgpupgd.htm,,32
+wsgpusag.htm,isapi_pub_wsgpusag.htm,,32
+wsgracc.htm,isapi_pub_wsgracc.htm,,32
+wsgrkey.htm,isapi_pub_wsgrkey.htm,,32
+wsgrrigh.htm,isapi_pub_wsgrrigh.htm,,32
+wsgrrole.htm,isapi_pub_wsgrrole.htm,,32
+wsgtoc.htm,isapi_pub_wsgtoc.htm,,32
+wsgtroub.htm,isapi_pub_wsgtroub.htm,,32
+wsphelp.htm,isapi_pub_wsphelp.htm,,32
+
+[FProot_servsupp]
+fp5amsft.dll,,,32
+
+
+; ---------------- Directory Definitions --------------
+
+[DestinationDirs]
+FPadmin_ntiis_Intl             = 40002, 50\admisapi\1033
+FPbin                          = 40002, 50\bin
+FPintl                         = 40002, 50\bin\1033
+FPisapiAdm                     = 40002, 50\isapi\_vti_adm
+FPisapiAdmImages               = 40002, 50\isapi\_vti_adm\images
+FPisapiAut                     = 40002, 50\isapi\_vti_aut
+FPisapiBin                     = 40002, 50\isapi
+FPisapiHelpPubIntl             = 40002, 50\isapi\_vti_adm\help\1033\publish
+FProot_servsupp                = 40002, 50\servsupp
+
+
+; -----------------------------------------
+; 34000 = "\i386" or "\Nec98"
+
+[SourceDisksNames.x86]
+1=%SRV_CD_NAME%,"fp50ext.cab",0,%34000%
+
+[SourceDisksNames.ia64]
+1=%SRV_CD_NAME%,"fp50ext.cab",0,\ia64
+
+; ---------------- Source Disks Files --------------
+
+[SourceDisksFiles]
+fp5autl.dll                    = 1,,945224,,
+fp5awel.dll                    = 1,,1375304,,
+fpmmc.dll                      = 1,,400456,,
+cfgwiz.exe                     = 1,,105544,,
+owsadm.exe                     = 1,,27720,,
+owsrmadm.exe                   = 1,,52296,,
+fp5avss.dll                    = 1,,40008,,
+fpencode.dll                   = 1,,100936,,
+fpexedll.dll                   = 1,,27720,,
+fpcount.exe                    = 1,,97352,,
+shtml.dll                      = 1,,27720,,
+author.dll                     = 1,,27720,,
+admin.dll                      = 1,,27720,,
+fpadmdll.dll                   = 1,,27720,,
+fp5amsft.dll                   = 1,,142408,,
+cfgquiet.ini                   = 1,,2185,,
+srcherr.htx                    = 1,,3753,,
+_vti_inf.htm                   = 1,,1742,,
+postinfo.htm                   = 1,,2443,,
+fpmmcsat.dll                   = 1,,199240,,
+fpext.msg                      = 1,,118620,,
+nortbots.htm                   = 1,,764,,
+blank.gif                      = 1,,807,,
+bluedot.gif                    = 1,,41,,
+delete.gif                     = 1,,864,,
+discuss.gif                    = 1,,906,,
+gears_an.gif                   = 1,,5735,,
+health.gif                     = 1,,196,,
+navlink.gif                    = 1,,825,,
+newuser.gif                    = 1,,910,,
+offlogo.gif                    = 1,,269,,
+rect.gif                       = 1,,826,,
+settings.gif                   = 1,,883,,
+sortdown.gif                   = 1,,827,,
+sortup.gif                     = 1,,827,,
+subwebs.gif                    = 1,,278,,
+usage.gif                      = 1,,366,,
+users.gif                      = 1,,314,,
+warn_lg.gif                    = 1,,432,,
+web.gif                        = 1,,414,,
+webdisc.gif                    = 1,,194,,
+ntiis_addacct.htm              = 1,,11966,,
+ntiis_addrole.htm              = 1,,17573,,
+ntiis_adduser.htm              = 1,,18051,,
+ntiis_anonusr.htm              = 1,,9692,,
+ntiis_backup.htm               = 1,,30676,,
+ntiis_copyrole.htm             = 1,,18440,,
+ntiis_database.htm             = 1,,13314,,
+ntiis_dbset.htm                = 1,,12260,,
+ntiis_delsbweb.htm             = 1,,8741,,
+ntiis_disable.htm              = 1,,10736,,
+ntiis_editrole.htm             = 1,,18554,,
+ntiis_edituser.htm             = 1,,11838,,
+ntiis_fpadmin.htm              = 1,,10149,,
+ntiis_genset.htm               = 1,,34016,,
+ntiis_health.htm               = 1,,13216,,
+ntiis_healthrp.htm             = 1,,9943,,
+ntiis_invite.htm               = 1,,10876,,
+ntiis_invite2.htm              = 1,,13870,,
+ntiis_invite3.htm              = 1,,9922,,
+ntiis_invite4.htm              = 1,,7761,,
+ntiis_mergeweb.htm             = 1,,8490,,
+ntiis_mngdisc.htm              = 1,,20202,,
+ntiis_mngsub.htm               = 1,,28892,,
+ntiis_msdepass.htm             = 1,,10861,,
+ntiis_newsbweb.htm             = 1,,16631,,
+ntiis_newsrvr.htm              = 1,,24250,,
+ntiis_opengl.htm               = 1,,2036,,
+ntiis_openweb.htm              = 1,,2948,,
+ntiis_password.htm             = 1,,12689,,
+ntiis_perms.htm                = 1,,9461,,
+ntiis_perssub.htm              = 1,,14966,,
+ntiis_policies.htm             = 1,,71255,,
+ntiis_pwdmgr.htm               = 1,,8968,,
+ntiis_recalc.htm               = 1,,5310,,
+ntiis_role.htm                 = 1,,9894,,
+ntiis_security.htm             = 1,,7494,,
+ntiis_srvruser.htm             = 1,,9735,,
+ntiis_uninstal.htm             = 1,,9914,,
+ntiis_usage.htm                = 1,,36136,,
+ntiis_user.htm                 = 1,,9592,,
+ntiis_usrquota.htm             = 1,,10870,,
+ntiis_vadmin.htm               = 1,,13730,,
+ntiis_verctrl.htm              = 1,,10149,,
+ntiis_wcfgdisc.htm             = 1,,14380,,
+ntiis_wcfghlth.htm             = 1,,30336,,
+ntiis_wcfgsub.htm              = 1,,32876,,
+ntiis_webadmin.css             = 1,,4040,,
+ntiis_webadmin.htm             = 1,,27369,,
+ntiis_weblist.htm              = 1,,6411,,
+isapi_pub_1p.gif               = 1,,799,,
+isapi_pub_back.gif             = 1,,810,,
+isapi_pub_bga_help.gif         = 1,,818,,
+isapi_pub_bluedrop.gif         = 1,,169,,
+isapi_pub_blueup.gif           = 1,,169,,
+isapi_pub_bullet.gif           = 1,,40,,
+isapi_pub_collpstr.gif         = 1,,1829,,
+isapi_pub_desg01.gif           = 1,,816,,
+isapi_pub_desg02.gif           = 1,,810,,
+isapi_pub_desg03.gif           = 1,,828,,
+isapi_pub_desg04.gif           = 1,,830,,
+isapi_pub_desg05.gif           = 1,,832,,
+isapi_pub_desg06.gif           = 1,,829,,
+isapi_pub_desg07.gif           = 1,,830,,
+isapi_pub_desg08.gif           = 1,,828,,
+isapi_pub_desg09.gif           = 1,,830,,
+isapi_pub_desg10.gif           = 1,,5463,,
+isapi_pub_desg11.gif           = 1,,828,,
+isapi_pub_desg12.gif           = 1,,5463,,
+isapi_pub_desg13.gif           = 1,,237,,
+isapi_pub_desg14.gif           = 1,,1120,,
+isapi_pub_desg15.gif           = 1,,4259,,
+isapi_pub_expndall.gif         = 1,,209,,
+isapi_pub_expndtri.gif         = 1,,55,,
+isapi_pub_home.gif             = 1,,84,,
+isapi_pub_minus.gif            = 1,,43,,
+isapi_pub_ms_logo.gif          = 1,,832,,
+isapi_pub_next.gif             = 1,,828,,
+isapi_pub_owsns.css            = 1,,3967,,
+isapi_pub_plus.gif             = 1,,59,,
+isapi_pub_spacer.gif           = 1,,828,,
+isapi_pub_bg_help.gif          = 1,,3299,,
+isapi_pub_expcolla.js          = 1,,2764,,
+isapi_pub_fpagloss.htm         = 1,,27242,,
+isapi_pub_fpahome.htm          = 1,,4526,,
+isapi_pub_fpahow.htm           = 1,,6311,,
+isapi_pub_fpaindex.htm         = 1,,31140,,
+isapi_pub_fpatoc.htm           = 1,,8945,,
+isapi_pub_fpattrbl.htm         = 1,,4643,,
+isapi_pub_ows.css              = 1,,4904,,
+isapi_pub_wsaaces2.htm         = 1,,410,,
+isapi_pub_wsaacess.htm         = 1,,10479,,
+isapi_pub_wsaart1.gif          = 1,,1277,,
+isapi_pub_wsaart2.gif          = 1,,1277,,
+isapi_pub_wsaccmd.htm          = 1,,3237,,
+isapi_pub_wsacheal.htm         = 1,,5037,,
+isapi_pub_wsacrole.htm         = 1,,11561,,
+isapi_pub_wsacsubw.htm         = 1,,6578,,
+isapi_pub_wsacusag.htm         = 1,,2681,,
+isapi_pub_wsacweb.htm          = 1,,490,,
+isapi_pub_wsaextr0.htm         = 1,,13161,,
+isapi_pub_wsaextr1.htm         = 1,,13503,,
+isapi_pub_wsaextr2.htm         = 1,,435,,
+isapi_pub_wsaextr3.htm         = 1,,435,,
+isapi_pub_wsaextr4.htm         = 1,,2655,,
+isapi_pub_wsaextr5.htm         = 1,,435,,
+isapi_pub_wsaextr6.htm         = 1,,3355,,
+isapi_pub_wsaextr7.htm         = 1,,435,,
+isapi_pub_wsaextr8.htm         = 1,,4225,,
+isapi_pub_wsaextr9.htm         = 1,,3592,,
+isapi_pub_wsakeybd.htm         = 1,,9988,,
+isapi_pub_wsaphelc.htm         = 1,,6241,,
+isapi_pub_wsaphelm.htm         = 1,,2693,,
+isapi_pub_wsaphelp.htm         = 1,,13538,,
+isapi_pub_wsaprolc.htm         = 1,,13368,,
+isapi_pub_wsaprolg.htm         = 1,,13866,,
+isapi_pub_wsaprolm.htm         = 1,,13422,,
+isapi_pub_wsaprolu.htm         = 1,,8216,,
+isapi_pub_wsapsubc.htm         = 1,,8182,,
+isapi_pub_wsapsubd.htm         = 1,,7587,,
+isapi_pub_wsapsubm.htm         = 1,,7952,,
+isapi_pub_wsapsubr.htm         = 1,,7879,,
+isapi_pub_wsapsubs.htm         = 1,,541,,
+isapi_pub_wsapuser.htm         = 1,,4526,,
+isapi_pub_wsapusgm.htm         = 1,,2693,,
+isapi_pub_wsapusgt.htm         = 1,,437,,
+isapi_pub_wsapusrd.htm         = 1,,13202,,
+isapi_pub_wsapusre.htm         = 1,,13631,,
+isapi_pub_wsapusrn.htm         = 1,,16296,,
+isapi_pub_wsapusrv.htm         = 1,,13105,,
+isapi_pub_wsasearc.htm         = 1,,425,,
+isapi_pub_wsatoc.htm           = 1,,486,,
+isapi_pub_wscopyrt.htm         = 1,,4227,,
+isapi_pub_wsgcgens.htm         = 1,,9799,,
+isapi_pub_wsgcover.htm         = 1,,5794,,
+isapi_pub_wsgcpol.htm          = 1,,5915,,
+isapi_pub_wsgcrigh.htm         = 1,,8080,,
+isapi_pub_wsgcrole.htm         = 1,,6590,,
+isapi_pub_wsgcsec.htm          = 1,,6682,,
+isapi_pub_wsgcweb.htm          = 1,,485,,
+isapi_pub_wsgcwebs.htm         = 1,,8401,,
+isapi_pub_wsgextr1.htm         = 1,,5491,,
+isapi_pub_wsgextr2.htm         = 1,,3198,,
+isapi_pub_wsgextr3.htm         = 1,,3144,,
+isapi_pub_wsgextr4.htm         = 1,,420,,
+isapi_pub_wsgextr5.htm         = 1,,420,,
+isapi_pub_wsgextr6.htm         = 1,,420,,
+isapi_pub_wsgextr7.htm         = 1,,420,,
+isapi_pub_wsgextr8.htm         = 1,,420,,
+isapi_pub_wsgextr9.htm         = 1,,420,,
+isapi_pub_wsggloss.htm         = 1,,26796,,
+isapi_pub_wsghome.htm          = 1,,4491,,
+isapi_pub_wsghow.htm           = 1,,5729,,
+isapi_pub_wsgindex.htm         = 1,,57758,,
+isapi_pub_wsgpauth.htm         = 1,,10828,,
+isapi_pub_wsgpcnfg.htm         = 1,,12116,,
+isapi_pub_wsgpcrea.htm         = 1,,11399,,
+isapi_pub_wsgpdef.htm          = 1,,7038,,
+isapi_pub_wsgpdel.htm          = 1,,9470,,
+isapi_pub_wsgpextd.htm         = 1,,4811,,
+isapi_pub_wsgphlth.htm         = 1,,2719,,
+isapi_pub_wsgplim.htm          = 1,,9759,,
+isapi_pub_wsgpmrg.htm          = 1,,10587,,
+isapi_pub_wsgpperf.htm         = 1,,12094,,
+isapi_pub_wsgprest.htm         = 1,,3762,,
+isapi_pub_wsgprigh.htm         = 1,,9035,,
+isapi_pub_wsgpscrp.htm         = 1,,12719,,
+isapi_pub_wsgpsec.htm          = 1,,16469,,
+isapi_pub_wsgpset.htm          = 1,,11517,,
+isapi_pub_wsgpsmtp.htm         = 1,,18382,,
+isapi_pub_wsgpunin.htm         = 1,,5436,,
+isapi_pub_wsgpupgd.htm         = 1,,3978,,
+isapi_pub_wsgpusag.htm         = 1,,2725,,
+isapi_pub_wsgracc.htm          = 1,,10473,,
+isapi_pub_wsgrkey.htm          = 1,,10499,,
+isapi_pub_wsgrrigh.htm         = 1,,5053,,
+isapi_pub_wsgrrole.htm         = 1,,3921,,
+isapi_pub_wsgtoc.htm           = 1,,9311,,
+isapi_pub_wsgtroub.htm         = 1,,17525,,
+isapi_pub_wsphelp.htm          = 1,,13479,,
+
+
+[lang_dep]
+;
+; Language-dependent strings loaded explicitly by the FP OCM code
+; Localize all strings in this section and the next.
+;
+FrontPageLangID = "1033"
+UILangAbbrev = "enu"
+;
+; next 2 strings must be valid filenames
+;
+FrontPageRoot = "1"
+ServerAdminDesc = "FrontPage Server Administrator"
+;
+; status strings, displayed during install/uninstall
+;
+ConfiguringExtensions = "Configuring the FrontPage Server Extensions..."
+RemovingExtensions = "Removing the FrontPage Server Extensions..."
+NoInstallOnFat1 = "Cannot install FrontPage Server Extensions on a drive formatted with the FAT file system."
+NoInstallOnFat2= "Convert the drive to NTFS before installing."
+;
+; The following are command lines used to install/uninstall/upgrade the
+; server extensions.
+; Do Not Localize!
+; Do Not change the order of the substitution parameters!
+; Note: the %%s in New/DelFPWebCmdLine is intentional - this string is 
+;       sprintf'd into twice, the second time by K2's MMC.
+;
+FpCmdInstall = "%s\50\bin\owsadm -unattended true -o install -sp publish -m %s -u ""%s"" -pw p"
+FpCmdUninstall = "%s\50\bin\owsadm -unattended true -o uninstall -p all -m %s"
+FpCmdUpgrade = "%s\50\bin\owsadm -unattended true -o upgrade -sp publish -p all -m %s"
+
+
+[Strings]
+;
+; Localize all strings in this section.
+; These strings are used directly by OCM.
+;
+fp_desc     = "FrontPage 2002 Server Extensions"
+fp_tip      = "Enables authoring and administration of websites with Microsoft FrontPage and Visual InterDev"
+SRV_CD_NAME = "Windows Server 2003 CD-ROM"
+SDESC_Fp_Extensions = "FrontPage Server Extensions files" 
+LDESC_Fp_Extensions = "Enables authoring and administration of websites with Microsoft FrontPage and Visual InterDev"

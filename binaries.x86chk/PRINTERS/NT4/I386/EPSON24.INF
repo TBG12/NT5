@@ -1,0 +1,63 @@
+; epson24.inf ( for NT 4.0 Service Pack 3 )
+
+[Version]
+Signature="$Windows NT$"
+Provider=%MS%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+
+[Manufacturer]
+"Epson"
+
+[Epson]
+"Epson LQ-860+"                                        = EPSON24.DLL
+"Epson LQ-1060+"                                       = EPSON24.DLL
+
+[EPSON24.DLL]
+CopyFiles=@EPSON24.DLL,RASDD
+DataSection=RASDD_DATA
+
+[RASDD]
+RASDD.DLL
+RASDDUI.DLL
+RASDDUI.HLP
+
+[RASDD_DATA]
+DriverFile=RASDD.DLL
+ConfigFile=RASDDUI.DLL
+HelpFile=RASDDUI.HLP
+
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+;
+; diskid = description,tagfile,unused,subdir
+;
+
+[SourceDisksNames.x86]
+4 = %ntcd%,,,
+
+[SourceDisksNames.alpha]
+4 = %ntcd%,,,
+
+[SourceDisksNames.ppc]
+4 = %ntcd%,,,
+
+;
+; filename_on_source = diskid,subdir,size,checksum,spare,spare
+; extra fields are nt-specific
+;   bootmediaord,targetdirectory,upgradedisposition,textmodedisposition,targetname
+;
+
+[SourceDisksFiles]
+epson24.dll = 4
+rasdd.dll = 4
+rasddui.dll = 4
+rasddui.hlp = 4
+;
+; Localizable Strings
+;
+[Strings]
+MS="Microsoft"
+ntcd="Windows 2000 CD-ROM"

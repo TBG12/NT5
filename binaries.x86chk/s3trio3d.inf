@@ -1,0 +1,107 @@
+; S3TRIO3D.INF
+;
+; Installation inf for the S3 Graphics, Inc. display driver.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%MS%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir   = 11
+S3Inc.Miniport   = 12   ; drivers
+S3Inc.Display    = 11   ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%S3%   = S3.Mfg
+
+;
+; This section should be modified to reflect the chip strings the
+; user will see in the Displays applet when the new driver is being
+; installed from the driver diskette.
+;
+[S3.Mfg]
+S3 Graphics Inc. Trio3D = S3Inc, PCI\VEN_5333&DEV_8904
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; General installation section
+;
+
+[S3Inc]
+CopyFiles=S3Inc.Miniport, S3Inc.Display
+
+;
+; File sections
+;
+
+[S3Inc.Miniport]
+s3mt3d.sys      ; miniport driver
+
+[S3Inc.Display]
+s3mt3d.dll    ; Trio3D display driver
+
+;
+; Service Installation
+;
+
+[S3Inc.Services]
+AddService = S3Inc, 0x00000002, S3Inc_Service_Inst, S3Inc_EventLog_Inst
+
+[S3Inc_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\s3mt3d.sys
+
+[S3Inc_EventLog_Inst]
+AddReg = S3Inc_EventLog_AddReg
+
+[S3Inc_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\s3mt3d.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+;
+; Software Installation
+;
+
+[S3Inc.SoftwareSettings]
+AddReg = S3Inc_SoftwareDeviceSettings
+
+[S3Inc_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, s3mt3d
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+HKR,, UseDDCInfo,                  %REG_DWORD%,    0
+HKR,, CapabilityOverride,          %REG_DWORD%,    4
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+
+;
+; Localizable Strings
+;
+
+S3          = "S3 Graphics Inc."
+MS          = "Microsoft"
+

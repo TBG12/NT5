@@ -1,0 +1,100 @@
+; netcb102.inf
+;
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  = "$Windows NT$"
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Class      = Net
+Provider   = %MSFT%
+LayoutFile = Layout.inf
+DriverVer=10/01/2002,2.28.0.0
+
+[Manufacturer]
+%DLINK%    = DLINK
+%Linksys%  = Linksys
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DLINK]
+%GENERIC% = CB102.Ndi,PCI\VEN_13D1&DEV_AB02
+%FE2500%  = CB102.Ndi,PCI\VEN_13D1&DEV_AB02&SUBSYS_15411186
+
+[Linksys]
+%FE2500MX% = CB102.Ndi,PCI\VEN_13D1&DEV_AB03
+
+[CB102.Ndi]
+AddReg          = CB102.Reg.NDIS5, CB102.Params
+Characteristics = 0x84              
+BusType         = 5
+CopyFiles       = CopyFile.Sys.NDIS5
+
+[CB102.Ndi.Services]
+AddService=CB102, 2, CB102.Service, Common.EventLog
+
+[CB102.Reg.NDIS5]
+; Interfaces
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi,               Service,    0, "CB102"
+HKR, Ndi\Install,       0,          0, "CB102.Install.NDIS5"
+
+[CB102.Params]
+HKR, ,PlatformType,,"1"
+HKR, ,TxPacketDesc,,"75"       ; 0x32
+HKR, ,RxPacketDesc,,"120"      ; 0x78
+HKR, ,TxDmaDesc,,"150"         ; 0x1d
+HKR, ,RxDmaDesc,,"40"          ; 0x28
+HKR, ,PacketsPerTxInt,,"10"    ; 0x0a
+HKR, ,PacketsPerRxInd,,"10"    ; 0x0a
+HKR, ,BurstLength,,"0"         ; 0 (Unlimited), 1 DW, 2 DW, 3 DW, ...
+
+HKR, Ndi\Params\ConnectionType,         ParamDesc,      0, %ConnectionType%
+HKR, Ndi\Params\ConnectionType,         default,        0, "0"
+HKR, Ndi\Params\ConnectionType,         type,           0, "enum"
+HKR, Ndi\Params\ConnectionType\enum,    0,              0, %AUTO%
+HKR, Ndi\Params\ConnectionType\enum,    1,              0, %10%
+HKR, Ndi\Params\ConnectionType\enum,    2,              0, %10FD%
+HKR, Ndi\Params\ConnectionType\enum,    3,              0, %100%
+HKR, Ndi\Params\ConnectionType\enum,    4,              0, %100FD%
+
+[CB102.Service]
+DisplayName    = %Service.Desc%
+ServiceType    = 1 
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\cb102.sys
+LoadOrderGroup = NDIS
+
+[Common.EventLog]
+AddReg=Common.AddEventLog.Reg
+
+[Common.AddEventLog.Reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\netevent.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[CopyFile.Sys.NDIS5]
+cb102.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir     = 12
+CopyFile.Sys.NDIS5 = 12
+
+[Strings]
+MSFT            = "Microsoft"
+DLINK           = "D-Link"
+Linksys         = "Linksys"
+
+ConnectionType  = "Connection Type"
+AUTO            = "Auto Negotiate"
+10              = "10BaseT"
+10FD            = "10BaseT Full Duplex"
+100             = "100BaseTx"
+100FD           = "100BaseTx Full Duplex"
+
+Generic         = "Abocom-Based CardBus Fast Ethernet Adapter"
+FE2500          = "D-Link DFE-680TXD DirectPort CardBus"
+FE2500MX        = "Linksys EtherFast Integrated 10/100 CardBus PC Card(PCM200)"
+
+Service.Desc    = "D-Link DFE-680TXD DirectPort CardBus Driver"

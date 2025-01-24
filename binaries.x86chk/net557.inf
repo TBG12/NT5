@@ -1,0 +1,1629 @@
+; NET557.INF
+;
+; Intel 8255x-based PCI Ethernet Adapters
+; Copyright (c) 2002, Microsoft
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Msft%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,6.6.8.1
+
+[Manufacturer]
+%Intel%     = Intel
+%HPTX%      = HPTX
+%IBM%       = IBM
+%NEC%       = NEC
+%COMPAQ%    = Compaq
+%Acer%      = Acer
+%FujSie%    = FujSie
+%Actiontec% = Actiontec
+%Toshiba%   = Toshiba
+%Fujitsu%   = Fujitsu
+%Samsung%   = Samsung
+%Dlink%     = Dlink
+%Trigem%    = Trigem
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Intel]
+; DisplayName                    Section         DeviceID
+; -----------                    -------         --------
+%PCIE100BTX.DeviceDesc%          = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00018086
+%PCIE100BT4.DeviceDesc%          = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00028086
+%PCIE10PPCI.DeviceDesc%          = E10P.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_00038086
+%PCIE100RWU.DeviceDesc%          = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00048086
+%I557IFE.DeviceDesc%             = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00058086
+%I557IFEWFM.DeviceDesc%          = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00068086
+%I558IFE.DeviceDesc%             = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_00078086
+%I558IFEWFM.DeviceDesc%          = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_00088086
+%PCIE100PLUS.DeviceDesc%         = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_00098086
+%PCIE100MAN.DeviceDesc%          = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_000A8086
+%PCIE100PLUS.DeviceDesc%         = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_000B8086
+%PCIE100MAN.DeviceDesc%          = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_000C8086
+%PCIE100AOL.DeviceDesc%          = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_000D8086
+%PCIE100MANAOL.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_000E8086
+%PCIE100SC0.DeviceDesc%          = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_000F8086
+%PCIE100S.DeviceDesc%            = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00108086
+%PCIE100S.DeviceDesc%            = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00118086
+%PCIE100SADV.DeviceDesc%         = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00128086
+%PCIE100SADV.DeviceDesc%         = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00138086
+%PCIE100MANAOLGC.DeviceDesc%     = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00308086
+%PCIE100SC0.DeviceDesc%          = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00318086
+%PCIE100SC3.DeviceDesc%          = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_00408086
+%PCIE100SC1.DeviceDesc%          = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_00418086
+%PCIE100SC0.DeviceDesc%          = D102SCN.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_00428086
+%PCIE100SERVER.DeviceDesc%       = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_10098086
+%PCIE100SERVERW.DeviceDesc%      = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_100C8086
+%PCIE100SSVR.DeviceDesc%         = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10128086
+%PCIE100SSVR.DeviceDesc%         = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10138086
+%PCIE100DUAL.DeviceDesc%         = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_10178086
+%PCIE100MANAOLGS.DeviceDesc%     = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_10308086
+%PCIE100SSVRC3.DeviceDesc%       = D102SSC.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_10408086
+%PCIE100SSVRC1.DeviceDesc%       = D102SSC.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_10418086
+%PCIE100SSVRC0.DeviceDesc%       = D102SSCN.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_10428086
+%PCIE100SSVRC0.DeviceDesc%       = D102SSCN.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_10518086
+%PCIE100SSVRC0.DeviceDesc%       = D102SSCN.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_10528086
+%PCIE100DUAL.DeviceDesc%         = D101DP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10F08086
+%PCIE100SCBLAN.DeviceDesc%       = D102MCBS.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20098086 ; S CardBus
+%PCIE100CBLAN.DeviceDesc%        = D101MCB.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_200D8086 ; CardBus
+%PCIE100CBCOMBO.DeviceDesc%      = D101MCBC.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_200E8086 ; LAN+ModemV56 CardBus
+%PCIE100SCBLANR.DeviceDesc%      = D102MCBS.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_200F8086
+%PCIE100SCBCOMBO.DeviceDesc%     = D102MCBS.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20108086 ; S LAN+ModemV56 CardBus
+%PCIE100SCBLANNODES.DeviceDesc% = D102MCBSNODES.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20118086
+%PCIE100SCBCOMBONODES.DeviceDesc% = D102MCBSNODES.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20128086
+%PCIE100SCBRCOMBONODES.DeviceDesc% = D102MCBSNODES.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20148086
+%PCIE100SCBLANRNODES.DeviceDesc% = D102MCBSNODES.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20158086
+%PCIE100SCBCOMBOR.DeviceDesc%    = D102MCBS.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_20138086
+%MiniPCI3A.DeviceDesc%           = D102MP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_21008086
+%MiniPCI.DeviceDesc%             = D102MP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_21018086 ; MiniPCI 82550 (LAN)
+%MiniPCIDes.DeviceDesc%          = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_21028086 ; MiniPCI 82550 (LAN w Security)
+%MiniPCIDes.DeviceDesc%          = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_21038086
+%MiniPCIDes.DeviceDesc%          = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_21048086
+%MiniPCIDes.DeviceDesc%          = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_21058086
+%MiniPCI.DeviceDesc%             = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_21068086 ; MiniPCI 82559B (LAN)
+%MiniPCILON.DeviceDesc%          = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_21078086 ; MiniPCI 82559B (LON)
+%MiniPCILON.DeviceDesc%          = D102MP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_21088086 ; MiniPCI 82550 (LON)
+%MiniPCICombo.DeviceDesc%        = D102MP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_22008086 ; MiniPCI 82550 (COMBO)
+%MiniPCICombo.DeviceDesc%        = D102MP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_22018086
+%MiniPCIComboDes.DeviceDesc%     = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_22028086 ; MiniPCI 82550 (COMBO w Security)
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_22038086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_22048086
+%MiniPCIComboDes.DeviceDesc%     = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_22058086
+%MiniPCIComboDes.DeviceDesc%     = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_22068086
+%MiniPCIComboDes.DeviceDesc%     = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_22078086
+%MiniPCICombo.DeviceDesc%        = D102MP.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_22088086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_24088086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_240F8086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_24108086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_24118086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_24128086
+%I559CMiniPCI.DeviceDesc%        = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_24138086
+%I559IFE.DeviceDesc%             = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30008086 ; 82559 LOM
+%I559IFEAOL.DeviceDesc%          = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30018086 ; 82559 LOM w\Basic Alert on LAN*
+%I559IFEAOL.DeviceDesc%          = D101Lion.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_30018086&REV_09
+%I559IFEAOLII.DeviceDesc%        = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30028086 ; 82559 LOM w\Alert on LAN 2*
+%PCIE100SxL.DeviceDesc%          = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_30068086
+%PCIE100SxL.DeviceDesc%          = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_30078086
+%PCIE100S0L.DeviceDesc%          = D102SCN.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_30088086
+%PCIE100SxL.DeviceDesc%          = D102mC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_30108086
+%PCIE100LAVON.DeviceDesc%        = Lavon.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00708086
+
+%I559IFE.DeviceDesc%             = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_34008086
+
+%PCIE100SC3.DeviceDesc%          = D102mC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_00508086
+%PCIE100SSVRC3.DeviceDesc%       = D102mS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10508086
+%PCIE100DUALS0.DeviceDesc%       = D102m0.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10148086
+%PCIE100DUALSx.DeviceDesc%       = D102mS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10158086
+%PCIE100DUALSx.DeviceDesc%       = D102mS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10168086
+%PCIE100SCBLAN.DeviceDesc%       = D102mCB.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_20168086
+%PCIE100SCBCOMBO.DeviceDesc%     = D102mCB.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_20178086
+%PCIE100SCBLANR.DeviceDesc%      = D102mCB.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_20188086
+%PCIE100SCBCOMBOR.DeviceDesc%    = D102mCB.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_20198086
+
+%PCIE100B.DeviceDesc%            = E100B.ndi,    PCI\VEN_8086&DEV_1229&REV_01
+%PCIE100B.DeviceDesc%            = E100B.ndi,    PCI\VEN_8086&DEV_1229&REV_02
+%PCIE100B.DeviceDesc%            = D101.ndi,     PCI\VEN_8086&DEV_1229&REV_04
+%PCIE100B.DeviceDesc%            = D101.ndi,     PCI\VEN_8086&DEV_1229&REV_05
+%PCIE100B.DeviceDesc%            = D101MG.ndi,   PCI\VEN_8086&DEV_1229&REV_08
+%PCIE100B.DeviceDesc%            = D101SG.ndi,   PCI\VEN_8086&DEV_1229&REV_09
+%PCIE100B.DeviceDesc%            = D101B0.ndi,   PCI\VEN_8086&DEV_1229&REV_0A
+%PCIE100B.DeviceDesc%            = D102SCNG.ndi, PCI\VEN_8086&DEV_1229&REV_0C
+%PCIE100B.DeviceDesc%            = D102mG.ndi,   PCI\VEN_8086&DEV_1229&REV_0D
+%PCIE100LAVON.DeviceDesc%        = Lavon.ndi,    PCI\VEN_8086&DEV_1229&REV_0F
+%PCIE100LAVONMB.DeviceDesc%      = Lavonmb.ndi,  PCI\VEN_8086&DEV_1059&REV_0F
+%PCIE100LAVONMB.DeviceDesc%      = Lavonmb.ndi,  PCI\VEN_8086&DEV_1059&REV_10
+
+%PCIE100EMBLON.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_2449 ; ICH2 Generic
+%PCIE100EMBEDDED.DeviceDesc%     = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30108086 ; ICH2
+%PCIE100PLUSEMBEDDED.DeviceDesc% = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30118086 ; ICH2 Management
+%PCIE1EMBEDDED.DeviceDesc%       = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30128086 ; ICH2 Phoneline
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30138086 ; ICH2
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30148086
+%PCIE1EMBLOM.DeviceDesc%         = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30158086 ; ICH2 Phoneline
+%PCIE100EMBMPC.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30168086
+%PCIE100EMBMP.DeviceDesc%        = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30178086
+%PCIE100EMBLON.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30188086
+
+%PCIE100EMBEDDED.DeviceDesc%     = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30108086&REV_03
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30138086&REV_03
+%PCIE100EMBLON.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30188086&REV_01
+%PCIE100EMBLON.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30188086&REV_03
+%PCIE100EMBMP.DeviceDesc%        = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30178086&REV_01 ; ICH2 M
+%PCIE100EMBMP.DeviceDesc%        = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30178086&REV_03
+%PCIE100EMBMPC.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30168086&REV_01
+%PCIE100EMBMPC.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_30168086&REV_03
+%PCIE100PLUSEMBEDDED.DeviceDesc% = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30118086&REV_03
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30148086&REV_03
+%PCIE1EMBEDDED.DeviceDesc%       = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30128086&REV_03
+%PCIE1EMBLOM.DeviceDesc%         = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30158086&REV_03
+
+%PCIE100EMBEDDED.DeviceDesc%     = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30108086&REV_01 ; Intel(R) PRO/100E Adapter
+%PCIE100EMBEDDED.DeviceDesc%     = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30108086&REV_01 ; Intel(R) PRO/100E Adapter
+%PCIE100PLUSEMBEDDED.DeviceDesc% = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30118086&REV_01 ; Intel(R) PRO/100E+ Management Adapter
+%PCIE1EMBEDDED.DeviceDesc%       = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30128086&REV_01 ; 82562EH based Phoneline Network Controller
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30138086&REV_01 ; Intel(R) PRO/100E Adapter
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30148086&REV_01 ; Intel(R) PRO/100E+ Management Adapter
+%PCIE1EMBLOM.DeviceDesc%         = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_30158086&REV_01 ; 82562EH based Phoneline Network Controller
+
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_1032
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_1033
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_1034
+%PCIE1EMBLOM.DeviceDesc%         = D110G.ndi,    PCI\VEN_8086&DEV_1035
+%PCIE1EMBLOM.DeviceDesc%         = D110G.ndi,    PCI\VEN_8086&DEV_1036
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110KMP.ndi,  PCI\VEN_8086&DEV_1038
+
+; ICH4 - kinerreth (9)LOM/(A)CNR/(B)+LOM/(C)+CNR/(D)LOM mobile/(E)+ Mobile
+; need to see if there are different parameters required in registry between them
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_1039
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_103A
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_103B
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_103C
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_103D  ;mobile
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110KMP.ndi,  PCI\VEN_8086&DEV_103E  ;mobile
+
+
+[Compaq]
+; Desktop
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30040E11
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30010E11
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30060E11
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30020E11
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30030E11
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30050E11
+%I559IFEAOLCPQ.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_30070E11
+%I559CLONPCI.DeviceDesc%         = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_B2090E11
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_00120E11
+%PCIE100EMBLOM.DeviceDesc%       = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_00910E11 ; ICH2
+
+[IBM]
+%IBMFE1.DeviceDesc%              = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_005C1014&REV_01
+%IBMFE1.DeviceDesc%              = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_005C1014&REV_02
+%IBMFE2.DeviceDesc%              = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_005C1014&REV_04
+%IBMFE2.DeviceDesc%              = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_005C1014&REV_05
+%IBMFE1.DeviceDesc%              = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_005C1014
+%IBMFE9.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_01BC1014&REV_08
+%IBMFE9.DeviceDesc%              = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_01BC1014&REV_09
+%IBMFE9.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_01BC1014
+%IBMFEA.DeviceDesc%              = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_01F11014
+%IBMFEA.DeviceDesc%              = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_01F21014
+%IBMFE2.DeviceDesc%              = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_105C1014&REV_04
+%IBMFE2.DeviceDesc%              = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_105C1014&REV_05
+%IBMFE2.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_105C1014&REV_08
+%IBMFE2.DeviceDesc%              = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_105C1014
+%IBMFE3.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_305C1014&REV_08
+%IBMFE3.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_305C1014
+%IBMFE4.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_405C1014&REV_08
+%IBMFE4.DeviceDesc%              = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_405C1014
+%IBMFE5.DeviceDesc%              = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_505C1014&REV_09
+%IBMFE5.DeviceDesc%              = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_505C1014
+%IBMFE6.DeviceDesc%              = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_605C1014&REV_09
+%IBMFE6.DeviceDesc%              = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_605C1014
+%IBMFE7.DeviceDesc%              = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_705C1014&REV_09
+%IBMFE7.DeviceDesc%              = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_705C1014
+%IBMFE8.DeviceDesc%              = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_805C1014&REV_09
+%IBMFE8.DeviceDesc%              = D101SS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_805C1014
+%PCIE100SxL.DeviceDesc%          = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_02071014
+%PCIE100SxL.DeviceDesc%          = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_023F1014
+%IBMFEB.DeviceDesc%              = D102mS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_02328086
+
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_01CE1014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_01DC1014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_01EB1014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_01EC1014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02021014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02051014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02091014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02171014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02341014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02651014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_02671014
+%IBMFEK.DeviceDesc%              = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_026A1014
+%IBMFES.DeviceDesc%              = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_022D1014
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_02091014
+
+[HPTX]
+%HPTX1.DeviceDesc%               = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_10C0103C
+%HPTX1.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_10C3103C
+%HPTX1.DeviceDesc%               = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_10CA103C
+%HPTX1.DeviceDesc%               = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_10CB103C
+%HPTX1.DeviceDesc%               = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10E3103C
+%HPTX1.DeviceDesc%               = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_10E4103C
+%HPTX1.DeviceDesc%               = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_1200103C
+%HPTX1.DeviceDesc%               = D102mS.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_1273103C
+%HPTX1.DeviceDesc%               = D102SSCN.ndi, PCI\VEN_8086&DEV_1229&SUBSYS_1274103C
+
+[NEC]
+%9821XB06.DeviceDesc%            = E100B.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_80001033
+%PKUGX06.DeviceDesc%             = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_80161033
+%PKUGX06.DeviceDesc%             = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_801F1033
+%PKUGX06.DeviceDesc%             = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_80261033
+%NEC82559BASED.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_80631033
+%NEC82559BASED.DeviceDesc%       = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_80641033
+%NEC82559BASED.DeviceDesc%       = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_80C41033
+; The following NEC devices defined by PCI\VEN_8086&DEV_1031
+;       PCI\VEN_8086&DEV_1031&SUBSYS_81691033
+;       PCI\VEN_8086&DEV_1031&SUBSYS_81831033
+;       PCI\VEN_8086&DEV_1031&SUBSYS_818b1033
+;       PCI\VEN_8086&DEV_1031&SUBSYS_818c1033
+
+[Acer]
+%PCIACER2.DeviceDesc%            = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_00091025
+%PCIACER1.DeviceDesc%            = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_001A1025
+%PCIACER1.DeviceDesc%            = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_04401468
+%PCIACER1.DeviceDesc%            = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_04401468&REV_08 ; oem preinstall
+%PCIACER3.DeviceDesc%            = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_001B1025
+
+
+[FujSie]
+%I558IFEWFMSI1.DeviceDesc%       = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_0019110A
+%I559IFESI2.DeviceDesc%          = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_0037110A
+%I559IFEAOLSI3.DeviceDesc%       = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_004B110A
+%I558IFESI4.DeviceDesc%          = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_0031110A
+%I558IFESI5.DeviceDesc%          = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_6608110A
+%I559IFEAOLSI6.DeviceDesc%       = D101S.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_6618110A
+
+[Actiontec]
+%ActiontecMiniPCI.DeviceDesc%    = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_11001668 ; MP100iM
+%ActiontecMiniPCI.DeviceDesc%    = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_10001668 ; MP100i
+
+[Toshiba]
+%Toshiba82559B.DeviceDesc%       = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_00031179
+%PCIE100B.DeviceDesc%            = D102mCm.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_00011179 ; 82550 rev D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_00011179 ; ICH3
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_2449&SUBSYS_FF011179
+
+[Fujitsu]
+%PCIE100B.DeviceDesc%            = D102SC.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_111510CF
+%PCIE100B.DeviceDesc%            = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_114310CF
+%PCIE100PLUSEMBLOM.DeviceDesc%   = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_118810CF
+%PCIE100B.DeviceDesc%            = D101MG.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_107010CF
+
+[Dlink]
+%DL_EMBLOM.DeviceDesc%           = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_78011186
+
+[Samsung]
+%SamsungMiniPCI.DeviceDesc%      = D101SMP.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_2501144D
+%SamsungILMiniPCI.DeviceDesc%    = D102MPS.ndi,  PCI\VEN_8086&DEV_1229&SUBSYS_2502144D
+%PCIE100EMBEDDED.DeviceDesc%     = D110K.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_2503144D
+%SamsungICH2p.DeviceDesc%        = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_2601144D
+%SamsungICH2p.DeviceDesc%        = D110G.ndi,    PCI\VEN_8086&DEV_2449&SUBSYS_2602144D ; ICH2 Phoneline
+
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_5350107B
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_B009144D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_C000144D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_C001144D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_C002144D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_C003144D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_C006144D
+%PCIE100EMBLOM.DeviceDesc%       = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_C007144D
+
+[Trigem]
+%PCIE100EMBLOM.DeviceDesc% = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_315D109F
+%PCIE100EMBLOM.DeviceDesc% = D110KMP.ndi,  PCI\VEN_8086&DEV_1031&SUBSYS_3181109F
+
+;---------------
+; 82557 Rev 1, 2
+;
+[E100B.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[E100B.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[E100B.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, e100b.ndi.NT.reg, IA64.reg, TaskOffloadNone.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[E100B.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;---------------
+; 82558 Rev 4, 5
+;
+[D101.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg, IA64.reg, TaskOffloadNone.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;---------------
+; 82558 Rev 4, 5 Dual Port
+;
+[D101DP.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101DP.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101DP.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg, TaskOffloadNone.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101DP.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;----------------------------------------------------------------------------
+; 82558 Dual Port (Compaq)
+;
+[multiport.ndi.NTx86]
+Characteristics   = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType           = 5    ; PCI
+DelReg            = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg            = Speed100.reg, 82557.reg, 82558.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles         = E100B_NT.ndis5.CopyFiles
+Port1DeviceNumber = 4
+
+[multiport.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[multiport.ndi.NTIA64]
+Characteristics   = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType           = 5    ; PCI
+DelReg            = TaskOffload.DelReg
+AddReg            = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg, TaskOffloadNone.reg, IA64.reg
+CopyFiles         = E100B_NTIA64.ndis5.CopyFiles
+Port1DeviceNumber = 4
+
+[multiport.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;------------
+; 82559 Rev 8
+;
+[D101M.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg,LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101M.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101M.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg, TaskOffloadNone.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101M.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;------------
+; 82559 Rev 8
+;
+[D101Lion.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101Lion.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101Lion.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = TaskOffloadNone.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101Lion.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--------------------
+; 82559 Rev 8 Generic
+;
+[D101MG.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPDD.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101MG.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101MG.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPDD.reg, e100b.ndi.NT.reg, TaskOffloadNone.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101MG.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;----------------------------
+; Cardbus Adapter D101M Rev 8
+;
+[D101MCB.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101MCB.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;--------------------------
+; Cardbus Combo D101M Rev 8
+;
+[D101MCBC.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg
+AddReg          = e100b.ndi.NT.reg, Clkrun.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101MCBC.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;-----------------------------
+; 82550 Rev C Security Cardbus
+;
+[D102MCBS.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102MCBS.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;--- 82550 Rev C Cardbus No DES
+;
+[D102MCBSNODES.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102MCBSNODES.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;----------------------
+;  82559 Rev 9 Security
+;
+[D101S.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101S.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101S.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = Security.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101S.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;-----------------------------
+; 82559 Rev 9 Security Generic
+;
+[D101SG.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPDD.reg, e100b.ndi.NT.reg
+AddReg          = Security.reg, SecOff.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101SG.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101SG.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPDD.reg, e100b.ndi.NT.reg
+AddReg          = Security.reg, SecOff.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101SG.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;-------------------
+; 82550 Rev C Client
+;
+[D102SC.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102SC.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102SC.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102SC.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;------------
+; 82550 Rev C
+;
+[D102SCN.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102SCN.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102SCN.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102SCN.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--------------------
+; 82550 Rev C Generic
+;
+[D102SCNG.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPDD.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, Security.reg, LargeSendOffload.reg,
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102SCNG.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102SCNG.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPDD.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, Security.reg, LargeSendOffload.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102SCNG.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;---------------------
+; 82550 Rev C Security Server
+;
+[D102SSC.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, SecSerDef.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102SSC.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102SSC.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, SecSerDef.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102SSC.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;------------
+; 82550 Rev C Server
+;
+[D102SSCN.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102SSCN.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102SSCN.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102SSCN.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--------------
+; 82550 Rev C MiniPCI
+;
+[D102MP.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102MP.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;-----------------------
+; 82550 Rev C MiniPCI Security
+;
+[D102MPS.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102MPS.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;--- 82550 Rev D Server
+;
+[D102mS.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, SecSerDef.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102mS.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102mS.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, SecSerDef.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102mS.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--- 82550 Rev D Client
+;
+[D102mC.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102mC.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102mC.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102mC.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--- 82550 Rev D Client
+;
+[D102mCm.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102mCm.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102mCm.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102mCm.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--- 82550 Rev D Server NoDes
+;
+[D102m0.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102m0.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102m0.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102m0.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--- 82550 Rev F Lavon
+;
+[Lavon.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[Lavon.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[Lavon.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[Lavon.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--- 82550 Rev D Security Cardbus
+;
+[D102mCB.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg, Security.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102mCB.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;--- 82550 Rev F Mobile
+;
+[Lavonmb.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[Lavonmb.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+
+;--- 82550 Rev D Generic
+;
+[D102mG.ndi.NTx86]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, Security.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D102mG.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D102mG.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, CPUSaverOverride.reg, e100b.ndi.NT.reg
+AddReg          = CSumOffload.reg, Security.reg, LargeSendOffload.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D102mG.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;----------------------
+; D101S Rev 9 -- Server
+;
+[D101SS.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = Security.reg, SecSerDef.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101SS.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101SS.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, e100b.ndi.NT.reg
+AddReg          = Security.reg, SecSerDef.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101SS.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+;--------------
+; 82559 MiniPCI
+;
+[D101SMP.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, EnableLLPD.reg, e100b.ndi.NT.reg, SecDisable.reg, LargeSendOffload.reg, IA64.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101SMP.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;------------------------------
+; D101 Rev A Management Adapter
+;
+[D101B0.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, e100b.ndi.NT.reg, LargeSendOffload.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D101B0.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+[D101B0.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Speed100.reg, 82557.reg, e100b.ndi.NT.reg, TaskOffloadNone.reg, IA64.reg
+CopyFiles       = E100B_NTIA64.ndis5.CopyFiles
+
+[D101B0.ndi.NTIA64.Services]
+AddService = E100B, 2, e100b_NTIA64.Service, common.EventLog_NTIA64
+
+
+;-----------------------------
+; Intel(R) PRO/10+ PCI Adapter
+;
+[E10P.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, TaskOffload.DelReg
+AddReg          = Speed10.reg, 82557.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[E10P.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;--------------
+; D110 Ethernet
+;
+[D110K.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = Kinnerth.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg,Kinnereth.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+AddReg          = DisableAutoPowerSave.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D110K.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;---------------------
+; D110 Ethernet Mobile
+;
+[D110KMP.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = Kinnerth.DelReg, TaskOffload.DelReg
+AddReg          = Speed100.reg, Kinnereth.reg, EnableLLPD.reg, LargeSendOffload.reg, e100b.ndi.NT.reg
+AddReg          = DisableAutoPowerSave.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D110KMP.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;-----------------------------------
+; D110 Phoneline
+;
+[D110G.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = TaskOffload.DelReg
+AddReg          = Phone.reg, Gilad.reg, e100b.ndi.NT.reg, DisableAutoPowerSave.reg
+CopyFiles       = E100B_NT.ndis5.CopyFiles
+
+[D110G.ndi.NTx86.Services]
+AddService = E100B, 2, e100b.Service, common.EventLog
+
+;-----------------
+; common base 10Mb
+;
+[Speed10.reg]
+; Speed Duplex Mode
+HKR, Ndi\params\SpeedDuplex,       ParamDesc,  0, %SpeedDuplex%
+HKR, Ndi\params\SpeedDuplex,       default,    0, "1"
+HKR, Ndi\params\SpeedDuplex,       type,       0, "enum"
+HKR, Ndi\params\SpeedDuplex\enum,  "1",        0, %10Mb-Half-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "2",        0, %10Mb-Full-Duplex%
+
+;---------------------
+; common base 10/100Mb
+;
+[Speed100.reg]
+; Speed Duplex Mode
+HKR, Ndi\params\SpeedDuplex,       ParamDesc,  0, %SpeedDuplex%
+HKR, Ndi\params\SpeedDuplex,       default,    0, "0"
+HKR, Ndi\params\SpeedDuplex,       type,       0, "enum"
+HKR, Ndi\params\SpeedDuplex\enum,  "0",        0, %AutoDetect%
+HKR, Ndi\params\SpeedDuplex\enum,  "1",        0, %10Mb-Half-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "2",        0, %10Mb-Full-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "3",        0, %100Mb-Half-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "4",        0, %100Mb-Full-Duplex%
+
+;----------------------------------------------------------------------------
+; common base 100Mb only
+;
+[Speed103.reg]
+HKR, Ndi\params\SpeedDuplex,       ParamDesc,  0, %SpeedDuplex%
+HKR, Ndi\params\SpeedDuplex,       default,    0, "2"
+HKR, Ndi\params\SpeedDuplex,       type,       0, "enum"
+HKR, Ndi\params\SpeedDuplex\enum,  "1",        0, %100Mb-Half-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "2",        0, %100Mb-Full-Duplex%
+
+;----------------------------
+; IA64 Specific
+[IA64.reg]
+HKR,,EEpromSTBEnableBit,        2, "0"
+
+; Common 82557 NDI parameters
+;
+[82557.reg]
+HKR,Ndi\Params\NumRfd,                ParamDesc,  0, %NumRfd%
+HKR,Ndi\Params\NumRfd,                Type,       0, "int"
+HKR,Ndi\Params\NumRfd,                Default,    0, "48"
+HKR,Ndi\Params\NumRfd,                Min,        0, "8"
+HKR,Ndi\Params\NumRfd,                Max,        0, "1024"
+HKR,Ndi\Params\NumRfd,                Step,       0, "1"
+HKR,Ndi\Params\NumRfd,                Base,       0, "10"
+
+HKR,Ndi\Params\NumTcb,                ParamDesc,  0, %NumTcb%
+HKR,Ndi\Params\NumTcb,                Type,       0, "int"
+HKR,Ndi\Params\NumTcb,                Default,    0, "16"
+HKR,Ndi\Params\NumTcb,                Min,        0, "8"
+HKR,Ndi\Params\NumTcb,                Max,        0, "64"
+HKR,Ndi\Params\NumTcb,                Step,       0, "1"
+HKR,Ndi\Params\NumTcb,                Base,       0, "10"
+
+HKR,Ndi\Params\NumCoalesce,           ParamDesc,  0, %NumCoalesce%
+HKR,Ndi\Params\NumCoalesce,           Type,       0, "int"
+HKR,Ndi\Params\NumCoalesce,           Default,    0, "8"
+HKR,Ndi\Params\NumCoalesce,           Min,        0, "1"
+HKR,Ndi\Params\NumCoalesce,           Max,        0, "32"
+HKR,Ndi\Params\NumCoalesce,           Step,       0, "1"
+HKR,Ndi\Params\NumCoalesce,           Base,       0, "10"
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,        ParamDesc,  0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,        Default,    0, ""
+HKR, Ndi\params\NetworkAddress,        type,       0, "edit"
+HKR, NDI\params\NetworkAddress,        LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress,        UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress,        optional,   0, "1"
+
+; Hardwired defaults
+HKR,,                                  Threshold,  0, "12"
+HKR,,                                  PcNic,      0, "0"
+HKR,,                                  Adaptive_IFS,0, "1"
+HKR,,                                  UcodeSW,    0, "1"
+HKR,,                                  Coalesce,   0, "0"
+HKR,,                                  CPUSaver,   0, "1536"
+HKR,,                                  MWIEnable,  0, "1"
+HKR,,                                  MWIEnable,  0, "1"
+HKR,,                                  EnablePME,  0, "2"
+HKR,,				       AutoPowerSaveModeEnabled, 0, "0"
+
+;-----------------------------
+; Disable Auto Power Save Mode
+;
+[DisableAutoPowerSave.reg]
+HKR,,				       AutoPowerSaveModeEnabled, 0, "0"
+
+
+;----------------
+; 82558 specifics
+;
+[82558.reg]
+; 802.1p/802.1q Packet Tagging
+HKR,Ndi\Params\TaggingMode,         ParamDesc,  0, %TaggingMode%
+HKR,Ndi\Params\TaggingMode,         Type,       0, "enum"
+HKR,Ndi\Params\TaggingMode,         Default,    0, "0"
+HKR,Ndi\Params\TaggingMode\Enum,    "1",        0, %Enabled%
+HKR,Ndi\Params\TaggingMode\Enum,    "0",        0, %Disabled%
+
+HKR,Ndi\Params\FlowControl,              ParamDesc,  0, %FlowControl%
+HKR,Ndi\Params\FlowControl,              Type,       0, "enum"
+HKR,Ndi\Params\FlowControl,              Default,    0, "0"
+HKR,Ndi\Params\FlowControl\Enum,         "3",        0, %Both_On%
+HKR,Ndi\Params\FlowControl\Enum,         "2",        0, %Respond%
+HKR,Ndi\Params\FlowControl\Enum,         "1",        0, %Generate%
+HKR,Ndi\Params\FlowControl\Enum,         "0",        0, %Off%
+
+;-------
+; Clkrun
+[Clkrun.reg]
+HKR,,CLKRUN,                                      0, "1"
+
+;----------
+; Kinnereth
+[Kinnereth.reg]
+HKR,Ndi\Params\NumRfd,                ParamDesc,  0, %NumRfd%
+HKR,Ndi\Params\NumRfd,                Type,       0, "int"
+HKR,Ndi\Params\NumRfd,                Default,    0, "48"
+HKR,Ndi\Params\NumRfd,                Min,        0, "8"
+HKR,Ndi\Params\NumRfd,                Max,        0, "1024"
+HKR,Ndi\Params\NumRfd,                Step,       0, "1"
+HKR,Ndi\Params\NumRfd,                Base,       0, "10"
+
+HKR,Ndi\Params\NumTcb,                ParamDesc,  0, %NumTcb%
+HKR,Ndi\Params\NumTcb,                Type,       0, "int"
+HKR,Ndi\Params\NumTcb,                Default,    0, "16"
+HKR,Ndi\Params\NumTcb,                Min,        0, "8"
+HKR,Ndi\Params\NumTcb,                Max,        0, "64"
+HKR,Ndi\Params\NumTcb,                Step,       0, "1"
+HKR,Ndi\Params\NumTcb,                Base,       0, "10"
+
+HKR,Ndi\Params\NumCoalesce,           ParamDesc,  0, %NumCoalesce%
+HKR,Ndi\Params\NumCoalesce,           Type,       0, "int"
+HKR,Ndi\Params\NumCoalesce,           Default,    0, "8"
+HKR,Ndi\Params\NumCoalesce,           Min,        0, "1"
+HKR,Ndi\Params\NumCoalesce,           Max,        0, "32"
+HKR,Ndi\Params\NumCoalesce,           Step,       0, "1"
+HKR,Ndi\Params\NumCoalesce,           Base,       0, "10"
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,        ParamDesc,  0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,        Default,    0, ""
+HKR, Ndi\params\NetworkAddress,        type,       0, "edit"
+HKR, NDI\params\NetworkAddress,        LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress,        UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress,        optional,   0, "1"
+
+HKR,,Coalesce,                                    0, "0"
+HKR,,Threshold,                                   0, "12"
+HKR,,UcodeSW,                                     0, "1"
+HKR,,Adaptive_IFS,                                0, "1"
+HKR,,TaggingMode,                                 0, "0"
+HKR,,CPUSaver,                                    0, "0"
+HKR,,PcNic,                                       0, "1"
+HKR,,MWIEnable,                                   0, "0"
+HKR,,BroadcastEnable,                             0, "1"
+HKR,,EnableDynamicReducedPower,                   0, "1"
+HKR,,DeviceVxDsPrefix,                            0, "e100b"
+HKR,,HPQDisable,                                  0, "1"
+HKR,,                                  EnablePME,  0, "2"
+
+[Kinnerth.DelReg]
+HKR,Ndi\Params\AcpiWol
+HKR,,AcpiWol
+
+;-----------------------------------
+; Gilad parameters starts
+[Gilad.reg]
+HKR,Ndi\Params\NumRfd,                ParamDesc,  0, %NumRfd%
+HKR,Ndi\Params\NumRfd,                Type,       0, "int"
+HKR,Ndi\Params\NumRfd,                Default,    0, "48"
+HKR,Ndi\Params\NumRfd,                Min,        0, "8"
+HKR,Ndi\Params\NumRfd,                Max,        0, "1024"
+HKR,Ndi\Params\NumRfd,                Step,       0, "1"
+HKR,Ndi\Params\NumRfd,                Base,       0, "10"
+
+HKR,Ndi\Params\NumTcb,                ParamDesc,  0, %NumTcb%
+HKR,Ndi\Params\NumTcb,                Type,       0, "int"
+HKR,Ndi\Params\NumTcb,                Default,    0, "16"
+HKR,Ndi\Params\NumTcb,                Min,        0, "8"
+HKR,Ndi\Params\NumTcb,                Max,        0, "64"
+HKR,Ndi\Params\NumTcb,                Step,       0, "1"
+HKR,Ndi\Params\NumTcb,                Base,       0, "10"
+
+HKR,Ndi\Params\NumCoalesce,           ParamDesc,  0, %NumCoalesce%
+HKR,Ndi\Params\NumCoalesce,           Type,       0, "int"
+HKR,Ndi\Params\NumCoalesce,           Default,    0, "8"
+HKR,Ndi\Params\NumCoalesce,           Min,        0, "1"
+HKR,Ndi\Params\NumCoalesce,           Max,        0, "32"
+HKR,Ndi\Params\NumCoalesce,           Step,       0, "1"
+HKR,Ndi\Params\NumCoalesce,           Base,       0, "10"
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,        ParamDesc,  0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,        Default,    0, ""
+HKR, Ndi\params\NetworkAddress,        type,       0, "edit"
+HKR, NDI\params\NetworkAddress,        LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress,        UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress,        optional,   0, "1"
+
+
+HKR,,Coalesce,                                     0, "0"
+HKR,,Threshold,                                    0, "12"
+HKR,,UcodeSW,                                      0, "1"
+HKR,,Adaptive_IFS,                                 0, "1"
+HKR,,TaggingMode,                                  0, "0"
+HKR,,CPUSaver,                                     0, "0"
+HKR,,EnablePME,                                    0, "2"
+
+HKR,,PcNic,                                        0, "1"
+HKR,,MWIEnable,                                    0, "0"
+HKR,,BroadcastEnable,                              0, "0"
+HKR,,DeviceVxDsPrefix,                             0, "e100b"
+HKR,,HPQDisable,                                   0, "1"
+HKR,,                                  EnablePME,  0, "2"
+
+;----------------------------------
+; MiniPCI Cardbus Enable Power Down
+;
+[EnableLLPD.reg]
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss,      ParamDesc,  0, %EPDOLL%
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss,      Type,       0, "enum"
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss,      Default,    0, "1"
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss\Enum, "1",        0, %Enabled%
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss\Enum, "0",        0, %Disabled%
+
+;----------------------------------
+; MiniPCI Cardbus Enable Power Down
+;
+[EnableLLPDD.reg]
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss,      ParamDesc,  0, %EPDOLL%
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss,      Type,       0, "enum"
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss,      Default,    0, "0"
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss\Enum, "1",        0, %Enabled%
+HKR,Ndi\Params\EnablePowerDownOnLinkLoss\Enum, "0",        0, %Disabled%
+
+HKR,Ndi\Params\LinkBasedLogin,              ParamDesc,  0, %Adaptive_Link_Response%
+HKR,Ndi\Params\LinkBasedLogin,              Type,       0, "enum"
+HKR,Ndi\Params\LinkBasedLogin,              Default,    0, "0"
+HKR,Ndi\Params\LinkBasedLogin\Enum,         "1",        0, %On%
+HKR,Ndi\Params\LinkBasedLogin\Enum,         "0",        0, %Off%
+
+;--- Security
+;
+[Security.reg]
+HKR,Ndi\Params\IPSecEnabled,     ParamDesc,  0, %Ipsecurity%
+HKR,Ndi\Params\IPSecEnabled,     Type,       0, "enum"
+HKR,Ndi\Params\IPSecEnabled,     Default,    0, "1"
+HKR,Ndi\Params\IPSecEnabled\Enum,"0",        0, %Disabled%
+HKR,Ndi\Params\IPSecEnabled\Enum,"1",        0, %Enabled%
+
+HKR,Ndi\Params\MaxNumSecAssoc,  ParamDesc,  0, %SecurityAssociations%
+HKR,Ndi\Params\MaxNumSecAssoc,  Type,       0, "int"
+HKR,Ndi\Params\MaxNumSecAssoc,  Default,    0, "64"     ; Client
+HKR,Ndi\Params\MaxNumSecAssoc,  Min,        0, "1"
+HKR,Ndi\Params\MaxNumSecAssoc,  Max,        0, "5000"
+HKR,Ndi\Params\MaxNumSecAssoc,  Step,       0, "1"
+HKR,Ndi\Params\MaxNumSecAssoc,  Base,       0, "10"
+
+HKR,,IPSecTunnelMode, 2, "1"
+
+[SecSerDef.reg]
+HKR,Ndi\Params\MaxNumSecAssoc,  Default,    0, "1000"   ; Server
+
+[SecOff.reg]
+HKR,Ndi\Params\IPSecEnabled,     Default,    0, "0"
+
+[SecDisable.reg]
+HKR,,IPSecEnabled,    0, "0"
+
+;--- Checksum Offload
+;
+[CSumOffload.reg]
+HKR,Ndi\Params\ChecksumEnabled,     ParamDesc,  0, %Checksum_str%
+HKR,Ndi\Params\ChecksumEnabled,     Type,       0, "enum"
+HKR,Ndi\Params\ChecksumEnabled,     Default,    0, "1"
+HKR,Ndi\Params\ChecksumEnabled\Enum,"0",        0, %Disabled%
+HKR,Ndi\Params\ChecksumEnabled\Enum,"1",        0, %Enabled%
+
+;--- Large Send Offload
+;
+[LargeSendOffload.reg]
+HKR,Ndi\Params\LargeSendEnabled,     ParamDesc,  0, %LargeSend_str%
+HKR,Ndi\Params\LargeSendEnabled,     Type,       0, "enum"
+HKR,Ndi\Params\LargeSendEnabled,     Default,    0, "1"
+HKR,Ndi\Params\LargeSendEnabled\Enum,"0",        0, %Disabled%
+HKR,Ndi\Params\LargeSendEnabled\Enum,"1",        0, %Enabled%
+
+;------------------------------
+; CPUSaver override for Cardbus
+;
+[CPUSaverOverride.reg]
+HKR,,CPUSaver,                                    0, "1"
+
+;------
+; Gilad
+;
+[Phone.reg]
+; Phoneline Power Level
+HKR, Ndi\params\PhyPhonePower,       ParamDesc,  0, %PhyPhonePower%
+HKR, Ndi\params\PhyPhonePower,       default,    0, "0"
+HKR, Ndi\params\PhyPhonePower,       type,       0, "enum"
+HKR, Ndi\params\PhyPhonePower\enum,  "0",        0, %Low%
+HKR, Ndi\params\PhyPhonePower\enum,  "1",        0, %High%
+
+; Phoneline Transmit Speed
+HKR, Ndi\params\PhyPhoneSpeed,       ParamDesc,  0, %PhyPhoneSpeed%
+HKR, Ndi\params\PhyPhoneSpeed,       default,    0, "1"
+HKR, Ndi\params\PhyPhoneSpeed,       type,       0, "enum"
+HKR, Ndi\params\PhyPhoneSpeed\enum,  "0",        0, %Low%
+HKR, Ndi\params\PhyPhoneSpeed\enum,  "1",        0, %High%
+
+; Phoneline Transmit Speed
+HKR, Ndi\params\PhyGiladIfs,       ParamDesc,  0, %PhyGiladIfs%
+HKR, Ndi\params\PhyGiladIfs,       default,    0, "96"
+HKR, Ndi\params\PhyGiladIfs,       type,       0, "enum"
+HKR, Ndi\params\PhyGiladIfs\enum,  "96",       0, " 96 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "112",      0, "112 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "128",      0, "128 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "144",      0, "144 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "160",      0, "160 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "176",      0, "176 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "192",      0, "192 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "208",      0, "208 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "224",      0, "224 bit-times"
+HKR, Ndi\params\PhyGiladIfs\enum,  "240",      0, "240 bit-times"
+
+
+;--------------------
+;Disable Task Offload
+;
+[TaskOffloadNone.reg]
+HKR,,IPSecEnabled,              0, "0"
+HKR,,LargeSendEnabled,         0, "0"
+HKR,,ChecksumEnabled,          0, "0"
+
+;---------------------------
+; NT NDI object registration
+;
+[E100B.ndi.NT.reg]
+HKR,Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR,Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR,Ndi,            Service,    0, "E100B"
+
+HKR,,LogErrorMessages, 0, "1"
+
+[E100B_NTIA64.ndis5.CopyFiles]
+e100b645.sys,,,2
+
+[E100B_NT.ndis5.CopyFiles]
+e100b325.sys,,,2
+
+;-----------
+; NT Service 64
+;
+[e100b_NTIA64.Service]
+DisplayName     = %e100bnt.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\e100b645.sys
+LoadOrderGroup  = NDIS
+
+;-----------
+; NT Service 32
+;
+[e100b.Service]
+DisplayName     = %e100bnt.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\e100b325.sys
+LoadOrderGroup  = NDIS
+
+;---------------
+; NT Common base
+;
+[common.EventLog_NTIA64]
+AddReg = common.AddEventLog_NTIA64.reg
+
+[common.AddEventLog_NTIA64.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\system32\drivers\e100b645.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\system32\drivers\e100b325.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;------------
+; Copy files
+;
+[DestinationDirs]
+E100B_NT.ndis5.CopyFiles      = 12
+E100B_NTIA64.ndis5.CopyFiles  = 12
+
+[SpeedDpx.DelReg]
+HKR,Ndi\Params\Speed
+HKR,Ndi\Params\ForceDpx
+HKR,Ndi\Params\PacketTagging
+HKR,,Speed
+HKR,,ForceDpx
+HKR,,PacketTagging
+
+[TaskOffload.DelReg]
+HKR,Ndi\Params\TaskOffload
+HKR,,TaskOffload
+
+;--------------------
+; Localizable Strings
+;
+[Strings]
+; Vendors
+Msft                     = "Microsoft"
+Intel                    = "Intel"
+HPTX                     = "Hewlett Packard"
+IBM                      = "IBM"
+NEC                      = "NEC"
+COMPAQ                   = "Compaq"
+FUJSIE                   = "Fujitsu Siemens"
+Acer                     = "Acer"
+Actiontec                = "Actiontec"
+Toshiba                  = "Toshiba"
+Dlink                    = "D-Link"
+Fujitsu                  = "Fujitsu"
+Samsung                  = "Samsung"
+Trigem                   = "Trigem"
+
+; Parameters
+AutoDetect               = "Auto Detect"
+SpeedDuplex              = "Link Speed & Duplex"
+10Mb-Half-Duplex         = "10Mbps/Half Duplex"
+10Mb-Full-Duplex         = "10Mbps/Full Duplex"
+100Mb-Half-Duplex        = "100Mbps/Half Duplex"
+100Mb-Full-Duplex        = "100Mbps/Full Duplex"
+NetworkAddress           = "Locally Administered Address"
+NumRfd                   = "Receive Buffers"
+NumTcb                   = "Transmit Control Blocks"
+NumCoalesce              = "Coalesce Buffers"
+TaggingMode              = "802.1p QoS Packet Tagging"
+EPDOLL                   = "Smart Power Down"
+Enabled                  = "Enabled"
+Disabled                 = "Disabled"
+FlowControl              = "Flow Control Settings"
+Both_On                  = "Respond and Generate"
+Respond                  = "Respond"
+Generate                 = "Generate"
+On                       = "On"
+Off                      = "Off"
+Adaptive_Link_Response   = "Adaptive Link Response"
+
+ 
+PhyPhoneSpeed            = "Phoneline Transmit Speed"
+PhyPhonePower            = "Phoneline Power Level"
+PhyGiladIfs              = "Inter Frame Spacing"
+
+High                     = "High"
+Low                      = "Low"
+None                     = "None"
+Ipsecurity               = "IP Security"
+Checksum_str             = "Checksum"
+LargeSend_str            = "Large Send"
+
+SecurityAssociations     = "Security Associations"
+
+
+; Device descriptions
+PCIE100B.DeviceDesc       = "Intel 8255x-based PCI Ethernet Adapter (10/100)"
+PCIE100BTX.DeviceDesc     = "Intel(R) PRO/100B PCI Adapter (TX)"
+PCIE100BT4.DeviceDesc     = "Intel(R) PRO/100B PCI Adapter (T4)"
+PCIE10PPCI.DeviceDesc     = "Intel(R) PRO/10+ PCI Adapter"
+PCIE100RWU.DeviceDesc     = "Intel(R) PRO/100 WfM PCI Adapter"
+I557IFE.DeviceDesc        = "Intel 82557-based Integrated Ethernet PCI (10/100)"
+I557IFEWFM.DeviceDesc     = "82557-based Integrated Ethernet with Wake on LAN"
+I558IFE.DeviceDesc        = "Intel 82558-based Integrated Ethernet"
+I558IFEWFM.DeviceDesc     = "Intel 82558-based Integrated Ethernet with Wake on LAN"
+PCIE100PLUS.DeviceDesc    = "Intel(R) PRO/100+ PCI Adapter"
+PCIE100MAN.DeviceDesc     = "Intel(R) PRO/100+ Management Adapter"
+PCIE100SERVER.DeviceDesc  = "Intel(R) PRO/100+ Server Adapter"
+PCIE100SERVERW.DeviceDesc = "Intel(R) PRO/100+ Server Adapter (PILA8470B)"
+PCIE100DUAL.DeviceDesc    = "Intel(R) PRO/100+ Dual Port Server Adapter"
+PCIE100CBLAN.DeviceDesc   = "Intel(R) PRO/100 CardBus II"
+PCIE100CBCOMBO.DeviceDesc = "Intel(R) PRO/100 LAN+Modem56 CardBus II"
+PCIE100SCBLAN.DeviceDesc  = "Intel(R) PRO/100 S Mobile Adapter"
+PCIE100SCBLANR.DeviceDesc = "Intel(R) PRO/100 SR Mobile Adapter"
+PCIE100SCBCOMBO.DeviceDesc= "Intel(R) PRO/100 S Mobile Combo Adapter"
+PCIE100SCBCOMBOR.DeviceDesc="Intel(R) PRO/100 SR Mobile Combo Adapter"
+PCIE100SCBLANNODES.DeviceDesc   = "Intel(R) PRO/100 Mobile Adapter"
+PCIE100SCBLANRNODES.DeviceDesc  = "Intel(R) PRO/100 R Mobile Adapter"
+PCIE100SCBCOMBONODES.DeviceDesc = "Intel(R) PRO/100 Mobile Combo Adapter"
+PCIE100SCBRCOMBONODES.DeviceDesc= "Intel(R) PRO/100 R Mobile Combo Adapter"
+PCIE100AOL.DeviceDesc     = "Intel(R) PRO/100+ Alert On LAN 2* Adapter"
+PCIE100MANAOL.DeviceDesc  = "Intel(R) PRO/100+ Management Adapter with Alert On LAN*"
+PCIE100MANAOLGC.DeviceDesc= "Intel(R) PRO/100+ Management Adapter with Alert On LAN* GC"
+PCIE100MANAOLGS.DeviceDesc= "Intel(R) PRO/100+ Management Adapter with Alert On LAN* G Server"
+I559IFE.DeviceDesc        = "Intel(R) 82559 Fast Ethernet LAN on Motherboard"
+I559IFEAOL.DeviceDesc     = "Intel(R) 82559 Fast Ethernet LOM with Basic Alert on LAN*"
+I559IFEAOLCPQ.DeviceDesc  = "Intel(R) 82559 Fast Ethernet LOM with Alert on LAN*"
+I559IFEAOLII.DeviceDesc   = "Intel(R) 82559 Fast Ethernet LOM with Alert on LAN 2*"
+PCIE100S.DeviceDesc       = "Intel(R) PRO/100 S Management Adapter"
+PCIE100SADV.DeviceDesc    = "Intel(R) PRO/100 S Advanced Management Adapter"
+PCIE100SSVR.DeviceDesc    = "Intel(R) PRO/100 S Server Adapter"
+I559CMiniPCI.DeviceDesc   = "Intel(R) PRO/100+ MiniPCI"
+MiniPCI3A.DeviceDesc      = "Intel(R) PRO/100+ MiniPCI Type 3A"
+I559CLONPCI.DeviceDesc    = "Intel(R) PRO/100 S Mobile LAN on Motherboard"
+MiniPCI.DeviceDesc        = "Intel(R) PRO/100 P Mobile Adapter"
+MiniPCIDes.DeviceDesc     = "Intel(R) PRO/100 SP Mobile Adapter"
+MiniPCICombo.DeviceDesc   = "Intel(R) PRO/100 P Mobile Combo Adapter"
+MiniPCIComboDes.DeviceDesc= "Intel(R) PRO/100 SP Mobile Combo Adapter"
+MiniPCILON.DeviceDesc     = "Intel(R) PRO/100 Network Connection"
+PCIE100EMBEDDED.DeviceDesc     = "Intel(R) PRO/100 VE Desktop Adapter"
+PCIE100PLUSEMBEDDED.DeviceDesc = "Intel(R) PRO/100 VM Desktop Adapter"
+PCIE1EMBEDDED.DeviceDesc       = "82562EH based Phoneline Desktop Adapter"
+PCIE100EMBLOM.DeviceDesc     = "Intel(R) PRO/100 VE Network Connection"
+PCIE100PLUSEMBLOM.DeviceDesc = "Intel(R) PRO/100 VM Network Connection"
+PCIE1EMBLOM.DeviceDesc       = "82562EH based Phoneline Network Connection"
+PCIE100EMBMP.DeviceDesc      = "Intel(R) PRO/100 P Mobile Adapter"
+PCIE100EMBMPC.DeviceDesc     = "Intel(R) PRO/100 P Mobile Combo Adapter"
+PCIE100EMBLON.DeviceDesc     = "Intel(R) PRO/100 Network Connection"
+PCIE100SC0.DeviceDesc       = "Intel(R) PRO/100 Desktop Adapter"
+PCIE100SC1.DeviceDesc       = "Intel(R) PRO/100 S Desktop Adapter"
+PCIE100SC3.DeviceDesc       = "Intel(R) PRO/100 S Desktop Adapter"
+PCIE100SSVRC0.DeviceDesc    = "Intel(R) PRO/100 Server Adapter"
+PCIE100SSVRC1.DeviceDesc    = "Intel(R) PRO/100 S Server Adapter"
+PCIE100SSVRC3.DeviceDesc    = "Intel(R) PRO/100 S Server Adapter"
+PCIE100DUALS0.DeviceDesc    = "Intel(R) PRO/100 Dual Port Server Adapter"
+PCIE100DUALSx.DeviceDesc    = "Intel(R) PRO/100 S Dual Port Server Adapter"
+PCIE100S0L.DeviceDesc      = "Intel(R) PRO/100 Network Connection"
+PCIE100SxL.DeviceDesc      = "Intel(R) PRO/100 S Network Connection"
+PCIE100LAVON.DeviceDesc    = "Intel(R) PRO/100 M Desktop Adapter"
+PCIE100LAVONMB.DeviceDesc  = "Intel(R) PRO/100 M Mobile Network Connection"
+IBMFE1.DeviceDesc         = "IBM 10/100 EtherJet PCI Adapter"
+IBMFE2.DeviceDesc         = "IBM Netfinity 10/100 Ethernet Adapter"
+IBMFE3.DeviceDesc         = "IBM 10/100 EtherJet PCI Management Adapter"
+IBMFE4.DeviceDesc         = "IBM 10/100 EtherJet PCI Adapter with Alert on LAN"
+IBMFE5.DeviceDesc         = "IBM 10/100 EtherJet Secure Management Adapter"
+IBMFE6.DeviceDesc         = "IBM 10/100 EtherJet Secure Management Adapter"
+IBMFE7.DeviceDesc         = "IBM Netfinity 10/100 Ethernet Security Adapter"
+IBMFE8.DeviceDesc         = "IBM Netfinity 10/100 Ethernet Security Adapter"
+IBMFE9.DeviceDesc         = "IBM 10/100 EtherJet Integrated LAN with Alert on LAN"
+IBMFEA.DeviceDesc         = "IBM Netfinity 10/100 Ethernet Security Adapter 2"
+IBMFEB.DeviceDesc         = "IBM 10/100 Dual Port Server Adapter"
+IBMFEK.DeviceDesc         = "Intel® PRO/100 VE Desktop Connection"
+IBMFES.DeviceDesc         = "IBM iSeries 2892 10/100 Ethernet Port"
+
+HPTX1.DeviceDesc          = "HP NetServer 10/100TX PCI LAN Adapter"
+
+NEC82559BASED.DeviceDesc  = "NEC 82559-based Fast Ethernet Adapter"
+PKUGX06.DeviceDesc        = "NEC PK-UG-X006(PCI) or compatible Fast Ethernet Adapter"
+9821XB06.DeviceDesc       = "NEC PC-9821X-B06(PCI) or compatible/Intel 82557-based Ethernet"
+
+PCIACER1.DeviceDesc       = "ACER NIC-559A PRO/100+ with Alert On LAN 2*"
+PCIACER2.DeviceDesc       = "ACER NIC-559A PRO/100+ with WOL"
+PCIACER3.DeviceDesc       = "ACER T62L158 PRO/100+ with Alert On LAN 2*"
+
+I558IFEWFMSI1.DeviceDesc  = "Fujitsu Siemens Computers 82558-based Onboard Ethernet with WoL"
+I559IFESI2.DeviceDesc     = "Fujitsu Siemens Computers 82559-based Onboard Ethernet with WoL"
+I559IFEAOLSI3.DeviceDesc  = "Fujitsu Siemens Computers 82559-based Onboard Ethernet with WoL and AoL"
+I558IFESI4.DeviceDesc     = "Fujitsu Siemens Computers Server Onboard LAN with Intel 82558"
+I558IFESI5.DeviceDesc     = "Fujitsu Siemens Computers Server Onboard LAN with Intel 82558"
+I559IFEAOLSI6.DeviceDesc  = "Fujitsu Siemens Computers Server Onboard LAN with Intel 82559C"
+
+SamsungMiniPCI.DeviceDesc    = "Samsung SEM-2000 MiniPCI LAN Adapter"
+SamsungILMiniPCI.DeviceDesc  = "Samsung SEM-2100iL MiniPCI LAN Adapter"
+SamsungICH2p.DeviceDesc      = "Samsung HomePNA 1M CNR"
+DL_EMBLOM.DeviceDesc         = "Intel(R) PRO/100 VE Adapter"
+Toshiba82559B.DeviceDesc     = "Intel 8255x-based Fast Ethernet"
+ActiontecMiniPCI.DeviceDesc  = "Actiontec 82559-based Mini PCI Ethernet Adapter(10/100)"
+
+N1001.DeviceDesc         = "Compaq NC3120 Fast Ethernet NIC"
+N1004.DeviceDesc         = "Compaq NC3161 Fast Ethernet NIC"
+N1005.DeviceDesc         = "Compaq NC3160 Fast Ethernet NIC"
+N1006.DeviceDesc         = "Compaq NC3121 Fast Ethernet NIC"
+N1007.DeviceDesc         = "Compaq NC3122 Fast Ethernet NIC"
+N1008.DeviceDesc         = "Compaq NC3131 Fast Ethernet NIC"
+N1009.DeviceDesc         = "Compaq NC3132 Fast Ethernet Module"
+N100A.DeviceDesc         = "Compaq NC3133 Fast Ethernet Module"
+N100B.DeviceDesc         = "Compaq NC3163 Fast Ethernet NIC"
+N100C.DeviceDesc         = "Compaq NC3162 Fast Ethernet NIC"
+N100D.DeviceDesc         = "Compaq NC3123 Fast Ethernet NIC"
+N100E.DeviceDesc         = "Compaq NC3134 Fast Ethernet NIC"
+N100F.DeviceDesc         = "Compaq NC3135 Fast Ethernet Upgrade Module"
+
+e100bnt.Service.DispName = "Intel(R) PRO Adapter Driver"

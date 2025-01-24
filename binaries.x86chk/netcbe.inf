@@ -1,0 +1,204 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature	= "$Windows NT$"
+Class		= Net
+ClassGUID       = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider	= %MSFT%
+LayoutFile      = layout.inf
+DriverVer=10/01/2002,3.14.5.0
+
+[Manufacturer]
+%Xircom%  = Xircom
+%IBM%     = IBM
+%Toshiba% = Toshiba
+%PAO%     = PAO
+%Intel%   = Intel
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[IBM]
+%NIC1%          = Install.ndi,PCI\VEN_1011&DEV_0019&SUBSYS_00011014    ; IBM EtherJet
+%NIC1%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_81811014    ; IBM EtherJet
+%NIC2%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_91811014    ; IBM EtherJet + Modem
+
+[Toshiba]
+%NIC3%          = Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_01811179     ; Toshiba 10+100 Ethernet
+
+[PAO]
+%NIC4%          = Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_8181115D    ; PAO CBE2
+%NIC5%          = Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_9181115D    ; PAO NetMobile
+
+[Intel]
+%NIC6%		= Install.ndi,PCI\VEN_1011&DEV_0019&SUBSYS_00018086    ; PRO/100
+%NIC6%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_81818086    ; PRO/100 (II)
+%NIC7%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_91818086    ; PRO/100 LAN + Modem56
+
+[Xircom]
+%NIC8%          = Install.ndi,PCI\VEN_1011&DEV_0019&SUBSYS_0002115D    ; CBE
+%NIC9%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_0181115D    ; CBE2
+%NIC10%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_1181115D    ; CBEM
+%NIC11%		= Install.ndi,PCI\VEN_115D&DEV_0003&SUBSYS_0182115D    ; R2BE
+
+[Install.ndi.NT]
+AddReg          = AddReg.NIC.Params, nt.reg
+DelReg          = Delreg.NICNT.Params
+Characteristics = 0x84   ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5      ; PCI
+CopyFiles       = NIC.CopyFiles
+
+[Install.ndi.NT.Services]
+AddService = CBEN5, 2, NIC.Service, common.EventLog
+
+[nt.reg]
+HKR, Ndi\Interfaces,     UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,     LowerRange, 0, "ethernet"
+HKR, Ndi,                Service,    0, "CBEN5"
+
+[NIC.Service]
+DisplayName     = %NIC.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\cben5.sys
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\cben5.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[NIC.CopyFiles]
+cben5.sys,,,2
+
+[DestinationDirs]
+NIC.CopyFiles           = 12 ; SYSTEM32\DRIVERS directory
+DefaultDestDir          = 12
+
+[Addreg.NIC.Params]
+HKR, Ndi\Params\AutoPolarity,          ParamDesc,  0, %AutoPolarity%
+HKR, Ndi\Params\AutoPolarity,          type,       0, "enum"
+HKR, Ndi\Params\AutoPolarity,          default,    0, "1"
+HKR, Ndi\Params\AutoPolarity\enum,     "1",        0, %ON%
+HKR, Ndi\Params\AutoPolarity\enum,     "0",        0, %OFF%
+
+HKR, Ndi\Params\CableDetect,           ParamDesc,  0, %CableDetect%
+HKR, Ndi\Params\CableDetect,           type,       0, "enum"
+HKR, Ndi\Params\CableDetect,           default,    0, "1"
+HKR, Ndi\Params\CableDetect\enum,      "1",        0, %ON%
+HKR, Ndi\Params\CableDetect\enum,      "0",        0, %OFF%
+
+HKR, Ndi\Params\DynamicLinkDetect,     ParamDesc,  0, %DynamicLinkDetect%
+HKR, Ndi\Params\DynamicLinkDetect,     type,       0, "enum"
+HKR, Ndi\Params\DynamicLinkDetect,     default,    0, "1"
+HKR, Ndi\Params\DynamicLinkDetect\enum,"1",        0, %ON%
+HKR, Ndi\Params\DynamicLinkDetect\enum,"0",        0, %OFF%
+
+HKR, Ndi\Params\InitDelay,             ParamDesc,  0, %InitDelay%
+HKR, Ndi\Params\InitDelay,             type,       0, "INT"
+HKR, Ndi\Params\InitDelay,             default,    0, "0"
+HKR, Ndi\Params\InitDelay,             optional,   0, "1"
+HKR, Ndi\Params\InitDelay,             min,        0, "0"
+HKR, Ndi\Params\InitDelay,             max,        0, "60"
+HKR, Ndi\Params\InitDelay,             step,       0, "1"
+
+HKR, Ndi\Params\LineConfig,            ParamDesc,  0, %LineConfig%
+HKR, Ndi\Params\LineConfig,            type,       0, "enum"
+HKR, Ndi\Params\LineConfig,            default,    0, "0"
+HKR, Ndi\Params\LineConfig\enum,       "0",        0, %AutoD%
+HKR, Ndi\Params\LineConfig\enum,       "1",        0, %10HD%
+HKR, Ndi\Params\LineConfig\enum,       "2",        0, %10FD%
+HKR, Ndi\Params\LineConfig\enum,       "3",        0, %100HD%
+HKR, Ndi\Params\LineConfig\enum,       "4",        0, %100FD%
+
+HKR, Ndi\Params\Negotiation,           ParamDesc,  0, %Negotiation%
+HKR, Ndi\Params\Negotiation,           type,       0, "enum"
+HKR, Ndi\Params\Negotiation,           default,    0, "1"
+HKR, Ndi\Params\Negotiation\enum,      "1",        0, %ON%
+HKR, Ndi\Params\Negotiation\enum,      "0",        0, %OFF%
+
+HKR, Ndi\Params\LinkIntegrity,         ParamDesc,  0, %LinkIntegrity%
+HKR, Ndi\Params\LinkIntegrity,         type,       0, "enum"
+HKR, Ndi\Params\LinkIntegrity,         default,    0, "1"
+HKR, Ndi\Params\LinkIntegrity\enum,    "1",        0, %ON%
+HKR, Ndi\Params\LinkIntegrity\enum,    "0",        0, %OFF%
+
+HKR, Ndi\Params\NetworkAddress,        ParamDesc,  0, %NetworkAddress%
+HKR, Ndi\Params\NetworkAddress,        type,       0, "edit"
+HKR, Ndi\Params\NetworkAddress,        default,    0, ""
+HKR, Ndi\Params\NetworkAddress,        LimitText,  0, "12"
+HKR, Ndi\Params\NetworkAddress,        UpperCase,  0, "1"
+HKR, Ndi\Params\NetworkAddress,        optional,   0, "1"
+
+HKR, , PacketPriority,                             0, "0"
+
+HKR, Ndi\Params\RXBUFFERSIZE,          ParamDesc,  0, %RxBufferSize%
+HKR, Ndi\Params\RXBUFFERSIZE,          type,       0, "INT"
+HKR, Ndi\Params\RXBUFFERSIZE,          default,    0, "30"
+HKR, Ndi\Params\RXBUFFERSIZE,          optional,   0, "1"
+HKR, Ndi\Params\RXBUFFERSIZE,          min,        0, "1"
+HKR, Ndi\Params\RXBUFFERSIZE,          max,        0, "100"
+HKR, Ndi\Params\RXBUFFERSIZE,          step,       0, "1"
+
+HKR, Ndi\Params\TXBUFFERSIZE,          ParamDesc,  0, %TxBufferSize%
+HKR, Ndi\Params\TXBUFFERSIZE,          type,       0, "INT"
+HKR, Ndi\Params\TXBUFFERSIZE,          default,    0, "10"
+HKR, Ndi\Params\TXBUFFERSIZE,          optional,   0, "1"
+HKR, Ndi\Params\TXBUFFERSIZE,          min,        0, "1"
+HKR, Ndi\Params\TXBUFFERSIZE,          max,        0, "100"
+HKR, Ndi\Params\TXBUFFERSIZE,          step,       0, "1"
+
+[Delreg.NICNT.Params]
+HKR, Ndi\Params\EarlyReceive
+HKR, Ndi\Params\EarlyTransmit
+HKR, Ndi\Params\LEDEnabled
+HKR, Ndi\Params\MODE
+HKR, Ndi\Params\Mode
+HKR, Ndi\Params\LineMode
+HKR, Ndi\Params\LineSpeed
+
+[Strings]
+MSFT            = "Microsoft"
+IBM     	= "IBM"
+Toshiba         = "Toshiba"
+PAO             = "PAO"
+Intel           = "Intel"
+NIC1		= "IBM 10/100 EtherJet CardBus Adapter"
+NIC2		= "IBM 10/100 EtherJet CardBus Adapter with 56k Modem (Ethernet Interface)"
+NIC3            = "Toshiba 10+100 CardBus Ethernet PC Card"
+NIC4            = "PAO Netmobile Fast Cardbus"
+NIC5            = "PAO Netmobile Fast Cardbus (Ethernet Interface)"
+NIC6            = "Intel EtherExpress PRO/100 Mobile CardBus 32"
+NIC7            = "Intel EtherExpress PRO/100 Mobile CardBus 32 (Ethernet Interface)"
+Xircom		= "Xircom"
+NIC8		= "Xircom CardBus Ethernet 10/100"
+NIC9		= "Xircom CardBus Ethernet II 10/100"
+NIC10		= "Xircom CardBus Ethernet 100 + Modem 56 (Ethernet Interface)"
+NIC11		= "Xircom RealPort2 CardBus Ethernet 10/100"
+NIC_HELP	= "Xircom's CardBus Adapter works in a PCMCIA slot that supports CardBus for full 32-bit support that provides PCI speed in a mobile adapter."
+NIC_DRIVERNAME	= "cben5.sys"
+
+NetworkAddress          = "Network Address"
+LineConfig              = "Line Configuration"
+Negotiation             = "Line Negotiation"
+AutoD                   = "Auto Detect"
+10HD                    = "10 Mbps/Half Duplex"
+10FD                    = "10 Mbps/Full Duplex"
+100HD                   = "100 Mbps/Half Duplex"
+100FD                   = "100 Mbps/Full Duplex"
+ON                      = "On"
+OFF                     = "Off"
+InitDelay               = "Initialization Delay"
+LinkIntegrity           = "Link Integrity"
+TxBufferSize            = "Transmit Buffer Size"
+RxBufferSize            = "Receive Buffer Size"
+CableDetect             = "Cable Detect"
+AutoPolarity            = "Auto Polarity"
+DynamicLinkDetect       = "Dynamic Link Detect"
+PacketPriority          = "Packet Priority"
+
+NIC_LOGDRIVERNAME = "CBEN5"
+NIC.Service.DispName = "Xircom CardBus Ethernet 10/100 Adapter family Driver"

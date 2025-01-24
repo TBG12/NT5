@@ -1,0 +1,166 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+LayoutFile = layout.inf
+signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider   = %MSFT%
+DriverVer=10/01/2002,5.2.3790.0
+
+[Manufacturer]
+%CNET%     = CNET
+%DLink%    = DLink
+%Generic%  = Generic
+%GREYCELL% = GREYCELL
+%KTC%      = KTC
+%Linksys%  = Linksys
+%Melco%    = Melco
+%Socket%   = Socket
+%SMC%      = SMC
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[CNET]
+%ccCN40BC.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\CNet-CN40BC_Ethernet-1E11
+
+[DLink]
+%DLinkPCM.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\D-LINK-DE-650-E649 
+%DLinkPCM.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\D-LINK-DE-650-70C5 
+%DLinkPCM.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\D-Link-DE-650-BF51 
+%DLinkPCM.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\D-Link-DE-650-2880 
+%DLinkPCM1.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\D-Link-DE-660-FF54 
+
+[Generic]
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\Microdyne-NE4200-A075     
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\CNet-CN40BC_Ethernet-DC06 
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\CNet-CN40BC_Ethernet-0C53 
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\D-LINK-DE-650-E6549       
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\D-Link-DE-650-9866        
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\GREY_CELL-GCS2220-C2D5    
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\GREY_CELL-GCS2000-39A9    
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\SOCKET_COMMUNICATIONS__INC.-ETHERNET_EA_LAN_ADAPTER-9A99
+%genpcmcia.DeviceDesc% = NE2000PCMCIA.ndi, PCMCIA\SMC-EZCard-10-PCMCIA-6077
+
+[GREYCELL]
+%GCS2000.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\GREY_CELL-GCS2000-8A3B
+
+[KTC]
+%KNE-PC2.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\Kingston-KNE-PC2-F726
+
+[Linksys]
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\Linksys-Combo_PCMCIA_EthernetCard_(EC2T)-86BD
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\LINKSYS-E-CARD-0BB7
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\LINKSYS-E-CARD-6C10
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\LINKSYS-E-CARD-BCA0
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\LINKSYS-E-CARD-A2FC 
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\LINKSYS-E-CARD-BC6B 
+%Linksys.DeviceDesc%   = NE2000PCMCIA.ndi, PCMCIA\LINKSYS-E-CARD-E28A 
+
+[Melco]
+%*LPC2CLT.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\BUFFALO-LPC2-CLT-BC53
+%LPC2.DeviceDesc%      = NE2000PCMCIA.ndi, PCMCIA\MELCO-LPC2-T-CEA5 ; MELCO LPC2-T
+
+[Socket]
+%SocketEA.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\Socket_Communications__Inc.-Socket_EA_PC_Card_LAN_Adapter-AE82
+%SocketEA.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\Socket_Communications_Inc-Socket_EA_PCMCIA_LAN_Adapter_Revision_D-FC8B
+%SocketEA.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\Socket_Communications_Inc-Socket_EA_PCMCIA_LAN_Adapter_Revision_E-09CF
+%SocketLP.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\LOW_POWER_ETHERNET_LAN_ADAPTER-SOCKET_COMMUNICATIONS__INC-F295
+%SocketLP.DeviceDesc%  = NE2000PCMCIA.ndi, PCMICA\CF+_LPE-Socket_Communications_Inc-08CD
+%SocketLP.DeviceDesc%  = NE2000PCMCIA.ndi, PCMCIA\CF+_LPE-Socket_Communications_Inc-46C2
+
+[SMC]
+
+;----------------------------------------------------------------------------
+; *NE2000 Pls PnP
+;
+[NE2000ISAPNP.ndi]
+Characteristics = 0x04
+BusType         = 14
+AddReg          = ne2000.ndi.reg
+CopyFiles       = ne2000.CopyFiles
+
+[NE2000ISAPNP.ndi.Services]
+AddService = ne2000, 2, ne2000.Service, ne2000.AddEventLog
+
+;----------------------------------------------------------------------------
+; Ne2000 compatible PCMCIA Adapter
+;
+[NE2000PCMCIA.ndi]
+Characteristics = 0x04
+BusType         = 8
+AddReg          = ne2000.ndi.reg
+CopyFiles       = ne2000.CopyFiles
+
+[NE2000PCMCIA.ndi.Services]
+AddService = ne2000, 2, ne2000.Service, ne2000.AddEventLog
+
+;----------------------------------------------------------------------------
+; NE2000 Common
+;
+[ne2000.ndi.reg]
+HKR, Ndi,               Service,    0, "ne2000"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+[ne2000.CopyFiles]
+ne2000.sys,,,2
+
+[ne2000.Service]
+DisplayName     =   %ne2000.Service.DispName%
+ServiceType     =   1 ;%SERVICE_KERNEL_DRIVER%
+StartType       =   3 ;%SERVICE_DEMAND_START%
+ErrorControl    =   1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   =   %12%\ne2000.sys
+LoadOrderGroup  =   NDIS
+
+[ne2000.AddEventLog]
+AddReg = ne2000.AddEventLog.reg
+
+[ne2000.AddEventLog.reg]
+HKR, , EventMessageFile,   0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,     0x00010001, 7
+
+;----------------------------------------------------------------------------
+; Destination Directories
+;
+[DestinationDirs]
+DefaultDestDir   = 12
+ne2000.CopyFiles = 12
+
+;----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MSFT                    = "Microsoft"
+
+DisplayClassName        = "Network adapters"
+
+CNET                    = "Cnet"
+DLink                   = "D-Link"
+Generic                 = "Generic NE2000"
+GREYCELL                = "Grey Cell Systems"
+KTC                     = "Kingston"
+Linksys                 = "Linksys"
+Melco                   = "Melco"
+Socket                  = "Socket Communications"
+SMC                     = "SMC"
+
+Generic.DeviceDesc      = "NE2000 Compatible ISAPNP Ethernet Adapter (Generic)"
+genpcmcia.DeviceDesc    = "NE2000 Compatible PCMCIA Ethernet Adapter (Generic)"
+
+ccCN40BC.DeviceDesc     = "CNet CN40BC PCMCIA Ethernet Card"
+DLinkPCM.DeviceDesc     = "D-Link DE650 Ethernet Card PCMCIA"
+DLinkPCM1.DeviceDesc    = "D-Link DE660 PCMCIA LAN adapter"
+GCS2000.DeviceDesc      = "Grey Cell 2200 Ethernet Card"
+KNE-PC2.DeviceDesc      = "Kingston EtheRx IC PCCard Ethernet Adapter (KNE-PC2)"
+Linksys.DeviceDesc      = "Linksys Combo PCMCIA EthernetCard"
+*LPC2CLT.DeviceDesc     = "BUFFALO LPC2-CLT Ethernet Adapter"
+SocketEA.DeviceDesc     = "Socket EA Credit Card Ethernet Adapter"
+SocketLP.DeviceDesc     = "Socket EA Low Power Credit Card Ethernet Adapter"
+smc8020.DeviceDesc      = "SMC EtherEZ 8020BT/T PCMCIA Ethernet Adapter"
+LPC2.DeviceDesc         = "Buffalo LPC2-T PCMCIA Ethernet Adapter"
+
+ne2000.Service.DispName = "Novell/Eagle NE2000 Adapter Driver"
+

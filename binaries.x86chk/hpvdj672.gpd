@@ -1,0 +1,17 @@
+*%% 
+*%% HP DeskJet 672C
+*%%
+*%% Copyright 1998-1999 Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpvdj67x.gpd"
+
+*%%
+*%% Global Entries
+*%%
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+
+*ModelName: "HP DeskJet 672C"
+*GPDFileName: "HPVDJ672.GPD"

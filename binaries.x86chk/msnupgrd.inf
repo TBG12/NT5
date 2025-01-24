@@ -1,0 +1,67 @@
+[Version]
+Signature   = "$CHICAGO$"
+AdvancedINF = 2.5
+
+[DefaultInstall]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+AddReg            = Install.AddReg.WinxpStartMenu
+
+[RestoreShortcuts]
+RequiredEngine    = Setupapi,%BADSETUPVER%
+CustomDestination = CustomDestination.Install
+UpdateInis        = AddMSNLinks_Folder
+ProfileItems      = AddMSNLink_Desktop,AddMSNLink_Programs
+
+[CustomDestination.Install]
+49300,49301,49302,49303 = ProgFilesDir,5
+49400,49401,49402,49403 = MSNRootLDIDSection,5
+49500,49501,49502,49503 = MSNLDIDSection,5
+
+[Install.AddReg.WinxpStartMenu]
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer","LocalizedString",,"@%49500%\MSNMTLLC.DLL,-3501"
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer\DefaultIcon",,,"%49500%\%ICON_NAME%"
+HKLM,"Software\Clients\StartMenuInternet\MSN EXplorer\shell\open\command",,,"""%49500%\MSN6.EXE"""
+HKLM,"Software\Clients\Mail\MSN Explorer",,,"%DISPLAYDESC%"
+HKLM,"Software\Clients\Mail\MSN Explorer","LocalizedString",,"@%49500%\MSNMTLLC.DLL,-3501"
+HKLM,"Software\Clients\Mail\MSN Explorer\DefaultIcon",,,"%49500%\%MAIL_ICON_NAME%"
+HKLM,"Software\Clients\Mail\MSN Explorer\shell\open\command",,,"""%49500%\MSN6.EXE"" -email"
+
+[ProgFilesDir]
+HKLM,"Software\Microsoft\Windows\CurrentVersion","ProgramFilesDir",,"%24%\%PROGRAMF%"
+
+[MSNRootLDIDSection]
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallRootDir",,"%49300%\%DEFAULT_FOLDER%"
+
+[MSNLDIDSection]
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallDir",,"%49400%\MSNCoreFiles"
+
+[AddMSNLinks_Folder]
+setup.ini,progman.groups,,"MSN_DIR=%49400%"
+setup.ini,MSN_DIR,,"""%SHORTCUT_NAME%"",""""""%49500%\%EXE_NAME%"""""",%49500%\%ICON_NAME%,,,%49500%,,""%INFOTIP%"""
+
+[AddMSNLink_Desktop]
+Name       = %SHORTCUT_NAME%,0x00000008,25
+CmdLine    = 49500,,%EXE_NAME%
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[AddMSNLink_Programs]
+Name       = %SHORTCUT_NAME%
+CmdLine    = 49500,,%EXE_NAME%
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[Strings]
+BADSETUPVER    = "Your system is missing the required Setup engine."
+DISPLAYDESC    = "MSN Explorer"
+DEFAULT_FOLDER = "MSN"
+SHORTCUT_NAME  = "MSN Explorer"
+EXE_NAME       = "msn6.exe"
+ICON_NAME      = "msnms.ico"
+MAIL_ICON_NAME = "msnemail.ico"
+INFOTIP        = "Explore the web, read your e-mail, talk to your online contacts, enjoy online music and video, and more."
+PROGRAMF       = "Program Files"
+

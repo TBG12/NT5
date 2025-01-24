@@ -1,0 +1,280 @@
+
+;---------------------------------------------------------------------------------------
+;
+; Copyright (c) Intel Corporation (2002).
+;
+; INTEL MAKES NO WARRANTY OF ANY KIND REGARDING THE CODE.  THIS CODE IS LICENSED
+; ON AN "AS IS" BASIS AND INTEL WILL NOT PROVIDE ANY SUPPORT, ASSISTANCE,
+; INSTALLATION, TRAINING OR OTHER SERVICES.  INTEL DOES NOT PROVIDE ANY UPDATES,
+; ENHANCEMENTS OR EXTENSIONS.  INTEL SPECIFICALLY DISCLAIMS ANY WARRANTY OF
+; MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR ANY PARTICULAR PURPOSE, OR ANY
+; OTHER WARRANTY.  Intel disclaims all liability, including liability for
+; infringement of any proprietary rights, relating to use of the code. No license,
+; express or implied, by estoppel or otherwise, to any intellectual property rights
+; is granted herein.
+;
+;---------------------------------------------------------------------------------------
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%Intel%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=07/18/2002,6.13.01.3190
+
+[DestinationDirs]
+DefaultDestDir = 11
+i81x.Miniport  = 12  ; drivers
+i81x.Display   = 11  ; system32
+
+
+i81x.Help      = 11  ; windows/help
+Prev.DelFiles  = 11
+;
+; Driver information
+;
+
+[Manufacturer]
+%Intel%   = Intel.Mfg
+
+[Intel.Mfg]
+Intel(R) 82810 Graphics Controller (Microsoft Corporation) = i81x, PCI\VEN_8086&DEV_7121
+Intel(R) 82810-DC100 Graphics Controller (Microsoft Corporation) = i81x, PCI\VEN_8086&DEV_7123
+Intel(R) 82810E Graphics Controller (Microsoft Corporation) = i81x, PCI\VEN_8086&DEV_7125
+Intel(R) 82815 Graphics Controller (Microsoft Corporation) = i81x, PCI\VEN_8086&DEV_1132
+
+[ControlFlags]
+ExcludeFromSelect.ntalpha = PCI\VEN_8086&DEV_7121, PCI\VEN_8086&DEV_7123, PCI\VEN_8086&DEV_7125, PCI\VEN_8086&DEV_1132
+
+;
+; General installation section
+;
+
+
+[i81x]
+DelFiles=Prev.DelFiles
+CopyFiles=i81x.Miniport, i81x.Display, i81x.Help, i81x.Resource
+CopyINF=wfp0.inf,wfp1.inf,wfp2.inf,wfp3.inf,wfp4.inf,wfp5.inf,wfp6.inf,wfp7.inf,wtv0.inf,wtv1.inf,wtv2.inf,wtv3.inf,wtv4.inf,wtv5.inf
+AddReg = i81x.ConfigSettings
+DelReg = CUI.DelReg
+
+[Prev.DelFiles]
+igfxres.dll,,,1
+igfxsrvc.exe,,,1
+igfxsrps.dll,,,1
+igfx.hlp,,,1
+
+[CUI.DelReg]
+HKLM,Software\INTEL\igfxcui
+HKR,igfxdiag\resources
+HKR,igfxeud\resources
+HKR,igfxcfg\resources
+HKR,igfxcpl\resources
+HKR,igfxpph\resources
+HKR,igfxtray\resources
+HKR,igfxsrvc
+HKR,hkcmd\resources
+HKR,igfxhk\resources
+HKR,shellex\PropertySheetHandlers
+HKCR,"CLSID\{C24AC020-1A6A-11d2-9E12-00609445AED9}"
+HKCR,"CLSID\{0F195FA1-CCF0-11D2-8B20-00A0C93CB1F4}"
+
+; DCN ID: 240963
+HKLM,Software\Intel\IgfxCfg\Display1\Color\SavedGamma\Main
+
+;
+; File sections
+;
+
+[i81x.Miniport]
+i81xnt5.sys
+SiInt5.dll
+Vchnt5.dll
+Ch7xxNT5.dll
+atv01nt5.dll
+adv01nt5.dll
+atv02nt5.dll
+adv02nt5.dll
+atv04nt5.dll
+adv05nt5.dll
+atv06nt5.dll
+adv07nt5.dll
+adv08nt5.dll
+adv09nt5.dll
+atv10nt5.dll
+wADV01nt.sys
+wADV02NT.sys
+wADV05NT.sys
+wADV07nt.sys
+wADV08NT.sys
+wADV09NT.sys
+wSiINTxx.sys
+wVchNTxx.sys
+wATV01nt.sys
+wATV02NT.sys
+wATV04nt.sys
+wATV06nt.sys
+wATV10nt.sys
+wCh7xxNT.sys
+
+[i81x.Display]
+i81xdnt5.dll
+
+;
+; Service Installation
+;
+
+[i81x.Services]
+AddService = i81x, 0x00000002, i81x_Service_Inst, i81x_EventLog_Inst
+
+[i81x_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\i81xnt5.sys
+
+[i81x_EventLog_Inst]
+AddReg = i81x_EventLog_AddReg
+
+[i81x_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\i81xnt5.sys"
+HKR,,TypesSupported,0x00010001,7
+
+; Minidriver installation
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output0.Type",%REG_SZ%,"LFP"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output0.Minidriver",%REG_SZ%,"Vchnt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output0.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output1.Type",%REG_SZ%,"TVOut"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output1.Minidriver",%REG_SZ%,"Ch7xxNT5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output1.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output2.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output2.Minidriver",%REG_SZ%,"SiInt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output2.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output3.Type",%REG_SZ%,"TVOut"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output3.Minidriver",%REG_SZ%,"atv01nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output3.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output4.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output4.Minidriver",%REG_SZ%,"adv01nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output4.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output5.Type",%REG_SZ%,"TVOut"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output5.Minidriver",%REG_SZ%,"atv02nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output5.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output6.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output6.Minidriver",%REG_SZ%,"adv02nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output6.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output7.Type",%REG_SZ%,"TVOUT"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output7.Minidriver",%REG_SZ%,"atv04nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output7.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output8.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output8.Minidriver",%REG_SZ%,"adv05nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output8.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output9.Type",%REG_SZ%,"TVOUT"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output9.Minidriver",%REG_SZ%,"atv06nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output9.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output10.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output10.Minidriver",%REG_SZ%,"adv07nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output10.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output11.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output11.Minidriver",%REG_SZ%,"adv08nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output11.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output12.Type",%REG_SZ%,"LCD"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output12.Minidriver",%REG_SZ%,"adv09nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output12.I2C_Addr",%REG_DWORD%,0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output13.Type",%REG_SZ%,"TVOUT"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output13.Minidriver",%REG_SZ%,"atv10nt5.DLL"
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","Output13.I2C_Addr",%REG_DWORD%,0
+
+; Enable the new Mode features.
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","PanEnable",%REG_DWORD%, 0
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","SyncMode",%REG_DWORD%, 1
+;;HKLM,"Software\Intel\IgfxCfg\Display1\Display\","I2CRegisters", 1, 1, 4, 70, 0c, 80, 8a
+
+; Device specific configuration bits
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","10301",%REG_DWORD%, 3
+HKLM,"Software\Intel\IgfxCfg\Display1\Display\","10302",%REG_DWORD%, 3
+
+; Overlay Gamma Persistence
+HKLM,"Software\Intel\IgfxCfg\Display1\Color\SavedGamma\Overlay\","Gamma",%REG_DWORD%, 2
+HKLM,"Software\Intel\IgfxCfg\Display1\Color\SavedGamma\Overlay\","Brightness",%REG_DWORD%, 750
+HKLM,"Software\Intel\IgfxCfg\Display1\Color\SavedGamma\Overlay\","Contrast",%REG_DWORD%, 10000
+HKLM,"Software\Intel\IgfxCfg\Display1\Color\SavedGamma\Overlay\","Saturation",%REG_DWORD%, 10000
+
+;
+; Software Installation
+;
+
+[i81x.SoftwareSettings]
+AddReg = i81x_SoftwareDeviceSettings
+
+[i81x_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, i81xdnt5
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+HKR,, Output0.Type,                %REG_SZ%,       "LCD"
+HKR,, Output0.Minidriver,          %REG_SZ%,       "wADV01nt"
+HKR,, Output0.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output1.Type,                %REG_SZ%,       "LCD"
+HKR,, Output1.Minidriver,          %REG_SZ%,       "wADV02NT"
+HKR,, Output1.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output2.Type,                %REG_SZ%,       "LCD"
+HKR,, Output2.Minidriver,          %REG_SZ%,       "wADV05NT"
+HKR,, Output2.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output3.Type,                %REG_SZ%,       "LCD"
+HKR,, Output3.Minidriver,          %REG_SZ%,       "wSiINTxx"
+HKR,, Output3.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output4.Type,                %REG_SZ%,       "LFP"
+HKR,, Output4.Minidriver,          %REG_SZ%,       "wVchNTxx"
+HKR,, Output4.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output5.Type,                %REG_SZ%,       "TVOut"
+HKR,, Output5.Minidriver,          %REG_SZ%,       "wATV01nt"
+HKR,, Output5.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output6.Type,                %REG_SZ%,       "TVOut"
+HKR,, Output6.Minidriver,          %REG_SZ%,       "wATV02NT"
+HKR,, Output6.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output7.Type,                %REG_SZ%,       "TVOut"
+HKR,, Output7.Minidriver,          %REG_SZ%,       "wATV04nt"
+HKR,, Output7.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output8.Type,                %REG_SZ%,       "TVOut"
+HKR,, Output8.Minidriver,          %REG_SZ%,       "wCh7xxNT"
+HKR,, Output8.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output9.Type,                %REG_SZ%,       "TVOut"
+HKR,, Output9.Minidriver,          %REG_SZ%,       "wATV06nt"
+HKR,, Output9.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output10.Type,                %REG_SZ%,       "LCD"
+HKR,, Output10.Minidriver,          %REG_SZ%,       "wADV07nt"
+HKR,, Output10.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output11.Type,                %REG_SZ%,       "LCD"
+HKR,, Output11.Minidriver,          %REG_SZ%,       "wADV08NT"
+HKR,, Output11.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output12.Type,                %REG_SZ%,       "LCD"
+HKR,, Output12.Minidriver,          %REG_SZ%,       "wADV09NT"
+HKR,, Output12.I2C_Addr,            %REG_DWORD%,    0
+HKR,, Output13.Type,                %REG_SZ%,       "TVOut"
+HKR,, Output13.Minidriver,          %REG_SZ%,       "wATV10nt"
+HKR,, Output13.I2C_Addr,            %REG_DWORD%,    0
+HKR,, CapabilityOverride,	    %REG_DWORD%,    8
+
+[i81x.GeneralConfigData]
+MaximumDeviceMemoryConfiguration = 64
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId       = "Intel(R) Graphics Technology Driver"
+GraphAdap    = "Graphics Adapter"
+Intel      = "Intel Corporation"

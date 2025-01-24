@@ -1,0 +1,688 @@
+*% GPD file for Epson Color Inkjet Plugin
+*% Copyright (c) 1998 Seiko Epson Corporation
+*InstalledOptionName: "Yes"
+*NotInstalledOptionName: "No"
+*OutputOrderReversed?: FALSE
+*Include: "EPNDVX00.GPD"
+*switch: MediaType
+{
+	*case: STANDARD
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: Fine
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: SuperFine
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: GlossyPaper
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BetterQualitySettings: LIST(Preset.AUTO_SPEED)
+		*BestQualitySettings: LIST(Preset.AUTO_QUALITY)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: GlossyFilm
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: TRANSPARENCY
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+	*case: BackLightFilm
+	{
+		*DraftQualitySettings: LIST(Preset.AUTO)
+		*BetterQualitySettings: LIST(Preset.AUTO)
+		*BestQualitySettings: LIST(Preset.AUTO)
+		*DefaultQuality: BETTERQUALITY
+	}
+}
+*Feature: Preset
+{
+	*rcNameID: 1150
+	*DefaultOption: OFF
+	*Option: OFF
+	{
+		*rcNameID: 1151
+	}
+	*Option: AUTO
+	{
+		*rcNameID: 1152
+	}
+	*Option: AUTO_QUALITY
+	{
+		*rcNameID: 1153
+	}
+	*Option: AUTO_SPEED
+	{
+		*rcNameID: 1154
+	}
+	*Option: ADPHOTO
+	{
+		*rcNameID: 1161
+	}
+	*Option: PHOTO
+	{
+		*rcNameID: 1156
+	}
+	*Option: WORDPRO
+	{
+		*rcNameID: 1155
+	}
+	*Option: TEXT
+	{
+		*rcNameID: 1159
+	}
+	*Option: ECONOMY
+	{
+		*rcNameID: 1158
+	}
+	*Option: ICM
+	{
+		*rcNameID: 1157
+	}
+	*Option: VIDEO
+	{
+		*rcNameID: 1160
+	}
+}
+*Feature: InputBin
+{
+	*rcNameID: 1010
+	*DefaultOption: AUTO
+	*Option: AUTO
+	{
+		*rcNameID: 1011
+	}
+	*Option: UPPER
+	{
+		*rcNameID: 1015
+	}
+	*Option: LOWER
+	{
+		*rcNameID: 1016
+		*Installable?: TRUE
+		*InstallableFeatureName: "Lower Tray Present?"
+	}
+	*Option: MANUAL
+	{
+		*rcNameID: 1012
+	}
+}
+*Feature: MediaType
+{
+	*rcNameID: 1100
+	*UpdateQualityMacro?: TRUE
+	*DefaultOption: STANDARD
+	*Option: STANDARD
+	{
+		*rcNameID: 1101
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: Fine
+	{
+		*rcNameID: 1102
+		*OptionID: 257
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: SuperFine
+	{
+		*rcNameID: 1103
+		*OptionID: 260
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: GlossyPaper
+	{
+		*rcNameID: 1104
+		*OptionID: 258
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: GlossyFilm
+	{
+		*rcNameID: 1105
+		*OptionID: 259
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+	*Option: TRANSPARENCY
+	{
+		*rcNameID: 1106
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+	}
+	*Option: BackLightFilm
+	{
+		*rcNameID: 1107
+		*OptionID: 261
+		EXTERN_GLOBAL: *ChangeColorModeOnDoc?: TRUE
+	}
+}
+*Feature: Resolution
+{
+	*rcNameID: 1020
+	*DefaultOption: Normal
+	*Option: SuperFine
+	{
+		*rcNameID: 1021
+		*DPI: PAIR(720, 720)
+		*TextDPI: PAIR(720, 720)
+		*MinStripBlankPixels: 1
+		*SpotDiameter: 180
+	}
+	*Option: Fine
+	{
+		*rcNameID: 1022
+		*DPI: PAIR(720, 720)
+		*TextDPI: PAIR(720, 720)
+		*MinStripBlankPixels: 1
+		*SpotDiameter: 180
+	}
+	*Option: Normal
+	{
+		*rcNameID: 1023
+		*DPI: PAIR(360, 360)
+		*TextDPI: PAIR(360, 360)
+		*MinStripBlankPixels: 1
+		*SpotDiameter: 160
+	}
+}
+*Feature: PrintArea
+{
+	*rcNameID: 1040
+	*DefaultOption: MAXIMUM
+	*Option: MAXIMUM
+	{
+		*rcNameID: 1041
+	}
+	*Option: CENTERED
+	{
+		*rcNameID: 1042
+	}
+}
+*Feature: PaperSize
+{
+	*rcNameID: 999
+	*DefaultOption: LETTER
+	*Option: A4
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(5784, 7938)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(5784, 7626)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: B5
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(4992, 6806)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(4992, 6494)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: A3
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(8250, 11426)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(8250, 11114)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: SuperA3
+	{
+		*rcNameID: 258
+		*PageDimensions: PAIR(9326, 13692)
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(9156, 13212)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(9154, 12900)
+				*PrintableOrigin: PAIR(86, 396)
+			}
+		}
+	}
+	*Option: B4
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(7118, 9838)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(7118, 9526)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: A5
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(4042, 5472)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(4042, 5160)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: LETTER
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(5952, 7440)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(5952, 7128)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: LEGAL
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(5952, 9600)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(5952, 9288)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: EXECUTIVE
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(5052, 7080)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(5052, 6768)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: TABLOID
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(7752, 11760)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(7752, 11448)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: STATEMENT
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(3792, 5640)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(3792, 5328)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: A4_ROTATED
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(8250, 5472)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(8250, 5160)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: B5_JIS_ROTATED
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(7118, 4680)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(7118, 4368)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: LETTER_ROTATED
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(7752, 5640)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(7752, 5328)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: A6
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(2808, 3730)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(2808, 3418)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: Index5x8in
+	{
+		*rcNameID: 267
+		*PageDimensions: PAIR(3600, 5760)
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(3432, 5280)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(3432, 4968)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: Index8x10in
+	{
+		*rcNameID: 268
+		*PageDimensions: PAIR(5760, 7200)
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(5592, 6720)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(5592, 6408)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: ENV_10
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(2802, 6360)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(2802, 6048)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: ENV_DL
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(2950, 5756)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(2950, 5444)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: ENV_C5
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(4424, 6012)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(4424, 5700)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: ENV_C6
+	{
+		*rcNameID: 0x7fffffff
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(3064, 4112)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(3064, 3800)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: EPSONPhoto4x6in
+	{
+		*rcNameID: 269
+		*PageDimensions: PAIR(3220, 4660)
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(3052, 4492)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(3052, 4492)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+		}
+		*Constraints: LIST(InputBin.LOWER)
+	}
+	*Option: PANORAMIC
+	{
+		*rcNameID: 270
+		*PageDimensions: PAIR(5952, 16838)
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*PrintableArea: PAIR(5784, 16358)
+				*PrintableOrigin: PAIR(84, 84)
+			}
+			*case: CENTERED
+			{
+				*PrintableArea: PAIR(5784, 16046)
+				*PrintableOrigin: PAIR(84, 396)
+			}
+		}
+	}
+	*Option: CUSTOMSIZE
+	{
+		*rcNameID: 256
+		*MinSize: PAIR(2834, 2834)
+		*MaxSize: PAIR(9326, 31680)
+		*MaxPrintableWidth: 9156
+		*MinLeftMargin: 84
+		*CenterPrintable?: FALSE
+
+		*switch: PrintArea
+		{
+			*case: MAXIMUM
+			{
+				*TopMargin:    84
+				*BottomMargin: 396
+
+				*switch: Orientation
+				{
+					*case: PORTRAIT
+					{
+						*CustCursorOriginY:     %d{84}
+					}
+					*case: LANDSCAPE_CC270
+					{
+						*CustCursorOriginY:     %d{PhysPaperLength - 84}
+					}
+				}
+				*CustCursorOriginX:     %d{84}
+				*CustPrintableOriginX:  %d{84}
+				*CustPrintableOriginY:  %d{84}
+
+				*CustPrintableSizeX: %d{ min(9156, PhysPaperWidth - 168) }
+				*CustPrintableSizeY: %d{ PhysPaperLength - 480 }
+			}
+			*case: CENTERED
+			{
+				*TopMargin:    396
+				*BottomMargin: 396
+
+				*switch: Orientation
+				{
+					*case: PORTRAIT
+					{
+						*CustCursorOriginY:     %d{396}
+					}
+					*case: LANDSCAPE_CC270
+					{
+						*CustCursorOriginY:     %d{PhysPaperLength - 396}
+					}
+				}
+				*CustCursorOriginX:     %d{max(84, PhysPaperWidth - 9240)}
+				*CustPrintableOriginX:  %d{max(84, PhysPaperWidth - 9240)}
+				*CustPrintableOriginY:  %d{396}
+
+				*CustPrintableSizeX: %d{ min(18480-PhysPaperWidth, PhysPaperWidth - 168) }
+				*CustPrintableSizeY: %d{ PhysPaperLength - 792 }
+			}
+		}
+	}
+}

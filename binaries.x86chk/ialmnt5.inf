@@ -1,0 +1,277 @@
+
+;=============================================================================
+;
+; Copyright (c) Intel Corporation (2002).
+;
+; INTEL MAKES NO WARRANTY OF ANY KIND REGARDING THE CODE.  THIS CODE IS
+; LICENSED ON AN "AS IS" BASIS AND INTEL WILL NOT PROVIDE ANY SUPPORT,
+; ASSISTANCE, INSTALLATION, TRAINING OR OTHER SERVICES.  INTEL DOES NOT
+; PROVIDE ANY UPDATES, ENHANCEMENTS OR EXTENSIONS.  INTEL SPECIFICALLY
+; DISCLAIMS ANY WARRANTY OF MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR ANY
+; PARTICULAR PURPOSE, OR ANY OTHER WARRANTY.  Intel disclaims all liability,
+; including liability for infringement of any proprietary rights, relating to
+; use of the code. No license, express or implied, by estoppel or otherwise,
+; to any intellectual property rights is granted herein.
+;
+;=============================================================================
+
+; Installation inf for the Intel Corporation graphics adapter.
+
+[Version]
+Signature="$WINDOWS NT$"
+Provider=%Intel%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=11/11/2002,6.13.01.3259
+
+[DestinationDirs]
+DefaultDestDir   = 11
+ialm.Miniport  = 12  ; drivers
+ialm.SBiosSys  = 12  ; drivers
+ialm.KCHSys  = 12  ; drivers
+ialm.Display   = 11  ; system32
+AIM.Copy = 10,system32\drivers
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%Intel%   = Intel.Mfg
+
+[Intel.Mfg]
+%i830MF0% = i830M_0, PCI\VEN_8086&DEV_3577&CC_0300
+%i830MF1% = i830M_1, PCI\VEN_8086&DEV_3577&CC_0380
+%iBKDG%   = i845G, PCI\VEN_8086&DEV_2562&CC_0300
+%iBKDG%   = i845G, PCI\VEN_8086&DEV_2562&CC_0380
+
+;
+; General installation section
+;
+
+[i830M_0]
+DelFiles=CUI.DelFiles
+CopyFiles=ialm.Miniport, ialm.Display, ialm.SBiosSys, ialm.KCHSys, Resource.Copy,AIM.Copy,
+CopyINF = isb8xx.inf,ikch8xx.inf,Vch.inf,a302.inf,a303.inf,a304.inf,a305.inf,a306.inf,a307.inf,a308.inf,a309.inf,a310.inf,a311.inf,a312.inf
+AddReg = CUI.AddReg,Uninstall830M_AddReg , Rotation.AddReg
+;AddReg = CUI.AddReg,Uninstall830M_AddReg
+DelReg = CUI.DelReg  ,Rotation.DelReg
+;InstallINF = 0
+
+
+[i830M_1]
+DelFiles=CUI.DelFiles
+CopyFiles=ialm.Miniport, ialm.Display, ialm.SBiosSys, ialm.KCHSys, OEM.Copy, Resource.Copy,AIM.Copy
+CopyINF = isb8xx.inf,ikch8xx.inf,Vch.inf,a302.inf,a303.inf,a304.inf,a305.inf,a306.inf,a307.inf,a308.inf,a309.inf,a310.inf,a311.inf,a312.inf
+AddReg = CUI.AddReg,Uninstall830M_AddReg 
+DelReg = CUI.DelReg 
+;InstallINF = 0
+
+[i845G]
+DelFiles=CUI.DelFiles
+CopyFiles=ialm.Miniport, ialm.Display, ialm.SBiosSys, ialm.KCHSys, Resource.Copy,AIM.Copy
+CopyINF = isb8xx.inf,ikch8xx.inf,Vch.inf,a302.inf,a303.inf,a304.inf,a305.inf,a306.inf,a307.inf,a308.inf,a309.inf,a310.inf,a311.inf,a312.inf
+AddReg = CUI.AddReg,Uninstall845G_AddReg , Rotation.AddReg
+;AddReg = CUI.AddReg,Uninstall845G_AddReg
+DelReg = CUI.DelReg  ,Rotation.DelReg
+;InstallINF = 0
+
+[iAlmCoInst_0.AddReg]
+HKR,,CoInstallers32,0x10000,"iAlmCoIn_0_v4.dll,iAlmMFCoInstaller"
+
+[iAlmCoInst_1.AddReg]
+HKR,,CoInstallers32,0x10000,"iAlmCoIn_1_v4.dll,iAlmMFCoInstaller"
+
+[Rotation.AddReg]
+HKLM, Software\INTEL\CUI\DISPLAY1, RotationCaps,%REG_DWORD%, 7  ; Portrait, Inverted LandScape, Inverted Portrait
+HKLM, Software\INTEL\CUI\DISPLAY2, RotationCaps,%REG_DWORD%, 7  ; Portrait, Inverted LandScape, Inverted Portrait
+;HKLM, Software\INTEL\CUI\DISPLAY1, EnableRotation,%REG_DWORD%, 1  ; Rotation is enabled by default
+;HKLM, Software\INTEL\CUI\DISPLAY2, EnableRotation,%REG_DWORD%, 1  ; Rotation is enabled by default
+
+[Rotation.DelReg]
+HKLM, Software\INTEL\CUI\DISPLAY1, RotationCaps
+HKLM, Software\INTEL\CUI\DISPLAY2, RotationCaps
+HKLM, Software\INTEL\CUI\DISPLAY1, EnableRotation
+HKLM, Software\INTEL\CUI\DISPLAY2, EnableRotation
+
+[iAlmCoInst_0.CopyFiles]
+iAlmCoIn_0_v4.dll,iAlmCoIn.dll,,0x00000010
+
+[iAlmCoInst_1.CopyFiles]
+iAlmCoIn_1_v4.dll,iAlmCoIn.dll,,0x00000010
+;
+; File sections
+;
+[AIM.Copy]
+a302.sys
+a303.sys
+a304.sys
+a305.sys
+a306.sys
+a307.sys
+a308.sys
+a309.sys
+a310.sys
+a311.sys
+a312.sys
+vch.sys
+
+[ialm.Miniport]
+ialmnt5.sys
+
+[ialm.Display]
+ialmrnt5.dll
+ialmdnt5.dll
+ialmdev5.dll
+ialmdd5.dll
+[ialm.SBiosSys]
+ialmsbw.sys
+
+[ialm.KCHSys]
+ialmkchw.sys
+
+[CUI.DelFiles]
+igfxres.dll,,,1
+
+[CUI.DelReg]
+HKLM,%CUIDeviceIndependentKey%
+; Delete old style cui keys which are device dependent
+HKLM,Software\INTEL\igfxcui
+HKR,igfxdiag
+HKR,igfxeud
+HKR,igfxcfg
+HKR,igfxcpl
+HKR,igfxpph
+HKR,igfxsrvc
+HKR,igfxhk
+HKR,hkcmd
+HKR,igfxtray
+HKR,shellex\PropertySheetHandlers
+;
+; Delete the CUI registry entry which registers for winlogon events
+;
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify\igfxcui"
+
+;
+; Service Installation
+;
+
+[i830M_0.Services]
+AddService = ialm, 0x00000002, ialm_Service_Inst, ialm_EventLog_Inst
+
+[i830M_1.Services]
+AddService = ialm, 0x00000002, ialm_Service_Inst, ialm_EventLog_Inst
+
+[i845G.Services]
+AddService = ialm, 0x00000002, ialm_Service_Inst, ialm_EventLog_Inst
+
+[ialm_Service_Inst]
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\ialmnt5.sys
+
+[ialm_EventLog_Inst]
+AddReg = ialm_EventLog_AddReg
+
+[ialm_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%"\System32\IoLogMsg.dll;%SystemRoot%"\System32\drivers\ialmnt5.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+
+[i830M_0.SoftwareSettings]
+AddReg = i830M_SoftwareDeviceSettings
+HKR,, CapabilityOverride,	    %REG_DWORD%,    8
+
+[i830M_1.SoftwareSettings]
+AddReg = i830M_SoftwareDeviceSettings
+HKR,, CapabilityOverride,	    %REG_DWORD%,     8
+
+[i845G.SoftwareSettings]
+AddReg = i845G_SoftwareDeviceSettings
+HKR,, CapabilityOverride,	    %REG_DWORD%,    8
+
+[i830M_SoftwareDeviceSettings]
+
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, ialmrnt5
+HKR,, CapabilityOverride,	    %REG_DWORD%,     8
+
+HKR,, VgaCompatible,                 %REG_DWORD%,    0
+;Enable Multifunction support
+HKR,,MultifunctionSupported, %REG_DWORD%, 1
+HKLM,%DisplayKey%,"NativeResolution", %REG_DWORD%, 1
+HKLM,%DisplayKey%,"NativeBPP", %REG_DWORD%, 1
+HKLM,%DisplayKey%,"ConfigID", %REG_DWORD%, 0
+
+[i845G_SoftwareDeviceSettings]
+
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, ialmrnt5
+; HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, ialmdnt5
+
+HKR,, VgaCompatible,                 %REG_DWORD%,    0
+HKR,, CapabilityOverride,	    %REG_DWORD%,     8
+
+;Disable Multifunction support
+HKR,,MultifunctionSupported, %REG_DWORD%, 0
+HKLM,%DisplayKey%,"NativeResolution", %REG_DWORD%, 1
+HKLM,%DisplayKey%,"NativeBPP", %REG_DWORD%, 1
+HKLM,%DisplayKey%,"ConfigID", %REG_DWORD%, 0
+
+[i830M_0.GeneralConfigData]
+MaximumNumberOfDevices = 2
+MaximumDeviceMemoryConfiguration = 128
+
+[i830M_1.GeneralConfigData]
+MaximumNumberOfDevices = 2
+MaximumDeviceMemoryConfiguration = 128
+
+[i845G.GeneralConfigData]
+MaximumNumberOfDevices = 1
+MaximumDeviceMemoryConfiguration = 128
+
+
+
+
+[Uninstall830M_AddReg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","UninstallString",,"RUNDLL32.EXE %11%\ialmrem.dll,UninstallW2KIGfx PCI\VEN_8086&DEV_3577"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","DisplayName",,"Intel(R) Extreme Graphics Driver Software"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","ModifyPath",,"FALSE"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","NoModify",%REG_DWORD%,0x1
+
+[Uninstall845G_AddReg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","UninstallString",,"RUNDLL32.EXE %11%\ialmrem.dll,UninstallW2KIGfx PCI\VEN_8086&DEV_2562"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","DisplayName",,"Intel(R) Extreme Graphics Driver Software"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","ModifyPath",,"FALSE"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\{8A708DD8-A5E6-11D4-A706-000629E95E20}","NoModify",%REG_DWORD%,0x1
+
+[Strings]
+;
+; Customizable Strings
+;
+CUIDeviceIndependentKey="Software\Intel\Display\igfxcui"
+DisplayKey="Software\Intel\Display"
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_DWORD      = 0x00010001
+SERVICEROOT    = "System\CurrentControlSet\Services"
+
+;
+; Localizable Strings
+;
+
+DiskId          = "Intel(R)  Extreme Graphics Controller (Microsoft Corporation) Windows 2000/XP Installation Disk"
+Intel           = "Intel Corporation"
+i830MF          = "Intel(R)  Extreme Graphics Controller-MF (Microsoft Corporation)"
+i830MF0         = "Intel(R)  Extreme Graphics Controller-0 (Microsoft Corporation)"
+i830MF1         = "Intel(R)  Extreme Graphics Controller-1 (Microsoft Corporation)"
+iBKDG           = "Intel(R)  Extreme Graphics Controller (Microsoft Corporation)"

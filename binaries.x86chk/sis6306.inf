@@ -1,0 +1,125 @@
+; SiSV6306.inf
+;
+; Installation inf for the Silicon Integrated Systems SiS graphics adapter.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%MS%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir   = 11
+SiSV6306.Miniport  = 12  ; drivers
+SiSV6306.Display   = 11  ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%SiS%   = SiS.Mfg
+
+[SiS.Mfg]
+%SiS% %SiS6306% = SiSV6306, PCI\VEN_1039&DEV_6306
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; General installation section
+;
+
+[SiSV6306]
+CopyFiles=SiSV6306.Miniport, SiSV6306.Display
+AddReg=SiSV6306.Util.Addreg
+;
+; File sections
+;
+
+[SiSV6306.Miniport]
+SiS6306p.sys
+
+[SiSV6306.Display]
+SiS6306v.dll
+
+;
+; Service Installation
+;
+
+[SiSV6306.Services]
+AddService = SiSV6306, 0x00000002, SiSV6306_Service_Inst, SiSV6306_EventLog_Inst
+
+[SiSV6306_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\SiS6306p.sys
+
+[SiSV6306_EventLog_Inst]
+AddReg = SiSV6306_EventLog_AddReg
+
+[SiSV6306_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\SiS6306p.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+;
+; Software Installation
+;
+
+[SiSV6306.SoftwareSettings]
+AddReg = SiSV6306_SoftwareDeviceSettings
+DelReg = SiSV6306_DelReg
+
+[SiSV6306_SoftwareDeviceSettings]
+HKR,, 2D_OEMSetup,     %REG_MULTI_SZ%, 0
+HKR,, 2D_BI01,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI03,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI05,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI11,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI13,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI15,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI21,     %REG_MULTI_SZ%, 43.60.70.75.85.100.120
+HKR,, 2D_BI23,     %REG_MULTI_SZ%, 43.60.70.75.85.100.120
+HKR,, 2D_BI25,     %REG_MULTI_SZ%, 43.60.70.75.85.100.120
+HKR,, 2D_BI31,     %REG_MULTI_SZ%, 43.60.75.85
+HKR,, 2D_BI33,     %REG_MULTI_SZ%, 43.60.75.85
+HKR,, 2D_BI35,     %REG_MULTI_SZ%, 43.60.75.85
+HKR,, 2D_BI41,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI43,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI45,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, SiS6306v
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+
+[SiSV6306_DelReg]
+HKLM,"SYSTEM\CurrentControlSet\Services\SiSV",Start
+HKLM,"SYSTEM\CurrentControlSet\Services\SiSLCD",Start
+
+[SiSV6306.Util.Addreg]
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+;REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+;REG_EXPAND_SZ  = 0x00020000
+;REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+;SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+;GraphAdap    = "Graphics Adapter"
+SiS6306       = "530/620"
+SiS           = "SiS"
+MS            = "Microsoft"

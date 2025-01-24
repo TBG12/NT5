@@ -1,0 +1,110 @@
+; neomagic.inf                                                                                                               
+;                                                                                                                      
+; Installation inf for the NeoMagic neo20xx graphics adapter.                                                                   
+;                                                                                                                      
+                                                                                                                       
+[Version]                                                                                                              
+Signature="$CHICAGO$"                                                                                                
+Provider=%MS%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display                                                                                                          
+DriverVer=06/06/2001,5.01.2001
+
+[DestinationDirs]                                                                                                      
+DefaultDestDir   = 11                                                                                                  
+neo20xx.Miniport  = 12  ; drivers                                                                                           
+neo20xx.Display   = 11  ; system32                                                                                          
+                                                                                                                       
+;                                                                                                                      
+; Driver information                                                                                                   
+;                                                                                                                      
+                                                                                                                       
+[Manufacturer]                                                                                                         
+%NeoMagic%   = NeoMagic.Mfg                                                                                                      
+                                                                                                                       
+[NeoMagic.Mfg]
+%NeoMagic% MagicGraph256XL driver =        neo20xx, PCI\VEN_10C8&DEV_0016
+%NeoMagic% MagicGraph256ZX driver =        neo20xx, PCI\VEN_10C8&DEV_0006
+%NeoMagic% MagicGraph256AV driver =        neo20xx, PCI\VEN_10C8&DEV_0005
+%NeoMagic% MagicGraph128ZV/ZV+/XD driver = neo20xx, PCI\VEN_10C8&DEV_0004
+%NeoMagic% MagicGraph128ZV/ZV+/XD driver = neo20xx, PCI\VEN_10C8&DEV_0083
+%NeoMagic% MagicGraph128ZV/ZV+/XD driver = neo20xx, PCI\VEN_10C8&DEV_0003
+%NeoMagic% MagicGraph128ZV/ZV+/XD driver = neo20xx, PCI\VEN_10C8&DEV_0002
+%NeoMagic% MagicGraph128ZV/ZV+/XD driver = neo20xx, PCI\VEN_10C8&DEV_0001
+%NeoMagic% MagicGraph256AV+ driver       = neo20xx, PCI\VEN_10C8&DEV_0025
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;                                                                                                                      
+; General installation section                                                                                         
+;                                                                                                                      
+                                                                                                                       
+[neo20xx]                                                                                                                   
+CopyFiles=neo20xx.Miniport, neo20xx.Display
+
+;                                                                                                                      
+; File sections                                                                                                        
+;                                                                                                                      
+                                                                                                                       
+[neo20xx.Miniport]                                                                                                          
+neo20xx.sys                                                                                                                 
+                                                                                                                       
+[neo20xx.Display]                                                                                                           
+neo20xx.dll
+                                                                                                                       
+;                                                                                                                      
+; Service Installation                                                                                                 
+;                                                                                                                      
+                                                                                                                       
+[neo20xx.Services]                                                                                                          
+AddService = neo20xx, 0x00000002, neo20xx_Service_Inst, neo20xx_EventLog_Inst                                                         
+                                                                                                                       
+[neo20xx_Service_Inst]                                                                                                      
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER                                                            
+StartType      = 1                  ; SERVICE_SYSTEM_START                                                             
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE                                                             
+LoadOrderGroup = Video                                                                                                 
+ServiceBinary  = %12%\neo20xx.sys                                                                                        
+                                                                                                                       
+[neo20xx_EventLog_Inst]                                                                                                     
+AddReg = neo20xx_EventLog_AddReg                                                                                            
+                                                                                                                       
+[neo20xx_EventLog_AddReg]                                                                                                   
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\neo20xx.sys"  
+HKR,,TypesSupported,0x00010001,7                                                                                       
+                                                                                                                       
+                                                                                                                       
+;                                                                                                                      
+; Software Installation                                                                                                
+;                                                                                                                      
+                                                                                                                       
+[neo20xx.SoftwareSettings]                                                                                                  
+AddReg = neo20xx_SoftwareDeviceSettings                                                                                     
+                                                                                                                       
+[neo20xx_SoftwareDeviceSettings]                                                                                            
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, neo20xx
+HKR,, VgaCompatible,               %REG_DWORD%,    0                                                                
+HKR,, MultiFunctionSupported,      %REG_DWORD%,    1
+
+                                                                                                                       
+[Strings]                                                                                                              
+                                                                                                                       
+;                                                                                                                      
+; Non-Localizable Strings                                                                                              
+;                                                                                                                      
+                                                                                                                       
+REG_SZ         = 0x00000000                                                                                            
+REG_MULTI_SZ   = 0x00010000                                                                                            
+REG_EXPAND_SZ  = 0x00020000                                                                                            
+REG_BINARY     = 0x00000001                                                                                            
+REG_DWORD      = 0x00010001                                                                                            
+SERVICEROOT    = System\CurrentControlSet\Services                                                                   
+                                                                                                                       
+;                                                                                                                      
+; Localizable Strings                                                                                                  
+;                                                                                                                      
+                                                                                                                       
+NeoMagic="NeoMagic"
+MS="Microsoft"

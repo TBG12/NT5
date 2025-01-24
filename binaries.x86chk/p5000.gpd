@@ -1,0 +1,467 @@
+*%$Header:   /disc2/scon/apps/windrv/2000/p5000/w2k/p5000.gpv   1.6   30 Oct 2000 17:05:02   kari_af  $
+*%
+*%$Log:   /disc2/scon/apps/windrv/2000/p5000/w2k/p5000.gpv  $
+*%  
+*%     Rev 1.6   30 Oct 2000 17:05:02   kari_af
+*%  fixed the A4 (JIS) paper parameters
+*%  
+*%     Rev 1.5   30 Oct 2000 13:17:40   kari_af
+*%  updated ver#
+*%  
+*%     Rev 1.4   30 Oct 2000 13:12:04   kari_af
+*%  fixed some paper size mistakes...
+*%  
+*%     Rev 1.3   13 Sep 2000 10:26:10   nguy_hu
+*%  remove FontFormat, FontCartSlots features
+*%  comment out InvertOrientation for this phase
+*%
+*%     Rev 1.2   12 Sep 2000 16:46:10   kari_af
+*%  new paper sizes
+*%
+*%     Rev 1.1   05 Sep 2000 10:07:46   nguy_hu
+*%  merge P5kc.gpd & ptnxver.gpd into p5000.gpd
+*%  change MasterUnits
+*%  add papersizes for P5000
+*%
+*%     Rev 1.0   23 Aug 2000 10:19:04   kari_af
+*%  Initial revision.
+*%
+
+*GPDSpecVersion: "1.0"
+*Include: "StdNames.gpd"
+*GPDFileName: "P5000.GPD"
+*GPDFileVersion: "1.00B"
+*ModelName: "Printronix P5000"
+*MasterUnits: PAIR(360,288)
+*ResourceDLL: "P5000.Dll"
+*PrinterType: PAGE
+*MaxCopies: 99
+
+ *Macros: PtnxFeatureNames
+{
+ CHECK_SUM:267
+ HUMAN_READABLE:268
+ INVERT_ORIENTATION:269
+ SLASHED_ZERO:270
+ }
+
+
+
+
+*Macros: HelpIds
+{
+ IDH_BARCODE_ATTRIB:1
+ IDH_BARCODE_AVAIL:2
+ IDH_BARCODE_CHECKDIGI:3
+ IDH_BARCODE_CHECKSUM:4
+ IDH_BARCODE_CLPBOARDSND:5
+ IDH_BARCODE_HEIGHT:6
+ IDH_BARCODE_IMAGE:7
+ IDH_BARCODE_MAG:8
+ IDH_BARCODE_ORIENTATION:9
+ IDH_BARCODE_READABLE:10
+ IDH_BARCODE_REQ:11
+ IDH_BARCODE_TAB:12
+ IDH_BARCODE_TEXT:13
+ IDH_GAPSENSING:14
+ IDH_INTENSITY:15
+ IDH_INVERT_ORIENTATION:16
+ IDH_MEDIAHANDLING:17
+ IDH_PAUSEMODE:18
+ IDH_RESFONT_ATTRIBUTE:19
+ IDH_SPEED:20
+ IDH_SLASHEDZERO:21
+}
+
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.4
+         }
+    }
+    *Option: LANDSCAPE_CC270
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.4
+            *%Cmd: "LANDSCAPE"
+        }
+    }
+}
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: 273
+        *OptionID: 273
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.2
+        }
+    }
+}
+*RotateCoordinate?: FALSE
+*RotateRaster?: TRUE
+*RotateFont?: TRUE
+*TextCaps: LIST(TC_CR_90,TC_UA_ABLE)
+*MemoryUsage: LIST(FONT, RASTER, VECTOR)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+*Command: CmdFF { *Cmd : "<0C>" }
+*Command: CmdBackSpace { *Cmd : "<08>" }
+*EjectPageWithFF?: TRUE
+*OutputDataFormat: H_BYTE
+*OptimizeLeftBound?: TRUE
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*%DefaultFont: 14*%3
+*DefaultCTT: 5
+*CharPosition: BASELINE
+*%DeviceFonts: LIST(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45)
+
+*MinFontID: 1
+*MaxFontID: 32768
+
+*Ifdef: Phase2
+*Feature: Checksum
+{
+    *HelpIndex: =IDH_RESFONT_ATTRIBUTE
+    *Name: "With Checksum"
+    *DefaultOption: Yes
+    *Option: Yes
+    {
+        *Name: "Yes"
+        *Command: CmdSelect
+         {
+             *Order: DOC_SETUP.5
+          }
+    }
+    *Option: No
+    {
+        *Name: "No"
+        *Command: CmdSelect
+         {
+             *Order: DOC_SETUP.5
+         }
+    }
+}
+*Feature: HumanReadable
+{
+    *HelpIndex: =IDH_RESFONT_ATTRIBUTE
+    *Name: "With Human Readable"
+    *DefaultOption: Yes
+    *Option: Yes
+    {
+        *Name: "Yes"
+        *Command: CmdSelect
+         {
+             *Order: DOC_SETUP.5
+          }
+    }
+   *Option: No
+    {
+        *Name: "No"
+        *Command: CmdSelect
+         {
+             *Order: DOC_SETUP.5
+         }
+    }
+}
+*Feature: SlashedZero
+{    *HelpIndex: =IDH_SLASHEDZERO
+     *Name: "SlashedZero"
+     *DefaultOption: On
+     *Option: On
+     {
+                *Name: "On"
+                 *Command: CmdSelect
+                  {
+		*Order: DOC_SETUP.5
+                  }
+     }
+     *Option:Off
+     {
+                *Name: "Off"
+                *Command: CmdSelect
+                {
+	      *Order: DOC_SETUP.5
+                }
+      }
+}
+*Feature: InvertOrientation
+{    *HelpIndex: =IDH_INVERT_ORIENTATION
+     *Name: " Invert Orientation"
+     *DefaultOption: False
+     *Option: True
+     {
+                *Name: "True"
+                 *Command: CmdSelect
+                  {
+		*Order: DOC_SETUP.5
+                   }
+     }
+     *Option:False
+     {
+                *Name: "False"
+                *Command: CmdSelect
+                {
+	      *Order: DOC_SETUP.5
+                }
+      }
+}
+*Endif:
+*Feature: Collate
+{
+ *DefaultOption: OFF
+ *ConcealFromUI?: TRUE
+ *Name:"Collate"
+     *Option: ON
+    {
+        *Name:"ON"
+    }
+  *Option: OFF
+  {
+      *Name:"OFF"
+  }
+}
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: 120x144
+    *Option: 120x144
+     {
+        	*Name: "120x144 " =DOTS_PER_INCH
+        	*DPI: PAIR(120,144)
+        	*TextDPI: PAIR(120,144)
+        	*MinStripBlankPixels: 32
+        	EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+           *SpotDiameter: 100
+           *Command: CmdSendBlockData { *Cmd : ""}
+     }
+    *Option: 120x72
+    {
+        	*Name: "120x72 " =DOTS_PER_INCH
+        	*DPI: PAIR(120,72)
+        	*TextDPI: PAIR(120,72)
+        	*MinStripBlankPixels: 32
+        	EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+           *SpotDiameter: 100
+           *Command: CmdSendBlockData { *Cmd : ""}
+      }
+}
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: LETTER
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(3060, 3168)
+        *PrintableOrigin: PAIR(0,0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 5230
+        *PrintableArea: PAIR(3060, 4032)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+     }
+    *Option: EXECUTIVE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(2610, 3024)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+   *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4249
+        *PrintableArea: PAIR(2978, 3367)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+     }
+    *Option: ENV_10
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *PrintableArea: PAIR(1487,2736)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: A3
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 9667
+        *PrintableArea: PAIR(4209,4764)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+
+    }
+    *Option: B4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 6391
+        *PrintableArea: PAIR(3643,4127)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+     }
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *PrintableArea: PAIR(2582, 2915)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+    *Option: A5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *PrintableArea: PAIR(2099,2382)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+    *Option: Euro_Fanfold
+    {
+ 	*Name: "Euro Fanfold 250x340mm"
+        *PageProtectMem: 3198
+        *PageDimensions: PAIR(3542,3856)
+        *PrintableArea: PAIR(3542,3856)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: 12x12
+    {
+        *Name:"Fanfold 12x12"
+        *PageProtectMem: 3198
+	*PageDimensions: PAIR(4320,3456)
+        *PrintableArea: PAIR(4320,3456)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+    *Option: 12x14
+    {
+        *Name:"Fanfold 12x14"
+        *PageProtectMem: 3198
+	*PageDimensions: PAIR(4320,4032)
+        *PrintableArea: PAIR(4320,4032)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+    *Option: 9.5x12
+    {
+        *Name:"Fanfold 9.5x12"
+        *PageProtectMem: 3198
+	*PageDimensions: PAIR(3420,3456)
+        *PrintableArea: PAIR(3420,4356)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: 8.5x12
+    {
+        *Name:"Fanfold 8.5x12"
+        *PageProtectMem: 3198
+	*PageDimensions: PAIR(3060,3456)
+        *PrintableArea: PAIR(3060,4356)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: STATEMENT
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *PrintableArea: PAIR(1980,2448)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: ENV_11
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *PrintableArea: PAIR(1620,2988)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+    *Option: ENV_12
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *PrintableArea: PAIR(1710,3168)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+    *Option: ENV_14
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 3198
+        *PrintableArea: PAIR(1800,3312)
+        *PrintableOrigin: PAIR(0, 0)
+        *CursorOrigin: PAIR(0,0)
+    }
+
+
+
+
+   *Option: CUSTOMSIZE
+    {
+        *rcNameID: =USER_DEFINED_SIZE_DISPLAY
+        *MinSize: PAIR(360,144)
+        *MaxSize: PAIR(4896, 28512)
+        *MaxPrintableWidth: 4896
+        *MinLeftMargin: 0
+        *CenterPrintable?: TRUE
+        *PageProtectMem: 4000
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.5
+        }
+    }
+}
+*Feature: ResMode
+{
+ *DefaultOption: VarGraphics
+ *Name:"Resolution Mode"
+ *Option: VarGraphics
+    {
+        *Name:"Variable Graphics"
+    }
+*Ifdef: Phase2
+ *Option: VarText
+    {
+        *Name:"Variable Text"
+    }
+*Option: Standard
+    {
+        *Name:"Standard"
+    }
+*Option:High
+    {
+        *Name:"High"
+    }
+*Endif:
+ }
+*HelpFile: "PTNXP5K.HLP"
+

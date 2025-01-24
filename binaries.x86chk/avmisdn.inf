@@ -1,0 +1,316 @@
+;
+; Windows XP-INF for all AVM ISDN-Controller and AVM NDIS WAN CAPI Driver
+;
+; Copyright (c) 1993-2002 Microsoft Corporation  All rights reserved.
+;
+
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider    = %MS%
+LayoutFile  = Layout.inf
+DriverVer   = 03/05/2002, 3.09.10.2002
+
+[Manufacturer]
+%V_AVM% = AVM
+
+[ControlFlags]
+ExcludeFromSelect = *
+ExcludeFromSelect = AVMWANCI
+
+[AVM]
+%AVMB1PCI.DeviceDesc%  = AVMB1PCI.ndi,  PCI\VEN_1244&DEV_0700
+%AVMB1PCM.DeviceDesc%  = AVMB1PCM.ndi,  PCMCIA\AVM-ISDN-CONTROLLER_B1-F6D2
+
+%AVMC2.DeviceDesc%     = AVMC2.ndi,     PCI\VEN_1011&DEV_1065&SUBSYS_11001244
+%AVMC4.DeviceDesc%     = AVMC4.ndi,     PCI\VEN_1011&DEV_1065&SUBSYS_08001244
+%AVMT1PCI.DeviceDesc%  = AVMT1PCI.ndi,  PCI\VEN_1244&DEV_1200
+
+%AVMWAN.DeviceDesc%    = AVMWAN.ndi,    AVMWANCI
+
+;############################
+;- B1 PCI --------------------------------------------------------------------
+[AVMB1PCI.ndi.NT.CoInstallers]
+AddReg          = AVMISDN.coinst.reg, AVMB1PCI.ndis.reg, AVMALLB1.ndis.reg, AVMISDN.nt.reg
+CopyFiles       = AVMISDN.CopyDLLs
+
+[AVMB1PCI.ndi.NT]
+AddReg          = AVMALLB1.ndis.reg
+CopyFiles       = AVMALLB1.CopyFiles, AVMALLB1.CopyIDriver, AVMISDN.Copy16bDLLs
+Characteristics = 0x04  ; NCF_PHYSICAL
+BusType         = 5
+[AVMB1PCI.ndi.NT.Services]
+AddService = b1cbase, 2, AVMALLB1Service, B1AddEventLog
+;############################
+;- B1 PCMCIA -----------------------------------------------------------------
+[AVMB1PCM.ndi.NT.CoInstallers]
+AddReg          = AVMISDN.coinst.reg, AVMB1PCM.ndis.reg, AVMALLB1.ndis.reg, AVMISDN.nt.reg
+CopyFiles       = AVMISDN.CopyDLLs
+
+[AVMB1PCM.ndi.NT]
+AddReg          = AVMALLB1.ndis.reg
+CopyFiles       = AVMALLB1.CopyFiles, AVMALLB1.CopyIDriver, AVMISDN.Copy16bDLLs
+Characteristics = 0x04  ; NCF_PHYSICAL
+BusType         = 8
+
+[AVMB1PCM.ndi.NT.Services]
+AddService = b1cbase, 2, AVMALLB1Service, B1AddEventLog
+;############################
+;- T1 PCI --------------------------------------------------------------------
+[AVMT1PCI.ndi.NT.CoInstallers]
+AddReg          = AVMISDN.coinst.reg, AVMT1PCI.ndis.reg
+CopyFiles       = AVMISDN.CopyDLLs
+
+[AVMT1PCI.ndi.NT]
+AddReg          = AVMT1PCI.ndis.reg
+CopyFiles       = AVMALLB1.CopyFiles, AVMT1PCI.CopyIDriver, AVMISDN.Copy16bDLLs
+Characteristics = 0x04  ; NCF_PHYSICAL
+BusType         = 5
+
+[AVMT1PCI.ndi.NT.Services]
+AddService = b1cbase, 2, AVMALLB1Service, B1AddEventLog
+;############################
+;- C4 --------------------------------------------------------------------
+[AVMC4.ndi.NT.CoInstallers]
+AddReg          = AVMISDN.coinst.reg, AVMC4.ndis.reg, AVMALLC.ndis.reg
+CopyFiles       = AVMISDN.CopyDLLs
+
+[AVMC4.ndi.NT]
+AddReg          = AVMALLC.ndis.reg
+CopyFiles       = AVMALLB1.CopyFiles, AVMC4.CopyIDriver, AVMISDN.Copy16bDLLs
+Characteristics = 0x04  ; NCF_PHYSICAL
+BusType         = 5
+
+[AVMC4.ndi.NT.Services]
+AddService = b1cbase, 2, AVMALLB1Service, B1AddEventLog
+;############################
+;- C2 --------------------------------------------------------------------
+[AVMC2.ndi.NT.CoInstallers]
+AddReg          = AVMISDN.coinst.reg, AVMC2.ndis.reg, AVMALLC.ndis.reg
+CopyFiles       = AVMISDN.CopyDLLs
+
+[AVMC2.ndi.NT]
+AddReg          = AVMALLC.ndis.reg
+CopyFiles       = AVMALLB1.CopyFiles, AVMC2.CopyIDriver, AVMISDN.Copy16bDLLs
+Characteristics = 0x04  ; NCF_PHYSICAL
+BusType         = 5
+
+[AVMC2.ndi.NT.Services]
+AddService = b1cbase, 2, AVMALLB1Service, B1AddEventLog
+;############################
+;- NDIS WAN Miniport ---------------------------------------------------------
+[AVMWAN.ndi.NT]
+AddReg          = AVMWAN.ndis.reg, AVMISDN.nt.reg
+CopyFiles       = AVMWAN.CopyFiles
+Characteristics = 0x09  ; NCF_VIRTUAL | NCF_HIDDEN
+
+[AVMWAN.ndi.NT.Services]
+AddService = AVMWAN,  2, AVMWAN.Service, AVMWANAddEventLog
+
+;-----------------------------------------------------------------------------
+;- Reg-Parts -----------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+;- Reg-Part for B1 -----------------------------------------------------------
+[AVMB1PCI.ndis.reg]
+HKR, ,                    ,                     0,       %AVMB1PCI.DeviceDesc%
+HKR, ,                    CardType,             0,       "B1pci"
+
+[AVMB1PCM.ndis.reg]
+HKR, ,                    ,                     0,       %AVMB1PCM.DeviceDesc%
+HKR, ,                    CardType,             0,       "B1pcmcia"
+
+[AVMALLB1.ndis.reg]
+HKR, Base-Module,         T4Path,               0,       %11%
+HKR, Base-Module,         Name,                 0,       %11%\b1.t4
+HKR, Ndi,                 Service,              0,       "b1cbase"
+HKR, ,                    IsdnSwitchTypes,      0x10001, "0xA6"   ; ISDN_SWITCH_ATT, _NI1 & _DSS1 & 1TR6
+
+;- Reg-Part for T1pci --------------------------------------------------------
+[AVMT1PCI.ndis.reg]
+HKR, ,                    ,                     0,       %AVMT1PCI.DeviceDesc%
+HKR, Base-Module,         T4Path,               0,       %11%
+HKR, Base-Module,         Name,                 0,       %11%\t1.t4
+HKR, Ndi,                 Service,              0,       "b1cbase"
+HKR, ,                    IsdnSwitchTypes,      0x10001, "0xA0"   ; _DSS1 & 1TR6
+HKR, ,                    CardType,             0,       "T1pci"
+
+HKR, ,                    IsdnAutoSwitchDetect, 0x10001, "0"
+HKR, ,                    IsdnNumDChannels,     0x10001, "1"
+HKR, ,                    WanEndPoints,         0x10001, "30"
+HKR, 0,                   IsdnNumBChannels,     0x10001, "30"
+HKR, Ndi\Interfaces,      UpperRange,           0,       "ndiswan"
+HKLM, %AVMB1PARAMS%,      NumberOfApplIDs,      0x10001, "200"
+HKLM, %AVMB1PARAMS%,      NumberOfNCCIs,        0x10001, "30"
+
+;- Reg-Part for C4 ------------------------------------------------------------
+[AVMC4.ndis.reg]
+HKR, ,                      ,                     0,       %AVMC4.DeviceDesc%
+HKR, ,                      CardType,             0,       "C4"
+HKR, Base-Module,           Name,                 0,       %11%\c4.bin
+HKR, Base-Module\Values\3,  AutoCompress,         0,       "\x00"
+HKR, Base-Module\Values\3,  PROTOCOL,             0,       "\x00"
+HKR, Base-Module\Values\4,  AutoCompress,         0,       "\x00"
+HKR, Base-Module\Values\4,  PROTOCOL,             0,       "\x00"
+;HKR, ,                      WanEndPoints,         0x10001,   "8"
+;HKR, ,                      IsdnNumDChannels,     0x10001,   "4"
+HKR, ,                      WanEndPoints,         0x10001,   "2"
+HKR, ,                      IsdnNumDChannels,     0x10001,   "1"
+HKR, 0,                     IsdnNumBChannels,     0x10001,   "2"
+;HKR, 1,                     IsdnNumBChannels,     0x10001,   "2"
+;HKR, 2,                     IsdnNumBChannels,     0x10001,   "2"
+;HKR, 3,                     IsdnNumBChannels,     0x10001,   "2"
+
+;- Reg-Part for C2 ------------------------------------------------------------
+[AVMC2.ndis.reg]
+HKR, ,                      ,                     0,       %AVMC2.DeviceDesc%
+HKR, ,                      CardType,             0,       "C2"
+HKR, Base-Module,           Name,                 0,       %11%\c2.bin
+;HKR, ,                      WanEndPoints,         0x10001,   "4"
+;HKR, ,                      IsdnNumDChannels,     0x10001,   "2"
+HKR, ,                      WanEndPoints,         0x10001,   "2"
+HKR, ,                      IsdnNumDChannels,     0x10001,   "1"
+HKR, 0,                     IsdnNumBChannels,     0x10001,   "2"
+;HKR, 1,                     IsdnNumBChannels,     0x10001,   "2"
+
+[AVMALLC.ndis.reg]
+HKR, Base-Module,           T4Path,               0,       %11%
+HKR, Base-Module,           AllSame,              0x10001, 1
+HKR, Base-Module\Values,    AutoCompress,         0,       "\x00"
+HKR, Base-Module\Values,    PROTOCOL,             0,       "\x00"
+HKR, Base-Module\Values\1,  AutoCompress,         0,       "\x00"
+HKR, Base-Module\Values\1,  PROTOCOL,             0,       "\x00"
+HKR, Base-Module\Values\2,  AutoCompress,         0,       "\x00"
+HKR, Base-Module\Values\2,  PROTOCOL,             0,       "\x00"
+HKR, ,                      IsdnSwitchType,       0x10001,   "0x80"   ; ISDN_SWITCH_DSS1
+HKR, ,                      IsdnSwitchTypes,      0x10001,   "0x80"   ; ISDN_SWITCH_DSS1
+HKR, ,                      IsdnAutoSwitchDetect, 0x10001,   "0"
+HKR, Ndi,                   Service,              0,         "b1cbase"
+HKR, Ndi\Interfaces,        UpperRange,           0,         "ndiswan"
+HKLM, %AVMB1PARAMS%,        NumberOfApplIDs,      0x10001,   "200"
+HKLM, %AVMB1PARAMS%,        NumberOfNCCIs,        0x10001,   "20"
+
+;- Reg-Part for NDIS WAN Miniport --------------------------------------------
+[AVMWAN.ndis.reg]
+HKR, ,                    IsdnSwitchTypes,      0x10001, "0x01"   ; ISDN_SWITCH_AUTO
+HKR, Ndi,                 Service,              0,       "avmwan"
+HKR, Ndi\Interfaces,      LowerRange,           0,       "nolower"
+
+;- Reg-Part for all ISDN Controllers -----------------------------------------
+[AVMISDN.coinst.reg]
+;we need to ensure avmcoxp.dll to be the only coinstaller after upgrade w2k to wxp
+;HKR, ,                    CoInstallers32,       0x10008, "avmcoxp.dll,AVMCoInstall"
+HKR, ,                    CoInstallers32,       0x10000, "avmcoxp.dll,AVMCoInstall"
+HKR, ,                    EnumPropPages32,      0,       "avmenum.dll,AVMEnumPages"
+HKR, ,                    ProviderName,         0,       %V_AVM%
+HKR, ,                    SetupProtocol,        0,       "DSS1"
+HKR, ,                    Language,             0,       %AVMLanguage%
+HKR, Base-Module\Values,  AutoCompress,         0,       "\x00"
+HKR, Base-Module\Values,  PROTOCOL,             0,       "\x00"
+HKR, Ndi\Interfaces,      LowerRange,           0,       "isdn"
+
+[AVMISDN.nt.reg]
+HKR, ,                    IsdnAutoSwitchDetect, 0x10001, "0"
+HKR, ,                    IsdnNumDChannels,     0x10001, "1"
+HKR, ,                    WanEndPoints,         0x10001, "2"
+HKR, 0,                   IsdnNumBChannels,     0x10001, "2"
+HKR, Ndi\Interfaces,      UpperRange,           0,       "ndiswan"
+
+;-----------------------------------------------------------------------------
+;- Copy Files Section --------------------------------------------------------
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir        = 11
+AVMALLB1.CopyFiles    = 12
+AVMWAN.CopyFiles      = 12
+AVMALLB1.CopyIDriver  = 11
+AVMT1PCI.CopyIDriver  = 11
+AVMC4.CopyIDriver     = 11
+AVMC2.CopyIDriver     = 11
+AVMISDN.CopyDLLs      = 11
+AVMISDN.Copy16bDLLs   = 50
+
+[AVMALLB1.CopyFiles]
+b1cbase.sys
+
+[AVMWAN.CopyFiles]
+avmwan.sys
+
+[AVMALLB1.CopyIDriver]
+b1.t4
+b1tr6.t4
+b1usa.t4
+
+[AVMT1PCI.CopyIDriver]
+t1.t4
+t1tr6.t4
+
+[AVMC4.CopyIDriver]
+c4.bin
+
+[AVMC2.CopyIDriver]
+c2.bin
+
+[AVMISDN.CopyDLLs]
+avmcoxp.dll
+avmenum.dll
+;COPYFLG_NOVERSIONCHECK
+capi2032.dll, avmc2032.dll,,0x00000004
+
+[AVMISDN.Copy16bDLLs]
+;COPYFLG_NOVERSIONCHECK
+capi.dll,     avmcapi.dll,,0x00000004
+capi20.dll,   avmc20.dll,,0x00000004
+
+;-----------------------------------------------------------------------------
+[AVMALLB1Service]
+DisplayName    = %AVMB1ALL.DeviceDesc%
+ServiceType    = 1  ; SERVICE_KERNEL_DRIVER
+StartType      = 3  ; SERVICE_DEMAND_START
+ErrorControl   = 1  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\b1cbase.sys
+LoadOrderGroup = NDIS
+
+[B1AddEventLog]
+AddReg = B1AddEventLog.reg
+
+[B1AddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\b1cbase.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[AVMWAN.Service]
+DisplayName    = %AVMWAN.DeviceDesc%
+ServiceType    = 1  ; SERVICE_KERNEL_DRIVER
+StartType      = 3  ; SERVICE_DEMAND_START
+ErrorControl   = 1  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\avmwan.sys
+LoadOrderGroup = NDIS
+
+[AVMWANAddEventLog]
+AddReg=AVMWANAddEventLog.reg
+
+[AVMWANAddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\avmwan.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+
+;-----------------------------------------------------------------------------
+;- Strings Sections ----------------------------------------------------------
+;-----------------------------------------------------------------------------
+[Strings]
+AVMLanguage          = ""
+MS		     = "Microsoft"
+V_AVM                = "AVM GmbH"
+AVMB1ALL.DeviceDesc  = "AVM ISDN-Controller"
+AVMB1PCI.DeviceDesc  = "AVM ISDN-Controller B1 PCI"
+AVMB1PCM.DeviceDesc  = "AVM ISDN-Controller B1 PCMCIA"
+AVMT1PCI.DeviceDesc  = "AVM ISDN-Controller T1 PCI"
+AVMC4.DeviceDesc     = "AVM ISDN-Controller C4"
+AVMC2.DeviceDesc     = "AVM ISDN-Controller C2"
+AVMWAN.DeviceDesc    = "AVM NDIS WAN CAPI Driver"
+AVMB1PARAMS          = "System\CurrentControlSet\Services\b1cbase\Parameters"
+
+

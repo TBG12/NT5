@@ -1,0 +1,259 @@
+;;=============================================================================
+;;
+;; MPSSTLN.INF
+;;
+;; Install File for Stallion Technologies ATA Multi-Port adaptor cards.
+;;
+;; Stallion Technologies Copyright (C) 1990-2002
+;;
+;;=============================================================================
+
+
+[Version]
+signature="$Windows NT$"
+Class=MultiPortSerial
+ClassGuid={50906CB8-BA12-11D1-BF5D-0000F805F530}
+Provider=%StallionTechnologies%
+DriverVer=%DriverDateInfo%, %DriverVersionInfo%
+LayoutFile=layout.inf
+;; This is not being used as we are a 'system supplied' driver.
+;;CatalogFile=mpsstln.cat           ; digital signature file
+
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+
+
+[Manufacturer]
+%StallionTechnologies%=StallionMfg
+
+
+
+[StallionMfg]
+%EasyIO.DeviceDesc%        = EasyIO,              *STL0200
+%EC8/32-AT.DeviceDesc%     = EC8/32-AT,           *STL0410
+%EC8/64-AT.DeviceDesc%     = EC8/64-AT,           *STL0420
+
+%EasyIO-PCI.DeviceDesc%    = EasyIO-PCI,          PCI\VEN_124D&DEV_0003&SUBSYS_0002124D
+%EasyIO-PCI.DeviceDesc%    = EasyIO-PCI,          PCI\VEN_124D&DEV_0003&SUBSYS_0003124D
+%EasyIO-PCI.DeviceDesc%    = EasyIO-PCI,          PCI\VEN_124D&DEV_0003
+
+%EC8/32-PCI.DeviceDesc%    = EC8/32-PCI,          PCI\VEN_100B&DEV_D001&SUBSYS_FFFFFFFF
+%EC8/32-PCI.DeviceDesc%    = EC8/32-PCI,          PCI\VEN_100B&DEV_D001
+
+%EC8/64-PCI.DeviceDesc%    = EC8/64-PCI,          PCI\VEN_124D&DEV_0002&SUBSYS_0002124D
+%EC8/64-PCI.DeviceDesc%    = EC8/64-PCI,          PCI\VEN_124D&DEV_0002
+
+%ECP-PCI.DeviceDesc%       = ECP-PCI,             PCI\VEN_124D&DEV_0004&SUBSYS_0004124D
+%ECP-PCI.DeviceDesc%       = ECP-PCI,             PCI\VEN_124D&DEV_0004
+
+
+
+[EasyIO.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+LogConfig=EasyIO_def.NT.LogConfig,EasyIO.NT.LogConfig
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[EasyIO.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[EasyIO.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+[EasyIO-PCI.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[EasyIO-PCI.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[EasyIO-PCI.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+[EC8/32-AT.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+LogConfig=EC8/32-AT_def.NT.LogConfig,EC8/32-AT.NT.LogConfig
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[EC8/32-AT.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[EC8/32-AT.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+[EC8/64-AT.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+LogConfig=EC8/64-AT_def.NT.LogConfig,EC8/64-AT_poll.NT.LogConfig,EC8/64-AT.NT.LogConfig
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[EC8/64-AT.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[EC8/64-AT.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+[EC8/32-PCI.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[EC8/32-PCI.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[EC8/32-PCI.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+[EC8/64-PCI.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[EC8/64-PCI.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[EC8/64-PCI.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+[ECP-PCI.NT]
+AddReg=StallionMF.AddReg,StlnATA.AddReg
+CopyFiles=AtaDriver.copy,System-32.copy,HelpFile.copy
+[ECP-PCI.NT.Services]
+AddService=StlnATA,%SPSVCINST_ASSOCSERVICE%,StlnATA_Driver.AddService,StlnATA_EventLog.AddEventLog
+[ECP-PCI.NT.CoInstallers]
+CopyFiles=CoInstaller.copy
+AddReg=Stln.NT.CoInstaller.AddReg
+
+
+
+[EasyIO.NT.Factdef]
+ConfigPriority=HARDRECONFIG
+IRQConfig=10
+IOConfig=2a0-2a7(3ff::)
+
+[EasyIO_def.NT.LogConfig]
+ConfigPriority=NORMAL
+IRQConfig=10,3,4,5,7,11,12,15
+IOConfig=8@2a0-2a7%fff8(3ff::)
+
+[EasyIO.NT.LogConfig]
+ConfigPriority=SUBOPTIMAL
+IRQConfig=3,4,5,7,10,11,12,15
+IOConfig=8@200-3ff%fff8(3ff::)
+
+[EC8/32-AT.NT.Factdef]
+ConfigPriority=HARDRECONFIG
+IRQConfig=10
+IOConfig=2a0-2a1(3ff::)
+IOConfig=200-219(3ff::)
+
+[EC8/32-AT_def.NT.LogConfig]
+ConfigPriority=NORMAL
+IRQConfig=10,3,4,5,7,11,12,15
+IOConfig=2@2a0-2a1%fffe(3ff::)
+IOConfig=20@200-3ff%ffe0(3ff::)
+
+[EC8/32-AT.NT.LogConfig]
+ConfigPriority=SUBOPTIMAL
+IRQConfig=3,4,5,7,10,11,12,15
+IOConfig=2@200-3ff%fffe(3ff::)
+IOConfig=20@200-3ff%ffe0(3ff::)
+
+
+[EC8/64-AT.NT.Factdef]
+ConfigPriority=HARDRECONFIG
+IOConfig=2a0-2a3(3ff::)
+MemConfig=1000@D1000-E8FFF%FFFFF000
+
+[EC8/64-AT_def.NT.LogConfig]
+ConfigPriority=NORMAL
+IOConfig=4@2a0-2a3%fffc(3ff::)
+MemConfig=1000@C8000-E8FFF%FFFFF000
+
+[EC8/64-AT_poll.NT.LogConfig]
+ConfigPriority=SUBOPTIMAL
+IOConfig=4@200-3ff%fffc(3ff::)
+MemConfig=1000@C0000-E8FFF%FFFFF000
+
+[EC8/64-AT.NT.LogConfig]
+ConfigPriority=SUBOPTIMAL
+IRQConfig=3,4,5,7,10,11,12,15
+IOConfig=4@200-3ff%fffc(3ff::)
+MemConfig=1000@C0000-E8FFF%FFFFF000
+
+
+
+[StallionMF.AddReg]
+HKR,,Manufacturer,,%StallionTechnologies%
+
+[StlnATA.AddReg]
+HKR,,Product,,%StlnAtaProductName%
+HKR,,ServiceName,,%StlnATA%
+HKR,,NumPanels,%REG_DWORD%,0
+HKR,,TotalPorts,%REG_DWORD%,0
+HKR,,EnumPropPages32,, "StlnProp.dll, StlnBoardEnumPropPages"
+
+[Stln.NT.CoInstaller.AddReg]
+HKR,,CoInstallers32,0x00010000,"StlnCoIn.dll, StlnBoardClassCoInstaller" 
+
+
+[StlnATA_Driver.AddService]
+DisplayName=%StlnATA.ServiceDesc%
+ServiceType=%SERVICE_KERNEL_DRIVER%
+StartType=%SERVICE_DEMAND_START%
+ErrorControl=%SERVICE_ERROR_NORMAL%
+ServiceBinary=%12%\StlnATA.sys      ;12=drivers directory
+LoadOrderGroup=Extended Base
+
+
+[StlnATA_EventLog.AddEventLog]
+AddReg=StlnAta_EventLog_AddEventLog.AddReg
+ 
+[StlnAta_EventLog_AddEventLog.AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\StlnATA.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+
+[AtaDriver.copy]
+StlnATA.sys,,,2
+
+[System-32.copy]
+StlnProp.dll,,,2
+
+[HelpFile.copy]
+StlnProp.chm,,,2
+
+[CoInstaller.copy]
+StlnCoIn.dll,,,2
+
+
+[DestinationDirs]
+AtaDriver.copy       = 12          ; NT System32\Drivers directory
+System-32.copy       = 11          ; NT System32 directory
+HelpFile.copy        = 18          ; NT System  Help Files directory
+CoInstaller.copy     = 11          ; NT System32 directory
+DefaultDestDir       = 11          ; NT System32 directory
+
+
+[Strings]
+StallionTechnologies="Stallion Technologies"
+StlnAtaProductName="Stallion ATA Driver"
+StlnATA="StlnATA"
+DriverDateInfo = 06/12/2002
+DriverVersionInfo = 5.6.7.0
+
+EasyIO.DeviceDesc      = "Stallion EasyIO"
+EasyIO-PCI.DeviceDesc  = "Stallion EasyIO-PCI"
+EC8/32-AT.DeviceDesc   = "Stallion EasyConnection EC8/32-AT"
+EC8/64-AT.DeviceDesc   = "Stallion EasyConnection EC8/64-AT"
+EC8/32-PCI.DeviceDesc  = "Stallion EasyConnection EC8/32-PCI"
+EC8/64-PCI.DeviceDesc  = "Stallion EasyConnection EC8/64-PCI"
+ECP-PCI.DeviceDesc     = "Stallion EasyConnection ECRA-PCI"
+
+StlnATA.ServiceDesc="Stallion Technologies ATA Driver"
+
+SERVICE_KERNEL_DRIVER       = 0x1
+
+SERVICE_DEMAND_START   = 3
+
+SERVICE_ERROR_NORMAL   = 1
+
+SPSVCINST_ASSOCSERVICE   = 2
+
+
+REG_DWORD              = 0x00010001
+
+

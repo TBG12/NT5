@@ -1,0 +1,88 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  =   "$Windows NT$"
+Class      =   MultiFunction
+ClassGUID  =   {4d36e971-e325-11ce-bfc1-08002be10318}
+Provider   =   %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,1.22.2.0
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%XIRCOM%   = Xircom
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Xircom]
+%CEM28.DevDesc%   = Mfg28.mf, PCMCIA\XIRCOM-CREDITCARD_ETHERNET+MODEM_III-D1A2
+%CEM28.DevDesc%   = Mfg28.mf, PCMCIA\XIRCOM-CREDITCARD_ETHERNET+MODEM_III-592B
+%CEM28.DevDesc%   = Mfg28.mf, PCMCIA\XIRCOM-CREDITCARD_ETHERNET+MODEM_28.8-C346
+%CEM28.DevDesc%   = Mfg28.mf, PCMCIA\XIRCOM-CREDITCARD_ETHERNET+MODEM_28.8-C6CB
+                           
+[Mfg28.mf]
+
+[Mfg28.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+[Mfg28.mf.HW]
+AddReg=Mfg28.mf.RegHW
+
+[Mfg28.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\XIRCOMCEM28_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\XIRCOMCEM28_DEV1
+HKR,Child0001,ResourceMap,1,00,01,02,03,04
+
+[Mfg28.mf.LogConfigOverride]
+LogConfig=Mfg28.mf.Override0
+LogConfig=Mfg28.mf.Override1
+LogConfig=Mfg28.mf.Override2
+LogConfig=Mfg28.mf.Override3
+
+[Mfg28.mf.Override0]    ;com3
+IOConfig=3e8-3ef
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=61:10000(W)
+
+[Mfg28.mf.Override1]    ;com2
+IOConfig=2f8-2ff
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=41:10000(W)
+
+[Mfg28.mf.Override2]    ;com4
+IOConfig=2e8-2ef
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=61:10000(W)
+
+[Mfg28.mf.Override3]    ;com1
+IOConfig=3f8-3ff
+IOConfig=20@100-FFFF%FFE0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=4000@0-FFFFFF%FFFFC000
+PcCardConfig=41:10000(W)
+
+[Strings]
+XIRCOM          = "Xircom"
+MSFT            = "Microsoft"
+CEM28.DevDesc   = "Xircom CreditCard Ethernet+Modem 28.8 Parent"
+MFClassName     = "Multifunction PCMCIA Device Driver"

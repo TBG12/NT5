@@ -1,0 +1,18 @@
+:Base MQPSUI
+:Title MINOLTA-QMS PostScript Driver
+1 Overview=Overview
+1 Supported Printers=list
+1 Features Tab
+2 Features Tab=IDD_FEATURES
+3 Advanced Graphics Dialog=IDD_IMAGE
+3 Advanced Color Dialog=IDD_COLOR
+3 PostScript Options Dialog=IDD_POSTSCRIPT
+1 Overlays Tab
+2 Overlays Tab=IDD_OVERLAY
+2 Watermarks Dialog=IDD_WMARK
+1 About Tab
+2 About Tab=IDD_ABOUT
+1 Settings Tab
+2 Settings Tab=IDD_SETTINGS
+1 Consumables Tab
+2 Consumables Tab=IDD_CONSUME

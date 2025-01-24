@@ -1,0 +1,19 @@
+*%%
+*%% Copyright (c) 1997 - 1999 Microsoft Corporation
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%% All Rights Reserved.
+*%%
+*%%	+++++++++++++++++++++++++++++++++
+*%%	++ The model specific GPD file ++
+*%%	+++++++++++++++++++++++++++++++++
+
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.000"
+*GPDFileName: "CN4000.GPD"
+*GPDFileVersion: "1.0"
+*CodePage: 1252
+*ModelName: "Canon imageCLASS 4000 PCL 5e"
+
+*Include: "CN3260C.GPD"

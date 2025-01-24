@@ -1,0 +1,149 @@
+;
+;
+; Installation inf for the Intel Corporation AIM controller
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%Intel%
+LayoutFile=layout.inf
+Class=DisplayCodec
+ClassGUID={E6ABB47D-8339-4c60-BE92-E9045FF5A33D}
+DriverVer=07/18/2002
+
+[DestinationDirs]
+DefaultDestDir   = 12
+iAimTV6.Miniport  = 12 ;
+iAimTV6.MiniportNT  = 12 ;
+
+;
+; Driver information
+;
+[Manufacturer]
+%Intel%   = Intel.Mfg
+
+[Intel.Mfg]
+%AimDriver.DeviceDesc% = iAimTV6, DISPLAY\wATV06nt
+
+[ClassInstall]
+Addreg=AIMClass.AddReg
+
+
+[ClassInstall32]
+Addreg=AIMClass.AddRegNT
+
+;
+; General installation section
+;
+
+[iAimTV6]
+Addreg = iAimTV6.Addreg
+CopyFiles=@wATV06nt.sys
+
+[iAimTV6.NT]
+Addreg = iAimTV6.AddregNT
+CopyFiles=@wATV06nt.sys
+
+
+[iAimTV6.Addreg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,wATV06nt.sys
+HKR,,DevicePNPID,wATV06nt
+HKR,,DriverDesc,,%AimDriver.DeviceDesc%
+
+[iAimTV6.AddregNT]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,wATV06nt.sys
+HKR,,DevicePNPID,,wATV06nt
+HKR,,DriverDesc,,%AimDriver.DeviceDesc%
+
+[AIMClass.AddReg]
+HKR,,,,%AimClass.Desc%
+;HKR,,Class,,DisplayCodec
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+ 
+[AIMClass.AddRegNT]
+HKR,,,,%AimClass.Desc%
+HKR,,Class,,DisplayCodec
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+
+[iAimTV6.Interfaces]
+AddInterface=%AimChildIntfGUID%,"GLOBAL",AimChildInterface,
+
+[AimChildInterface]
+AddReg=AimChildInterface.AddReg
+
+[AimChildInterface.AddReg]
+HKR,,Class,,%AimClassGUID%
+HKR,,FriendlyName,,%AimDriver.FriendlyName%
+
+;
+; Service Installation
+;
+[iAimTV6.Services]
+AddService = iAimTV6, 0x00000002, iAimTV6_Service_Inst, iAimTV6_EventLog_Inst
+
+
+[iAimTV6.NT.Services]
+AddService = iAimTV6, 0x00000002, iAimTV6_Service_Inst, iAimTV6_EventLog_Inst
+
+[iAimTV6_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\wATV06nt.sys
+
+[iAimTV6_EventLog_Inst]
+AddReg = iAimTV6_EventLog_AddReg
+
+[iAimTV6_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\wATV06nt.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId       = "Intel(R) AIM Drivers TV Disk"
+Intel      = "Intel Corporation"
+;
+;
+;
+; These do not change - ever !
+;
+AimClassGUID="{E6ABB47D-8339-4c60-BE92-E9045FF5A33D}"
+AimChildIntfGUID="{E87E75CE-0792-4534-AB89-5CFC95747B77}"
+
+;
+;
+; Do not change this line !
+;
+AimClass.Desc="Intel AIM Codec"
+;
+;
+; Put device specifics here ->
+;
+AimDriver.DeviceDesc="Intel(r) AIM External TV Encoder Driver 2"
+AimDriver.FriendlyName="Intel(r) AIM External TV Enc Driver 2"

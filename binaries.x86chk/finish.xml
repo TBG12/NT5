@@ -1,0 +1,28 @@
+﻿<SimpleDialog>
+	<Title BottomMargin="1">
+		<Text><![CDATA[]]></Text>
+        <Property Name="TitleTemplate"><![CDATA[Results for %1 are displayed. Click an option below to see other results.]]></Property>
+        <Property Name="EmptyTitleTemplate"><![CDATA[Click an option below to see other results.]]></Property>
+	</Title>
+	<Link Id="5400" IconId="290" TopMargin="5">
+		<Text><![CDATA[&Send search to more search engines]]></Text>
+	</Link>
+	
+	<Link Id="5002" IconId="24000" TopMargin="5" BottomMargin="5">
+		<Text><![CDATA[Highlight &words on the results page]]></Text>
+	</Link>
+
+	<WebLink IconId="1005" >
+	<URL><![CDATA[http://sa.windows.com/sasearch/safeedback/scfeed.htm]]></URL>
+		<Text><![CDATA[Tell us what you think of these results]]></Text>
+	</WebLink>
+
+
+	<Label TopMargin="8" BottomMargin="2">
+		<Text><![CDATA[&Change current search:]]></Text>
+	</Label>
+	<SpellEdit Height="48" Id="5001" AutoComplete="2" />
+	<Link Id="5006" IconId="23" TopMargin="10">
+		<Text><![CDATA[Start a &new search]]></Text>
+	</Link>
+</SimpleDialog>

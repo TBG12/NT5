@@ -1,0 +1,114 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,1.22.4.0
+
+[Manufacturer]
+%V_3Com% = 3Com
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3Com]
+%EL556.DeviceDesc%=EL556A.ndi,PCI\VEN_10B7&DEV_6055
+%EL556.DeviceDesc%=EL556A.ndi,PCI\VEN_10B7&DEV_6055&SUBSYS_625610B7&REV_10
+%EL556.DeviceDesc%=EL556A.ndi,PCI\VEN_10B7&DEV_6055&SUBSYS_645610B7&REV_10
+%EL556.DeviceDesc%=EL556B.ndi,PCI\VEN_10B7&DEV_6056&SUBSYS_655610B7&REV_20
+%EL556.DeviceDesc%=EL556B.ndi,PCI\VEN_10B7&DEV_6056&SUBSYS_635610B7&REV_20
+
+[EL556A.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = EL556.delreg
+AddReg          = Params.reg, EL556.reg
+CopyFiles       = EL556.CopyFiles
+
+[EL556A.ndi.NT.Services]
+AddService = EL556ND5, 2, EL556.Service, common.EventLog
+
+[EL556B.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+DelReg          = EL556.delreg
+AddReg          = Params.reg, EL556.reg
+CopyFiles       = EL556.CopyFiles
+
+[EL556B.ndi.NT.Services]
+AddService = EL556ND5, 2, EL556.Service, common.EventLog
+
+[EL556.reg]
+HKR, Ndi,                       Service,    0, "EL556ND5"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+[EL556.Service]
+DisplayName     = %EL556ex.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\EL556ND5.sys
+LoadOrderGroup  = NDIS
+
+[Params.reg]
+HKR, Ndi\params\LinkSelection,      ParamDesc,  0,  %NLS%
+HKR, Ndi\params\LinkSelection,      type,       0,  "enum"
+HKR, Ndi\params\LinkSelection,      default,    0,  "1"
+HKR, Ndi\params\LinkSelection\enum, 1,          0,  %AN%
+HKR, Ndi\params\LinkSelection\enum, 2,          0,  %F100%
+HKR, Ndi\params\LinkSelection\enum, 3,          0,  %H100%
+HKR, Ndi\params\LinkSelection\enum, 4,          0,  %F10%
+HKR, Ndi\params\LinkSelection\enum, 5,          0,  %H10%
+
+HKR,,RWUMAGIC,,"1"
+HKR,,RWULINK,,"1"
+HKR,,RWUPING,,"1"
+
+HKR, 0,                             TCAUDIAG,   0,  "TCAUM556"
+HKLM,Software\3Com\TCAUDIAG\TCAUM556,DriverNames,  0,  "%12%\EL556ND5.SYS"
+
+[EL556.delreg]
+HKR,,RWULINK
+HKR,,RWUMAGIC
+HKR,,RWUPING
+HKR,,MediaType
+HKR, Ndi
+HKR, NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[EL556.CopyFiles]
+EL556ND5.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir  = 12
+EL556.CopyFiles = 12
+
+[SourceDisksFiles]
+EL556ND5.sys=1
+
+[Strings]
+Msft                    = "Microsoft"
+V_3Com                  = "3Com"
+NLS                     = "Network Link Selection"
+AN                      = "Auto Negotiation"
+F100                    = "100BTX Full Duplex"
+H100                    = "100BTX Half Duplex"
+F10                     = "10BT Full Duplex"
+H10                     = "10BT Half Duplex"
+On                      = "On"
+Off                     = "Off"
+WakeMagic               = "Wake On Magic"
+WakeLink                = "Wake On Link"
+WakePattern             = "Wake On Pattern"
+EL556.DeviceDesc        = "3Com 10/100 Mini PCI Ethernet Adapter"
+EL556ex.Service.DispName= "3Com 10/100 MiniPCI Ethernet Adapter Driver"

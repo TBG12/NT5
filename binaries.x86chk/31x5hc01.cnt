@@ -1,0 +1,23 @@
+:Base 31X5HC01.HLP
+:Title Océ Online Help Win 2000 Printerdriver
+1 How to
+2 Add a profile=IDH_Adding_a_profile_procedure>second
+2 Delete a profile=IDH_Deleting_a_profile_procedure>second
+2 Select a profile=IDH_Selecting_a_profile_procedure>second
+2 Change units of measure=IDH_Changing_units_of_measure_procedure>second
+2 Choose the mailbox option=Choosing_the_mailbox_option_procedure>second
+2 Print a watermark=IDH_Printing_a_watermark_procedure>second
+2 Set a profile path=IDH_Setting_a_profile_path_procedure>second
+2 Select the mailbox option=Selecting_the_mailbox_option_pocedure>second
+1 Tabbed cards
+2 Job tab=HIDC_JOBTAB>second
+2 Page tab=HIDC_PAGETAB>second
+2 Image/quality tab=HIDC_QUALTAB>second
+2 Output tab=HIDC_OUTPUTTAB>second
+2 Device tab=HIDC_DEVICE_TAB>second
+1 Solving problems
+2 Print limit exceeded=IDH_Print_limit_exceeded>second
+2 Image does not fit onto the paper=IDH_Image_does_not_fit_onto_the_paper>second
+1 About using help
+2 What is this=IDH_what_this>second
+2 About this help=IDH_about_this_help>second

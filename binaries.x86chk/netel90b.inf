@@ -1,0 +1,314 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+LayoutFile  = layout.inf
+signature   = "$Windows NT$"
+Class       = Net
+provider    = %MSFT%
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+DriverVer=10/01/2002,4.25.0.0
+
+[Manufacturer]
+%3COM%      = 3COM
+
+[ControlFlags]
+ExcludeFromSelect    =	*
+
+[3COM]
+%900BTPO.DeviceDesc% = EL90BC.900BTPO.NDI, PCI\VEN_10b7&DEV_9004 
+%900BC.DeviceDesc%   = EL90BC.900BC.NDI,   PCI\VEN_10b7&DEV_9005 
+%900BTPC.DeviceDesc% = EL90BC.900BTPC.NDI, PCI\VEN_10b7&DEV_9006 
+%900BFL.DeviceDesc%  = EL90BC.900BFL.NDI,  PCI\VEN_10b7&DEV_900A 
+
+%905CDLX.DeviceDesc% = EL90BC.905CDLX.NDI, PCI\VEN_10b7&DEV_9058
+%905BFX.DeviceDesc%  = EL90BC.905BFX.NDI,  PCI\VEN_10b7&DEV_905A 
+%905BTX.DeviceDesc%  = EL90BC.905BTX.NDI,  PCI\VEN_10b7&DEV_9055&SUBSYS_905510B7
+%905CTX.DeviceDesc%  = EL90BC.905CTX.NDI,  PCI\VEN_10b7&DEV_9200&SUBSYS_100010B7
+
+%9200LOM.DeviceDesc% = EL90BC.905CTX.NDI,  PCI\VEN_10b7&DEV_9200
+%9200LOM.DeviceDesc% = EL90BC.905CTX.NDI,  PCI\VEN_10B7&DEV_9200&SUBSYS_3350107B&REV_78
+%9200LOM.DeviceDesc% = EL90BC.905CTX.NDI,  PCI\VEN_10B7&DEV_9200&SUBSYS_3350107B
+%9055LOM.DeviceDesc% = EL90BC.905BTX.NDI,  PCI\VEN_10b7&DEV_9055
+
+%3CSOHO.DeviceDesc%  = EL90BC.3CSOHO.NDI,  PCI\VEN_10b7&DEV_7646
+%3C450.DeviceDesc%   = EL90BC.3C450.NDI,   PCI\VEN_10B7&DEV_4500&SUBSYS_450010B7
+
+;-------------------------------------------------------------------------------
+; 3c90BC Network Device Section (X86)
+;
+
+[EL90BC.900BTPO.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.tpo
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.900BTPO.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.900BC.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.bc
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.900BC.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.900BTPC.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.tpc
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.900BTPC.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.900BFL.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.fl
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.900BFL.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.905CDLX.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.cdlx
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.905CDLX.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.905BFX.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.fx
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.905BFX.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.905BTX.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.tx
+DelReg          = EL90BC.delreg
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.905BTX.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.905CTX.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.tx
+DelReg          = EL90BC.delreg
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.905CTX.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.3CSOHO.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.tx
+DelReg          = EL90BC.delreg
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.3CSOHO.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+[EL90BC.3C450.ndi]
+AddReg          = EL90BC.reg, EL90BC.params, EL90BC.params.media.tx
+DelReg          = EL90BC.delreg
+CopyFiles       = EL90BC.CopyFiles
+Characteristics = 0x84
+BusType         = 5
+
+[EL90BC.3C450.ndi.Services]
+AddService      = EL90XBC, 2, EL90BC.Service, EL90BC.EventLog
+
+
+
+;-------------------------------------------------------------------------------
+; EL90BC Parameters 
+;
+[EL90BC.delreg]
+HKR, Media_type\enum
+
+[EL90BC.params]
+HKR, Ndi\params\8021psupport,         ParamDesc,       0, %8021p%
+HKR, Ndi\params\8021psupport,         type,            0, "enum"
+HKR, Ndi\params\8021psupport,         default,         0, "DISABLE"
+HKR, Ndi\params\8021psupport\enum,    ENABLE,          0, %ENABLE%
+HKR, Ndi\params\8021psupport\enum,    DISABLE,         0, %DISABLE%
+
+HKR, Ndi\params\flowcontrol,          ParamDesc,       0, %flowcontrol% 
+HKR, Ndi\params\flowcontrol,          type,            0, "enum"
+HKR, Ndi\params\flowcontrol,          default,         0, "ENABLE"
+HKR, Ndi\params\flowcontrol\enum,     ENABLE,          0, %ENABLE%
+HKR, Ndi\params\flowcontrol\enum,     DISABLE,         0, %DISABLE%
+
+HKR, NDI\params\NetworkAddress,       ParamDesc,       0, %NetworkAddress%
+HKR, NDI\params\NetworkAddress,       type,            0, "edit"
+HKR, NDI\params\NetworkAddress,       LimitText,       0, "12"
+HKR, NDI\params\NetworkAddress,       UpperCase,       0, "1"
+HKR, NDI\params\NetworkAddress,       default,         0, " "
+HKR, NDI\params\NetworkAddress,       optional,        0, "1"
+
+HKR, Ndi\params\RxChecksum,           ParamDesc,       0, %rx_checksum%
+HKR, Ndi\params\RxChecksum,           type,            0, "enum"
+HKR, Ndi\params\RxChecksum,           default,         0, "ENABLE"
+HKR, Ndi\params\RxChecksum\enum,      ENABLE,          0, %ENABLE%
+HKR, Ndi\params\RxChecksum\enum,      DISABLE,         0, %DISABLE%
+
+HKR, Ndi\params\TxChecksum,           ParamDesc,       0, %tx_checksum%
+HKR, Ndi\params\TxChecksum,           type,            0, "enum"
+HKR, Ndi\params\TxChecksum,           default,         0, "ENABLE"
+HKR, Ndi\params\TxChecksum\enum,      ENABLE,          0, %ENABLE%
+HKR, Ndi\params\TxChecksum\enum,      DISABLE,         0, %DISABLE%
+
+[EL90BC.params.media.tx]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      100FULL,         0, %media_100_full%
+HKR, Ndi\params\Media_type\enum,      100HALF,         0, %media_100_half%
+HKR, Ndi\params\Media_type\enum,      10FULL,          0, %media_10_full%
+HKR, Ndi\params\Media_type\enum,      10HALF,          0, %media_10_half%
+
+[EL90BC.params.media.tpo]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      10FULL,          0, %media_10_full%
+HKR, Ndi\params\Media_type\enum,      10HALF,          0, %media_10_half%
+
+[EL90BC.params.media.tpc]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      10FULL,          0, %media_10_full%
+HKR, Ndi\params\Media_type\enum,      10HALF,          0, %media_10_half%
+HKR, Ndi\params\Media_type\enum,      10BASE2,         0, %media_10Base2%
+
+[EL90BC.params.media.bc]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      10FULL,          0, %media_10_full%
+HKR, Ndi\params\Media_type\enum,      10HALF,          0, %media_10_half%
+HKR, Ndi\params\Media_type\enum,      10BASE2,         0, %media_10Base2%
+HKR, Ndi\params\Media_type\enum,      10AUI,           0, %media_10AUI%
+
+[EL90BC.params.media.cdlx]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      100FULL,         0, %media_100_full%
+HKR, Ndi\params\Media_type\enum,      100HALF,         0, %media_100_half%
+HKR, Ndi\params\Media_type\enum,      10FULL,          0, %media_10_full%
+HKR, Ndi\params\Media_type\enum,      10HALF,          0, %media_10_half%
+HKR, Ndi\params\Media_type\enum,      10BASE2,         0, %media_10Base2%
+HKR, Ndi\params\Media_type\enum,      10AUI,           0, %media_10AUI%
+
+[EL90BC.params.media.fx]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      100FXFULL,       0, %media_100Fx_full%
+HKR, Ndi\params\Media_type\enum,      100FXHALF,       0, %media_100Fx_half%
+
+[EL90BC.params.media.fl]
+HKR, Ndi\params\Media_type,           ParamDesc,       0, %media_type%
+HKR, Ndi\params\Media_type,           type,            0, "enum"
+HKR, Ndi\params\Media_type,           default,         0, "AUTOSELECT"
+HKR, Ndi\params\Media_type\enum,      AUTOSELECT,      0, %media_auto%
+HKR, Ndi\params\Media_type\enum,      10FLFULL,        0, %media_10Fl_full%
+HKR, Ndi\params\Media_type\enum,      10FLHALF,        0, %media_10Fl_half%
+
+;-------------------------------------------------------------------------------
+; 3Com EtherLink 90XBC Service and Driver
+;
+[EL90BC.reg]
+HKR, Ndi,               Service,    0, "EL90XBC"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+[el90BC.Service]
+DisplayName     = %el90BC.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\el90xbc5.sys
+LoadOrderGroup  = NDIS
+
+[el90bc.EventLog]
+AddReg = el90bc.AddEventLog.reg
+
+[el90bc.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR,, TypesSupported,   0x00010001, 7
+
+[EL90bc.CopyFiles]
+el90xbc5.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir   = 12
+el90bc.CopyFiles = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+MSFT                   = "Microsoft"
+3COM                   = "3Com"
+
+flowcontrol            = "Flow Control"
+DISABLE                = "Disable"
+ENABLE                 = "Enable"
+8021p                  = "802.1p Support"
+media_type             = "Media Type"
+media_auto             = "Auto Select"
+media_10_full          = "10 Mbps Full-Duplex"
+media_10_half          = "10 Mbps Half-Duplex"
+media_100_full         = "100 Mbps Full-Duplex"
+media_100_half         = "100 Mbps Half-Duplex"
+media_100Fx_full       = "100BaseFx"
+media_100Fx_half       = "100BaseFx"
+media_10Fl_full        = "10BaseFl"
+media_10Fl_half        = "10BaseFl"
+media_10Base2          = "10Base2"
+media_10AUI            = "10AUI"
+NetworkAddress         = "Network Address"
+rx_checksum            = "Rx Checksum Offload"
+tx_checksum            = "Tx Checksum Offload"
+
+900BTPO.DeviceDesc     = "3Com 3C900B-TPO Ethernet Adapter (Generic)"
+900BC.DeviceDesc       = "3Com 3C900B-COMBO Ethernet Adapter (Generic)"
+900BTPC.DeviceDesc     = "3Com 3C900B-TPC Ethernet Adapter (Generic)"
+900BFL.DeviceDesc      = "3Com 3C900B-FL Ethernet Adapter (Generic)"
+905BFX.DeviceDesc      = "3Com 3C905B-FX Fast Ethernet Adapter (Generic)"
+905CDLX.DeviceDesc     = "3Com 3C905B-COMBO Fast Ethernet Adapter (Generic)"
+9200LOM.DeviceDesc     = "3Com 3C920 Integrated Fast Ethernet Controller (3C905C-TX Compatible)"
+9055LOM.DeviceDesc     = "3Com 3C918 Integrated Fast Ethernet Controller (3C905B-TX Compatible)"
+
+;Devices with PCI SSVID
+905BTX.DeviceDesc      = "3Com EtherLink XL 10/100 PCI TX NIC (3C905B-TX)"
+905CTX.DeviceDesc      = "3Com EtherLink XL 10/100 PCI For Complete PC Management NIC (3C905C-TX)"
+
+3CSOHO.DeviceDesc      = "3Com 3CSOHO Fast Ethernet Adapter"
+3C450.DeviceDesc       = "3Com 3C450 Fast Ethernet Adapter"
+
+
+el90bc.Service.DispName = "3Com EtherLink XL 90XB/C Adapter Driver"
+

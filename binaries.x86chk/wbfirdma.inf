@@ -1,0 +1,126 @@
+;
+; wbfirdma.inf
+;
+
+[Version]
+LayoutFile  = layout.inf
+Signature   = "$Windows NT$"
+Class       = Infrared
+ClassGUID   = {6bdd1fc5-810f-11d0-BEC7-08002BE2092F}
+Provider    = %WB%
+DriverVer   = 05/18/2001
+
+[DestinationDirs]
+DefaultDestDir =12
+
+[Manufacturer]
+"Winbond Electronics Corp."=WB_Devices
+
+[ControlFlags]
+ExcludeFromSelect=*WEC0510
+
+[WB_Devices]
+%W83A.DeviceDesc%       = W83A.ndi, *WEC0510
+
+[W83A.ndi]
+DeviceID        = *WEC0510
+DelReg          = WB_DelReg
+AddReg          = WB_AddReg, TurnAroundTime_Addreg, Dongle_Addreg, Speed_Addreg, Help_AddReg
+MaxInstance     = 1
+BusType         = 1
+Characteristics = 0x4  ; NCF_PHYSICAL
+CopyFiles       = WB_CopyFiles
+SyssetupPnPFlags=1
+
+[W83A.ndi.Services]
+AddService      = WBFIRDMA, 2, WBFIRDMA.AddService, common.EventLog
+
+[W83A.ndi.Coinstallers]
+DelReg=WB_DelCoinstallers
+
+
+
+[WB_CopyFiles]
+wbfirdma.sys,,,2
+
+
+[WB_AddReg]
+HKR,Ndi           , Service    , 0, "WBFIRDMA"
+HKR,NDI\Interfaces, DefUpper   , 0, %UpperInterface%
+HKR,NDI\Interfaces, UpperRange , 0, %UpperInterface%
+HKR,Ndi\Interfaces, DefLower   , 0, %LowerInterface%
+HKR,Ndi\Interfaces, LowerRange , 0, %LowerInterface%
+HKR,Ndi           , RequiredAll, 0, "MS_IrDA"
+
+[TurnAroundTime_AddReg]
+HKR,Ndi\params\TurnAroundTime,default,,"1000"
+
+HKR,Ndi\params\TurnAroundTime,ParamDesc,,"Turn Around Time"
+HKR,Ndi\params\TurnAroundTime,flag,1,20,00,00,00
+HKR,Ndi\params\TurnAroundTime,type,,enum
+HKR,Ndi\params\TurnAroundTime\enum, "500",," 500 uc"
+HKR,Ndi\params\TurnAroundTime\enum,"1000",,"1000 uc"
+HKR,Ndi\params\TurnAroundTime\enum,"5000",,"5000 uc"
+
+[Dongle_Addreg]
+HKR,Ndi\params\InfraredTransceiverType,default,,"0"
+
+HKR,Ndi\params\InfraredTransceiverType,ParamDesc,,"Infrared Transceiver"
+HKR,Ndi\params\InfraredTransceiverType,flag,1,20,00,00,00
+HKR,Ndi\params\InfraredTransceiverType,type,,enum
+HKR,Ndi\params\InfraredTransceiverType\enum,"0",,"HP HSDL-1100/2100"
+HKR,Ndi\params\InfraredTransceiverType\enum,"1",,"IBM"
+HKR,Ndi\params\InfraredTransceiverType\enum,"2",,"SHARP"
+HKR,Ndi\params\InfraredTransceiverType\enum,"3",,"TEMIC"
+HKR,Ndi\params\InfraredTransceiverType\enum,"4",,"TI"
+HKR,Ndi\params\InfraredTransceiverType\enum,"5",,"HP HSDL-2300/3600"
+
+
+[Speed_Addreg]
+HKR,NDI\params\MaxConnectRate,default,,"4000000"
+
+HKR,NDI\params\MaxConnectRate,ParamDesc,,"Maxiumum Connect Rate"
+HKR,NDI\params\MaxConnectRate,type,,enum
+HKR,NDI\params\MaxConnectRate\enum,   "9600",,"   9600"
+HKR,NDI\params\MaxConnectRate\enum,  "19200",,"  19200"
+HKR,NDI\params\MaxConnectRate\enum,  "38400",,"  38400"
+HKR,NDI\params\MaxConnectRate\enum,  "57600",,"  57600"
+HKR,NDI\params\MaxConnectRate\enum, "115200",," 115200"
+HKR,NDI\params\MaxConnectRate\enum, "576000",," 576000"
+HKR,NDI\params\MaxConnectRate\enum,"1152000",,"1152000"
+HKR,NDI\params\MaxConnectRate\enum,"4000000",,"4000000"
+
+[Help_Addreg]
+HKR,NDI,HelpText,0,%IRMINI_HELP%
+
+[NSC_DelReg]
+HKR,,EnumPropPages32
+
+[NSC_DelCoinstallers]
+HKR,,CoInstallers32
+
+[WBFIRDMA.AddService]
+DisplayName    = %WBFIRDMA.ServiceDesc%
+ServiceType    = 1                          ; %SERVICE_KERNEL_DRIVER%
+StartType      = 3                          ; %SERVICE_DEMAND_START%
+ErrorControl   = 1                          ; %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\wbfirdma.sys          ; 12=drivers directory
+LoadOrderGroup = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+[Strings]
+IRMINI_HELP="The IrDA infrared port.  It can be used to establish wireless serial and network links to other computers."
+UpperInterface      ="ndisirda"
+LowerInterface      ="nolower"
+WBFIRDMA.ServiceDesc="Winbond Infrared Device Driver"
+W83A.DeviceDesc     ="Winbond Fast Infrared Controller(DMA)"
+W83977A.DeviceDesc  ="Winbond W83977A FIR Controller  (DMA)"
+W83877A.DeviceDesc  ="Winbond W83877A FIR Controller  (DMA)"
+V_CLASSNAME         ="Infrared adapters"
+WB=Winbond Electronics Corp.
+

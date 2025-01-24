@@ -1,0 +1,213 @@
+;***************************************************************************
+;
+; netcicap.inf
+; Xircom
+; Copyright 1999-2001 Microsoft
+;
+;***************************************************************************
+[Version]
+Signature    = "$Windows NT$"
+Class        = Net
+ClassGUID    = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider     = %MS%
+Layoutfile   = Layout.inf
+DriverVer    =07/01/2001,5.1.2535.0
+
+[Manufacturer]
+%PROVIDER%=Cards
+
+[Cards]
+%XIRCOM_CREDITCARD_DISP%= XIRCOM_CREDITCARD, "PCMCIA\Xircom_Inc._-CreditCard_ISDN_Adapter___-26B3"
+%XIRCOM_CREDITCARD_DISP%= XIRCOM_CREDITCARD, "PCMCIA\Xircom_Inc._-CreditCard_ISDN_Adapter___-C9E1"
+%VINWM_DISP%= VINWM2, "IXB\CICAPVINWM2"
+
+[ControlFlags]
+ExcludeFromSelect = PCMCIA\Xircom_Inc._-CreditCard_ISDN_Adapter___-26B3
+ExcludeFromSelect = PCMCIA\Xircom_Inc._-CreditCard_ISDN_Adapter___-C9E1
+ExcludeFromSelect = IXB\CICAPVINWM2
+
+[XIRCOM_CREDITCARD]
+AddReg           = Common.AddReg,XIRCOM_CREDITCARD.AddReg,CICAP.AddReg,1xBri.AddReg
+CopyFiles        = CICAP.Drv.cf,Capi.cf
+Characteristics  = %NCF_PHYSICALUI%
+BusType          = %PCMCIA%
+
+[XIRCOM_CREDITCARD.Services]
+AddService = Cicap,2,Service.CICAP,Common.EventLog
+
+[XIRCOM_CREDITCARD.AddReg]
+HKR,Ndi,Service,0,"Cicap"
+HKR,VendorSpecific,CardType,%REG_DW%,4098
+HKR,VendorSpecific,CardRevision,%REG_DW%,0
+HKR,,IsdnSwitchTypes,%REG_DW%,0x196
+HKR,VendorSpecific,ServiceId,%REG_MSZ%,"IXB\CICAPVINWM2"
+HKR,VendorSpecific,ServiceName,%REG_MSZ%,"unknown"
+
+[XIRCOM_CREDITCARD.CoInstallers]
+CopyFiles=CoInst.cf
+AddReg=CoInstallers.AddReg,1xBri.AddReg,CICAP.Coinst.AddReg
+
+[VINWM2]
+DriverVer        = 03/12/2001,2.1.0.8
+AddReg           = VINWM2.AddReg,VINWM.AddReg.Parameters
+CopyFiles        = vinwm.cf
+Characteristics  = 0x09  ; NCF_VIRTUAL | NCF_HIDDEN
+
+[VINWM2.Services]
+AddService = vinwm,2,Service.vinwm,Common.EventLog
+
+[VINWM2.AddReg]
+HKR,Ndi,Service,0,"vinwm"
+HKR,Ndi\Interfaces,UpperRange,0,"ndiswan"
+HKR,Ndi\Interfaces,LowerRange,0,"nolower"
+HKR,,WanEndpoints,%REG_DW%,"2"
+HKR,,MinWanEndpoints,%REG_DW%,"0"
+HKR,,MaxWanEndpoints,%REG_DW%,"2"
+HKR,VendorSpecific,ParentId,%REG_SZ%,NO
+HKR,VendorSpecific,ParentLineId,%REG_DW%,0
+
+[VINWM2.CoInstallers]
+CopyFiles=CoInst.cf
+AddReg=WANMiniportCoInstaller.AddReg
+
+[VINWM.AddReg.Parameters]
+HKR,,MediaType,%REG_SZ%,"ISDN"
+HKR,,DeviceName,%REG_SZ%,"CreditCard ISDN"
+HKR,VendorSpecific,ConfigFlags,%REG_DW%,0x0000001d
+
+[Common.AddReg]
+HKR,VendorSpecific,CardOrdinal,%REG_DW%,1
+HKR,,IsdnAutoSwitchDetect,%REG_DW%,"0"
+HKR,0\VendorSpecific,BChannelBundling,%REG_DW%,0
+HKR,0\VendorSpecific,BChannelMask,%REG_DW%,0
+HKR,0\VendorSpecific,CodingLaw,%REG_DW%,0
+HKR,0\VendorSpecific,CompressionEnable,%REG_DW%,0
+HKR,0\VendorSpecific,CompressionType,%REG_DW%,0
+HKR,0\VendorSpecific,DChannelOn,%REG_DW%,1
+HKR,0\VendorSpecific,EAZMappingTable,%REG_MSZ%,"0","1","2","3","4","5","6","7","8","9"
+HKR,0\VendorSpecific,FaxDisableECM,%REG_DW%,0
+HKR,0\VendorSpecific,FaxMaxTransmissionRate,%REG_DW%,0
+HKR,0\VendorSpecific,FirstBChannel,%REG_DW%,1
+HKR,0\VendorSpecific,FixedTEI,%REG_DW%,0
+HKR,0\VendorSpecific,FramingFormat,%REG_DW%,5
+HKR,0\VendorSpecific,LastBChannel,%REG_DW%,0x1e
+HKR,0\VendorSpecific,LineAccess,%REG_DW%,0x0
+HKR,0\VendorSpecific,LineBitrate,%REG_DW%,0x1
+HKR,0\VendorSpecific,LineCode,%REG_DW%,0x3
+HKR,0\VendorSpecific,MaxModemRate,%REG_DW%,0
+HKR,0\VendorSpecific,FaxOutputLevel,%REG_DW%,0
+HKR,0\VendorSpecific,ModelType,%REG_SZ%,""
+HKR,0\VendorSpecific,PointToMultipoint,%REG_DW%,0x1
+HKR,0\VendorSpecific,PrimaryClockSourceOn,%REG_DW%,0x0
+HKR,0\VendorSpecific,RegistryVersion,%REG_DW%,0x100
+HKR,0\VendorSpecific,SASAutoChgSessKey,%REG_DW%,0x000003e8
+HKR,0\VendorSpecific,SASAutoSign,%REG_DW%,0x000003e8
+HKR,0\VendorSpecific,SASCertificateData,%REG_DW%,0x0
+HKR,0\VendorSpecific,SASCertificateLen,%REG_DW%,0x0
+HKR,0\VendorSpecific,SASConfigCheckSum,%REG_DW%,0x0
+HKR,0\VendorSpecific,SASDESMode,%REG_DW%,0x1
+HKR,0\VendorSpecific,SASEncSecretKeyData,%REG_DW%,0x0
+HKR,0\VendorSpecific,SASEncSecretKeyLen,%REG_DW%,0x0
+HKR,0\VendorSpecific,SASEventMask,%REG_DW%,0x3
+HKR,0\VendorSpecific,SASHashMode,%REG_DW%,0x0
+HKR,0\VendorSpecific,SASStateMask,%REG_DW%,0x1c
+HKR,0\VendorSpecific,TESide,%REG_DW%,0x0
+HKR,0\VendorSpecific,UseFixedTEI,%REG_DW%,0x0
+HKR,0\VendorSpecific,AddDProtocolParam,%REG_DW%,0x0
+HKR,0\VendorSpecific,IncomingService,%REG_DW%,0x7
+HKR,0\VendorSpecific,OutgoingService,%REG_DW%,0x0
+HKR,0\VendorSpecific,IsdnOwnMsn,%REG_SZ%,""
+
+[1xBri.AddReg]
+HKR,,WanEndpoints,%REG_DW%,"02"
+HKR,,IsdnNumDChannels,%REG_DW%,"01"
+HKR,0,IsdnNumBChannels,%REG_DW%,02
+HKR,0,IsdnMultiSubscriberNumbers,%REG_MSZ_NCLOB%,""
+HKR,0\0\VendorSpecific,SignalPrimaryDN,%REG_DW%,0x1
+HKR,0\0\VendorSpecific,AdditionalDN,%REG_MSZ%,""
+HKR,0\0\VendorSpecific,SpidProperty,%REG_DW%,0
+HKR,0\0\VendorSpecific,SignalDN2asPrimaryDN1,%REG_DW%,0x0
+HKR,0\1\VendorSpecific,SignalPrimaryDN,%REG_DW%,0x1
+HKR,0\1\VendorSpecific,AdditionalDN,%REG_MSZ%,""
+HKR,0\1\VendorSpecific,SpidProperty,%REG_DW%,0
+HKR,0\1\VendorSpecific,SignalDN2asPrimaryDN1,%REG_DW%,0x0
+
+[Service.CICAP]
+DisplayName     = %CICAP_DISP%
+ServiceType     = 1   ; SERVICE_KERNEL_DRIVER
+StartType       = 3   ; SERVICE_DEMAND_START
+ErrorControl    = 1   ; SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\cicap.sys
+LoadOrderGroup  = CAPI20
+AddReg          = Service.AddReg
+
+[CICAP.AddReg]
+HKR,VendorSpecific,SoftwareVersion,%REG_SZ%,"4.00"
+HKR,Ndi\Interfaces,UpperRange,0,"noupper"
+HKR,Ndi\Interfaces,LowerRange,0,"isdn"
+
+[Service.AddReg]
+HKR,Parameters,Logging,%REG_DW_NCLOB%,0x7fffffff
+
+[Service.vinwm]
+DisplayName     = %VINWM_DISP%
+ServiceType     = 1   ; SERVICE_KERNEL_DRIVER
+StartType       = 3   ; SERVICE_DEMAND_START
+ErrorControl    = 1   ; SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\vinwm.sys
+LoadOrderGroup  = NDIS
+AddReg          = Service.AddReg
+
+[Common.EventLog]
+AddReg = Common.EventLog.AddReg
+
+[Common.EventLog.AddReg]
+HKR,,EventMessageFile,%REG_ESZ%,"%%SystemRoot%%\System32\netevent.dll"
+HKR,,TypesSupported,%REG_DW%,7
+
+[CoInstallers.AddReg]
+HKR,,CoInstallers32,%REG_MSZ%,"Xircom\iconf32.dll,CoDeviceInstall"
+HKR,,ProviderName,%REG_SZ%,%PROVIDER%
+
+[CICAP.Coinst.AddReg]
+HKR,VendorSpecific,CopyFiles,%REG_MSZ%,"CoInst.cf","CICAP.Drv.cf","Capi.cf"
+HKR,,EnumPropPages32,%REG_SZ%,"Xircom\iconf32.dll,iConfNTAdapterPropPageProvider"
+
+[WANMiniPortCoInstaller.AddReg]
+HKR,,CoInstallers32,%REG_MSZ%,"Xircom\iconf32.dll,WANMiniportCoDeviceInstall"
+HKR,,ProviderName,%REG_SZ%,%PROVIDER%
+HKR,VendorSpecific,CopyFiles,%REG_MSZ%,"CoInst.cf","vinwm.cf"
+
+[CoInst.cf]
+iconf32.dll
+reslog32.dll
+
+[Capi.cf]
+capi2032.dll, xcci2032.dll,,0x00000004
+
+[CICAP.Drv.cf]
+cicap.sys 
+
+[vinwm.cf]
+vinwm.sys
+
+[DestinationDirs]
+Capi.cf = 11 			; "Windows\System32"
+CICAP.Drv.cf = 12 		; "Windows\System32\Drivers"
+vinwm.cf = 12 			; "Windows\System32\Drivers"
+DefaultDestDir = 11,Xircom 	; "Windows\System32\Xircom"
+
+[strings]
+MS= "Microsoft"
+PROVIDER= "Xircom"
+XIRCOM_CREDITCARD_DISP= "Xircom CreditCard ISDN Adapter"
+CICAP_DISP=	"Xircom CreditCard ISDN Driver"
+VINWM_DISP= "Xircom CreditCard ISDN WAN Miniport"
+REG_SZ=                         0x00000000
+REG_MSZ=                        0x00010000
+REG_MSZ_NCLOB=                  0x00010002
+REG_ESZ=                        0x00020000
+REG_DW=                         0x00010001
+REG_DW_NCLOB=                   0x00010003
+PCMCIA=                         8
+NCF_PHYSICALUI=                 0x84

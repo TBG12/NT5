@@ -1,0 +1,104 @@
+<HTML>
+<STYLE>
+	body	{font-size:12;}
+	div		{background-color:powderblue; padding: 8;}
+	span	{background-color:powderblue; padding: 8;}
+</STYLE>
+<SCRIPT LANGUAGE="JScript" SRC="wmploc.js"></SCRIPT>
+<SCRIPT LANGUAGE="JScript">
+	function Initialize()
+	{
+		idURL1.innerHTML = '<A CLASS="clsLINK" HREF="' + L_URLHREF1 + '"  TARGET="web1">' + L_URLTEXT1 + '</A>';
+		idURL2.innerHTML = '<A CLASS="clsLINK" HREF="' + L_URLHREF2 + '"  TARGET="web2">' + L_URLTEXT2 + '</A>';
+		titleWMPLogo.innerText = L_URLTEXT2;
+	}
+</SCRIPT>
+<BODY onload="Initialize()">
+<DIV ID="txtApplicationTitle">Windows Media Player Tour</DIV>
+<DIV ID="btnCloseCaption">Close Tour</DIV>
+<DIV ID="btnBackToTourCaption">Back To Tour</DIV>
+<DIV ID="btnPlayVideo">Play Movie</DIV>
+<DIV ID="btnTourPlayCaption">Play Tour</DIV>
+<DIV ID="btnTourPauseCaption">Pause Tour</DIV>
+<DIV ID="btnAudioPlayCaption">Play Music</DIV>
+<DIV ID="btnAudioPauseCaption">Pause Music</DIV>
+<DIV ID="titleTimeElapsed">Time Remaining</DIV>
+<DIV ID="titleWMPLogo"></DIV>
+<DIV ID="txtNowPlaying">Now playing video</DIV>
+<DIV ID="txtTopic1Title">Welcome<BR>&nbsp;</DIV>
+<DIV ID="txtTopic1Text">
+<P>Welcome to the Microsoft&reg; Windows Media&trade; Player tour.</P>
+<P>This tour showcases the features that make Windows Media Player the center for playing and organizing digital media files on your computer and on the Internet. </P>
+<P>To start the tour, you can either click a button on the taskbar to learn more about a specific Player feature or sit back and let the tour guide you through each feature. When you see the Play Movie button, click it to watch an informative demonstration. </P>
+<P>To learn more about using Windows Media Player, see Windows Media Player Help or visit the following Web sites:
+<UL>
+	<LI><SPAN ID="idURL2"></SPAN>. Locate digital media on the Web and learn more about Windows Media-based events.</LI>
+	<LI><SPAN ID="idURL1"></SPAN>. Get the latest news and information about Windows Media Player along with interesting links to other hot products.</P>
+</UL>
+<SPAN CLASS="copyright">Copyright&copy; 2001 Microsoft Corporation.  All rights reserved.</SPAN>
+</DIV>
+<DIV ID="txtTopic2Title">Now <BR>Playing<BR>&nbsp;</DIV>
+<DIV ID="txtTopic2Text">
+<P>Use the <B>Now Playing</B> feature to watch videos, DVDs, or a visualization of an audio track you are playing.</P>
+<P>When you are listening to a CD, the name of the artist and the title of the audio track are displayed. When you are watching a DVD, <B>Now Playing</B> displays each chapter in the movie. If you have created a playlist, <B>Now Playing</B> will display it for you. You can also adjust the equalizer settings, view lyrics for a file, or view the album art for your CD.</P>
+<P><SPAN ID="idPlayVideo" CLASS="clsPlayVideo" TABINDEX="16"><IMG SRC="img/vidsamp.gif" ID="idPlayVideoImg" CLASS="clsPlayVideoImg" BORDER="0"> Play Movie </SPAN>
+</DIV>
+<DIV ID="txtVideInfo2">
+<P>Visualizations are splashes of color and geometric shapes that change with the beat of your music. Select a visualization from the <B>View</B> menu. If you want to change the visualization that is already displayed, use the visualization button on your screen.</P>
+</DIV>
+<DIV ID="txtTopic3Title">Media <BR>Guide<BR>&nbsp;</DIV>
+<DIV ID="txtTopic3Text">
+<P><B>Media Guide</B> is like an entertainment magazine. It is updated frequently with links to the latest movies, music, radio stations, and video available on the Internet. Using <B>Media Guide</B>, you can listen and watch digital media files directly from the Internet or download them to your computer. </P>
+</DIV>
+<DIV ID="txtTopic4Title">Copy<BR>from CD<BR>&nbsp;</DIV>
+<DIV ID="txtTopic4Text">
+<P><B>Copy from CD</B> is where you choose the CD tracks that you want to store on your computer. You can choose to copy just a few of your favorite tracks or copy an entire CD. After the tracks are copied to your computer, you can play them again and again without the CD. The tracks that you copy are licensed by default. </P>
+<P>If you want more information about each track before you decide whether to copy it, you can use the album information search wizard to download details such as the artist, composer, genre, and length of each track.</P>
+<P><SPAN ID="idPlayVideo" CLASS="clsPlayVideo" TABINDEX="16"><IMG SRC="img/vidsamp.gif" ID="idPlayVideoImg" CLASS="clsPlayVideoImg" BORDER="0"> Play Movie </SPAN>
+</DIV>
+<DIV ID="txtVideInfo4">
+<P>Copying tracks from your CD is easy. Simply select the tracks that you want to copy, and then click <B>Copy Music</B>. The <B>Copy Status</B> column keeps you informed of the progress. If you change your mind before the copying is complete, click <B>Stop Copy</B>.
+</DIV>
+<DIV ID="txtTopic5Title">Media <BR>Library<BR>&nbsp;</DIV>
+<DIV ID="txtTopic5Text">
+<P>You can use <B>Media Library</B> to store and organize your digital media files. For example, you can:
+<UL>
+	<LI>Save links to digital media files on your computer or the Internet.
+	<LI>Create a playlist of your favorite audio tracks, which you can then copy to a CD or portable device.
+	<LI>Locate your audio and video files by category, such as album title, artist name, genre, or author.
+</UL>
+<P><SPAN ID="idPlayVideo" CLASS="clsPlayVideo" TABINDEX="16"><IMG SRC="img/vidsamp.gif" ID="idPlayVideoImg" CLASS="clsPlayVideoImg" BORDER="0"> Play Movie </SPAN>
+</DIV>
+<DIV ID="txtVideInfo5">
+<P>After you have copied your favorite tracks to your computer, create a playlist from them and arrange the tracks in the order you want them to play. You can also use this playlist to copy your music to a portable device.</P>
+</DIV>
+<DIV ID="txtTopic6Title">Radio <BR>Tuner<BR>&nbsp;</DIV>
+<DIV ID="txtTopic6Text">
+<P>Use the <B>Radio Tuner</B> feature to find Internet radio stations from around the world and in nearly every genre. To find a particular radio station, you can search by location, by the station's call letters, or by several other parameters. </P>
+<P>If you have several radio stations that you like to listen to, you can create presets for them just as you would for your car radio. </P>
+</DIV>
+<DIV ID="txtTopic7Title">Copy to CD <BR>or Device<BR>&nbsp;</DIV>
+<DIV ID="txtTopic7Text">
+<P>Want to take some of your digital media collection with you? Windows Media Player makes it easy for you to transfer your digital media files from <B>Media Library</B> to portable devices, such as Pocket and Handheld PCs, digital audio players, and CD recorders.</P>
+<P><SPAN ID="idPlayVideo" CLASS="clsPlayVideo" TABINDEX="16"><IMG SRC="img/vidsamp.gif" ID="idPlayVideoImg" CLASS="clsPlayVideoImg" BORDER="0"> Play Movie </SPAN>
+</DIV>
+<DIV ID="txtVideInfo7">
+<P>Select a playlist, select the tracks that you want to copy to your portable device, and then click <B>Copy Music</B>. The Player checks for available space on your device and displays the titles of your newly copied tracks after copying is complete.</P>
+</DIV>
+<DIV ID="txtTopic8Title">Skin <BR>Chooser<BR>&nbsp;</DIV>
+<DIV ID="txtTopic8Text">
+<P>Do you like to change display settings on your computer to match your mood? You can personalize the appearance of Windows Media Player by using the <B>Skin Chooser</B> feature to apply skins. Preview and select from more than 15 different skins or download additional skins from the Internet.</P>
+<P><SPAN ID="idPlayVideo" CLASS="clsPlayVideo" TABINDEX="16"><IMG SRC="img/vidsamp.gif" ID="idPlayVideoImg" CLASS="clsPlayVideoImg" BORDER="0"> Play Movie </SPAN>
+</DIV>
+<DIV ID="txtVideInfo8">
+<P>Browse the list of available skins to find the one that matches your mood. Then click <B>Apply Skin</B> to make your choice. The Player will switch to skin mode. Click <B>Play</B> to start your audio or video file. </P>
+</DIV>
+<DIV ID="txtTopic9Title">Play DVD<BR>&nbsp;</DIV>
+<DIV ID="txtTopic9Text">
+<P>Watch DVD-based movies and download information about your DVDs on your computer by using Windows Media Player. This feature is available if you have a DVD-ROM drive and a software or hardware DVD decoder installed on your computer.</P>
+<P><B>Note</B> DVD-related commands, options, and controls are available only if you have a compatible DVD decoder installed.</P>
+</DIV>
+<DIV ID="txtVideInfo9">
+</DIV>
+</BODY>
+</HTML>

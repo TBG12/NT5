@@ -1,0 +1,418 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  =   "$Windows NT$"
+Class      =   MultiFunction
+ClassGUID  =   {4d36e971-e325-11ce-bfc1-08002be10318}
+Provider   =   %MSFT%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,2.70.2.0
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%Xircom% = Xircom
+%Compaq%=Compaq
+%Intel%=Intel
+%Toshiba%=Toshiba
+%Legend%=Legend
+%Generic%=Generic
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Xircom]
+%CEM56.DevDesc%         = Mfg56.mf,     PCMCIA\XIRCOM-CREDITCARD_ETHERNET_10/100_+_MODEM_56-C027
+%REM10.DevDesc%         = REM10.mf,     PCMCIA\XIRCOM-16-BIT_ETHERNET_+_MODEM_56-0B62
+
+[Compaq]
+%Compaq.DevDesc%        = c550,         PCMCIA\COMPAQ-MICROCOM_550_56K_MODEM_+_10/100_ETHERNET-A75B
+
+[Intel]
+%Intel.DevDesc%         = Intel,        PCMCIA\Intel-EtherExpress(TM)_PRO/100_LAN/Modem_PC_Card_Adapter-3B00
+
+[Toshiba]
+%Toshiba.DevDesc%       = Tosh,         PCMCIA\TOSHIBA-MODEM+ETHERNET_PC_CARD-148C
+
+[Legend]
+%Legend.DevDesc%        = Legend,       PCMCIA\LEGEND-EASY_56K_MODEM+10-100_ETHERNET+GSM-33CC
+
+[Generic]
+%Generic.DevDesc%       = Portb,        PCMCIA\GENERIC-Ethernet_10/100_PC_Card_+_56modem-D664
+
+;-------------------------------------------------------------------------------
+; CEM56
+;
+[Mfg56.mf]
+
+[Mfg56.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[Mfg56.mf.HW]
+AddReg=Mfg56.mf.RegHW
+
+[Mfg56.mf.RegHW]	
+HKR,Child0000,HardwareID,,MF\XIRCOMCEM56_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\XIRCOMCEM56_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[Mfg56.mf.LogConfigOverride]
+LogConfig=Mfg56.mf.Override0
+LogConfig=Mfg56.mf.Override1
+LogConfig=Mfg56.mf.Override2
+LogConfig=Mfg56.mf.Override3
+
+;-------------------------------------------------------------------------------
+; REM10
+;
+[REM10.mf]
+
+[REM10.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[REM10.mf.HW]
+AddReg=REM10.mf.RegHW
+
+[REM10.mf.RegHW]	
+HKR,Child0000,HardwareID,,MF\XIRCOMREM10_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\XIRCOMREM10_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[REM10.mf.LogConfigOverride]
+LogConfig=Mfg56.mf.Override0
+LogConfig=Mfg56.mf.Override1
+LogConfig=Mfg56.mf.Override2
+LogConfig=Mfg56.mf.Override3
+
+;-------------------------------------------------------------------------------
+[Intel.nt]
+
+[Intel.nt.HW]
+AddReg = Intel.nt.RegHW
+
+[Intel.nt.RegHW]
+HKR,Child0000,HardwareID,,MF\INTELM16B_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\INTELM16B_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[Intel.nt.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[Intel.nt.LogConfigOverride]
+LogConfig = Intel.nt.Override0
+LogConfig = Intel.nt.Override1
+LogConfig = Intel.nt.Override2
+LogConfig = Intel.nt.Override3
+
+;-------------------------------------------------------------------------------
+[Tosh.nt]
+
+[Tosh.nt.HW]
+AddReg = Tosh.nt.RegHW
+
+[Tosh.nt.RegHW]
+HKR,Child0000,HardwareID,,MF\TOSHIBAC21_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\TOSHIBAC21_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[Tosh.nt.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[Tosh.nt.LogConfigOverride]
+LogConfig = Tosh.nt.Override0
+LogConfig = Tosh.nt.Override1
+LogConfig = Tosh.nt.Override2
+LogConfig = Tosh.nt.Override3
+
+;-------------------------------------------------------------------------------
+[Legend.nt]
+
+[Legend.nt.HW]
+AddReg = Legend.nt.RegHW
+
+[Legend.nt.RegHW]
+HKR,Child0000,HardwareID,,MF\LEGENDLE56_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\LEGENDLE56_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[Legend.nt.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[Legend.nt.LogConfigOverride]
+LogConfig = Legend.nt.Override0
+LogConfig = Legend.nt.Override1
+LogConfig = Legend.nt.Override2
+LogConfig = Legend.nt.Override3
+
+;-------------------------------------------------------------------------------
+[Portb.nt]
+
+[Portb.nt.HW]
+AddReg = Portb.nt.RegHW
+
+[Portb.nt.RegHW]
+HKR,Child0000,HardwareID,,MF\GENERICGENB_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\GENERICGENB_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[Portb.nt.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[Portb.nt.LogConfigOverride]
+LogConfig = Portb.nt.Override0
+LogConfig = Portb.nt.Override1
+LogConfig = Portb.nt.Override2
+LogConfig = Portb.nt.Override3
+
+;-------------------------------------------------------------------------------
+[c550.nt]
+
+[c550.nt.HW]
+AddReg = c550.nt.RegHW
+
+[c550.nt.RegHW]
+HKR,Child0000,HardwareID,,MF\Compaqc550_DEV0
+HKR,Child0000,ResourceMap,1,00,02
+HKR,Child0001,HardwareID,,MF\Compaqc550_DEV1
+HKR,Child0001,ResourceMap,1,01,02,03,04
+
+[c550.nt.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[c550.nt.LogConfigOverride]
+LogConfig = c550.nt.Override0
+LogConfig = c550.nt.Override1
+LogConfig = c550.nt.Override2
+LogConfig = c550.nt.Override3
+
+;-------------------------------------------------------------------------------
+; Multifunction Service 
+;
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+;-------------------------------------------------------------------------------
+; Override Config 
+;
+[Mfg56.mf.Override0]    ;COM3
+IOConfig=3e8-3ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000 
+PcCardConfig=5F(W)
+
+[Mfg56.mf.Override1]    ;COM2
+IOConfig=2f8-2ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=57(W)
+
+[Mfg56.mf.Override2]    ;COM4
+IOConfig=2e8-2ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig= 67(W)
+
+[Mfg56.mf.Override3]    ;COM1
+IOConfig=3f8-3ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=4F(W)
+
+[c550.nt.Override0]    ;COM3
+ConfigPriority=Normal
+IOConfig=3e8-3ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=5F(W)
+
+[c550.nt.Override1]    ;COM2
+ConfigPriority=Normal
+IOConfig=2f8-2ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=57(W)
+
+[c550.nt.Override2]    ;COM4
+ConfigPriority=Normal
+IOConfig=2e8-2ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig= 67(W)
+
+[c550.nt.Override3]    ;COM1
+ConfigPriority=Normal
+IOConfig=3f8-3ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=4F(W)
+
+[Intel.nt.Override0]    ;COM3
+ConfigPriority=Normal
+IOConfig=3e8-3ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=5F(W)
+
+[Intel.nt.Override1]    ;COM2
+ConfigPriority=Normal
+IOConfig=2f8-2ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=57(W)
+
+[Intel.nt.Override2]    ;COM4
+ConfigPriority=Normal
+IOConfig=2e8-2ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig= 67(W)
+
+[Intel.nt.Override3]    ;COM1
+ConfigPriority=Normal
+IOConfig=3f8-3ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=4F(W)
+
+[Tosh.nt.Override0]    ;COM3
+ConfigPriority=Normal
+IOConfig=3e8-3ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=5F(W)
+
+[Tosh.nt.Override1]    ;COM2
+ConfigPriority=Normal
+IOConfig=2f8-2ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=57(W)
+
+[Tosh.nt.Override2]    ;COM4
+ConfigPriority=Normal
+IOConfig=2e8-2ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig= 67(W)
+
+[Tosh.nt.Override3]    ;COM1
+ConfigPriority=Normal
+IOConfig=3f8-3ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=4F(W)
+
+[Legend.nt.Override0]    ;COM3
+ConfigPriority=Normal
+IOConfig=3e8-3ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=5F(W)
+
+[Legend.nt.Override1]    ;COM2
+ConfigPriority=Normal
+IOConfig=2f8-2ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=57(W)
+
+[Legend.nt.Override2]    ;COM4
+ConfigPriority=Normal
+IOConfig=2e8-2ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig= 67(W)
+
+[Legend.nt.Override3]    ;COM1
+ConfigPriority=Normal
+IOConfig=3f8-3ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=4F(W)
+
+[Portb.nt.Override0]    ;COM3
+ConfigPriority=Normal
+IOConfig=3e8-3ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=5F(W)
+
+[Portb.nt.Override1]    ;COM2
+ConfigPriority=Normal
+IOConfig=2f8-2ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=57(W)
+
+[Portb.nt.Override2]    ;COM4
+ConfigPriority=Normal
+IOConfig=2e8-2ef
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig= 67(W)
+
+[Portb.nt.Override3]    ;COM1
+ConfigPriority=Normal
+IOConfig=3f8-3ff
+IOConfig=10@100-FFFF%FFF0
+IRQConfig=3,4,5,7,9,10,11
+MemConfig=1000@0-FFFFFF%FFFFF000
+PcCardConfig=4F(W)
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Xircom          = "Xircom"
+MSFT            = "Microsoft"
+Compaq  	= "Compaq"
+Intel   	= "Intel"
+Toshiba 	= "Toshiba"
+Legend  	= "Legend"
+Generic 	= "Generic"
+
+CEM56.DevDesc   = "Xircom CreditCard Ethernet 10/100 + Modem 56 Parent"
+REM10.DevDesc   = "Xircom Ethernet + Modem 56 Parent"
+Compaq.DevDesc  = "Compaq Microcom 550 56k Modem + 10/100 Ethernet Parent"
+Intel.DevDesc   = "Intel EtherExpress ™  PRO/100 LAN/Modem PC Card Parent"
+Toshiba.DevDesc = "Toshiba Modem+Ethernet PC Card Parent"
+Legend.DevDesc	= "Legend Easy 56k Modem+10-100 Ethernet+GSM Parent"
+Generic.DevDesc = "Ethernet 10/100 PC Card + 56Modem Parent"
+MFClassName     = "Multifunction PCMCIA Device Driver"

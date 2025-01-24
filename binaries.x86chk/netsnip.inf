@@ -1,0 +1,113 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,5.2.3790.0
+
+[Manufacturer]
+%Generic%  = Generic
+%IBM%      = IBM
+%KINGSTON% = KINGSTON
+%Melco%    = Melco
+%NatSemi%  = NatSemi
+
+[ControlFlags]
+ExcludeFromSelect       = *
+
+[IBM]
+[Generic]
+%Generic.DeviceDesc%    = *SNIP.ndi, PCMCIA\Kingston_Technology_Corp.-EtheRX_PC_Card_Ethernet_Adapter-E480
+
+%*IBM.DeviceDesc%       = *SNIP.ndi, PCMCIA\IBM_Corp.-Ethernet-1B1C
+%*IBM2.DeviceDesc%      = *SNIP.ndi, PCMCIA\IBM_Corp.-Ethernet-6446
+
+[KINGSTON]
+%*KINGSTONT.DeviceDesc% = *SNIP.ndi, PCMCIA\KINGSTON_TECHNOLOGY_CORP.-ETHERX-B45B    
+%*KINGSTONM.DeviceDesc% = *SNIP.ndi, PCMCIA\Kingston_Technology_Corp.-EtheRx_PC_Card_Ethernet_Adapter-02B7    
+
+[NatSemi]
+%NatSemi.DeviceDesc%    = *SNIP.ndi, PCMCIA\National_Semiconductor-InfoMover_NE4100-2C4D
+
+[Melco]
+%Melco2.DeviceDesc%     = *SNIP.ndi, PCMCIA\PCMCIA-UE2212-5312
+
+;-------------------------------------------------------------------------------
+; Shared NDI section
+;
+[*SNIP.ndi]
+AddReg          = ne2000.reg
+Characteristics = 0x04
+BusType         = 8
+CopyFiles       = ne2000.CopyFiles
+
+[*SNIP.ndi.Services]
+AddService      = NE2000, 2, ne2000.Service, ne2000.EventLog
+
+[*SNIP.ndi.LogConfigOverride]
+LogConfig = SNIP.LogConfigOverride
+
+[SNIP.LogConfigOverride]
+IRQConfig    = 3,4,5,7,9,10,11
+IOConfig     = 20@100-FFFF%FFE0(FFF::)
+PcCardConfig = 1:20000(W)
+
+
+;-------------------------------------------------------------------------------
+; NE2000 Drivers and Service
+;
+[ne2000.reg]
+HKR, Ndi,               Service,    0, "NE2000"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+HKR,               ,    CardType,   0, "1"
+
+[ne2000.CopyFiles]
+ne2000.sys,,,2
+
+[ne2000.Service]
+DisplayName     = %ne2000.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\ne2000.sys
+LoadOrderGroup  = NDIS
+
+[ne2000.EventLog]
+AddReg = ne2000.AddEventLog.reg
+
+[ne2000.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR,, TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+DefaultDestDir   = 12
+ne2000.CopyFiles = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+MSFT                    = "Microsoft"
+
+Generic                 = "Generic"
+Melco                   = "Buffalo"
+IBM                     = "IBM"
+KINGSTON                = "Kingston"
+NatSemi                 = "National Semiconductor"
+
+*IBM.DeviceDesc         = "IBM-Based Ethernet Credit Card Adapter"
+*IBM2.DeviceDesc        = "IBM Ethernet Credit Card Adapter II"
+*KINGSTONT.DeviceDesc   = "Kingston Etherx PC Card Ethernet Adapter (KNE-PCM/T)"
+*KINGSTONM.DeviceDesc   = "Kingston Etherx PC Card Ethernet Adapter (KNE-PCM/M)"
+Generic.DeviceDesc      = "NE2000 Compatable PCMCIA Ethernet Adapter (Generic)"
+NatSemi.DeviceDesc      = "NatSemi-Based NE4100 Infomover Ethernet Adapter"
+Melco2.DeviceDesc       = "Buffalo LPC-T PCMCIA Ethernet Adapter"
+
+ne2000.Service.DispName = "NE2000 Compatible PCMCIA"
+
+

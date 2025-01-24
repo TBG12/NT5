@@ -1,0 +1,98 @@
+; netdf650.INF
+;
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider   = %MSFT%
+LayoutFile = Layout.inf
+DriverVer=10/01/2002,5.0.2128.1
+
+[Manufacturer]
+%V_MANUF%  = "DLINK"
+%IO-Data%  = "IO-Data"
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[DLINK]
+%PCMCIA.DeviceDesc%  = dfe650cc.ndi, PCMCIA\D-Link-DFE-650-7143
+
+[IO-Data]
+%CCETTXR.DeviceDesc% = dfe650cc.ndi, PCMCIA\IO_DATA-PCETTXR-B7A4
+
+[dfe650cc.ndi]
+Characteristics = 0x84
+BusType         = 8
+AddReg          = common.reg, dfe650X.ndi.reg
+CopyFiles       = dfe650.ndis5.CopyFiles
+
+[dfe650cc.ndi.Services]
+AddService = dfe650, 2, dfe650.Service, dfe650.AddEventLog
+
+[common.reg]
+HKR,Ndi\params\ConnectionType,          ParamDesc,      0, %ConnectionType%
+HKR,Ndi\params\ConnectionType,          default,        0, "5"
+HKR,Ndi\params\ConnectionType,          type,           0, "enum"
+HKR,Ndi\params\ConnectionType\enum,     0,              0, %10HD%
+HKR,Ndi\params\ConnectionType\enum,     2,              0, %10FD%
+HKR,Ndi\params\ConnectionType\enum,     4,              0, %100HD%
+HKR,Ndi\params\ConnectionType\enum,     6,              0, %100FD%
+HKR,Ndi\params\ConnectionType\enum,     5,              0, %AutoSense%
+
+;network address
+HKR,NDI\params\NetworkAddress,          ParamDesc,      0, %NetworkAddress%
+HKR,NDI\params\NetworkAddress,          type,           0, "edit"
+HKR,NDI\params\NetworkAddress,          LimitText,      0, "12"
+HKR,NDI\params\NetworkAddress,          UpperCase,      0, "1"
+HKR,NDI\params\NetworkAddress,          default,        0, ""
+HKR,NDI\params\NetworkAddress,          optional,       0, "1"
+
+;-------------------------------------------------------------------------------
+; DFE-650 Service and Driver
+;
+[dfe650X.ndi.reg]
+HKR, Ndi,               Service,    0, "dfe650"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+
+[dfe650.ndis5.CopyFiles]
+dfe650.sys,,,2
+
+[dfe650.Service]
+DisplayName         =   %Service.DispName%
+ServiceType         =   1 ;%SERVICE_KERNEL_DRIVER%
+StartType           =   3 ;%SERVICE_AUTO_START%
+ErrorControl        =   1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary       =   %12%\dfe650.sys
+LoadOrderGroup      =   NDIS
+
+[dfe650.AddEventLog]
+AddReg = dfe650.AddEventLog.reg
+
+[dfe650.AddEventLog.reg]
+HKR,    ,   EventMessageFile,   0x00020000,"%%SystemRoot%%\System32\netevent.dll"
+HKR,    ,   TypesSupported,     0x00010001, 7
+
+[DestinationDirs]
+DefaultDestDir         = 12
+dfe650.ndis5.CopyFiles = 12
+
+[Strings]
+MSFT    = "Microsoft"
+V_MANUF = "D-Link"
+IO-Data = "I-O DATA DEVICE,INC."
+
+ConnectionType          = "Connection Type"
+AutoSense               = "Auto Sense"
+100FD                   = "100Mbps Full Duplex"
+100HD                   = "100Mbps"
+10HD                    = "10Mbps"
+10FD                    = "10Mbps Full Duplex"
+NetworkAddress          = "Network Address"
+
+PCMCIA.DeviceDesc       = "D-Link DFE-650 Fast Ethernet PC Card"
+CCETTXR.DeviceDesc      = "I-O DATA PCET/TX-R Fast Ethernet Adapter"
+Service.DispName        = "D-Link DFE-650 Fast Ethernet PC Card NT Driver"

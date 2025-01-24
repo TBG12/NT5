@@ -1,0 +1,164 @@
+*GPDFileName: "hpclj5d.gpd"
+*GPDFileVersion: "1.104"
+*GPDSpecVersion: "1.0"
+*Include: "hpccom.gpd"
+*ModelName: "HP Color LaserJet 5"
+
+*%**********************************
+*%    Custom Features
+*%**********************************
+
+*Feature: HPPrinterCode
+{
+    *Name: "HPPrinterCode"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: HPCLJ5
+
+    *Option: HPCLJ5
+    {
+        *Name: "HP Color LaserJet 5"
+    }
+
+}
+
+*Feature: HPColorMode
+{
+    *Name: "HPColorMode"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: COLOR_MODE
+
+    *Option: COLOR_MODE
+    {
+        *Name: "Color Mode"
+    }
+
+}
+
+*Feature: HPResolution
+{
+    *Name: "HPResolution"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: PDM_300DPI
+
+    *Option: PDM_300DPI
+    {
+        *Name: "300x300"
+    }
+
+}
+
+*Feature: HPTextHalftone
+{
+    *Name: "HPTextHalftone"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: CLJ5_DETAIL
+
+    *Option: CLJ5_DETAIL
+    {
+        *Name: "CLJ5 Detail"
+    }
+
+}
+
+*Feature: HPGraphicsHalftone
+{
+    *Name: "HPGraphicsHalftone"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: CLJ5_SMOOTH
+
+    *Option: CLJ5_SMOOTH
+    {
+        *Name: "CLJ5 Smooth"
+    }
+
+}
+
+*Feature: HPPhotoHalftone
+{
+    *Name: "HPPhotoHalftone"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: CLJ5_SMOOTH
+
+    *Option: CLJ5_SMOOTH
+    {
+        *Name: "CLJ5 Smooth"
+    }
+
+}
+
+*Feature: HPTextColor
+{
+    *Name: "HPTextColor"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: VIVID
+
+    *Option: VIVID
+    {
+        *Name: "Vivid"
+    }
+
+}
+
+*Feature: HPGraphicsColor
+{
+    *Name: "HPGraphicsColor"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: VIVID
+
+    *Option: VIVID
+    {
+        *Name: "Vivid"
+    }
+
+}
+
+*Feature: HPPhotoColor
+{
+    *Name: "HPPhotoColor"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: CLJ5_SCRNMATCH
+
+    *Option: CLJ5_SCRNMATCH
+    {
+        *Name: "Screen Match"
+    }
+
+}
+
+*Feature: HPGraphicsMode
+{
+    *Name: "HPGraphicsMode"
+    *ConcealFromUI?: TRUE
+    *FeatureType: DOC_PROPERTY
+    *DefaultOption: HPGL2
+
+    *Option: HPGL2
+    {
+        *Name: "HPGL2"
+    }
+
+}
+
+*%***********************************************************
+*%    Printer Specific Feature Data - Printer Model Name
+*%***********************************************************
+*Feature: HPPrinterModelName
+{
+    *Name: "HPPrinterModelName"
+    *ConcealFromUI?:TRUE
+    *FeatureType: PRINTER_PROPERTY
+    *DefaultOption: HP_Color_LaserJet_5
+    *Option: HP_Color_LaserJet_5
+    {
+        *Name: "HP Color LaserJet 5"
+    }
+}

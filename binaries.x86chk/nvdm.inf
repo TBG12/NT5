@@ -1,0 +1,913 @@
+;
+; NVIDIA Windows 2000/XP Display INF file
+; Copyright 1999-2002 NVIDIA Corporation.  All Rights Reserved.
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%NVidia%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer = 07/18/2002, 2.9.5.8
+
+;
+; Dest directories are \windows\system32 and \windows\system32\drivers
+;
+
+[DestinationDirs]
+DefaultDestDir     = 11
+nv4.Miniport       = 12
+nv.Display         = 11
+nv.oldrm           = 12
+nv.delete.icd	   = 11
+
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box. DEVICE sections are specified.
+;
+
+[Manufacturer]
+%NVidia%      = NVidia.Mfg,NTx86.5.1
+
+;
+; Device section. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file. This section identifies
+; the corresponding INSTALL sections.
+;
+
+[NVidia.Mfg.NTx86.5.1]
+%NVidia.Nv11M.1% = nv4_WinXP_UseUncachedPCIMappings, PCI\VEN_10DE&DEV_0112&SUBSYS_00A41028
+%NVidia.Nv11M.2% = nv4_WinXP_PushBufferLocale, PCI\VEN_10DE&DEV_0112&SUBSYS_00D41028
+%NVidia.Nv11M.3% = nv4_WinXP_PushBufferLocale, PCI\VEN_10DE&DEV_0112&SUBSYS_00D51028
+%NVidia.Nv11M.4% = nv4_WinXP, PCI\VEN_10DE&DEV_0112&SUBSYS_00E31028
+%NVidia.Nv11M.5% = nv4_WinXP, PCI\VEN_10DE&DEV_0112&SUBSYS_00E41028
+%NVidia.Nv11M.6% = nv4_WinXP_UseUncachedPCIMappings, PCI\VEN_10DE&DEV_0112&SUBSYS_00E51028
+%NVidia.Nv11M.7% = nv4_WinXP_UseUncachedPCIMappings, PCI\VEN_10DE&DEV_0112&SUBSYS_00E61028
+%NVidia.Nv11M.8% = nv4_WinXP_DualviewMinMemSize, PCI\VEN_10DE&DEV_0112&SUBSYS_00F31028
+%NVidia.Nv11M.9% = nv4_WinXP_DualviewMinMemSize, PCI\VEN_10DE&DEV_0112&SUBSYS_00F41028
+%NVidia.Nv11M.10% = nv4_WinXP, PCI\VEN_10DE&DEV_0112&SUBSYS_001314C0
+%NVidia.Nv11GL.1% = nv4_WSApps_WinXP, PCI\VEN_10DE&DEV_0113&SUBSYS_00E51028
+%NVidia.Nv11GL.2% = nv4_WSApps_WinXP_PushBufferLocale, PCI\VEN_10DE&DEV_0113&SUBSYS_00D51028
+%NVidia.Nv11GL.3% = nv4_WSApps_WinXP_PushBufferLocale, PCI\VEN_10DE&DEV_0113&SUBSYS_00D41028
+%NVidia.Nv11GL.4% = nv4_WSApps_WinXP, PCI\VEN_10DE&DEV_0113&SUBSYS_00001028
+%NVidia.Nv17M.1% = nv4_WinXP, PCI\VEN_10DE&DEV_0174&SUBSYS_00D41028
+;%NVidia.Nv17M.2% = nv4_WinXP, PCI\VEN_10DE&DEV_0174&SUBSYS_00D51028
+%NVidia.Nv17GL.1% = nv4_WSApps_WinXP, PCI\VEN_10DE&DEV_017C&SUBSYS_00D41028
+%NVidia.Nv17GL.2% = nv4_WSApps_WinXP, PCI\VEN_10DE&DEV_017C&SUBSYS_00D51028
+
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[nv4_WinXP]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_WinXP.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+DelReg = nv_ClearRegistrySwitches
+
+
+
+
+[nv4_WinXP.Services]
+AddService = nv, 0x00000002, nv4_Generic_Service_Inst, nv4_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+
+[nv4_EventLog_Inst]
+AddReg = nv4_EventLog_AddReg
+
+[nv4_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+[nv4_Generic_Service_AddReg]
+HKR,Video,Service,%REG_SZ%,nv
+
+[nv4_WSApps_WinXP]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_WSApps_WinXP.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+AddReg = nv_UseUncachedPCIMappings
+DelReg = nv_ClearRegistrySwitches
+
+
+
+[nv4_WSApps_WinXP.Services]
+AddService = nv, 0x00000002, nv4_WSApps_Generic_Service_Inst, nv4_WSApps_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+
+
+[nv4_WSApps_EventLog_Inst]
+AddReg = nv4_WSApps_EventLog_AddReg
+
+[nv4_WSApps_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_WSApps_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+
+
+[nv4_WinXP_UseUncachedPCIMappings]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+
+
+[nv4_WinXP_UseUncachedPCIMappings.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+AddReg = nv_UseUncachedPCIMappings
+DelReg = nv_ClearRegistrySwitches
+
+
+
+
+[nv4_WinXP_UseUncachedPCIMappings.Services]
+AddService = nv, 0x00000002, nv4_UseUncachedPCIMappings_Generic_Service_Inst, nv4_UseUncachedPCIMappings_EventLog_Inst
+
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_UseUncachedPCIMappings_EventLog_Inst]
+AddReg = nv4_UseUncachedPCIMappings_EventLog_AddReg
+
+[nv4_UseUncachedPCIMappings_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_UseUncachedPCIMappings_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+
+
+[nv4_WinXP_DualviewMinMemSize]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+
+[nv4_WinXP_DualviewMinMemSize.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+AddReg = nv_DualviewMinMemSize
+DelReg = nv_ClearRegistrySwitches
+
+
+
+
+[nv4_WinXP_DualviewMinMemSize.Services]
+AddService = nv, 0x00000002, nv4_DualviewMinMemSize_Generic_Service_Inst, nv4_DualviewMinMemSize_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_DualviewMinMemSize_EventLog_Inst]
+AddReg = nv4_DualviewMinMemSize_EventLog_AddReg
+
+[nv4_DualviewMinMemSize_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_DualviewMinMemSize_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+[nv4_WinXP_PushBufferLocale]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+
+[nv4_WinXP_PushBufferLocale.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+AddReg = nv_PushBufferLocale
+DelReg = nv_ClearRegistrySwitches
+
+
+
+[nv4_WinXP_PushBufferLocale.Services]
+AddService = nv, 0x00000002, nv4_PushBufferLocale_Generic_Service_Inst, nv4_PushBufferLocale_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+
+[nv4_PushBufferLocale_EventLog_Inst]
+AddReg = nv4_PushBufferLocale_EventLog_AddReg
+
+[nv4_PushBufferLocale_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_PushBufferLocale_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+[nv4_WSApps_WinXP_PushBufferLocale]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_WSApps_WinXP_PushBufferLocale.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+AddReg = nv_UseUncachedPCIMappings
+AddReg = nv_PushBufferLocale
+DelReg = nv_ClearRegistrySwitches
+
+
+
+[nv4_WSApps_WinXP_PushBufferLocale.Services]
+AddService = nv, 0x00000002, nv4_WSApps_PushBufferLocale_Generic_Service_Inst, nv4_WSApps_PushBufferLocale_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+
+
+[nv4_WSApps_PushBufferLocale_EventLog_Inst]
+AddReg = nv4_WSApps_PushBufferLocale_EventLog_AddReg
+
+[nv4_WSApps_PushBufferLocale_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_WSApps_PushBufferLocale_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+
+
+;
+; File List sections for NV.Display and NV.Miniport
+;
+
+[nv.Display]
+nv4_disp.dll
+
+[nv4.Miniport]
+nv4_mini.sys
+
+
+[nv.oldrm]
+nvarch.sys,,,1
+nvgfx.sys,,,1
+
+[nv.delete.icd]
+nv4oglnt.dll,,,1
+nvopenglnt.dll,,,1
+
+
+
+[nv4_WinXP.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+
+[nv4_WSApps_WinXP.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+
+[nv4_WinXP_UseUncachedPCIMappings.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+
+[nv4_WinXP_UseUncachedPCIMappings.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+
+[nv4_WinXP_DualviewMinMemSize.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+
+[nv4_WinXP_PushBufferLocale.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+
+[nv4_WSApps_WinXP_PushBufferLocale.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=2
+
+;
+; NVidia Add registry section
+;
+
+[nv_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, nv4_disp
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+HKR,, VPEEnable,                   %REG_DWORD%,    0
+HKR,, UseHWSelectedDevice,         %REG_DWORD%,    1
+HKR,, EnumerateTVAsACPIDevice,     %REG_DWORD%,    1
+HKR,, UseBestResolution,           %REG_DWORD%,    1
+HKR,, DFPAsDefaultMonitor,         %REG_DWORD%,    1
+HKR,, SoftEDIDs,                   %REG_DWORD%,    1
+HKR,, DualViewMobile,              %REG_DWORD%,    1
+HKR,, RMMaintainDevs,              %REG_DWORD%,    1
+HKR,, PushBufferMemorySpace,       %REG_DWORD%,    2
+HKR,, NV11MLFNT,                   %REG_DWORD%,    2
+HKR,, PanScanSelection,            %REG_DWORD%,    0
+HKR,, DualviewPolicyID,            %REG_DWORD%,    2
+HKR,, DevSwitchSuppressMask,       %REG_DWORD%,    1
+HKR,, RMMaintainTVStandard,        %REG_DWORD%,    1
+HKR,, CapabilityOverride,	   %REG_DWORD%,    8
+
+
+HKR,, "Attach.ToDesktop",%REG_DWORD%,1
+HKR,, "DefaultSettings.BitsPerPel",%REG_DWORD%,32
+HKR,, "DefaultSettings.XResolution",%REG_DWORD%,1400
+HKR,, "DefaultSettings.YResolution",%REG_DWORD%,1050
+HKR,, "ModesetBlankDelay", %REG_DWORD%,1
+
+;
+; NV11M (NV11M) Supported Reference Modes
+;
+; NOTE: 640x480 MUST be listed FIRST in this list !!!!!
+;
+
+HKR,, NV11M_Modes,                 %REG_MULTI_SZ%,  "8    640  480   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    320  200   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    320  240   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    400  300   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    480  360   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    512  384   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    640  400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    800  600   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1024  768   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1280 1024   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1400 1050   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1600 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1920 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1920 1440   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   2048 1536   60                      0"
+
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   640  480   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   320  200   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   320  240   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   400  300   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   480  360   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   512  384   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   640  400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   800  600   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1024  768   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1280 1024   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1400 1050   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1600 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1920 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1920 1440   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  2048 1536   60                      0"
+
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   640  480   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   320  200   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   320  240   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   400  300   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   480  360   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   512  384   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   640  400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   800  600   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1024  768   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1280 1024   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1400 1050   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1600 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1920 1200   60 70                   0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1920 1440   60                      0"
+
+;
+;Horizontal multimon modes (dual head)
+;
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1280  480   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1600  600   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   2048  768   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   2560 1024   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   2800 1050   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   3200 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   3840 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   3840 1440   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   4096 1536   60                      0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1280  480   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1600  600   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  2048  768   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  2560 1024   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  2800 1050   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  3200 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  3840 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  3840 1440   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  4096 1536   60                      0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1280  480   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1600  600   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  2048  768   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  2560 1024   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  2800 1050   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  3200 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  3840 1200   60 70                   0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  3840 1440   60                      0"
+
+;
+;Vertical multimon modes (dual head)
+;
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    640  960   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8    800 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1024 1536   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1280 2048   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1400 2100   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1600 2400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1920 2400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   1920 2880   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "8   2048 3072   60                      0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   640  960   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16   800 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1024 1536   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1280 2048   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1400 2100   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1600 2400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1920 2400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  1920 2880   60 70 72 75             0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "16  2048 3072   60                      0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   640  960   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32   800 1200   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1024 1536   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1280 2048   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1400 2100   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1600 2400   60 70 72 75 85          0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1920 2400   60 70                   0"
+HKR,, NV11M_Modes,                 %REG_SZ_APPEND%, "32  1920 2880   60                      0"
+
+;
+; NV11GL (NV11GL) Supported Reference Modes
+;
+; NOTE: 640x480 MUST be listed FIRST in this list !!!!!
+;
+
+HKR,, NV11GL_Modes,                %REG_MULTI_SZ%,  "8    640  480   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    320  200   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    320  240   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    400  300   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    480  360   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    512  384   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    640  400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    800  600   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1024  768   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1280 1024   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1400 1050   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1600 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1920 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1920 1440   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   2048 1536   60                      0"
+
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   640  480   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   320  200   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   320  240   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   400  300   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   480  360   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   512  384   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   640  400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   800  600   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1024  768   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1280 1024   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1400 1050   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1600 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1920 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1920 1440   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  2048 1536   60                      0"
+
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   640  480   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   320  200   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   320  240   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   400  300   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   480  360   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   512  384   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   640  400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   800  600   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1024  768   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1280 1024   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1400 1050   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1600 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1920 1200   60 70                   0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1920 1440   60                      0"
+
+;
+;Horizontal multimon modes (dual head)
+;
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1280  480   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1600  600   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   2048  768   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   2560 1024   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   2800 1050   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   3200 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   3840 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   3840 1440   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   4096 1536   60                      0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1280  480   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1600  600   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  2048  768   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  2560 1024   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  2800 1050   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  3200 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  3840 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  3840 1440   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  4096 1536   60                      0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1280  480   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1600  600   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  2048  768   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  2560 1024   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  2800 1050   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  3200 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  3840 1200   60 70                   0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  3840 1440   60                      0"
+
+;
+;Vertical multimon modes (dual head)
+;
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    640  960   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8    800 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1024 1536   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1280 2048   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1400 2100   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1600 2400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1920 2400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   1920 2880   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "8   2048 3072   60                      0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   640  960   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16   800 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1024 1536   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1280 2048   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1400 2100   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1600 2400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1920 2400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  1920 2880   60 70 72 75             0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "16  2048 3072   60                      0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   640  960   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32   800 1200   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1024 1536   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1280 2048   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1400 2100   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1600 2400   60 70 72 75 85          0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1920 2400   60 70                   0"
+HKR,, NV11GL_Modes,                %REG_SZ_APPEND%, "32  1920 2880   60                      0"
+
+;
+; NV17 (NV17M) Supported Reference Modes
+;
+; NOTE: 640x480 MUST be listed FIRST in this list !!!!!
+;
+
+HKR,, NV17_Modes,                  %REG_MULTI_SZ%,  "8    640  480   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    320  200   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    320  240   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    400  300   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    480  360   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    512  384   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    640  400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    800  600   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1024  768   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1280 1024   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1400 1050   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1600 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1920 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1920 1440   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   2048 1536   60                      0"
+
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   640  480   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   320  200   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   320  240   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   400  300   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   480  360   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   512  384   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   640  400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   800  600   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1024  768   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1280 1024   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1400 1050   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1600 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1920 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1920 1440   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  2048 1536   60                      0"
+
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   640  480   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   320  200   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   320  240   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   400  300   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   480  360   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   512  384   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   640  400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   800  600   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1024  768   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1280 1024   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1400 1050   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1600 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1920 1200   60 70                   0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1920 1440   60                      0"
+
+;
+;Horizontal multimon modes (dual head)
+;
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1280  480   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1600  600   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   2048  768   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   2560 1024   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   2800 1050   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   3200 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   3840 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   3840 1440   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   4096 1536   60                      0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1280  480   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1600  600   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  2048  768   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  2560 1024   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  2800 1050   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  3200 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  3840 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  3840 1440   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  4096 1536   60                      0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1280  480   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1600  600   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  2048  768   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  2560 1024   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  2800 1050   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  3200 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  3840 1200   60 70                   0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  3840 1440   60                      0"
+
+;
+;Vertical multimon modes (dual head)
+;
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    640  960   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8    800 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1024 1536   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1280 2048   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1400 2100   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1600 2400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1920 2400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   1920 2880   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "8   2048 3072   60                      0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   640  960   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16   800 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1024 1536   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1280 2048   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1400 2100   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1600 2400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1920 2400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  1920 2880   60 70 72 75             0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "16  2048 3072   60                      0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   640  960   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32   800 1200   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1024 1536   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1280 2048   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1400 2100   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1600 2400   60 70 72 75 85          0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1920 2400   60 70                   0"
+HKR,, NV17_Modes,                  %REG_SZ_APPEND%, "32  1920 2880   60                      0"
+
+;
+; NV17GL (NV17GL) Supported Reference Modes
+;
+; NOTE: 640x480 MUST be listed FIRST in this list !!!!!
+;
+
+HKR,, NV17GL_Modes,                %REG_MULTI_SZ%,  "8    640  480   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    320  200   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    320  240   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    400  300   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    480  360   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    512  384   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    640  400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    800  600   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1024  768   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1280 1024   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1400 1050   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1600 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1920 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1920 1440   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   2048 1536   60                      0"
+
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   640  480   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   320  200   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   320  240   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   400  300   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   480  360   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   512  384   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   640  400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   800  600   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1024  768   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1280 1024   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1400 1050   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1600 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1920 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1920 1440   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  2048 1536   60                      0"
+
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   640  480   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   320  200   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   320  240   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   400  300   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   480  360   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   512  384   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   640  400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   800  600   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1024  768   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1280 1024   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1400 1050   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1600 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1920 1200   60 70                   0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1920 1440   60                      0"
+
+;
+;Horizontal multimon modes (dual head)
+;
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1280  480   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1600  600   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   2048  768   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   2560 1024   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   2800 1050   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   3200 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   3840 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   3840 1440   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   4096 1536   60                      0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1280  480   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1600  600   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  2048  768   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  2560 1024   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  2800 1050   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  3200 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  3840 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  3840 1440   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  4096 1536   60                      0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1280  480   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1600  600   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  2048  768   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  2560 1024   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  2800 1050   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  3200 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  3840 1200   60 70                   0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  3840 1440   60                      0"
+
+;
+;Vertical multimon modes (dual head)
+;
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    640  960   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8    800 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1024 1536   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1280 2048   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1400 2100   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1600 2400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1920 2400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   1920 2880   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "8   2048 3072   60                      0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   640  960   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16   800 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1024 1536   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1280 2048   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1400 2100   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1600 2400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1920 2400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  1920 2880   60 70 72 75             0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "16  2048 3072   60                      0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   640  960   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32   800 1200   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1024 1536   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1280 2048   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1400 2100   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1600 2400   60 70 72 75 85          0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1920 2400   60 70                   0"
+HKR,, NV17GL_Modes,                %REG_SZ_APPEND%, "32  1920 2880   60                      0"
+
+
+
+
+[nv_UseUncachedPCIMappings]
+HKR,, UseUncachedPCIMappings, %REG_DWORD%, 1
+
+[nv_DualviewMinMemSize]
+HKR,, DualviewMinMemSize, %REG_DWORD%, 7
+
+[nv_PushBufferLocale]
+HKR,, D3D_PushBufferLocale, %REG_DWORD%, 3
+
+
+
+;
+; Clear out old registry switches
+;
+
+[nv_ClearRegistrySwitches]
+HKR,, NVREGSWITCHES
+HKR,, NV11M_Modes
+HKR,, NV11GL_Modes
+HKR,, NV17_Modes
+HKR,, NV17GL_Modes
+HKR,, FlatPanelMode
+HKR,, DMTOVERRIDE
+HKR,, DisableExtRefresh
+HKR,, Max16x12
+HKR,, Disable19x12x32at60
+HKR,, Disable16x12x32ge70
+HKR,, Disable19x10x32ge70
+HKR,, DellSwitch1
+HKR,, OglStencil
+HKR,, OGL_EnableFSAA
+HKR,, OGL_DefaultSwapInterval
+HKR,, OGL_TexMemorySpaceEnables
+HKR,, OGL_TexStagingBufferSize
+HKR,, OGL_TexStagingBufferMultSize
+HKR,, OGL_DLStagingBufferSizeWords
+HKR,, OGL_DlMemorySpaceEnables
+HKR,, TwinViewInfo
+HKR,, PrevTwinViewInfo
+HKR,, SaveSettings
+HKR,, D3D_MAXAGPHEAPSIZE
+HKR,, ForceModeNextBoot
+HKR,, ReBootedNowForceMode
+HKR,, LidBehavior
+HKR,, NvCplConfiguration
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers",RIVATNT
+HKLM,"Software\NVIDIA Corporation\RIVA TNT\OpenGL"
+HKLM,"SYSTEM\CurrentControlSet\Hardware Profiles\Current\System\CurrentControlSet\SERVICES\NV4\DEVICE0"
+HKCU,Software\"NVIDIA Corporation"\Global\NVTweak,NVCPLQUICKTWEAK
+HKCU,Software\"NVIDIA Corporation"\Global\NVTweak,QuickTweak
+
+[Strings]
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+REG_SZ_APPEND  = 0x00010008
+
+;
+; Localizable Strings
+;
+
+NVidia       = "NVIDIA"
+NVidia.Nv11M.1 = "NVIDIA GeForce2 Go (Dell Mobile)"
+NVidia.Nv11M.2 = "NVIDIA GeForce2 Go (Dell Mobile) "
+NVidia.Nv11M.3 = "NVIDIA GeForce2 Go (Dell Mobile)  "
+NVidia.Nv11M.4 = "NVIDIA GeForce2 Go (Dell Mobile)   "
+NVidia.Nv11M.5 = "NVIDIA GeForce2 Go (Dell Mobile)    "
+NVidia.Nv11M.6 = "NVIDIA GeForce2 Go (Dell Mobile)     "
+NVidia.Nv11M.7 = "NVIDIA GeForce2 Go (Dell Mobile)      "
+NVidia.Nv11M.8 = "NVIDIA GeForce2 Go (Dell Mobile)       "
+NVidia.Nv11M.9 = "NVIDIA GeForce2 Go (Dell Mobile)        "
+NVidia.Nv11M.10 = "NVIDIA GeForce2 Go (Dell Mobile)         "
+NVidia.Nv11GL.1 = "NVIDIA Quadro2 Go (Dell Mobile)"
+NVidia.Nv11GL.2 = "NVIDIA Quadro2 Go (Dell Mobile) "
+NVidia.Nv11GL.3 = "NVIDIA Quadro2 Go (Dell Mobile)  "
+NVidia.Nv11GL.4 = "NVIDIA Quadro2 Go (Dell Mobile)   "
+NVidia.Nv17M.1 = "NVIDIA GeForce4 440 Go (Dell Mobile)"
+;NVidia.Nv17M.2 = "NVIDIA GeForce4 440 Go (Dell Mobile) "
+NVidia.Nv17GL.1 = "NVIDIA Quadro4 500 GoGL (Dell Mobile)"
+NVidia.Nv17GL.2 = "NVIDIA Quadro4 500 GoGL (Dell Mobile) "
+DiskId1="NVIDIA Windows 2000/XP Driver Library Installation Disk 1"
+DiskId2="NVIDIA Windows 2000/XP Driver Library Installation Disk 2"
+DiskId3="NVIDIA Windows 2000/XP Driver Library Installation Disk 3"
+DiskId4="NVIDIA Windows 2000/XP Driver Library Installation Disk 4"
+DiskId5="NVIDIA Windows 2000/XP Driver Library Installation Disk 5"
+DiskId6="NVIDIA Windows 2000/XP Driver Library Installation Disk 6"
+NVSVC.desc = "NVIDIA Driver Helper Service"
+MS      = "Microsoft"

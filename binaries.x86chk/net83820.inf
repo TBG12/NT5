@@ -1,0 +1,212 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature       = "$Windows NT$"
+Class       	= Net
+ClassGuid       = {4d36e972-e325-11ce-bfc1-08002be10318} 
+Provider        = %MSFT%
+LayoutFile      = layout.inf
+DriverVer=10/01/2002,5.0.4.24
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%NSC% = NSC
+%ACC% = ACCTON
+%SMC% = SMC
+%LGI% = LGI
+%RTI% = RTI
+%OLC% = OLC
+%NGE% = NGE
+%DLC% = DLC
+
+[NSC]
+%dp83820.DeviceDesc%  = dp83820.ndi,  PCI\VEN_100b&DEV_0022
+
+[ACCTON]
+%EN1407T.DeviceDesc%  = dp83820.ndi,  PCI\VEN_100b&DEV_0022&SUBSYS_14071113
+
+[SMC]
+%SMC9462.DeviceDesc%  = dp83820.ndi,  PCI\VEN_100b&DEV_0022&SUBSYS_946210b8
+
+[LGI]
+%EG103264.DeviceDesc% = dp83820.ndi, PCI\VEN_100b&DEV_0022&SUBSYS_10641737
+
+[RTI]
+%E600610.DeviceDesc%  = dp83820.ndi,  PCI\VEN_100b&DEV_0022&SUBSYS_06001717
+
+[OLC]
+%GE2000N.DeviceDesc%  = dp83820.ndi,  PCI\VEN_100b&DEV_0022&SUBSYS_2A9C149C
+
+[NGE]
+%GA612T.DeviceDesc%   = dp83820.ndi,   PCI\VEN_100b&DEV_0022&SUBSYS_612A1385
+%GA622T.DeviceDesc%   = dp83820.ndi,   PCI\VEN_100b&DEV_0022&SUBSYS_622A1385
+
+[DLC]
+%DGE500T.DeviceDesc%  = dp83820.ndi,  PCI\VEN_100b&DEV_0022&SUBSYS_49001186
+
+[dp83820.ndi.NT]	
+Characteristics = 0x84    ; NCF_PHYSICAL | NCF_HAS_UI
+BusType         = 5
+AddReg          = dp83820.reg.NT, dp83820.reg.common
+CopyFiles       = Copy_files.NT
+
+[dp83820.ndi.NT.Services]
+AddService = dp83820, 0x00000002 , dp83820_Service_Inst, dp83820_EventLog_Inst
+
+[dp83820.reg.common]
+HKR, ,MediaType,        0, "1"
+HKR, ,AdapterCFID,      0, "0022100b"
+
+; Network Media Selection 
+HKR, Ndi\params\NetworkMedia,       ParamDesc, 0, %NetworkMedia%
+HKR, Ndi\params\NetworkMedia,       type,      0, "enum"
+HKR, Ndi\params\NetworkMedia,       default,   0, "8"
+HKR, Ndi\params\NetworkMedia\enum,  8,         0, %NM1%
+HKR, Ndi\params\NetworkMedia\enum,  1,         0, %NM2%
+HKR, Ndi\params\NetworkMedia\enum,  2,         0, %NM3%
+HKR, Ndi\params\NetworkMedia\enum,  3,         0, %NM4%
+HKR, Ndi\params\NetworkMedia\enum,  4,         0, %NM5%
+HKR, Ndi\params\NetworkMedia\enum,  5,         0, %NM6%
+HKR, Ndi\params\NetworkMedia\enum,  6,         0, %NM7%
+HKR, Ndi\params\NetworkMedia\enum,  7,         0, %NM8%
+
+;  Pause Control
+HKR, Ndi\params\FlowControl,        ParamDesc, 0, %PauseControl%
+HKR, Ndi\params\FlowControl,        type,      0, "enum"
+HKR, Ndi\params\FlowControl,        default,   0, "3"
+HKR, Ndi\params\FlowControl\enum,   0,         0, %Disable%
+HKR, Ndi\params\FlowControl\enum,   1,         0, %Txpauseframes%
+HKR, Ndi\params\FlowControl\enum,   2,         0, %Rxpauseframes%
+HKR, Ndi\params\FlowControl\enum,   3,         0, %Enable%
+
+;  Recieve Buffers
+HKR, Ndi\params\RxQueueSz,          ParamDesc, 0, %RxQueueSz%
+HKR, Ndi\params\RxQueueSz,          type,      0, "long"
+HKR, Ndi\params\RxQueueSz,          default,   0, "128"
+HKR, Ndi\params\RxQueueSz,          Min,       0, "16"
+HKR, Ndi\params\RxQueueSz,          Max,       0, "256"
+HKR, Ndi\params\RxQueueSz,          Step,      0, "1"
+
+; Jumbo Packet Size
+HKR, Ndi\params\JumboFrame, 	    ParamDesc, 0, %JumboFrame%
+HKR, Ndi\params\JumboFrame,         type,      0, "enum"
+HKR, Ndi\params\JumboFrame,         default,   0, "1" 
+HKR, Ndi\params\JumboFrame\enum,    1514,      0, %JF1%
+HKR, Ndi\params\JumboFrame\enum,    4088,      0, %JF2%
+HKR, Ndi\params\JumboFrame\enum,    9014,      0, %JF3%
+HKR, Ndi\params\JumboFrame\enum,    10000,     0, %JF4%
+
+; IEEE Non Compliance Bit 
+HKR, Ndi\params\NcBit,              ParamDesc, 0, %NcBit%
+HKR, Ndi\params\NcBit,              type,      0, "enum"
+HKR, Ndi\params\NcBit,              default,   0, "1"
+HKR, Ndi\params\NcBit\enum,         1,         0, %Enable%
+HKR, Ndi\params\NcBit\enum,         0,         0, %Disable%
+
+;Network address
+HKR, Ndi\params\NetworkAddress,     ParamDesc,      0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,     type,           0, "edit"
+HKR, Ndi\params\NetworkAddress,     LimitText,      0, "12"
+HKR, Ndi\params\NetworkAddress,     UpperCase,      0, "1"
+HKR, Ndi\params\NetworkAddress,     default,        0, ""
+HKR, Ndi\params\NetworkAddress,     optional,       0, "1"
+
+; Checksum 
+HKR, Ndi\params\CheckSum,           ParamDesc, 0, %CheckSum%
+HKR, Ndi\params\CheckSum,           type,      0, "enum"
+HKR, Ndi\params\CheckSum,           default,   0, "0"
+HKR, Ndi\params\CheckSum\enum,      0,         0, %C1%
+HKR, Ndi\params\CheckSum\enum,      1,         0, %C2%
+HKR, Ndi\params\CheckSum\enum,      2,         0, %C3%
+HKR, Ndi\params\CheckSum\enum,      3,         0, %C4%
+
+;  Virtual Lan ID
+HKR, Ndi\params\VLANID,          ParamDesc, 0, %VLANID%
+HKR, Ndi\params\VLANID,          type,      0, "long"
+HKR, Ndi\params\VLANID,          default,   0, ""
+HKR, Ndi\params\VLANID,          Min,       0, "1"
+HKR, Ndi\params\VLANID,          Max,       0, "4095"
+HKR, Ndi\params\VLANID,          Step,      0, "1"
+HKR, Ndi\params\VLANID,     	 optional,  0, "1"
+
+
+[dp83820.reg.NT]
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR, Ndi,            Service,    0, "dp83820"
+
+[dp83820_Service_Inst]
+DisplayName    = %dp83820.ServiceDesc%
+ServiceType    = 1 ; SERVICE_KERNEL_DRIVER
+StartType      = 3 ; SERVICE_DEMAND_START
+ErrorControl   = 1 ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = NDIS
+ServiceBinary  = %12%\DP83820.sys
+
+[dp83820_EventLog_Inst]
+AddReg = dp83820_EventLog_AddReg
+
+[dp83820_EventLog_AddReg]
+HKR, , EventMessageFile, 0x00020000, "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\drivers\DP83820.sys"
+HKR, , TypesSupported, 0x00010001,7
+
+[Copy_files.NT]
+DP83820.sys,,,2
+
+[DestinationDirs]
+Copy_files.NT = 12
+DefaultDestDir =12
+
+[Strings]
+MSFT = "Microsoft"
+NSC  = "National Semiconductor Corp."
+ACC  = "Accton"
+SMC  = "SMC Networks, INC."
+LGI  = "LinkSys Group Inc."
+RTI  = "Runtop Inc."
+OLC  = "OvisLink Corp"
+NGE  = "NETGEAR  Inc."
+DLC  = "D-Link  Corporation"
+ 
+NetworkMedia    = "Media Type"
+NM1             = "1) Auto Negotiate"
+NM2             = "2) Auto 1000 Mbps"
+NM3             = "3) Auto 100 Mbps" 
+NM4             = "4) Auto 10 Mbps"  
+NM5             = "5) Force 100 Full"
+NM6             = "6) Force 100 Half"
+NM7             = "7) Force 10 Full" 
+NM8             = "8) Force 10 Half" 
+PauseControl    = "Pause Control"
+Disable         = "Disable"        
+Txpauseframes   = "Tx pause frames"
+Rxpauseframes   = "Rx pause frames"
+Enable          = "Enable"         
+RxQueueSz       = "Receive Buffers"
+JumboFrame      = "Packet Size (maximum)"
+JF1             = "1) 1514 (Standard)"   
+JF2             = "2) 4088"              
+JF3             = "3) 9014 (Alteon)"     
+JF4             = "4) 10000"             
+NcBit      	= "IEEE Compliant Link"
+NetworkAddress  = "Network Address"
+CheckSum	= "Offload Checksum"
+C1              = "1) Tx Checksum" 
+C2              = "2) Rx CheckSum" 
+C3              = "3) All CheckSum"
+C4              = "4) None"        
+VLANID	        = "VLAN ID"
+
+dp83820.DeviceDesc  = "National Semiconductor Corp. DP83820 Gigabit Network Controller"
+EN1407T.DeviceDesc  = "Accton EN1407T Giga-bit Ethernet Adapter"
+SMC9462.DeviceDesc  = "SMC EZ Card 1000"
+EG103264.DeviceDesc = "Linksys EG1032/EG1064 Instant Gigabit"
+E600610.DeviceDesc  = "Runtop GigaLink 600/610 Gigabit Ethernet Adapter"
+GE2000N.DeviceDesc  = "GE-2000N Network Interface Card"
+GA612T.DeviceDesc   = "Netgear Gigabit UTP Adapter"
+GA622T.DeviceDesc   = "Netgear Gigabit UTP Adapter "
+DGE500T.DeviceDesc  = "DGE-500T  Gigabit Adapter "
+
+dp83820.ServiceDesc = "National Semiconductor Corp. DP83820 Gigabit Network Controller Driver"

@@ -1,0 +1,988 @@
+*%% 
+*%% HP Business Inkjet 2200C
+*%%
+*%% Copyright 1999, Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpfnam50.gpd"
+
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+*ModelName: "HP Business Inkjet 2200/2250 (HPA)"
+*GPDFileName: "HPWM5220.GPD"
+
+*PrintRate: 15
+*PrintRateUnit: PPM
+
+*ResourceDLL: "hpfui50.dll"
+
+
+*rcPersonalityID: =PERSONALITY_PCL_DISPLAY 
+*ReverseBandOrderForEvenPages?: FALSE
+
+*MasterUnits: PAIR(600, 600)
+*OutputOrderReversed?: TRUE
+*PrinterType: SERIAL
+
+*%%
+*%% Macros
+*%%
+*%% collection of the macros common to all modes for this product
+*%%
+*Macros: OEMCommonCombinations
+{
+    OEM_COMMON_INFO: =OEM_PCLA =OEM_PCL_MARG_0
+}
+
+*BlockMacro: PaperInputBinConstraints
+{
+	*Constraints: InputBin.Tray_2
+
+}
+
+*Feature: PSHelpFile
+{
+    *Name: "PSHelp"
+    *Option: HPFDJ200
+    {
+        *Name: ""
+    }
+}
+
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.40
+            *Cmd: =PCL_ORIENT_PORTRAIT
+        }
+    }
+    *Option: LANDSCAPE_CC90
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.40
+            *Cmd: =PCL_ORIENT_PORTRAIT
+        }
+    }
+}
+
+*rcInstalledOptionNameID:    =INSTALLED_DISPLAY
+*rcNotInstalledOptionNameID: =NOT_INSTALLED_DISPLAY
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+    *DefaultOption: Auto
+    *Option: Auto
+    {
+        *rcNameID: =AUTO_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.15
+            *Cmd: =PCL_MEDSOURCE_AUTOSELECT
+        }
+    }
+    *Option: Tray_1
+    {
+        *rcNameID: =TRAY1_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.15
+            *Cmd: =PCL_MEDSOURCE_TRAY1
+        }
+    }
+    *Option: Tray_2
+    {
+        *rcNameID: =TRAY2_DISPLAY
+        *rcInstallableFeatureNameID: =TRAY2_DISPLAY
+        *Installable?: TRUE
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.15
+            *Cmd: =PCL_MEDSOURCE_TRAY2
+        }
+    }
+    *Option: Manual
+    {
+        *rcNameID: =MANUAL_FEED_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.15
+            *Cmd: =PCL_MEDSOURCE_MANUALFEED
+        }
+    }
+}
+
+
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+
+    *DefaultOption: LETTER
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_US_LETTER
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 6296)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4800, 6296)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 6320)
+            }
+        }
+    }
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_US_LEGAL
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 8096)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4800, 8096)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 8120)
+            }
+        }
+    }
+    *Option: EXECUTIVE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_US_EXECUTIVE
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4048, 6000)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4048, 6000)
+                *PrintableOrigin: PAIR(150, 24)
+                *CursorOrigin: PAIR(150, 6024)
+            }
+        }
+    }
+    *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_A4
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 6712)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4800, 6712)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 6736)
+            }
+        }
+    }
+    *Option: A5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_A5
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(3328, 4656)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(3328, 4656)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 4680)
+            }
+        }
+    }
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_B5
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4128, 5768)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4128, 5768)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 5792)
+            }
+        }
+    }
+    *Option: ENV_10
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_ENV_10
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2320, 5392)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2320, 5392)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 5416)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: ENV_MONARCH
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_ENV_MONARCH
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2176, 4200)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2176, 4200)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 4224)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: ENV_DL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_ENV_DL
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2432, 4896)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2432, 4896)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 4920)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: ENV_C5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_ENV_C5
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(3664, 5104)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(3664, 5104)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 5128)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: ENV_C6
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_ENV_C6
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2528, 3520)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2528, 3520)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 3544)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: A6
+    {
+        *rcNameID: =A6_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_A6
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2320, 3192)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2320, 3192)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 3128)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: ENV_A2
+    {
+        *rcNameID: =ENV_A2_DISPLAY
+        *PageDimensions: PAIR(2628, 3450)
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_ENV_A2
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2464, 3136)
+                *PrintableOrigin: PAIR(82, 24)
+                *CursorOrigin: PAIR(82, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2464, 3136)
+                *PrintableOrigin: PAIR(82, 24)
+                *CursorOrigin: PAIR(82, 3160)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: INDEX_3x5
+    {
+        *rcNameID: =US_INDEX_CARD_3X5_DISPLAY
+        *PageDimensions: PAIR(1800, 3000)
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_INDEX_3x5
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(1648, 2608)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(1648, 2608)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 2632)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: INDEX_4x6
+    {
+        *rcNameID: =US_INDEX_CARD_4X6_DISPLAY
+        *PageDimensions: PAIR(2400, 3600)
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_INDEX_4x6
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2240, 3296)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2240, 3296)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 3320)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: INDEX_5x8
+    {
+        *rcNameID: =US_INDEX_CARD_5X8_DISPLAY
+        *PageDimensions: PAIR(3000, 4800)
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_INDEX_5x8
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(2848, 4496)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(2848, 4496)
+                *PrintableOrigin: PAIR(76, 24)
+                *CursorOrigin: PAIR(76, 4520)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+    *Option: CUSTOMSIZE
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *MinSize: PAIR(1800, 3000)
+        *MaxSize: PAIR(5100, 8400)
+        *TopMargin: 24
+        *BottomMargin: 280
+        *MaxPrintableWidth: 4800
+        *MinLeftMargin: 150
+        *CenterPrintable?: FALSE
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.30
+            *Cmd: =PCL_US_LEGAL
+        }
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *CursorOrigin: PAIR(150, 24)
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *CursorOrigin: PAIR(150, 8120)
+            }
+        }
+        *InsertBlock: =PaperInputBinConstraints
+    }
+}
+
+
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *ConflictPriority: 50
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: r300x300
+    *Option: r300x300
+    {
+        *Name: "300 x 300 " =DOTS_PER_INCH
+        *DPI: PAIR(300, 300)
+        *TextDPI: PAIR(300, 300)
+        *SpotDiameter: 100
+    }
+    *Option: r600x600
+    {
+        *Name: "600 x 600 " =DOTS_PER_INCH
+        *DPI: PAIR(600, 600)
+        *TextDPI: PAIR(600, 600)
+        *SpotDiameter: 100
+    }
+}
+
+*Feature: PM
+{
+    *rcNameID: =PRINT_MODE_DISPLAY
+    *ConflictPriority: 40
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: PlainNormalColor
+    *Option: PlainEconoMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.45
+            *Cmd: =PCL_RASWIDTH_300LETTER =HPA_CRD_SEQC33
+        }
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO =OEM_DF_HPA_SEQC332
+        *Constraints: ColorMode.Color24
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: Resolution.r600x600
+    }
+    *Option: PlainNormalMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.45
+            *Cmd: =PCL_RASWIDTH_300LETTER =HPA_CRD_SEQC33
+        }
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO =OEM_DF_HPA_SEQC332
+        *Constraints: ColorMode.Color24
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: Resolution.r600x600
+    }
+    *Option: PlainBestMono
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.45
+            *Cmd: =PCL_RASWIDTH_600LETTER =HPA_CRD_SEQC66
+        }       
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO =OEM_DF_HPA_SEQC662
+        *Constraints: ColorMode.Color24
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: Resolution.r300x300
+    }
+    *Option: PlainEconoColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.45
+            *Cmd: =PCL_RASWIDTH_300LETTER =HPA_CRD_SEQC33
+        }
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO =OEM_DF_HPA_SEQC332
+        *Constraints: ColorMode.Gray8
+        *Constraints: LIST(PQ.Normal, PQ.Best)
+        *Constraints: Resolution.r600x600
+    }
+    *Option: PlainNormalColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.45
+            *Cmd: =PCL_RASWIDTH_300LETTER =HPA_CRD_SEQC33
+        }
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO =OEM_DF_HPA_SEQC332
+        *Constraints: ColorMode.Gray8
+        *Constraints: LIST(PQ.Econo, PQ.Best)
+        *Constraints: Resolution.r600x600
+    }
+    *Option: PlainBestColor
+    {
+        *rcNameID: =AUTO_SELECT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.45
+            *Cmd: =PCL_RASWIDTH_600LETTER =HPA_CRD_SEQC66
+        }
+        EXTERN_GLOBAL: *OEMCustomData:
++           =OEM_COMMON_INFO =OEM_DF_HPA_SEQC662
+        *Constraints: ColorMode.Gray8
+        *Constraints: LIST(PQ.Econo, PQ.Normal)
+        *Constraints: Resolution.r300x300
+    }
+}
+
+
+*Feature: MediaType
+{
+    *rcNameID: =MEDIA_TYPE_DISPLAY
+    *ConflictPriority: 10
+    *DefaultOption: STANDARD
+    *UpdateQualityMacro?: TRUE
+
+    *Option: STANDARD
+    {
+        *rcNameID: =PLAIN_PAPER_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_PLAIN
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+    }
+
+    *Option: HP_PREMIUM_INKJET_PAPER
+    {   
+        *rcNameID: =HP_PREMIUM_INKJET_PAPER_DISPLAY
+        *OptionID: =HP_PREMIUM_INKJET_PAPER_ID
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_SPECIAL
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+
+    *Option: HP_PREMIUM_INKJET_HEAVYWEIGHT
+    {   
+        *rcNameID: =HP_PREMIUM_INKJET_HEAVYWEIGHT_DISPLAY
+        *OptionID: =HP_PREMIUM_INKJET_HEAVYWEIGHT_ID
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_INKJET_HEAVY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+
+    *Option: TRANSPARENCY
+    {
+        *rcNameID: =HP_PREMIUM_INKJET_TRANSPARENCY_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd:  =PCL_MEDIA_TRANSPARENCY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+
+    *Option: HP_PREMIUM_PHOTO_PAPER
+    {   
+        *rcNameID: =HP_PREMIUM_PHOTO_PAPER_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_PREMIUM_PHOTO
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+
+    *Option: HP_PHOTO_PAPER
+    {   
+        *rcNameID: =HP_PHOTO_PAPER_DISPLAY
+        *OptionID: =HP_PHOTO_PAPER_ID
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_GLOSSY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+
+    *Option: HP_PROFESSIONAL_BROCHURE_GLOSSY
+    {   
+        *rcNameID: =HP_PROFESSIONAL_BROCHURE_GLOSSY_DISPLAY
+        *OptionID: =HP_PROFESSIONAL_BROCHURE_GLOSSY_ID
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_BROCHURE_GLOSSY
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+
+    *Option: HP_PROFESSIONAL_BROCHURE_MATTE
+    {   
+        *rcNameID: =HP_PROFESSIONAL_BROCHURE_MATTE_DISPLAY
+        *OptionID: =HP_PROFESSIONAL_BROCHURE_MATTE_ID
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.10
+            *Cmd: =PCL_MEDIA_BROCHURE_MATTE
+        }
+        EXTERN_GLOBAL: *ChangeColorModeOnDoc?: FALSE
+
+        *InsertBlock: =PaperInputBinConstraints
+    }
+}
+
+*Feature: ColorMode
+{
+    *rcNameID: =COLOR_PRINTING_MODE_DISPLAY
+    *ConflictPriority: 30
+    *UpdateQualityMacro?: TRUE
+    *DefaultOption: Color24
+
+    *Option: Gray8
+    {   
+        *rcNameID: =GRAYSCALE_DISPLAY
+        *Color?: FALSE
+        *DevNumOfPlanes: 0
+        *DevBPP: 0
+        *DrvBPP: 8
+        *IPCallbackID: 1
+        *Command: CmdSendBlockData { *Cmd: "" }
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.10
+            *Cmd: =PJL_ENTER_PCL3GUI
+        }
+    }
+    *Option: Color24
+    {   
+        *rcNameID: =24BPP_DISPLAY
+        *Color?: TRUE
+        *DevNumOfPlanes: 0
+        *DevBPP: 0
+        *DrvBPP: 24
+        *IPCallbackID: 1
+        *Command: CmdSendBlockData { *Cmd: "" }
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.10
+            *Cmd: =PJL_ENTER_PCL3GUI
+        }
+    }
+}
+
+*Feature: PQ
+{
+    *rcNameID: =PRINT_QUALITY_DISPLAY
+    *ConflictPriority: 20
+    *FeatureType: DOC_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: Normal
+    *Option: Econo
+    {
+        *rcNameID: =DRAFT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.20
+            *Cmd: =PCL_PQ_ECONO
+        }
+    }
+    *Option: Normal
+    {
+        *rcNameID: =NORMAL_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.20
+            *Cmd: =PCL_PQ_NORMAL
+        }
+    }
+    *Option: Best
+    {
+        *rcNameID: =BEST_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: PAGE_SETUP.20
+            *Cmd: =PCL_PQ_BEST
+        }
+    }
+}
+
+
+*%%
+*%% Print Quality Macros
+*%%
+*switch: MediaType
+{
+    *case: STANDARD
+    {
+        *switch: ColorMode
+        {
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Gray8, PM.PlainEconoMono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Color24, PM.PlainEconoColor,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PlainNormalColor, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PlainBestColor,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+        }
+    }
+
+    *case: TRANSPARENCY
+    {
+        *switch: ColorMode
+        {
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Gray8, PM.PlainEconoMono,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST(ColorMode.Color24, PM.PlainEconoColor,  PQ.Econo,  Resolution.r300x300)
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PlainNormalColor, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PlainBestColor,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BETTERQUALITY
+            }
+        }
+    }
+
+    *default:
+    {
+        *switch: ColorMode
+        {
+            *case: Gray8
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Gray8, PM.PlainNormalMono, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Gray8, PM.PlainBestMono,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+            *default:
+            {
+                *DraftQualitySettings:  LIST()
+                *BetterQualitySettings: LIST(ColorMode.Color24, PM.PlainNormalColor, PQ.Normal, Resolution.r300x300)
+                *BestQualitySettings:   LIST(ColorMode.Color24, PM.PlainBestColor,   PQ.Best,   Resolution.r600x600)
+                *DefaultQuality: BESTQUALITY
+            }
+        }
+    }
+}
+
+
+*%%
+*%% Printer Configuration Commands
+*%%
+*Command: CmdStartDoc
+{
+    *Order: DOC_SETUP.10
+    *Cmd: ""
+}
+
+*Command: CmdEndDoc
+{
+    *Order: DOC_FINISH.10
+    *Cmd: =PJL_EXIT_LANGUAGE "@PJL EOJ<0A><1B>%%-12345X"
+}
+
+*Command: CmdStartPage
+{
+    *Order: PAGE_SETUP.50
+    *Cmd: "<1B>*o7W<08 09 00 00 07 00 01><1B>&u600D<1B>*r1A"
+}
+
+*Command: CmdEndPage
+{
+    *Order: PAGE_FINISH.10
+    *Cmd: "<1B>*rC<0C>"
+}
+
+
+*%%
+*%% Printing Attributes and Commands
+*%%
+*RotateCoordinate?: TRUE
+*RotateRaster?: FALSE
+
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*EjectPageWithFF?: FALSE
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 600
+*YMoveUnit: 600
+*Command: CmdXMoveAbsolute { *Cmd: "<1B>*p" %d{DestX}"X" }
+*Command: CmdYMoveAbsolute { *Cmd: "<1B>*p" %d{DestY}"Y" }
+*Command: CmdCR { *Cmd: "<0D>" }
+*Command: CmdLF { *Cmd: "<0A>" }
+*Command: CmdFF { *Cmd: "<0C>" }
+
+*OutputDataFormat: H_BYTE
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*RasterSendAllData?: TRUE

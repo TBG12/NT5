@@ -1,0 +1,193 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature   =  "$Windows NT$"
+Class       =  Net
+ClassGUID   =  {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    =  %MSFT%
+LayoutFile  =  layout.inf
+DriverVer=10/01/2002,1.2.14.3
+
+[Manufacturer]
+%Ositech% = Ositech
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[OSITECH]
+%OtcethJOD.DeviceDesc%  = OtcethJOD.ndi, MF\OSITECHJOD_DEV1
+
+%OtcethJOH.DeviceDesc%  = OtcethJOH.ndi, MF\OSITECHJOH_DEV1
+
+%Otceth4OD.DeviceDesc%  = Otceth4OD.ndi, PCMCIA\OSITECH-TRUMPCARD:FOUR_OF_DIAMONDS_ETHERNET-0140-0005
+%Otceth4OD.DeviceDesc%  = Otceth4OD.ndi, PCMCIA\OSITECH-TRUMPCARD:FOUR_OF_DIAMONDS_ETHERNET-2108
+%Otceth4OD.DeviceDesc%  = Otceth4OD.ndi, PCMCIA\OSITECH-TRUMPCARD:FOUR_OF_DIAMONDS_ETHERNET-AC58
+
+%Otceth7OD.DeviceDesc%  = Otceth7OD.ndi, PCMCIA\OSITECH-TRUMPCARD:SEVEN_OF_DIAMONDS_ETHERNET-0140-0008
+%Otceth7OD.DeviceDesc%  = Otceth7OD.ndi, PCMCIA\OSITECH-TRUMPCARD:SEVEN_OF_DIAMONDS_ETHERNET-0D98
+%Otceth7OD.DeviceDesc%  = Otceth7OD.ndi, PCMCIA\OSITECH-TRUMPCARD:SEVEN_OF_DIAMONDS_ETHERNET-5FD6
+%Otceth7OD.DeviceDesc%  = Otceth7OD.ndi, PCMCIA\OSITECH-TRUMPCARD:SEVEN_OF_DIAMONDS_ETHERNET-8C4F
+%Otceth7OD.DeviceDesc%  = Otceth7OD.ndi, PCMCIA\OSITECH-TRUMPCARD:SEVEN_OF_DIAMONDS_ETHERNET-7356
+
+;-------------------------------------------------------------------------------
+; Ositech Jack of Hearts 10Mbps
+;
+[OtcethJOH.ndi]
+AddReg          = Speed10.reg, 91c9x.reg, otceth.MF.reg
+BusType         = 8
+Characteristics = 0x84
+CopyFiles       = otceth.CopyFiles
+
+[OtcethJOH.ndi.Services]
+AddService      = OtcethNT, 2, OtcethNT.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Ositech Jack of Diamonds 10Mbps
+;
+[OtcethJOD.ndi]
+AddReg          = Speed10.reg, 91c9x.reg, otceth.MF.reg
+BusType         = 8
+Characteristics = 0x84
+CopyFiles       = otceth.CopyFiles
+
+[OtcethJOD.ndi.Services]
+AddService      = OtcethNT, 2, OtcethNT.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Otceth4OD Ositech Four of Diamonds 10Mbps
+;
+[Otceth4OD.ndi]
+AddReg          = Speed10.reg, 91c9x.reg
+BusType         = 8
+Characteristics = 0x84
+CopyFiles       = otceth.CopyFiles
+
+[Otceth4OD.ndi.Services]
+AddService      = OtcethNT, 2, OtcethNT.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Otceth7OD Ositech Seven of Diamonds PC Card 10/100
+;
+[Otceth7OD.ndi]
+AddReg          = Speed100.reg, 91c9x.reg, 7ofD.reg
+BusType         = 8
+Characteristics = 0x84 
+CopyFiles       = otceth.CopyFiles
+
+[Otceth7OD.ndi.Services]
+AddService      = OtcethNT, 2, OtcethNT.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; common base for 10Mb Adapters
+[Speed10.reg]
+HKR, Ndi\params\transceiver,         ParamDesc,   0, %ConnectorType%
+HKR, Ndi\params\transceiver,         default,     0, "Auto"
+HKR, Ndi\params\transceiver,         type,        0, "enum"
+HKR, Ndi\params\transceiver\enum,    "10BaseT",   0, %TP%
+HKR, Ndi\params\transceiver\enum,    "10Base2",   0, %BNC%
+HKR, Ndi\params\transceiver\enum,    "Auto",      0, %AutoD%
+HKR, Ndi\params\transceiver\enum,    "Power",     0, %PSA%
+
+; common base for 10/100Mb Adapters
+[Speed100.reg]
+HKR, Ndi\params\transceiver,         ParamDesc,   0, %ConnectorType%
+HKR, Ndi\params\transceiver,         default,     0, "Auto"
+HKR, Ndi\params\transceiver,         type,        0, "enum"
+HKR, Ndi\params\transceiver\enum,    "Auto",      0, %AutoNWAY%
+HKR, Ndi\params\transceiver\enum,    "10BaseT",   0, %10BaseT%
+HKR, Ndi\params\transceiver\enum,    "100BaseTX", 0, %100BaseTx%
+HKR, Ndi\params\transceiver\enum,    "Power",     0, %Power%
+
+; Seven of Diamonds
+[7ofD.reg]
+HKR, ,                               AdapterType, 0, "2"
+HKR, ,                               BunnyFlags,  0, "8"
+HKR, Ndi\params\MaxTransmits,        ParamDesc,   0, %MaximumTransmits%
+HKR, Ndi\params\MaxTransmits,        default,     0, "8"
+HKR, Ndi\params\MaxTransmits,        min,         0, "2"
+HKR, Ndi\params\MaxTransmits,        max,         0, "32"
+HKR, Ndi\params\MaxTransmits,        step,        0, "1"
+HKR, Ndi\params\MaxTransmits,        base,        0, "10"
+HKR, Ndi\params\MaxTransmits,        type,        0, "int"
+
+; Combination PC Card specific
+[otceth.MF.reg]
+HKR, , ModemFunction, 0, "1"
+
+; 91c9x common
+[91c9x.reg]
+HKR, ,                               Pcmcia,      0, "1"
+HKR, ,                               Environment, 0, "1"     ; NdisEnvironmentWindowsNt
+HKR, Ndi\Interfaces,                 DefUpper,    0, "ndis5"
+HKR, Ndi\Interfaces,                 DefLower,    0, "ethernet"
+HKR, Ndi\Interfaces,                 UpperRange,  0, "ndis5"
+HKR, Ndi\Interfaces,                 LowerRange,  0, "ethernet"
+HKR, Ndi,                            Service,     0, "OtcethNT"
+HKR, Ndi\params\MaxTransmits,        ParamDesc,   0, %MaximumTransmits%
+HKR, Ndi\params\MaxTransmits,        default,     0, "1"
+HKR, Ndi\params\MaxTransmits,        min,         0, "1"
+HKR, Ndi\params\MaxTransmits,        max,         0, "16"
+HKR, Ndi\params\MaxTransmits,        step,        0, "1"
+HKR, Ndi\params\MaxTransmits,        base,        0, "10"
+HKR, Ndi\params\MaxTransmits,        type,        0, "int"
+HKR, Ndi\params\NetworkAddress,      ParamDesc,   0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,      type,        0, "edit"
+HKR, Ndi\params\NetworkAddress,      LimitText,   0, "18"
+HKR, Ndi\params\NetworkAddress,      UpperCase,   0, "1"
+HKR, Ndi\params\NetworkAddress,      default,     0, ""
+HKR, Ndi\params\NetworkAddress,      base,        0, "16"
+HKR, Ndi\params\NetworkAddress,      optional,    0, "1"
+HKR, Ndi\params\EnableEarlyRcv,      ParamDesc,   0, %EarlyReceive%
+HKR, Ndi\params\EnableEarlyRcv,      default,     0, "0"
+HKR, Ndi\params\EnableEarlyRcv,      type,        0, "enum"
+HKR, Ndi\params\EnableEarlyRcv\enum, "0",         0, %Off%
+HKR, Ndi\params\EnableEarlyRcv\enum, "1",         0, %On%
+
+[otceth.CopyFiles]
+otceth5.SYS,,,2
+
+[OtcethNT.Service]
+DisplayName     = %OtcethNT.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\otceth5.SYS
+LoadOrderGroup  = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+; Destination Directories
+[DestinationDirs]
+otceth.CopyFiles = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Ositech                     = "Ositech"
+MSFT						= "Microsoft"
+OtcethJOH.DeviceDesc        = "Ositech JoH 10Mbps Ethernet Adapter"
+OtcethJOD.DeviceDesc        = "Ositech JoD 10Mbps Ethernet Adapter"
+Otceth4OD.DeviceDesc        = "Ositech 4oD 10Mbps Ethernet Adapter"
+Otceth7OD.DeviceDesc        = "Ositech 7oD 10/100Mbps Ethernet Adapter"
+OtcethNT.Service.DispName   = "Ositech PC Card Ethernet Driver"
+
+NetworkAddress              = "Network Address"
+10BaseT                     = "10BASE-T (10Mbps)"
+100BaseTX                   = "100BASE-TX (100Mbps)"
+Power                       = "Power Save Auto Select"
+ConnectorType               = "Connector Type"
+TP                          = "Twisted Pair (10BASE-T)"
+BNC                         = "Thin Coax (10BASE2)"
+AutoD                       = "Auto Detect"
+PSA                         = "Power Save (AUTO)"
+AutoNWAY                    = "Auto Sense (N-WAY)"
+Off                         = "Off"
+On                          = "On"
+MaximumTransmits            = "Maximum Transmits"
+EarlyReceive                = "Early Recieve"

@@ -1,0 +1,218 @@
+; netan983.inf
+;
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Msft%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,2.19.521.2002
+
+[Manufacturer]
+%ADMtek%    = ADMtek
+%Linksys%   = Linksys
+%I-OData%   = I-OData
+%Accton%    = Accton
+%SMC%       = SMC
+%NDC%       = NDC
+%Netgear%   = Netgear
+
+[ControlFlags]
+ExcludeFromSelect     = *
+
+[ADMtek]
+%AN983.DeviceDesc%    = AN983.ndi,   PCI\VEN_1317&DEV_0985&SUBSYS_12161113
+%GEN.DeviceDesc%      = AN983.ndi,   PCI\VEN_1317&DEV_0985
+%AN985.DeviceDesc%    = AN985.ndi,   PCI\VEN_1317&DEV_1985
+%ADM9510.DeviceDesc%  = AN983.ndi,   PCI\VEN_1317&DEV_0985&SUBSYS_95101317
+%ADM9511.DeviceDesc%  = ADM9511.ndi, PCI\VEN_1317&DEV_9511&SUBSYS_95111317
+%ADM9511.DeviceDesc%  = ADM9511.ndi, PCI\VEN_1317&DEV_9511
+%ADM9513.DeviceDesc%  = ADM9513.ndi, PCI\VEN_1317&DEV_9513&SUBSYS_95131317
+
+[I-OData]
+%CBETTXS.DeviceDesc%  = AN983.ndi, PCI\VEN_1317&DEV_0985&SUBSYS_80B010FC
+%CBETTXSCL.DeviceDesc% = AN983.ndi, PCI\VEN_1317&DEV_1985&SUBSYS_80C010FC
+
+[Linksys]
+%lne100v4.DeviceDesc% = AN983.ndi, PCI\VEN_1317&DEV_0985&SUBSYS_05741317  
+%NC100v2.DeviceDesc%  = AN983.ndi, PCI\VEN_1317&DEV_0985&SUBSYS_05701317
+%LNE110.DeviceDesc%   = AN983.ndi, PCI\VEN_1317&DEV_0985&SUBSYS_05761317
+
+[Accton]
+%EN1207F.DeviceDesc%  = EN1207.ndi, PCI\VEN_1113&DEV_1216&SUBSYS_12161113
+%EN2220A.DeviceDesc%  = EN1207.ndi, PCI\VEN_1113&DEV_1216&SUBSYS_22201113
+%EN2242.DeviceDesc%   = EN1207.ndi, PCI\VEN_1113&DEV_1216&SUBSYS_22421113
+%EN2242.DeviceDesc%   = EN1207.ndi, PCI\VEN_1113&DEV_1216&SUBSYS_00121468
+
+[SMC]
+%SMC1255.DeviceDesc%  = EN1207.ndi, PCI\VEN_1113&DEV_1216&SUBSYS_125510b8
+
+[NDC]
+%NCB110.DeviceDesc%   = AN985.ndi,  PCI\VEN_1317&DEV_1985&SUBSYS_A11015E8
+
+[Netgear]
+%FA511.DeviceDesc%    = AN985.ndi,  PCI\VEN_1317&DEV_1985&SUBSYS_511A1385
+
+[AN983.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = AN983.ndi.reg, AN983.ndi.com.reg, AN983.pci.reg, AN983.con.reg
+CopyFiles       = AN983.ndis.copyfiles.NT
+
+[AN983.ndi.NT.Services]
+AddService      = AN983, 2, AN983.Service, AN983.EventLog
+
+
+[AN985.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = AN985.ndi.reg, AN983.ndi.com.reg, AN983.pci.reg, AN983.con.reg
+CopyFiles       = AN983.ndis.copyfiles.NT
+
+[AN985.ndi.NT.Services]
+AddService      = AN983, 2, AN983.Service, AN983.EventLog
+
+[ADM9511.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = ADM9511.ndi.reg, AN983.ndi.com.reg, AN983.pci.reg, AN983.con.reg
+CopyFiles       = AN983.ndis.copyfiles.NT
+
+[ADM9511.ndi.NT.Services]
+AddService      = AN983, 2, AN983.Service, AN983.EventLog
+
+[ADM9513.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = ADM9513.ndi.reg, AN983.ndi.com.reg, AN983.pci.reg, AN983.con.reg
+CopyFiles       = AN983.ndis.copyfiles.NT
+
+[ADM9513.ndi.NT.Services]
+AddService      = AN983, 2, AN983.Service, AN983.EventLog
+
+[EN1207.ndi.NT]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = EN1207.ndi.reg, AN983.ndi.com.reg, AN983.pci.reg, AN983.con.reg
+CopyFiles       = AN983.ndis.copyfiles.NT
+
+[EN1207.ndi.NT.Services]
+AddService      = AN983, 2, AN983.Service, AN983.EventLog
+
+
+[AN983.ndis.copyfiles.NT]
+an983.sys,,,2
+
+
+[AN983.ndi.reg]
+HKR,               , AdapterCFID,      0, "09851317"
+
+[AN985.ndi.reg]
+HKR,               , AdapterCFID,      0, "19851317"
+
+[ADM9511.ndi.reg]
+HKR,               , AdapterCFID,      0, "95111317"
+
+[ADM9513.ndi.reg]
+HKR,               , AdapterCFID,      0, "95131317"
+
+[EN1207.ndi.reg]
+HKR,               , AdapterCFID,      0, "12161113"
+
+
+[AN983.ndi.com.reg]
+HKR, Ndi,            Service,          0, "AN983"
+HKR, Ndi\Interfaces, LowerRange,       0, "ethernet"
+HKR, Ndi\Interfaces, UpperRange,       0, "ndis5"
+HKR,               , MediaType,        0, "0"
+
+[AN983.pci.reg]
+HKR, , AdapterType,    0, "5"
+HKR, , TxPacketDesc,    , "600"
+HKR, , RxPacketDesc,    , "80"       
+HKR, , TxDmaDesc,       , "600"
+HKR, , RxDmaDesc,       , "40"       ; 
+HKR, , PacketsPerTxInt, , "10"       ; 0x0a
+HKR, , PacketsPerRxInd, , "10"       ; 0x0a
+HKR, , BurstLength,     , "0"        ; 0(Unlimited), 1 DW, 2 DW, 3 DW,...
+
+[AN983.con.reg]
+HKR, Ndi\Params\MediaType,            ParamDesc, , %MediaType%
+HKR, Ndi\Params\MediaType,            default,   , "0"
+HKR, Ndi\Params\MediaType,            type,      , "enum"
+HKR, Ndi\Params\MediaType\enum,       0,         , %AutoSense%
+HKR, Ndi\Params\MediaType\enum,       1,         , %10HD%
+HKR, Ndi\Params\MediaType\enum,       2,         , %10FD%
+HKR, Ndi\Params\MediaType\enum,       3,         , %100HD%
+HKR, Ndi\Params\MediaType\enum,       4,         , %100FD%
+
+HKR, , APMModeWakeup,        ,   , "0"
+HKR, , PowerManagement,      ,   , "1"
+HKR, , WakeupFrame,          ,   , "1"
+HKR, , LinkOnChange,         ,   , "1"
+HKR, , LinkOffChange,        ,   , "0"
+HKR, , MagicPacket,          ,   , "1"
+
+[AN983.Service]
+DisplayName     = %AN983.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\AN983.sys
+LoadOrderGroup  = NDIS
+
+[AN983.EventLog]
+AddReg = AN983.AddEventLog.reg
+
+[AN983.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+AN983.ndis.copyfiles.NT  = 12
+DefaultDestDir           = 12
+
+[Strings]
+Msft    = "Microsoft"
+ADMtek  = "ADMtek Incorporated"
+Linksys = "Linksys"
+I-OData = "I-O Data Device, Inc."
+Accton  = "Accton"
+SMC     = "SMC"
+NDC     = "NDC"
+Netgear = "Netgear"
+
+MediaType              = "Media Type"
+AutoSense              = "AutoSense"
+10HD                   = "10BaseT"
+10FD                   = "10BaseT Full_Duplex"
+100HD                  = "100BaseTX"
+100FD                  = "100BaseTX Full_Duplex"
+
+AN983.DeviceDesc       = "ADMtek AN983 10/100 PCI Adapter"
+Gen.deviceDesc         = "ADMtek AN983 based ethernet adapter"
+AN985.DeviceDesc       = "ADMtek AN985 10/100Mbps Fast Ethernet Adapter"
+ADM9510.DeviceDesc     = "ADMtek ADM9510 10/100Mbps Fast Ethernet Adapter"
+ADM9511.DeviceDesc     = "ADMtek ADM9511 10/100Mbps Fast Ethernet Adapter"
+ADM9513.DeviceDesc     = "ADMtek ADM9513 10/100Mbps Fast Ethernet Adapter"
+
+lne100v4.DeviceDesc    = "Linksys LNE100TX Fast Ethernet Adapter(LNE100TX v4)"
+NC100v2.DeviceDesc     = "Linksys NC100 Fast Ethernet Adapter"
+LNE110.DeviceDesc      = "Linksys LNE110TX Fast Ethernet Adapter"
+
+FA511.DeviceDesc       = "Netgear FA511 10/100 Cardbus Adapter"
+
+CBETTXS.DeviceDesc     = "I-O DATA CBET/TX-S Series Fast Ethernet Adapter" 
+CBETTXSCL.DeviceDesc   = "I-O DATA CBET/TX-SCL Fast Ethernet Adapter"
+
+EN1207F.DeviceDesc     = "Accton EN1207F Series PCI Fast Ethernet Adapter"
+EN2220A.DeviceDesc     = "Accton EN2220A Fast Ethernet Cardbus PC Card"
+EN2242.DeviceDesc      = "Accton EN2242 Series MiniPCI Fast Ethernet Adapter"
+
+SMC1255.DeviceDesc     = "SMC EZ Card 10/100 Fast Ethernet PCI Network Adapter"
+
+NCB110.DeviceDesc      = "SOHOware NCB110 10/100 CardBus PC Card"
+
+AN983.Service.DispName = "ADMtek AN983/AN985/ADM951X 10/100Mbps Fast Ethernet Adapter"

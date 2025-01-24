@@ -1,0 +1,147 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+Signature  = "$Windows NT$"
+Provider   = %MSFT%
+Class      = MultiFunction
+ClassGUID  = {4d36e971-e325-11ce-bfc1-08002be10318}
+DriverVer=10/01/2002,1.1.8.6000
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%3COM%=3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%3CCFEM556%   = FEM556.mf,   PCMCIA\3COM-MEGAHERTZ_3CCFEM556-F12B
+%3CCFEM556B%  = FEM556B.mf,  PCMCIA\3COM-MEGAHERTZ_3CCFEM556B-3219
+%3CCFEM556BI% = FEM556BI.mf, PCMCIA\3COM-MEGAHERTZ_3CCFEM556BI-8D2A
+
+[FEM556.mf]
+
+[FEM556B.mf]
+
+[FEM556BI.mf]
+
+[FEM556.mf.HW]
+AddReg=FEM556.mf.RegHW
+
+[FEM556B.mf.HW]
+AddReg=FEM556B.mf.RegHW
+
+[FEM556BI.mf.HW]
+AddReg=FEM556BI.mf.RegHW
+
+[FEM556.mf.RegHW]
+HKR, Child0000, HardwareID,  0, MF\3CCFEM556_DEV0 ; modem
+HKR, Child0000, ResourceMap, 1, 00,02,03,04
+HKR, Child0001, HardwareID,  0, MF\3CCFEM556_DEV1 ; net
+HKR, Child0001, ResourceMap, 1, 01,02,03,05
+
+[FEM556B.mf.RegHW]
+HKR, Child0000, HardwareID,  0, MF\3CCFEM556B_DEV0 ; modem
+HKR, Child0000, ResourceMap, 1, 00,02,03,04
+HKR, Child0001, HardwareID,  0, MF\3CCFEM556B_DEV1 ; net
+HKR, Child0001, ResourceMap, 1, 01,02,03,05
+
+[FEM556BI.mf.RegHW]
+HKR, Child0000, HardwareID,  0, MF\3CCFEM556BI_DEV0 ; modem
+HKR, Child0000, ResourceMap, 1, 00,02,03,04
+HKR, Child0001, HardwareID,  0, MF\3CCFEM556BI_DEV1 ; net
+HKR, Child0001, ResourceMap, 1, 01,02,03,05
+
+[FEM556.mf.LogConfigOverride]
+LogConfig = 3Com.mf.Override0
+LogConfig = 3Com.mf.Override1
+LogConfig = 3Com.mf.Override2
+LogConfig = 3Com.mf.Override3
+
+[FEM556B.mf.LogConfigOverride]
+LogConfig = 3Com.mf.Override0
+LogConfig = 3Com.mf.Override1
+LogConfig = 3Com.mf.Override2
+LogConfig = 3Com.mf.Override3
+
+[FEM556BI.mf.LogConfigOverride]
+LogConfig = 3Com.mf.Override0
+LogConfig = 3Com.mf.Override1
+LogConfig = 3Com.mf.Override2
+LogConfig = 3Com.mf.Override3
+
+[3Com.mf.Override0]
+IOConfig     =    3F8-3FF   ; Com1
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+;MemConfig    =    2000@0-FFFFFFFF%FFFFE000 ; Memory Descriptor 0
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000 ; Memory Descriptor 1
+PcCardConfig=0(W)
+MfCardConfig =    1100:47:0(A)
+MfCardConfig =    1000:41:1
+
+[3Com.mf.Override1]
+IOConfig     =    2F8-2FF   ; Com2
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12
+;MemConfig    =    2000@0-FFFFFFFF%FFFFE000
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000
+PcCardConfig=0(W)
+MfCardConfig =    1100:47:0(A)
+MfCardConfig =    1000:47:1
+
+[3Com.mf.Override2]
+IOConfig     =    3E8-3EF   ; Com3
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12
+;MemConfig    =    2000@0-FFFFFFFF%FFFFE000
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000
+PcCardConfig=0(W)
+MfCardConfig =    1100:47:0(A)
+MfCardConfig =    1000:47:1
+
+[3Com.mf.Override3]
+IOConfig     =    2E8-2EF   ; Com4
+IOConfig     =    10@100-FFF%FE0(fff)
+IRQConfig    =    3,4,5,7,9,10,11,12
+;MemConfig    =    2000@0-FFFFFFFF%FFFFE000
+;MemConfig    =    1000@0-FFFFFFFF%FFFFF000
+PcCardConfig=0(W)
+MfCardConfig =    1100:47:0(A)
+MfCardConfig =    1000:47:1
+
+[FEM556.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[FEM556B.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[FEM556BI.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+[mf.CopyFiles]
+
+[DestinationDirs]
+
+[Strings]
+MSFT        = "Microsoft"
+3COM        = "3Com"
+
+3CCFEM556   = "3Com Megahertz 3CCFEM556 10-100 LAN + 56K Modem PC Card"
+3CCFEM556B  = "3Com Megahertz 3CCFEM556B 10-100 LAN + 56K Modem PC Card"
+3CCFEM556BI = "3Com Megahertz 3CCFEM556BI 10-100 LAN + 56K Modem PC Card"
+
+MFClassName = "Multifunction PCMCIA Device Driver"

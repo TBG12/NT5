@@ -1,0 +1,146 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+Signature  = "$Windows NT$"
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %MSFT%
+Class      = Net
+DriverVer=10/01/2002,1.10.2.0
+
+[Manufacturer]
+%3COM%=3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%3CXEM556%   = LANJack.ndi,   MF\3CXEM556_DEV1
+%3CXEM556B%  = LANJackB.ndi,  MF\3CXEM556B_DEV1
+%3CXEM556BI% = LANJackBI.ndi, MF\3CXEM556BI_DEV1
+
+[LANJack.ndi] 
+AddReg          = ADDREG_XEM556.ndi.reg, 3CXEM556.ndi.reg, OSType.ndi.reg, VerStr.ndi.reg
+CopyFiles       = elpc3n.ndis3.CopyFiles
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[LANJackB.ndi] 
+AddReg          = ADDREG_XEM556B.ndi.reg, 3CXEM556.ndi.reg, OSType.ndi.reg, VerStr.ndi.reg
+CopyFiles       = elpc3nb.ndis3.CopyFiles
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[LANJackBI.ndi] 
+AddReg          = ADDREG_XEM556BI.ndi.reg, 3CXEM556.ndi.reg, OSType.ndi.reg, VerStr.ndi.reg
+CopyFiles       = elpc3nbi.ndis3.CopyFiles
+Characteristics = 0x84   ; NCF_PHYSICAL
+BusType         = 8	; PCMCIA
+
+[LANJack.ndi.Services]
+AddService       = em556, 2, em556.Service, em556.EventLog
+
+[LANJackB.ndi.Services]
+AddService       = em556B, 2, em556B.Service, em556.EventLog
+
+[LANJackBI.ndi.Services]
+AddService       = em556BI, 2, em556BI.Service, em556.EventLog
+
+[em556.Service]
+DisplayName     = %em556.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\em556n4a.sys
+LoadOrderGroup  = NDIS
+
+[em556B.Service]
+DisplayName     = %em556B.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\em556n4b.sys
+LoadOrderGroup  = NDIS
+
+[em556BI.Service]
+DisplayName     = %em556BI.device.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\em556n4i.sys
+LoadOrderGroup  = NDIS
+
+
+[em556.EventLog]
+AddReg = em556.AddEventLog.reg
+
+[em556.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[OSType.ndi.reg]
+HKR,,OSType,,"0"
+
+[VerStr.ndi.reg]
+HKR,,Verstr,,"1"
+
+[ADDREG_XEM556.ndi.reg]
+HKR,Ndi,   Service,    0, "em556"
+
+[ADDREG_XEM556B.ndi.reg]
+HKR,Ndi,   Service,    0, "em556B"
+
+[ADDREG_XEM556BI.ndi.reg]
+HKR,Ndi,   Service,    0, "em556BI"
+
+
+[3CXEM556.ndi.reg]
+HKR, Ndi\Interfaces, UpperRange, , "ndis5"
+HKR, Ndi\Interfaces, LowerRange, , "ethernet"
+
+HKR, Ndi\params\Transceiver,            ParamDesc, 0, %ConnectorType%
+HKR, Ndi\params\Transceiver,            default,   0, "1"
+HKR, Ndi\params\Transceiver,            type,      0, "enum"
+HKR, Ndi\params\Transceiver\enum,       1,         0, %TP%
+HKR, Ndi\params\Transceiver\enum,       2,         0, %BNC%
+
+HKR, Ndi\params\FullDuplex,             ParamDesc, 0, %FD%
+HKR, Ndi\params\FullDuplex,             default,   0, "0"
+HKR, Ndi\params\FullDuplex,             type,      0, "enum"
+HKR, Ndi\params\FullDuplex\enum,        0,         0, %Disabled%
+HKR, Ndi\params\FullDuplex\enum,        1,         0, %Enabled%
+
+HKR,,AdapterType,,"1103"
+
+[elpc3n.ndis3.CopyFiles]
+em556n4a.sys,em556n4.sys,,2
+
+[elpc3nb.ndis3.CopyFiles]
+em556n4b.sys,em556n4.sys,,2
+
+[elpc3nbi.ndis3.CopyFiles]
+em556n4i.sys,em556n4.sys,,2
+
+[DestinationDirs]
+elpc3n.ndis3.CopyFiles = 12
+elpc3nb.ndis3.CopyFiles = 12
+elpc3nbi.ndis3.CopyFiles = 12
+
+[Strings]
+3COM                    = "3Com"
+MSFT                    = "Microsoft"
+
+ConnectorType           = "Connector Type"
+TP                      = "Twisted Pair (10BASE-T)"
+BNC                     = "Thin Coax (10BASE2)"
+FD                      = "Full Duplex Operation"
+Disabled                = "Disabled"
+Enabled                 = "Enabled"
+
+3CXEM556                = "3Com Megahertz LAN + 56K Modem PC Card (Ethernet Interface)"
+3CXEM556B               = "3Com Megahertz LAN + 56K Modem PC Card (B) (Ethernet Interface)"
+3CXEM556BI              = "3Com Megahertz LAN + 56K Modem PC Card (BI) (Ethernet Interface)"
+
+em556.device.DispName   = "3Com 3ccxem556 PCMCIA Device Driver"
+em556B.device.DispName  = "3Com 3ccxem556B PCMCIA Device Driver"
+em556BI.device.DispName = "3Com 3ccxem556BI PCMCIA Device Driver"

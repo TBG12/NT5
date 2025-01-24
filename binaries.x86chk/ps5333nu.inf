@@ -1,0 +1,138 @@
+; ps5333nu.INF for Microsoft.net Server 
+;
+; Windows XP\Win2000 installation file (.INF) for the S3 Graphics, Inc. display driver
+; for the ProSavage.
+;
+; Copyright (c) 1999, 2000 By S3 Incorporated.
+; Copyright (c) 2001, 2002 By S3 Graphics, Inc.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Class=Display
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_Provider%
+LayoutFile=layout.inf
+DriverVer=06/03/2002, 6.13.10.1075
+;13.93.41
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;
+;  Disk and Directory sections
+;
+
+[DestinationDirs]
+DefaultDestDir          = 11
+S3SavageNB.Miniport     = 12   ; drivers
+S3SavageNB.Display      = 11   ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%S3%   = S3.Mfg
+
+;
+; This section should be modified to reflect the chip strings the
+; user will see in the Displays applet when the new driver is being
+; installed from the driver diskette.
+;
+[S3.Mfg]
+S3 Graphics ProSavage 8A25 (Microsoft Corporation) = S3SavageNB, PCI\VEN_5333&DEV_8A25
+S3 Graphics ProSavage 8A26 (Microsoft Corporation) = S3SavageNB, PCI\VEN_5333&DEV_8A26
+S3 Graphics ProSavage DDR 8D04 (Microsoft Corporation) = S3SavageNB, PCI\VEN_5333&DEV_8D04
+S3 Graphics Twister 0020103C (Microsoft Corporation) = S3SavageNB, PCI\VEN_5333&DEV_8D01&SUBSYS_0020103C
+S3 Graphics TwisterK 00860E11 (Microsoft Corporation) = S3SavageNB, PCI\VEN_5333&DEV_8D02&SUBSYS_00860E11
+S3 Graphics Twister 001214C0 (Microsoft Corporation) = S3SavageNB, PCI\VEN_5333&DEV_8D01&SUBSYS_001214C0
+
+;
+; General installation section
+;
+
+[S3SavageNB]
+CopyFiles= S3SavageNB.Miniport, S3SavageNB.Display, 
+AddReg   = S3SavageNB.AddRegs
+
+
+;
+; File sections
+;
+
+[S3SavageNB.Miniport]
+s3gNBm.sys      ; miniport driver
+
+[S3SavageNB.Display]
+s3gNB.dll       ; SavageNB display driver
+
+[S3SavageNB.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+
+;
+; Service Installation
+;
+
+[S3SavageNB.Services]
+AddService = S3SavageNB, 0x00000002, S3SavageNB_Service_Inst, S3SavageNB_EventLog_Inst
+
+[S3SavageNB_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\s3gnbm.sys
+
+[S3SavageNB_EventLog_Inst]
+AddReg = S3SavageNB_EventLog_AddReg
+
+[S3SavageNB_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\s3gnbm.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+
+[S3SavageNB.SoftwareSettings]
+AddReg = S3SavageNB_SoftwareDeviceSettings
+DelReg = S3SavageNB_UserPreferences   ; user-selected preferences
+
+[S3SavageNB_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,      %REG_MULTI_SZ%, s3gnb
+HKR,, VgaCompatible,                %REG_DWORD%,    0
+HKR,, CapabilityOverride,           %REG_DWORD%,    8
+HKR,, SupportIcd,                   %REG_DWORD%,    0
+
+[S3SavageNB_UserPreferences]
+HKR,, UseDDCInfo
+HKR,, NtscTvPositionX
+HKR,, NtscTvPositionY
+HKR,, Pal6TvPositionX
+HKR,, Pal6TvPositionY
+HKR,, Pal8TvPositionX
+HKR,, Pal8TvPositionY
+HKR,, DisplaysActivePreference
+HKR,, TvStandardPreference
+HKR,, DdcMaxRefresh
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_MULTI_SZ   = 0x00010000
+REG_DWORD      = 0x00010001
+
+;
+; Localizable Strings
+;
+
+DiskId         = "S3 Graphics, Inc. Installation DISK (VIDEO)"
+S3Graphics     = "S3 Graphics, Inc."
+INF_Provider   = "S3 Graphics, Inc."
+	
+

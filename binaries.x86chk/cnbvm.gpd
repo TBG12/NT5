@@ -1,0 +1,77 @@
+*%
+*% Canon BJ Printer value macros
+*%
+*% Copyright 2000 CANON INC.
+*% All Right Reserved
+*%
+
+
+*%
+*% OEMCustomData Macros
+*%
+
+*% Cartridge
+*%
+
+*Macros: CPDValueCartridge
+{
+  CPD_CARTRIDGE_COLOR: "<01 00 00 00>"
+  CPD_CARTRIDGE_BK: "<02 00 00 00>"
+  CPD_CARTRIDGE_PHOTO: "<03 00 00 00>"
+  CPD_CARTRIDGE_BK_COLOR: "<04 00 00 00>"
+  CPD_CARTRIDGE_BK_PHOTO: "<05 00 00 00>"
+  CPD_CARTRIDGE_PHOTO_COLOR: "<06 00 00 00>"
+}
+
+
+*% GrayScale
+*%
+
+*Macros: CPDValueGrayScale
+{
+  CPD_GRAYSCALE_OFF: "<00 00 00 00>"
+  CPD_GRAYSCALE_ON: "<01 00 00 00>"
+  CPD_GRAYSCALE_GRAY: "<02 00 00 00>"
+}
+
+
+*% MediaType
+*%
+
+*Macros: CPDValueMediaType
+{
+  CPD_MEDIA_PLAIN: "<01 00 00 00>"
+  CPD_MEDIA_HIGHRES: "<0f 01 00 00>"
+  CPD_MEDIA_M306: "<19 01 00 00>"
+  CPD_MEDIA_M304: "<15 01 00 00>"
+  CPD_MEDIA_INKJETCARD: "<1b 01 00 00>"
+  CPD_MEDIA_POSTCARD: "<06 01 00 00>"
+  CPD_MEDIA_GLOSSYCARD: "<0e 01 00 00>"
+  CPD_MEDIA_OHP: "<02 00 00 00>"
+  CPD_MEDIA_ENVELOPE: "<07 01 00 00>"
+  CPD_MEDIA_THICK: "<13 01 00 00>"
+}
+
+
+*% PrintQuality
+*%
+
+*Macros: CPDValuePrintQuality
+{
+  CPD_QUALITY_SPECIAL: "<01 00 00 00>"
+  CPD_QUALITY_HQ: "<02 00 00 00>"
+  CPD_QUALITY_MQ: "<03 00 00 00>"
+  CPD_QUALITY_NORMAL: "<04 00 00 00>"
+  CPD_QUALITY_HS: "<05 00 00 00>"
+}
+
+
+*% Halftone
+*%
+
+*Macros: CPDValueHalftone
+{
+  CPD_HALFTONE_ED: "<01 00 00 00>"
+  CPD_HALFTONE_DITHER: "<02 00 00 00>"
+  CPD_HALFTONE_AUTO: "<03 00 00 00>"
+}

@@ -1,0 +1,327 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+layoutfile = layout.inf
+signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider   = %MSFT%
+DriverVer=10/01/2002,12.23.4.50
+
+[Manufacturer]
+%V_IBM%=IBM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[IBM]
+%pcmcia.DeviceDesc%     = pcmcia.ndi,        PCMCIA\IBM-TOKEN_RING-EFA1  ;IBM Token Ring 4/16Mbs PCMCIA Card
+%pcmcia2.DeviceDesc%    = pcmciatc.ndi,      PCMCIA\IBM-TOKEN_RING-013F  ;IBM Auto Token Ring 4/16Mbs PCMCIA Card
+%pcmcia2.DeviceDesc%    = pcmciatc.ndi,      PCMCIA\IBM-TOKEN_RING-A375  ;IBM Auto Token Ring 4/16Mbs PCMCIA Card
+%pcmcia3.DeviceDesc%    = pcmciara.ndi,      PCMCIA\IBM-TOKEN_RING-F8CF  ;IBM Turbo 4/16Mbs PC Card
+%pcmcia4.DeviceDesc%    = pcmciaran.ndi,     PCMCIA\IBM-TOKEN_RING-3D12  ;IBM Turbo 4/16Mbs PC Card 2
+
+;-------------------------------------------------------------------------------
+; IBM0001       IBM AUTO 16/4 TOKEN-RING (PnP Mode)
+;
+[IBM0001ISAPNP.ndi]
+AddReg          = IBM0001ISAPNP.reg, IBMTOK.reg, CommonParams.reg, fastpath.reg
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = IBMTOK.CopyFiles
+
+[IBM0001ISAPNP.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[IBM0001ISAPNP.reg]
+HKR, , CardId,         , "609026049"    ; comes from adpid.h
+HKR, , AdapterBusType, , "1"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; IBM1070       IBM AUTO WAKE 16/4 ISA TOKEN-RING (PnP Mode)
+;
+[IBM1070ISAPNP.ndi]
+AddReg          = IBM1070ISAPNP.reg, IBMTOK.reg, CommonParams.reg, shallow.reg ,fastpath.reg, fullduplex.reg
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = IBMTOK.CopyFiles
+
+[IBM1070ISAPNP.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[IBM1070ISAPNP.reg]
+HKR, , CardId,         , "609030256"    ; comes from what is in adpid.h
+HKR, , AdapterBusType, , "1"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; IBM1080       IBM TURBO 16/4 ISA TOKEN-RING (PnP Mode)
+;
+[IBM1080ISAPNP.ndi]
+AddReg          = IBM1080ISAPNP.reg, IBMTOK.reg, CommonParams.reg, shallow.reg, fastpath.reg, fullduplex.reg
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = IBMTOK.CopyFiles
+
+[IBM1080ISAPNP.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[IBM1080ISAPNP.reg]
+HKR, , CardId,         , "609030272"    ; comes from what is in adpid.h
+HKR, , AdapterBusType, , "1"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; pcmcia        IBM Token-Ring 16/4 Credit Card Adapter
+;
+[pcmcia.ndi]
+AddReg          = pcmcia.reg, IBMTOK.reg, CommonParams.reg, BaseAndAuto.reg, datarate16_4.reg, fastpath.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = IBMTOK.CopyFiles
+
+[pcmcia.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[pcmcia.ndi.LogConfigOverride]
+LogConfig       = PCMCIA1.LogConfigOverride
+
+[pcmcia.reg]
+HKR, ,CardId,         , "00000256"     ; comes from what is in adpid.h
+HKR, ,AdapterBusType, , "8"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; pcmcia        IBM Auto 16/4 Credit Card Adapter with overrides
+;
+[pcmciatc.ndi]
+AddReg          = pcmciatc.reg, IBMTOK.reg, CommonParams.reg, BaseAndAuto.reg, datarate.reg, fastpath.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = IBMTOK.CopyFiles
+
+[pcmciatc.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[pcmciatc.ndi.LogConfigOverride]
+LogConfig       = PCMCIA1.LogConfigOverride
+
+[pcmciatc.reg]
+HKR, , CardId,         , "00000259"     ; comes from what is in adpid.h
+HKR, , AdapterBusType, , "8"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; pcmcia    IBM Turbo 16/4 Credit Card Adapter
+;
+[pcmciara.ndi]
+AddReg          = pcmciara.reg, IBMTOK.reg, CommonParams.reg, turbo.reg, shallow.reg, fastpath.reg, datarate.reg, fullduplex.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = IBMTOK.CopyFiles
+
+[pcmciara.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[pcmciara.ndi.LogConfigOverride]
+LogConfig       = PCMCIA2.LogConfigOverride
+
+[pcmciara.reg]
+HKR, , CardId,         , "00000260"     ; comes from what is in adpid.h
+HKR, , AdapterBusType, , "8"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; pcmcia    IBM Turbo 16/4 Credit Card Adapter 2
+;
+[pcmciaran.ndi]
+AddReg          = pcmciaran.reg, IBMTOK.reg, CommonParams.reg, turbo.reg, shallow.reg, fastpath.reg, datarate.reg, fullduplex.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = IBMTOK.CopyFiles
+
+[pcmciaran.ndi.Services]
+AddService      = IBMTOK,2,IBMTOK.Service,common.Eventlog
+
+[pcmciaran.ndi.LogConfigOverride]
+LogConfig       = PCMCIA2.LogConfigOverride
+
+[pcmciaran.reg]
+HKR, , CardId,         , "00000517"     ; comes from what is in adpid.h
+HKR, , AdapterBusType, , "8"            ; 1=ISA, 8=PCMCIA ( From ndis.h )
+
+;-------------------------------------------------------------------------------
+; Registry Parameter definition sections
+;
+[CommonParams.reg]
+; NetworkAddress
+HKR, NDI\params\NetworkAddress, ParamDesc,   0, %NetworkAddress%
+HKR, NDI\params\NetworkAddress, type,        0, "edit"
+HKR, NDI\params\NetworkAddress, LimitText,   0, "12"
+HKR, NDI\params\NetworkAddress, UpperCase,   0, "1"
+HKR, NDI\params\NetworkAddress, default,     0, ""
+HKR, NDI\params\NetworkAddress, optional,    0, "1"
+; MaxTransmits
+HKR, NDI\params\MaxTransmits,   ParamDesc,   0, %MaxTransmits%
+HKR, NDI\params\MaxTransmits,   type,        0, "int"
+HKR, NDI\params\MaxTransmits,   min,         0, "1"
+HKR, NDI\params\MaxTransmits,   max,         0, "31"
+HKR, NDI\params\MaxTransmits,   step,        0, "1"
+HKR, NDI\params\MaxTransmits,   default,     0, "31"
+; MaxTxFrameSize
+HKR, NDI\params\MaxTxFrameSize, ParamDesc,   0, %MaxTxFrameSize%
+HKR, NDI\params\MaxTxFrameSize, type,        0, "int"
+HKR, NDI\params\MaxTxFrameSize, min,         0, "256"
+HKR, NDI\params\MaxTxFrameSize, max,         0, "17944"
+HKR, NDI\params\MaxTxFrameSize, step,        0, "8"
+HKR, NDI\params\MaxTxFrameSize, default,     0, "4096"
+; MinRcvBuffs
+HKR, NDI\params\MinRcvBuffs,    ParamDesc,   0, %MinRcvBuffs%
+HKR, NDI\params\MinRcvBuffs,    type,        0, "int"
+HKR, NDI\params\MinRcvBuffs,    min,         0, "20"
+HKR, NDI\params\MinRcvBuffs,    max,         0, "512"
+HKR, NDI\params\MinRcvBuffs,    step,        0, "1"
+HKR, NDI\params\MinRcvBuffs,    default,     0, "80"
+; RcvBuffSize
+HKR, NDI\params\RcvBuffSize,    ParamDesc,   0, %RcvBuffSize%
+HKR, NDI\params\RcvBuffSize,    type,        0, "int"
+HKR, NDI\params\RcvBuffSize,    min,         0, "270"
+HKR, NDI\params\RcvBuffSize,    max,         0, "18000"
+HKR, NDI\params\RcvBuffSize,    step,        0, "1"
+HKR, NDI\params\RcvBuffSize,    default,     0, "4500"
+
+[fastpath.reg]
+; FastPath
+HKR, NDI\params\FastPath,       ParamDesc,   0, %FastPath%
+HKR, NDI\params\FastPath,       type,        0, "enum"
+HKR, NDI\params\FastPath\enum,  "NO",        0, %NO%
+HKR, NDI\params\FastPath\enum,  "YES",       0, %YES%
+HKR, NDI\params\FastPath,       default,     0, "YES"
+
+[shallow.reg]
+; ShallowMode
+HKR, NDI\params\ShallowMode,      ParamDesc, 0, %Shallowmode%
+HKR, NDI\params\ShallowMode,      type,      0, "enum"
+HKR, NDI\params\ShallowMode\enum, "NO",      0, %NO%
+HKR, NDI\params\ShallowMode\enum, "YES",     0, %YES%
+HKR, NDI\params\ShallowMode,      default,   0, "YES"
+
+[fullduplex.reg]
+; FullDuplex
+HKR, NDI\params\FullDuplex,       ParamDesc, 0, %FullDuplex%
+HKR, NDI\params\FullDuplex,       type,      0, "enum"
+HKR, NDI\params\FullDuplex\enum,  "YES",     0, %YES%
+HKR, NDI\params\FullDuplex\enum,  "NO",      0, %NO%
+HKR, NDI\params\FullDuplex,       default,   0, "YES"
+
+[datarate16_4.reg]
+; DataRate for 16/4 CC adapter
+HKR, NDI\params\DataRate,         ParamDesc, 0, %DataRate%
+HKR, NDI\params\DataRate,         type,      0, "enum"
+HKR, NDI\params\DataRate\enum,    "M16",     0, "M16"
+HKR, NDI\params\DataRate\enum,    "M4",      0, "M4"
+HKR, NDI\params\DataRate,         default,   0, "M16"
+
+[datarate.reg]
+; DataRate
+HKR, NDI\params\DataRate,         ParamDesc, 0, %DataRate%
+HKR, NDI\params\DataRate,         type,      0, "enum"
+HKR, NDI\params\DataRate\enum,    "AUTO",    0, %AUTO%
+HKR, NDI\params\DataRate\enum,    "M16",     0, "M16"
+HKR, NDI\params\DataRate\enum,    "M4",      0, "M4"
+HKR, NDI\params\DataRate,         default,   0, "AUTO"
+HKR, NDI\params\DataRate,         optional,  0, "1"
+
+;-------------------------------------------------------------------------------
+; IBM Token Ring 16/4 Credit Card &
+; IBM Auto 16/4 Credit Card adapters-specific section
+;
+[BaseAndAuto.reg]
+HKR, ,AdapterType,  0, "1"
+HKR, ,EnhancedMode, 0, "No"
+
+;-------------------------------------------------------------------------------
+; IBM Turbo Token Ring 16/4 Credit Card adapter-specific section
+;
+[turbo.reg]
+; Parameters
+HKR, , AdapterType,  0, "1"
+HKR, , EnhancedMode, 0, "Yes"
+
+;-------------------------------------------------------------------------------
+; OVERRIDES
+;
+[PCMCIA1.LogConfigOverride]
+IRQConfig      = 3,4,5,7,9,10,11,15
+IOConfig       = 0A20-0A23,0A24-0A27
+MemConfig      = 2000@CC000-EE000%FFFFE000
+MemConfig      = 4000@CC000-EC000%FFFFC000
+PcCardConfig   = 21:C2000:D0000(M XM0)
+ConfigPriority = NORMAL
+
+[PCMCIA2.LogConfigOverride]
+IRQConfig      = 3,4,5,7,9,10,11,15
+IOConfig       = 4@300-FFF%FFFC(FFFF::)
+MemConfig      = 2000@CC000-DEFFF%FFFFE000
+PcCardConfig   = 21:D0000(M XM0)
+ConfigPriority = NORMAL
+
+;-------------------------------------------------------------------------------
+; Driver and Service Install Section
+;
+[IBMTOK.reg]
+HKR, Ndi,            Service,    0, "IBMTOK"
+HKR, NDI\Interfaces, UpperRange, 0, "ndis5"
+HKR, NDI\Interfaces, LowerRange, 0, "tokenring"
+HKR, ,               MediaType,  0, "2"
+
+[IBMTOK.CopyFiles]
+IBMTOK.sys,,,2
+IBMSGNET.DLL,,,2
+
+[IBMTOK.Service]
+DisplayName      = %IBMTOK.DriverDesc%
+ServiceType      = 1
+StartType        = 3
+ErrorControl     = 1
+ServiceBinary    = %12%\IBMTOK.sys
+LoadOrderGroup   = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,  ,EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\ibmsgnet.dll"
+HKR,  ,TypeSupported,    0x00010001, 7
+
+[DestinationDirs]
+DefaultDestDir   = 12
+IBMTOK.CopyFiles = 12
+
+;-----------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+MSFT                   = "Microsoft"
+V_IBM                  = "IBM"
+
+NetworkAddress         = "Network Address (LAA)"
+MaxTransmits           = "Max Transmits"
+MaxTxFrameSize         = "Max TX Frame Size"
+MinRcvBuffs            = "Min Receive Buffers"
+RcvBuffSize            = "Receive Buffer Size"
+FastPath               = "FastPath Transmit"
+ShallowMode            = "ShallowMode Receive"
+FullDuplex             = "Allow Full Duplex"
+DataRate               = "Network Data Rate"
+AUTO                   = "Auto"
+YES                    = "Yes"
+NO                     = "No"
+
+IBM0001pnp.DeviceDesc  = "IBM Auto 16/4 Token-Ring ISA Adapter (PnP Config)"
+IBM1070pnp.DeviceDesc  = "IBM Auto Wake Token-Ring ISA Adapter (PnP Config)"
+IBM1080pnp.DeviceDesc  = "IBM Turbo 16/4 Token-Ring ISA Adapter (PnP Config)"
+pcmcia.DeviceDesc      = "IBM 16/4 Token-Ring Credit Card Adapter"
+pcmcia2.DeviceDesc     = "IBM Auto 16/4 Token-Ring Credit Card Adapter"
+pcmcia3.DeviceDesc     = "IBM Turbo 16/4 Token-Ring PC Card"
+pcmcia4.DeviceDesc     = "IBM Turbo 16/4 Token-Ring PC Card 2"
+IBMTOK.DriverDesc      = "IBM Shared RAM Token-Ring Adapter Miniport"
+
+
+
+

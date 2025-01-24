@@ -1,0 +1,349 @@
+; Copyright (c) 2002, Microsoft
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Msft%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,6.6.8.1
+
+[Manufacturer]
+%COMPAQ%    = Compaq
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Compaq]
+; Server
+%N1001.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_B01E0E11       ; Compaq NC3120 Fast Ethernet NIC (82558)
+%N1004.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_B0C60E11       ; Compaq NC3161 Fast Ethernet NIC (82558)
+%N1005.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_B0C70E11       ; Compaq NC3160 Fast Ethernet NIC (82558)
+%N1006.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_B0D70E11       ; Compaq NC3121 Fast Ethernet NIC (82558)
+%N1007.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_B01F0E11       ; Compaq NC3122 Fast Ethernet NIC (82558)
+%N1008.DeviceDesc%               = multiport.ndi,PCI\VEN_8086&DEV_1229&SUBSYS_B0DD0E11       ; Compaq NC3131 Fast Ethernet NIC (82558)
+%N1009.DeviceDesc%               = D101.ndi,     PCI\VEN_8086&DEV_1229&SUBSYS_B0DE0E11       ; Compaq NC3132 Fast Ethernet Module (82558)
+%N100A.DeviceDesc%               = D101FX.ndi,   PCI\VEN_8086&DEV_1229&SUBSYS_B0E10E11       ; Compaq NC3133 Fast Ethernet Module (82558)
+%N100B.DeviceDesc%               = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_B1340E11       ; Compaq NC3163 Fast Ethernet NIC (82559)
+%N100C.DeviceDesc%               = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_B13C0E11       ; Compaq NC3162 Fast Ethernet NIC (82559)
+%N100D.DeviceDesc%               = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_B1440E11       ; Compaq NC3123 Fast Ethernet NIC (82559)
+%N100E.DeviceDesc%               = multiport.ndi,PCI\VEN_8086&DEV_1229&SUBSYS_B1630E11       ; Compaq NC3134 Fast Ethernet NIC (82559)
+%N100F.DeviceDesc%               = D101M.ndi,    PCI\VEN_8086&DEV_1229&SUBSYS_B1640E11       ; Compaq NC3135 Fast Ethernet Upgrade Module (82559)
+
+;---------------
+; 82558 Rev 4, 5
+;
+[D101.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg
+CopyFiles       = N100_NT.ndis5.CopyFiles
+
+[D101.ndi.NTx86.Services]
+AddService = N100, 2, n100.Service, common.EventLog
+
+[D101.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg, IA64.reg
+CopyFiles       = N100_NTIA64.ndis5.CopyFiles
+
+[D101.ndi.NTIA64.Services]
+AddService = N100, 2, n100_NTIA64.Service, common.EventLog_NTIA64
+
+;----------------------------------------------------------------------------
+; 82558 Dual Port (Compaq)
+;
+[multiport.ndi.NTx86]
+Characteristics   = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType           = 5    ; PCI
+DelReg            = SpeedDpx.DelReg
+AddReg            = Speed100.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg
+CopyFiles         = N100_NT.ndis5.CopyFiles
+Port1DeviceNumber = 4
+
+[multiport.ndi.NTx86.Services]
+AddService = N100, 2, n100.Service, common.EventLog
+
+[multiport.ndi.NTIA64]
+Characteristics   = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType           = 5    ; PCI
+DelReg            = SpeedDpx.DelReg
+AddReg            = Speed100.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg, IA64.reg
+CopyFiles         = N100_NTIA64.ndis5.CopyFiles
+Port1DeviceNumber = 4
+
+[multiport.ndi.NTIA64.Services]
+AddService = N100, 2, n100_NTIA64.Service, common.EventLog_NTIA64
+
+;----------------------------------------------------------------------------
+; 82558 FX (Compaq)
+;
+[D101FX.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, SpeedDpx.3133.DelReg
+AddReg          = Speed103.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg
+CopyFiles       = N100_NT.ndis5.CopyFiles
+
+[D101FX.ndi.NTx86.Services]
+AddService = N100, 2, n100.Service, common.EventLog
+
+[D101FX.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg, SpeedDpx.3133.DelReg
+AddReg          = Speed103.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg, IA64.reg
+CopyFiles       = N100_NTIA64.ndis5.CopyFiles
+
+[D101FX.ndi.NTIA64.Services]
+AddService = N100, 2, n100_NTIA64.Service, common.EventLog_NTIA64
+
+;------------
+; 82559 Rev 8
+;
+[D101M.ndi.NTx86]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg
+CopyFiles       = N100_NT.ndis5.CopyFiles
+
+[D101M.ndi.NTx86.Services]
+AddService = N100, 2, n100.Service, common.EventLog
+
+[D101M.ndi.NTIA64]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 5    ; PCI
+DelReg          = SpeedDpx.DelReg
+AddReg          = Speed100.reg, 82557.reg, 82558.reg, n100.ndi.NT.reg, IA64.reg
+CopyFiles       = N100_NTIA64.ndis5.CopyFiles
+
+[D101M.ndi.NTIA64.Services]
+AddService = N100, 2, n100_NTIA64.Service, common.EventLog_NTIA64
+
+;---------------------
+; common base 10/100Mb
+;
+[Speed100.reg]
+; Speed Duplex Mode
+HKR, Ndi\params\SpeedDuplex,       ParamDesc,  0, %SpeedDuplex%
+HKR, Ndi\params\SpeedDuplex,       default,    0, "0"
+HKR, Ndi\params\SpeedDuplex,       type,       0, "enum"
+HKR, Ndi\params\SpeedDuplex\enum,  "0",        0, %AutoDetect%
+HKR, Ndi\params\SpeedDuplex\enum,  "1",        0, %10Mb-Half-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "2",        0, %10Mb-Full-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "3",        0, %100Mb-Half-Duplex%
+HKR, Ndi\params\SpeedDuplex\enum,  "4",        0, %100Mb-Full-Duplex%
+
+;----------------------------------------------------------------------------
+; common base 100Mb only
+;
+[Speed103.reg]
+HKR, Ndi\params\SpeedDuplex,       ParamDesc,  0, %SpeedDuplex%
+HKR, Ndi\params\SpeedDuplex,       default,    0, "4"
+HKR, Ndi\params\SpeedDuplex,       type,       0, "enum"
+HKR, Ndi\params\SpeedDuplex\enum,  "4",        0, %100Mb-Full-Duplex%
+
+;----------------------------
+; IA64 Specific
+[IA64.reg]
+HKR,,EEpromSTBEnableBit,        2, "0"
+
+; Common 82557 NDI parameters
+;
+[82557.reg]
+HKR,Ndi\Params\NumRfd,                ParamDesc,  0, %NumRfd%
+HKR,Ndi\Params\NumRfd,                Type,       0, "int"
+HKR,Ndi\Params\NumRfd,                Default,    0, "48"
+HKR,Ndi\Params\NumRfd,                Min,        0, "8"
+HKR,Ndi\Params\NumRfd,                Max,        0, "1024"
+HKR,Ndi\Params\NumRfd,                Step,       0, "1"
+HKR,Ndi\Params\NumRfd,                Base,       0, "10"
+
+HKR,Ndi\Params\NumTcb,                ParamDesc,  0, %NumTcb%
+HKR,Ndi\Params\NumTcb,                Type,       0, "int"
+HKR,Ndi\Params\NumTcb,                Default,    0, "16"
+HKR,Ndi\Params\NumTcb,                Min,        0, "8"
+HKR,Ndi\Params\NumTcb,                Max,        0, "64"
+HKR,Ndi\Params\NumTcb,                Step,       0, "1"
+HKR,Ndi\Params\NumTcb,                Base,       0, "10"
+
+HKR,Ndi\Params\NumCoalesce,           ParamDesc,  0, %NumCoalesce%
+HKR,Ndi\Params\NumCoalesce,           Type,       0, "int"
+HKR,Ndi\Params\NumCoalesce,           Default,    0, "8"
+HKR,Ndi\Params\NumCoalesce,           Min,        0, "1"
+HKR,Ndi\Params\NumCoalesce,           Max,        0, "32"
+HKR,Ndi\Params\NumCoalesce,           Step,       0, "1"
+HKR,Ndi\Params\NumCoalesce,           Base,       0, "10"
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,        ParamDesc,  0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,        Default,    0, ""
+HKR, Ndi\params\NetworkAddress,        type,       0, "edit"
+HKR, NDI\params\NetworkAddress,        LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress,        UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress,        optional,   0, "1"
+
+; Hardwired defaults
+HKR,,                                  Threshold,  0, "200"
+HKR,,                                  PcNic,      0, "0"
+HKR,,                                  Adaptive_IFS,0, "1"
+HKR,,                                  UcodeSW,    0, "1"
+HKR,,                                  Coalesce,   0, "0"
+HKR,,                                  CPUSaver,   0, "1536"
+HKR,,                                  MWIEnable,  0, "1"
+HKR,,                                  IPSecEnabled,0, "0"
+HKR,,                                  LargeSendEnabled,0, "0"
+HKR,,                                  ChecksumEnabled,0, "0"
+HKR,,                                  EnablePME,  0, "2"
+HKR,,                                  AutoPowerSaveModeEnabled, 0, "0"
+HKR,,                                  NetVlanEnable,  0, "0"
+
+;----------------
+; 82558 specifics
+;
+[82558.reg]
+; 802.1p/802.1q Packet Tagging
+HKR,Ndi\Params\TaggingMode,         ParamDesc,  0, %TaggingMode%
+HKR,Ndi\Params\TaggingMode,         Type,       0, "enum"
+HKR,Ndi\Params\TaggingMode,         Default,    0, "0"
+HKR,Ndi\Params\TaggingMode\Enum,    "1",        0, %Enabled%
+HKR,Ndi\Params\TaggingMode\Enum,    "0",        0, %Disabled%
+
+HKR,Ndi\Params\FlowControl,              ParamDesc,  0, %FlowControl%
+HKR,Ndi\Params\FlowControl,              Type,       0, "enum"
+HKR,Ndi\Params\FlowControl,              Default,    0, "0"
+HKR,Ndi\Params\FlowControl\Enum,         "3",        0, %Both_On%
+HKR,Ndi\Params\FlowControl\Enum,         "2",        0, %Respond%
+HKR,Ndi\Params\FlowControl\Enum,         "1",        0, %Generate%
+HKR,Ndi\Params\FlowControl\Enum,         "0",        0, %Off%
+
+
+;---------------------------
+; NT NDI object registration
+;
+[N100.ndi.NT.reg]
+HKR,Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR,Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR,Ndi,            Service,    0, "N100"
+
+HKR,,LogErrorMessages, 0, "1"
+
+[N100_NTIA64.ndis5.CopyFiles]
+n100645.sys,,,2
+
+[N100_NT.ndis5.CopyFiles]
+n100325.sys,,,2
+
+;-----------
+; NT Service 64
+;
+[n100_NTIA64.Service]
+DisplayName     = %n100nt.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\n100645.sys
+LoadOrderGroup  = NDIS
+
+;-----------
+; NT Service 32
+;
+[n100.Service]
+DisplayName     = %n100nt.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\n100325.sys
+LoadOrderGroup  = NDIS
+
+;---------------
+; NT Common base
+;
+[common.EventLog_NTIA64]
+AddReg = common.AddEventLog_NTIA64.reg
+
+[common.AddEventLog_NTIA64.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\system32\drivers\n100645.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\system32\drivers\n100325.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;------------
+; Copy files
+;
+[DestinationDirs]
+N100_NT.ndis5.CopyFiles      = 12
+N100_NTIA64.ndis5.CopyFiles  = 12
+
+[SpeedDpx.DelReg]
+HKR,Ndi\Params\Speed
+HKR,Ndi\Params\ForceDpx
+HKR,Ndi\Params\PacketTagging
+HKR,Ndi\Params\TaskOffload
+HKR,,Speed
+HKR,,ForceDpx
+HKR,,PacketTagging
+HKR,,TaskOffload
+
+[SpeedDpx.3133.DelReg]
+HKR,Ndi\params\SpeedDuplex\enum
+HKR,,"3"
+
+
+;--------------------
+; Localizable Strings
+;
+[Strings]
+; Vendors
+Msft                     = "Microsoft"
+COMPAQ                   = "Compaq"
+
+; Parameters
+AutoDetect               = "Auto Detect"
+SpeedDuplex              = "Link Speed & Duplex"
+10Mb-Half-Duplex         = "10Mbps/Half Duplex"
+10Mb-Full-Duplex         = "10Mbps/Full Duplex"
+100Mb-Half-Duplex        = "100Mbps/Half Duplex"
+100Mb-Full-Duplex        = "100Mbps/Full Duplex"
+NetworkAddress           = "Locally Administered Address"
+NumRfd                   = "Receive Buffers"
+NumTcb                   = "Transmit Control Blocks"
+NumCoalesce              = "Coalesce Buffers"
+TaggingMode              = "802.1p QoS Packet Tagging"
+EnablePME		 = "Enable PME"
+Enabled                  = "Enabled"
+Disabled                 = "Disabled"
+None			 = "None"
+LargeSend_str		 = "Large Send"
+TaskOffload		 = "Offloading"
+FlowControl              = "Flow Control Settings"
+Both_On                  = "Respond and Generate"
+Respond                  = "Respond"
+Generate                 = "Generate"
+Off                      = "Off"
+
+; Device descriptions
+N1001.DeviceDesc         = "Compaq NC3120 Fast Ethernet NIC"
+N1004.DeviceDesc         = "Compaq NC3161 Fast Ethernet NIC"
+N1005.DeviceDesc         = "Compaq NC3160 Fast Ethernet NIC"
+N1006.DeviceDesc         = "Compaq NC3121 Fast Ethernet NIC"
+N1007.DeviceDesc         = "Compaq NC3122 Fast Ethernet NIC"
+N1008.DeviceDesc         = "Compaq NC3131 Fast Ethernet NIC"
+N1009.DeviceDesc         = "Compaq NC3132 Fast Ethernet Module"
+N100A.DeviceDesc         = "Compaq NC3133 Fast Ethernet Module"
+N100B.DeviceDesc         = "Compaq NC3163 Fast Ethernet NIC"
+N100C.DeviceDesc         = "Compaq NC3162 Fast Ethernet NIC"
+N100D.DeviceDesc         = "Compaq NC3123 Fast Ethernet NIC"
+N100E.DeviceDesc         = "Compaq NC3134 Fast Ethernet NIC"
+N100F.DeviceDesc         = "Compaq NC3135 Fast Ethernet Upgrade Module"
+
+n100nt.Service.DispName  = "Compaq Ethernet or Fast Ethernet NIC Driver"

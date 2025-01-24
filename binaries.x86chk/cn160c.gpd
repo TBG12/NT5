@@ -1,0 +1,1235 @@
+*%%
+*%% Copyright (c) 1997 - 1999 Microsoft Corporation
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%% All Rights Reserved.
+*%%
+*%%	+++++++++++++++++++++++
+*%%	++ The main GPD file ++
+*%%	+++++++++++++++++++++++
+
+*GPDFileVersion: "1.000"
+*MasterUnits: PAIR(600, 600)
+*ResourceDLL: "CN1600.dll"
+*HelpFile: "CN160.hlp"
+*PrintRate: 16
+*PrintRatePPM: 16
+*PrintRateUnit: PPM
+*PrinterType: PAGE
+*MaxCopies: 32767
+*FontCartSlots: 0
+
+*Include: "STDNAMES.GPD"
+*%% Copyright (c) 2000 - 2001 Canon Systems Managemnet Europe Limited
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%%	+++++++++++++
+*%%	++ Strings ++
+*%%	+++++++++++++
+
+*Feature: RESDLL
+{
+    *Name: "resource dll files"
+    *ConcealFromUI?: TRUE
+
+    *Option: UniresDLL
+    {
+        *Name: "unires.dll"
+    }
+
+	*Option:  RESOURCEDLL
+	{
+	  *Name: "CN1600.dll"
+	}
+
+	*Option:  EXTRAUIDLL
+	{
+	  *Name: "CN1601.dll"
+	}
+
+}
+
+
+*Macros: StdFeatureNames
+{
+
+    PRINTER_DEFAULT:					RESDLL.RESOURCEDLL.265
+	OFF:								RESDLL.RESOURCEDLL.266
+	ON:									RESDLL.RESOURCEDLL.267
+	PRINTER_DEFAULT_DISPLAY:			RESDLL.RESOURCEDLL.279
+	TONERSAVE:							RESDLL.RESOURCEDLL.377
+	DUPLEX_UNIT:						RESDLL.RESOURCEDLL.429
+	ENVELOPE_FEEDER:					RESDLL.RESOURCEDLL.430
+	INSTALLED:							RESDLL.RESOURCEDLL.443
+	NOT_INSTALLED:						RESDLL.RESOURCEDLL.444
+	A4_LTR_LGL:         				RESDLL.RESOURCEDLL.445
+	MULTIPLE:							RESDLL.RESOURCEDLL.446
+	REFINEMENT:							RESDLL.RESOURCEDLL.447
+	STACKBYPASS:						RESDLL.RESOURCEDLL.448
+	PS_OPTIONS:							RESDLL.RESOURCEDLL.450
+	MB:									"MB"
+
+    ORIENTATION_DISPLAY:                RESDLL.UniresDLL.11100
+    PAPER_SIZE_DISPLAY:                 RESDLL.UniresDLL.11101
+    PAPER_SOURCE_DISPLAY:               RESDLL.UniresDLL.11102
+    RESOLUTION_DISPLAY:                 RESDLL.UniresDLL.11103
+    MEDIA_TYPE_DISPLAY:                 RESDLL.UniresDLL.11104
+    TEXT_QUALITY_DISPLAY:               RESDLL.UniresDLL.11105
+    COLOR_PRINTING_MODE_DISPLAY:        RESDLL.UniresDLL.11106
+    PRINTER_MEMORY_DISPLAY:             RESDLL.UniresDLL.11107
+    TWO_SIDED_PRINTING_DISPLAY:         RESDLL.UniresDLL.11108
+    PAGE_PROTECTION_DISPLAY:            RESDLL.UniresDLL.11109
+    HALFTONING_DISPLAY:                 RESDLL.UniresDLL.11110
+    OUTPUTBIN_DISPLAY:                  RESDLL.UniresDLL.11111
+    IMAGECONTROL_DISPLAY:               RESDLL.UniresDLL.11112
+    PRINTDENSITY_DISPLAY:               RESDLL.UniresDLL.11113
+}
+
+*Macros: StdPaperSizeNames
+{
+    RCID_DMPAPER_SYSTEM_NAME:               0x7fffffff
+    LETTER_DISPLAY:                         RESDLL.UniresDLL.10000
+    LETTERSMALL_DISPLAY:                    RESDLL.UniresDLL.10001
+    TABLOID_DISPLAY:                        RESDLL.UniresDLL.10002
+    LEDGER_DISPLAY:                         RESDLL.UniresDLL.10003
+    LEGAL_DISPLAY:                          RESDLL.UniresDLL.10004
+    STATEMENT_DISPLAY:                      RESDLL.UniresDLL.10005
+    EXECUTIVE_DISPLAY:                      RESDLL.UniresDLL.10006
+    A3_DISPLAY:                             RESDLL.UniresDLL.10007
+    A4_DISPLAY:                             RESDLL.UniresDLL.10008
+    A4SMALL_DISPLAY:                        RESDLL.UniresDLL.10009
+    A5_DISPLAY:                             RESDLL.UniresDLL.10010
+    B4_DISPLAY:                             RESDLL.UniresDLL.10011
+    B5_DISPLAY:                             RESDLL.UniresDLL.10012
+    FOLIO_DISPLAY:                          RESDLL.UniresDLL.10013
+    QUARTO:                                 RESDLL.UniresDLL.10014
+    10X14_DISPLAY:                          RESDLL.UniresDLL.10015
+    11X17_DISPLAY:                          RESDLL.UniresDLL.10016
+    NOTE_DISPLAY:                           RESDLL.UniresDLL.10017
+    ENV_9_DISPLAY:                          RESDLL.UniresDLL.10018
+    ENV_10_DISPLAY:                         RESDLL.UniresDLL.10019
+    ENV_11_DISPLAY:                             RESDLL.UniresDLL.10020
+    ENV_12_DISPLAY:                             RESDLL.UniresDLL.10021
+    ENV_14_DISPLAY:                             RESDLL.UniresDLL.10022
+    CSHEET_DISPLAY:                             RESDLL.UniresDLL.10023
+    DSHEET_DISPLAY:                             RESDLL.UniresDLL.10024
+    ESHEET_DISPLAY:                             RESDLL.UniresDLL.10025
+    ENV_DL_DISPLAY:                             RESDLL.UniresDLL.10026
+    ENV_C5_DISPLAY:                             RESDLL.UniresDLL.10027
+    ENV_C3_DISPLAY:                             RESDLL.UniresDLL.10028
+    ENV_C4_DISPLAY:                             RESDLL.UniresDLL.10029
+    ENV_C6_DISPLAY:                             RESDLL.UniresDLL.10030
+    ENV_C65_DISPLAY:                            RESDLL.UniresDLL.10031
+    ENV_B4_DISPLAY:                             RESDLL.UniresDLL.10032
+    ENV_B5_DISPLAY:                             RESDLL.UniresDLL.10033
+    ENV_B6_DISPLAY:                             RESDLL.UniresDLL.10034
+    ENV_ITALY_DISPLAY:                          RESDLL.UniresDLL.10035
+    ENV_MONARCH_DISPLAY:                        RESDLL.UniresDLL.10036
+    ENV_PERSONAL_DISPLAY:                       RESDLL.UniresDLL.10037
+    FANFOLD_US_DISPLAY:                         RESDLL.UniresDLL.10038
+    FANFOLD_STD_GERMAN_DISPLAY:                 RESDLL.UniresDLL.10039
+    FANFOLD_LGL_GERMAN_DISPLAY:                 RESDLL.UniresDLL.10040
+    ISO_B4_DISPLAY:                             RESDLL.UniresDLL.10041
+    JAPANESE_POSTCARD_DISPLAY:                  RESDLL.UniresDLL.10042
+    9X11_DISPLAY:                               RESDLL.UniresDLL.10043
+    10X11_DISPLAY:                              RESDLL.UniresDLL.10044
+    15X11_DISPLAY:                              RESDLL.UniresDLL.10045
+    ENV_INVITE_DISPLAY:                         RESDLL.UniresDLL.10046
+    RESERVED1:                                  RESDLL.UniresDLL.10047
+    RESERVED2:                                  RESDLL.UniresDLL.10048
+    LETTER_EXTRA_DISPLAY:                       RESDLL.UniresDLL.10049
+    LEGAL_EXTRA_DISPLAY:                        RESDLL.UniresDLL.10050
+    TABLOID_EXTRA_DISPLAY:                      RESDLL.UniresDLL.10051
+    A4_EXTRA_DISPLAY:                           RESDLL.UniresDLL.10052
+    LETTER_TRANSVERSE_DISPLAY:                  RESDLL.UniresDLL.10053
+    A4_TRANSVERSE_DISPLAY:                      RESDLL.UniresDLL.10054
+    LETTER_EXTRA_TRANSVERSE_DISPLAY:            RESDLL.UniresDLL.10055
+    A_PLUS_DISPLAY:                             RESDLL.UniresDLL.10056
+    B_PLUS_DISPLAY:                             RESDLL.UniresDLL.10057
+    LETTER_PLUS_DISPLAY:                        RESDLL.UniresDLL.10058
+    A4_PLUS_DISPLAY:                            RESDLL.UniresDLL.10059
+    A5_TRANSVERSE_DISPLAY:                      RESDLL.UniresDLL.10060
+    B5_TRANSVERSE_DISPLAY:                      RESDLL.UniresDLL.10061
+    A3_EXTRA_DISPLAY:                           RESDLL.UniresDLL.10062
+    A5_EXTRA_DISPLAY:                           RESDLL.UniresDLL.10063
+    B5_EXTRA_DISPLAY:                           RESDLL.UniresDLL.10064
+    A2_DISPLAY:                                 RESDLL.UniresDLL.10065
+    A3_TRANSVERSE_DISPLAY:                      RESDLL.UniresDLL.10066
+    A3_EXTRA_TRANSVERSE_DISPLAY:                RESDLL.UniresDLL.10067
+    DBL_JAPANESE_POSTCARD_DISPLAY:              RESDLL.UniresDLL.10068
+    A6_DISPLAY:                                 RESDLL.UniresDLL.10069
+    JENV_KAKU2_DISPLAY:                         RESDLL.UniresDLL.10070
+    JENV_KAKU3_DISPLAY:                         RESDLL.UniresDLL.10071
+    JENV_CHOU3_DISPLAY:                         RESDLL.UniresDLL.10072
+    JENV_CHOU4_DISPLAY:                         RESDLL.UniresDLL.10073
+    LETTER_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10074
+    A3_ROTATED_DISPLAY:                         RESDLL.UniresDLL.10075
+    A4_ROTATED_DISPLAY:                         RESDLL.UniresDLL.10076
+    A5_ROTATED_DISPLAY:                         RESDLL.UniresDLL.10077
+    B4_JIS_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10078
+    B5_JIS_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10079
+    JAPANESE_POSTCARD_ROTATED_DISPLAY:          RESDLL.UniresDLL.10080
+    DBL_JAPANESE_POSTCARD_ROTATED_DISPLAY:      RESDLL.UniresDLL.10081
+    A6_ROTATED_DISPLAY:                         RESDLL.UniresDLL.10082
+    JENV_KAKU2_ROTATED_DISPLAY:                 RESDLL.UniresDLL.10083
+    JENV_KAKU3_ROTATED_DISPLAY:                 RESDLL.UniresDLL.10084
+    JENV_CHOU3_ROTATED_DISPLAY:                 RESDLL.UniresDLL.10085
+    JENV_CHOU4_ROTATED_DISPLAY:                 RESDLL.UniresDLL.10086
+    B6_JIS_DISPLAY:                             RESDLL.UniresDLL.10087
+    B6_JIS_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10088
+    12X11_DISPLAY:                              RESDLL.UniresDLL.10089
+    JENV_YOU4_DISPLAY:                          RESDLL.UniresDLL.10090
+    JENV_YOU4_ROTATED_DISPLAY:                  RESDLL.UniresDLL.10091
+    P16K_DISPLAY:                               RESDLL.UniresDLL.10092
+    P32K_DISPLAY:                               RESDLL.UniresDLL.10093
+    P32KBIG_DISPLAY:                            RESDLL.UniresDLL.10094
+    PENV_1_DISPLAY:                             RESDLL.UniresDLL.10095
+    PENV_2_DISPLAY:                             RESDLL.UniresDLL.10096
+    PENV_3_DISPLAY:                             RESDLL.UniresDLL.10097
+    PENV_4_DISPLAY:                             RESDLL.UniresDLL.10098
+    PENV_5_DISPLAY:                             RESDLL.UniresDLL.10099
+    PENV_6_DISPLAY:                             RESDLL.UniresDLL.10100
+    PENV_7_DISPLAY:                             RESDLL.UniresDLL.10101
+    PENV_8_DISPLAY:                             RESDLL.UniresDLL.10102
+    PENV_9_DISPLAY:                             RESDLL.UniresDLL.10103
+    PENV_10_DISPLAY:                            RESDLL.UniresDLL.10104
+    P16K_ROTATED_DISPLAY:                       RESDLL.UniresDLL.10105
+    P32K_ROTATED_DISPLAY:                       RESDLL.UniresDLL.10106
+    P32KBIG_ROTATED_DISPLAY:                    RESDLL.UniresDLL.10107
+    PENV_1_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10108
+    PENV_2_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10109
+    PENV_3_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10110
+    PENV_4_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10111
+    PENV_5_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10112
+    PENV_6_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10113
+    PENV_7_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10114
+    PENV_8_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10115
+    PENV_9_ROTATED_DISPLAY:                     RESDLL.UniresDLL.10116
+    PENV_10_ROTATED_DISPLAY:                    RESDLL.UniresDLL.10117
+
+    USER_DEFINED_SIZE_DISPLAY:                  RESDLL.UniresDLL.10255
+}
+
+*Macros: StdInputBinNames
+{
+    UPPER_TRAY_DISPLAY:                         RESDLL.RESOURCEDLL.431
+    LOWER_TRAY_DISPLAY:                         RESDLL.RESOURCEDLL.432
+	CASSETTE_1_DISPLAY:							RESDLL.RESOURCEDLL.431
+	CASSETTE_2_DISPLAY:							RESDLL.RESOURCEDLL.432
+	CASSETTE_3_DISPLAY:							RESDLL.RESOURCEDLL.433
+	CASSETTE_4_DISPLAY:							RESDLL.RESOURCEDLL.434
+	CASS_1_FEED:								RESDLL.EXTRAUIDLL.147
+	CASS_3_FEED:								RESDLL.EXTRAUIDLL.148
+    MIDDLE_TRAY_DISPLAY:                        RESDLL.UniresDLL.10258
+    MANUAL_FEED_DISPLAY:                        RESDLL.UniresDLL.10259
+    ENV_FEED_DISPLAY:                           RESDLL.UniresDLL.10260
+    ENV_MANUAL_DISPLAY:                         RESDLL.UniresDLL.10261
+    AUTO_DISPLAY:                               RESDLL.UniresDLL.10262
+    TRACTOR_DISPLAY:                            RESDLL.UniresDLL.10263
+    SMALL_FORMAT_DISPLAY:                       RESDLL.UniresDLL.10264
+    LARGE_FORMAT_DISPLAY:                       RESDLL.UniresDLL.10265
+    LARGE_CAP_DISPLAY:                          RESDLL.UniresDLL.10266
+    CASSETTE_DISPLAY:                           RESDLL.UniresDLL.10267
+}
+
+*Macros: StdMediaTypeNames
+{
+    PLAIN_PAPER_DISPLAY:                        RESDLL.UniresDLL.10512
+    TRANSPARENCY_DISPLAY:                       RESDLL.UniresDLL.10513
+    GLOSSY_PAPER_DISPLAY:                       RESDLL.UniresDLL.10514
+}
+
+*Macros: StdTextQualityNames
+{
+    LETTER_QUALITY_DISPLAY:                     RESDLL.UniresDLL.10768
+    NEAR_LETTER_QUALITY_DISPLAY:                RESDLL.UniresDLL.10769
+    MEMO_QUALITY_DISPLAY:                       RESDLL.UniresDLL.10770
+    DRAFT_QUALITY_DISPLAY:                      RESDLL.UniresDLL.10771
+    TEXT_QUALITY_DISPLAY:                       RESDLL.UniresDLL.10772
+}
+
+*Macros: OtherStdNames
+{
+    PORTRAIT_DISPLAY:                   RESDLL.UniresDLL.11025
+    LANDSCAPE_DISPLAY:                  RESDLL.UniresDLL.11026
+    MONO_DISPLAY:                       RESDLL.UniresDLL.11030
+    COLOR_DISPLAY:                      RESDLL.UniresDLL.11031
+    8BPP_DISPLAY:                       RESDLL.UniresDLL.11032
+    24BPP_DISPLAY:                      RESDLL.UniresDLL.11033
+    NONE_DISPLAY:                       RESDLL.UniresDLL.11040
+    FLIP_ON_LONG_EDGE_DISPLAY:          RESDLL.UniresDLL.11041
+    FLIP_ON_SHORT_EDGE_DISPLAY:         RESDLL.UniresDLL.11042
+    ON_DISPLAY:                         RESDLL.UniresDLL.11090
+    OFF_DISPLAY:                        RESDLL.UniresDLL.11091
+    DOTS_PER_INCH:                      "dots per inch"
+    HT_AUTO_SELECT_DISPLAY:             RESDLL.UniresDLL.11050
+    HT_SUPERCELL_DISPLAY:               RESDLL.UniresDLL.11051
+    HT_DITHER6X6_DISPLAY:               RESDLL.UniresDLL.11052
+    HT_DITHER8X8_DISPLAY:               RESDLL.UniresDLL.11053
+}
+
+*Macros:  StdPersonalities
+{
+    PERSONALITY_LIPS_DISPLAY:       RESDLL.UniresDLL.11500
+    PERSONALITY_ESCP2_DISPLAY:      RESDLL.UniresDLL.11501
+    PERSONALITY_PPDS_DISPLAY:       RESDLL.UniresDLL.11502
+    PERSONALITY_CaPSL_DISPLAY:      RESDLL.UniresDLL.11503
+    PERSONALITY_KPDL_DISPLAY:       RESDLL.UniresDLL.11504
+    PERSONALITY_TextOnly_DISPLAY:   RESDLL.UniresDLL.11505
+    PERSONALITY_201PL_DISPLAY:      RESDLL.UniresDLL.11506
+    PERSONALITY_ART_DISPLAY:        RESDLL.UniresDLL.11507
+    PERSONALITY_ESCPage_DISPLAY:    RESDLL.UniresDLL.11508
+    PERSONALITY_ESCP_DISPLAY:       RESDLL.UniresDLL.11509
+    PERSONALITY_KS_DISPLAY:         RESDLL.UniresDLL.11510
+    PERSONALITY_KSSM_DISPLAY:       RESDLL.UniresDLL.11511
+    PERSONALITY_PAGES_DISPLAY:      RESDLL.UniresDLL.11512
+    PERSONALITY_PCL_DISPLAY:        RESDLL.UniresDLL.11513
+    PERSONALITY_RPDL_DISPLAY:       RESDLL.UniresDLL.11514
+    PERSONALITY_Unknown_DISPLAY:    RESDLL.UniresDLL.11515
+
+}
+
+*%% Copyright (c) 2000 - 2001 Canon Systems Managemnet Europe Limited
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%%	+++++++++++++++++
+*%%	++ Paper Sizes ++
+*%%	+++++++++++++++++
+
+*Feature: PaperSize
+{
+    *rcNameID: =PAPER_SIZE_DISPLAY
+    *DefaultOption: A4
+	*Option: A3
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 9667
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(6720, 9664)
+                *PrintableOrigin: PAIR(147, 128)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l27a8c1E<1B>*p0x0Y<1B>*c0t8067x11597Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(6800, 9680)
+                *PrintableOrigin: PAIR(107, 118)
+                *CursorOrigin: PAIR(100, 9803)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l27a8c1E<1B>*p0x0Y<1B>*c0t11616x8163Y"
+                }
+            }
+        }
+    }
+    *Option: A4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+		*PageProtectMem: 4249
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4672, 6752)
+                *PrintableOrigin: PAIR(142, 150)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l26a8c1E<1B>*p0x0Y<1B>*c0t5607x8103Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4752, 6768)
+                *PrintableOrigin: PAIR(100, 129)
+                *CursorOrigin: PAIR(100, 6904)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l26a8c1E<1B>*p0x0Y<1B>*c0t8124x5703Y"
+                }
+            }
+        }
+    }
+    *Option: A5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4249
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(3200, 4656)
+                *PrintableOrigin: PAIR(142, 150)
+                *CursorOrigin: PAIR(150, 90)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l25a8c1E<1B>*p0x0Y<1B>*c0t3821x5645Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(3286, 4720)
+                *PrintableOrigin: PAIR(100, 128)
+                *CursorOrigin: PAIR(100, 4852)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l25a8c1E<1B>*p0x0Y<1B>*c0t5664x3953Y"
+                }
+            }
+        }
+    }
+	*Option: B4
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 6391
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(5776, 8384)
+                *PrintableOrigin: PAIR(142, 100)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l46a8c1E<1B>*p0x0Y<1B>*c0t6946x10083Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(5872, 8352)
+                *PrintableOrigin: PAIR(100, 128)
+                *CursorOrigin: PAIR(100, 8486)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l46a8c1E<1B>*p0x0Y<1B>*c0t10040x7047Y"
+                }
+            }
+        }
+    }
+    *Option: B5
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4249
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4000, 5872)
+                *PrintableOrigin: PAIR(142, 100)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l45a8c1E<1B>*p0x0Y<1B>*c0t4820x7044Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4072, 5832)
+                *PrintableOrigin: PAIR(110, 120)
+                *CursorOrigin: PAIR(100, 5952)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l45a8c1E<1B>*p0x0Y<1B>*c0t6999x4918Y"
+                }
+            }
+        }
+    }
+	*Option: 11X17
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4249
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(6288, 9980)
+                *PrintableOrigin: PAIR(150, 100)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l6a8c1E<1B>*p0x0Y<1B>*c0t7546x12000Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(6400, 9952)
+                *PrintableOrigin: PAIR(100, 128)
+                *CursorOrigin: PAIR(100, 10080)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l6a8c1E<1B>*p0x0Y<1B>*c0t11943x7680Y"
+                }
+            }
+        }
+    }
+    *Option: LEGAL
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 5230
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 8144)
+                *PrintableOrigin: PAIR(150, 150)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l3a8c1E<1B>*p0x0Y<1B>*c0t5760x9773Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4896, 8160)
+                *PrintableOrigin: PAIR(100, 120)
+                *CursorOrigin: PAIR(100, 8280)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l3a8c1E<1B>*p0x0Y<1B>*c0t9792x5876Y"
+                }
+            }
+        }
+    }
+    *Option: LETTER
+    {
+        *rcNameID: =RCID_DMPAPER_SYSTEM_NAME
+        *PageProtectMem: 4109
+        *switch: Orientation
+        {
+            *case: PORTRAIT
+            {
+                *PrintableArea: PAIR(4800, 6336)
+                *PrintableOrigin: PAIR(150, 150)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l2a8c1E<1B>*p0x0Y<1B>*c0t5760x7604Y"
+                }
+            }
+            *case: LANDSCAPE_CC90
+            {
+                *PrintableArea: PAIR(4896, 6352)
+                *PrintableOrigin: PAIR(100, 128)
+                *CursorOrigin: PAIR(100, 6480)
+                *Command: CmdSelect
+                {
+                    *Order: DOC_SETUP.12
+                    *Cmd: "<1B>&l2a8c1E<1B>*p0x0Y<1B>*c0t7623x5876Y"
+                }
+            }
+        }
+    }
+}
+
+*%% Copyright (c) 2000 - 2001 Canon Systems Managemnet Europe Limited
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%%	++++++++++++++++++++
+*%%	++ Other Features ++
+*%%	++++++++++++++++++++
+
+*Feature: Orientation
+{
+    *rcNameID: =ORIENTATION_DISPLAY
+    *DefaultOption: PORTRAIT
+    *Option: PORTRAIT
+    {
+        *rcNameID: =PORTRAIT_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.8
+			*Cmd: "<1B>&l0O"
+        }
+    }
+    *Option: LANDSCAPE_CC90
+    {
+        *rcNameID: =LANDSCAPE_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.8
+			*Cmd: "<1B>&l1O"
+        }
+    }
+}
+*Feature: Resolution
+{
+    *rcNameID: =RESOLUTION_DISPLAY
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *Name: "600 x 600 " =DOTS_PER_INCH
+        *DPI: PAIR(600, 600)
+        *TextDPI: PAIR(600, 600)
+        *MinStripBlankPixels: 32
+        EXTERN_GLOBAL: *StripBlanks: LIST(ENCLOSED,TRAILING)
+        *SpotDiameter: 100
+        *Command: CmdBeginRaster { *Cmd : "<1B>*r1A" }
+        *Command: CmdEndRaster { *Cmd : "<1B>*rB" }
+        *Command: CmdSendBlockData { *Cmd : "<1B>*b" %d{NumOfDataBytes}"W" }
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.6
+            *Cmd: "<1B>%%-12345X"
++                 "@PJL SET RESOLUTION=600<0A>"
++                 "@PJL ENTER LANGUAGE=PCL<0A0D1B>E<1B>*t600R"
+        }
+    }
+}
+*Feature: Halftone
+{
+    *rcNameID: =HALFTONING_DISPLAY
+    *DefaultOption: HT_PATSIZE_AUTO
+    *Option: HT_PATSIZE_AUTO
+    {
+        *rcNameID: =HT_AUTO_SELECT_DISPLAY
+    }
+	*Option: HT_PATSIZE_SUPERCELL_M
+	{
+		*rcNameID: =HT_SUPERCELL_DISPLAY
+	}
+    *Option: HT_PATSIZE_6x6_M
+    {
+        *rcNameID: =HT_DITHER6X6_DISPLAY
+    }
+    *Option: HT_PATSIZE_8x8_M
+    {
+        *rcNameID: =HT_DITHER8X8_DISPLAY
+    }
+}
+*Feature: EconoMode
+{
+    *rcNameID: =TONERSAVE 	
+    *DefaultOption: Option1
+    *Option: Option1
+    {
+        *rcNameID: =PRINTER_DEFAULT
+    }
+    *Option: Option2
+    {
+        *rcNameID: =ON	        
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET ECONOMODE=ON<0A>"
+        }
+    }
+	*Option: Option3
+    {
+        *rcNameID: =OFF
+        *Command: CmdSelect
+        {
+            *Order: JOB_SETUP.5
+            *Cmd: "@PJL SET ECONOMODE=OFF<0A>"
+        }
+    }
+}
+
+*Ifdef: WINNT_51
+*Personality: =PERSONALITY_HPGL2
+
+*%********************************************************************
+*%      Graphics Mode: Custom Feature
+*%********************************************************************
+*Feature: GraphicsMode
+{
+    *rcNameID: =GRAPHICSMODE_DISPLAY
+    *DefaultOption: HPGL2MODE
+    *Option: HPGL2MODE
+    {
+        *rcNameID: =GRAPHICSMODE_HPGL2_DISPLAY
+    }
+    *Option: RASTERMODE
+    {
+        *rcNameID: =GRAPHICSMODE_RASTER_DISPLAY
+    }
+}
+
+*Endif:
+*%% Copyright (c) 2000 - 2001 Canon Systems Managemnet Europe Limited
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%%	+++++++++++++++++++
+*%%	++ Configuration ++
+*%%	+++++++++++++++++++
+
+*Feature: PaperSourceHook
+{
+	*ConcealFromUI?: TRUE
+    *Name: "Paper Source Hook"
+    *Option: DummyItem
+    {
+        *Name: "Dummy Item"
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.11
+			*CallbackID: 30
+        }
+    }
+
+}
+
+*Feature: InputBin
+{
+    *rcNameID: =PAPER_SOURCE_DISPLAY
+	*Option: STACKBYPASS
+    {
+        *rcNameID: =STACKBYPASS
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.11
+        }
+    }
+    *Option: Source1
+    {
+        *rcNameID: =CASSETTE_1_DISPLAY
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.11
+        }
+    }
+    *Option: Source2
+    {
+        *rcNameID: =CASSETTE_2_DISPLAY
+        *Constraints: Bin1.NotInstalled
+        *Command: CmdSelect
+        {
+            *Order: DOC_SETUP.11
+        }
+    }
+	*Option: Source3
+	{
+        *rcNameID: =CASSETTE_3_DISPLAY
+		*Constraints: Bin2.NotInstalled
+		*Command: CmdSelect
+        {
+            *Order: DOC_SETUP.11
+        }
+	}
+	*Option: Source4
+	{
+        *rcNameID: =CASSETTE_4_DISPLAY
+		*Constraints: Bin2.NotInstalled
+		*Command: CmdSelect
+        {
+            *Order: DOC_SETUP.11
+        }
+	}
+}
+
+*Feature: PSOptions
+{
+    *FeatureType: PRINTER_PROPERTY
+   	*rcNameID: =PS_OPTIONS
+    *HelpIndex: 2000
+	*DefaultOption: NotInstalled
+	*Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED
+    }
+    *Option: Cass1
+    {
+        *rcNameID: =CASS_1_FEED
+    }
+	*Option: Cass3
+    {
+        *rcNameID: =CASS_3_FEED
+    }
+}
+
+*Feature: Bin1
+{
+    *FeatureType: PRINTER_PROPERTY
+   	*rcNameID: =CASSETTE_1_DISPLAY
+	*DefaultOption: NotInstalled
+	*Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED
+    }
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED
+    }
+}
+
+*Feature: Bin2
+{
+    *FeatureType: PRINTER_PROPERTY
+ 	*rcNameID: =CASSETTE_2_DISPLAY
+    *DefaultOption: NotInstalled
+    *Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED
+    }
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED
+    }
+}
+
+*Feature: Bin3
+{
+    *FeatureType: PRINTER_PROPERTY
+ 	*rcNameID: =CASSETTE_3_DISPLAY
+    *DefaultOption: NotInstalled
+    *Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED
+    }
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED
+    }
+}
+
+*Feature: Bin4
+{
+    *FeatureType: PRINTER_PROPERTY
+ 	*rcNameID: =CASSETTE_4_DISPLAY
+    *DefaultOption: NotInstalled
+    *Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED
+    }
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED
+    }
+}
+
+*Feature: Memory
+{
+    *rcNameID: =PRINTER_MEMORY_DISPLAY
+    *DefaultOption: 4096KB
+    *Option: 4096KB
+    {
+        *Name: "4" =MB
+        *MemoryConfigKB: PAIR(4096, 3150)
+    }
+    *Option: 8192KB
+    {
+        *Name: "8" =MB
+        *MemoryConfigKB: PAIR(8192, 6750)
+    }
+    *Option: 12288KB
+    {
+        *Name: "12" =MB
+        *MemoryConfigKB: PAIR(12288, 10350)
+    }
+    *Option: 20480KB
+    {
+        *Name: "20" =MB
+        *MemoryConfigKB: PAIR(20480, 17550)
+    }
+}
+
+
+*%% Copyright (c) 2000 - 2001 Canon Systems Managemnet Europe Limited
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%%	++++++++++++++++++++++++++++++
+*%%	++ Device Font Substitution ++
+*%%	++++++++++++++++++++++++++++++
+
+*TTFS: AlbertusExtraBold
+{
+  *TTFontName: "Albertus Extra Bold"
+  *DevFontName: "Albertus Extra Bold"
+}
+
+*TTFS: AlbertusMedium
+{
+  *TTFontName: "Albertus Medium"
+  *DevFontName: "Albertus Medium"
+}
+
+*TTFS: AntiqueOlive
+{
+  *TTFontName: "Antique Olive"
+  *DevFontName: "Antique Olive"
+}
+
+*TTFS: Arial
+{
+  *TTFontName: "Arial"
+  *DevFontName: "Arial"
+}
+
+*TTFS: CGOmega
+{
+  *TTFontName: "CG Omega"
+  *DevFontName: "CG Omega"
+}
+
+*TTFS: CGTimes
+{
+  *TTFontName: "CG Times"
+  *DevFontName: "CG Times"
+}
+
+*TTFS: ClarendonCD
+{
+  *TTFontName: "Clarendon Condensed"
+  *DevFontName: "Clarendon Condensed"
+}
+
+*TTFS: Coronet
+{
+  *TTFontName: "Coronet"
+  *DevFontName: "Coronet"
+}
+
+*TTFS: CourierNew
+{
+  *TTFontName: "Courier New"
+  *DevFontName: "Courier"
+}
+
+*TTFS: Garamond
+{
+  *TTFontName: "Garamond"
+  *DevFontName: "Garamond"
+}
+
+*TTFS: LetterGothic
+{
+  *TTFontName: "Letter Gothic"
+  *DevFontName: "Letter Gothic"
+}
+
+*TTFS: Marigold
+{
+  *TTFontName: "Marigold"
+  *DevFontName: "Marigold"
+}
+
+*TTFS: Symbol
+{
+  *TTFontName: "Symbol"
+  *DevFontName: "Symbol"
+}
+
+*TTFS: TimesNewRoman
+{
+  *TTFontName: "Times New Roman"
+  *DevFontName: "Times New Roman"
+}
+
+*TTFS: Univers
+{
+  *TTFontName: "Univers"
+  *DevFontName: "Univers"
+}
+
+*TTFS: UniversCondensed
+{
+  *TTFontName: "Univers Condensed"
+  *DevFontName: "Univers Condensed"
+}
+
+*TTFS: Wingdings
+{
+  *TTFontName: "Wingdings"
+  *DevFontName: "Wingdings"
+}
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+*%%*TTFS: Garamond
+*%%{
+*%%  *TTFontName: "Garamond"
+*%%  *DevFontName: "Garamond"
+*%%}
+*%%
+*%%*TTFS: AntiqueOlive
+*%%{
+*%%  *TTFontName: "Antique Olive"
+*%%  *DevFontName: "Antique Olive"
+*%%}
+*%%
+*%%*TTFS: Arial
+*%%{
+*%%  *TTFontName: "Arial"
+*%%  *DevFontName: "Arial"
+*%%}
+*%%*TTFS: TimesNewRoman
+*%%{
+*%%  *TTFontName: "Times New Roman"
+*%%  *DevFontName: "Times New Roman"
+*%%}
+*%%*TTFS: Symbol
+*%%{
+*%%  *TTFontName: "Symbol"
+*%%  *DevFontName: "Symbol"
+*%%}
+*%%*TTFS: Wingdings
+*%%{
+*%%  *TTFontName: "Wingdings"
+*%%  *DevFontName: "Wingdings"
+*%%}
+*%%*TTFS: BRSymbol
+*%%{
+*%%  *TTFontName: "BR Symbol"
+*%%  *DevFontName: "BR Symbol"
+*%%}
+*%%*TTFS: Helsinki
+*%%{
+*%%  *TTFontName: "Helsinki"
+*%%  *DevFontName: "Helsinki"
+*%%}
+*%%*TTFS: TennRoman
+*%%{
+*%%  *TTFontName: "Tennessee Roman"
+*%%  *DevFontName: "Tennessee Roman"
+*%%}
+*%%*TTFS: WDingbats
+*%%{
+*%%  *TTFontName: "W Dingbats"
+*%%  *DevFontName: "W Dingbats"
+*%%}
+*%%
+*%%*TTFS: CGOmega
+*%%{
+*%%  *TTFontName: "CG Omega"
+*%%  *DevFontName: "CG Omega"
+*%%}
+*%%*TTFS: CGTimes
+*%%{
+*%%  *TTFontName: "CG Times"
+*%%  *DevFontName: "CG Times"
+*%%}
+*%%*TTFS: NewCenturySchoolbook
+*%%{
+*%%  *TTFontName: "New Century Schoolbook Roman"
+*%%  *DevFontName: "New Century Schoolbook"
+*%%}
+*%%*TTFS: ClarendonCondensed
+*%%{
+*%%  *TTFontName: "Clarendon Condensed Bold"
+*%% *DevFontName: "Clarendon Condensed"
+*%%}
+*%%*TTFS: Coronet
+*%%{
+*%%  *TTFontName: "Coronet"
+*%%  *DevFontName: "Coronet"
+*%%}
+*%%*TTFS: CourierPS
+*%%{
+*%%  *TTFontName: "CourierPS"
+*%%  *DevFontName: "CourierPS"
+*%%}
+*%%*TTFS: Helvetica
+*%%{
+*%%  *TTFontName: "Helvetica"
+*%%  *DevFontName: "Helvetica"
+*%%}
+*%%*TTFS: HelveticaN
+*%%{
+*%%  *TTFontName: "Helvetica Narrow"
+*%%  *DevFontName: "Helvetica Narrow"
+*%%}
+*%%*TTFS: ITCAvantGardeGothicB
+*%%{
+*%%  *TTFontName: "ITC Avant Garde Gothic Book Oblique"
+*%%  *DevFontName: "ITC Avant Garde Gothic"
+*%%}
+*%%*TTFS: ITCAvantGardeGothicD
+*%%{
+*%%  *TTFontName: "ITC Avant Garde Gothic Demi"
+*%%  *DevFontName: "ITC Avant Garde Gothic Demi"
+*%%}
+*%%*TTFS: ITCBookmanDemi
+*%%{
+*%%  *TTFontName: "ITC Bookman Demi"
+*%%  *DevFontName: "ITC Bookman Demi"
+*%%}
+*%%*TTFS: ITCBookmanLight
+*%%{
+*%%  *TTFontName: "ITC Bookman Light"
+*%%  *DevFontName: "ITC Bookman Light"
+*%%}
+*%%*TTFS: ITCZapfChancery
+*%%{
+*%%  *TTFontName: "ITC Zapf Chancery Medium Italic"
+*%%  *DevFontName: "ITC Zapf Chancery"
+*%%}
+*%%*TTFS: LetterGothic
+*%%{
+*%%  *TTFontName: "Letter Gothic"
+*%%  *DevFontName: "Letter Gothic"
+*%%}
+*%%*TTFS: Marigold
+*%%{
+*%%  *TTFontName: "Marigold"
+*%%  *DevFontName: "Marigold"
+*%%}
+*%%*TTFS: Palatino
+*%%{
+*%%  *TTFontName: "Palatino Roman"
+*%%  *DevFontName: "Palatino"
+*%%}
+*%%*TTFS: Times
+*%%{
+*%%  *TTFontName: "Times Roman"
+*%%  *DevFontName: "Times"
+*%%}
+*%%*TTFS: Univers
+*%%{
+*%%  *TTFontName: "Univers Medium"
+*%%  *DevFontName: "Univers"
+*%%}
+*%%*TTFS: UniversCD
+*%%{
+*%%  *TTFontName: "Univers Condensed Medium"
+*%%  *DevFontName: "Univers Condensed"
+*%%}
+*%%
+*%%*TTFS: CourierNew
+*%%{
+*%%  *TTFontName: "Courier New"
+*%%  *DevFontName: "Courier New"
+*%%}
+*%%
+*%%*% These 4 fonts need to be substituted to match the name that applications use to select the font.  For
+*%%*% some reason the names are different.
+*%%
+*%%*TTFS: ClarendonCD1
+*%%{
+*%%  *TTFontName: "Clarendon Condensed"
+*%% *DevFontName: "Clarendon Condensed"
+*%%}
+*%%*TTFS: Times1
+*%%{
+*%%  *TTFontName: "Times"
+*%%  *DevFontName: "Times"
+*%%}
+*%%*TTFS: Univers1
+*%%{
+*%%  *TTFontName: "Univers"
+*%%  *DevFontName: "Univers"
+*%%}
+*%%*TTFS: UniversCD1
+*%%{
+*%%  *TTFontName: "Univers Condensed"
+*%%  *DevFontName: "Univers Condensed"
+*%%}
+
+
+
+
+*%%
+*%% Copyright (c) 1997 - 1999 Microsoft Corporation
+*%%
+*%%	Copyright CANON INC. 2001
+*%%
+*%% All Rights Reserved.
+*%%
+*%%	+++++++++++++++++++++++++++++++++++
+*%%	++ Contains all of the *Commands ++
+*%%	+++++++++++++++++++++++++++++++++++
+
+*Command: CmdStartDoc
+{
+	*Order: DOC_SETUP.7
+	*Cmd: "<1B>&u600D<1B>*r0F"
+}
+*Command: CmdStartPage
+{
+    *Order: PAGE_SETUP.1
+    *Cmd: "<1B>*b0M<0D>"
+}
+*Command: CmdEndJob
+{
+    *Order: JOB_FINISH.1
+    *Cmd: "<1B>E<1B>%%-12345X"
+}
+*Command: CmdCopies
+{
+    *Order: DOC_SETUP.13
+    *Cmd: "<1B>&l" %d[1,32767]{NumOfCopies}"X"
+}
+*RotateRaster?: TRUE
+*RotateCoordinate?: TRUE
+*RotateFont?: TRUE
+*OutputOrderReversed?: TRUE
+*TextCaps: LIST(TC_CR_90,TC_UA_ABLE)
+*MemoryUsage: LIST(FONT)
+*CursorXAfterCR: AT_PRINTABLE_X_ORIGIN
+*BadCursorMoveInGrxMode: LIST(X_PORTRAIT,Y_LANDSCAPE)
+*XMoveThreshold: 0
+*YMoveThreshold: 0
+*XMoveUnit: 600
+*YMoveUnit: 600
+*Command: CmdXMoveAbsolute { *Cmd : "<1B>*p" %d{DestX }"X" }
+*Command: CmdXMoveRelRight { *Cmd : "<1B>*p+" %d[0,9600]{max_repeat(DestXRel )}"X" }
+*Command: CmdXMoveRelLeft { *Cmd : "<1B>*p-" %d[0,9600]{max_repeat(DestXRel )}"X" }
+*Command: CmdYMoveAbsolute { *Cmd : "<1B>*p" %d{DestY }"Y" }
+*Command: CmdYMoveRelDown { *Cmd : "<1B>*p+" %d{DestYRel }"Y" }
+*Command: CmdYMoveRelUp { *Cmd : "<1B>*p-" %d{DestYRel }"Y" }
+*Command: CmdCR { *Cmd : "<0D>" }
+*Command: CmdLF { *Cmd : "<0A>" }
+*Command: CmdFF { *Cmd : "<0C>" }
+*Command: CmdBackSpace { *Cmd : "<08>" }
+*Command: CmdUniDirectionOn { *Cmd : "<00>" }
+*Command: CmdUniDirectionOff { *Cmd : "<00>" }
+*Command: CmdPushCursor { *Cmd : "<1B>&f0S" }
+*Command: CmdPopCursor { *Cmd : "<1B>&f1S" }
+*Command: CmdSetSimpleRotation { *Cmd : "<1B>&a" %d{PrintDirInCCDegrees}"P" }
+*EjectPageWithFF?: TRUE
+*Command: CmdEnableTIFF4 { *Cmd : "<1B>*b2M" }
+*Command: CmdDisableCompression { *Cmd : "<1B>*b0M" }
+*Command: CmdEnableDRC { *Cmd : "<1B>*b3M" }
+*OutputDataFormat: H_BYTE
+*OptimizeLeftBound?: TRUE
+*CursorXAfterSendBlockData: AT_GRXDATA_ORIGIN
+*CursorYAfterSendBlockData: AUTO_INCREMENT
+*DefaultFont: 216
+*DefaultCTT: 0
+*CharPosition: BASELINE
+*TTFSEnabled?: TRUE
+*DeviceFonts: LIST(138,146,147,148,149,150,151,152,153,154,155,156,157,164,165,
++                   166,
++                   200,201,202,203,209,210,211,212,213,214,215,
++                   216,217,218,219,220,221,222,223,224,225,226,227,228,229,230)
+*%% Removed Garamond 196,197,198,199 from DeviceFonts
+*MinFontID: 16534
+*MaxFontID: 32768
+*FontFormat: HPPCL_OUTLINE
+*Command: CmdSetFontID { *Cmd : "<1B>*c" %d{NextFontID}"D" }
+*Command: CmdSelectFontID { *Cmd : "<1B>(" %d{CurrentFontID}"X" }
+*Command: CmdSetCharCode { *Cmd : "<1B>*c" %d{NextGlyph}"E" }
+*Command: CmdUnderlineOn { *Cmd : "<1B>&dD" }
+*Command: CmdUnderlineOff { *Cmd : "<1B>&d@" }
+*Command: CmdDownloadPattern {*Cmd: "<1B>*c" %d{PatternBrushID}"G" "<1B>*c" %d{PatternBrushSize}"W" }
+*Command: CmdSelectPattern {*Cmd: "<1B>*c" %d{PatternBrushID}"G" "<1B>*v" %d{PatternBrushType}"T" }
+*Command: CmdSelectWhiteBrush { *Cmd : "<1B>*v1o1T" }
+*Command: CmdSelectBlackBrush { *Cmd : "<1B>*v0o0T" }
+*MinGrayFill: 1
+*MaxGrayFill: 100
+*Command: CmdSetRectWidth { *Cmd : "<1B>*c" %d{RectXSize }"A" }
+*Command: CmdSetRectHeight { *Cmd : "<1B>*c" %d{RectYSize }"B" }
+*Command: CmdRectGrayFill { *Cmd : "<1B>*c" %d{GrayPercentage }"g2P" }
+*Command: CmdRectWhiteFill { *Cmd : "<1B>*c1P" }
+*Command: CmdRectBlackFill { *Cmd : "<1B>*c0P" }
+

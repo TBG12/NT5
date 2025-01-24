@@ -1,0 +1,110 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+LayoutFile = layout.inf
+Signature   = "$Windows NT$"
+Class	    = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+DriverVer=10/01/2002,3.0.5000.4
+
+[Manufacturer]
+%3COM%   = 3COM
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[3COM]
+%GEN.DeviceDesc%    = 3C656C.ndi, PCI\VEN_10B7&DEV_6564
+%3C656C.DeviceDesc% = 3C656C.ndi, PCI\VEN_10B7&DEV_6564&SUBSYS_656C10B7&REV_10
+
+;-----------------------------------------------------------------------------
+;3Com 3C656C CARDBUS
+
+[3C656C.ndi]
+AddReg		= 3C656C.reg, elnk3C656.reg
+BusType 	= 5	; PCI
+;Characteristics = 0x4
+Characteristics = 0x84
+CopyFiles	= elnk3C656.CopyFiles
+
+[3C656C.reg]
+HKR, , OSType,	    , "0"
+HKR, , DriverMode, ,"0"
+HKR,,CardRevision,,"1"
+HKR,NDI\params\LinkSelection,ParamDesc,,%NLS%
+HKR,NDI\params\LinkSelection,type,,"enum"
+HKR,Ndi\params\LinkSelection,default,,"0200"
+
+HKR,Ndi\params\LinkSelection\enum,0200,,%AN%
+HKR,Ndi\params\LinkSelection\enum,0100,,%F100%
+HKR,Ndi\params\LinkSelection\enum,0080,,%H100%
+HKR,Ndi\params\LinkSelection\enum,0040,,%F10%
+HKR,Ndi\params\LinkSelection\enum,0020,,%H10%
+
+HKR,Ndi\params\flowcontrol,ParamDesc,,%FC%
+HKR,Ndi\params\flowcontrol,type,,"enum"
+HKR,Ndi\params\flowcontrol,default,,"YES"
+HKR,Ndi\params\flowcontrol\enum,YES,,%YES%
+HKR,Ndi\params\flowcontrol\enum,NO,,%NO%
+
+HKR,NDI\params\LinkNotPresentFail,ParamDesc,,%LinkNotPresentFail%
+HKR,NDI\params\LinkNotPresentFail,type,,"enum"
+HKR,Ndi\params\LinkNotPresentFail,default,,"0"
+HKR,Ndi\params\LinkNotPresentFail\enum,0,,%NO%
+HKR,Ndi\params\LinkNotPresentFail\enum,1,,%YES%
+
+;-------------------------------------------------------------------------------
+; 3Com 3C656-TX Service and Driver
+[elnk3C656.reg]
+HKR, Ndi,	     Service,	 0, "el656cd5"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+[elnk3C656.CopyFiles]
+el656CD5.sys,,,2
+
+[3C656C.ndi.Services]
+AddService = el656cd5, 2, el656cd5.Service, el656cd5.EventLog
+
+[el656cd5.Service]
+DisplayName	= %el656cd5.Service.DispName%
+ServiceType	= 1 ;%SERVICE_KERNEL_DRIVER%
+StartType	= 3 ;%SERVICE_DEMAND_START%
+ErrorControl	= 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary	= %12%\el656cd5.sys
+LoadOrderGroup	= NDIS
+
+[el656cd5.EventLog]
+AddReg = el656cd5.AddEventLog.reg
+
+[el656cd5.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,	 0x00010001, 7
+
+;--------------------------------------------------------------------------
+; Destination Dirs
+[DestinationDirs]
+elnk3C656.CopyFiles =12
+
+;--------------------------------------------------------------------------
+; Localization Strings
+[strings]
+MSFT = "Microsoft"
+3COM = "3Com"
+
+3C656C.DeviceDesc = "FEM656C-3Com Global 10-100+56K CardBus PC Card-(Fast Ethernet)"
+GEN.DeviceDesc    = "3Com 656C-Based PCCard Fast Ethernet Adapter"
+el656cd5.Service.DispName="3Com Megahertz Global 10/100 LAN + 56K Modem CardBus PC Card"
+
+NLS	= "Network Link Selection"
+AN	= "Auto Negotiation"
+F100	= "100BTX Full Duplex"
+H100	= "100BTX Half Duplex"
+F10	= "10BT Full Duplex"
+H10	= "10BT Half Duplex"
+FC	= "Flow Control"
+YES	= "YES"
+NO	= "NO"
+LinkNotPresentFail = "Link Not Present Fail"
+

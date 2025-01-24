@@ -1,0 +1,148 @@
+;
+;
+; Installation inf for the Intel Corporation AIM controller
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%Intel%
+LayoutFile=layout.inf
+Class=DisplayCodec
+ClassGUID={E6ABB47D-8339-4c60-BE92-E9045FF5A33D}
+DriverVer=07/18/2002
+
+[DestinationDirs]
+DefaultDestDir   = 12
+iAimFP4.Miniport  = 12 ;
+iAimFP4.MiniportNT  = 12 ;
+
+;
+; Driver information
+;
+[Manufacturer]
+%Intel%   = Intel.Mfg
+
+[Intel.Mfg]
+%AimDriver.DeviceDesc%= iAimFP4, DISPLAY\wVchNTxx
+
+[ClassInstall]
+Addreg=AIMClass.AddReg
+
+
+[ClassInstall32]
+Addreg=AIMClass.AddRegNT
+
+;
+; General installation section
+;
+
+[iAimFP4]
+Addreg = iAimFP4.Addreg
+CopyFiles=@wVchNTxx.sys
+
+[iAimFP4.NT]
+Addreg = iAimFP4.AddregNT
+CopyFiles=@wVchNTxx.sys
+
+[iAimFP4.Addreg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,wVchNTxx.sys
+HKR,,DevicePNPID,wVchNTxx
+HKR,,DriverDesc,, %AimDriver.DeviceDesc%
+
+[iAimFP4.AddregNT]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,wVchNTxx.sys
+HKR,,DevicePNPID,wVchNTxx
+HKR,,DriverDesc,,%AimDriver.DeviceDesc%
+
+[AIMClass.AddReg]
+HKR,,,,%AimClass.Desc%
+;HKR,,Class,,DisplayCodec
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+ 
+[AIMClass.AddRegNT]
+HKR,,,,%AimClass.Desc%
+HKR,,Class,,DisplayCodec
+HKR,,Icon,,"-1"
+;HKR,,NoUseClass,,1	;Class will not be seen anywhere
+;HKR,,NoInstallClass,,1	;Class is not shown in New Device Wizard
+HKR,,NoDisplayClass,,1	;Class will not be displayed by Device Manager
+HKR,,SilentInstall,,1	;Class is installed without any user interaction
+
+[iAimFP4.Interfaces]
+AddInterface=%AimChildIntfGUID%,"GLOBAL",AimChildInterface,
+
+[AimChildInterface]
+AddReg=AimChildInterface.AddReg
+
+[AimChildInterface.AddReg]
+HKR,,Class,,%AimClassGUID%
+HKR,,FriendlyName,,%AimDriver.FriendlyName%
+
+;
+; Service Installation
+;
+
+[iAimFP4.Services]
+AddService = iAimFP4, 0x00000002, iAimFP4_Service_Inst, iAimFP4_EventLog_Inst
+
+[iAimFP4.NT.Services]
+AddService = iAimFP4, 0x00000002, iAimFP4_Service_Inst, iAimFP4_EventLog_Inst
+
+[iAimFP4_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\wVchNTxx.sys
+
+[iAimFP4_EventLog_Inst]
+AddReg = iAimFP4_EventLog_AddReg
+
+[iAimFP4_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\wVchNTxx.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId       = "Intel(R) AIM Drivers FP Disk"
+Intel      = "Intel Corporation"
+;
+;
+;
+; These do not change - ever !
+;
+AimClassGUID="{E6ABB47D-8339-4c60-BE92-E9045FF5A33D}"
+AimChildIntfGUID="{E87E75CE-0792-4534-AB89-5CFC95747B77}"
+
+;
+;
+; Do not change this line !
+;
+AimClass.Desc="Intel AIM Codec"
+;
+;
+; Put device specifics here ->
+;
+AimDriver.DeviceDesc="Intel(r) AIM External Flat Panel Driver 4"
+AimDriver.FriendlyName="Intel(r) AIM External FP Driver 4"

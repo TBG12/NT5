@@ -1,0 +1,17 @@
+[OSM]
+CaretSearch=255
+[WindowClasses]
+MSN_ButtonWindow=Button
+MSN_StaticWindow=Static
+Internet Explorer_TridentCmbobx=ComboBox
+Internet Explorer_TridentLstBox=ListBox
+TextWndClass=Edit
+PasswordWndClass=PasswordEdit
+ComboWndClass=ComboBox
+ButtonWndClass=Button
+RadioWndClass=RadioButton
+CheckBoxWndClass=CheckBox
+ListBoxWndClass=ListBox
+ListWndClass=ListBox
+TextAreaWndClass=Edit
+hh_kwd_vlist=ListBox

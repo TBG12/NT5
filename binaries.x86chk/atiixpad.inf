@@ -1,0 +1,141 @@
+; ATI Display Information file : ATIIXPAD.INF
+; INF file for ATI2DRAD display driver.
+; Copyright(C) 1998-2001 ATI Technologies Inc.
+; Windows XP
+
+[Version]
+Signature = "$Chicago$"
+Provider  = %ati%
+LayoutFile=layout.inf
+ClassGUID = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Class     = Display
+DriverVer = 08/08/2001, 5.10.2600.6014
+
+
+[DestinationDirs]
+DefaultDestDir       = 11  ; system32
+ati2mpad.Miniport    = 12  ; drivers
+ati2mpad.Display     = 11  ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATI.Mfg
+
+[ATI.Mfg]
+XPERT 98 AGP 2X (Microsoft Corporation)           = ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_00841002
+XPERT 98 RXL AGP 2X (Microsoft Corporation)       = ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_00081002
+XPERT 98 RXL AGP 2X (Microsoft Corporation)       = ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_00041002
+XPERT 98 AGP 2X (Microsoft Corporation)           = ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_80841002
+XPERT 98 RXL AGP 2X (Microsoft Corporation)       = ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_80081002
+XPERT 98 RXL AGP 2X (Microsoft Corporation)       = ati2mpad, PCI\VEN_1002&DEV_474D&SUBSYS_80041002
+RAGE XL AGP 2X Family (Microsoft Corporation)            = ati2mpad, PCI\VEN_1002&DEV_474D
+RAGE XL PCI Family (Microsoft Corporation)               = ati2mpad, PCI\VEN_1002&DEV_474F
+RAGE XL PCI Family (Microsoft Corporation)               = ati2mpad, PCI\VEN_1002&DEV_4752
+
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; ati2mpad general installation section
+; ------------------------------------
+
+[ati2mpad]
+CopyFiles=ati2mpad.Miniport, ati2mpad.Display
+DelReg=ati2mpad_SoftwareDeviceSettings
+
+;
+; File sections
+
+[ati2mpad.Miniport]
+ati2mpad.sys
+
+[ati2mpad.Display]
+ati2drad.dll
+
+;
+; Service installation
+;
+
+[ati2mpad.Services]
+AddService=ati2mpad, 0x00000002, ati2mpad_Generic_Service_Inst, ati2mpad_EventLog_Inst
+ 
+[ati2mpad_EventLog_Inst]
+AddReg=ati2mpad_EventLog_AddReg
+
+[ati2mpad_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\ati2mpad.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[ati2mpad_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\ati2mpad.sys
+
+;
+; Software installation
+;
+
+[ati2mpad.SoftwareSettings]
+AddReg = ati2mpad_SoftwareDeviceSettings
+DelReg = ati2mtad_RemoveDeviceSettings
+
+[ati2mpad_SoftwareDeviceSettings]
+HKR,, MobilityVariant,               %REG_DWORD%,    0
+HKR,, BlockWriteDisabled,            %REG_DWORD%,    1
+HKR,, FastFillDisabled,              %REG_DWORD%,    0
+HKR,, HDTVEnabled,                   %REG_DWORD%,    0
+HKR,, TimingSelection,               %REG_DWORD%,    0
+HKR,, InstalledDisplayDrivers,       %REG_MULTI_SZ%, ati2drad
+HKR,, VgaCompatible,                 %REG_DWORD%,    0
+HKR,, OpenGLICDDisabled,             %REG_DWORD%,    1
+HKR,, CheckD3Enabled,                %REG_DWORD%,    1
+HKR,, D3DDisabled,                   %REG_DWORD%,    1
+HKR,, USWCDisabled,                  %REG_DWORD%,    1
+HKR,, LoadSubSystemID,               %REG_DWORD%,    1
+HKR,, DALRULE_NOTVANDLCDONCRTC,      %REG_DWORD%,    1
+HKR,, DALRULE_SELECTION_SCHEME,      %REG_DWORD%,    1
+HKR,, DALRULE_NOFORCEBOOT,           %REG_DWORD%,    1
+HKR,, DDLRProRegOptionPatchLcdSyncProblem, %REG_DWORD%,    1
+HKR,, DDLRProRegOptionPLLProblemNBlankDelay, %REG_DWORD%,    1
+HKR,, DALRestrictedModesBCD,         %REG_BINARY%,   07,20,04,80,00,00,00,00, 08,48,04,80,00,00,00,00, 08,64,04,80,00,00,00,00, 10,24,06,00,00,00,00,00, 00,00,00,00,00,24,00,00
+HKR,, drv,,"Ati2drad.dll"
+HKR,, ReleaseVersion,,"J5.30.9.1.1-Microsoft"
+HKR,, DALRULE_CRTSUPPORTSALLMODES,   %REG_DWORD%,    1
+HKR,, CapabilityOverride,		%REG_DWORD%,    8
+
+[ati2mtad_RemoveDeviceSettings]
+HKR,, DALObjectData0
+HKR,, DALObjectData1
+HKR,, DALSelectObjectData0
+HKR,, DALSelectObjectData1
+HKR,, DALLastConnected
+HKR,, DALLastSelected
+HKR,, DALLastTypes
+HKR,, DALRULE_CRTSUPPORTSALLMODES
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER
+
+
+[Strings]
+
+;
+; Non-localizable strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+
+;
+; Localizable strings
+;
+
+DiskId      = "ATI Installation Disk"
+ati         = "ATI Technologies Inc."

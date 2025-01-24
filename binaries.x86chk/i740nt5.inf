@@ -1,0 +1,129 @@
+; i740nt5.inf
+;
+; Installation inf for the Intel Corporation i740 graphics adapter.
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%MS%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=06/06/2001,5.01.2001
+
+[DestinationDirs]
+DefaultDestDir   = 11
+i740.Miniport  = 12  ; drivers
+i740.Display   = 11  ; system32
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%Herc% = Herc.Mfg
+%Intel%   = Intel.Mfg
+%Real3D% = Real.Mfg
+%Diamond% = Diamond.Mfg
+%STB% = STB.Mfg
+
+[Intel.Mfg]
+Intel740 Compatible %GraphAdap% = i740, PCI\VEN_8086&DEV_7800
+Real 3D Starfighter = i740, PCI\VEN_8086&DEV_7800&SUBSYS_0008003D
+
+[Herc.Mfg]
+Terminator 2x/i = i740, PCI\VEN_8086&DEV_7800&SUBSYS_00008086
+
+[Real.Mfg]
+Starfighter AGP = i740, PCI\VEN_8086&DEV_7800&SUBSYS_0008003D
+Starfighter AGP = i740, PCI\VEN_8086&DEV_7800&SUBSYS_000B003D
+
+[Diamond.Mfg]
+Stealth II G460 = i740, PCI\VEN_8086&DEV_7800&SUBSYS_01001092
+
+[STB.Mfg]
+Lightspeed 740 = i740, PCI\VEN_8086&DEV_7800&SUBSYS_201A10B4
+Lightspeed 740 = i740, PCI\VEN_8086&DEV_7800&SUBSYS_202F10B4
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; General installation section
+;
+
+[i740]
+CopyFiles=i740.Miniport, i740.Display
+
+;
+; File sections
+;
+
+[i740.Miniport]
+i740nt5.sys
+
+[i740.Display]
+i740dnt5.dll
+
+;
+; Service Installation
+;
+
+[i740.Services]
+AddService = i740, 0x00000002, i740_Service_Inst, i740_EventLog_Inst
+
+[i740_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\i740nt5.sys
+
+[i740_EventLog_Inst]
+AddReg = i740_EventLog_AddReg
+
+[i740_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\i740nt5.sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+;
+; Software Installation
+;
+
+[i740.SoftwareSettings]
+AddReg = i740_SoftwareDeviceSettings
+DelReg = i740_DelReg
+
+[i740_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, i740dnt5
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+HKR,, CapabilityOverride,          %REG_DWORD%,    0
+
+[i740_DelReg]
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers",i740
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+Diamond="Diamond Multimedia"
+Herc="Hercules"
+Real3D="Real 3D"
+Intel="Intel Corporation"
+MS="Microsoft"
+GraphAdap="Graphics Adapter"
+STB="STB"

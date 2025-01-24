@@ -1,0 +1,19 @@
+[Model Name]
+Name="EPSON Stylus COLOR 680"
+D4OffCommand=00 00 00 1b 01 40 45 4a 4c 20 31 32 38 34 2e 34 0a 40 45 4a 4c 20 20 20 20 20 0a
+TERM=1b 40 1b 40 1b 28 52 08 00 00 52 45 4d 4f 54 45 31 4a 45 01 00 00 1b 00 00 00
+
+[Calibration]
+ItemNum=3
+Item1=15,1,0
+Item2=15,1,0
+Item3=15,1,0
+CalibType=Bi-d
+
+[Cleanning]
+HeadClean=All
+
+[NozzleTest]
+TestPattern=All
+BitmapFile=EPUTBM10.WBF
+

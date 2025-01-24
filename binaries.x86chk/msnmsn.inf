@@ -1,0 +1,269 @@
+[Version]
+Signature  = "$Windows NT$"
+LayoutFile = layout.inf
+Version    = 7,02,0005,2202
+
+[Optional Components]
+msnexplr
+
+[msnexplr]
+OptionDesc   = %DISPLAYDESC%
+Tip          = %INFOTIP%
+InstallType  = 10    ; Typical, Custom
+IconIndex    = *,ocmsn.dll, 2
+Modes        = 0,1,2,3
+DelFiles     = DelFiles.Base
+CopyFiles    = CopyFiles.Base,CopyFiles.Inf,CopyFiles.DW,CopyFiles.222,CopyFiles.14,CopyFiles.36,CopyFiles.220,CopyFiles.100,CopyFiles.150,CopyFiles.163,CopyFiles.188,CopyFiles.238
+DelReg       = Install.DelReg
+AddReg       = Install.AddReg,Register.Custdial.AddReg,SetMSNVer.AddReg
+ProfileItems = DelMSNExplorerLink_Desktop_AllUsers.W2K, DelMSNExplorerLink_Desktop_CurrentUser.W2K, DelLaunchMSNLink_Desktop_AllUsers.W2K,DelLaunchMSNLink_Desktop_CurrentUser.W2K,DelLaunchMSNLink_Programs.W2K,AddMSNLink_Programs.W2K,DelLaunchMSNLink.QuickLaunch.W2K,DelLaunchMSNLink.MSN.W2K,AddMSNLink.MSN.W2K
+RegisterDlls = Install.Register
+SizeApproximation=13844480
+
+[NTUpgrade_Cleanup]
+DelReg       = Install.DelReg
+
+[DestinationDirs]
+CopyFiles.238 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\238
+CopyFiles.188 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\188
+CopyFiles.163 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\163
+CopyFiles.150 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\150
+CopyFiles.100 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\100
+CopyFiles.220 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\220
+CopyFiles.36 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\36
+CopyFiles.14 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\14
+CopyFiles.222 = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Markets\222
+DelFiles.Base  = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%
+CopyFiles.Base = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%
+CopyFiles.Inf  = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\Setup
+CopyFiles.DW   = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%\1033
+
+[DelFiles.Base]
+brand.mar,,,1
+brand.ini,,,1
+branddef.mar,,,1
+highcontrast.mar,,,1
+privacy.hta,,,1
+market8.mar,,,1
+market15.mar,,,1
+market16.mar,,,1
+market24.mar,,,1
+market32.mar,,,1
+msn6.ini,,,1
+msnsu.ini,,,1
+privacy.hta,,,1
+signup.dbx,,,1
+themedef8.mar,,,1
+themedef15.mar,,,1
+themedef16.mar,,,1
+themedef24.mar,,,1
+themedef32.mar,,,1
+newalert.wav,,,1
+newemail.wav,,,1
+online.wav,,,1
+
+[CopyFiles.Base]
+update.exe,auupdate.exe,,4
+copymar.exe,,,4
+csapi3t1.dll,msncsapi.dll,,4
+custdial.dll,,,4
+dw.exe,,,4
+highcont.mar,,,4
+logonmgr.dll,,,4
+mail.mar,,,4
+manifest.xml,,,4
+market.mar,,,4
+market.ini,,,4
+msdbx.dll,,,4
+msmom.dll,,,4
+msn6.exe,,,4
+msnemail.ico,,,4
+license.txt,msnlicen.txt,,4
+msnmetal.dll,,,4
+msnmetal.jcf,,,4
+msnmetal.we,,,4
+migrate.dll,msnmigr.dll,,4
+migrate.ini,msnmigr.ini,,4
+msncpq.ico,,,4
+msndell.ico,,,4
+msnms.ico,,,4
+msnmtllc.dll,,,4
+msnread.htm,,,4
+msnspell.dll,,,4
+popc.dll,,,4
+dwprivacy.hta,privacy.hta,,4
+signup.mar,,,4
+sqdll.dll,,,4
+themedef.mar,,,4
+ui.mar,,,4
+
+[CopyFiles.Inf]
+msn.inf,,,4
+msnunin.exe,,,4
+msnupgrd.inf,,,4
+msn9xmig.dll,,,4
+migrate.dll,msnntmig.dll,,4
+
+[CopyFiles.DW]
+dwintl.dll,msdwintl.dll,,4
+
+[Install.DelReg]
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\MSN"
+HKLM,"SoftWare\Microsoft\Windows\CurrentVersion\Uninstall\%UNINST_KEY%"
+
+[Install.AddReg]
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer","LocalizedString",,"@%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\MSNMTLLC.DLL,-3501"
+HKLM,"Software\Clients\StartMenuInternet\MSN Explorer\DefaultIcon",,,"%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\%ICON_NAME%"
+HKLM,"Software\Clients\StartMenuInternet\MSN EXplorer\shell\open\command",,,"""%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\MSN6.EXE"""
+HKLM,"Software\Clients\Mail\MSN Explorer",,,"%DISPLAYDESC%"
+HKLM,"Software\Clients\Mail\MSN Explorer","LocalizedString",,"@%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\MSNMTLLC.DLL,-3501"
+HKLM,"Software\Clients\Mail\MSN Explorer\DefaultIcon",,,"%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\%MAIL_ICON_NAME%"
+HKLM,"Software\Clients\Mail\MSN Explorer\shell\open\command",,,"""%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\MSN6.EXE"" -email"
+HKLM,"Software\Microsoft\MSN6\Registration","PIDVersion",0x00010001,2
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallDir",,"%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallRootDir",,"%16422%\%DEFAULT_FOLDER%"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","VersionModule",,"msn6.exe"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","SetupVersion",,"7,02,0005,2202"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","",,"%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\MSN6.exe"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\App Paths\MSN6.EXE","Path",,"%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%"
+
+[Register.Custdial.AddReg]
+HKLM,"System\CurrentControlSet\Services\RasMan\Parameters","CustomDLL",0x00010008,"%16422%\%DEFAULT_FOLDER%\%COREFILES_FOLDER%\custdial.dll"
+
+[SetMSNVer.AddReg]
+HKLM,"Software\Microsoft\MSN\SoftwareInstalled","Major",,"6"
+HKLM,"Software\Microsoft\MSN\SoftwareInstalled","Minor",,"0"
+
+[DelMSNExplorerLink_Desktop_AllUsers.W2K]
+Name = "MSN Explorer",0x0000000A,25
+
+[DelMSNExplorerLink_Desktop_CurrentUser.W2K]
+Name = "MSN Explorer",0x0000000A,16
+
+[DelLaunchMSNLink_Desktop_AllUsers.W2K]
+Name = "Launch MSN Explorer",0x0000000A,25
+
+[DelLaunchMSNLink_Desktop_CurrentUser.W2K]
+Name = "Launch MSN Explorer",0x0000000A,16
+
+[DelLaunchMSNLink_Programs.W2K]
+Name = "Launch MSN Explorer",0x00000002
+
+[AddMSNLink_Programs.W2K]
+Name       = %SHORTCUT_NAME%
+CmdLine    = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%,MSN6.exe
+WorkingDir = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%
+IconPath   = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%,%ICON_NAME%
+InfoTip    = %INFOTIP%
+
+[DelLaunchMSNLink.QuickLaunch.W2K]
+Name   = "Launch MSN Explorer",0x0000000A,26
+SubDir = "Microsoft\Internet Explorer\%QUICK_LAUNCH%"
+
+[DelLaunchMSNLink.MSN.W2K]
+Name   = "Launch MSN Explorer",0x0000000A,38
+SubDir = "MSN"
+
+[AddMSNLink.MSN.W2K]
+Name       = %SHORTCUT_NAME%,0x00000008,38
+SubDir     = "MSN"
+CmdLine    = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%,MSN6.exe
+WorkingDir = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%
+IconPath   = 16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%,%ICON_NAME%
+
+[Install.Register]
+16422,%DEFAULT_FOLDER%\%COREFILES_FOLDER%,msnmetal.dll,1
+
+
+
+[Always.Install]
+CustomDestination = Always.CustomDest.Install
+ProfileItems      = Always.AddLink_OLS
+AddReg            = Always.AddReg
+
+[Always.Cleanup]
+ProfileItems = Always.DelLink_OLS
+
+[Always.AddReg]
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%\Codes","Campaign",,"0WINMARSCPB0"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%\Codes","Token",,"NO"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%\Codes","IAOnly",,"NO"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%\Codes","RAC",,"NO"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%\Codes","BB",,"NO"
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%\Codes","PartnerID",,"MSN"
+
+[Always.CustomDest.Install]
+49500,49501,49502,49503 = MSNLDIDSection,5
+
+[MSNLDIDSection]
+HKLM,"Software\Microsoft\MSN6\Setup\%DEFAULT_FOLDER%","InstallDir",,"%16422%\%DEFAULT_FOLDER\%COREFILES_FOLDER%
+
+[Always.DelLink_OLS]
+Name   = %OLS_SHORTCUT_NAME%,0x0000000A, 38
+SubDir = "Online Services"
+
+[Always.AddLink_OLS]
+Name       = %OLS_SHORTCUT_NAME%, 0x00000008, 38
+SubDir     = "Online Services"
+CmdLine    = 49500,,MSN6.exe
+WorkingDir = 49500
+IconPath   = 49500,,%ICON_NAME%
+InfoTip    = %OLS_INFOTIP%
+
+
+[Strings]
+DISPLAYDESC      = "MSN Explorer"
+DEFAULT_FOLDER   = "MSN"
+COREFILES_FOLDER = "MSNCoreFiles"
+UNINST_KEY       = "MSNMS"
+SHORTCUT_NAME    = "MSN Explorer"
+ICON_NAME        = "msnms.ico"
+MAIL_ICON_NAME   = "msnemail.ico"
+INFOTIP          = "Explore the web, read your e-mail, talk to your online contacts, enjoy online music and video, and more."
+QUICK_LAUNCH     = "Quick Launch"
+OLS_SHORTCUT_NAME = "Use MSN Explorer to sign up for Internet Access (US only)"
+OLS_INFOTIP       = "Fast and reliable Internet Access"
+
+[CopyFiles.222]
+market.ini,msn222.ini,,4
+market.mar,msn222.mar,,4
+
+
+[CopyFiles.14]
+market.ini,msn14.ini,,4
+market.mar,msn14.mar,,4
+
+
+[CopyFiles.36]
+market.ini,msn36.ini,,4
+market.mar,msn36.mar,,4
+
+
+[CopyFiles.220]
+market.ini,msn220.ini,,4
+market.mar,msn220.mar,,4
+
+
+[CopyFiles.100]
+market.ini,msn100.ini,,4
+market.mar,msn100.mar,,4
+
+
+[CopyFiles.150]
+market.ini,msn150.ini,,4
+market.mar,msn150.mar,,4
+
+
+[CopyFiles.163]
+market.ini,msn163.ini,,4
+market.mar,msn163.mar,,4
+
+
+[CopyFiles.188]
+market.ini,msn188.ini,,4
+market.mar,msn188.mar,,4
+
+
+[CopyFiles.238]
+market.ini,msn238.ini,,4
+market.mar,msn238.mar,,4

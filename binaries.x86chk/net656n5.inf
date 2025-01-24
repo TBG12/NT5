@@ -1,0 +1,134 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+LayoutFile  = layout.inf
+signature   = "$Windows NT$"
+Class	    = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider    = %MSFT%
+DriverVer=10/01/2002,1.50.5000.7
+
+[Manufacturer]
+%V_3COM%   = 3COM
+
+[ControlFlags]
+ExcludeFromSelect   = * 
+
+[3COM]
+%GENA.DeviceDesc%   = 3C656A.ndi, PCI\VEN_10b7&DEV_6560
+%GENB.DeviceDesc%   = 3C656B.ndi, PCI\VEN_10b7&DEV_6562
+%3C656A.DeviceDesc% = 3C656A.ndi, PCI\VEN_10b7&DEV_6560&SUBSYS_656A10B7
+%3C656B.DeviceDesc% = 3C656B.ndi, PCI\VEN_10b7&DEV_6562&SUBSYS_656B10B7
+
+;-------------------------------------------------------------------------------
+; 3C656A
+;
+[3C656A.ndi]
+AddReg		= 3C656A.reg, elnk3C656.params.reg, elnk3C656.reg
+BusType 	= 5	
+Characteristics = 0x84
+CopyFiles	= elnk3C656.CopyFiles
+
+[3C656A.ndi.Services]
+AddService = el656nd5, 2, el656nd5.Service, el656nd5.EventLog
+
+[3C656A.reg]
+HKR, , OSType,	    0, "0"
+HKR, , DriverMode, ,"0"
+HKR,,CardRevision,,"0"
+HKR,Ndi\params\DuplexMode,	ParamDesc,	0, %DuplexMode%
+HKR,Ndi\params\DuplexMode,	type,           0, "enum"
+HKR,Ndi\params\DuplexMode,	default,        0, "0"
+HKR,Ndi\params\DuplexMode\enum,	0,		0, %AutoDetect%
+HKR,Ndi\params\DuplexMode\enum,	1,		0, %FullDuplex%
+
+;-------------------------------------------------------------------------------
+; 3C656B
+;
+[3C656B.ndi]
+AddReg		= 3C656B.reg, elnk3C656.params.reg, elnk3C656.reg
+BusType 	= 5	
+Characteristics = 0x84
+CopyFiles	= elnk3C656.CopyFiles
+
+[3C656B.ndi.Services]
+AddService = el656nd5, 2, el656nd5.Service, el656nd5.EventLog
+
+[3C656B.reg]
+HKR, , OSType,	    0, "0"
+HKR, , DriverMode, ,"0"
+HKR,,CardRevision,,"1"
+HKR,NDI\params\LinkSelection,	   ParamDesc,	0, %Link%
+HKR,NDI\params\LinkSelection,	   type,	0, "enum"
+HKR,Ndi\params\LinkSelection, 	   default,	0, "0200"
+HKR,Ndi\params\LinkSelection\enum, 0200,	0, %AutoNeg%
+HKR,Ndi\params\LinkSelection\enum, 0100,	0, %100F%
+HKR,Ndi\params\LinkSelection\enum, 0080,	0, %100H%
+HKR,Ndi\params\LinkSelection\enum, 0040,	0, %10F%
+HKR,Ndi\params\LinkSelection\enum, 0020,	0, %10H%
+
+;-------------------------------------------------------------------------------
+; 3Com 3c656 General Params
+;
+[elnk3C656.params.reg]
+HKR,NDI\params\AutoPolarity,	   ParamDesc,  0, %AutoPolarity%
+HKR,NDI\params\AutoPolarity,	   type,       0, "enum"
+HKR,Ndi\params\AutoPolarity,	   default,    0, "0000"
+HKR,Ndi\params\AutoPolarity\enum,  0000,       0, %Enable%
+HKR,Ndi\params\AutoPolarity\enum,  0020,       0, %Disable%
+
+;-------------------------------------------------------------------------------
+; 3Com 3C656-TX Service and Driver
+;
+[elnk3C656.reg]
+HKR, Ndi,	     Service,	 0, "EL656nd5"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+[el656nd5.Service]
+DisplayName	= %el656nd5.Service.DispName%
+ServiceType	= 1 ;%SERVICE_KERNEL_DRIVER%
+StartType	= 3 ;%SERVICE_DEMAND_START%
+ErrorControl	= 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary	= %12%\el656nd5.sys
+LoadOrderGroup	= NDIS
+
+[el656nd5.EventLog]
+AddReg = el656nd5.AddEventLog.reg
+
+[el656nd5.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,	 0x00010001, 7
+
+[elnk3C656.CopyFiles]
+el656ND5.sys,,,2
+
+[DestinationDirs]
+elnk3C656.CopyFiles =12
+
+;-------------------------------------------------------------------------------
+; Localization Strings
+;
+[strings]
+MSFT                      = "Microsoft"
+V_3COM                    = "3Com"
+
+DuplexMode		  = "Duplex Mode"
+AutoDetect		  = "Auto Detect"
+FullDuplex		  = "Full Duplex"
+Link			  = "Network Link Selection"
+AutoNeg			  = "Auto Negotiation"
+100F			  = "100BTX Full Duplex"
+100H			  = "100BTX Half Duplex"
+10F			  = "10BT Full Duplex"
+10H			  = "10BT Half Duplex"
+AutoPolarity		  = "Automatic Polarity"
+Enable		 	  = "Enable"
+Disable			  = "Disable"
+
+GENA.DeviceDesc           = "3Com FEM656-Based CardBus Fast Ethernet Adapter (Generic)"
+GENB.DeviceDesc           = "3Com FEM656B-Based CardBus Fast Ethernet Adapter (Generic)"
+3C656A.DeviceDesc	  = "FEM656-3Com 10-100 LAN+56K Modem CardBus PC Card (Fast Ethernet)"
+3C656B.DeviceDesc	  = "FEM656B-3Com 10-100 LAN+56K Modem CardBus PC Card (Fast Ethernet)"
+el656nd5.Service.DispName = "3Com 10-100 LAN CardBus PC Card Driver"
+

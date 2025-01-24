@@ -1,0 +1,368 @@
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; File:  IRDASMC.INF
+;
+; INF to install SmcIrda.Sys NDIS 5.0 Miniport for SMC IrCC
+; on Windows 2000
+;
+; Copyright 1997 - 1999 Standard Microsystems Corp.
+; (nw)
+;
+;
+; 4/21/99 (yo)
+; IOConfig for the 3rd IO port (config reg) is added for only
+; CAM35C44 EVB use on desktop PC
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+
+[version]
+LayoutFile=layout.inf ; should only use this if installing as part of OS
+signature="$Windows NT$"
+Class       = Infrared
+ClassGUID   = {6bdd1fc5-810f-11d0-BEC7-08002BE2092F}
+provider=%strSMC%
+DriverVer=02/27/2001, 5.1.2250.2
+
+[DestinationDirs]
+DefaultDestDir=12                       ; %windir%\system32\drivers
+SysCopyFiles=12
+SysDelFiles=12
+
+[Manufacturer]
+%strSMC%=SMC_IRCC
+%strNEC%=NEC_IRCC
+
+[ControlFlags]
+ExcludeFromSelect=*SMCF010
+ExcludeFromSelect=*NEC9151
+
+[NEC_IRCC]
+%*NEC9151.DeviceDesc%=*NEC9151.ndi, *NEC9151
+
+[SMC_IRCC]
+%*SMCF010.DeviceDesc%=*SMCF010.ndi, *SMCF010
+
+
+[*SMCF010.ndi]
+SyssetupPnPFlags=1
+DeviceID=*SMCF010
+DelReg=SMC_DelReg
+AddReg=*SMCF010.ndi.reg,*SMCF010.ndi.param
+MaxInstance=1
+BusType=14               ; ISAPNP Bus
+Characteristics=0x4      ; NCF_PHYSICAL
+CopyFiles=SysCopyFiles
+
+[SMCF010.ndi.Coinstallers]
+DelReg=SMC_DelCoinstallers
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Add Registry Section for Install
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[*SMCF010.ndi.reg]
+HKR,Ndi,Service,0,"SMCIRDA"
+HKR,Ndi\Interfaces,DefUpper,0,"ndisirda"
+HKR,Ndi\Interfaces,UpperRange,0,"ndisirda"
+HKR,Ndi\Interfaces,DefLower,0,"nolower"
+HKR,Ndi\Interfaces,LowerRange,0,"nolower"
+HKR,Ndi,BoardType,0,"3"
+HKR,Ndi,RequiredAll,0,"MS_IrDA"
+
+;
+; This is the text that shows in the display area at the bottom
+; of the Network dialog when this Adapter is selected in the
+; scrolling window above.
+;
+HKR,Ndi,HelpText,,%strSmcIrdaHelp%
+
+[SMC_DelReg]
+HKR,,EnumPropPages32
+
+[SMC_DelCoinstallers]
+HKR,,CoInstallers32
+
+[*SMCF010.ndi.eval.reg]
+HKR,,SmcIrdaOptions,0x00010001,1 ; all xceivers except certain HP's
+; HKR,,SmcIrdaOptions,0x00010001,2	; for HP1100/2100 xceivers
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Parameters Section -- part of AddReg on Install
+;       Key values are adjustable on ADVANCED Property Sheet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[*SMCF010.ndi.param]
+;
+;   Infrared Transceiver Selection
+;
+;   If AUTO [default], then driver will auto-detect at initialization,
+;   which will produce a single spurious Tx pulse if HP/Sharp.
+;   This key can be used to prevent this from happening, if desired.
+;
+HKR,Ndi\params\RxSel,ParamDesc,,%strRXSEL%
+HKR,Ndi\params\RxSel,default,,"0"
+HKR,Ndi\params\RxSel,type,,enum
+HKR,Ndi\params\RxSel\enum,"0",,%strRXSEL_0%
+HKR,Ndi\params\RxSel\enum,"1",,%strRXSEL_1%
+HKR,Ndi\params\RxSel\enum,"2",,%strRXSEL_2%
+HKR,Ndi\params\RxSel\enum,"3",,%strRXSEL_3%
+HKR,Ndi\params\RxSel\enum,"4",,%strRXSEL_4%
+HKR,,RxSel,,"0" ; For some reason defaults are not being picked up.
+
+;
+;    IrDA Minimum Turnaround Time (value in microseconds)
+;
+HKR,Ndi\params\MinTurnTime,ParamDesc,,%strIRDATURNTIME%
+HKR,Ndi\params\MinTurnTime,default,,"1000"
+HKR,Ndi\params\MinTurnTime,type,,enum
+HKR,Ndi\params\MinTurnTime\enum,"500",,%strMinTurnTime_500%
+HKR,Ndi\params\MinTurnTime\enum,"1000",,%strMinTurnTime_1000%
+HKR,Ndi\params\MinTurnTime\enum,"5000",,%strMinTurnTime_5000%
+HKR,Ndi\params\MinTurnTime\enum,"10000",,%strMinTurnTime_10000%
+HKR,,MinTurnTime,,"1000" ; For some reason defaults are not being picked up.
+
+;
+;       Maximum Speed
+;
+HKR,Ndi\params\MaxSpeed,ParamDesc,,%strMAXSPEED%
+HKR,Ndi\params\MaxSpeed,flag,1,20,00,00,00
+HKR,Ndi\params\MaxSpeed,default,,"8"
+HKR,Ndi\params\MaxSpeed,type,,enum
+HKR,Ndi\params\MaxSpeed\enum,"1",,%strMaxSpeed_1%
+HKR,Ndi\params\MaxSpeed\enum,"2",,%strMaxSpeed_2%
+HKR,Ndi\params\MaxSpeed\enum,"3",,%strMaxSpeed_3%
+HKR,Ndi\params\MaxSpeed\enum,"4",,%strMaxSpeed_4%
+HKR,Ndi\params\MaxSpeed\enum,"5",,%strMaxSpeed_5%
+HKR,Ndi\params\MaxSpeed\enum,"6",,%strMaxSpeed_6%
+HKR,Ndi\params\MaxSpeed\enum,"7",,%strMaxSpeed_7%
+HKR,Ndi\params\MaxSpeed\enum,"8",,%strMaxSpeed_8%
+HKR,,MaxSpeed,,"8" ; For some reason defaults are not being picked up.
+
+;
+;    IrDA Speed enables
+;
+;       bit=1 enables corresponding speed, 1FF is all speeds [default])
+;
+;       d0 =  2400     d4 =   57600     d8 = 4000000
+;       d1 =  9600     d5 =  115200
+;       d2 = 19200     d6 =  576000
+;       d3 = 38400     d7 = 1152000
+;
+;       Note:  Miniport will always enable 9600,
+;               no matter what this key says
+;
+HKR,,SpeedEnable,,"1FF" ; For some reason defaults are not being picked up.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Services Section
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[*SMCF010.ndi.Services]
+AddService=SMCIRDA,2,SMCIRDA.AddService, common.EventLog
+
+
+[SMCIRDA.AddService]
+DisplayName=%*SMCF010.ServiceDesc%
+ServiceType=1                       ; SERVICE_KERNEL_DRIVER
+StartType=3                         ; SERVICE_DEMAND_START
+ErrorControl=1                      ; SERVICE_ERROR_NORMAL
+ServiceBinary=%12%\smcirda.sys      ; where the driver is
+LoadOrderGroup=NDIS
+
+[common.EventLog]
+AddReg=common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\Drivers\SmcIrda.Sys"
+HKR,,TypesSupported,0x00010001,7
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       File/Directory Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[SysCopyFiles]
+smcirda.sys,,,2 ; Do not skip file
+
+[SysDelFiles]
+smcirda.sys
+
+
+
+
+[*NEC9151.ndi]
+DeviceID=*NEC9151
+DelReg=NEC_DelReg
+AddReg=*NEC9151.ndi.reg,*NEC9151.ndi.param
+MaxInstance=1
+BusType=14               ; ISAPNP Bus
+Characteristics=0x4      ; NCF_PHYSICAL
+CopyFiles=SysCopyFiles
+
+[*NEC9151.ndi.Coinstallers]
+DelReg=NEC_DelCoinstallers
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Add Registry Section for Install
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[*NEC9151.ndi.reg]
+HKR,Ndi,Service,0,"NECIRDA"
+HKR,Ndi\Interfaces,DefUpper,0,"ndisirda"
+HKR,Ndi\Interfaces,UpperRange,0,"ndisirda"
+HKR,Ndi\Interfaces,DefLower,0,"nolower"
+HKR,Ndi\Interfaces,LowerRange,0,"nolower"
+HKR,Ndi,BoardType,0,"3"
+HKR,Ndi,RequiredAll,0,"MS_IrDA"
+
+;
+; This is the text that shows in the display area at the bottom
+; of the Network dialog when this Adapter is selected in the
+; scrolling window above.
+;
+HKR,Ndi,HelpText,,%strNECIrdaHelp%
+
+[NEC_DelReg]
+HKR,,EnumPropPages32
+
+[NEC_DelCoinstallers]
+HKR,,CoInstallers32
+
+[*NEC9151.ndi.eval.reg]
+HKR,,NECIrdaOptions,0x00010001,1 ; all xceivers except certain HP's
+; HKR,,NECIrdaOptions,0x00010001,2	; for HP1100/2100 xceivers
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Parameters Section -- part of AddReg on Install
+;       Key values are adjustable on ADVANCED Property Sheet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[*NEC9151.ndi.param]
+;
+;   Infrared Transceiver Selection
+;
+;   If AUTO [default], then driver will auto-detect at initialization,
+;   which will produce a single spurious Tx pulse if HP/Sharp.
+;   This key can be used to prevent this from happening, if desired.
+;
+HKR,Ndi\params\RxSel,ParamDesc,,%strRXSEL%
+HKR,Ndi\params\RxSel,default,,"0"
+HKR,Ndi\params\RxSel,type,,enum
+HKR,Ndi\params\RxSel\enum,"0",,%strRXSEL_0%
+HKR,Ndi\params\RxSel\enum,"1",,%strRXSEL_1%
+HKR,Ndi\params\RxSel\enum,"2",,%strRXSEL_2%
+HKR,Ndi\params\RxSel\enum,"3",,%strRXSEL_3%
+HKR,Ndi\params\RxSel\enum,"4",,%strRXSEL_4%
+HKR,,RxSel,,"0" ; For some reason defaults are not being picked up.
+
+;
+;    IrDA Minimum Turnaround Time (value in microseconds)
+;
+HKR,Ndi\params\MinTurnTime,ParamDesc,,%strIRDATURNTIME%
+HKR,Ndi\params\MinTurnTime,default,,"1000"
+HKR,Ndi\params\MinTurnTime,type,,enum
+HKR,Ndi\params\MinTurnTime\enum,"500",,%strMinTurnTime_500%
+HKR,Ndi\params\MinTurnTime\enum,"1000",,%strMinTurnTime_1000%
+HKR,Ndi\params\MinTurnTime\enum,"5000",,%strMinTurnTime_5000%
+HKR,Ndi\params\MinTurnTime\enum,"10000",,%strMinTurnTime_10000%
+HKR,,MinTurnTime,,"1000" ; For some reason defaults are not being picked up.
+
+;
+;       Maximum Speed
+;
+HKR,Ndi\params\MaxSpeed,ParamDesc,,%strMAXSPEED%
+HKR,Ndi\params\MaxSpeed,flag,1,20,00,00,00
+HKR,Ndi\params\MaxSpeed,default,,"8"
+HKR,Ndi\params\MaxSpeed,type,,enum
+HKR,Ndi\params\MaxSpeed\enum,"1",,%strMaxSpeed_1%
+HKR,Ndi\params\MaxSpeed\enum,"2",,%strMaxSpeed_2%
+HKR,Ndi\params\MaxSpeed\enum,"3",,%strMaxSpeed_3%
+HKR,Ndi\params\MaxSpeed\enum,"4",,%strMaxSpeed_4%
+HKR,Ndi\params\MaxSpeed\enum,"5",,%strMaxSpeed_5%
+HKR,Ndi\params\MaxSpeed\enum,"6",,%strMaxSpeed_6%
+HKR,Ndi\params\MaxSpeed\enum,"7",,%strMaxSpeed_7%
+HKR,Ndi\params\MaxSpeed\enum,"8",,%strMaxSpeed_8%
+HKR,,MaxSpeed,,"8" ; For some reason defaults are not being picked up.
+
+;
+;    IrDA Speed enables
+;
+;       bit=1 enables corresponding speed, 1FF is all speeds [default])
+;
+;       d0 =  2400     d4 =   57600     d8 = 4000000
+;       d1 =  9600     d5 =  115200
+;       d2 = 19200     d6 =  576000
+;       d3 = 38400     d7 = 1152000
+;
+;       Note:  Miniport will always enable 9600,
+;               no matter what this key says
+;
+HKR,,SpeedEnable,,"1FF" ; For some reason defaults are not being picked up.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Services Section
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[*NEC9151.ndi.Services]
+AddService=NECIRDA,2,NECIRDA.AddService, common.EventLog
+
+[NECEval.ndi.Services]
+AddService=NECIRDA,2,NECIRDA.AddService, common.EventLog
+
+[NECIRDA.AddService]
+DisplayName=%*NEC9151.ServiceDesc%
+ServiceType=1                       ; SERVICE_KERNEL_DRIVER
+StartType=3                         ; SERVICE_DEMAND_START
+ErrorControl=1                      ; SERVICE_ERROR_NORMAL
+ServiceBinary=%12%\smcirda.sys      ; where the driver is
+LoadOrderGroup=NDIS
+
+[common.EventLog]
+AddReg=common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\Drivers\SmcIrda.Sys"
+HKR,,TypesSupported,0x00010001,7
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       Localizable Strings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[strings]
+strSMC="SMC"
+
+*SMCF010.DeviceDesc="SMC IrCC - Fast Infrared Port"
+*SMCF010.ServiceDesc="SMC IrCC Miniport Device Driver"
+strSmcIrdaHelp="The SMC IrCC Device permits wireless communication with other devices conforming to IrDA standards using invisible infrared light."
+
+strNEC="NEC"
+*NEC9151.DeviceDesc="NEC IrCC - Fast Infrared Port"
+*NEC9151.ServiceDesc="NEC IrCC Miniport Device Driver"
+strNECIrdaHelp="The NEC IrCC Device permits wireless communication with other devices conforming to IrDA standards using invisible infrared light."
+
+
+strRXSEL="Infrared Transceiver Type"
+strIRDATURNTIME="Min. Turn-Around Time"
+strMAXSPEED="Speed Limit"
+
+strRXSEL_0="AUTO [Default]"
+strRXSEL_1="IBM / Infineon / Temic"
+strRXSEL_2="HP"
+strRXSEL_3="Sharp"
+strRXSEL_4="VISHAY Telefunken"
+
+strMinTurnTime_500=" 0.5 mS"
+strMinTurnTime_1000=" 1.0 mS [Default]"
+strMinTurnTime_5000=" 5.0 mS"
+strMinTurnTime_10000="10.0 mS"
+
+strMaxSpeed_1="   9.6 kbps"
+strMaxSpeed_2="  19.2 kbps"
+strMaxSpeed_3="  38.4 kbps"
+strMaxSpeed_4="  57.6 kbps"
+strMaxSpeed_5=" 115.2 kbps"
+strMaxSpeed_6=" 576   kbps"
+strMaxSpeed_7="1.152 Mbps"
+strMaxSpeed_8="4 Mbps"
+
+V_CLASSNAME="Infrared Adapters"
+

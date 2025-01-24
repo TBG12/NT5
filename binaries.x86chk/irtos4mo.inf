@@ -1,0 +1,310 @@
+;  Toshiba FIR Port Type-O
+;  Toshiba FIR Port Type-DO
+;  IRTOS4MO.INF
+;	 for Windows 2000
+;
+
+[Version]
+LayoutFile=layout.inf
+Signature   = "$Windows NT$"
+Class       = Infrared
+ClassGUID   = {6bdd1fc5-810f-11d0-BEC7-08002BE2092F}
+Provider=%TOSHIBA%
+DriverVer   = 4/13/2000,2.22.0.0
+
+[ControlFlags]
+ExcludeFromSelect=PCI\VEN_1179&DEV_0701
+ExcludeFromSelect=PCI\VEN_1179&DEV_0D01
+
+[DestinationDirs]
+;
+;  Specify destination directories for groups of files.
+;  '12' indicates the Windows System directory.
+;
+DefaultDestDir=12
+OBOE_CopyFiles=12
+
+[Manufacturer]
+;
+;  Specify a name and devices section for each supported manufacturer that
+;  makes products of this class.
+;
+%TOSHIBA%=TOS_Devices
+
+
+[TOS_Devices]
+;
+;  This section describes the devices of this class made by a particular
+;  manufacturer.
+;  The first descriptor, delimited by '%', is a symbolic string whose actual
+;  value is given in the [Strings] section below.
+;
+; Detection of the PCI device.
+%Oboe.DevDesc%=OBOE.ndi,    PCI\VEN_1179&DEV_0701
+%DonauOboe.DevDesc%=DonauOboe.ndi,  PCI\VEN_1179&DEV_0D01
+
+[OBOE.ndi]
+;
+;  This section describes how to install a particular device.
+;  It names other sections which detail the registry changes
+;  that need to be made and the files that need to be copied.
+;
+DeviceID=PCI\VEN_1179&DEV_0701
+DelReg=OBOE_DelReg
+AddReg=OBOE_AddReg,Help_Addreg
+BusType=5
+Characteristics=0x4  ; NCF_PHYSICAL
+CopyFiles=OBOE_CopyFiles
+
+[DonauOboe.ndi]
+DeviceID=PCI\VEN_1179&DEV_0D01
+DelReg=OBOE_DelReg
+AddReg=DonauOBOE_AddReg,Help_Addreg
+BusType=5
+Characteristics=0x4  ; NCF_PHYSICAL
+CopyFiles=OBOE_CopyFiles
+
+[OBOE.ndi.Coinstallers]
+DelReg=OBOE_DelCoinstallers
+
+[DonauOBOE.ndi.Coinstallers]
+DelReg=OBOE_DelCoinstallers
+
+[OBOE.ndi.Services]
+AddService= OBOE, 2, OBOE.AddService, common.EventLog
+
+[DonauOBOE.ndi.Services]
+AddService= OBOE, 2, DonauOBOE.AddService, common.EventLog
+
+[OBOE_CopyFiles]
+;
+;  This section lists the source and destination names of files that need
+;  to be copied to the user's drive.  The destination directory is given
+;  in the [DestinationDirs] section above.
+;
+Tos4mo.sys,,,2
+
+;[SourceDisksFiles]
+;Tos4mo.sys=1
+
+[OBOE_AddReg]
+;
+;  This section describes additions to the Windows registry.
+;  See the Windows 95 Resource kit and be sure of what you're
+;  doing before making changes.  You can use the regedit.exe tool that
+;  comes with Windows 95/NT to browse the registry.
+;
+; Interfaces
+HKR,  Ndi,            Service,    0,    "OBOE"
+HKR,  Ndi,            RequiredAll,0,    "MS_IrDA"
+
+HKR,NDI\Interfaces,DefUpper,0,%UpperInterface%
+HKR,NDI\Interfaces,UpperRange,0,%UpperInterface%
+HKR,Ndi\Interfaces, DefLower,   0,%LowerInterface%
+HKR,Ndi\Interfaces, LowerRange, 0,%LowerInterface%
+
+
+;
+; These entries allow the user to select the value of Tx_WINDOW_SIZE,
+; Rx_WINDOW_SIZE and TURNAROUNDTIME that the OBOE driver uses from
+; network properties dialog box AFTER INSTALLATION (under the 'Advanced' options).
+; The user's selection is recorded in the registry and then read out
+; by the irmini.sys driver at boot time.
+;
+HKR,NDI\params\Tx_WINDOW_SIZE,ParamDesc,,"Tx Window Size"
+HKR,NDI\params\Tx_WINDOW_SIZE,flag,1,20,00,00,00
+HKR,NDI\params\Tx_WINDOW_SIZE,default,,"7"
+HKR,,Tx_WINDOW_SIZE,,"7"
+HKR,NDI\params\Tx_WINDOW_SIZE,type,,enum
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"1",,"1"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"2",,"2"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"3",,"3"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"4",,"4"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"5",,"5"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"6",,"6"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"7",,"7"
+
+HKR,NDI\params\Rx_WINDOW_SIZE,ParamDesc,,"Rx Window Size"
+HKR,NDI\params\Rx_WINDOW_SIZE,flag,1,20,00,00,00
+HKR,NDI\params\Rx_WINDOW_SIZE,default,,7
+HKR,,Rx_WINDOW_SIZE,,"7"
+HKR,NDI\params\Rx_WINDOW_SIZE,type,,enum
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"1",,"1"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"2",,"2"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"3",,"3"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"4",,"4"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"5",,"5"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"6",,"6"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"7",,"7"
+
+HKR,NDI\params\TURNAROUNDTIME,ParamDesc,,"TurnAroundTime(usec)"
+HKR,NDI\params\TURNAROUNDTIME,flag,1,20,00,00,00
+HKR,NDI\params\TURNAROUNDTIME,default,,1000
+HKR,,TURNAROUNDTIME,,"1000"
+HKR,NDI\params\TURNAROUNDTIME,type,,enum
+HKR,NDI\params\TURNAROUNDTIME\enum,"0",,"0"
+HKR,NDI\params\TURNAROUNDTIME\enum,"10",,"10"
+HKR,NDI\params\TURNAROUNDTIME\enum,"50",,"50"
+HKR,NDI\params\TURNAROUNDTIME\enum,"100",,"100"
+HKR,NDI\params\TURNAROUNDTIME\enum,"500",,"500"
+HKR,NDI\params\TURNAROUNDTIME\enum,"1000",,"1000"
+HKR,NDI\params\TURNAROUNDTIME\enum,"5000",,"5000"
+HKR,NDI\params\TURNAROUNDTIME\enum,"10000",,"10000"
+
+;HKR,Ndi\params\FRONT_OR_BACK,ParamDesc,,"Front or BACK?"
+;HKR,Ndi\params\FRONT_OR_BACK,flag,1,20,00,00,00
+;HKR,Ndi\params\FRONT_OR_BACK,default,,Back port
+;HKR,Ndi\params\FRONT_OR_BACK,type,,enum
+;HKR,Ndi\params\FRONT_OR_BACK\enum,"0",,"Back port"
+;HKR,Ndi\params\FRONT_OR_BACK\enum,"1",,"Front port"
+HKR,,FRONT_OR_BACK,,"Back port"
+
+;HKR,Ndi\params\PULSE_WIDTH,ParamDesc,,"Pulse Width"
+;HKR,Ndi\params\PULSE_WIDTH,flag,1,20,00,00,00
+;HKR,Ndi\params\PULSE_WIDTH,default,,163
+;HKR,Ndi\params\PULSE_WIDTH,type,,enum
+;HKR,Ndi\params\PULSE_WIDTH\enum,"163",,"163"
+;HKR,Ndi\params\PULSE_WIDTH\enum,"3/16",,"3/16"
+HKR,,PULSE_WIDTH,,"163"
+
+;;HKR,Ndi\params\MLTPT,ParamDesc,,"Use both ports?"
+;;HKR,Ndi\params\MLTPT,flag,1,20,00,00,00
+;;HKR,Ndi\params\MLTPT,default,,0
+;;HKR,Ndi\params\MLTPT,type,,enum
+;;HKR,Ndi\params\MLTPT\enum,"0",,"Yes"
+;;HKR,Ndi\params\MLTPT\enum,"1",,"No"
+
+[DonauOBOE_AddReg]
+;
+;  This section describes additions to the Windows registry.
+;  See the Windows 95 Resource kit and be sure of what you're
+;  doing before making changes.  You can use the regedit.exe tool that
+;  comes with Windows 95/NT to browse the registry.
+;
+; Interfaces
+HKR,  Ndi,            Service,    0,    "OBOE"
+HKR,  Ndi,            RequiredAll,0,    "MS_IrDA"
+
+HKR,NDI\Interfaces,DefUpper,0,%UpperInterface%
+HKR,NDI\Interfaces,UpperRange,0,%UpperInterface%
+HKR,Ndi\Interfaces, DefLower,   0,%LowerInterface%
+HKR,Ndi\Interfaces, LowerRange, 0,%LowerInterface%
+
+
+;
+; These entries allow the user to select the value of Tx_WINDOW_SIZE,
+; Rx_WINDOW_SIZE and TURNAROUNDTIME that the OBOE driver uses from
+; network properties dialog box AFTER INSTALLATION (under the 'Advanced' options).
+; The user's selection is recorded in the registry and then read out
+; by the irmini.sys driver at boot time.
+;
+HKR,NDI\params\Tx_WINDOW_SIZE,ParamDesc,,"Tx Window Size"
+HKR,NDI\params\Tx_WINDOW_SIZE,flag,1,20,00,00,00
+HKR,NDI\params\Tx_WINDOW_SIZE,default,,"7"
+HKR,,Tx_WINDOW_SIZE,,"7"
+HKR,NDI\params\Tx_WINDOW_SIZE,type,,enum
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"1",,"1"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"2",,"2"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"3",,"3"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"4",,"4"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"5",,"5"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"6",,"6"
+HKR,NDI\params\Tx_WINDOW_SIZE\enum,"7",,"7"
+
+HKR,NDI\params\Rx_WINDOW_SIZE,ParamDesc,,"Rx Window Size"
+HKR,NDI\params\Rx_WINDOW_SIZE,flag,1,20,00,00,00
+HKR,NDI\params\Rx_WINDOW_SIZE,default,,7
+HKR,,Rx_WINDOW_SIZE,,"7"
+HKR,NDI\params\Rx_WINDOW_SIZE,type,,enum
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"1",,"1"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"2",,"2"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"3",,"3"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"4",,"4"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"5",,"5"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"6",,"6"
+HKR,NDI\params\Rx_WINDOW_SIZE\enum,"7",,"7"
+
+HKR,NDI\params\TURNAROUNDTIME,ParamDesc,,"TurnAroundTime(usec)"
+HKR,NDI\params\TURNAROUNDTIME,flag,1,20,00,00,00
+HKR,NDI\params\TURNAROUNDTIME,default,,1000
+HKR,,TURNAROUNDTIME,,"1000"
+HKR,NDI\params\TURNAROUNDTIME,type,,enum
+HKR,NDI\params\TURNAROUNDTIME\enum,"0",,"0"
+HKR,NDI\params\TURNAROUNDTIME\enum,"10",,"10"
+HKR,NDI\params\TURNAROUNDTIME\enum,"50",,"50"
+HKR,NDI\params\TURNAROUNDTIME\enum,"100",,"100"
+HKR,NDI\params\TURNAROUNDTIME\enum,"500",,"500"
+HKR,NDI\params\TURNAROUNDTIME\enum,"1000",,"1000"
+HKR,NDI\params\TURNAROUNDTIME\enum,"5000",,"5000"
+HKR,NDI\params\TURNAROUNDTIME\enum,"10000",,"10000"
+
+;HKR,Ndi\params\FRONT_OR_BACK,ParamDesc,,"Front or BACK?"
+;HKR,Ndi\params\FRONT_OR_BACK,flag,1,20,00,00,00
+;HKR,Ndi\params\FRONT_OR_BACK,default,,Back port
+;HKR,Ndi\params\FRONT_OR_BACK,type,,enum
+;HKR,Ndi\params\FRONT_OR_BACK\enum,"0",,"Back port"
+;HKR,Ndi\params\FRONT_OR_BACK\enum,"1",,"Front port"
+HKR,,FRONT_OR_BACK,,"Back port"
+
+;HKR,Ndi\params\PULSE_WIDTH,ParamDesc,,"Pulse Width"
+;HKR,Ndi\params\PULSE_WIDTH,flag,1,20,00,00,00
+;HKR,Ndi\params\PULSE_WIDTH,default,,163
+;HKR,Ndi\params\PULSE_WIDTH,type,,enum
+;HKR,Ndi\params\PULSE_WIDTH\enum,"163",,"163"
+;HKR,Ndi\params\PULSE_WIDTH\enum,"3/16",,"3/16"
+HKR,,PULSE_WIDTH,,"163"
+
+[OBOE_DelReg]
+HKR,,EnumPropPages32
+
+[OBOE_DelCoinstallers]
+HKR,,CoInstallers32
+
+[Help_Addreg]
+HKR,NDI,HelpText,0,%OBOE_HELP%
+
+[OBOE.AddService]
+DisplayName	= %Oboe.DevDesc%
+ServiceType	= 1 ; %SERVICE_KERNEL_DRIVER%
+StartType	= 3 ; %SERVICE_DEMAND_START%
+ErrorControl	= 1 ; %SERVICE_ERROR_NORMAL%
+ServiceBinary	= %12%\tos4mo.sys        ;12=drivers directory
+LoadOrderGroup	= NDIS
+
+[DonauOBOE.AddService]
+DisplayName	= %DonauOboe.DevDesc%
+ServiceType	= 1 ; %SERVICE_KERNEL_DRIVER%
+StartType	= 3 ; %SERVICE_DEMAND_START%
+ErrorControl	= 1 ; %SERVICE_ERROR_NORMAL%
+ServiceBinary	= %12%\tos4mo.sys        ;12=drivers directory
+LoadOrderGroup	= NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+;
+;  strings section added when built
+;
+
+[Strings]
+;
+;  This section defines symbolic string constants for use in the rest
+;  of the .inf script.  You should create and use symbols for all
+;  translatable strings in order to make localization easier.
+;  Also, spaces within strings elsewhere in the script confuse infedit.exe;
+;  so use symbolic constants for any multi-word strings.
+;
+TOSHIBA="TOSHIBA"
+UpperInterface="ndisirda"
+LowerInterface="nolower"
+Oboe.DevDesc="Toshiba FIR Port Type-O"
+DonauOboe.DevDesc="Toshiba FIR Port Type-DO"
+OBOE_HELP="The IrDA1.1 infrared port. It can be used to establish wireless and network links to other computers at 4Mbps."
+V_CLASSNAME="Network adapters"
+
+

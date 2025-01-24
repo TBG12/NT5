@@ -1,0 +1,158 @@
+;Copyright 1998-2000, Silicon Integrated Systems Corporation
+; SiS630.inf
+;
+; Installation inf for the Silicon Integrated Systems SiS graphics adapter.
+;
+  
+[Version]
+Signature="$CHICAGO$"
+Provider=%Provider%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=10/18/2002,6.13.10.2083
+
+
+[DestinationDirs]
+DefaultDestDir   = 11
+SiS630.Miniport  = 12  ; drivers
+SiS630.Display   = 11  ; system32
+
+
+;
+; Driver information
+;
+[ControlFlags]
+ExcludeFormSelect = *
+
+[Manufacturer]
+%Mfg%   = Mfg
+
+[Mfg]
+;sis730 VenderID for customers
+%Product%                               =SiS630, PCI\VEN_1039&DEV_6300
+
+;
+; General installation section
+;
+
+[SiS630]
+CopyFiles=SiS630.Miniport, SiS630.Display
+AddReg=SiS630.Util.Addreg
+
+;
+; File sections
+;
+
+[SiS630.Miniport]
+sis630p.sys
+
+[SiS630.Display]
+sis630v.dll
+
+
+;
+; Service Installation
+;
+
+[SiS630.Services]
+AddService = SiS630, 0x00000002, SiS630_Service_Inst, SiS630_EventLog_Inst
+
+[SiS630_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\sis630p.sys
+
+[SiS630_EventLog_Inst]
+AddReg = SiS630_EventLog_AddReg
+
+[SiS630_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\sis630p.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+
+[SiS630.SoftwareSettings]
+AddReg = SiS630_SoftwareDeviceSettings
+DelReg = SiS630_SoftwareDeviceDeletings
+
+[SiS630_SoftwareDeviceSettings]
+HKR,, 2D_OEMSetup,     %REG_MULTI_SZ%, 0
+HKR,, 2D_BI01,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI03,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI05,     %REG_MULTI_SZ%, 60.72.75.85.100.120.160.200
+HKR,, 2D_BI11,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI13,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI15,     %REG_MULTI_SZ%, 56.60.72.75.85.100.120.160
+HKR,, 2D_BI21,     %REG_MULTI_SZ%, 43.60.70.75.85.100.120
+HKR,, 2D_BI23,     %REG_MULTI_SZ%, 43.60.70.75.85.100.120
+HKR,, 2D_BI25,     %REG_MULTI_SZ%, 43.60.70.75.85.100.120
+HKR,, 2D_BI31,     %REG_MULTI_SZ%, 43.60.75.85
+HKR,, 2D_BI33,     %REG_MULTI_SZ%, 43.60.75.85
+HKR,, 2D_BI35,     %REG_MULTI_SZ%, 43.60.75.85
+HKR,, 2D_BI41,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI43,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI45,     %REG_MULTI_SZ%, 60.65.70.75.85
+HKR,, 2D_BI51,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI53,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BI55,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA1,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA3,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BIA5,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BID1,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BID3,     %REG_MULTI_SZ%, 60
+HKR,, 2D_BID5,     %REG_MULTI_SZ%, 60
+HKR,, InstalledDisplayDrivers,        %REG_MULTI_SZ%, SiS630v
+HKR,, VgaCompatible,                  %REG_DWORD%,    0
+HKR,, CapabilityOverride,             %REG_DWORD%,    8
+
+HKR,, SiS.3D.3DCommand,%REG_BINARY%, 30
+HKR,, SiS.2D.HotPlug, %REG_BINARY%,  30
+HKR,, SiS.2D.LCDFrameRate, %REG_BINARY%,  30
+HKR,, SiS.2D.ResSelect,%REG_DWORD%,  0
+HKR,, SiS.3D.Default.3DCommand,%REG_BINARY%,30
+HKR,, SiS.2D.MAPTABLE, %REG_BINARY%, 28,21,22,22,24,24,24,24,28,28,1A,28,28,28,28,28
+HKR,, SiS.2D.SiS730MAPTABLE, %REG_BINARY%, 28,21,22,22,24,24,24,24,28,28,28,28,28,28,28,28
+HKR,, SiS.2D.ALPHATOPMAPTABLE, %REG_BINARY%, 28,21,22,21,24,24,24,24,28,28,1A,19,28,28,28,28
+HKR,, SiS.2D.NBMAPTABLE, %REG_BINARY%, 4A,4A,4A,4A,4A,4A,4A,4A,4A,4A,4A,4A,4A,4A,4A,4A
+HKR,, SiS.2D.PALMNSet, %REG_BINARY%, 0
+
+
+[SiS630_SoftwareDeviceDeletings]
+HKR,, 2D_BI61     
+HKR,, 2D_BI63     
+HKR,, 2D_BI65      
+
+
+[sis630.Util.Addreg]
+
+[sis630.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=128
+MaximumNumberOfDevices=4
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+; REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+; REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+; SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId       = "Silicon Integrated Systems Installation DISK (VIDEO)"
+Provider     = "SiS"
+Mfg          = "SiS"
+Product      = "SiS 630/730 (Microsoft Corporation)"
+Product1     = "SiS 300/305"

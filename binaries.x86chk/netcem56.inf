@@ -1,0 +1,215 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature   =  "$Windows NT$"
+Class       =  Net
+ClassGUID   =  {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    =  %MSFT%
+LayoutFile  =  layout.inf
+DriverVer=10/01/2002,2.70.2.0
+
+[Manufacturer]
+%Xircom%  = Xircom
+%Intel%   = Intel
+%Compaq%  = Compaq
+%Toshiba% = Toshiba
+%Legend%  = Legend
+%Generic% = Generic
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Intel]
+%M16B.DevDesc% = net56, MF\INTELM16B_DEV1
+
+[Compaq]
+%c550.DevDesc% = net56, MF\CompaqC550_DEV1
+
+[Toshiba]
+%C21.DevDesc%  = net56, MF\TOSHIBAC21_DEV1
+
+[Legend]
+%LE56.DevDesc% = net56, MF\LEGENDLE56_DEV1
+
+[Generic]
+%genb.DevDesc% = net56, MF\GENERICGENB_DEV1
+
+[Xircom]
+%net56.DevDesc% = net56, MF\XIRCOMCEM56_DEV1
+%REM10.DevDesc% = REM10, MF\XIRCOMREM10_DEV1
+
+;-------------------------------------------------------------------------------
+; CEM56
+;
+[net56]
+AddReg          = net56.params.reg,LineNET56.params.reg,net56.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = net56.CopyFiles
+
+[net56.Services]
+AddService     = cem56, 2, nt.Service, nt.EventLog
+
+;-------------------------------------------------------------------------------
+; REM10
+;
+[REM10]
+AddReg		= net56.reg,net56.params.reg,LineREM10.params.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = net56.CopyFiles
+
+[REM10.Services]
+AddService     = cem56, 2, nt.Service, nt.EventLog
+
+;-------------------------------------------------------------------------------
+; Registry sections
+;
+[net56.reg]
+HKR,    Ndi\Interfaces, UpperRange,         0, "ndis5"
+HKR,    Ndi\Interfaces, LowerRange,         0, "ethernet"
+HKR,    Ndi,            Service,            0, "cem56"
+HKR,       ,            PlatformType,       0, "0"
+
+[nt.Service]
+DisplayName    = %net56.Service.DispName%
+ServiceType    = 1    ;SERVICE_KERNEL_DRIVER
+StartType      = 3    ;SERVICE_DEMAND_START
+ErrorControl   = 1    ;NORMAL
+ServiceBinary  = %12%\CEM56n5.sys
+LoadOrderGroup = NDIS
+
+[nt.EventLog]
+AddReg = nt.AddEventLog
+
+[nt.AddEventLog]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\CEM56n5.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[net56.params.reg]
+HKR,Ndi\Params\DynamicLinkDetect,     ParamDesc,        0, %DynLinkDetect%
+HKR,Ndi\Params\DynamicLinkDetect,     default,          0, "1"
+HKR,Ndi\Params\DynamicLinkDetect,     type,             0, "enum"
+HKR,Ndi\Params\DynamicLinkDetect\enum,"0",              0, %Off%
+HKR,Ndi\Params\DynamicLinkDetect\enum,"1",              0, %On%
+
+HKR, Ndi\params\EarlyTransmit,      ParamDesc,          0, %EarlyTransmit%
+HKR, Ndi\params\EarlyTransmit,      default,            0, "1"
+HKR, Ndi\params\EarlyTransmit,      type,               0, "enum"
+HKR, Ndi\params\EarlyTransmit\enum, "0",                0, %Off%
+HKR, Ndi\params\EarlyTransmit\enum, "1",                0, %On%
+
+HKR, Ndi\params\FunctionEnable,     ParamDesc,          0, %Function%
+HKR, Ndi\Params\FunctionEnable,     default,            0, "0"
+HKR, Ndi\Params\FunctionEnable,     type,               0, "enum"
+HKR, Ndi\params\FunctionEnable\enum,"0",                0, %NetModem%
+HKR, Ndi\params\FunctionEnable\enum,"1",                0, %NetOnly%
+HKR, Ndi\params\FunctionEnable\enum,"2",                0, %ModemOnly%
+
+HKR, Ndi\Params\InitDelay,	    ParamDesc,		0, %InitializationDelay%
+HKR, Ndi\Params\InitDelay,	    type,		0, "INT"
+HKR, Ndi\Params\InitDelay,	    default,		0, "0"
+HKR, Ndi\Params\InitDelay,	    optional,		0, "1"
+HKR, Ndi\Params\InitDelay,	    min,		0, "0"
+HKR, Ndi\Params\InitDelay,	    max,		0, "60"
+HKR, Ndi\Params\InitDelay,	    step,		0, "1"
+
+HKR, Ndi\params\LinkIntegrity,      ParamDesc,          0, %LinkIntegrity%
+HKR, Ndi\params\LinkIntegrity,      default,            0, "1"
+HKR, Ndi\params\LinkIntegrity,      type,               0, "enum"
+HKR, Ndi\params\LinkIntegrity\enum, "0",                0, %Off%
+HKR, Ndi\params\LinkIntegrity\enum, "1",                0, %On%
+
+HKR, Ndi\params\Mode,               ParamDesc,          0, %Mode%
+HKR, Ndi\params\Mode,               default,            0, "0"
+HKR, Ndi\params\Mode,               type,               0, "enum"
+HKR, Ndi\params\Mode\enum,          0,                  0, %IOMode%
+HKR, Ndi\params\Mode\enum,          1,                  0, %MemMap%
+
+HKR, Ndi\params\NetworkAddress,     ParamDesc,          0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,     default,            0, ""
+HKR, Ndi\params\NetworkAddress,     type,               0, "edit"
+HKR, Ndi\params\NetworkAddress,     LimitText,          0, "12"
+HKR, Ndi\params\NetworkAddress,     UpperCase,          0, "1"
+HKR, Ndi\params\NetworkAddress,     optional,           0, "1"
+
+; Default = 7K; 1K-29K step 1K
+HKR, Ndi\params\TransmitBufferSize, ParamDesc,          0, %TransmitBuf%
+HKR, Ndi\params\TransmitBufferSize, default,            0, "11264"
+HKR, Ndi\params\TransmitBufferSize, type,               0, "word"
+HKR, Ndi\params\TransmitBufferSize, min,                0, "1024"
+HKR, Ndi\params\TransmitBufferSize, max,                0, "29696"
+HKR, Ndi\params\TransmitBufferSize, step,               0, "1024"
+
+[LineNET56.params.reg]
+HKR, Ndi\params\LineSpeed,          ParamDesc,          0, %LineSpeed%
+HKR, Ndi\params\LineSpeed,          default,            0, "0"
+HKR, Ndi\params\LineSpeed,          type,               0, "enum"
+HKR, Ndi\params\LineSpeed\enum,     "0",                0, %AutoDetect%
+HKR, Ndi\params\LineSpeed\enum,     "1",                0, %10Mbps%
+HKR, Ndi\params\LineSpeed\enum,     "2",                0, %100Mbps%
+
+HKR, Ndi\params\LineMode,           ParamDesc,          0, %LineMode%
+HKR, Ndi\params\LineMode,           default,            0, "0"
+HKR, Ndi\params\LineMode,           type,               0, "enum"
+HKR, Ndi\params\LineMode\enum,      "0",                0, %AutoDetect%
+HKR, Ndi\params\LineMode\enum,      "1",                0, %HalfDuplex%
+HKR, Ndi\params\LineMode\enum,      "2",                0, %FullDuplex%
+
+[LineREM10.params.reg]
+;The LineMode is Half Duplex
+;The LineSpeed is 10Mbps
+HKR, ,                              LineMode,           0, "1"
+HKR, ,                              LineSpeed,          0, "1"
+
+[net56.CopyFiles]
+cem56n5.sys,,,2
+
+[DestinationDirs]
+net56.CopyFiles = 12 ; system32\drivers
+DefaultDestDir  = 12
+
+;--------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Intel                  = "Intel"
+Compaq                 = "Compaq"
+Toshiba                = "Toshiba"
+Legend                 = "Legend"
+Generic                = "Generic"
+Xircom                 = "Xircom"
+MSFT                   = "Microsoft"
+
+M16b.DevDesc	       = "Intel EtherExpress ™  PRO/100 LAN/Modem PC Card Adapter"
+c550.DevDesc	       = "Compaq Microcom 550 56k Modem + 10/100 Ethernet"
+C21.DevDesc	       = "Toshiba Modem+Ethernet PC Card"
+LE56.DevDesc	       = "Legend Easy 56k Modem+10-100 Ethernet+GSM Adapter"
+genb.DevDesc	       = "Ethernet 10/100 PC Card + 56Modem"
+net56.DevDesc          = "Network of Xircom CreditCard Ethernet 10/100 + Modem 56"
+REM10.DevDesc          = "Xircom Ethernet + Modem 56"
+
+net56.Service.DispName = "Xircom CreditCard 10/100 + Modem 56 Network"
+
+Off                       = "Off"
+On                        = "On"
+DynLinkDetect             = "Dynamic Link Detect"
+EarlyTransmit             = "Early Transmit"
+Function                  = "Function(s)"
+NetModem                  = "Network & Modem"
+NetOnly                   = "Network only"
+ModemOnly                 = "Modem only"
+LineSpeed                 = "Line Speed"
+AutoDetect                = "Auto Detect"
+10Mbps                    = "10 Mbps"
+100Mbps                   = "100 Mbps"
+LineMode                  = "Line Mode"
+HalfDuplex                = "Half Duplex"
+FullDuplex                = "Full Duplex"
+LinkIntegrity             = "Link Integrity"
+Mode                      = "Mode"
+IOMode                    = "I/O Mode"
+MemMap                    = "Memory Mapped Mode"
+NetworkAddress            = "Network Address"
+TransmitBuf               = "Transmit Buffer Size"
+InitializationDelay       = "InitializationDelay"

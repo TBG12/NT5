@@ -1,0 +1,156 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature  =   "$Windows NT$"
+Class      =   MultiFunction
+ClassGUID  =   {4d36e971-e325-11ce-bfc1-08002be10318}
+Provider   =   %MSFT%
+LayoutFile = layout.inf
+DriverVer=10/01/2002,5.0.2128.1
+
+[ClassInstall32]
+AddReg=ClassAddReg
+
+[ClassAddReg]
+HKR,,,,%MFClassName%
+
+[Manufacturer]
+%D-Link% = D-Link
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[D-LINK]
+%MfabcA%=LMNDIS.mf,PCMCIA\D-Link-DMF-560TXD_DirectPort_PC_Card-7011
+
+;-------------------------------------------------------------------------------
+;
+[LMNDIS.mf]
+
+[LMNDIS.mf.Services]
+AddService = mf, 2, mf_Service_Inst
+
+[LMNDIS.mf.HW]
+AddReg=LMNDIS.mf.RegHW
+
+[LMNDIS.mf.RegHW]
+HKR,Child0000,HardwareID,,MF\FE560_DEV0
+HKR,Child0000,ResourceMap,1,00,02,03
+HKR,Child0001,HardwareID,,MF\FE560_DEV1
+HKR,Child0001,ResourceMap, 1, 01,02,03
+
+[LMNDIS.mf.LogConfigOverride]
+LogConfig    =    LMNDIS.mf.Override0
+LogConfig    =    LMNDIS.mf.Override1
+LogConfig    =    LMNDIS.mf.Override2
+LogConfig    =    LMNDIS.mf.Override3
+LogConfig    =    LMNDIS.mf.Override4
+LogConfig    =    LMNDIS.mf.Override5
+LogConfig    =    LMNDIS.mf.Override6
+LogConfig    =    LMNDIS.mf.Override7
+LogConfig    =    LMNDIS.mf.Override8
+LogConfig    =    LMNDIS.mf.Override9
+LogConfig    =    LMNDIS.mf.Override10
+LogConfig    =    LMNDIS.mf.Override11
+LogConfig    =    LMNDIS.mf.Override12
+
+;-------------------------------------------------------------------------------
+; Multifunction Service 
+;
+[mf_Service_Inst]
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\mf.sys
+LoadOrderGroup = System Bus Extender
+
+;-------------------------------------------------------------------------------
+; Override Config 
+;
+[LMNDIS.mf.Override0]
+IOConfig     =    2F8-2FF   ; Com1
+IOConfig     =    300-31F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  03(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override1]
+IOConfig     =    3E8-3EF   ; Com1
+IOConfig     =    300-31F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  05(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override2]
+IOConfig     =    2E8-2EF   ; Com1
+IOConfig     =    300-31F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12    ; IRQ
+PCCardConfig =  07(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override3]
+IOConfig     =    2F8-2FF   ; Com1
+IOConfig     =    320-33F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12    ; IRQ
+PCCardConfig =  09(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override4]
+IOConfig     =    3E8-3EF   ; Com2
+IOConfig     =    320-33F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12    ; IRQ
+PCCardConfig =  0B(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override5]
+IOConfig     =    2E8-2EF   ; Com2
+IOConfig     =    320-33F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  0D(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override6]
+IOConfig     =    2F8-2FF   ; Com2
+IOConfig     =    340-35F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  0F(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override7]
+IOConfig     =    3E8-3EF   ; Com2
+IOConfig     =    340-35F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  11(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override8]
+IOConfig     =    2E8-2EF   ; Com3
+IOConfig     =    340-35F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  13(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override9]
+IOConfig     =    2F8-2FF   ; Com3
+IOConfig     =    220-23F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  15(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override10]
+IOConfig     =    3E8-3EF   ; Com3
+IOConfig     =    220-23F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  17(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override11]
+IOConfig     =    2E8-2EF   ; Com3
+IOConfig     =    220-23F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  19(W)  ; ConfigIndex:MemoryCardIndex
+
+[LMNDIS.mf.Override12]
+IOConfig     =    2F8-2FF   ; Com3
+IOConfig     =    240-25F         ; NIC I/O
+IRQConfig    =    3,4,5,7,9,10,11,12     ; IRQ
+PCCardConfig =  1B(W)  ; ConfigIndex:MemoryCardIndex
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+D-Link 		= "D-Link"
+MSFT        = "Microsoft"
+
+MfabcA		= "D-Link DMF-560TXD DirectPort PC Card"
+MFClassName	= "Multifunction PCMCIA Device Driver"

@@ -1,0 +1,317 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature       = "$Windows NT$"
+Class           = Net
+ClassGUID       = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider        = %MSFT%
+LayoutFile      = layout.inf
+DriverVer=10/01/2002,8.2.7.0
+
+[Manufacturer]
+%Cisco%  = Cisco
+
+[ControlFlags]
+ExcludeFromSelect = * 						
+
+[Cisco]
+%PCI4800.DevDesc%    = PCI4800.ndi,    PCI\VEN_14B9&DEV_4800
+%PCI340.DevDesc%     = PCI340.ndi,     PCI\VEN_14B9&DEV_0340
+%PCI350.DevDesc%     = PCI350.ndi,     PCI\VEN_14B9&DEV_0350
+%PC2500.DevDesc%     = PC2500.ndi,     PCMCIA\AIRONET-PC2500-5313
+%PC3100.DevDesc%     = PC3100.ndi,     PCMCIA\AIRONET-PC3100-25CA
+%PC4500.DevDesc%     = PC4500.ndi,     PCMCIA\AIRONET-PC4500-13ED
+%PC4500.DevDesc%     = PC4500.ndi,     PCMCIA\AIRONET-PC4500-D4C4
+%PC4800.DevDesc%     = PC4800.ndi,     PCMCIA\AIRONET-PC4800-D913
+%PC340.DevDesc%      = PC4800.ndi,     PCMCIA\CISCO_SYSTEMS-340_SERIES_WIRELESS_LAN_ADAPTER-5FE9 				
+%PC350.DevDesc%	     = PC4800.ndi,     PCMCIA\CISCO_SYSTEMS-350_SERIES_WIRELESS_LAN_ADAPTER-512A
+
+;-------------------------------------------------------------------------------
+; PC2500
+;
+[PC2500.ndi]
+AddReg          = NDI5, COMMON, TMA, PC2500, BUS8
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = CopyFiles
+
+[PC2500.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; PC3100
+;
+[PC3100.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb1, PC3100, BUS8
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = CopyFiles
+
+[PC3100.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; PC4500
+;
+[PC4500.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb2, PC4500, BUS8
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = CopyFiles
+
+[PC4500.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; PC4800
+;
+[PC4800.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb11, PC4800, BUS8
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = CopyFiles
+
+[PC4800.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;
+;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+; ISA2500 ISAPNP
+;
+[ISA2500pnp.ndi]
+AddReg          = NDI5, COMMON, TMA, PC2500, BUS15
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = CopyFiles
+
+[ISA2500pnp.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; ISA3100 ISAPNP
+;
+[ISA3100pnp.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb1, PC3100, BUS15
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = CopyFiles
+
+[ISA3100pnp.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; ISA3500 ISAPNP
+;
+[ISA3500pnp.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb2, PC3500, BUS15
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = CopyFiles
+
+[ISA3500pnp.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; ISA4500 ISAPNP
+;
+[ISA4500pnp.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb2, PC4500, BUS15
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = CopyFiles
+
+[ISA4500pnp.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+; ISA4800 ISAPNP
+;
+[ISA4800pnp.ndi]
+AddReg          = NDI5, COMMON, SSIDS, Mb11, PC4800, BUS15
+Characteristics = 0x84
+BusType         = 14
+CopyFiles       = CopyFiles
+
+[ISA4800pnp.ndi.Services]
+AddService      = PCX500, 2, PCX500.Service, common.AddEventLog
+
+;-------------------------------------------------------------------------------
+[PCI350.ndi.NT]
+AddReg          =	NDI5, COMMON, SSIDS, Mb11, PC4800, BUS5
+Characteristics =	0x84
+BusType         =	5
+CopyFiles       =	CopyFiles
+;
+[PCI350.ndi.NT.Services]
+AddService	=	PCX500, 2, PCX500.Service, common.AddEventLog
+
+[PCI340.ndi.NT]
+AddReg          =	NDI5, COMMON, SSIDS, Mb11, PC4800, BUS5
+Characteristics =	0x84
+BusType         =	5
+CopyFiles       =	CopyFiles
+;
+[PCI340.ndi.NT.Services]
+AddService      =       PCX500, 2, PCX500.Service, common.AddEventLog
+
+[PCI4800.ndi.NT]
+AddReg          =	NDI5, COMMON, SSIDS, Mb11,  PC4800, BUS5
+Characteristics =	0x84
+BusType         =	5
+CopyFiles       =	CopyFiles
+
+[PCI4800.ndi.NT.Services]
+AddService      =       PCX500, 2, PCX500.Service, common.AddEventLog
+
+; Bus and Radio entries for the driver
+;
+[BUS5]
+HKR, , FormFactor, 0, "PCI"
+[BUS8]
+HKR, , FormFactor, 0, "PCMCIA"
+[BUS15]
+HKR, , FormFactor, 0, "ISA"
+[PC2500] 
+HKR, , RadioName,  0, "PC2500"
+[PC3100]
+HKR, , RadioName,  0, "PC3100"
+[PC3500]
+HKR, , RadioName,  0, "PC3500"
+[PC4500]
+HKR, , RadioName,  0, "PC4500"
+[PC4800]
+HKR, , RadioName,  0, "PC4800"
+
+;-------------------------------------------------------------------------------
+; Common Registry Section for Aironet
+;
+[COMMON]
+; NodeID
+HKR, ,MediaDisconnectDamper,                        2, "10"
+;
+HKR, NDI\params\NodeName,                ParamDesc, 0, %ClientName%
+HKR, NDI\params\NodeName,                type,      0, "edit"
+HKR, NDI\params\NodeName,                Optional,  0, "1"
+HKR, NDI\params\NodeName,                LimitText, 0, "16"
+HKR, NDI\params\NodeName,                default,   0, ""
+; InfrastructureMode
+HKR, NDI\params\InfrastructureMode,      ParamDesc, 0, %InfraMode%
+HKR, NDI\params\InfrastructureMode,      type,      0, "enum"
+HKR, NDI\params\InfrastructureMode,      default,   0, "1" 
+HKR, NDI\params\InfrastructureMode\enum, 0,         0, %No%
+HKR, NDI\params\InfrastructureMode\enum, 1,         0, %Yes%
+; PSP
+HKR, NDI\params\PowerSaveMode,           ParamDesc, 0, %PSP%
+HKR, NDI\params\PowerSaveMode,           type,      0, "enum"
+HKR, NDI\params\PowerSaveMode,           default,   0, "0" 
+HKR, NDI\params\PowerSaveMode\enum,      0,         0, %CAM%
+HKR, NDI\params\PowerSaveMode\enum,      2,         0, %PSP-CAM%
+HKR, NDI\params\PowerSaveMode\enum,      3,         0, %MAXPSP%
+
+;-------------------------------------------------------------------------------
+; SSID Section
+;
+[SSIDS]
+
+HKR, ,SSID1,                                         2, ""                 
+
+;-------------------------------------------------------------------------------
+; Supported Rates for Wireless
+;
+[Mb11]
+HKR, ,SupportedRates,                                0, "" 
+
+[Mb2]
+HKR, ,SupportedRates,                                0, "" 
+
+[Mb1]
+HKR, NDI\params\SupportedRates,          ParamDesc, 0, %DataRates%
+HKR, NDI\params\SupportedRates,          type,      0, "enum"
+HKR, NDI\params\SupportedRates,          default,   0, "2"
+HKR, NDI\params\SupportedRates\enum,     1,         0, %500K%
+HKR, NDI\params\SupportedRates\enum,     2,         0, %1Mb%
+
+;-------------------------------------------------------------------------------
+; TMA ID for the 2500 Series
+;
+[TMA]
+; SystemID
+HKR, NDI\params\SSID1,                   ParamDesc, 0, %systemID%
+HKR, NDI\params\SSID1,                   type,      0, "dword"
+HKR, NDI\params\SSID1,                   min,       0, "2"
+HKR, NDI\params\SSID1,                   max,       0, "ffffffff"
+HKR, NDI\params\SSID1,                   step,      0, "2"
+HKR, NDI\params\SSID1,                   default,   0, "2"
+HKR, NDI\params\SSID1,                   base,      0, "16"
+
+;-------------------------------------------------------------------------------
+; PCX500 Service and Driver Section
+;
+[NDI5]
+HKR, Ndi,            Service,    0, "PCX500"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+[PCX500.Service]
+DisplayName     = %PCX500.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\pcx500.sys
+LoadOrderGroup  = NDIS
+
+[common.AddEventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[CopyFiles]
+pcx500.sys,,,2
+
+[DestinationDirs]
+DefaultDestDir = 12
+CopyFiles      = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+Cisco     	        = "Cisco"
+MSFT	      	        = "Microsoft"
+
+ClientName    	        = "Client Name"
+InfraMode     	        = "Infrastructure Mode"
+No	                = "No"
+Yes	       		= "Yes"
+PSP	      		= "Power Saving Mode(PSP)"
+CAM	       		= "CAM"
+PSP-CAM	      	        = "PSP-CAM (FASTPSP)"
+MAXPSP	      	        = "Max Power Save/PSP"
+DataRates     	        = "Data Rates"
+Auto                    = "Automatic"
+500K	      	        = "500 Kb"
+1Mb	      	        = "1 Mb"
+systemID                = "SystemID (hexadecimal)"
+
+ISA2500pnp.DevDesc	= "Cisco Wireless ISAPNP LAN Adapter (Generic PC2500 DS)"
+ISA3100pnp.DevDesc	= "Cisco Wireless ISAPNP LAN Adapter (Generic PC3100 FH)"
+ISA3500pnp.DevDesc	= "Cisco Wireless ISAPNP LAN Adapter (Generic PC3500 FH)"
+ISA4500pnp.DevDesc	= "Cisco Wireless ISAPNP LAN Adapter (Generic PC4500 DS)"
+ISA4800pnp.DevDesc	= "Cisco Wireless ISAPNP LAN Adapter (Generic PC4800 DS)"
+
+PC2500.DevDesc		= "Cisco PC2500 DS Wireless PCMCIA LAN Adapter"
+PC3100.DevDesc		= "Cisco PC3100 FH Wireless PCMCIA LAN Adapter"
+PC4500.DevDesc		= "Cisco PC4500 DS Wireless PCMCIA LAN Adapter"
+PC4800.DevDesc		= "Cisco PC4800 DS Wireless PCMCIA LAN Adapter"
+PC340.DevDesc		= "Cisco Systems 340 Series Wireless LAN Adapter"						
+PC350.DevDesc		= "Cisco Systems 350 Series Wireless LAN Adapter"
+
+PCI340.DevDesc          = "Cisco Systems 340 Series PCI Wireless LAN Adapter"
+PCI350.DevDesc          = "Cisco Systems 350 Series PCI Wireless LAN Adapter"
+PCI4800.DevDesc         = "Cisco PC4800 DS Wireless PCI LAN Adapter"
+
+PCX500.Service.DispName = "Cisco Wireless LAN Adapters Driver"

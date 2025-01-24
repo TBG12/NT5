@@ -1,0 +1,39 @@
+*%% 
+*%% hp deskjet 940c
+*%%
+*%% Copyright 1999, Hewlett-Packard Co.
+*%% All Rights Reserved.
+*%%
+
+*Include: "hpfdj94x.gpd"
+
+*%%
+*%% Global Entries
+*%%
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+
+*ModelName: "hp deskjet 940c"
+*GPDFileName: "HPFDJ940.GPD"
+
+*PrintRate: 11
+*PrintRateUnit: PPM
+
+*Feature: HPDuplexUnit
+{
+    *rcNameID: =TWO_SIDED_PRINTING_DISPLAY
+    *ConflictPriority: 15
+    *FeatureType: PRINTER_PROPERTY
+    *UpdateQualityMacro?: TRUE
+
+    *DefaultOption: NotInstalled
+    *Option: Installed
+    {
+        *rcNameID: =INSTALLED_DISPLAY
+    }
+    *Option: NotInstalled
+    {
+        *rcNameID: =NOT_INSTALLED_DISPLAY
+        *DisabledFeatures: LIST(Duplex)
+    }
+}

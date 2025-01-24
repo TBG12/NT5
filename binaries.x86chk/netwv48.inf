@@ -1,0 +1,257 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MSFT%
+LayoutFile  = layout.inf
+DriverVer=10/01/2002,7.43.0.19
+
+[Manufacturer]
+%AGERE%         = Agere Systems
+%Compaq%        = Compaq
+%Dell%          = Dell Corporation
+%IBM%           = IBM Corporation
+%Sony%          = Sony Corporation
+%Toshiba%       = TOSHIBA
+%Buffalo%       = Buffalo Technologies
+%Enterasys%     = Enterasys
+%Avaya%         = Avaya Communication
+%NECAterm%      = NEC Aterm
+%ELSA%          = ELSA
+%SAMSUNG%       = Samsung
+%Siemens%       = Siemens
+%2Wire%         = 2Wire
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Agere Systems]
+%wlluc48.DeviceDesc%     = wlluc48.Install, PCMCIA\LUCENT_TECHNOLOGIES-WAVELAN/IEEE-C908
+%wlluc48a.DeviceDesc%    = wlluc48.Install, PCMCIA\LUCENT_TECHNOLOGIES-WAVELAN/IEEE-364C
+%wlluc48b.DeviceDesc%    = wlluc481.Install, PCMCIA\LUCENT_TECHNOLOGIES-WAVELAN/IEEE-911F
+
+[Compaq]
+%wlcom48_LT1.DeviceDesc% = wlluc48.Install, PCMCIA\COMPAQ-COMPAQ_WL110_PC_CARD-E648
+
+[Dell Corporation]
+%wldel48_LT1.DeviceDesc% = wlluc48.Install, PCMCIA\DELL-TRUEMOBILE_1150_SERIES_PC_CARD-34F2
+%wldel48_LT2.DeviceDesc% = wlluc481.Install, PCMCIA\DELL-TRUEMOBILE_1150_SERIES_PC_CARD-C043
+
+[IBM Corporation]
+%wlibm48_LT.DeviceDesc%  = wlluc48.Install, PCMCIA\IBM_CORPORATION-IBM_HIGH_RATE_WIRELESS_LAN_PC_CARD-22CA
+%wlibm48_LT2.DeviceDesc% = wlluc481.Install, PCMCIA\IBM_CORPORATION-IBM_HIGH_RATE_WIRELESS_LAN_PC_CARD-12D4
+%wlibm48_LT3.DeviceDesc% = wlluc48.Install, PCMCIA\IBM_CORPORATION-IBM_HIGH_RATE_WIRELESS_LAN_PC_CARD-28A3
+
+[Sony Corporation]
+%wlson48_LT.DeviceDesc%  = wlluc48.Install, PCMCIA\SONY_CORPORATION-PCWA-C100-FFBF
+
+[TOSHIBA]
+%wltos48_TO1.DeviceDesc% = wlluc48.Install, PCMCIA\TOSHIBA-WIRELESS_LAN_CARD-615B
+%wltos48_TO2.DeviceDesc% = wlluc481.Install, PCMCIA\TOSHIBA-WIRELESS_LAN_CARD-E5D7
+
+[Buffalo Technologies]
+%wlil12.DeviceDesc%    = wlluc48.Install,    PCMCIA\MELCO-WLI-PCM-L11-189B
+%wlil11g.DeviceDesc%   = wlluc48.Install,    PCMCIA\BUFFALO-WLI-PCM-L11G-US-A11C
+
+[Enterasys]
+%wlrbt48_EN1.DeviceDesc% = wlluc48.Install, PCMCIA\CABLETRON-ROAMABOUT_802.11_DS-1B09
+%wlrbt48_EN2.DeviceDesc% = wlluc48.Install, PCMCIA\ENTERASYS-ROAMABOUT_802.11_DS-FE9B
+
+[Avaya Communication]
+%wlava48_EN1.DeviceDesc% = wlluc48.Install, PCMCIA\AVAYA_COMMUNICATION-AVAYA_WIRELESS_PC_CARD-4A27
+%wlil11.DeviceDesc%      = wlluc48.Install,    PCMCIA\NCR-WaveLAN/IEEE-6D1E
+
+[NEC Aterm]
+%wlate48_LT1.DeviceDesc% = wlluc48.Install, PCMCIA\NEC_ATERM-WL11C_(PC-WL/11C)-A6CC
+
+[ELSA]
+%wlels48_LT1.DeviceDesc% = wlluc48.Install, PCMCIA\ELSA-AirLancer_MC-11-E804
+%wlelv48_LT1.DeviceDesc% = wlluc48.Install, PCMCIA\ELSA-Vianect_WLAN_MC-11-B745
+
+[Samsung]
+%wlsam48_LT1.DeviceDesc%=wlluc48.Install, PCMCIA\Samsung-Samsung_SEW-2001_Card-6428
+%wlsam48_LT2.DeviceDesc%=wlluc481.Install, PCMCIA\Samsung-Samsung_SEW-2001_Card-3B13
+
+[Siemens]
+%wlsie48_LT1.DeviceDesc%=wlluc48.Install, PCMCIA\Siemens-I-GATE_11M_PC_Card_B-601F
+
+[2Wire]
+%wltwo48_LT1.DeviceDesc%=wlluc48.Install, PCMCIA\2Wire-2Wire_Wireless_PC_Card-70F9
+
+;-------------------------------------------------------------------------------
+; Lucent PC Card
+;
+[wlluc48.Install]
+AddReg          = params.reg, wlluc48.reg, lucent.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = wlluc48.CopyFiles
+
+[wlluc48.Install.Services]
+AddService      = wlluc48, 2, wlluc48.Service, wlluc48.EventLog
+
+;-------------------------------------------------------------------------------
+; Lucent miniPCI Card
+;
+[wlluc481.Install]
+AddReg          = params.reg, wlluc48.reg, lucent.reg, miniPCI.reg
+Characteristics = 0x84
+BusType         = 8
+CopyFiles       = wlluc48.CopyFiles
+
+[wlluc481.Install.Services]
+AddService      = wlluc48, 2, wlluc48.Service, wlluc48.EventLog
+
+[lucent.reg]
+HKR,,VendorDescription,,"ORINOCO PC Card"
+
+[miniPCI.reg]
+HKR,,miniPCI,,"1"
+
+;-------------------------------------------------------------------------------
+;
+[params.reg]
+
+;
+; OwnChannel
+;
+HKR,NDI\params\OwnChannel,          ParamDesc,  0, %CHANNEL%
+HKR,NDI\params\OwnChannel,          Type,       0, enum
+HKR,NDI\params\OwnChannel,          Default,    0, 0
+HKR,NDI\params\OwnChannel\enum,     0,          0, %DEFAULT%
+HKR,NDI\params\OwnChannel\enum,     1,          0, %CHANNEL1%
+HKR,NDI\params\OwnChannel\enum,     2,          0, %CHANNEL2%
+HKR,NDI\params\OwnChannel\enum,     3,          0, %CHANNEL3%
+HKR,NDI\params\OwnChannel\enum,     4,          0, %CHANNEL4%
+HKR,NDI\params\OwnChannel\enum,     5,          0, %CHANNEL5%
+HKR,NDI\params\OwnChannel\enum,     6,          0, %CHANNEL6%
+HKR,NDI\params\OwnChannel\enum,     7,          0, %CHANNEL7%
+HKR,NDI\params\OwnChannel\enum,     8,          0, %CHANNEL8%
+HKR,NDI\params\OwnChannel\enum,     9,          0, %CHANNEL9%
+HKR,NDI\params\OwnChannel\enum,     10,         0, %CHANNEL10%
+HKR,NDI\params\OwnChannel\enum,     11,         0, %CHANNEL11%
+HKR,NDI\params\OwnChannel\enum,     12,         0, %CHANNEL12%
+HKR,NDI\params\OwnChannel\enum,     13,         0, %CHANNEL13%
+HKR,NDI\params\OwnChannel\enum,     14,         0, %CHANNEL14%
+
+;
+; Power Management
+;
+HKR,NDI\params\PowerMode,           ParamDesc,  0, %POWERMANAGEMENT%
+HKR,NDI\params\PowerMode,           Type,       0, enum
+HKR,NDI\params\PowerMode,           Default,    0, 0
+HKR,NDI\params\PowerMode\enum,      2,          0, %AUTO%
+HKR,NDI\params\PowerMode\enum,      1,          0, %ON%
+HKR,NDI\params\PowerMode\enum,      0,          0, %OFF%
+
+HKR,,Configured,,1
+HKR,,DriverVariant,,"2"
+HKR,,DriverMajor,,"7"
+HKR,,DriverMinor,,"43"
+HKR,,DesiredSSID,,"Agere Systems"
+HKR,,NDT,,"1"
+HKR,,TestKeyForSP,,"Test Key Value"
+;-------------------------------------------------------------------------------
+; Lucent specific
+;
+[wlluc48.reg]
+HKR, Ndi\Interfaces,                UpperRange,    0, "ndis5"
+HKR, Ndi\Interfaces,                LowerRange,    0, "ethernet"
+HKR, Ndi,                           Service,       0, "wlluc48"
+
+[wlluc48.Copyfiles]
+wlluc48.sys,,,2
+
+[wlluc48.Service]
+DisplayName     = %wlluc48.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\wlluc48.sys
+LoadOrderGroup  = NDIS
+
+[wlluc48.EventLog]
+AddReg = wlluc48.AddEventLog.reg
+
+[wlluc48.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000,"%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\wlluc48.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+DefaultDestDir            = 12
+wlluc48.CopyFiles         = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+;--------------------------------------------------------------------------
+CHANNEL                     = "1. Channel"
+DEFAULT                     = "Use default channel"
+CHANNEL1                    = "01"
+CHANNEL2                    = "02"
+CHANNEL3                    = "03"
+CHANNEL4                    = "04"
+CHANNEL5                    = "05"
+CHANNEL6                    = "06"
+CHANNEL7                    = "07"
+CHANNEL8                    = "08"
+CHANNEL9                    = "09"
+CHANNEL10                   = "10"
+CHANNEL11                   = "11"
+CHANNEL12                   = "12"
+CHANNEL13                   = "13"
+CHANNEL14                   = "14"
+;--------------------------------------------------------------------------
+POWERMANAGEMENT             = "2. Card Power Management"
+AUTO                        = "Auto"
+ON                          = "On"
+OFF                         = "Off"
+MSFT                        = "Microsoft"
+AGERE                       = "Agere Systems"
+Avaya                       = "Avaya Communication"
+Compaq                      = "Compaq"
+Dell                        = "Dell Corporation"
+IBM                         = "IBM Corporation"
+Sony                        = "Sony Corporation"
+Toshiba                     = "TOSHIBA"
+Buffalo                     = "Buffalo Technologies"
+Enterasys                   = "Enterasys"
+NECAterm                    = "NEC Aterm"
+ELSA                        = "ELSA"
+SAMSUNG                     = "Samsung"
+Siemens                     = "Siemens"
+2Wire                       = "2Wire"
+
+wlcom48_LT1.DeviceDesc      = "Compaq WL110 Wireless LAN PC Card"
+wldel48_LT1.DeviceDesc      = "Dell TrueMobile 1150 Series Wireless LAN Card"
+wldel48_LT2.DeviceDesc      = "Dell TrueMobile 1150 Series Wireless LAN Mini PCI Card"
+wlibm48_LT.DeviceDesc       = "IBM High Rate Wireless LAN PC Card"
+wlibm48_LT2.DeviceDesc      = "IBM High Rate Wireless LAN Mini PCI Card"
+wlibm48_LT3.DeviceDesc      = "IBM Internal High Rate Wireless LAN PC Card"
+wlluc48.DeviceDesc          = "ORiNOCO Wireless LAN PC Card (5 volt)"
+wlluc48a.DeviceDesc         = "ORiNOCO Wireless LAN PC Card (3.3 and 5 volt)"
+wlluc48b.DeviceDesc         = "ORiNOCO Wireless LAN Mini PCI Card"
+wlson48_LT.DeviceDesc       = "Sony PCWA-C100 Wireless PC Card"
+wltos48_TO1.DeviceDesc      = "Toshiba Wireless LAN Card"
+wltos48_TO2.DeviceDesc      = "Toshiba Wireless LAN Mini PCI Card"
+wlil11.DeviceDesc           = "NCR-WaveLAN Wireless LAN PC Card"
+wlil12.DeviceDesc           = "Buffalo WLI-PCM-L11 Wireless LAN Adapter"
+wlil11g.DeviceDesc          = "BUFFALO Air Station 11M Wireless LAN Card (WLI-PCM-L11G)"
+wlrbt48_EN1.DeviceDesc      = "RoamAbout 802.11 DS (Cabletron)"
+wlrbt48_EN2.DeviceDesc      = "RoamAbout 802.11 DS (Enterasys)"
+wlava48_EN1.DeviceDesc      = "Avaya Wireless PC Card"
+wlate48_LT1.DeviceDesc      = "WARPSTAR WL11C (PC-WL/11C)"
+wlels48_LT1.DeviceDesc      = "ELSA AirLancer MC-11"
+wlelv48_LT1.DeviceDesc      = "ELSA Vianect WLAN MC-11"
+wlsam48_LT1.DeviceDesc      = "Samsung PC-Card 64-Bit"
+wlsam48_LT2.DeviceDesc      = "Samsung MPCI 64-Bit Card"
+wlsie48_LT1.DeviceDesc      = "I-GATE 11M PC Card"
+wltwo48_LT1.DeviceDesc      = "2Wire Card"
+
+wlluc48.Service.DispName    = "Wireless LAN PC Card Driver"

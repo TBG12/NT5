@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>MSN.COM Privacy Statement</TITLE>
+
+   <HTA:APPLICATION
+      ID="oHTA"
+   >
+
+</HEAD>
+
+<script>
+
+function window.onload()
+{
+	var sLCID;
+	var url;
+    var re = /\s\d+/;    
+    
+	sLCID = oHTA.commandLine.match(re);
+	url = "http://watson.microsoft.com/dw/dcp.asp?CLCID=" + ltrim(sLCID[0]);
+	document.frames[0].location.href = url;
+}
+
+function ltrim(strValue) 
+{
+    var i = 0;
+    while (strValue.charAt(i) == ' ') {i++;}
+    return strValue.slice(i);
+}
+
+</script>
+
+
+<FRAMESET>
+<FRAME SRC="">
+</FRAMESET>
+</HTML>

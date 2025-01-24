@@ -1,0 +1,313 @@
+; NETEL99x.INF 
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+
+[version]
+Signature              = "$Windows NT$"
+Class                  = Net
+ClassGUID              = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Provider               = %V_MS%
+LayoutFile             = layout.inf
+DriverVer=10/01/2002,2.0.0.60
+
+[Manufacturer]
+%V_3COM%               = 3COM
+
+[ControlFlags]
+ExcludeFromSelect      = *
+
+
+;-------------------------------------------------------------------------------
+; Adapter Settings
+;
+[3COM]
+%PCI\VEN_10b7&DEV_9902.DeviceDesc%=    EL9902.ndi,    PCI\VEN_10b7&DEV_9902&SUBSYS_990210b7
+%PCI\VEN_10b7&DEV_9903.DeviceDesc%=    EL9903.ndi,    PCI\VEN_10b7&DEV_9903&SUBSYS_990310b7
+%PCI\VEN_10b7&DEV_9908.DeviceDesc%=    EL9908.ndi,    PCI\VEN_10b7&DEV_9908&SUBSYS_990810b7
+%PCI\VEN_10b7&DEV_9909.DeviceDesc%=    EL9909.ndi,    PCI\VEN_10b7&DEV_9909&SUBSYS_990910b7
+
+;
+; T2 Server/Client
+;
+%PCI\VEN_10b7&DEV_9904&SUBSYS_200010B7.DeviceDesc%= EL9904S.ndi,PCI\VEN_10b7&DEV_9904&SUBSYS_200010B7
+%PCI\VEN_10b7&DEV_9904&SUBSYS_100010B7.DeviceDesc%= EL9904C.ndi,PCI\VEN_10b7&DEV_9904&SUBSYS_100010B7
+
+;
+; Typhoon FX
+;
+%PCI\VEN_10b7&DEV_9905&SUBSYS_210110B7.DeviceDesc%= EL9905S.ndi,PCI\VEN_10b7&DEV_9905&SUBSYS_210110B7
+%PCI\VEN_10b7&DEV_9905&SUBSYS_210210B7.DeviceDesc%= EL9905S.ndi,PCI\VEN_10b7&DEV_9905&SUBSYS_210210B7
+
+%PCI\VEN_10b7&DEV_9905&SUBSYS_110110B7.DeviceDesc%= EL9905C.ndi,PCI\VEN_10b7&DEV_9905&SUBSYS_110110B7
+%PCI\VEN_10b7&DEV_9905&SUBSYS_110210B7.DeviceDesc%= EL9905C.ndi,PCI\VEN_10b7&DEV_9905&SUBSYS_110210B7
+
+
+[EL9902.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Copper_Xcvr.params, EL99X.params.client
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9902.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9903.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Copper_Xcvr.params, EL99X.params.client
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9903.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9908.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Copper_Xcvr.params, EL99X.params.server
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9908.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9909.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Copper_Xcvr.params, EL99X.params.server
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9909.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9904C.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Copper_Xcvr.params, EL99X.params.client
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9904C.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9904S.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Copper_Xcvr.params, EL99X.params.server
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9904S.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9905C.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Fiber_Xcvr.params, EL99X.params.client
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9905C.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+[EL9905S.ndi]
+AddReg                  = EL99X.reg, EL99X.params, Fiber_Xcvr.params, EL99X.params.server
+Characteristics         = 0x84
+BusType                 = 5
+CopyFiles               = EL99X.DriverFiles
+
+[EL9905S.ndi.Services]
+AddService              = EL99X, 2, EL99X.Service, EL99X.EventLog
+
+
+;-------------------------------------------------------------------------------
+; Advanced UI and Settings
+;
+[EL99X.params]
+HKR,,DownLoadImage,,"1"
+
+HKR,Ndi\params\FlowControl,        ParamDesc,   0,    %flow_control%
+HKR,Ndi\params\FlowControl,        type,        0,    "enum"
+HKR,Ndi\params\FlowControl,        default,     0,    "ENABLE"
+HKR,Ndi\params\FlowControl\enum,   ENABLE,      0,    %enable%
+HKR,Ndi\params\FlowControl\enum,   DISABLE,     0,    %disable%
+
+HKR,Ndi\params\MBADefaultBoot,     ParamDesc,   0,    %rom_boot%
+HKR,Ndi\params\MBADefaultBoot,     type,        0,    "enum"
+HKR,Ndi\params\MBADefaultBoot,     default,     0,    "0"
+HKR,Ndi\params\MBADefaultBoot\enum,0,           0,    "Hardware Default"
+HKR,Ndi\params\MBADefaultBoot\enum,1,           0,    %disable%
+HKR,Ndi\params\MBADefaultBoot\enum,2,           0,    %enable%
+
+HKR,Ndi\params\IPSecOffload,       ParamDesc,   0,    %ipsec_offload%
+HKR,Ndi\params\IPSecOffload,       type,        0,    "enum"
+HKR,Ndi\params\IPSecOffload,       default,     0,    "ENABLE"
+HKR,Ndi\params\IPSecOffload\enum,  ENABLE,      0,    %enable%
+HKR,Ndi\params\IPSecOffload\enum,  DISABLE,     0,    %disable%
+
+HKR,Ndi\params\TCPSegOffload,      ParamDesc,   0,    %tcpseg_offload%
+HKR,Ndi\params\TCPSegOffload,      type,        0,    "enum"
+HKR,Ndi\params\TCPSegOffload,      default,     0,    "ENABLE"
+HKR,Ndi\params\TCPSegOffload\enum, ENABLE,      0,    %enable%
+HKR,Ndi\params\TCPSegOffload\enum, DISABLE,     0,    %disable%
+
+HKR,Ndi\params\ChecksumOffload,    ParamDesc,   0,    %checksum_offload%
+HKR,Ndi\params\ChecksumOffload,    type,        0,    "enum"
+HKR,Ndi\params\ChecksumOffload,    default,     0,    "ENABLE"
+HKR,Ndi\params\ChecksumOffload\enum, ENABLE,    0,    %enable%
+HKR,Ndi\params\ChecksumOffload\enum, DISABLE,   0,    %disable%
+
+HKR,Ndi\params\8021pOffload,       ParamDesc,   0,    %vlan_offload%
+HKR,Ndi\params\8021pOffload,       type,        0,    "enum"
+HKR,Ndi\params\8021pOffload,       default,     0,    "DISABLE"
+HKR,Ndi\params\8021pOffload\enum,  ENABLE,      0,    %enable%
+HKR,Ndi\params\8021pOffload\enum,  DISABLE,     0,    %disable%
+
+HKR,Ndi\params\PerfTuning,         ParamDesc,   0,    %perf_tuning%
+HKR,Ndi\params\PerfTuning,         type,        0,    "enum"
+HKR,Ndi\params\PerfTuning,         default,     0,    "ENABLE"
+HKR,Ndi\params\PerfTuning\enum,    ENABLE,      0,    %enable%
+HKR,Ndi\params\PerfTuning\enum,    DISABLE,     0,    %disable%
+
+HKR,Ndi\params\SelfHealing,        ParamDesc,   0,    %self_healing%
+HKR,Ndi\params\SelfHealing,        type,        0,    "enum"
+HKR,Ndi\params\SelfHealing,        default,     0,    "BASIC"
+HKR,Ndi\params\SelfHealing\enum,   DISABLE,     0,    %disable%
+HKR,Ndi\params\SelfHealing\enum,   BASIC,       0,    %basic%
+HKR,Ndi\params\SelfHealing\enum,   ENHANCED,    0,    %enhanced%
+
+HKR,Ndi\params\NoTxEntries,        ParamDesc,   0,    %num_tx_entries%
+HKR,Ndi\params\NoTxEntries,        type,        0,    "long"
+HKR,Ndi\params\NoTxEntries,        default,     0,    "256"
+HKR,Ndi\params\NoTxEntries,        min,         0,    "32"
+HKR,Ndi\params\NoTxEntries,        max,         0,    "512"
+HKR,Ndi\params\NoTxEntries,        step,        0,    "32"
+HKR,Ndi\params\NoTxEntries,        base,        0,    "10"
+
+
+[Copper_Xcvr.params]
+HKR,Ndi\params\XCVR_SELECT,         ParamDesc,  0,    %media_select%
+HKR,Ndi\params\XCVR_SELECT,         type,       0,    "enum"
+HKR,Ndi\params\XCVR_SELECT,         default,    0,    "AUTO"
+HKR,Ndi\params\XCVR_SELECT\enum,    AUTO,       0,    %media_auto%
+HKR,Ndi\params\XCVR_SELECT\enum,    10HALF,     0,    %media_10_half%
+HKR,Ndi\params\XCVR_SELECT\enum,    100HALF,    0,    %media_100_half%
+HKR,Ndi\params\XCVR_SELECT\enum,    10FULL,     0,    %media_10_full%
+HKR,Ndi\params\XCVR_SELECT\enum,    100FULL,    0,    %media_100_full%
+
+
+[Fiber_Xcvr.params]
+HKR,Ndi\params\XCVR_SELECT,         ParamDesc,  0,    %media_select%
+HKR,Ndi\params\XCVR_SELECT,         type,       0,    "enum"
+HKR,Ndi\params\XCVR_SELECT,         default,    0,    "AUTO"
+HKR,Ndi\params\XCVR_SELECT\enum,    AUTO,       0,    %media_auto%
+HKR,Ndi\params\XCVR_SELECT\enum,    100HALF,    0,    %media_100_half%
+HKR,Ndi\params\XCVR_SELECT\enum,    100FULL,    0,    %media_100_full%
+
+
+[EL99X.params.client]
+HKR,Ndi\params\NoRxEntries,        ParamDesc,   0,    %num_rx_entries%
+HKR,Ndi\params\NoRxEntries,        type,        0,    "long"
+HKR,Ndi\params\NoRxEntries,        default,     0,    "64"
+HKR,Ndi\params\NoRxEntries,        min,         0,    "32"
+HKR,Ndi\params\NoRxEntries,        max,         0,    "512"
+HKR,Ndi\params\NoRxEntries,        step,        0,    "32"
+HKR,Ndi\params\NoRxEntries,        base,        0,    "10"
+
+
+[EL99X.params.server]
+HKR,Ndi\params\NoRxEntries,        ParamDesc,   0,    %num_rx_entries%
+HKR,Ndi\params\NoRxEntries,        type,        0,    "long"
+HKR,Ndi\params\NoRxEntries,        default,     0,    "128"
+HKR,Ndi\params\NoRxEntries,        min,         0,    "32"
+HKR,Ndi\params\NoRxEntries,        max,         0,    "512"
+HKR,Ndi\params\NoRxEntries,        step,        0,    "32"
+HKR,Ndi\params\NoRxEntries,        base,        0,    "10"
+
+
+;-------------------------------------------------------------------------------
+; Install and Service Section
+;
+[EL99X.reg]
+HKR, Ndi,               Service,    0, "EL99X"
+HKR, Ndi\Interfaces,    UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+
+[EL99X.Service]
+DisplayName     = %EL99X.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\EL99XN51.SYS
+LoadOrderGroup  = NDIS
+
+
+[EL99X.EventLog]
+AddReg = EL99X.AddEventLog.reg
+
+[EL99X.AddEventLog.reg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\EL99XN51.sys"
+HKR,, TypesSupported,   0x00010001, 7
+
+
+[EL99X.DriverFiles]
+EL99XN51.SYS,,,2
+EL99XRUN.OUT,,,2
+
+
+[DestinationDirs]
+DefaultDestDir     = 12
+EL99X.DriverFiles  = 12
+
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+V_MS              = "MSFT"
+V_3COM            = "3Com"
+
+disable           = "Disable"
+enable            = "Enable"
+basic             = "Basic"
+enhanced          = "Enhanced"
+
+media_select      = "Media Select"
+media_auto        = "Auto-Negotiate"
+media_10_full     = "10 Mbps, Full-Duplex"
+media_10_half     = "10 Mbps, Half-Duplex"
+media_100_full    = "100 Mpbs, Full-Duplex"
+media_100_half    = "100 Mbps, Half-Duplex"
+
+flow_control      = "Flow Control"
+
+rom_boot          = "ROMBoot"
+self_healing      = "Self Healing"
+
+num_tx_entries	= "Descriptors: Transmit"
+num_rx_entries	= "Descriptors: Receive"
+
+ipsec_offload	= "Offload: IPSec"
+tcpseg_offload	= "Offload: TCP Segmentation"
+checksum_offload= "Offload: TCP/IP Checksum"
+vlan_offload	= "Offload: 802.1p"
+perf_tuning	= "Performance Tuning"
+
+PCI\VEN_10b7&DEV_9902.DeviceDesc="3Com 10/100 PCI NIC w/3XP (3CR990-TX-95)"
+PCI\VEN_10b7&DEV_9903.DeviceDesc="3Com 10/100 PCI NIC w/3XP (3CR990-TX-97)"
+PCI\VEN_10b7&DEV_9908.DeviceDesc="3Com 10/100 PCI Server NIC w/3XP (3CR990SVR95)"
+PCI\VEN_10b7&DEV_9909.DeviceDesc="3Com 10/100 PCI Server NIC w/3XP (3CR990SVR97)"
+
+PCI\VEN_10b7&DEV_9904&SUBSYS_200010B7.DeviceDesc = "3Com 10/100 PCI Server NIC w/3XP (3C990BSVR)"
+PCI\VEN_10b7&DEV_9904&SUBSYS_100010B7.DeviceDesc = "3Com 10/100 PCI NIC w/3XP (3C990B-TX-M)"
+
+PCI\VEN_10b7&DEV_9905&SUBSYS_210110B7.DeviceDesc = "3Com 100FX PCI Server NIC w/3XP (3C990BSVR)"
+PCI\VEN_10b7&DEV_9905&SUBSYS_210210B7.DeviceDesc = "3Com 100FX PCI Server NIC w/3XP (3C990BSVR)"
+PCI\VEN_10b7&DEV_9905&SUBSYS_110110B7.DeviceDesc = "3Com 100FX PCI NIC w/3XP (3C990B-FX-M)"
+PCI\VEN_10b7&DEV_9905&SUBSYS_110210B7.DeviceDesc = "3Com 100FX PCI NIC w/3XP (3C990B-FX-M)"
+
+EL99X.Service.DispName  = "3Com 3C99x EtherLink XL Adapter"
+

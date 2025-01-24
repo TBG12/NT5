@@ -1,0 +1,112 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature   =  "$Windows NT$"
+Class       =  Net
+ClassGUID   =  {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    =  %MSFT%
+LayoutFile  =  layout.inf
+DriverVer=10/01/2002,1.22.2.0
+
+[Manufacturer]
+%XIRCOM%   =   Xircom
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[XIRCOM]
+%CEM28.DevDesc%   = CEM28.ndi, MF\XIRCOMCEM28_DEV1
+
+[CEM28.ndi]
+AddReg          = CEM28.params.reg, CEM28.reg
+Characteristics = 0x84
+BusType         = 8
+Copyfiles       = cem28.CopyFiles
+
+[CEM28.ndi.Services]
+AddService      = cem28, 2, cem28.Service, cem28.EventLog
+
+[CEM28.reg]
+HKR,    Ndi\Interfaces, UpperRange,     0, "ndis5"
+HKR,    Ndi\Interfaces, LowerRange,     0, "ethernet"
+HKR,    Ndi,            Service,        0, "cem28"
+
+
+[CEM28.params.reg]
+HKR, Ndi\params\CableType,          ParamDesc,          0, %CableType%
+HKR, Ndi\params\CableType,          default,            0, "0"
+HKR, Ndi\params\CableType,          type,               0, "enum"
+HKR, Ndi\params\CableType\enum,     "0",                0, %AutoDetect%
+HKR, Ndi\params\CableType\enum,     "1",                0, %TP%
+HKR, Ndi\params\CableType\enum,     "2",                0, %Coax%
+HKR, ,                              CableType,          0, "0"
+
+HKR, Ndi\params\EarlyTransmit,      ParamDesc,          0, %EarlyTransmit%
+HKR, Ndi\params\EarlyTransmit,      default,            0, "0"
+HKR, Ndi\params\EarlyTransmit,      type,               0, "enum"
+HKR, Ndi\params\EarlyTransmit\enum, "0",                0, %OFF%
+HKR, Ndi\params\EarlyTransmit\enum, "1",                0, %ON%
+HKR, ,                              EarlyTransmit,      0, "0"
+
+HKR,Ndi\Params\FullDuplex,          ParamDesc,          0, %FullDuplex%
+HKR,Ndi\Params\FullDuplex,          default,            0, "0"
+HKR,Ndi\Params\FullDuplex,          type,               0, "enum"
+HKR,Ndi\Params\FullDuplex\enum,     "0",                0, %OFF%
+HKR,Ndi\Params\FullDuplex\enum,     "1",                0, %ON%
+HKR, ,                              FullDuplex,         0, "0"
+
+HKR, Ndi\params\LinkIntegrity,      ParamDesc,          0, %LinkIntegrity%
+HKR, Ndi\params\LinkIntegrity,      default,            0, "1"
+HKR, Ndi\params\LinkIntegrity,      type,               0, "enum"
+HKR, Ndi\params\LinkIntegrity\enum, "0",                0, %OFF%
+HKR, Ndi\params\LinkIntegrity\enum, "1",                0, %ON%
+HKR, ,                              LinkIntegrity,      0, "1"
+
+HKR, Ndi\params\Mode,               ParamDesc,          0, %Mode%
+HKR, Ndi\params\Mode,               default,            0, "0"
+HKR, Ndi\params\Mode,               type,               0, "enum"
+HKR, Ndi\params\Mode\enum,          0,                  0, %IO%
+HKR, Ndi\params\Mode\enum,          1,                  0, %MemMap%
+HKR, ,                              Mode,               0, "0"
+
+HKR, ,                              PlatformType,       0, "0"
+
+[cem28.CopyFiles]
+cem28n5.sys,,,2
+
+[cem28.Service]
+DisplayName    = %cem28.Service.DispName%
+ServiceType    = 1    ;SERVICE_KERNEL_DRIVER
+StartType      = 3    ;SERVICE_AUTO_START
+ErrorControl   = 1    ;NORMAL
+ServiceBinary  = %12%\cem28n5.sys
+LoadOrderGroup = NDIS
+
+[cem28.EventLog]
+AddReg =  cem28.AddEventLog.Reg
+
+[cem28.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll,%%SystemRoot%%\System32\drivers\cem28n5.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+[DestinationDirs]
+cem28.CopyFiles = 12
+
+[Strings]
+XIRCOM                    = "Xircom"
+MSFT                      = "Microsoft"
+CEM28.DevDesc          	  = "Xircom CreditCard Ethernet+Modem 28.8 (Ethernet)"
+cem28.Service.DispName	  = "Xircom CreditCard Ethernet+Modem 28.8 Network Driver"
+
+CableType                 = "Cable Type"
+AutoDetect                = "Auto Detect"
+TP                        = "Twisted Pair - 10BT"
+Coax                      = "Coax - 10B2"
+EarlyTransmit             = "Early Transmit"
+OFF                       = "Off"
+ON                        = "On"
+FullDuplex                = "Full Duplex"
+LinkIntegrity             = "LinkIntegrity"
+Mode                      = "Mode"
+IO                        = "I/O Mode"
+MemMap                    = "Memory Mapped Mode"

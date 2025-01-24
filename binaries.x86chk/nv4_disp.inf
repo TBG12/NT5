@@ -1,0 +1,443 @@
+;
+; NVIDIA Windows 2000/XP Display INF file
+; Copyright 1999-2002 NVIDIA Corporation.  All Rights Reserved.
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%NVidia%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer = 07/18/2002, 2.9.5.8
+
+;
+; Dest directories are \windows\system32 and \windows\system32\drivers
+;
+
+[DestinationDirs]
+DefaultDestDir   = 11
+nv4.Miniport     = 12
+nv.Display       = 11
+nv.oldrm         = 12
+nv.delete.icd    = 11
+
+
+;
+; The Manufacturer section lists all of the manufacturers that we will
+; display in the Dialog box. DEVICE sections are specified.
+;
+
+[Manufacturer]
+%NVidia%      = NVidia.Mfg
+
+;
+; Device section. Each section here corresponds with an entry listed in the
+; [Manufacturer] section, above. The models will be displayed in the order
+; that they appear in the INF file. This section identifies
+; the corresponding INSTALL sections.
+;
+
+[NVidia.Mfg]
+%NVidia.Nv4% = nv4, PCI\VEN_10DE&DEV_0020
+%NVidia.Nv5% = nv4, PCI\VEN_10DE&DEV_0028
+;%NVidia.Nv0A% = nv4_aligart, PCI\VEN_10DE&DEV_00A0
+%NVidia.NvVANTA% = nv4, PCI\VEN_10DE&DEV_002C
+%NVidia.NvULTRA% = nv4, PCI\VEN_10DE&DEV_0029
+%NVidia.Nv5M64% = nv4, PCI\VEN_10DE&DEV_002D
+%NVidia.Nv10% = nv4, PCI\VEN_10DE&DEV_0100
+%NVidia.Nv10DDR% = nv4, PCI\VEN_10DE&DEV_0101
+%NVidia.Nv10GL% = nv4_WSApps, PCI\VEN_10DE&DEV_0103
+%NVidia.Nv11% = nv4, PCI\VEN_10DE&DEV_0110
+%NVidia.Nv11DDR% = nv4, PCI\VEN_10DE&DEV_0111
+%NVidia.Nv11GL% = nv4_WSApps, PCI\VEN_10DE&DEV_0113
+%NVidia.NvCrush11% = nv4_Crush11, PCI\VEN_10DE&DEV_01A0
+%NVidia.Nv15% = nv4, PCI\VEN_10DE&DEV_0150
+%NVidia.Nv15DDR% = nv4, PCI\VEN_10DE&DEV_0151
+%NVidia.Nv15BR% = nv4, PCI\VEN_10DE&DEV_0152
+%NVidia.Nv15GL% = nv4_WSApps, PCI\VEN_10DE&DEV_0153
+%NVidia.Nv17.1% = nv4, PCI\VEN_10DE&DEV_0170
+%NVidia.Nv17.2% = nv4, PCI\VEN_10DE&DEV_0171
+%NVidia.Nv17.3% = nv4, PCI\VEN_10DE&DEV_0172
+;%NVidia.Nv17GL.1% = nv4_WSApps, PCI\VEN_10DE&DEV_0178
+;%NVidia.Nv17GL.2% = nv4_WSApps_DualView, PCI\VEN_10DE&DEV_017A
+%NVidia.Nv20% = nv4, PCI\VEN_10DE&DEV_0200
+%NVidia.Nv20.1% = nv4, PCI\VEN_10DE&DEV_0201
+%NVidia.Nv20.2% = nv4, PCI\VEN_10DE&DEV_0202
+%NVidia.Nv20DCC% = nv4_DccApps, PCI\VEN_10DE&DEV_0203
+%NVidia.Nv25.1% = nv4, PCI\VEN_10DE&DEV_0250
+%NVidia.Nv25.2% = nv4, PCI\VEN_10DE&DEV_0251
+%NVidia.Nv25.4% = nv4, PCI\VEN_10DE&DEV_0253
+;%NVidia.Nv25GL.1% = nv4_WSApps, PCI\VEN_10DE&DEV_0258
+;%NVidia.Nv25GL.2% = nv4_WSApps, PCI\VEN_10DE&DEV_0259
+%NVidia.Nv25GL.4% = nv4_WSApps, PCI\VEN_10DE&DEV_025B
+
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[nv4]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+DelReg = nv_ClearRegistrySwitches
+
+[nv4.Services]
+AddService = nv, 0x00000002, nv4_Generic_Service_Inst, nv4_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_EventLog_Inst]
+AddReg = nv4_EventLog_AddReg
+
+[nv4_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+
+[nv4_WSApps]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_WSApps.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+DelReg = nv_ClearRegistrySwitches
+
+[nv4_WSApps.Services]
+AddService = nv, 0x00000002, nv4_WSApps_Generic_Service_Inst, nv4_WSApps_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_WSApps_EventLog_Inst]
+AddReg = nv4_WSApps_EventLog_AddReg
+
+[nv4_WSApps_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_WSApps_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+[nv4_WSApps_DualView]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_WSApps_DualView.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+DelReg = nv_ClearRegistrySwitches
+
+[nv4_WSApps_DualView.Services]
+AddService = nv, 0x00000002, nv4_WSApps_DualView_Generic_Service_Inst, nv4_WSApps_DualView_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_WSApps_DualView_EventLog_Inst]
+AddReg = nv4_WSApps_DualView_EventLog_AddReg
+
+[nv4_WSApps_DualView_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_WSApps_DualView_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+[nv4_DccApps]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_DccApps.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+DelReg = nv_ClearRegistrySwitches
+
+[nv4_DccApps.Services]
+AddService = nv, 0x00000002, nv4_DccApps_Generic_Service_Inst, nv4_DccApps_EventLog_Inst
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_DccApps_EventLog_Inst]
+AddReg = nv4_WSApps_EventLog_AddReg
+
+[nv4_DccApps_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_DccApps_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+[nv4_Crush11]
+CopyFiles=nv4.Miniport, nv.Display
+DelFiles=nv.oldrm, nv.delete.icd
+
+
+[nv4_Crush11.SoftwareSettings]
+AddReg = nv_SoftwareDeviceSettings
+AddReg = Crush11_AddReg
+DelReg = nv_ClearRegistrySwitches
+
+[nv4_Crush11.Services]
+AddService = nv, 0x00000002, nv4_Crush11_Generic_Service_Inst, nv4_Crush11_EventLog_Inst
+
+DelService=nvarch
+DelService=nvgfx
+
+[nv4_Crush11_EventLog_Inst]
+AddReg = nv4_Crush11_EventLog_AddReg
+
+[nv4_Crush11_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\nv4_mini.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[nv4_Crush11_Generic_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\nv4_mini.sys
+AddReg         = nv4_Generic_Service_AddReg
+
+
+
+[nv4_Generic_Service_AddReg]
+HKR,Video,Service,%REG_SZ%,nv
+
+
+
+;
+; File List sections for NV.Display and NV.Miniport
+;
+
+[nv.Display]
+nv4_disp.dll
+
+[nv4.Miniport]
+nv4_mini.sys
+
+
+[nv.oldrm]
+nvarch.sys,,,1
+nvgfx.sys,,,1
+
+
+
+[nv.delete.icd]
+nv4oglnt.dll,,,1
+nvopenglnt.dll,,,1
+
+
+
+[nv4.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=4
+
+[nv4_aligart.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=4
+
+[nv4_WSApps.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=4
+
+[nv4_WSApps_DualView.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=4
+
+[nv4_DccApps.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=4
+
+[nv4_Crush11.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=80
+MaximumNumberOfDevices=4
+
+
+
+;
+; NVidia Add registry section
+;
+
+[nv_SoftwareDeviceSettings]
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, nv4_disp
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+HKR,, CapabilityOverride,	   %REG_DWORD%,    8
+
+HKR,, "Attach.ToDesktop",%REG_DWORD%,1
+HKR,, "DefaultSettings.BitsPerPel",%REG_DWORD%,16
+HKR,, "DefaultSettings.XResolution",%REG_DWORD%,800
+HKR,, "DefaultSettings.YResolution",%REG_DWORD%,600
+HKR,, "UseCompressedModeFormat",%REG_DWORD%,1
+
+HKR,, NV4_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;1024,768,-,140-170;1152,864,-16,140-150;1152,864,32,140;S 1280,768,-,-;1280,960,-,-;1280,1024,32,120;1600,900,-16,100-;1600,900,32,85-;1600,1024,-16,100-;1600,1024,32,85-;1600,1200,-16,100-;1600,1200,32,85-;1920,1080,-16,100-;1920,1080,32,75-;1920,1200,-16,85-;1920,1200,32,70-;1920,1440,-,-;2048,1536,-,-"
+HKR,, NV5_Modes_Delta, %REG_SZ%, "A 640,480,-16,140-240;640,480,32,140-170;800,600,-16,140-240;800,600,32,140-150;1024,768,-16,140-200;1152,864,-16,140-170;1280,768,-16,140-150;1280,960,-16,140-150;1280,1024,-16,140-150;S 1600,900,32,100-;1600,1024,-16,120;1600,1024,32,100-;1600,1200,-16,120;1600,1200,32,100-;1920,1080,-16,120;1920,1080,32,85-;1920,1200,-16,100-;1920,1200,32,72-;1920,1440,-16,85-;1920,1440,32,70-;2048,1536,-16,70-;2048,1536,32,-"
+HKR,, NV0A_Modes_Delta, %REG_SZ%, "S 1600,900,-16,120;1600,900,32,100-;1600,1024,-16,120;1600,1024,32,100-;1600,1200,-16,120;1600,1200,32,100-;1920,1080,-16,120;1920,1080,32,85-;1920,1200,-16,100-;1920,1200,32,72-;1920,1440,-16,85-;1920,1440,32,70-;2048,1536,-16,70-;2048,1536,32,-"
+HKR,, NVVANTA_Modes_Delta, %REG_SZ%, "S 1280,768,-,-;1280,960,-,-;1280,1024,32,120;1600,900,-16,100-;1600,900,32,85-;1600,1024,-16,100-;1600,1024,32,85-;1600,1200,-16,100-;1600,1200,32,85-;1920,1080,-16,100-;1920,1080,32,70-;1920,1200,-16,85-;1920,1200,32,70-;1920,1440,-,-;2048,1536,-,-"
+HKR,, NV5M64_Modes_Delta, %REG_SZ%, "S 1600,900,-16,120;1600,900,32,100-;1600,1024,-16,120;1600,1024,32,100-;1600,1200,-16,120;1600,1200,32,100-;1920,1080,-16,120;1920,1080,32,85-;1920,1200,-16,100-;1920,1200,32,-;1920,1440,-16,85-;1920,1440,32,-;2048,1536,-16,70-;2048,1536,32,-"
+HKR,, NV5ULTRA_Modes_Delta, %REG_SZ%, "A 640,480,-16,140-240;640,480,32,140-170;800,600,-16,140-240;800,600,32,140-150;1024,768,-16,140-200;1152,864,-16,140-170;1280,768,-16,140-150;1280,960,-16,140-150;1280,1024,-16,140-150;S 1600,900,32,100-;1600,1024,-16,120;1600,1024,32,100-;1600,1200,-16,120;1600,1200,32,100-;1920,1080,-16,120;1920,1080,32,85-;1920,1200,-16,100-;1920,1200,32,72-;1920,1440,-16,85-;1920,1440,32,70-;2048,1536,-16,70-;2048,1536,32,-"
+HKR,, NV10_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV10DDR_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV10GL_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV11_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV11DDR_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV11M_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV11GL_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, CRUSH11_Modes_Delta, %REG_SZ%, "S 640,400,-,120;640,480,-,120;800,600,-,120;1024,768,-,120;1152,864,-,-;1280,768,-,-;1280,960,-,-;1280,1024,-,120;1600,900,-,120;1600,1024,-,-;1600,1200,-,120;1920,1080,-,-;1920,1200,-,120;1920,1440,-16,120;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV15_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV15DDR_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV15BR_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV15GL_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV20_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV20_1_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV20_2_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV20_3_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV17_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV17GL_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV25_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+HKR,, NV25GL_Modes_Delta, %REG_SZ%, "A 640,480,-,140-240;800,600,-,140-240;848,480,-,-240;1024,768,-16,140-240;1024,768,32,140-200;1152,864,-16,140-200;1152,864,32,140-170;1280,720,-16,-170;1280,720,32,-150;1280,768,-16,140-170;1280,768,32,140-150;1280,960,-16,140-170;1280,960,32,140-150;1280,1024,-16,140-170;1280,1024,32,140-150;1360,768,-16,-170;1360,768,32,-150;1600,900,-16,140-150;S 1600,1024,32,120;1600,1200,32,120;1920,1080,-16,120;1920,1080,32,100-;1920,1200,-16,120;1920,1200,32,100-;1920,1440,-16,100-;1920,1440,32,85-;2048,1536,-16,85-;2048,1536,32,70-"
+
+
+
+[Crush11_AddReg]
+HKLM,"SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management", LargePageMinimum, %REG_DWORD%, 0xffffffff
+
+
+
+;
+; Clear out old registry switches
+;
+
+[nv_ClearRegistrySwitches]
+HKR,, NVREGSWITCHES
+HKR,, NV4_Modes
+HKR,, NV5_Modes
+HKR,, NV0A_Modes
+HKR,, NVVANTA_Modes
+HKR,, NV5M64_Modes
+HKR,, NV5ULTRA_Modes
+HKR,, NV10_Modes
+HKR,, NV10DDR_Modes
+HKR,, NV10GL_Modes
+HKR,, NV11_Modes
+HKR,, NV11DDR_Modes
+HKR,, NV11GL_Modes
+HKR,, CRUSH11_Modes
+HKR,, NV15_Modes
+HKR,, NV15DDR_Modes
+HKR,, NV15BR_Modes
+HKR,, NV15GL_Modes
+HKR,, NV17_Modes
+HKR,, NV17GL_Modes
+HKR,, NV20_Modes
+HKR,, NV20_1_Modes
+HKR,, NV20_2_Modes
+HKR,, NV20_3_Modes
+HKR,, NV25_Modes
+HKR,, NV25GL_Modes
+HKR,, FlatPanelMode
+HKR,, DMTOVERRIDE
+HKR,, DisableExtRefresh
+HKR,, Max16x12
+HKR,, Disable19x12x32at60
+HKR,, Disable16x12x32ge70
+HKR,, Disable19x10x32ge70
+HKR,, DellSwitch1
+HKR,, OglStencil
+HKR,, OGL_EnableFSAA
+HKR,, OGL_DefaultSwapInterval
+HKR,, OGL_TexMemorySpaceEnables
+HKR,, OGL_TexStagingBufferSize
+HKR,, OGL_TexStagingBufferMultSize
+HKR,, OGL_DLStagingBufferSizeWords
+HKR,, OGL_DlMemorySpaceEnables
+HKR,, TwinViewInfo
+HKR,, PrevTwinViewInfo
+HKR,, SaveSettings
+HKR,, EnableWin2KDualview
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers",RIVATNT
+HKLM,"Software\NVIDIA Corporation\RIVA TNT\OpenGL"
+HKLM,"SYSTEM\CurrentControlSet\Hardware Profiles\Current\System\CurrentControlSet\SERVICES\NV4\DEVICE0"
+
+[Strings]
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+REG_SZ_APPEND  = 0x00010008
+
+;
+; Localizable Strings
+;
+
+NVidia       = "NVIDIA"
+NVidia.Nv4 = "NVIDIA RIVA TNT (Microsoft Corporation)"
+NVidia.Nv5 = "NVIDIA RIVA TNT2/TNT2 Pro (Microsoft Corporation)"
+;NVidia.Nv0A = "NVIDIA Aladdin TNT2 (Microsoft Corporation)"
+NVidia.NvVanta = "NVIDIA Vanta/Vanta LT (Microsoft Corporation)"
+NVidia.NvUltra = "NVIDIA RIVA TNT2 Ultra (Microsoft Corporation)"
+NVidia.Nv5M64 = "NVIDIA RIVA TNT2 Model 64/Model 64 Pro (Microsoft Corporation)"
+NVidia.Nv10 = "NVIDIA GeForce 256 (Microsoft Corporation)"
+NVidia.Nv10DDR = "NVIDIA GeForce DDR (Microsoft Corporation)"
+NVidia.Nv10GL = "NVIDIA Quadro (Microsoft Corporation)"
+NVidia.Nv11 = "NVIDIA GeForce2 MX/MX 400 (Microsoft Corporation)"
+NVidia.Nv11DDR = "NVIDIA GeForce2 MX 100/200 (Microsoft Corporation)"
+NVidia.Nv11GL = "NVIDIA Quadro2 MXR/EX (Microsoft Corporation)"
+NVidia.NvCrush11 = "NVIDIA GeForce2 Integrated GPU (Microsoft Corporation)"
+NVidia.Nv15 = "NVIDIA GeForce2 GTS/GeForce2 Pro (Microsoft Corporation)"
+NVidia.Nv15DDR = "NVIDIA GeForce2 Ti (Microsoft Corporation)"
+NVidia.Nv15BR = "NVIDIA GeForce2 Ultra (Microsoft Corporation)"
+NVidia.Nv15GL = "NVIDIA Quadro2 Pro (Microsoft Corporation)"
+NVidia.Nv17.1 = "NVIDIA GeForce4 MX 460 (Microsoft Corporation)"
+NVidia.Nv17.2 = "NVIDIA GeForce4 MX 440 (Microsoft Corporation)"
+NVidia.Nv17.3 = "NVIDIA GeForce4 MX 420 (Microsoft Corporation)"
+;NVidia.Nv17GL.1 = "NVIDIA Quadro4 500/550 XGL (Microsoft Corporation)"
+;NVidia.Nv17GL.2 = "NVIDIA Quadro4 200/400 NVS (Microsoft Corporation)"
+NVidia.Nv20 = "NVIDIA GeForce3 (Microsoft Corporation)"
+NVidia.Nv20.1 = "NVIDIA GeForce3 Ti 200 (Microsoft Corporation)"
+NVidia.Nv20.2 = "NVIDIA GeForce3 Ti 500 (Microsoft Corporation)"
+NVidia.Nv20DCC = "NVIDIA Quadro DCC (Microsoft Corporation)"
+NVidia.Nv25.1 = "NVIDIA GeForce4 Ti 4600 (Microsoft Corporation)"
+NVidia.Nv25.2 = "NVIDIA GeForce4 Ti 4400 (Microsoft Corporation)"
+NVidia.Nv25.4 = "NVIDIA GeForce4 Ti 4200 (Microsoft Corporation)"
+;NVidia.Nv25GL.1 = "NVIDIA Quadro4 900 XGL (Microsoft Corporation)"
+;NVidia.Nv25GL.2 = "NVIDIA Quadro4 750 XGL (Microsoft Corporation)"
+NVidia.Nv25GL.4 = "NVIDIA Quadro4 700 XGL (Microsoft Corporation)"
+
+DiskId1="NVIDIA Windows 2000/XP Driver Library Installation Disk 1"
+DiskId2="NVIDIA Windows 2000/XP Driver Library Installation Disk 2"
+DiskId3="NVIDIA Windows 2000/XP Driver Library Installation Disk 3"
+DiskId4="NVIDIA Windows 2000/XP Driver Library Installation Disk 4"
+DiskId5="NVIDIA Windows 2000/XP Driver Library Installation Disk 5"
+NVSVC.desc = "NVIDIA Driver Helper Service"
+MS      = "Microsoft"

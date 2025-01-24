@@ -1,0 +1,9 @@
+*% Epndve3q.gpd
+*% Copyright (c) 1998 Seiko Epson Corporation
+*% Global Include file for Epson Color Inkjet Plugins
+*GPDSpecVersion: "1.0"
+*GPDFileVersion: "1.0"
+*GPDFileName: "Epndve3q.gpd"
+*CodePage: 1252
+*ModelName: "Epson Stylus Photo 750 ESC/P 2"
+*Include: "Epndvx3q.gpd"

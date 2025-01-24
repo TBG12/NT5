@@ -1,0 +1,873 @@
+; NETDGDXB.INF
+; Digi Datafire RAS & AccelePort RAS
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[Version]
+Signature="$Windows NT$"
+Class=Net
+ClassGUID={4D36E972-E325-11CE-BFC1-08002BE10318}
+provider=%MS%
+LayoutFile=Layout.inf
+DriverVer=03/27/2002,3.10.225.0
+
+[ControlFlags]
+ExcludeFromSelect= *
+
+[Manufacturer]
+%DIGI%=DIGIWANLINKS
+
+[DIGIWANLINKS]
+;;Digi T1/E1 RAS adapters
+%HoustonE1S.DeviceDesc% = HoustonE1S.ndi, PCI\VEN_114F&DEV_001D&SUBSYS_0050114F
+%HoustonE1D.DeviceDesc% = HoustonE1D.ndi, PCI\VEN_114F&DEV_001D&SUBSYS_0051114F
+%HoustonT1S.DeviceDesc% = HoustonT1S.ndi, PCI\VEN_114F&DEV_001D&SUBSYS_0052114F
+%HoustonT1D.DeviceDesc% = HoustonT1D.ndi, PCI\VEN_114F&DEV_001D&SUBSYS_0053114F
+
+;;Digi BRI RAS adapters
+%LondonU.DeviceDesc% =  LondonU.ndi, PCI\VEN_114F&DEV_0024&SUBSYS_0030114F
+%LondonST.DeviceDesc% = LondonST.ndi, PCI\VEN_114F&DEV_0024&SUBSYS_0031114F
+
+;;Digi RAS A adapters
+%Chaska80.DeviceDesc% = Chaska80.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0060114F	; Chaska8Daa0
+%Chaska40.DeviceDesc% = Chaska40.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0061114F	; Chaska4Daa0
+%Chaska81.DeviceDesc% = Chaska81.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0062114F   ; Chaska8Daa1
+%Chaska41.DeviceDesc% = Chaska41.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0063114F   ; Chaska4Daa1
+%Chaska82.DeviceDesc% = Chaska82.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0064114F   ; Chaska8Daa2
+%Chaska42.DeviceDesc% = Chaska42.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0065114F   ; Chaska4Daa2
+%Chaska83.DeviceDesc% = Chaska83.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0066114F   ; Chaska8Daa3
+%Chaska43.DeviceDesc% = Chaska43.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0067114F   ; Chaska4Daa3
+%Chaska84.DeviceDesc% = Chaska84.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0068114F   ; Chaska8Daa4
+%Chaska44.DeviceDesc% = Chaska44.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_0069114F   ; Chaska4Daa4
+%Chaska85.DeviceDesc% = Chaska85.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_006A114F   ; Chaska8Daa5
+%Chaska45.DeviceDesc% = Chaska45.ndi, PCI\VEN_114F&DEV_0023&SUBSYS_006B114F   ; Chaska4Daa5
+
+[Sys.CopyFiles]
+digidxb.sys					; DStreams Driver (Houston, London, Chaska)
+bioprime.bin				; Prime BIOS
+fepprime.bin				; Prime Firmware
+fepdense.bin				; Houston, London, Chaska Firmware
+fepherc.bin					; AcceleportXp Firmware
+digiisdn.sys				; Isdn (Prime, Houston, London)
+digiasyn.sys				; Async (Houston, London, Chaska)
+
+[Dll.CopyFiles]
+DigiFwrk.dll				; GUI Framework
+DigiView.exe				; Diagnostic programs
+DigiHLC.dll					; Prime, Houston, London, Chaska
+DigiDBP.dll					; Prime, Houston, London, Chaska
+DigiIsdn.dll				; ISDN GUI (Prime, Houston, London)
+DigiAsyn.dll				; Async GUI (Houston, London, Chaska)
+DigiRas.chm					; to be included later
+DigiView.chm				; Diagnostics Help
+
+[Help.CopyFiles]
+DigiRas.chm					; to be included later
+DigiView.chm				; Diagnostics Help
+
+[DestinationDirs]
+DefaultDestDir=11
+Sys.CopyFiles       = 12 ; Windows Drivers Directory
+Dll.CopyFiles       = 11 ; Windows System Directory
+Help.CopyFiles	    = 18 ; Windows Help Directory
+
+[HoustonE1S.ndi.NT]
+AddReg          = Dxb.ndi.reg, Isdn.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, HoustonE1S.ndi.reg, HoustonE1S.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[HoustonE1D.ndi.NT]
+AddReg          = Dxb.ndi.reg, Isdn.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, HoustonE1D.ndi.reg, HoustonE1D.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[HoustonT1S.ndi.NT]
+AddReg          = Dxb.ndi.reg, Isdn.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, HoustonT1S.ndi.reg, HoustonT1S.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[HoustonT1D.ndi.NT]
+AddReg          = Dxb.ndi.reg, Isdn.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, HoustonT1D.ndi.reg, HoustonT1D.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[LondonU.ndi.NT]
+AddReg          = Dxb.ndi.reg, Isdn.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, LondonU.ndi.reg, LondonU.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[LondonST.ndi.NT]
+AddReg          = Dxb.ndi.reg, Isdn.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, LondonST.ndi.reg, LondonST.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska40.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska40.ndi.reg, Chaska40.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska41.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska41.ndi.reg, Chaska41.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska42.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska42.ndi.reg, Chaska42.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska43.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska43.ndi.reg, Chaska43.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska44.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska44.ndi.reg, Chaska44.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska45.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska45.ndi.reg, Chaska45.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska80.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska80.ndi.reg, Chaska80.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska81.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska81.ndi.reg, Chaska81.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska82.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska82.ndi.reg, Chaska82.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska83.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska83.ndi.reg, Chaska83.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska84.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska84.ndi.reg, Chaska84.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[Chaska85.ndi.NT]
+AddReg          = Dxb.ndi.reg, Dxb.staticparams.reg, Common.staticparams.reg, Chaska85.ndi.reg, Chaska85.Adapter.reg
+DelReg          = WanLinks.StaleParams.reg
+Characteristics = 0x84 ; NCF_REMOVABLE | NCF_HAS_UI | NCF_PHYSICAL
+CopyFiles = Sys.CopyFiles, Dll.CopyFiles, Help.CopyFiles
+CopyINF = netdgdxb.inf,digimps.inf,digiisdn.inf,DigiAsyn.inf,MdmDgDen.inf
+BusType         = 5   ; PCI
+
+[HoustonE1S.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[HoustonE1D.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[HoustonT1S.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[HoustonT1D.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[LondonU.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[LondonST.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska40.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska41.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska42.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska43.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska44.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska45.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska80.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska81.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska82.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska83.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska84.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+[Chaska85.ndi.NT.Services]
+AddService = DIGIDXB, 2, Dxb.AddService, Dxb.AddEventLog
+
+;****************************************************************************
+; WanLinks Adapter CoInstaller Sections
+;****************************************************************************
+
+[HoustonE1S.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[HoustonE1D.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[HoustonT1S.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[HoustonT1D.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[LondonU.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[LondonST.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska40.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska41.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska42.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska43.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska44.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska45.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska80.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska81.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska82.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska83.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska84.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Chaska85.ndi.NT.CoInstallers]
+CopyFiles = @DigiInf.dll
+AddReg=Common.CoInstaller_AddReg
+
+[Dxb.AddService]
+DisplayName     = %DIGIDXB.DispName%
+ServiceType     = 1 ; SERVICE_KERNEL_DRIVER
+StartType       = 1 ; SERVICE_SYSTEM_START
+ErrorControl    = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\DIGIDXB.SYS
+LoadOrderGroup  = NDIS ; DEFAULT_GROUP
+
+[Common.CoInstaller_AddReg]
+HKR, , CoInstallers32, 0x00010000, "DigiInf.dll, DigiDxbCoInstaller"
+
+[Dxb.AddEventLog]
+AddReg=Dxb.AddEventLog.reg
+
+[Dxb.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\digidxb.sys"
+HKR, , TypesSupported, 0x00010001, 7
+
+[Common.staticparams.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Major", 0x00010001, 3
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Minor", 0x00010001, 10
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Build", 0x00010001, 225
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config, "Date", 0x00000000, 03/27/2002
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\AdapterMap, "Houston", 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\AdapterMap, "London", 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\AdapterMap, "Chaska", 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\AdapterMap, "Prime", 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\LineMap, LineHouston, 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\LineMap, LineLondon, 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\LineMap, LineChaska, 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\LineMap, LinePrime, 0x00000000, DigiHLC.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "None", 0x00000000, DigiFWrk.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "PRI", 0x00000000, DigiDBP.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "T1", 0x00000000, DigiDBP.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "E1 PRI", 0x00000000, DigiDBP.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "E1R2", 0x00000000, DigiDBP.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "BRI", 0x00000000, DigiDBP.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ProtocolMap, "POTS", 0x00000000, DigiDBP.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ServiceMap, "ASYN", 0x00000000, DigiAsyn.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\ServiceMap, "ISDN", 0x00000000, DigiIsdn.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\PortMap, "Serial", 0x00000000, DigiAsyn.dll
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\PortMap, "BChannel", 0x00000000, DigiIsdn.dll
+
+[Isdn.ndi.reg]
+; NDI Binding
+HKR, Ndi\Interfaces, DefUpper, , "noupper"
+HKR, Ndi\Interfaces, DefLower, , "isdn"
+HKR, Ndi\Interfaces, UpperRange, , "noupper"
+HKR, Ndi\Interfaces, LowerRange, , "isdn"
+
+[Dxb.ndi.reg]
+
+HKR, Ndi, Service, , "DigiDxb"
+HKR, Ndi\Interfaces, DefUpper, , "noupper"
+HKR, Ndi\Interfaces, DefLower, , "nolower"
+HKR, Ndi\Interfaces, UpperRange, , "noupper"
+HKR, Ndi\Interfaces, LowerRange, , "nolower"
+
+[Dxb.staticparams.reg]
+HKR, , ProductName, , "DigiDxb"
+HKR, "Parameters", "Spoof", 0x00010001, 1
+
+[WanLinks.StaleParams.reg]
+HKR, , EnumPropPages32
+;
+; HOUSTON E1 SINGLE PCI
+;
+[HoustonE1S.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single", "MaxPorts", 0x00010001, 60
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single", "MaxLogicalChannelsPerLine", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single", "LineSpeed", 0x00010001, 2048000
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single", "ProtocolsAllowed", 0x00010000, "E1 PRI", "E1R2"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1 PRI", "MaxPorts", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1 PRI", "ServicesAllowed", 0x00010000, "ISDN", "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1 PRI"\"ISDN", "MaxPorts", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1 PRI"\"ASYN", "MaxPorts", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1R2", "MaxPorts", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1R2", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Single"\"E1R2"\"ASYN", "MaxPorts", 0x00010001, 30
+HKR, "Parameters", "Option", 0x00000000, "Houston"
+HKR, "Parameters", "Identity", 0x00000000, "DigiHoustonE1Single"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 1
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "", "WanEndpoints", 0x00010001, 30
+HKR, "", "IsdnNumDChannels", 0x00010001, 1
+HKR, "", "IsdnSwitchTypes", 0x00010001, 0x80
+HKR, "", "IsdnAutoSwitchDetect", 0x00010001, 0
+HKR, 0, "IsdnNumBChannels", 0x00010001, 30
+HKR, "Parameters"\0, "LineProtocol", 0x00000000, "E1 PRI", "E1R2"
+HKR, "Parameters"\0, "LineServices", 0x00010000, "ISDN"
+HKR, "Parameters"\0, "NumberOfBChannels", 0x00010001, 30
+;
+; HOUSTON E1 DUAL PCI
+;
+[HoustonE1D.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual", "MaxPorts", 0x00010001, 120
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual", "MaxLogicalChannelsPerLine", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual", "LineSpeed", 0x00010001, 2048000
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual", "ProtocolsAllowed", 0x00010000, "E1 PRI", "E1R2"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1 PRI", "MaxPorts", 0x00010001, 60
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1 PRI", "ServicesAllowed", 0x00010000, "ISDN", "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1 PRI"\"ISDN", "MaxPorts", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1 PRI"\"ASYN", "MaxPorts", 0x00010001, 30
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1R2", "MaxPorts", 0x00010001, 60
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1R2", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonE1Dual"\"E1R2"\"ASYN", "MaxPorts", 0x00010001, 30
+HKR, "Parameters", "Option", 0x00000000, "Houston"
+HKR, "Parameters", "Identity", 0x00000000, "DigiHoustonE1Dual"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 2
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "", "WanEndpoints", 0x00010001, 60
+HKR, "", "IsdnNumDChannels", 0x00010001, 2
+HKR, "", "IsdnSwitchTypes", 0x00010001, 0x80
+HKR, "", "IsdnAutoSwitchDetect", 0x00010001, 0
+HKR, 0, "IsdnNumBChannels", 0x00010001, 30
+HKR, 1, "IsdnNumBChannels", 0x00010001, 30
+HKR, "Parameters"\0, "LineProtocol", 0x00000000, "E1 PRI", "E1R2"
+HKR, "Parameters"\0, "LineServices", 0x00010000, "ISDN"
+HKR, "Parameters"\0, "NumberOfBChannels", 0x00010001, 30
+HKR, "Parameters"\1, "LineProtocol", 0x00000000, "E1 PRI", "E1R2"
+HKR, "Parameters"\1, "LineServices", 0x00010000, "ISDN"
+HKR, "Parameters"\1, "NumberOfBChannels", 0x00010001, 30
+;
+; HOUSTON T1 SINGLE PCI
+;
+[HoustonT1S.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single", "MaxPorts", 0x00010001, 46
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single", "MaxLogicalChannelsPerLine", 0x00010001, 24
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single", "LineSpeed", 0x00010001, 1544000
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single", "ProtocolsAllowed", 0x00010000, "PRI", "T1"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"PRI", "MaxPorts", 0x00010001, 23
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"PRI", "ServicesAllowed", 0x00010000, "ISDN", "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"PRI"\"ISDN", "MaxPorts", 0x00010001, 23
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"PRI"\"ASYN", "MaxPorts", 0x00010001, 23
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"T1", "MaxPorts", 0x00010001, 24
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"T1", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Single"\"T1"\"ASYN", "MaxPorts", 0x00010001, 24
+HKR, "Parameters", "Option", 0x00000000, "Houston"
+HKR, "Parameters", "Identity", 0x00000000, "DigiHoustonT1Single"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 1
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "QueryUserForProtocol", 0x00010001, 1
+HKR, "Parameters", "ProtocolsToQuery", 0x00010000, "PRI", "T1"
+HKR, "", "WanEndpoints", 0x00010001, 23
+HKR, "", "IsdnNumDChannels", 0x00010001, 1
+HKR, "", "IsdnSwitchTypes", 0x00010001, 0x80A  
+HKR, "", "IsdnAutoSwitchDetect", 0x00010001, 0
+HKR, 0, "IsdnNumBChannels", 0x00010001, 23
+;
+; HOUSTON T1 DUAL PCI
+;
+[HoustonT1D.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual", "MaxPorts", 0x00010001, 92
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual", "MaxLogicalChannelsPerLine", 0x00010001, 24
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual", "LineSpeed", 0x00010001, 1544000
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual", "ProtocolsAllowed", 0x00010000, "PRI", "T1"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"PRI", "MaxPorts", 0x00010001, 23
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"PRI", "ServicesAllowed", 0x00010000, "ISDN", "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"PRI"\"ISDN", "MaxPorts", 0x00010001, 23
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"PRI"\"ASYN", "MaxPorts", 0x00010001, 23
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"T1", "MaxPorts", 0x00010001, 24
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"T1", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiHoustonT1Dual"\"T1"\"ASYN", "MaxPorts", 0x00010001, 24
+HKR, "Parameters", "Option", 0x00000000, "Houston"
+HKR, "Parameters", "Identity", 0x00000000, "DigiHoustonT1Dual"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 2
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "QueryUserForProtocol", 0x00010001, 1
+HKR, "Parameters", "ProtocolsToQuery", 0x00010000, "PRI", "T1"
+HKR, "", "WanEndpoints", 0x00010001, 46
+HKR, "", "IsdnNumDChannels", 0x00010001, 2
+HKR, "", "IsdnSwitchTypes", 0x00010001, 0x80A
+HKR, "", "IsdnAutoSwitchDetect", 0x00010001, 0
+HKR, 0, "IsdnNumBChannels", 0x00010001, 23
+HKR, 1, "IsdnNumBChannels", 0x00010001, 23
+
+[HoustonE1S.ndi.reg]
+HKR, Ndi, HelpText, , %HoustonE1.HelpText%
+
+[HoustonE1D.ndi.reg]
+HKR, Ndi, HelpText, , %HoustonE1.HelpText%
+
+[HoustonT1S.ndi.reg]
+HKR, Ndi, HelpText, , %HoustonT1.HelpText%
+
+[HoustonT1D.ndi.reg]
+HKR, Ndi, HelpText, , %HoustonT1.HelpText%
+;
+; London U
+;
+[LondonU.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU", "MaxPorts", 0x00010001, 16
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU", "MaxLogicalChannelsPerLine", 0x00010001, 2
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU", "ProtocolsAllowed", 0x00010000, "BRI"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU"\"BRI", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU"\"BRI", "ServicesAllowed", 0x00010000, "ISDN", "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU"\"BRI"\"ASYN", "MaxPorts", 0x00010001, 2
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonU"\"BRI"\"ISDN", "MaxPorts", 0x00010001, 2
+HKR, "Parameters", "Option", 0x00000000, "London"
+HKR, "Parameters", "Identity", 0x00000000, "DigiLondonU"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+HKR, "", "WanEndpoints", 0x00010001, 8
+HKR, "", "IsdnNumDChannels", 0x00010001, 4
+HKR, "", "IsdnSwitchTypes", 0x00010001, 0x9E
+HKR, "", "IsdnAutoSwitchDetect", 0x00010001, 0
+HKR, 0, "IsdnNumBChannels", 0x00010001, 2
+HKR, 1, "IsdnNumBChannels", 0x00010001, 2
+HKR, 2, "IsdnNumBChannels", 0x00010001, 2
+HKR, 3, "IsdnNumBChannels", 0x00010001, 2
+;
+; London ST
+;
+[LondonST.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST", "MaxPorts", 0x00010001, 16
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST", "MaxLogicalChannelsPerLine", 0x00010001, 2
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST", "ProtocolsAllowed", 0x00010000, "BRI"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST"\"BRI", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST"\"BRI", "ServicesAllowed", 0x00010000, "ISDN", "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST"\"BRI"\"ASYN", "MaxPorts", 0x00010001, 2
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiLondonST"\"BRI"\"ISDN", "MaxPorts", 0x00010001, 2
+HKR, "Parameters", "Option", 0x00000000, "London"
+HKR, "Parameters", "Identity", 0x00000000, "DigiLondonST"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+HKR, "", "WanEndpoints", 0x00010001, 8
+HKR, "", "IsdnNumDChannels", 0x00010001, 4
+HKR, "", "IsdnSwitchTypes", 0x00010001, 0x9E
+HKR, "", "IsdnAutoSwitchDetect", 0x00010001, 0
+HKR, 0, "IsdnNumBChannels", 0x00010001, 2
+HKR, 1, "IsdnNumBChannels", 0x00010001, 2
+HKR, 2, "IsdnNumBChannels", 0x00010001, 2
+HKR, 3, "IsdnNumBChannels", 0x00010001, 2
+
+[LondonU.ndi.reg]
+HKR, Ndi, HelpText, , %LondonU.HelpText%
+
+[LondonST.ndi.reg]
+HKR, Ndi, HelpText, , %LondonST.HelpText%
+;
+; Chaska
+;
+[Chaska40.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40"\"POTS", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska40"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska40"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska40.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska40.HelpText%
+
+[Chaska41.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41"\"POTS", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska41"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska41"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska41.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska41.HelpText%
+
+[Chaska42.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42"\"POTS", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska42"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska42"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska42.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska42.HelpText%
+
+[Chaska43.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43"\"POTS", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska43"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska43"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska43.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska43.HelpText%
+
+[Chaska44.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44"\"POTS", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska44"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska44"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska44.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska44.HelpText%
+
+[Chaska45.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45"\"POTS", "MaxPorts", 0x00010001, 4
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska45"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska45"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 4
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska45.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska45.HelpText%
+
+[Chaska80.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80"\"POTS", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska80"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska80"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 8
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska80.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska80.HelpText%
+
+[Chaska81.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81"\"POTS", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska81"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska81"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 8
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska81.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska81.HelpText%
+
+[Chaska82.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82"\"POTS", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska82"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska82"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 8
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska82.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska82.HelpText%
+
+[Chaska83.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83"\"POTS", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska83"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska83"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 8
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska83.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska83.HelpText%
+
+[Chaska84.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84"\"POTS", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska84"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska84"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 8
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska84.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska84.HelpText%
+
+[Chaska85.Adapter.reg]
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85", "AskMultiLines", 0x00010001, 0
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85", "MaxLogicalChannelsPerLine", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85", "InternalModem", 0x00010001, 1
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85", "ProtocolsAllowed", 0x00010000, "POTS"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85"\"POTS", "MaxPorts", 0x00010001, 8
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85"\"POTS", "ServicesAllowed", 0x00010000, "ASYN"
+HKLM, SOFTWARE\Digi\WAN Links\CurrentVersion\Config\"DigiChaska85"\"POTS"\"ASYN", "MaxPorts", 0x00010001, 1
+HKR, "Parameters", "Option", 0x00000000, "Chaska"
+HKR, "Parameters", "Identity", 0x00000000, "DigiChaska85"
+HKR, "Parameters", "NumberOfLines", 0x00010001, 8
+HKR, "Parameters", "FepImagePath", 0x00000000, "FepDense.Bin"
+HKR, "Parameters", "HasWizard", 0x00010001, 0
+
+[Chaska85.ndi.reg]
+HKR, Ndi, HelpText, , %Chaska85.HelpText%
+
+[Strings]
+;**************************************************************************************
+; Non-localizable Strings
+;**************************************************************************************
+;BEGIN ENG - US English Strings
+MS= "Microsoft"
+DIGI="Digi International"
+DIGIDXB.DispName = "Digi DXB Adapter Driver"
+
+HoustonE1S.DeviceDesc = "Digi DataFire RAS 30 PE1 Adapter"
+HoustonT1S.DeviceDesc = "Digi DataFire RAS 24 PT1 Adapter"
+HoustonE1D.DeviceDesc = "Digi DataFire RAS 60 PE2 Adapter"
+HoustonT1D.DeviceDesc = "Digi DataFire RAS 48 PT2 Adapter"
+
+LondonU.DeviceDesc    = "Digi DataFire RAS BRI U Adapter"
+LondonST.DeviceDesc   = "Digi DataFire RAS BRI S/T Adapter"
+
+Chaska40.DeviceDesc	 = "Digi AccelePort RAS 4 Adapter"
+Chaska41.DeviceDesc	 = "Digi AccelePort RAS 4 Adapter"
+Chaska42.DeviceDesc	 = "Digi AccelePort RAS 4 Adapter"
+Chaska43.DeviceDesc	 = "Digi AccelePort RAS 4 Adapter"
+Chaska44.DeviceDesc	 = "Digi AccelePort RAS 4 Adapter"
+Chaska45.DeviceDesc	 = "Digi AccelePort RAS 4 Adapter"
+Chaska80.DeviceDesc	 = "Digi AccelePort RAS 8 Adapter"
+Chaska81.DeviceDesc	 = "Digi AccelePort RAS 8 Adapter"
+Chaska82.DeviceDesc	 = "Digi AccelePort RAS 8 Adapter"
+Chaska83.DeviceDesc	 = "Digi AccelePort RAS 8 Adapter"
+Chaska84.DeviceDesc	 = "Digi AccelePort RAS 8 Adapter"
+Chaska85.DeviceDesc	 = "Digi AccelePort RAS 8 Adapter"
+;END ENG - US English Strings
+
+;**************************************************************************************
+; Localizable Strings
+;**************************************************************************************
+;BEGIN ENG - US English Strings
+HoustonT1.HelpText    = "This adapter supports T1 Primary Rate ISDN (PRI) or Channelized T1"
+HoustonE1.HelpText    = "This adapter supports E1 Primary Rate ISDN (PRI)"
+
+LondonU.HelpText      = "This adapter supports Basic Rate ISDN (BRI) with an U interface"
+LondonST.HelpText     = "This adapter supports Basic Rate ISDN (BRI) with an S/T interface"
+
+Chaska40.HelpText	 = "This adapter provides modem support for POTS lines"
+Chaska41.HelpText	 = "This adapter provides modem support for POTS lines"
+Chaska42.HelpText	 = "This adapter provides modem support for POTS lines"
+Chaska43.HelpText	 = "This adapter provides modem support for POTS lines"
+Chaska44.HelpText	 = "This adapter provides modem support for POTS lines"
+Chaska45.HelpText	 = "This adapter provides modem support for POTS lines"
+Chaska80.HelpText     = "This adapter provides modem support for POTS lines"
+Chaska81.HelpText     = "This adapter provides modem support for POTS lines"
+Chaska82.HelpText     = "This adapter provides modem support for POTS lines"
+Chaska83.HelpText     = "This adapter provides modem support for POTS lines"
+Chaska84.HelpText     = "This adapter provides modem support for POTS lines"
+Chaska85.HelpText     = "This adapter provides modem support for POTS lines"
+;END ENG - US English Strings
+

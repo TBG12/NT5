@@ -1,0 +1,104 @@
+*%
+*% CNBJGRC.GPD
+*%
+*%	Copyright CANON INC. 1997 All Rights Reserved.
+*%
+
+*Macros: CanonBJCMacros
+{
+	CMD_CALLBACKID_SETTIME:		 1
+
+	RC_STRING_PAPERSIZE:             300
+	RC_STRING_LEGAL_ROTATED:         301
+	RC_STRING_ENV_10_BREADTHWISE:    302
+	RC_STRING_ENV_DL_BREADTHWISE:    303
+	RC_STRING_FOOLS:                 304
+	RC_STRING_FOOLS_ROTATED:         305
+	RC_STRING_FAN8_11:               306
+	RC_STRING_FAN8_12:               307
+	RC_STRING_FAN9_11:               308
+	RC_STRING_FAN10_11:              309
+	RC_STRING_FAN10_12:              310
+	RC_STRING_FAN12_8:               311
+	RC_STRING_FAN14_11:              312
+	RC_STRING_FAN15_11:              313
+	RC_STRING_FAN15_12:              314
+	RC_STRING_YOU4_LENGTHWISE:       315
+	RC_STRING_YOU4_BREADTHWISE:      316
+	RC_STRING_YOU6_LENGTHWISE:       317
+	RC_STRING_YOU6_BREADTHWISE:      318
+	RC_STRING_LETTER_BLEED:          319
+	RC_STRING_A4_BLEED:              320
+	RC_STRING_A3PLUS:                321
+
+
+	RC_STRING_BJCARTRIDGE:           350
+	RC_STRING_COLOR:                 351
+	RC_STRING_BK:                    352
+	RC_STRING_PHOTO:                 353
+	RC_STRING_BK_COLOR:              354
+	RC_STRING_BK_PHOTO:              355
+	RC_STRING_PHOTO_COLOR:           356
+
+
+	RC_STRING_COLORMODE:             370
+	RC_STRING_CMYK24:                371
+	RC_STRING_MONO:                  372
+
+
+	RC_STRING_MEDIATYPE:             400
+	RC_STRING_HIGHRES:               401
+	RC_STRING_M306:                  402
+	RC_STRING_M304:                  403
+	RC_STRING_INKJETCARD:            404
+	RC_STRING_POSTCARD:              405
+	RC_STRING_GLOSSYCARD:            406
+	RC_STRING_ENVELOPE:              407
+	RC_STRING_THICK:                 408
+	RC_STRING_OTHER:                 409
+
+
+	RC_STRING_RESOLUTION:            500
+	RC_STRING_HS:                    501
+	RC_STRING_HQ:                    502
+	RC_STRING_FINE:                  503
+	RC_STRING_SUPERECONOMY:          504
+
+
+	RC_STRING_HALFTONE:              520
+	RC_STRING_PATTERN:               521
+	RC_STRING_ERRORDIFFUSION:        522
+
+
+	RC_STRING_INPUTBIN:              540
+	RC_STRING_CASSETTE2:             541
+	RC_STRING_SWITCH:                542
+	RC_STRING_SWITCH2:               543
+	RC_STRING_AUTO2:                 544
+	RC_STRING_TRAY:                  545
+	RC_STRING_CASSETTE0:             546
+
+
+	RC_STRING_ORIENTATION:           560
+	RC_STRING_PORTRAIT:              561
+	RC_STRING_LANDSCAPE_CC270:       562
+
+	RC_STRING_NACK:                  600
+	RC_STRING_ECP:                   601
+	RC_STRING_ON:                    602
+	RC_STRING_OFF:                   603
+
+	RC_STRING_BRIGHTNESS:            620
+	RC_STRING_BRIGHTNESS_LIGHT:      621
+	RC_STRING_BRIGHTNESS_NORMAL:     622
+	RC_STRING_BRIGHTNESS_DARK:       623
+	RC_STRING_BRIGHTNESS_VERYDARK:   624
+
+
+	IDI_INKSYS: 999
+	IDH_GPD_ECPMODE:		 8001
+	IDH_GPD_BRIGHTNESS:		 8002
+	IDH_GPD_INK_1:		 	 8010
+	IDH_GPD_INK_2:		 	 8011
+	IDH_GPD_INK_3:		 	 8012
+}

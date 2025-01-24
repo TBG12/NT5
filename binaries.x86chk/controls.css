@@ -1,0 +1,498 @@
+ /* Class for Topic Button container - part of TourTopics container */
+.clsTopicButton
+{
+		position:absolute;
+		text-align:center;
+		left:5;
+		margin:0;
+		padding:0;
+		cursor:hand;
+		width:127;
+		height:42;
+		z-index:50
+		font-family: Tahoma; 
+		font-weight: bold;
+		font-size:12;
+}
+
+/* Class for topic button caption Normal state - part of TopicButton container */
+.clsTopicButtonCaption 
+{
+		text-decoration: none;
+		position:absolute;
+		text-align: left;	/* LOCALIZATION, adjust text alignment for scene buttons caption */
+		left: 0;			/* LOCALIZATION, adjust left alignment when changing text alignment for this class, similar settings have to be applied to "clsTopicButtonCaptionMouseOver" and "clsTopicButtonCaptionClicked" classes  */
+		top:0;
+		color: white;
+		width:127;
+		height:42;
+		margin:0;
+		padding:3;
+		padding-left:6;
+		cursor:hand;
+		z-index:40;
+}
+
+/* Class for topic button caption Hover state - part of TopicButton container */
+.clsTopicButtonCaptionMouseOver
+{
+		text-decoration: none;
+		position:absolute;
+		text-align: left;	/* LOCALIZATION, adjust text alignment for scene buttons caption */
+		left: 0;			/* LOCALIZATION, adjust left alignment when changing text alignment for this class, similar settings have to be applied to "clsTopicButtonCaptionMouseOver" and "clsTopicButtonCaptionClicked" classes  */
+		top:0;
+		color: #000066;
+		width:127;
+		height:42;
+		margin:0;
+		padding:3;
+		padding-left:6;
+		cursor:hand;
+		z-index:40;
+}
+
+/* Class for topic button caption (state=down) - part of TopicButton container */
+.clsTopicButtonCaptionClicked
+{
+		text-decoration: none;
+		position:absolute;
+		text-align: left;	/* LOCALIZATION, adjust text alignment for scene buttons caption */
+		left: 0;			/* LOCALIZATION, adjust left alignment when changing text alignment for this class, similar settings have to be applied to "clsTopicButtonCaptionMouseOver" and "clsTopicButtonCaptionClicked" classes  */
+		top:0;
+		color: #000033;
+		width:127;
+		height:42;
+		margin:0;
+		padding:3;
+		padding-left:6;
+		cursor:hand;
+		z-index:40;
+}
+
+
+/* Class for topic buttons images (buttons like Welcome, etc...) - part of TopicButton container */
+.clsTopicButtonImg 
+{
+		position:absolute;
+		left:0;
+		top:0;
+		margin:0;
+		padding:0;
+		cursor:hand;
+		z-index:30;
+}
+
+/* Class for Tour container */
+.clsTourContainer
+{
+		position:absolute;
+		visibility:hidden;
+		width: 800;
+		height: 546;
+		top: 0;
+		left: 0;
+		border-width: 0;
+		border-style:solid;
+		border-color: white;
+		background-color: black;
+		margin:0;
+		padding:0;
+		z-index:100;
+}
+
+/* Class for Video container */
+.clsVideoContainer
+{
+		position:absolute;
+		visibility:hidden;
+		font-size: 12;
+		top: 0;
+		left:0;
+		width:800;
+		height:547;
+		border-width: 0;
+		border-style:solid;
+		border-color: white;
+		background-color: black;
+		margin:0;
+		padding:0;
+		z-index: 100;
+}
+	
+/* Class for tour container background image - part of Tour container */
+.clsTourBGImg
+{
+		position:absolute;
+		left:0;
+		top:0;
+		margin:0;
+		padding:0;
+		z-index:-10;
+}
+
+/* Class for tour top controls - part of Tour container */
+.clsTourTop
+{
+		position:absolute;
+		display: ;
+		top: 0;
+		left:0;
+		width:800;
+		height:32;
+		border-width: 0;
+		border-style:solid;
+		border-color: white;
+		background-color: ;
+		margin:0;
+		padding:0;
+		z-index: 0;
+}
+	
+/* Class for tour bottom controls - part of Tour container */
+.clsTourBottom
+{
+		position:absolute;
+		display: ;
+		font-size: 12;
+		top: 470;
+		left:0;
+		width:800;
+		height:60;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: ;
+		margin:0;
+		padding:0;
+		z-index: 0;
+}
+
+/* Class for tour contents container - part of Tour container */
+.clsTourContents
+{
+		position:absolute;
+		font-family: Tahoma;
+		background-repeat: no-repeat;
+		background-position:bottom right; /* LOCALIZATION, for BIDI adjust to "background-position:bottom left" setting to position the watermark to the bottom left corner of text display area */
+		font-size: 12;
+		font-weight:normal;
+		top: 47;
+		left:168;
+		width:596;
+		height:430;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color:white;
+		margin:0;
+		padding:8;
+		overflow:auto;
+		cursor:default;
+		z-index: 0;
+}
+
+/* Class for tour contents title - part of TourContents container */
+.clsContentsTitle
+{
+
+		position:absolute;
+		font-size: 18;
+		font-weight:bold;
+		top:4;
+		width:100%;
+		height:1;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: ;
+		margin:0;
+		padding:0;
+		z-index: 0;
+
+}
+
+/* Class for tour contents body - part of TourContents container */
+.clsContentsBody
+{
+		position:absolute;
+		top:32;
+		width:100%;
+		height:1;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: ;
+		margin:0;
+		padding:0;
+		margin-top:0;
+		z-index: 10;
+}
+
+/* Class for tour title - part of TourTop container */
+.clsTourTitle
+{
+		position:absolute;
+		font-size: 18;
+		font-weight:bold;
+		top:4;
+		left: 280;
+		width:465;
+		height:24;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color:;
+		color: white;
+		cursor:default;
+		margin:0;
+		padding:4;
+		z-index: 0;
+}
+
+
+/* Class for topics button container - part of Tour container */
+.clsTourTopics
+{
+		position:absolute;
+		display: ;
+		font-size: 12;
+		top: 57;
+		left:25;
+		width:128;
+		height:398;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color:;
+		margin:0;
+		padding:4;
+		z-index: 0;
+}
+
+/* Class for media player website link (logo image) - part of TourBottom container */
+.clsMPLogoImg
+{
+		position:absolute;
+		cursor:hand;
+		left:336;
+		top:15;
+		margin:0;
+		padding:0;
+}
+
+
+/* Class for video container background image - part of Video container*/
+.clsVidBGImg
+{
+		position:absolute;
+		left:0;
+		top:0;
+		margin:0;
+		width:800;
+		height:547;
+		padding:0;
+		z-index:-10;
+}
+	
+/* Embeded media player object - part of Video container */
+#idVideo
+{
+		position:absolute;
+		left:150;
+		top:38;
+		border-width: 0;
+		border-style:solid;
+		border-color: white;
+		background-color: black;
+}
+/* Class for video top controls - part of Video container */
+.clsVideoTop
+{
+		position:absolute;
+		display: ;
+		top: 0;
+		left:0;
+		width:800;
+		height:32;
+		border-width: 0;
+		border-style:solid;
+		border-color: white;
+		background-color: ;
+		margin:0;
+		padding:0;
+		z-index: 0;
+}
+/* Class for video bottom controls - part of Video container */
+.clsVideoBottom
+{
+		position:absolute;
+		display: ;
+		font-size: 12;
+		top: 521;
+		left:0;
+		width:800;
+		height:20;
+		border-width: 0;
+		border-style:solid;
+		border-color: white;
+		background-color: ;
+		margin:0;
+		padding:0;
+		z-index: 0;
+}
+
+/* Class for video info container - part of Video container */
+.clsVideoInfo
+{
+		position:absolute;
+		display: ;
+		font-size: 12;
+		top: 42;
+		left:15;
+		width:133;
+		height:456;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: white ;
+		overflow:auto;
+		margin:0;
+		padding:4;
+		z-index: 0;
+}
+	
+/* Class for back to tour button - part of VideoBottom container */
+.clsBackToTourImg
+{
+		position:absolute;
+		cursor:hand;
+		left:70;
+		top:0;
+		margin:0;
+		padding:0;
+}
+
+/* Class for video title - part of VideoTop container */
+.clsVideoTitle
+{
+
+		position:absolute;
+		font-family: Arial;
+		font-size: 18;
+		font-weight:bold;
+		top: 4;
+		left:180;
+		width:575;
+		height:1;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: ;
+		color:white;
+		margin:0;
+		padding:4;
+		z-index: 0;
+
+}
+
+/* Class for play video button - part of TourBottom container */
+.clsPlayVideoImg
+{
+		cursor:hand;
+		margin:0;
+		padding:0;
+}
+
+.clsPlayVideo
+{
+	font-weight: bold; 
+   	color: black; 
+	text-decoration: none;
+	cursor:hand;
+}
+
+/* Class for close tour application button - part of VideoTop container */
+.clsCloseVideoAppImg
+{
+		position:absolute;
+		cursor:hand;
+		left:774;
+		top:4;
+		margin:0;
+		padding:0;
+}
+
+/* Class for close tour application button - part of TourTop container */
+.clsCloseTourAppImg
+{
+		position:absolute;
+		cursor:hand;
+		left:752;
+		top:5;
+		margin:0;
+		padding:0;
+}
+
+/* Class for time elapsed/remaining - part of TourTop container */
+.clsTimeElapsed 
+{
+		position:absolute;
+		top:19; 
+		left:191; 
+		font-size:14;
+		font-weight:bold;
+		z-index:1000;
+		cursor:default;
+}
+	
+/* Class for tour play image - part of TourBottom container*/
+.clsTourPlayImg
+{
+		position:absolute;
+		cursor:hand;
+		left:214;
+		top:21;
+		margin:0;
+		padding:0;
+}
+
+/* Class for tour audio image - part of TourBottom container*/
+.clsTourAudioImg
+{
+		position:absolute;
+		cursor:hand;
+		left:280;
+		top:45;
+		margin:0;
+		padding:0;
+}
+
+/* Class for video info title - part of VideoInfo container */
+.clsVideoInfoTitle
+{
+
+		font-size: 12;
+		font-weight:bold;
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: ;
+		margin-top:2;
+		margin-bottom:8;
+		padding:0;
+		z-index: 0;
+
+}
+
+/* Class for video info body- part of VideoInfo container */
+.clsVideoInfoBody
+{
+		border-width: 0;
+		border-style:solid;
+		border-color: red;
+		background-color: ;
+		margin:0;
+		padding:0;
+		z-index: 0;
+}
+

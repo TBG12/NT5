@@ -1,0 +1,274 @@
+;-----------------------------------------------
+; ATI Display Information file : ATIIXPAA.INF
+; Installation INF for the ATI display driver.
+; Copyright(C) 1998-2002 ATI Technologies Inc.
+; Windows XP
+; Base INF Last Updated 2002/07/02
+
+[Version]
+Signature="$Windows NT$"
+Provider=%ATI%
+LayoutFile=layout.inf
+ClassGUID={4D36E968-E325-11CE-BFC1-08002BE10318}
+Class=Display
+DriverVer=10/30/2002, 6.13.10.5021
+
+[DestinationDirs]
+DefaultDestDir      = 11
+ati2mtaa.Miniport   = 12  ; drivers
+ati2mtaa.Display    = 11  ; system32
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ATI% = ATI.Mfg
+
+[ATI.Mfg]
+Rage Fury Pro/Xpert 2000 Pro (Microsoft Corporation)=             ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00081002
+Rage Fury Pro (Microsoft Corporation)=                            ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00041002
+Rage Fury  Pro (Microsoft Corporation) =                          ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00141002
+Rage Fury Pro/Xpert 2000  Pro (Microsoft Corporation) =           ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00181002
+Rage Fury Pro (Microsoft Corporation) =                           ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00481002
+RAGE Fury MAXX (VGA Device) (Microsoft Corporation) =             ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_20001002
+RAGE Fury MAXX (Device 2) (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_20011002
+Rage Fury Pro/Xpert 2000   Pro (Microsoft Corporation) =          ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_00081002
+Rage Fury  Pro (Microsoft Corporation) =                          ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_00041002
+Rage Fury Pro/Xpert2000 Pro (Microsoft Corporation) =             ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_00181002
+Xpert 2000 Pro (Microsoft Corporation) =                          ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_00481002
+Rage Fury (Microsoft Corporation) =                               ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_00441002
+Rage  Fury (Microsoft Corporation) =                              ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_04481002
+Rage Fury/Xpert 128 / Xpert 2000(Microsoft Corporation) =         ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_00481002
+Magnum/Xpert 128/Xpert 99 (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_00041002
+Magnum/Xpert 128/Xpert 99 / Xpert 2000 (Microsoft Corporation) =  ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_00081002
+Xpert 99/Xpert 2000 (Microsoft Corporation) =                     ati2mtaa,    PCI\VEN_1002&DEV_524C&SUBSYS_00081002
+Xpert 99 (Microsoft Corporation) =                                ati2mtaa,    PCI\VEN_1002&DEV_524C&SUBSYS_00881002
+Xpert 128 (Microsoft Corporation) =                               ati2mtaa,    PCI\VEN_1002&DEV_534D&SUBSYS_00081002
+Xpert 2000 (Microsoft Corporation) =                              ati2mtaa,    PCI\VEN_1002&DEV_534D&SUBSYS_00181002
+Xpert 128 (Microsoft Corporation) =                               ati2mtaa,    PCI\VEN_1002&DEV_5245&SUBSYS_00081002
+Xpert 128 (Microsoft Corporation) =                               ati2mtaa,    PCI\VEN_1002&DEV_5050&SUBSYS_00081002
+Rage128Pro 4XL (Microsoft Corporation) =                          ati2mtaa,    PCI\VEN_1002&DEV_5452&SUBSYS_001C1002
+Rage128Pro 4XL (Microsoft Corporation) =                          ati2mtaa,    PCI\VEN_1002&DEV_5452&SUBSYS_1279103C
+All-In-Wonder 128 Pro PCI (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5044&SUBSYS_00281002
+All-In-Wonder 128 Pro PCI (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5044&SUBSYS_00291002
+All-In-Wonder 128 Pro AGP (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00281002
+All-In-Wonder 128 Pro AGP (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_002A1002
+All-in-Wonder 128 Pro AGP (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5046&SUBSYS_00281002
+All-In-Wonder 128 Pro PCI (Microsoft Corporation) =               ati2mtaa,    PCI\VEN_1002&DEV_5245&SUBSYS_00281002
+All-In-Wonder 128 PCI (Microsoft Corporation) =                   ati2mtaa,    PCI\VEN_1002&DEV_5245&SUBSYS_00291002
+All-In-Wonder 128 PCI (Microsoft Corporation) =                   ati2mtaa,    PCI\VEN_1002&DEV_5245&SUBSYS_00681002
+All-In-Wonder 128 AGP (Microsoft Corporation) =                   ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_00281002
+All-In-Wonder 128 AGP (Microsoft Corporation) =                   ati2mtaa,    PCI\VEN_1002&DEV_5246&SUBSYS_00681002
+All-In-Wonder 128 Pro Ultra AGP (Microsoft Corporation) =         ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_002A1002
+All-In-Wonder 128 Pro Ultra PCI (Microsoft Corporation) =         ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_002B1002
+All-In-Wonder 128 Pro Ultra AGP (Microsoft Corporation) =         ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_00281002
+All-In-Wonder 128 Pro Ultra PCI (Microsoft Corporation) =         ati2mtaa,    PCI\VEN_1002&DEV_5446&SUBSYS_00291002
+
+RAGE 128 GL PCI (Microsoft Corporation) =                         ati2mtaa, PCI\VEN_1002&DEV_5245
+RAGE 128 GL AGP (Microsoft Corporation) =                         ati2mtaa, PCI\VEN_1002&DEV_5246
+RAGE 128 VR PCI (Microsoft Corporation) =                         ati2mtaa, PCI\VEN_1002&DEV_524B
+RAGE 128 VR AGP (Microsoft Corporation) =                         ati2mtaa, PCI\VEN_1002&DEV_524C
+RAGE 128 4X PCI (Microsoft Corporation) =                         ati2mtaa, PCI\VEN_1002&DEV_5345
+RAGE 128 4X AGP 2X (Microsoft Corporation) =                      ati2mtaa, PCI\VEN_1002&DEV_5346
+RAGE 128 4X AGP 4X (Microsoft Corporation) =                      ati2mtaa, PCI\VEN_1002&DEV_5347
+RAGE 128 4X (Microsoft Corporation) =                             ati2mtaa, PCI\VEN_1002&DEV_5348
+RAGE 128 4X PCI (Microsoft Corporation) =                         ati2mtaa, PCI\VEN_1002&DEV_534B
+RAGE 128 4X AGP 2X (Microsoft Corporation) =                      ati2mtaa, PCI\VEN_1002&DEV_534C
+RAGE 128 4X AGP 4X (Microsoft Corporation) =                      ati2mtaa, PCI\VEN_1002&DEV_534D
+RAGE 128 4X (Microsoft Corporation) =                             ati2mtaa, PCI\VEN_1002&DEV_534E
+RAGE 128 PRO PCI (Microsoft Corporation) =                        ati2mtaa, PCI\VEN_1002&DEV_5041
+RAGE 128 PRO AGP 2X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_5042
+RAGE 128 PRO AGP 4X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_5043
+RAGE 128 PRO PCI TMDS (Microsoft Corporation) =                   ati2mtaa, PCI\VEN_1002&DEV_5044
+RAGE 128 PRO AGP 2X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_5045
+RAGE 128 PRO AGP 4X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_5046
+RAGE 128 PRO PCI (Microsoft Corporation) =                        ati2mtaa, PCI\VEN_1002&DEV_5047
+RAGE 128 PRO AGP 2X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_5048
+RAGE 128 PRO AGP 4X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_5049
+RAGE 128 PRO PCI TMDS (Microsoft Corporation) =                   ati2mtaa, PCI\VEN_1002&DEV_504A
+RAGE 128 PRO AGP 2X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_504B
+RAGE 128 PRO AGP 4X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_504C
+RAGE 128 PRO PCI (Microsoft Corporation) =                        ati2mtaa, PCI\VEN_1002&DEV_504D
+RAGE 128 PRO AGP 2X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_504E
+RAGE 128 PRO AGP 4X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_504F
+RAGE 128 PRO PCI TMDS (Microsoft Corporation) =                   ati2mtaa, PCI\VEN_1002&DEV_5050
+RAGE 128 PRO AGP 2X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_5051
+RAGE 128 PRO AGP 4X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_5052
+RAGE 128 PRO PCI (Microsoft Corporation) =                        ati2mtaa, PCI\VEN_1002&DEV_5053
+RAGE 128 PRO AGP 2X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_5054
+RAGE 128 PRO AGP 4X (Microsoft Corporation) =                     ati2mtaa, PCI\VEN_1002&DEV_5055
+RAGE 128 PRO PCI TMDS (Microsoft Corporation) =                   ati2mtaa, PCI\VEN_1002&DEV_5056
+RAGE 128 PRO AGP 2X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_5057
+RAGE 128 PRO AGP 4X TMDS (Microsoft Corporation) =                ati2mtaa, PCI\VEN_1002&DEV_5058
+RAGE 128 PRO Ultra GL AGP (Microsoft Corporation) =               ati2mtaa, PCI\VEN_1002&DEV_5446
+RAGE 128 PRO Ultra VR AGP (Microsoft Corporation) =               ati2mtaa, PCI\VEN_1002&DEV_544C
+RAGE 128 PRO Ultra4XL VR-R AGP (Microsoft Corporation) =          ati2mtaa, PCI\VEN_1002&DEV_5452
+
+;
+; General installation section
+;
+
+[ati2mtaa]
+Include=msdv.inf
+CopyFiles=ati2mtaa.Miniport, ati2mtaa.Display
+
+
+;
+; File sections
+;
+
+[ati2mtaa.Miniport]
+ati2mtaa.sys
+
+[ati2mtaa.Display]
+ati2dvaa.dll
+
+;
+; Service Installation
+;
+
+[ati2mtaa.Services]
+AddService = ati2mtaa, 0x00000002, ati2mtaa_Service_Inst, ati2mtaa_EventLog_Inst
+
+[ati2mtaa_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 1                  ; SERVICE_SYSTEM_START
+ErrorControl   = 0                  ; SERVICE_ERROR_IGNORE
+LoadOrderGroup = Video
+ServiceBinary  = %12%\ati2mtaa.sys
+
+[ati2mtaa_EventLog_Inst]
+AddReg = ati2mtaa_EventLog_AddReg
+
+[ati2mtaa_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\ati2mtaa.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;
+; Software Installation
+;
+
+[ati2mtaa.SoftwareSettings]
+AddReg = ati2mtaa_SoftwareDeviceSettings
+DelReg = ati2mtaa_RemoveDeviceSettings
+
+[ati2mtaa_SoftwareDeviceSettings]
+HKR,, DALRestrictedModesBCD, %REG_BINARY%, 00,00,00,00,00,24,00,00
+HKR,, DisableAGPPM4,               %REG_DWORD%,    1
+HKR,, DisableEnumAllChilds,  %REG_DWORD%, 1
+HKR,, DALNonStandardModesBCD1, %REG_BINARY%,19,20,12,00,00,00,00,00,18,00,14,40,00,00,00,00,19,20,14,40,00,00,00,00,19,20,10,80,00,00,00,00,12,80,09,60,00,00,00,00,20,48,15,36,00,00,00,00,17,92,13,44,00,00,00,00,08,48,04,80,00,00,00,00
+HKR,, DALNonStandardModesBCD2, %REG_BINARY%,18,56,13,92,00,00,00,00
+HKR,, DALRestrictedModesBCD1, %REG_BINARY%,00,00,00,00,00,00,00,43,00,00,00,00,00,00,00,47
+HKR,, DisableTiling,               %REG_DWORD%,    1
+HKR,, InstalledDisplayDrivers,     %REG_MULTI_SZ%, ati2dvaa
+HKR,, VgaCompatible,               %REG_DWORD%,    0
+HKR,, DisableBlockWrite,           %REG_DWORD%,    1
+HKR,, ExportCompressedTex,         %REG_MULTI_SZ%, 0
+HKR,, DALOPTION_MinResBCD, %REG_BINARY%, 00,00,00,00,00,00,00,56
+HKR,, DXVA,                        %REG_DWORD%,    1
+HKLM,"Software\ATI Technologies\CBT",ReleaseVersion,,"6.73.1.1.1-021030-Microsoft"
+HKR,, ReleaseVersion,,"6.73.1.1.1-021030-Microsoft"
+HKR,, BuildNumber,,"_BUILDNUM_"
+HKR,, drv,,"ati2dvaa.dll"
+HKR,"ATI WDM Configurations","PnP ID Version",%REG_SZ%,"00"
+HKR,, DALRULE_NOFORCEBOOT,         %REG_DWORD%,    1
+HKR,, DisableMMSnifferCode,               %REG_DWORD%,    0
+HKR,, DALRULE_GetTVFakeEDID,        %REG_DWORD%,    0
+HKR,, DALRULE_REGISTRYACCESS,      %REG_DWORD%,    0
+HKR,, DALRULE_CRTSUPPORTSALLMODES, %REG_DWORD%,    1
+HKR,, CapabilityOverride,		%REG_DWORD%,    8
+
+[ati2mtaa_RemoveDeviceSettings]
+HKLM,"Software\ATI Technologies\Desktop\Icon"
+HKLM,"SOFTWARE\ATI Technologies\Driver\OpenGL"
+HKLM,"SOFTWARE\Microsoft\Windows NT\CurrentVersion\OpenGLDrivers\ATI ICD Settings"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Run\Atitask"
+HKLM,"Software\Microsoft\Windows\CurrentVersion\Uninstall\ATI Mach64 Display Driver"
+HKR,, DALCurrentObjectData
+HKR,, DALLastConnected
+HKR,, DALLastSelected
+HKR,, DALLastTypes
+HKR,, DALNonStandardModesBCD 
+HKR,, DALObjectData
+HKR,, DALObjectData0
+HKR,, DALObjectData1
+HKR,, DALRage128 CRT GDO_MaxModeInfo
+HKR,, DALRestrictedModes
+HKR,, DALRestrictedModesBCD
+HKR,, DALRULE_CRTSUPPORTSALLMODES
+HKR,, DALRULE_DISPLAYSRESTRICTMODES
+HKR,, DALRULE_NOCRTANDLCDONSAMECONTROLLER
+HKR,, DALRULE_NOFORCEBOOT
+HKR,, DALRULE_NOTVANDCRTONSAMECONTROLLER
+HKR,, DALRULE_RESTRICTUNKNOWNMONITOR
+HKR,, DALSelectObjectData0
+HKR,, DALSelectObjectData1
+HKR,, DefaultMode
+HKR,, DisableAGP
+HKR,, DisableAllocateFromRight
+HKR,, DisableAlphaBlend
+HKR,, DisableBitbltTranslation
+HKR,, DisableCursor
+HKR,, DisableD3D
+HKR,, DisableDirectDraw
+HKR,, DisableDMA
+HKR,, DisableDrvDeriveSurface
+HKR,, DisableDrvStretchBlt
+HKR,, DisableDrvTransparentBlt
+HKR,, DisableEngine
+HKR,, DisableEnumAllChilds
+HKR,, DisableGradientFill
+HKR,, DisableImpactTv
+HKR,, DisableMemInit
+HKR,, DisableMultiAdapter
+HKR,, DisableOpenGL
+HKR,, DisableOpenGLScrAccelerate
+HKR,, DisablePllInit
+HKR,, DisableRptrWriteBack
+HKR,, DisableTiling
+HKR,, DisableUC
+HKR,, DisableUSWC
+HKR,, DisableVPE
+HKR,, VgaCompatible
+HKR,"Desktop",NoAtipta
+HKR,, DALInstallFlag
+[ati2mtaa.GeneralConfigData]
+MaximumDeviceMemoryConfiguration=64
+
+[Strings]
+
+;
+; Non-Localizable Strings
+;
+
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+SERVICEROOT    = System\CurrentControlSet\Services
+
+;
+; Localizable Strings
+;
+
+DiskId       = "ATI Technologies Inc. Installation DISK (VIDEO)"
+GraphAdap    = "Graphics Adapter"
+ATI          = "ATI Technologies Inc."
+
+; Driver Information Entries
+; These items will be set by IHV...
+DriverMfgr="ATI Technologies Inc."			; IHV name
+DriverVersionID="6.13.10.5021"				; The IHV driver version
+BaseDriverFileName="ati2mtaa.sys" 			; Key file for version 
+BaseDriverFileVersion="6.13.10.5021" 			; version of key file 
+; These items will be set by IHV and updated by OEM 
+DriverOEM="ATI Technologies Inc."			; name of the OEM 
+DriverFamily="Video" 					; device family (NIC, Storage, Video...)
+DriverProduct="ATI Rage128" 				; Specific Name of device (chipset, for example)
+DriverDescription="Graphics Driver" 			; Description of device (product name, OS or system supported)
+DriverOEMVersion="6.73.1.1.1-021030-Microsoft"          ; OEM-specified version 

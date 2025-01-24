@@ -1,0 +1,135 @@
+; Copyright (c) Microsoft Corporation.  All rights reserved.
+
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+LayoutFile  = layout.inf
+Provider    = %Msft%
+DriverVer=10/01/2002,2.40.1381.1
+
+[Manufacturer]
+%Winbond%   = Winbond
+
+[ControlFlags]
+ExcludeFromSelect     = *
+                         
+[Winbond]
+%w89c840A.DeviceDesc% = W89C840.ndi, PCI\VEN_1050&DEV_0840                 ; Winbond W89C840 PCI
+%W89c840A.DeviceDesc% = w89c840.ndi, PCI\VEN_11F6&DEV_2011                 ; Compex pre-SSVID Clone
+%w89c840B.DeviceDesc% = w89c840.ndi, PCI\VEN_1050&DEV_0840&SUBSYS_00011050 ; Winbond W89C840 PCI
+%w89c840B.DeviceDesc% = w89c840.ndi, PCI\VEN_1050&DEV_0840&SUBSYS_08401050 ; Winbond W89C840 PCI
+
+;-------------------------------------------------------------------------------
+; W89C840   Winbond 840 PCI
+;
+[W89C840.ndi]
+AddReg		= W840ND.params.reg, W89C840.reg
+BusType		= 5
+Characteristics	= 0x84
+CopyFiles       = W840ND.CopyFiles
+
+[W89C840.ndi.Services]
+AddService      = W840ND, 2, W840ND.Service, common.EventLog
+
+;-------------------------------------------------------------------------------
+; Advanced params for w89c840
+;
+[W840ND.params.reg]
+;BurstLen
+HKR, Ndi\params\BurstLen,        ParamDesc, 0, %BurstLen%
+HKR, Ndi\params\BurstLen,        default,   0, "8192"
+HKR, Ndi\params\BurstLen,        type,      0, "enum"
+HKR, Ndi\params\BurstLen\enum,   256,       0, "1 dword"
+HKR, Ndi\params\BurstLen\enum,   512,       0, "2 dwords"
+HKR, Ndi\params\BurstLen\enum,   1024,      0, "4 dwords"
+HKR, Ndi\params\BurstLen\enum,   2048,      0, "8 dwords"
+HKR, Ndi\params\BurstLen\enum,   4096,      0, "16 dwords"
+HKR, Ndi\params\BurstLen\enum,   8192,      0, "32 dwords"
+
+;CacheAlign
+HKR, Ndi\params\CacheAlign,      ParamDesc, 0, %CacheAlign%
+HKR, Ndi\params\CacheAlign,      default,   0, "3"
+HKR, Ndi\params\CacheAlign,      type,      0, "enum"
+HKR, Ndi\params\CacheAlign\enum, 1,         0, "8 dwords"
+HKR, Ndi\params\CacheAlign\enum, 2,         0, "16 dwords"
+HKR, Ndi\params\CacheAlign\enum, 3,         0, "32 dwords"
+
+;TxThreshold
+HKR, Ndi\params\Threshold,       ParamDesc, 0, %Threshold%
+HKR, Ndi\params\Threshold,       type,      0, "int"
+HKR, Ndi\params\Threshold,       default,   0, "0"
+HKR, Ndi\params\Threshold,       min,       0, "0"
+HKR, Ndi\params\Threshold,       max,       0, "127"
+HKR, Ndi\params\Threshold,       step,      0, "1"
+
+;FullDuplex
+HKR, Ndi\params\FullDuplex,      ParamDesc, 0, %FullDuplex%
+HKR, Ndi\params\FullDuplex,      default,   0, "0"
+HKR, Ndi\params\FullDuplex,      type,      0, "enum"
+HKR, Ndi\params\FullDuplex\enum, 0,         0, %Auto%
+HKR, Ndi\params\FullDuplex\enum, 1,         0, %Disable%
+HKR, Ndi\params\FullDuplex\enum, 2,         0, %Enable%
+
+;LineSpeed
+HKR, Ndi\params\LineSpeed,       ParamDesc, 0, %LineSpeed%
+HKR, Ndi\params\LineSpeed,       default,   0, "0"
+HKR, Ndi\params\LineSpeed,       type,      0, "enum"
+HKR, Ndi\params\LineSpeed\enum,  0,         0, %Auto%
+HKR, Ndi\params\LineSpeed\enum,  1,         0, %10M%
+HKR, Ndi\params\LineSpeed\enum,  2,         0, %100M%
+
+;-------------------------------------------------------------------------------
+; W89C840 Service and Driver
+;
+[W89C840.reg]
+HKR, Ndi\Interfaces,	UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,	LowerRange, 0, "ethernet"
+HKR, Ndi,		Service,    0, "W840ND"
+
+[W840ND.CopyFiles]
+W840ND.sys,,,2
+
+[W840ND.Service]
+DisplayName    = %W840ND.Service.DispName%
+ServiceType    = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType      = 3 ;%SERVICE_DEMAND_START%
+ErrorControl   = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\W840ND.sys  
+LoadOrderGroup = NDIS
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+;-------------------------------------------------------------------------------
+; Destination Directories
+;
+[DestinationDirs]
+W840ND.CopyFiles         = 12
+
+;-------------------------------------------------------------------------------
+; Localizable Strings
+;
+[strings]
+Msft                     = "Microsoft"
+Winbond                  = "Winbond Electronics Corporation"
+
+BurstLen                 = "Burst Length"
+CacheAlign               = "Cache Alignment Boundary"
+Threshold                = "Transmit Threshold Value"
+FullDuplex               = "Full Duplex Function"
+Auto                     = "Auto Negotiate"
+Disable                  = "Disable"
+Enable                   = "Enable"
+LineSpeed                = "Line Speed"
+10M                      = "10 Mbps"
+100M                     = "100 Mbps"
+
+W89C840A.DeviceDesc      = "Winbond PCI Fast Ethernet Adapter (Generic W89C840)"
+W89C840B.DeviceDesc      = "Winbond W89C840 PCI Fast Ethernet Adapter"
+
+W840ND.Service.DispName  = "Winbond W89C840 Based PCI Fast Ethernet Adapter"
